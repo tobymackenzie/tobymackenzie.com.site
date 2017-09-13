@@ -1,0 +1,8 @@
+public_no_www_to_yes_www:
+  path: '{url}'
+  defaults:
+    _controller: FrameworkBundle:Redirect:redirect
+    permanent: false
+    route: public_base
+  requirements:
+    url: '.*'

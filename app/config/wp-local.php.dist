@@ -1,0 +1,26 @@
+<?php
+return [
+	'constants'=> [
+		//--db
+		'DB_CHARSET'=> 'utf8'
+		,'DB_COLLATE'=> ''
+		,'DB_HOST'=> 'localhost'
+		,'DB_NAME'=> 'tobymackenzie_com'
+		,'DB_PASSWORD'=> ''
+		,'DB_USER'=> 'tobymackenzie_com'
+
+		//--security
+		,'AUTH_KEY'=> '!!12345'
+		,'SECURE_AUTH_KEY'=> '!!12345'
+		,'LOGGED_IN_KEY'=> '!!12345'
+		,'NONCE_KEY'=> '!!12345'
+		,'AUTH_SALT'=> '!!12345'
+		,'SECURE_AUTH_SALT'=> '!!12345'
+		,'LOGGED_IN_SALT'=> '!!12345'
+		,'NONCE_SALT'=> '!!12345'
+
+		//--dev mode
+		,'JETPACK_DEV_DEBUG'=> true //-@ http://jetpack.com/support/development-mode/
+		,'WP_DEBUG'=> true
+	]
+];

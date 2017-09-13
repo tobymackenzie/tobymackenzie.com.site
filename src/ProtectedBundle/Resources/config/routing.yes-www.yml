@@ -1,0 +1,8 @@
+protected_yes_www_to_no_www:
+  path: '{url}'
+  defaults:
+    _controller: FrameworkBundle:Redirect:redirect
+    permanent: false
+    route: protected_base
+  requirements:
+    url: '.*'

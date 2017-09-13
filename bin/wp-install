@@ -1,0 +1,47 @@
+#!/usr/bin/env php
+<?php
+use TJM\Files\Files;
+
+require_once(__DIR__ . '/../vendor/autoload.php');
+
+$projectPath = realpath(__DIR__ . '/..');
+$vendorPath = $projectPath . '/vendor';
+$webrootPath = $projectPath . '/web';
+$wpPath = $vendorPath . '/wp';
+$wordpressPath = $wpPath . '/wordpress';
+
+$appPath = $projectPath . '/app';
+$srcPath = $projectPath . '/src/TJM';
+$wpConfigPath = $appPath . '/config/wp.php';
+$wpConfigTargetPath = $wordpressPath . '/wp-config.php';
+$webEtcPath = $webrootPath . '/_';
+$wpContentPath = $webEtcPath . '/wp-content';
+$wordpressTargetPath = $webEtcPath . '/wp';
+$uploadsPath = $appPath . '/files/wp-uploads';
+$uploadsTargetPath = $wpContentPath . '/uploads';
+
+//--symlink config into vendor wp directory so it works
+Files::symlinkRelativelySafely($wpConfigTargetPath, $wpConfigPath, $projectPath);
+
+//--symlink wp folder into webroot
+Files::symlinkRelativelySafely($wordpressTargetPath, $wordpressPath, $projectPath);
+
+//--symlink plugins and themes into web path
+foreach(Array('plugin', 'theme') as $type){
+	//--tjm
+	$prefix = $srcPath . '/wp-' . $type . '-';
+	foreach(glob($prefix . '*') as $from){
+		$to = $wpContentPath . '/' . $type . 's/' . str_replace($prefix, 'tjm-', $from);
+		Files::symlinkRelativelySafely($to, $from, $projectPath);
+	}
+
+	//--vendor
+	$prefix = $wpPath . '/' . $type . '-';
+	foreach(glob($prefix . '*') as $from){
+		$to = $wpContentPath . '/' . $type . 's/' . str_replace($prefix, '', $from);
+		Files::symlinkRelativelySafely($to, $from, $projectPath);
+	}
+}
+
+//--symlink uploads into web path
+Files::symlinkRelativelySafely($uploadsTargetPath, $uploadsPath, $projectPath);

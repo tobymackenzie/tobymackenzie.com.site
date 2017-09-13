@@ -1,0 +1,13 @@
+protected_remove_trailing_slash:
+  path: /{url}
+  defaults:
+    _controller: ProtectedBundle:Default:removeTrailingSlash
+  methods: [GET]
+  requirements:
+    url: .*/$
+protected_not_found:
+  path: /{url}
+  defaults:
+    _controller: ProtectedBundle:Default:notFound
+  requirements:
+    url: .*

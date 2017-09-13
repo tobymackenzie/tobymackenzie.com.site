@@ -1,0 +1,188 @@
+//=====
+//==text
+//=====
+//--base
+@mixin font-familyBase{
+	font-family: map-get($fontFamilies, base);
+	@include mq(map-get($bp, small)){
+		font-family: map-get($fontFamilies, baseWVP);
+	}
+}
+@mixin font-base{
+	@include font-familyBase();
+	font-weight: 400;
+	font-style: none;
+}
+%font-base{
+	@include font-base();
+}
+
+//--bold
+@mixin font-bold{
+	@include font-familyBase();
+	font-style: normal;
+	font-weight: 700;
+}
+%font-bold{
+	@include font-bold();
+}
+
+//--italic
+@mixin font-italic{
+	@include font-familyBase();
+	font-style: italic;
+	font-weight: normal;
+}
+%font-italic{
+	@include font-italic();
+}
+
+//--bold italic
+@mixin font-boldItalic{
+	@include font-familyBase();
+	font-style: italic;
+	font-weight: 700;
+}
+%font-boldItalic{
+	@include font-boldItalic();
+}
+
+//--heading
+@mixin font-heading{
+	@extend %font-bold;
+	//-! font-family: map-get($fontFamilies, heading);
+}
+%font-heading{
+	@include font-heading();
+}
+
+//=====
+//==icons
+//=====
+$icon-bottom: "\f0d7";
+$icon-top: "\f0d8";
+$icon-code: "\f121";
+$icon-email: "\f03b";
+$icon-packagist: "\f0c4";
+$icon-home: "\e600";
+$icon-writings: "\e601";
+$icon-file-text: "\e900";
+$icon-about: "\e604";
+$icon-portfolio: "\e602";
+$icon-search: "\e605";
+$icon-settings: "\e607";
+$icon-link: "\e606";
+$icon-info: "\e609";
+$icon-menu: "\e60a";
+$icon-twitter: "\e60b";
+$icon-github: "\e60c";
+$icon-linkedin: "\e60d";
+$icon-delicious: "\e60e";
+$icon-stackoverflow: "\e60f";
+
+@font-face {
+	font-family: 'icomoon';
+	src: url('/bundles/public/icomoon/icomoon.eot?px29cy');
+	src: url('/bundles/public/icomoon/icomoon.eot?px29cy#iefix') format('embedded-opentype'),
+		url('/bundles/public/icomoon/icomoon.ttf?px29cy') format('truetype'),
+		url('/bundles/public/icomoon/icomoon.woff?px29cy') format('woff'),
+		url('/bundles/public/icomoon/icomoon.svg?px29cy#icomoon') format('svg');
+	font-display: swap;
+	font-style: normal;
+	font-weight: normal;
+}
+
+%icm{
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'icomoon' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+%icm-bottom{
+	@extend %icm;
+	content: $icon-bottom;
+}
+%icm-top{
+	@extend %icm;
+	content: $icon-top;
+}
+%icm-code{
+	@extend %icm;
+	content: $icon-code;
+}
+%icm-email{
+	@extend %icm;
+	content: $icon-email;
+}
+%icm-packagist{
+	@extend %icm;
+	content: $icon-packagist;
+}
+%icm-home{
+	@extend %icm;
+	content: $icon-home;
+}
+%icm-writings{
+	@extend %icm;
+	content: $icon-writings;
+}
+%icm-file-text{
+	@extend %icm;
+	content: $icon-file-text;
+}
+%icm-about{
+	@extend %icm;
+	content: $icon-about;
+}
+%icm-portfolio{
+	@extend %icm;
+	content: $icon-portfolio;
+}
+%icm-search{
+	@extend %icm;
+	content: $icon-search;
+}
+%icm-settings{
+	@extend %icm;
+	content: $icon-settings;
+}
+%icm-link{
+	@extend %icm;
+	content: $icon-link;
+}
+%icm-info{
+	@extend %icm;
+	content: $icon-info;
+}
+%icm-menu{
+	@extend %icm;
+	content: $icon-menu;
+}
+%icm-twitter{
+	@extend %icm;
+	content: $icon-twitter;
+}
+%icm-github{
+	@extend %icm;
+	content: $icon-github;
+}
+%icm-linkedin{
+	@extend %icm;
+	content: $icon-linkedin;
+}
+%icm-delicious{
+	@extend %icm;
+	content: $icon-delicious;
+}
+%icm-stackoverflow{
+	@extend %icm;
+	content: $icon-stackoverflow;
+}

@@ -1,0 +1,17 @@
+.docFooterWrap{
+	@extend %mainItem;
+	order: 4;
+}
+.docEndLogo{
+	@extend %docLogoBase;
+	@extend %wiggleHoverAnimation;
+	bottom: 0.2em;
+	opacity: 0.5;
+	position: absolute;
+	right: 0.8em;
+	transition: opacity 0.2s;
+	z-index: 1;
+	&:hover{
+		opacity: 1;
+	}
+}

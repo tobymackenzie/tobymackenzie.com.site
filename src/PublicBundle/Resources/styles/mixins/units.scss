@@ -1,0 +1,80 @@
+/*
+Variable: fontSizes.root
+'px' font size on root (html) element (with units removed).  Browser default is 16px.  Used to determine sizes for remFallback function.
+
+-@ based on http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
+*/
+$fontSizes: () !default;
+$fontSizes: map-merge((root: 16), $fontSizes);
+
+/*
+Mixin: propertyFallback
+Output one or more copies of same property.  Browsers will use the last one they support.
+*/
+@mixin propertyFallback($property, $values){
+	@each $value in $values{
+		#{$property}: $value;
+	}
+}
+
+/*
+Mixin: remFallback
+Output a property with pixel values for non 'rem' supporting browsers followed by the 'rem' equivalent for rem support browsers.  Can't currently accept values with comma separation, like multiple backgrounds or the like.
+
+-@ based on http://hugogiraudel.com/2013/03/18/ultimate-rem-mixin/
+*/
+
+@mixin remFallback($property, $values) {
+	$px: ();
+	$rem: ();
+
+	@each $value in $values{
+		//--get unit or 'nan' if the value isn't a number
+		// $unit: if(type-of($value) == 'number', unit($value), 'nan');
+		$unit: 'nan';
+		@if type-of($value) == 'number'{
+			@if unitless($value){
+				$unit: 'unitless';
+			}@else{
+				$unit: unit($value);
+			}
+		}
+
+		//--unitless numbers are added as if they are in pix
+		@if $unit == 'unitless' and $value != 0{
+			$px : append($px, $value + px);
+			$rem: append($rem, ($value / map-get($fontSizes, root) + rem));
+		//--px or rem get added to their list and then converted to the other unit
+		}@else if $unit == 'px' or $unit == 'rem'{
+			$unitlessVal: stripUnit($value);
+			@if $unit == 'px'{
+				$px : append($px, $value);
+				$rem: append($rem, ($unitlessVal / map-get($fontSizes, root) + rem));
+			}@else if $unit == 'rem'{
+				$px : append($px,($unitlessVal * map-get($fontSizes, root) + px));
+				$rem: append($rem, $value);
+			}
+		//--all other units get appended directly
+		}@else{
+			$px : append($px , $value);
+			$rem: append($rem, $value);
+		}
+	}
+	$outputValues: null;
+	@if $px == $rem{
+		$outputValues: ($px, null);
+	}@else{
+		$outputValues: ($px, $rem);
+	}
+	@include propertyFallback($property, $outputValues);
+}
+
+/*
+Mixin: stripUnit
+Strip the unit from a value that has a unit
+
+-@ based on http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
+*/
+@function stripUnit($num) {
+	@return $num / ($num * 0 + 1);
+}

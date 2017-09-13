@@ -1,0 +1,19 @@
+{% if agents is defined %}
+{%	for agent, rules in agents %}
+User-Agent: {{agent}}
+{%		for key, value in rules %}
+{%			if value is iterable %}
+{%				for subvalue in value %}
+{{key}}: {{subvalue}}
+{%				endfor %}
+{%			else %}
+{{key}}: {{value}}
+{%			endif %}
+{%		endfor %}
+{%	endfor %}
+{% if other is defined %}
+{%	for key, value in other %}
+{{key}}: {{value}}
+{%	endfor %}
+{% endif %}
+{% endif %}

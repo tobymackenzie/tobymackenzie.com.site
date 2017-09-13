@@ -1,0 +1,36 @@
+{% extends page.skeleton %}
+{%block docMain %}
+<div class="mainItem">
+	<h1>Robots</h1>
+{% if agents is defined %}
+	<h2>Agents</h2>
+	<ul>
+{%	for agent, rules in agents %}
+		<li>{{agent}}
+		<dl>
+{%		for key, value in rules %}
+{%			if value is iterable %}
+			<dt>{{key}}</dt>
+{%				for subvalue in value %}
+			<dd>{{subvalue}}</dd>
+{%				endfor %}
+{%			else %}
+			<dt>{{key}}</dt>
+			<dd>{{value}}</dd>
+{%			endif %}
+{%		endfor %}
+		</dl>
+		</li>
+{%	endfor %}
+	</ul>
+{% endif %}
+{% if other is defined %}
+	<h2>Other Rules</h2>
+	<dl>
+{%	for key, value in other %}
+		<dt>{{key}}</dt><dd>{{value}}</dd>
+{%	endfor %}
+	</dl>
+{% endif %}
+</div>
+{% endblock %}

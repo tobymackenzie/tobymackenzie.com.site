@@ -1,0 +1,86 @@
+{% extends 'TJMBaseBundle:skeletons:full.html.twig' %}
+
+{% block docTitleWrap %}
+{{parent()}}
+<!--
+._______.  _____  ._____   __     _.
+|__   __| /  _  \ |   _  \ \ \  / /
+   | |   |  | |  ||  |_| /   \ v /
+   | |   |  | |  ||   _  \    | |
+   | |   |  |_|  ||  |_|  \   | |
+   |_|    \_____/ |______/    |_|
+__     __    _      ______ ._.    __._______.._    ._. _______.._______.._______.
+| \   / |  /   \   /  __  \| |   / /| ._____|| \   | ||_____  ||__   __|| ._____|
+|  \ /  | /  ◊  \ | /    \|| | / /  | |_____.|  \  | |     / /    | |   | |_____.
+| |\˘/| ||  / \  || |      |   <    | ._____|| |\ \| |   / /      | |   | ._____|
+| | ˘ | || |   | || \___/¯|| | \ \  | |_____.| |  \  | / /____ .__| |__.| |_____.
+|_|   |_||_|   |_| \_____/ |_|   \_\|_______||_|   \_||_______||_______||_______|
+-->
+{% endblock %}
+
+{% block docMeta %}
+{{parent()}}
+{% if canonical is not defined and (app.request.scheme != 'https' or app.request.host != 'www.tobymackenzie.com') %}
+{%	set canonical = 'https://www.tobymackenzie.com' ~ app.request.server.get('REQUEST_URI') %}
+{% endif %}
+{% if canonical is defined %}
+<link href="{{canonical}}" rel="canonical" />
+{% endif %}
+<link href="{{path('public_humans', {_format: 'txt'})}}" rel="author" />
+<link href="{{path('public_app_manifest')}}" rel="manifest" />
+{% endblock %}
+
+{% block docJumpWrap %}{% endblock %}
+{% block docFooter %}
+{% if page.secureUrl is defined %}
+<p>You are visiting this page over unencrypted HTTP.  It is also <a href="{{page.secureUrl}}">available over more secure HTTPS</a> (<a href="https://en.wikipedia.org/wiki/Https">more info on HTTPS</a>).</p>
+{% endif %}
+{% endblock %}
+
+{% block docNavWrap %}{# disable until we get something #}{% endblock %}
+
+{% block docStyles %}
+<link href="{{asset('bundles/public/styles/' ~ app.environment ~ '/main.css')}}" rel="stylesheet" />
+{% endblock %}
+
+{% block docPreScripts %}
+<script><!--//--><![CDATA[//><!--{{'\n'}}
+{# detect js support #}
+(function(H){H.className=H.className.replace(/\bua-no-js\b/,'ua-js')})(document.documentElement);
+//--><!]]></script>
+{% endblock %}
+
+{% block docPostScripts %}
+{#--force https if browser supports it #}
+{#-# putting in post because I'm not sure if old browsers will fail loading content if they can't load the script #}
+{% if page.secureUrl is defined %}
+<script src="https://{{app.request.host}}/bundles/public/scripts/{{app.environment}}/forceHttps.js"></script>
+{% endif %}
+<script async="async" defer="defer" src="/bundles/public/scripts/{{app.environment}}/post.js?a"></script>
+{% endblock %}
+
+{% block docHeader %}
+	{% if doc and doc.name != 'home' %}<a class="docLogoAction" href="{{path('public_home')}}">{% endif %}
+		<span class="docLogo">&lt;toby&gt;</span>
+		<span class="docHeaderTagline"><span class="docHeaderTaglineWVP">Site of Toby </span>Mackenzie, web developer</span>
+	{% if doc and doc.name != 'home' %}</a>{% endif %}
+{% endblock %}
+{% block docNav %}{% endblock %}
+
+{% block docBody %}
+{{ parent() }}
+<div class="docEndLogo">&lt;/toby&gt;</div>
+<div id="bottom" class="docTargetNav-bottom"><a class="docTargetAction docTargetAction-top" href="#top" id="top-link"><span class="docTargetText-top"><span class="docTargetHash">#</span>Page top</span></a></div>
+<div class="docBG"></div>
+{% endblock %}
+
+
+{% block docHeaderWrap %}
+<div id="top" class="docTargetNav-top">
+	<ul class="docTargetNavList">
+		<li class="docTargetNavItem"><a class="docTargetAction docTargetAction-main" href="#docMain" id="main-link"><span class="docTargetText-main"><span class="docTargetHash">#</span>Page main</span></a></li>
+		<li class="docTargetNavItem"><a class="docTargetAction docTargetAction-bottom" href="#bottom" id="bottom-link"><span class="docTargetText-bottom"><span class="docTargetHash">#</span>Page bottom</span></a></li>
+	</ul>
+</div>
+{{ parent() }}
+{% endblock %}

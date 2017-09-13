@@ -1,0 +1,37 @@
+/*
+Mixin: colorFallback
+Provide fallback for rgba colors for browsers that don't support them.
+*/
+@mixin colorFallback($property, $values){
+	$normal: ();
+	$rgba: ();
+	@each $value in $values{
+		@if type-of($value) == 'color' and alpha($value) != 1{
+			$normal: append(rgba($value, 1), $normal);
+		}@else{
+			$normal: append($value, $normal);
+		}
+		$rgba: append($value, $rgba);
+	}
+	$outputValues: null;
+	@if $normal == $rgba{
+		$outputValues: ($normal, null);
+	}@else{
+		$outputValues: ($normal, $rgba);
+	}
+	@include propertyFallback($property, $outputValues);
+}
+@function forceRGBA($color, $opacity){
+	$red: red($color);
+	$green: green($color);
+	$blue: blue($color);
+	$open: 'rgba(';
+	$close: ')';
+	$comma: ',';
+	@return #{$open}#{$red}#{$comma}#{$green}#{$comma}#{$blue}#{$comma}#{$opacity}#{$close};
+}
+
+/*
+Map for storing configured colors.
+*/
+$colors: () !default;

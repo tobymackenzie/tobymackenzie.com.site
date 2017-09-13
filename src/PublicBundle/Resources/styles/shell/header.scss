@@ -1,0 +1,69 @@
+.docHeader{
+	text-align: center;
+}
+.docHeaderWrap{
+	@extend %chromeContainer;
+	background: map-get($colors, chromeHeaderBG);
+	color: map-get($colors, chromeHeaderFG);
+	order: 1;
+	padding: 1em;
+	width: 100%;
+	//-??? fixed header
+	@media only screen and (min-height: #{map-get($bpHeight, 'fixedHeader') * 1em}){
+		background: rgba(map-get($colors, chromeHeaderBG), 0.9);
+		left: 0;
+		position: fixed;
+		top: 0;
+		z-index: 3;
+	}
+	@include mq(map-get($bp, medium)){
+		box-shadow: 0 0 12px rgba(map-get($colors, shadow), 0.35);
+		outline-bottom: 0.25em solid rgba(map-get($colors, boxOutline), 0.6);
+		padding: map-get($padding, 'chromeDocTopBottom-medium') 2em 1em;
+	}
+	&:before{
+		@include grunge(0.05);
+		z-index: -1;
+	}
+}
+.docLogo, .docHeaderTagline{
+	display: inline-block;
+	vertical-align: middle;
+}
+.docHeaderTagline{
+	@extend %wiggleHoverAnimation;
+	transform-origin: left;
+}
+.docHeaderTaglineWVP{
+	display: none;
+	@include mq(map-get($bp, small)){
+		display: inline;
+	}
+}
+%docLogoBase{
+	@extend %font-bold;
+	color: map-get($colors, chromeLogo);
+	font-size: map-get($fontSizes, logo);
+	@include mq(map-get($bp, verySmall)){
+		font-size: map-get($fontSizes, logo);
+	}
+}
+.docLogo{
+	@extend %docLogoBase;
+	@extend %spinHoverAnimation;
+	margin: -0.3em 0;
+}
+.docLogoAction{
+	background: none;
+	text-decoration: none;
+	transition: none;
+	&.docLogoAction{
+		color: inherit;
+	}
+	&:focus, &:hover{
+		background: none;
+	}
+}
+.docSiteName, .docSiteDescription{
+	color: map-get($colors, logo);
+}

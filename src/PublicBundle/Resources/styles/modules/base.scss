@@ -1,0 +1,65 @@
+//==animations
+%spinHoverAnimation{
+	transform: rotate(0);
+	transition: transform 0.5s ease;
+	&:hover{
+		transform: rotate(-720deg);
+	}
+}
+%wiggleHoverAnimation{
+	@supports (animation-name: a){ //--loses safari 5.1, which has a weird bug with this animation (flashing of main content area).  Also loses ie and others though
+		&:hover{
+			animation-duration: 0.4s;
+			animation-name: wiggle;
+		}
+	}
+}
+	@keyframes wiggle{
+		0%{
+			transform: scale(1) skew(0);
+			transform: skew(0);
+		}
+		20%{
+			transform: scale(1.03) skew(8deg);
+			transform: skew(12deg);
+		}
+		40%{
+			transform: scale(0.96) skew(-5deg);
+			transform: skew(-12deg);
+		}
+		60%{
+			transform: scale(1.02) skew(1deg);
+			transform: skew(8deg);
+		}
+		80%{
+			transform: scale(1.03) skew(8deg);
+			transform: skew(-8deg);
+		}
+		100%{
+			transform: scale(1) skew(0);
+			transform: skew(0);
+		}
+	}
+
+//==blocks
+%chromeContainer{
+	position: relative;
+	z-index: 2;
+}
+@mixin fullContainerCover(){
+	bottom: 0;
+	left: 0;
+	right: 0;
+	position: absolute;
+	top: 0;
+}
+@mixin grungeBG(){
+	background: url('/bundles/public/grunge-pattern.png');
+}
+@mixin grunge($opacity: 0.05){
+	@include fullContainerCover();
+	@include grungeBG();
+	/*-# filter: opacity above not working, must hide from old ie */
+	content: ' ';
+	opacity: $opacity; filter: alpha(opacity=#{$opacity * 100});
+}

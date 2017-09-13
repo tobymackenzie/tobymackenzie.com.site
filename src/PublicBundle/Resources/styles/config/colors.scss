@@ -1,0 +1,63 @@
+/*-! consider moving back to straight variables in consideration of:
+- verbose map-* syntax
+- [color names are seen as color objects anywhere they are used as an independent token](https://github.com/sass/sass/issues/1256), eg as map keys and values, but not selectors, variable names, property names.  In 'compressed' mode, where color objects become hex values, they are seen as if you literally wrote the hex values in the code.  This means we will have to quote every map key to avoid this problem and maintain consistency
+*/
+
+/*=====
+==named colors
+
+Colors to be used in the modules section, named based on their color for easy lookup.  Also can contain browser default colors.  None of these colors should be directly used in other files.
+*/
+$namedColors: #4e784e;
+$namedColors-alt: #d1ffd1;
+$namedColors: (
+	baseGreen: $namedColors
+	,blackGreen: #003300
+	,darkGreen: darken($namedColors, 20%)
+	,purple: rebeccapurple
+	,strongGreen: #225522
+	,lightGreen: $namedColors-alt
+	,lighterGreen: lighten($namedColors-alt, 5%)
+	,aGreen: #447744
+	,aVisitedGreen: darken($namedColors, 10%)
+	,whiteGreen: lighten($namedColors, 60%)
+);
+
+/*=====
+==direct use colors
+
+Colors that will be defined directly and used in other files.  Used for classes with color names, such as when a color name is selectable in a CMS that causes a color-name class to be used in generated content.
+*/
+$colors: map-merge($colors, (
+));
+
+/*=====
+==modules
+
+Colors named for what they will be styling.  These are to be used in other files.  Do not define colors directly here.
+=====*/
+$colors: map-merge($colors, (
+	baseBG: map-get($namedColors, baseGreen),
+	baseFG: map-get($namedColors, blackGreen),
+	border: map-get($namedColors, darkGreen),
+	boxOutline: map-get($namedColors, darkGreen),
+	chromeHeaderBG: map-get($namedColors, darkGreen),
+	chromeHeaderFG: map-get($namedColors, lighterGreen),
+	chromeLogo: map-get($namedColors, lightGreen),
+	docNavIcon: map-get($namedColors, strongGreen),
+	heading: map-get($namedColors, strongGreen),
+	linkBG: map-get($namedColors, lightGreen),
+	linkFG: map-get($namedColors, aGreen),
+	linkFGActive: map-get($namedColors, purple),
+	linkFGFocus: map-get($namedColors, strongGreen),
+	linkFGVisited: map-get($namedColors, aVisitedGreen),
+	logo: map-get($namedColors, purple),
+	mainBG: map-get($namedColors, whiteGreen),
+	mainBorder: map-get($namedColors, baseGreen),
+	shadow: map-get($namedColors, blackGreen),
+	strong: map-get($namedColors, strongGreen)
+));
+
+//--merge in colors derived from others
+$colors: map-merge($colors, (
+));

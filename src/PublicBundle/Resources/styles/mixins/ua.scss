@@ -1,0 +1,59 @@
+/*
+Mixin: mq
+Simplifies defining media queries for most cases.  Pass a number to get "@media screen and (min-width: #{number}em)" (by default).  Complex queries must be passed as strings. Allows bypassing media queries when setting $bypassMQ to true and either passing in a number or passing the boolean 'true' as a first parameter.
+
+*/
+$mq: () !default;
+$mq: map-merge((
+	device: 'only screen', //-# default device for `mq` mixin when none are specified.  has 'only' to prevent some older browsers from applying styles, as we will not be testing those browsers.
+	feature: 'min-width', //-# default 'feature' for `mq` mixin when none are specified
+	bypass: false //-# whether or not to bypass media queries altogether, for targeting desktop browser that do not support them.
+), $mq);
+
+@mixin mq($queryOrSkipBypassCheck, $query: false){
+	$skipBypassCheck: false;
+	@if type-of($queryOrSkipBypassCheck) != 'bool'{
+		$query: $queryOrSkipBypassCheck;
+	}@else{
+		$skipBypassCheck: $queryOrSkipBypassCheck;
+	}
+	@if map-get($mq, bypass) and ($skipBypassCheck or (type-of($query) == 'number' and str-index(map-get($mq, device), 'screen'))){
+		@content;
+	}@else{
+		//--if passed a number, turn it into a default query
+		@if type-of($query) == 'number'{
+			$number: 0;
+			@if unitless($query){
+				$number: #{$query}em; //-# use em units if none are provided
+			}@else{
+				$number: $query;
+			}
+			$query: map-get($mq, device) + " and " + "(" + map-get($mq, feature) + ":" + $number + ")";
+		}
+		@if $query{
+			@media #{$query}{ @content; }
+		}
+	}
+}
+@mixin fixedNavMQ($width: 20){
+	@if unitless($width){
+		$width: $width * 1em;
+	}
+	@media only screen and (min-width: #{$width}) and (min-height: 20em){
+		@content;
+	}
+}
+@mixin supportsFixed(){
+	// @if false{
+	@supports (position: fixed){
+		@content;
+	}
+	// }
+}
+@mixin supportsVerticalText(){
+	@include supportsFixed(){
+		@supports (text-orientation: upright) and (writing-mode: vertical-rl){
+			@content;
+		}
+	}
+}

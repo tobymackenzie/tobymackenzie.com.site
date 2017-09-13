@@ -1,0 +1,61 @@
+/*
+main.scss
+Represents basic CSS output file, importing all others that will be used on the site in the normal case.  Other output files with other requirements will have a similar representative that loads files necessary for its purposes.
+*/
+
+//-# following comment to help prevent editing of generated CSS
+/*!
+*
+* 'main.css' is generated from SCSS source files.  Don't edit directly or your changes will be overwritten.
+*
+*/
+
+/*=====
+==mixins
+
+Load mixins before styles so they are available to all styles.
+
+These mixins shouldn't be used by any library files and can't be used by config files.  Could move before them if you need mixins for configuration and don't need to configure the mixins.
+=====*/
+@import '../mixins/colors';
+@import '../mixins/fonts';
+@import '../mixins/ua';
+@import '../mixins/units';
+
+/*=====
+==config
+
+Load config files first so they are available to other files, including libary files.
+=====*/
+@import '../config/breakpoints';
+@import '../config/colors';
+@import '../config/fonts';
+@import '../config/etc';
+
+/*=====
+==library dependencies
+
+Load library dependencies so they are available to other files.  when 'once' functionality is implemented, this can move to individual files as needed
+=====*/
+
+/*=====
+==styles
+
+These files generate actual styles.  They will have everything they need loaded from above.  Load in an order that avoids specifity problems.
+
+Lib files could also generate styles.  If there are concerns about specifity problems due to order, consider loading libs down here.
+=====*/
+@import '../modules/pre';
+@import '../base/breakpoints';
+@import '../base/elements';
+@import '../base/fonts';
+@import '../modules/base';
+@import '../modules/mainItem';
+@import '../shell/base';
+@import '../shell/footer';
+@import '../shell/docNav';
+@import '../shell/header';
+@import '../shell/main';
+@import '../pages/home';
+
+@import '../print';

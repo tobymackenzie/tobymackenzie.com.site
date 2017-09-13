@@ -1,0 +1,50 @@
+//-@ h5bp
+//-@ http://www.smashingmagazine.com/2011/11/24/how-to-set-up-a-print-style-sheet/
+@include mq('print'){
+	*, *:before, *:after{
+		background: transparent !important;
+		color: #000000 !important;
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+	a{
+		&, &:visited{
+			text-decoration: underline;
+		}
+		&[href]{
+			&:after{
+				content: '](' attr(href) ')';
+				text-decoration: none;
+				word-wrap: break-word;
+			}
+			&:before{
+				content: '[';
+				text-decoration: none;
+			}
+		}
+		&[href^='#'], &[href^='javascript:']{
+			&:before, &:after{
+				content: '';
+			}
+		}
+	}
+	abbr[title]:after{
+		content: ' (' attr(title) ')';
+	}
+	blockquote, img, pre, tr{
+		page-break-inside: avoid;
+	}
+	h1, h2, h3{
+		page-break-after: avoid;
+	}
+	h2, h3, p{
+		orphans: 3;
+		widows: 3;
+	}
+	iframe, img, object{
+		max-width: 100% !important;
+	}
+	thead{
+		display: table-header-group; //-@ h5bp.com/t
+	}
+}

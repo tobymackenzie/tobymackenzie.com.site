@@ -1,0 +1,142 @@
+body{
+	margin: auto;
+	padding: 0;
+}
+html{
+	background: map-get($colors, baseBG);
+	margin: auto;
+	min-height: 100%;
+	padding: 0;
+	position: relative;
+}
+.docBody{
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1em;
+	@include supportsFixed(){
+		@include fixedNavMQ(){
+			margin-bottom: 0;
+			//--make room for nav
+			padding-bottom: map-get($padding, 'chromeDocTopBottom-small') + 0.25em * 2;
+		}
+		//--space for fixed header
+		@media only screen and (min-height: #{map-get($bpHeight, 'fixedHeader') * 1em}){
+			padding-top: 3.6em;
+			@media (min-width: #{map-get($bp, 'medium') * 1em}){
+				padding-top: 2.6em;
+			}
+		}
+	}
+
+	//--padding matching spacing between mainItems
+	@include mq(map-get($bp, medium)){
+		padding-bottom: 2em;
+	}
+	@media screen and (min-width: 48em) and (min-height: 40em){
+		padding-bottom: 3em;
+	}
+	@media screen and (min-width: 48em) and (min-height: 50em){
+		padding-bottom: 4em;
+	}
+}
+
+//==docBG
+@mixin docBGWideTransition(){
+	transition: opacity 1.8s ease /* 0.2s*/;
+}
+.docBG{
+	@include fullContainerCover();
+	content: ' ';
+	opacity: 0.2; filter: alpha(opacity=20);
+	z-index: 0;
+	@include mq(map-get($bp, wide)){
+		@include docBGWideTransition();
+		background: url('/bundles/public/webStuff.jpg') left top;
+		&:hover{
+			opacity: 0.60; filter: alpha(opacity=60);
+			&:before{
+				opacity: 0.05; filter: alpha(opacity=05);
+			}
+		}
+	}
+	&:before{
+		@include grunge(0.45);
+		z-index: 1;
+		zoom: 1;
+		@include mq(map-get($bp, wide)){
+			@include docBGWideTransition();
+		}
+	}
+}
+
+//--don't show focus ring for non-actionable focused items
+[tabindex='-1']:focus{
+	// outline: 0;
+	// outline: none;
+}
+
+//==aside
+%presenceAction{
+	text-decoration: none;
+	&:before{
+		font-size: 1.3em;
+		margin-right: 0.6em;
+		vertical-align: middle;
+	}
+	span{
+		text-decoration: underline;
+		text-decoration-color: rgba(map-get($colors, linkFG), 0.4);
+		vertical-align: middle;
+	}
+}
+.presence{
+	margin-bottom: 0.4em;
+}
+.presenceAction-writings{
+	&:before{
+		@extend %icm-writings;
+	}
+	@extend %presenceAction;
+}
+.presenceAction-github{
+	&:before{
+		@extend %icm-github;
+	}
+	@extend %presenceAction;
+}
+.presenceAction-twitter{
+	&:before{
+		@extend %icm-twitter;
+	}
+	@extend %presenceAction;
+}
+.presenceAction-linkedin{
+	&:before{
+		@extend %icm-linkedin;
+	}
+	@extend %presenceAction;
+}
+.presenceAction-delicious{
+	&:before{
+		@extend %icm-delicious;
+	}
+	@extend %presenceAction;
+}
+.presenceAction-stackoverflow{
+	&:before{
+		@extend %icm-stackoverflow;
+	}
+	@extend %presenceAction;
+}
+.presenceAction-packagist{
+	&:before{
+		@extend %icm-packagist;
+	}
+	@extend %presenceAction;
+}
+.presences{
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
+}

@@ -1,0 +1,18 @@
+{% extends page.skeleton %}
+{%block docMain %}
+<article class="mainItem">
+	{% if heading is defined %}<h1>{{heading}}</h1>{% endif %}
+	{{content|raw}}
+{% if formats is defined %}
+	<footer class="mainItemAltFormats">
+		<hr />
+		<strong>This page also available as:</strong>
+		<ul class="mainItemAltFormatsList">
+{% 	for itemName, itemPath in formats %}
+			<li class="mainItemAltFormat"><a href="{{itemPath}}">{{itemName}}</a></li>
+{% 	endfor %}
+		</ul>
+	</footer>
+{% endif %}
+</article>
+{% endblock %}

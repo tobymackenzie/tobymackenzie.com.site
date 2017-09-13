@@ -1,0 +1,12 @@
+services:
+ htmlToMarkdown:
+  class: TJM\HtmlToMarkdown\HtmlConverter
+  arguments: [{'hard_break': true, 'strip_tags': true}]
+ markdownToHtml:
+  class: ParsedownExtra
+ ##==listeners
+ app.headers_listener:
+  class: TJM\TMCom\Listener\HeadersListener
+  arguments: ['%kernel.environment%']
+  tags:
+   - {name: kernel.event_listener, event: kernel.response}

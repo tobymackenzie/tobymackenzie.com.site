@@ -1,0 +1,57 @@
+_protected_yes_www:
+ host: '%host.prefix%{subdomain}%protected.host%'
+ requirements:
+  subdomain: '.+'
+ resource: "@ProtectedBundle/Resources/config/routing.yes-www.yml"
+
+_public_no_www:
+ host: '%host.prefix%%public.host%'
+ resource: "@PublicBundle/Resources/config/routing.no-www.yml"
+
+_public_pre:
+ defaults:
+  subdomain: '%host.prefix%%public.host.subdomain%'
+ host: '{subdomain}%public.host%'
+ requirements:
+  subdomain: '.+'
+ resource: "@PublicBundle/Resources/config/routing.pre.yml"
+
+_protected_pre:
+ host: '%host.prefix%%protected.host%'
+ resource: "@ProtectedBundle/Resources/config/routing.pre.yml"
+
+_TJMBase:
+ resource: "@TJMBaseBundle/Resources/config/routingBase.yml"
+
+_public_post:
+ defaults:
+  subdomain: '%host.prefix%%public.host.subdomain%'
+ host: '{subdomain}%public.host%'
+ requirements:
+  subdomain: '.+'
+ resource: "@PublicBundle/Resources/config/routing.post.yml"
+
+_protected_post:
+ host: '%host.prefix%%protected.host%'
+ resource: "@ProtectedBundle/Resources/config/routing.post.yml"
+
+#==base for domain to allow specifying generic url
+protected_base:
+ defaults:
+  subdomain: null
+  url: null
+ host: '%host.prefix%%protected.host%'
+ path: /{url}
+ requirements:
+  url: .*
+ schemes: [https,http]
+public_base:
+ defaults:
+  url: null
+  subdomain: '%host.prefix%%public.host.subdomain%'
+ host: '{subdomain}%public.host%'
+ path: /{url}
+ requirements:
+  url: .*
+  subdomain: '.+'
+ schemes: [https,http]

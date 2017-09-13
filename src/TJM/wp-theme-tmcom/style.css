@@ -1,0 +1,37 @@
+/*
+Theme Name: TMCom
+Template: twentyfifteen
+
+colors:
+	bg: 1c4715
+	header / sidebar fg: d9ffd6
+	header / sidebar bg: 005b30
+widgets: [search, cats menu]
+*/
+
+.entry-content .more-link, .entry-summary .more-link:after{
+	white-space: normal;
+}
+.entry-content .more-link:before{
+	content: ' ';
+	display: block;
+	height: 0;
+	margin-top: 1.6em;
+}
+code{
+	background: #002200;
+	color: #ccffcc;
+	display: inline-block;
+	margin: -0.2em 0;
+	padding: 0 0.4em;
+}
+pre{
+	padding: 0;
+}
+pre code{
+	display: block;
+	margin: 0;
+	overflow: auto;
+	padding: 0.8em;
+	white-space: pre;
+}

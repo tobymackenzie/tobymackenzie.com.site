@@ -1,0 +1,59 @@
+//==a11y
+//-@ https://github.com/h5bp/html5-boilerplate/issues/194
+//-@ https://developer.yahoo.com/blogs/ydn/clip-hidden-content-better-accessibility-53456.html
+//-@ https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+@mixin sro(
+	$border: 0
+	,$clip: rect(0 0 0 0)
+	,$height: 1px
+	,$margin: -1px
+	,$overflow: hidden
+	,$padding: 0
+	,$position: absolute
+	,$width: 1px
+	,$wordWrap: normal
+){
+	border: $border;
+	clip: $clip;
+	height: $height;
+	margin: $margin;
+	overflow: $overflow;
+	padding: $padding;
+	position: $position;
+	width: $width;
+	word-wrap: $wordWrap;
+}
+%sro{
+	@include sro();
+}
+@mixin sroOff(
+	$border: initial
+	,$clip: auto
+	,$height: auto
+	,$margin: initial
+	,$overflow: visible
+	,$padding: initial
+	,$position: static
+	,$width: auto
+){
+	border: $border;
+	clip: $clip;
+	height: $height;
+	margin: $margin;
+	overflow: $overflow;
+	padding: $padding;
+	position: $position;
+	width: $width;
+}
+%sroOff{
+	@include sroOff();
+}
+
+//==blocks
+%block{
+	margin: 1em 0 0;
+	padding: 0;
+	&:first-child{
+		margin-top: 0;
+	}
+}

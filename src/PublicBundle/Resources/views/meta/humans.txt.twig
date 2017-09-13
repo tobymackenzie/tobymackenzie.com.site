@@ -1,0 +1,24 @@
+{% extends page.skeleton %}
+{%block docMain %}
+Humans
+======
+
+{% if sections is defined %}
+{%	for section, items in sections %}
+{{section}}
+-----------
+
+{%		for key, value in items %}
+{%			if value is iterable %}
+{{key}}{{separator}}
+{%				for subkey, subvalue in value %}
+	{{subkey}}{{subSeparator}}{{subvalue}}{{postSeparator}}
+{%				endfor %}
+{%			else %}
+{{key}}{{separator}}{{value}}{{postSeparator}}
+{%			endif %}
+{%		endfor %}
+
+{%	endfor %}
+{% endif %}
+{% endblock %}

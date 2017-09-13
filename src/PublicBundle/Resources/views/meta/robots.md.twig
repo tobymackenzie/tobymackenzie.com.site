@@ -1,0 +1,36 @@
+{% extends page.skeleton %}
+{%block docMain %}
+Robots
+======
+
+{% if agents is defined %}
+Agents
+------
+
+{%	for agent, rules in agents %}
+- {{agent}}
+{%		for key, value in rules %}
+{%			if value is iterable %}
+	{{key}}
+{%				for subvalue in value %}
+	: {{subvalue}}
+{%				endfor %}
+{%			else %}
+	{{key}}
+	: {{value}}
+{%			endif %}
+{%		endfor %}
+
+{%	endfor %}
+{% endif %}
+{% if other is defined %}
+
+Other Rules
+-----------
+
+{%	for key, value in other %}
+{{key}}
+: {{value}}
+{%	endfor %}
+{% endif %}
+{% endblock %}

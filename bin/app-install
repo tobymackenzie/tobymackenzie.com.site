@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+use TJM\Files\Files;
+
+require_once(__DIR__ . '/../vendor/autoload.php');
+
+$projectPath = realpath(__DIR__ . '/..');
+$srcPath = $projectPath . '/app/web';
+$webrootPath = $projectPath . '/web';
+
+foreach(glob($srcPath . '/{.??*,.[!.],*}', GLOB_BRACE) as $from){
+	$to = $webrootPath;
+	Files::symlinkRelativelySafely($to, $from, $projectPath);
+}

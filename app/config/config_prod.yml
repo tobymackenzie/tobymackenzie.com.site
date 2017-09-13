@@ -1,0 +1,26 @@
+imports:
+ - {resource: config.yml}
+
+#==FOS HTTP Cache
+# fos_http_cache:
+#  cache_control:
+#   rules:
+#    -
+#     match:
+#      path: ^/
+#     headers:
+#      reverse_proxy_ttl: 36000
+
+#==Monolog
+monolog:
+ handlers:
+  main:
+   action_level: error
+   handler: nested
+   type: fingers_crossed
+  nested:
+   level: debug
+   path:  '%kernel.logs_dir%/%kernel.environment%.log'
+   type:  stream
+  console:
+   type: console

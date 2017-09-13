@@ -1,0 +1,29 @@
+/*
+Mixin: fontSize
+Set 'font-size' property in rem with pixel fallback.  Passed in value is pixel equivalent unitless number.  If passed in value isn't unitless, it is output directly, allowing uniform interface to 'font-size'.
+
+-@ based on http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
+*/
+@mixin fontSize($sizeValue){
+	@if unitless($sizeValue){
+		@include remFallback('font-size', $sizeValue);
+	}@else{
+		font-size: $sizeValue;
+	}
+}
+
+/*
+==fontSizes
+
+Font sizes map.
+*/
+
+$fontSizes: () !default;
+
+/*
+==fontFamilies
+
+Font families map.
+*/
+
+$fontFamilies: () !default;

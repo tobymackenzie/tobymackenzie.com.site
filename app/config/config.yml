@@ -1,0 +1,58 @@
+imports:
+ - {resource: parameters.yml}
+ - {resource: security.yml}
+ - {resource: services.yml}
+ - {resource: '@TJMBaseBundle/Resources/config/config.yml'}
+
+parameters:
+ locale: en
+ twig.extension.assets.class: TJM\Bundle\BaseBundle\Extension\AssetsExtension
+
+doctrine:
+ dbal:
+ dbal:
+  charset:  UTF8
+  dbname:   '%database_name%'
+  driver:   '%database_driver%'
+  host:  '%database_host%'
+  password: '%database_password%'
+  port:  '%database_port%'
+  user:  '%database_user%'
+  path: '%kernel.root_dir%/data/data.db3'
+ orm:
+  auto_generate_proxy_classes: '%kernel.debug%'
+  # naming_strategy: doctrine.orm.naming_strategy.underscore
+  auto_mapping: true
+
+framework:
+ assets: ~
+ csrf_protection: ~
+ default_locale: '%locale%'
+ form: ~
+ fragments: ~
+ http_method_override: true
+ request:
+  formats:
+   # md: 'text/x-markdown'
+   md: 'text/plain'
+   xhtml: 'application/xhtml+xml'
+ router:
+  resource: '%kernel.root_dir%/config/routing.yml'
+  strict_requirements: ~
+ secret: '%secret%'
+ session:
+  handler_id: ~
+  save_path: '%kernel.root_dir%/../var/sessions/%kernel.environment%'
+ templating: {engines: ['twig']} #assets_version: SomeVersionScheme
+ trusted_hosts: ~
+ validation: {enable_annotations: true}
+
+tjm_base:
+ page_wraps:
+  full: ":skeletons:full.{format}.twig"
+  public_full: 'PublicBundle:skeletons:full.{format}.twig'
+  protected_full: 'ProtectedBundle:skeletons:full.{format}.twig'
+
+twig:
+ debug: "%kernel.debug%"
+ strict_variables: "%kernel.debug%"

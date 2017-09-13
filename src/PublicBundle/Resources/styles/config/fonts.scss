@@ -1,0 +1,71 @@
+/*=====
+==fonts
+
+Define font stacks in the '$namedFontFamilies' section, then create variables named for where they will be used that are set to appropriate stacks in the 'modules' section.  Don't use the '$namedFontFamilies' variables directly.
+=====*/
+@font-face{
+	font-display: swap; font-display: fallback;
+	font-family: 'cousine';
+	font-style: normal;
+	font-weight: normal;
+	src: url('/bundles/public/fonts/cousine/cousine-regular-webfont.woff2') format('woff2'),
+		 url('/bundles/public/fonts/cousine/cousine-regular-webfont.woff') format('woff');
+}
+@font-face{
+	font-display: swap; font-display: fallback;
+	font-family: 'cousine';
+	font-style: italic;
+	font-weight: normal;
+	src: url('/bundles/public/fonts/cousine/cousine-italic-webfont.woff2') format('woff2'),
+		 url('/bundles/public/fonts/cousine/cousine-italic-webfont.woff') format('woff');
+}
+@font-face{
+	font-display: swap; font-display: fallback;
+	font-family: 'cousine';
+	font-style: italic;
+	font-weight: bold;
+	src: url('/bundles/public/fonts/cousine/cousine-bolditalic-webfont.woff2') format('woff2'),
+		 url('/bundles/public/fonts/cousine/cousine-bolditalic-webfont.woff') format('woff');
+}
+@font-face{
+	font-display: swap; font-display: fallback;
+	font-family: 'cousine';
+	font-style: normal;
+	font-weight: bold;
+	src: url('/bundles/public/fonts/cousine/cousine-bold-webfont.woff2') format('woff2'),
+		 url('/bundles/public/fonts/cousine/cousine-bold-webfont.woff') format('woff');
+}
+
+//==named families
+$namedFontFamilies: (
+	//-! helvetica: "1"
+	anonymousPro: ('Anonymous Pro', anonymous_pro, meslo, 'Meslo LG S', menlo, 'Menlo Regular', Consolas, 'Courier New', courier, monospace)
+	,cousine: (cousine, meslo, 'Meslo LG S', menlo, 'Menlo Regular', Consolas, 'Courier New', courier, monospace)
+	,cousineFallback: (meslo, 'Meslo LG S', menlo, 'Menlo Regular', cousine, Consolas, 'Courier New', courier, monospace) //-# fall back to cousine if meslo / menlo not found
+	,meslo: (meslo, 'Meslo LG S', menlo, 'Menlo Regular', Consolas, monospace)
+	,meslolgs: (meslolgs, 'Meslo LG S', meslo, menlo, 'Menlo Regular', Consolas, monospace)
+);
+
+//==modules
+$fontFamilies: map-merge($fontFamilies, (
+	base: map-get($namedFontFamilies, meslo)
+	,baseWVP: map-get($namedFontFamilies, cousineFallback)
+));
+
+/*=====
+==sizes
+
+Font sizes, named for where they will be used.
+=====*/
+$fontSizes: map-merge($fontSizes, (
+	root: 10, //-# Root font size for use by `remFallback` mixin. Based on setting font size to 62.5% on the 'html' element, making it 10px if user hasn't changed font size, but it will adjust with users font setting
+	base: 160%,
+	h1: 2em,
+	h2: 1.5em,
+	h3: 1.17em,
+	h4: 1.00em,
+	h5: 0.83em,
+	h6: 0.67em,
+	logo: 1.3em,
+	logoMVP: 1.6em
+));

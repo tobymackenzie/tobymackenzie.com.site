@@ -1,0 +1,193 @@
+//==root styles
+body{
+	@extend %font-base;
+	// @extend %fontsize-base;
+	font-size: map-get($fontSizes, base);
+	line-height: 1.6;
+}
+html{
+	color: map-get($colors, baseFG);
+	background: map-get($colors, baseBG);
+	font-size: 62.5%; //-# sets document base font size to 10px with browser defaults, making one rem equal 10 px for easier rem math.  Will automatically scale with user configured default font size.
+}
+[tabindex='-1']:focus{
+	outline: none;
+}
+
+//==element modules
+*{
+	box-sizing: border-box;
+}
+a{
+	background-color: rgba(map-get($colors, linkBG), 0);
+	color: map-get($colors, linkFG);
+	margin: 0;
+	text-decoration-color: rgba(map-get($colors, linkFG), 0.4);
+	text-decoration-skip: ink;
+	transition: background-color 0.15s, color 0.15s;
+	&:active, &:focus, &:hover{
+		background-color: map-get($colors, linkBG); /*background-color: forceRGBA(map-get($colors, linkBG), 1); */
+		color: map-get($colors, linkFGFocus);
+	}
+	&:visited{
+		color: map-get($colors, linkFGVisited);
+	}
+	&:active{
+		color: map-get($colors, linkFGActive);
+	}
+}
+b, strong{
+	//-# only really necessary if using @font-face with a bold variant
+	@extend %font-bold;
+	color: map-get($colors, strong);
+}
+b em, b i, em b, em strong, i b, i strong, strong em, strong i{
+	//-# only really necessary if using @font-face with a bold italic variant and having these combinations of elements.  Uncomment if desired.
+	//-! @extend %font-boldItalic;
+}
+blockquote{
+	@extend %block;
+	@include colorFallback('border-left', 3px solid rgba(map-get($colors, border), 0.6));
+	margin-left: 0;
+	padding: 1em 0.5em 1em 2em;
+	position: relative;
+	&:after, &:before{
+		@extend %font-bold;
+		@include colorFallback('color', rgba(map-get($colors, strong), 0.6));
+		font-size: 2em;
+		line-height: 1;
+	}
+	&:after{
+		content: "”";
+		display: inline-block;
+		height: 0;
+		line-height: 0;
+		position: relative;
+		top: 1em;
+		width: 0;
+	}
+	&:before{
+		content: "“";
+		left: 0.3em;
+		position: absolute;
+		top: 0.2em;
+	}
+}
+em, i{
+	//-# only really necessary if using @font-face with an italic variant
+	@extend %font-italic;
+	color: map-get($colors, strong);
+}
+h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{
+	@extend %block;
+	@extend %font-heading;
+	color: map-get($colors, heading);
+
+	a{
+		color: inherit;
+	}
+	em, i{
+		//-# only really necessary if using @font-face with a bold italic variant and having these combinations of elements.  Uncomment if desired.
+		//-! @extend %font-boldItalic;
+	}
+}
+h1,.h1{
+	@include fontSize(map-get($fontSizes, h1));
+}
+h2,.h2{
+	@include fontSize(map-get($fontSizes, h2));
+}
+h3,.h3{
+	@include fontSize(map-get($fontSizes, h3));
+}
+h4,.h4{
+	@include fontSize(map-get($fontSizes, h4));
+}
+h5,.h5{
+	@include fontSize(map-get($fontSizes, h5));
+}
+h6,.h6{
+	@include fontSize(map-get($fontSizes, h6));
+}
+hr{
+	border: 0;
+	background: map-get($colors, border);
+	height: 2px;
+	margin: 1.5em 0;
+	opacity: 0.4;
+}
+iframe, img, object{
+	border: 0; //-# ensure images in links don't get borders in some browsers.  ensure iframes don't get borders
+	max-width: 100%; //-# make elements responsive, will scale down with container
+}
+img{
+	max-height: 100vh; //-# make sure image doesn't get bigger than viewport. -@ [snookca](https://twitter.com/snookca/status/634486812803792897)
+}
+img[height]{
+	height: auto; //-# ensure aspect ratio is preserved when resizing
+}
+img[width]{
+	width: auto; //-# ensure aspect ratio is preserved when resizing
+}
+input, select, td, textarea, th{
+	font-size: 1em;
+}
+input, select, textarea{
+	max-width: 100%;
+}
+p{
+	@extend %block;
+	&:first-letter{
+		color: map-get($colors, strong);
+		font-weight: bold;
+	}
+}
+table{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+table
+,td
+,th
+,tr
+{
+	margin: 0;
+	padding: 0;
+}
+
+//==normalize
+//-# based on [normalize.css](https://github.com/necolas/normalize.css/blob/master/normalize.css) (see also <https://github.com/necolas/normalize.css/wiki>)
+//--normalize handling of newer elements
+[hidden], template{
+	display: none; //-# enable 'hidden' attribute in IE 8-10.  Hide template element from browsers from before the element was created
+}
+article
+,aside
+,details
+,figcaption
+,figure
+,footer
+,header
+,hgroup
+,main
+,nav
+,section
+,summary
+{
+	display: block; //-# fix default 'display' value for HTML5 elements in browsers from before they existed
+}
+audio
+,canvas
+,progress
+,video
+{
+	display: inline-block; //-# fix default 'display' value for HTML5 elements in browsers from before they existed
+	vertical-align: baseline; //-# normalize vertical alignment of progess element
+}
+audio:not([controls]){
+	display: none; //-# hide audio elements without controls.  Overrides previous rule.
+	height: 0; //-# remove height in iOS 5 devices left for controls
+}
+svg:not(:root){
+	overflow: hidden; //-# fix overflow not being hidden in IE 9-11
+}

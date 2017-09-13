@@ -1,0 +1,9 @@
+{% extends page.skeleton %}
+{%block docMain %}
+{% if heading is defined %}
+{{heading}}
+==========
+
+{% endif %}
+{{content|raw}}
+{% endblock %}
