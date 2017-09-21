@@ -56,7 +56,7 @@
 		,"tjm/symfony-standard-edition-bundle": "master@dev"
 		,"tjm/utils": "master@dev"
 		,"tjm/wpthemehelper": "0.1.x@dev"
-		,"wpackagist-plugin/akismet": "^3.1"
+		,"wpackagist-plugin/akismet": "^4.0"
 		,"wpackagist-plugin/jetpack": "^5.0"
 		,"wpackagist-plugin/syntaxhighlighter": "^3.2"
 		,"wpackagist-plugin/wordpress-importer": "^0.6"
