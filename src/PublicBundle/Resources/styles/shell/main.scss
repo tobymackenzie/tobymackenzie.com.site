@@ -2,8 +2,12 @@
 	@extend %chromeContainer;
 	background: map-get($colors, mainBG);
 	margin: 1em auto 0;
-	max-width: 45em; /*-# generally maintains a line length between 45 and 68 characters down to about 30em window width (with media queries) (45-75 ideal) */ _width: 45em;
 	padding: 1em;
+	/*-#
+	- generally maintains a line length between 45 and 68 characters down to about 30em window width (with media queries) (45-75 ideal)
+	- width + max-width to support old browsers without max-width support (eg ie6-)
+	*/
+	width: 45em; max-width: 100%;
 	@include mq(0){
 		position: relative;
 		&:before{
