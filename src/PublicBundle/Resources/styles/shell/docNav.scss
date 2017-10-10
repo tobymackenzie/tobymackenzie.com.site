@@ -28,11 +28,6 @@ $docTargetActionWidthHeight: 2.825em;
 	&:active, &:focus, &:hover{
 		max-width: 11em;
 	}
-	@include mq(0){
-		&:after{
-			@include grunge();
-		}
-	}
 	@include mq(map-get($bp, medium)){
 		opacity: 0.5;
 		//-@ http://easings.net/#easeOutCirc

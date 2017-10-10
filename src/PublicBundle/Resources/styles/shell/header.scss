@@ -21,10 +21,6 @@
 		outline-bottom: 0.25em solid rgba(map-get($colors, boxOutline), 0.6);
 		padding: map-get($padding, 'chromeDocTopBottom-medium') 2em 1em;
 	}
-	&:before{
-		@include grunge(0.05);
-		z-index: -1;
-	}
 }
 .docLogo, .docHeaderTagline{
 	display: inline-block;

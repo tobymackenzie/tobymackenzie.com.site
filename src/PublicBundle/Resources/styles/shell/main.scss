@@ -10,10 +10,6 @@
 	width: 45em; max-width: 100%;
 	@include mq(0){
 		position: relative;
-		&:before{
-			@include grunge();
-			z-index: -1;
-		}
 	}
 	@include mq(map-get($bp, medium)){
 		box-shadow: 0 0 12px rgba(map-get($colors, shadow), 0.5);

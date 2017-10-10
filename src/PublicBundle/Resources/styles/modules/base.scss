@@ -53,13 +53,3 @@
 	position: absolute;
 	top: 0;
 }
-@mixin grungeBG(){
-	background: url('/bundles/public/grunge-pattern.png');
-}
-@mixin grunge($opacity: 0.05){
-	@include fullContainerCover();
-	@include grungeBG();
-	/*-# filter: opacity above not working, must hide from old ie */
-	content: ' ';
-	opacity: $opacity; filter: alpha(opacity=#{$opacity * 100});
-}
