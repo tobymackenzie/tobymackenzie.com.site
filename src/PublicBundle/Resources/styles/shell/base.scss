@@ -16,10 +16,11 @@ html{
 }
 .docBody{
 	align-items: center;
-	display: flex;
+	display: flex; //-# used to swap order of header and doc nav
 	flex-direction: column;
 	margin-bottom: 1em;
 	@include supportsFixed(){
+		display: block; //-# flex contains margins, preventing hover from going through to background
 		@include fixedNavMQ(){
 			margin-bottom: 0;
 			//--make room for nav
