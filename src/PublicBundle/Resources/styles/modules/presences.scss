@@ -1,0 +1,63 @@
+%presenceAction{
+	text-decoration: none;
+	&:before{
+		font-size: 1.3em;
+		margin-right: 0.6em;
+		vertical-align: middle;
+	}
+	span{
+		text-decoration: underline;
+		text-decoration-color: rgba(map-get($colors, linkFG), 0.4);
+		vertical-align: middle;
+	}
+}
+.presence{
+	margin-bottom: 0.4em;
+}
+.presenceAction-writings{
+	&:before{
+		@extend %icm-writings;
+	}
+	@extend %presenceAction;
+}
+.presenceAction-github{
+	&:before{
+		@extend %icm-github;
+	}
+	@extend %presenceAction;
+}
+.presenceAction-twitter{
+	&:before{
+		@extend %icm-twitter;
+	}
+	@extend %presenceAction;
+}
+.presenceAction-linkedin{
+	&:before{
+		@extend %icm-linkedin;
+	}
+	@extend %presenceAction;
+}
+.presenceAction-delicious{
+	&:before{
+		@extend %icm-delicious;
+	}
+	@extend %presenceAction;
+}
+.presenceAction-stackoverflow{
+	&:before{
+		@extend %icm-stackoverflow;
+	}
+	@extend %presenceAction;
+}
+.presenceAction-packagist{
+	&:before{
+		@extend %icm-packagist;
+	}
+	@extend %presenceAction;
+}
+.presences{
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
+}
