@@ -59,6 +59,11 @@
 	&:focus, &:hover{
 		background: none;
 	}
+	@include mq('print'){
+		&:after, &:before{
+			display: none;
+		}
+	}
 }
 .docSiteName, .docSiteDescription{
 	color: map-get($colors, logo);
