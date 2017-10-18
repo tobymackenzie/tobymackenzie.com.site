@@ -9,7 +9,7 @@
 	padding: 1em;
 	width: 100%;
 	//-??? fixed header
-	@media only screen and (min-height: #{map-get($bpHeight, 'fixedHeader') * 1em}){
+	@include mq('only screen and (min-height:' + (map-get($bpHeight, "fixedHeader") * 1em) + ')'){
 		background: rgba(map-get($colors, chromeHeaderBG), 0.9);
 		left: 0;
 		position: fixed;

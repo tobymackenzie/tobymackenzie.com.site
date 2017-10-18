@@ -39,7 +39,7 @@ $mq: map-merge((
 	@if unitless($width){
 		$width: $width * 1em;
 	}
-	@media only screen and (min-width: #{$width}) and (min-height: 20em){
+	@include mq('only screen and (min-width: ' + $width + ') and (min-height: 20em)'){
 		@content;
 	}
 }
