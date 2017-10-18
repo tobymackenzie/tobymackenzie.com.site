@@ -14,4 +14,13 @@
 	&:hover{
 		opacity: 1;
 	}
+	@include mq('print'){
+		text-align: right;
+		position: static;
+	}
+}
+.docSecureMessage{
+	@include mq('print'){
+		display: none;
+	}
 }

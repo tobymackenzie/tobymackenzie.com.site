@@ -1,5 +1,8 @@
 .docHeader{
 	text-align: center;
+	@include mq('print'){
+		text-align: left;
+	}
 }
 .docHeaderWrap{
 	@extend %chromeContainer;
@@ -20,6 +23,9 @@
 		box-shadow: 0 0 12px rgba(map-get($colors, shadow), 0.35);
 		outline-bottom: 0.25em solid rgba(map-get($colors, boxOutline), 0.6);
 		padding: map-get($padding, 'chromeDocTopBottom-medium') 2em 1em;
+	}
+	@include mq('print'){
+		padding: 0;
 	}
 }
 .docLogo, .docHeaderTagline{

@@ -1,14 +1,27 @@
 %presenceAction{
 	text-decoration: none;
+	@include mq('print'){
+		text-decoration: underline;
+	}
 	&:before{
 		font-size: 1.3em;
 		margin-right: 0.6em;
 		vertical-align: middle;
+		@include mq('print'){
+			font-family: inherit !important;
+			font-size: inherit;
+			margin: 0;
+			vertical-align: baseline;
+		}
 	}
 	span{
 		text-decoration: underline;
 		text-decoration-color: rgba(map-get($colors, linkFG), 0.4);
 		vertical-align: middle;
+		@include mq('print'){
+			text-decoration: none;
+			vertical-align: baseline;
+		}
 	}
 }
 .presence{

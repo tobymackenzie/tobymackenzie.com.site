@@ -12,6 +12,7 @@
 			text-decoration: underline;
 		}
 		&[href]{
+			break-inside: avoid;
 			&:after{
 				content: '](' attr(href) ')';
 				text-decoration: none;
