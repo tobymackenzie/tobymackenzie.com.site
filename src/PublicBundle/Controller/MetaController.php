@@ -65,7 +65,9 @@ class MetaController extends Controller{
 			$format = 'html';
 			$data['format'] = $format;
 		}
-		return $this->renderPage('@Public/meta/error.' . $format . '.twig', $data);
+		$response = $this->renderPage('@Public/meta/error.' . $format . '.twig', $data);
+		$response->setStatusCode($code);
+		return $response;
 	}
 	public function humansAction(Request $request, $_format = 'html'){
 		$data = [
