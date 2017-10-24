@@ -5,6 +5,12 @@ use TJM\Bundle\BaseBundle\Controller\Controller as Base;
 
 class Controller extends Base{
 	protected function getGlobalRenderData(array $parameters = Array()){
+		if(!isset($parameters["doc"])){
+			$parameters["doc"] = [];
+		}
+		if(!isset($parameters["doc"]['name'])){
+			$parameters["doc"]['name'] = null;
+		}
 		if(!array_key_exists("page", $parameters)){
 			$parameters["page"] = Array();
 		}

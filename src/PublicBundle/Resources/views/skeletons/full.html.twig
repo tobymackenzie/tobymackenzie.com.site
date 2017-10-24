@@ -60,10 +60,10 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 {% endblock %}
 
 {% block docHeader %}
-	{% if doc and doc.name != 'home' %}<a class="docLogoAction" href="{{path('public_home')}}">{% endif %}
+	{% if doc.name != 'home' %}<a class="docLogoAction" href="{{path('public_home')}}">{% endif %}
 		<span class="docLogo">&lt;toby&gt;</span>
 		<span class="docHeaderTagline"><span class="docHeaderTaglineWVP">Site of Toby </span>Mackenzie, web developer</span>
-	{% if doc and doc.name != 'home' %}</a>{% endif %}
+	{% if doc.name != 'home' %}</a>{% endif %}
 {% endblock %}
 {% block docNav %}{% endblock %}
 
