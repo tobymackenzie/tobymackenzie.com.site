@@ -55,4 +55,5 @@ tjm_base:
 
 twig:
  debug: "%kernel.debug%"
+ exception_controller: PublicBundle:Meta:exception
  strict_variables: "%kernel.debug%"

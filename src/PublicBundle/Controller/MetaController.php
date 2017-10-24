@@ -1,5 +1,6 @@
 <?php
 namespace PublicBundle\Controller;
+use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,6 +37,35 @@ class MetaController extends Controller{
 		$response->setPublic();
 		$response->setMaxAge(86400);
 		return $response;
+	}
+	public function exceptionAction(Request $request, FlattenException $exception){
+		$code = $exception->getStatusCode();
+		$statusText =  (isset(Response::$statusTexts[$code]) ? Response::$statusTexts[$code] : '');
+		$data = [
+			'doc'=> [
+				'name'=> 'error'
+				,'title'=> 'Error: ' . $statusText
+			]
+			,'status_code'=> $code
+			,'status_text'=> $statusText
+		];
+		if($code == 404){
+			$data['search'] = $request->getPathInfo();
+			foreach([
+				'/\.[\w]+$/'=> ''
+				,'/[<>]+/'=> ''
+				,'/[^a-zA-Z0-9]+/'=> ' '
+			] as $regEx=> $replace){
+				$data['search'] = preg_replace($regEx, $replace, $data['search']);
+			}
+			$data['search'] = trim($data['search']);
+		}
+		$format = $request->getRequestFormat();
+		if(!in_array($format, ['html', 'xhtml'])){
+			$format = 'html';
+			$data['format'] = $format;
+		}
+		return $this->renderPage('@Public/meta/error.' . $format . '.twig', $data);
 	}
 	public function humansAction(Request $request, $_format = 'html'){
 		$data = [

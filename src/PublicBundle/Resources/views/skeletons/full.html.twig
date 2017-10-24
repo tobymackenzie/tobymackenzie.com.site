@@ -2,6 +2,7 @@
 
 {% block docTitleWrap %}
 {{parent()}}
+{% if doc.name != 'error' %}
 <!--
 ._______.  _____  ._____   __     _.
 |__   __| /  _  \ |   _  \ \ \  / /
@@ -16,6 +17,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 | | ˘ | || |   | || \___/¯|| | \ \  | |_____.| |  \  | / /____ .__| |__.| |_____.
 |_|   |_||_|   |_| \_____/ |_|   \_\|_______||_|   \_||_______||_______||_______|
 -->
+{% endif %}
 {% endblock %}
 
 {% block docMeta %}
@@ -32,7 +34,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 
 {% block docJumpWrap %}{% endblock %}
 {% block docFooter %}
-{% if page.secureUrl is defined %}
+{% if page.secureUrl is defined and doc.name != 'error' %}
 <p class="docSecureMessage">You are visiting this page over unencrypted HTTP.  It is also <a href="{{page.secureUrl}}">available over more secure HTTPS</a> (<a href="https://en.wikipedia.org/wiki/Https">more info on HTTPS</a>).</p>
 {% endif %}
 {% endblock %}

@@ -36,7 +36,7 @@ class Controller extends Base{
 			}
 			$parameters["site"]['title'] .= '>';
 		}
-		if($request){
+		if($request && $parameters["doc"]['name'] !== 'error'){
 			if(!isset($parameters['canonical']) && ($format === 'html' || $format === 'xhtml')){
 				if($request->getScheme() !== 'https' || $request->getHost() !== 'www.tobymackenzie.com' || $format !== 'html'){
 					$currentRoute = $request->get('_route');
