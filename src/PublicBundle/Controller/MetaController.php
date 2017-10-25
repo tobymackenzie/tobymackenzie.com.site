@@ -4,6 +4,7 @@ use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class MetaController extends Controller{
@@ -177,5 +178,8 @@ class MetaController extends Controller{
 		$response->setMaxAge(86400);
 		$response->headers->set('X-Reverse-Proxy-TTL', 3600000);
 		return $response;
+	}
+	public function showExceptionAction($code){
+		throw new HttpException($code);
 	}
 }

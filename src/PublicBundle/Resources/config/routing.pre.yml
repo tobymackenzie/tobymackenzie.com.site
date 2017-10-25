@@ -30,6 +30,12 @@ public_web_dev:
 public_app_manifest:
   path: /app-manifest.json
   defaults: {_controller: PublicBundle:Meta:appManifest}
+public_error_418:
+  path: /418
+  defaults: {_controller: PublicBundle:Meta:showException, code: 418}
+public_error_coffee:
+  path: /coffee
+  defaults: {_controller: PublicBundle:Meta:showException, code: 418}
 public_humans_default_redirect:
   path: /humans.html
   defaults: {_controller: FrameworkBundle:Redirect:urlRedirect, path: /humans, permanent: true}
