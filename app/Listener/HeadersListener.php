@@ -38,7 +38,8 @@ class HeadersListener{
 			//-@ https://scotthelme.co.uk/content-security-policy-an-introduction/
 			$cspHeader = ($this->env === 'dev') ? 'Content-Security-Policy-Report-Only' : 'Content-Security-Policy';
 			if(!$headers->has($cspHeader)){
-				$headers->set($cspHeader, "default-src 'unsafe-inline' {$request->server->get('HTTP_HOST')};block-all-mixed-content");
+				//-!!! need to be able to add src's per page.  This is a quick fix
+				$headers->set($cspHeader, "default-src 'unsafe-inline' {$request->server->get('HTTP_HOST')}; frame-src www.youtube.com;block-all-mixed-content");
 			}
 
 			//--block iframes from showing site, except from our domain.  helps prevent clickjacking
