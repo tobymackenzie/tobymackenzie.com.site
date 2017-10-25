@@ -1,7 +1,7 @@
 {% extends page.skeleton %}
 {%block docMain %}
 <div class="mainItem">
-	<h1>Error {{status_code}}: {{status_text}}</h1>
+	<h1>Error {{status_code}}{% if status_text %}: {{status_text}}{% endif %}</h1>
 {%	if status_code == 404 %}
 	<p>The URL you requested was not found on this server.  You can try finding what you were looking for on the <a href="/">home page</a> or using the search form below.</p>
 	<br />{#-!! temporary, use css #}
