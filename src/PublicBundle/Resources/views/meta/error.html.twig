@@ -15,12 +15,15 @@
 		<p>Apologies.  There was an error.  If you are unable to do what you were trying to do, please let me know what happened at admin at tobymackenzie.com.</p>
 {%	elseif status_code == 401 %}
 		<p>Unauthorized.  Please try again.</p>
+		<br />{#-!! temporary, use css #}
 		<iframe style="width:100%;" width="560" height="315" src="https://www.youtube.com/embed/fmz-K2hLwSI?autoplay=1" allowfullscreen>Ah ah ah:  You didn't say the magic word.</iframe>
 {%	elseif status_code == 403 %}
 		<p>Forbidden</p>
+		<br />{#-!! temporary, use css #}
 		<iframe style="width:100%;" width="560" height="315" src="https://www.youtube.com/embed/fmz-K2hLwSI?autoplay=1" allowfullscreen>Ah ah ah:  You didn't say the magic word.</iframe>
 {%	elseif status_code == 418 %}
 		<p>Your attempt to brew coffee has failed.  Please try tea instead.  It is much better.</p>
+		<br />{#-!! temporary, use css #}
 		<iframe style="width:100%;" width="560" height="315" src="https://www.youtube.com/embed/I1ZkF8yGYEQ?autoplay=1" frameborder="0" allowfullscreen></iframe>
 {%	else %}
 		<p>Apologies.  An error occurred.  You cannot do what you were trying to do.</p>
