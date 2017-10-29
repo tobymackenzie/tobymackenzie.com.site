@@ -39,6 +39,7 @@ class MetaController extends Controller{
 		$response->setMaxAge(86400);
 		return $response;
 	}
+	//-@ https://symfony.com/doc/current/controller/error_pages.html#custom-exception-controller
 	public function exceptionAction(Request $request, FlattenException $exception){
 		$code = $exception->getStatusCode();
 		$statusText =  (isset(Response::$statusTexts[$code]) ? Response::$statusTexts[$code] : '');
