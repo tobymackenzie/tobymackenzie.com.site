@@ -18,7 +18,7 @@ class HtmlConverter extends Base{
 		;
 		foreach($explodedContent as $line){
 			//--start / stop codefence
-			if(preg_match('/^```/', $line)){
+			if(substr($line, 0, 3) === '```'){
 				$content .= "{$line}\n";
 				$inCodeFence = !$inCodeFence;
 			//--output codefence lines directly
@@ -26,11 +26,8 @@ class HtmlConverter extends Base{
 				$content .= "{$line}\n";
 			//--if full HTML line, stick in var to be converted all at once
 			}elseif(
-				!$inCodeFence
-				&& (
-					substr(trim($line), 0, 1) === '<'
-					|| $isCommentOpened
-				)
+				$isCommentOpened
+				|| in_array(substr($line, 0, 1), Array('<', "\t"))
 			){
 				$openCommentPos = strrpos($line, '<!--');
 				$closeCommentPos = strrpos($line, '-->');
