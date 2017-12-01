@@ -17,7 +17,7 @@
 	<php>
 		<const name="TJM\Bundle\StandardEditionBundle\Component\App\ENVIRONMENT" value="test" />
 		<ini name="error_reporting" value="-1" />
-		<server name="KERNEL_DIR" value="app/" />
+		<server name="KERNEL_CLASS" value="AppKernel" />
 	</php>
 	<filter>
 		<whitelist>

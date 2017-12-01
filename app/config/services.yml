@@ -2,8 +2,10 @@ services:
  htmlToMarkdown:
   class: TJM\HtmlToMarkdown\HtmlConverter
   arguments: [{'hard_break': true, 'strip_tags': true}]
+  public: true
  markdownToHtml:
   class: ParsedownExtra
+  public: true
  ##==listeners
  app.headers_listener:
   class: TJM\TMCom\Listener\HeadersListener
