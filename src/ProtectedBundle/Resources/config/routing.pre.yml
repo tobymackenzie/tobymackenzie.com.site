@@ -1,10 +1,12 @@
 protected_test:
+    controller: ProtectedBundle:Default:test
     path: /test/{path}
-    defaults: {_controller: ProtectedBundle:Default:test, path: null}
+    defaults: {path: null}
     requirements:
         path: .*
 
 ##==meta
 protected_robots:
+    controller: ProtectedBundle:Meta:robots
     path: /robots.{_format}
-    defaults: {_controller: ProtectedBundle:Meta:robots, _format: 'html'}
+    defaults: {_format: 'html'}

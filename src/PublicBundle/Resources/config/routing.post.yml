@@ -1,6 +1,6 @@
 public_remove_trailing_slash:
+  controller: PublicBundle:Default:removeTrailingSlash
   path: /{url}
-  defaults: {_controller: PublicBundle:Default:removeTrailingSlash}
   methods: [GET]
   requirements:
     url: .*/$

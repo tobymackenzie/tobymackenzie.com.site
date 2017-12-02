@@ -1,53 +1,67 @@
 public_home:
+  controller: PublicBundle:Default:simpleFilePage
   path: /
-  defaults: {_controller: PublicBundle:Default:simpleFilePage, id: 4}
+  defaults: {id: 4}
 public_home_default_redirect:
+  controller: FrameworkBundle:Redirect:urlRedirect
   path: /index.html
-  defaults: {_controller: FrameworkBundle:Redirect:urlRedirect, path: /, permanent: true}
+  defaults: {path: /, permanent: true}
 public_home_formatted:
+  controller: PublicBundle:Default:simpleFilePage
   path: /index.{_format}
-  defaults: {_controller: PublicBundle:Default:simpleFilePage, id: 4}
+  defaults: {id: 4}
 public_about_default_redirect:
+  controller: FrameworkBundle:Redirect:urlRedirect
   path: /about.html
-  defaults: {_controller: FrameworkBundle:Redirect:urlRedirect, path: /about, permanent: true}
+  defaults: {path: /about, permanent: true}
 public_about:
+  controller: PublicBundle:Default:simpleFilePage
   path: /about.{_format}
-  defaults: {_controller: PublicBundle:Default:simpleFilePage, _format: html, id: 5}
+  defaults: {_format: html, id: 5}
 public_blog:
+  controller: PublicBundle:Default:blog
   path: /tblog{rest}
-  defaults: {_controller: PublicBundle:Default:blog, _format: html, rest: '/'}
+  defaults: {_format: html, rest: '/'}
   requirements:
     rest: .*
 public_web_dev_default_redirect:
+  controller: FrameworkBundle:Redirect:urlRedirect
   path: /web-dev.html
-  defaults: {_controller: FrameworkBundle:Redirect:urlRedirect, path: /web-dev, permanent: true}
+  defaults: {path: /web-dev, permanent: true}
 public_web_dev:
+  controller: PublicBundle:Default:simpleFilePage
   path: /web-dev.{_format}
-  defaults: {_controller: PublicBundle:Default:simpleFilePage, _format: html, id: 6}
+  defaults: {_format: html, id: 6}
 
 
 ##==meta
 public_app_manifest:
+  controller: PublicBundle:Meta:appManifest
   path: /app-manifest.json
-  defaults: {_controller: PublicBundle:Meta:appManifest}
 public_error_418:
+  controller: PublicBundle:Meta:showException
   path: /418
-  defaults: {_controller: PublicBundle:Meta:showException, code: 418}
+  defaults: {code: 418}
 public_error_coffee:
+  controller: PublicBundle:Meta:showException
   path: /coffee
-  defaults: {_controller: PublicBundle:Meta:showException, code: 418}
+  defaults: {code: 418}
 public_humans_default_redirect:
+  controller: FrameworkBundle:Redirect:urlRedirect
   path: /humans.html
-  defaults: {_controller: FrameworkBundle:Redirect:urlRedirect, path: /humans, permanent: true}
+  defaults: {path: /humans, permanent: true}
 public_humans:
+  controller: PublicBundle:Meta:humans
   path: /humans.{_format}
-  defaults: {_controller: PublicBundle:Meta:humans, _format: 'html'}
+  defaults: {_format: 'html'}
 public_proxy_service_worker:
+  controller: PublicBundle:Meta:proxyServiceWorker
   path: /_proxy-sw.js
-  defaults: {_controller: PublicBundle:Meta:proxyServiceWorker}
 public_robots_default_redirect:
+  controller: FrameworkBundle:Redirect:urlRedirect
   path: /robots.html
-  defaults: {_controller: FrameworkBundle:Redirect:urlRedirect, path: /robots, permanent: true}
+  defaults: {path: /robots, permanent: true}
 public_robots:
+  controller: PublicBundle:Meta:robots
   path: /robots.{_format}
-  defaults: {_controller: PublicBundle:Meta:robots, _format: 'html'}
+  defaults: {_format: 'html'}
