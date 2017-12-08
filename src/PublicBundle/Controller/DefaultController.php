@@ -4,6 +4,7 @@ use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class DefaultController extends Controller{
 	public function simpleFilePageAction(Request $request, $id){
@@ -80,10 +81,10 @@ class DefaultController extends Controller{
 		}
 		foreach($possibleFormats as $format){
 			if($request->getRequestFormat() !== $format){
-				$data['formats'][$format] = $this->get('router')->generate($routeName, ['_format'=> $format]);
+				//-! we're making this absolute because otherwise symfony is outputting them as protocol-less absolute.  This won't happen if we can get rid of the host in the routing.
+				$data['formats'][$format] = $this->get('router')->generate($routeName, ['_format'=> $format], UrlGeneratorInterface::ABSOLUTE_URL);
 			}
 		}
-
 		$response = $this->renderPage('PublicBundle:default:simplePage.' . $request->getRequestFormat() . '.twig', $data);
 
 		//--set response headers
