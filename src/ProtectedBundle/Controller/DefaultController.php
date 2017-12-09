@@ -4,6 +4,7 @@ use DateTime;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class DefaultController extends Controller{
 	public function testAction($path = null){
@@ -21,7 +22,7 @@ class DefaultController extends Controller{
 		$url = $this->generateUrl(
 			'public_base'
 			,['url'=> $pathInfo]
-			,true
+			,UrlGeneratorInterface::ABSOLUTE_URL
 		);
 		$qs = $request->server->get('QUERY_STRING');
 		if($qs){
