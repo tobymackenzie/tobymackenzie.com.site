@@ -24,10 +24,6 @@ class DefaultController extends Controller{
 		if(strpos($requestUri, '?') !== false){
 			$url .= '?' . explode('?', $requestUri, 2)[1];
 		}
-		if(strpos($url, '/app.php') !== false){
-			$url = str_replace('/app.php', '/', $url);
-		}elseif(strpos($url, '/app_dev.php') !== false){
-			$url = str_replace('/app_dev.php', '', $url);
 		}
 		return $this->renderPage('ProtectedBundle:default:notFound.' . $request->getRequestFormat() . '.twig', [
 			'site'=> ['title'=> '<toby:)>']
