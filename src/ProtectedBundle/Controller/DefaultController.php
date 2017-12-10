@@ -4,6 +4,7 @@ use DateTime;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class DefaultController extends Controller{
@@ -24,7 +25,19 @@ class DefaultController extends Controller{
 		if(strpos($requestUri, '?') !== false){
 			$url .= '?' . explode('?', $requestUri, 2)[1];
 		}
+		try{
+			preg_match('![\w]+://([\w-\.]+)/?!', $url, $domain);
+			$router = $this->get('router');
+			$router->getContext()->setHost($domain[1]);
+			$match = $router->match(rtrim($request->getPathInfo(), '/'));
+			if($match['_route'] === 'public_base'){
+				$match = null;
+			}
+		}catch(ResourceNotFoundException $e){}
+		if(!$match){
+			throw $this->createNotFoundException();
 		}
+
 		return $this->renderPage('ProtectedBundle:default:notFound.' . $request->getRequestFormat() . '.twig', [
 			'site'=> ['title'=> '<toby:)>']
 			,'url'=> $url
