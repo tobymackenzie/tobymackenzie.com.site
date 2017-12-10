@@ -15,18 +15,14 @@ class DefaultController extends Controller{
 	Point user to public page.
 	*/
 	public function notFoundAction(Request $request, $url = null){
-		$pathInfo = $request->getPathInfo();
-		if($pathInfo{0} === '/'){
-			$pathInfo = substr($pathInfo, 1);
-		}
 		$url = $this->generateUrl(
 			'public_base'
-			,['url'=> $pathInfo]
+			,['url'=> ltrim($request->getPathInfo(), '/')]
 			,UrlGeneratorInterface::ABSOLUTE_URL
 		);
-		$qs = $request->server->get('QUERY_STRING');
-		if($qs){
-			$url .= '?' . $qs;
+		$requestUri = $request->getRequestUri();
+		if(strpos($requestUri, '?') !== false){
+			$url .= '?' . explode('?', $requestUri, 2)[1];
 		}
 		if(strpos($url, '/app.php') !== false){
 			$url = str_replace('/app.php', '/', $url);
