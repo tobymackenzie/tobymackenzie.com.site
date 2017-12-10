@@ -7,9 +7,8 @@ class DefaultControllerTest extends WebTestCase{
 	public function testNotFoundAction(){
 		$redirectingPaths = Array(
 			'/'
-			,'/foo/bar'
-			,'/foo?bar=biz'
-			,'/foo?bar[]=biz&bar[]=baz'
+			,'/about'
+			,'/about.txt'
 		);
 		$client = static::createClient(); //--need to do this because symfony won't give us the container without a client, and passing 'HTTP_HOST' to the request stopped working
 		foreach($redirectingPaths as $path){
