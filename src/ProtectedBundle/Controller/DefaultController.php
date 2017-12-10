@@ -25,15 +25,19 @@ class DefaultController extends Controller{
 		if(strpos($requestUri, '?') !== false){
 			$url .= '?' . explode('?', $requestUri, 2)[1];
 		}
+		preg_match('![\w]+://([\w-\.]+)/?!', $url, $domain);
+		$router = $this->get('router');
+		$routerContext = $router->getContext();
+		$requestHost = $routerContext->getHost();
+		$routerContext->setHost($domain[1]);
 		try{
-			preg_match('![\w]+://([\w-\.]+)/?!', $url, $domain);
-			$router = $this->get('router');
-			$router->getContext()->setHost($domain[1]);
 			$match = $router->match(rtrim($request->getPathInfo(), '/'));
 			if($match['_route'] === 'public_base'){
 				$match = null;
 			}
 		}catch(ResourceNotFoundException $e){}
+		//-# just in case
+		$routerContext->setHost($requestHost);
 		if(!$match){
 			throw $this->createNotFoundException();
 		}
