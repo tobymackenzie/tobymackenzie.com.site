@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class DefaultController extends Controller{
 	public function testAction($path = null){
-		return new Response($path);
+		return new Response(htmlspecialchars($path));
 	}
 	/*
 	Action: notFoundAction

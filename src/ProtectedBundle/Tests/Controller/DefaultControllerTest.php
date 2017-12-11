@@ -27,6 +27,7 @@ class DefaultControllerTest extends WebTestCase{
 			'test'=> ''
 			,'test/bar'=> 'bar'
 			,'test/foo'=> 'foo'
+			,'test/<b>foo</b>'=> '&lt;b&gt;foo&lt;/b&gt;'
 		);
 		$client = static::createClient(); //--need to do this because symfony won't give us the container without a client, and passing 'HTTP_HOST' to the request stopped working
 		foreach($testPaths as $path=> $expectedResult){
