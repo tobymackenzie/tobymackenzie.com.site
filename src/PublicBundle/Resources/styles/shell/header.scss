@@ -54,6 +54,9 @@
 	@extend %docLogoBase;
 	@extend %spinHoverAnimation;
 	margin: -0.3em 0;
+	@include mq(map-get($bp, verySmall)){
+		transform: rotate(-15deg) translate(5px, -1px);
+	}
 }
 .docLogoAction{
 	background: none;
