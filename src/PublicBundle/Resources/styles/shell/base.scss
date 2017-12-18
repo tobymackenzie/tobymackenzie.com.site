@@ -35,6 +35,12 @@ html{
 		}
 	}
 
+	//-- ie 10-11 has problem with 'center' and main content width, which goes out of screen bounds when narrower than vp
+	-ms-flex-align: stretch;
+	@include mq(unitless($shellMainWidth)){
+		-ms-flex-align: center;
+	}
+
 	//--padding matching spacing between mainItems
 	@include mq(map-get($bp, medium)){
 		padding-bottom: 2em;
