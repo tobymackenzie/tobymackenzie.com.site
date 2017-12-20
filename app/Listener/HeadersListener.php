@@ -28,7 +28,7 @@ class HeadersListener{
 		//--tell browser to keep using https for all requests to the domain
 		if($request->getScheme() === 'https'){
 			if(!$headers->has('Strict-Transport-Security')){
-				$headers->set('Strict-Transport-Security', 'max-age=2592000');
+				$headers->set('Strict-Transport-Security', 'max-age=' . ($this->env === 'dev' ? '10' : '2592000'));
 			}
 		}
 
