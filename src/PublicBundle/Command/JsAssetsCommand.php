@@ -32,9 +32,6 @@ class JsAssetsCommand extends ContainerAwareCommand{
 					--mangle
 					-o {$dest}/{$baseName}
 					--stats
-					--source-map {$dest}/{$baseName}.map
-					--source-map-root 'https://www.tobymackenzie.com/bundles/public/scripts/prod/{$baseName}.map'
-					--source-map-url
 					-- {$file}"
 				);
 				$output->writeln("Uglifying {$baseName}");
