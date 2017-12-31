@@ -54,7 +54,7 @@
 	@extend %docLogoBase;
 	@extend %spinHoverAnimation;
 	margin: -0.3em 0;
-	@include mq(map-get($bp, verySmall)){
+	@include mq(map-get($bp, logoTwist)){
 		transform: rotate(-15deg) translate(5px, -1px);
 	}
 }
