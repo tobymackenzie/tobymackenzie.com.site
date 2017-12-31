@@ -4,8 +4,11 @@ public_home:
   defaults: {id: 4}
 public_home_default_redirect:
   controller: FrameworkBundle:Redirect:urlRedirect
-  path: /index.html
-  defaults: {path: /, permanent: true}
+  path: /index{dotformat}
+  defaults:
+    dotformat: (\.html)?
+    path: /
+    permanent: true
 public_home_formatted:
   controller: PublicBundle:Default:simpleFilePage
   path: /index.{_format}
