@@ -6,9 +6,10 @@ public_home_default_redirect:
   controller: FrameworkBundle:Redirect:urlRedirect
   path: /index{dotformat}
   defaults:
-    dotformat: (\.html)?
     path: /
     permanent: true
+  requirements:
+    dotformat: (\.html|\.php)?
 public_home_formatted:
   controller: PublicBundle:Default:simpleFilePage
   path: /index.{_format}
