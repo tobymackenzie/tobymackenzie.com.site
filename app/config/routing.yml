@@ -1,41 +1,17 @@
+##==protected
+#-# first because otherwise local dev setup wasn't matching (ie host as 'local')
 _protected_yes_www:
  host: '%host.prefix%{subdomain}%protected.host%'
  requirements:
   subdomain: '.+'
  resource: "@ProtectedBundle/Resources/config/routing.yes-www.yml"
-
-_public_no_www:
- host: '%host.prefix%%public.host%'
- resource: "@PublicBundle/Resources/config/routing.no-www.yml"
-
-_public_pre:
- defaults:
-  subdomain: '%host.prefix%%public.host.subdomain%'
- host: '{subdomain}%public.host%'
- requirements:
-  subdomain: '.+'
- resource: "@PublicBundle/Resources/config/routing.pre.yml"
-
 _protected_pre:
  host: '%host.prefix%%protected.host%'
  resource: "@ProtectedBundle/Resources/config/routing.pre.yml"
-
-_TJMBase:
- resource: "@TJMBaseBundle/Resources/config/routingBase.yml"
-
-_public_post:
- defaults:
-  subdomain: '%host.prefix%%public.host.subdomain%'
- host: '{subdomain}%public.host%'
- requirements:
-  subdomain: '.+'
- resource: "@PublicBundle/Resources/config/routing.post.yml"
-
 _protected_post:
  host: '%host.prefix%%protected.host%'
  resource: "@ProtectedBundle/Resources/config/routing.post.yml"
-
-#==base for domain to allow specifying generic url
+#--base for outputting generic URLs
 protected_base:
  defaults:
   subdomain: null
@@ -45,6 +21,29 @@ protected_base:
  requirements:
   url: .*
  schemes: [https,http]
+
+
+##==public
+_public_no_www:
+ host: '%host.prefix%%public.host%'
+ resource: "@PublicBundle/Resources/config/routing.no-www.yml"
+_public_pre:
+ defaults:
+  subdomain: '%host.prefix%%public.host.subdomain%'
+ host: '{subdomain}%public.host%'
+ requirements:
+  subdomain: '.+'
+ resource: "@PublicBundle/Resources/config/routing.pre.yml"
+_TJMBase:
+ resource: "@TJMBaseBundle/Resources/config/routingBase.yml"
+_public_post:
+ defaults:
+  subdomain: '%host.prefix%%public.host.subdomain%'
+ host: '{subdomain}%public.host%'
+ requirements:
+  subdomain: '.+'
+ resource: "@PublicBundle/Resources/config/routing.post.yml"
+#--base for outputting generic URLs
 public_base:
  defaults:
   url: null
