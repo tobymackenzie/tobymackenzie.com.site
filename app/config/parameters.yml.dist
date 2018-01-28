@@ -1,4 +1,5 @@
 parameters:
+ #==db
  database_driver: pdo_sqlite
  database_host: 127.0.0.1
  database_port: ~
@@ -10,16 +11,19 @@ parameters:
  protected.db.user: root
  protected.db.password: ~
 
- mailer_transport: smtp
- mailer_host: 127.0.0.1
- mailer_user: ~
- mailer_password: ~
-
- locale: en
- secret: 1234567890987654321234567890
-
+ #==domains
  host.prefix: ''
  protected.host: 'me.tobymackenzie.com'
  public.host: 'tobymackenzie.com'
  public.host.subdomain: 'www.'
  tmname.host: 'tobymackenzie.name'
+
+ #==email
+ mailer_transport: smtp
+ mailer_host: 127.0.0.1
+ mailer_user: ~
+ mailer_password: ~
+
+ #==symfony
+ locale: en
+ secret: 1234567890987654321234567890
