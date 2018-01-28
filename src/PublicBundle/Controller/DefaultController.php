@@ -89,7 +89,7 @@ class DefaultController extends Controller{
 		$response->setPublic();
 		$response->setMaxAge(600);
 		$response->setSharedMaxAge(600);
-		$response->headers->set('X-Reverse-Proxy-TTL', 3600000);
+		// $response->headers->set('X-Reverse-Proxy-TTL', 3600000);
 
 		return $response;
 	}

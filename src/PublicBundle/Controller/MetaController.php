@@ -137,7 +137,7 @@ class MetaController extends Controller{
 		}
 		$response->setPublic();
 		$response->setMaxAge(86400);
-		$response->headers->set('X-Reverse-Proxy-TTL', 3600000);
+		// $response->headers->set('X-Reverse-Proxy-TTL', 3600000);
 		return $response;
 	}
 	public function proxyServiceWorkerAction(){
@@ -177,7 +177,7 @@ class MetaController extends Controller{
 		$response = $this->renderPage('PublicBundle:meta:robots.' . $request->getRequestFormat() . '.twig', $data);
 		$response->setPublic();
 		$response->setMaxAge(86400);
-		$response->headers->set('X-Reverse-Proxy-TTL', 3600000);
+		// $response->headers->set('X-Reverse-Proxy-TTL', 3600000);
 		return $response;
 	}
 	public function showExceptionAction($code){
