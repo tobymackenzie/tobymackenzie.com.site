@@ -1,0 +1,7 @@
+protected_secure:
+  controller: ProtectedBundle:Default:secure
+  defaults:
+   slash: null
+  path: '{slash}'
+  requirements:
+    slash: '/?'

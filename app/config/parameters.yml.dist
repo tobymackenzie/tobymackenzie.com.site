@@ -24,6 +24,14 @@ parameters:
  mailer_user: ~
  mailer_password: ~
 
+ #==security
+ protected.secure.encoder: 'plaintext'
+ protected.secure.path: 'admin'
+ protected.secure.users:
+  admin:
+   password: 'password'
+   roles: 'ROLE_ADMIN'
+
  #==symfony
  locale: en
  secret: 1234567890987654321234567890

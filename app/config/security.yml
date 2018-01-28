@@ -1,11 +1,29 @@
 security:
+ access_control:
+  -
+   host: '%host.prefix%%protected.host%'
+   path: '^/%protected.secure.path%'
+   roles: ROLE_ADMIN
+ encoders:
+  Symfony\Component\Security\Core\User\User: '%protected.secure.encoder%'
  firewalls:
   dev:
    pattern: ^/(_(profiler|wdt)|css|images|js)/
+   provider: main
    security: false
+  protected:
+    host: '%host.prefix%%protected.host%'
+    http_basic:
+     realm: '<toby> protected'
+     provider: protected
+    pattern: '^/%protected.secure.path%'
   main:
    anonymous: ~
    logout_on_user_change: true
+   provider: main
  providers:
-  in_memory:
+  main:
    memory: ~
+  protected:
+   memory:
+    users: '%protected.secure.users%'

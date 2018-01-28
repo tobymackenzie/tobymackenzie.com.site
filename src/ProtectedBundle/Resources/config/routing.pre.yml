@@ -5,6 +5,11 @@ protected_test:
     requirements:
         path: .*
 
+##==secure
+_protected_secure:
+  prefix: '/%protected.secure.path%'
+  resource: '@ProtectedBundle/Resources/config/routing.secure.yml'
+
 ##==meta
 protected_robots:
     controller: ProtectedBundle:Meta:robots

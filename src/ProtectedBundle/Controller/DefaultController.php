@@ -8,6 +8,18 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class DefaultController extends Controller{
+	public function secureAction(Request $request){
+		//--remove trailing slash (symfony's router cannot do this, see <https://github.com/symfony/symfony/issues/12141>)
+		$pathInfo = $request->getPathInfo();
+		if(substr($pathInfo, -1) === '/' && $pathInfo !== '/'){
+			$requestUri = $request->getRequestUri();
+			$url = str_replace($pathInfo, rtrim($pathInfo, ' /'), $requestUri);
+			return $this->redirect($url, 302);
+		}
+		$response = new Response();
+		$response->setContent('&lt;toby&gt; secure!');
+		return $response;
+	}
 	public function testAction($path = null){
 		return new Response(htmlspecialchars($path));
 	}
