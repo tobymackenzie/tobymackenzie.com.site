@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class MetaController extends Controller{
@@ -42,6 +43,20 @@ class MetaController extends Controller{
 	//-@ https://symfony.com/doc/current/controller/error_pages.html#custom-exception-controller
 	public function exceptionAction(Request $request, FlattenException $exception){
 		$code = $exception->getStatusCode();
+		if($code === 404){
+			//--if the path contains uppercase letters, check if we have this route in all lowercase
+			$pathInfo = $request->getPathInfo();
+			if(preg_match('/[A-Z]/', $pathInfo)){
+				try{
+					$match = $this->get('router')->match(strtolower($pathInfo));
+					if($match['_route'] !== 'public_base' && $match['_route'] !== 'protected_not_found'){ //-# need protected fallback here because this controller handles all app errors
+						return $this->redirect(strtolower($request->getRequestUri()));
+					}
+				}catch(ResourceNotFoundException $e){
+					//--go on
+				}
+			}
+		}
 		$statusText =  (isset(Response::$statusTexts[$code]) ? Response::$statusTexts[$code] : '');
 		$data = [
 			'doc'=> [
