@@ -16,9 +16,7 @@ class DefaultController extends Controller{
 			$url = str_replace($pathInfo, rtrim($pathInfo, ' /'), $requestUri);
 			return $this->redirect($url, 302);
 		}
-		$response = new Response();
-		$response->setContent('&lt;toby&gt; secure!');
-		return $response;
+		return $this->render('@Protected/default/secure.html.twig');
 	}
 	public function testAction($path = null){
 		return new Response(htmlspecialchars($path));
