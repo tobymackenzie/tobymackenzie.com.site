@@ -16,6 +16,7 @@ security:
     http_basic:
      realm: '<toby> protected'
      provider: protected
+    logout_on_user_change: true
     pattern: '^/%protected.secure.path%'
   main:
    anonymous: ~
