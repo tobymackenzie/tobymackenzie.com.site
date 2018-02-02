@@ -7,7 +7,7 @@
 	<br />{#-!! temporary, use css #}
 	<form action="https://duckduckgo.com">
 		<label for="q">Search via DuckDuckGo:</label>
-		<input id="q" autofocus="autofocus" name="q" rel="search" title="Search"{% if search is defined %} value="{{search}}"{% endif %} />
+		<input id="q" name="q" rel="search" title="Search"{% if search is defined %} value="{{search}}"{% endif %} />
 		<input type="hidden" name="sites" value="www.tobymackenzie.com" />
 		<input type="submit" value="Go" />
 	</form>
