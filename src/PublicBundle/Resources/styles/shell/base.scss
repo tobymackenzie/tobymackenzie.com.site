@@ -8,7 +8,8 @@ body{
 	position: relative;
 }
 html{
-	background: map-get($colors, baseBG) url('/bundles/public/grunge-pattern.png');
+	background: map-get($colors, baseBG);
+	background-image: none, url('/bundles/public/grunge-pattern.png'); //-# `none,` to hide grunge background in some older browsers that show it full blast
 	margin: auto;
 	height: 100%;
 	padding: 0;
