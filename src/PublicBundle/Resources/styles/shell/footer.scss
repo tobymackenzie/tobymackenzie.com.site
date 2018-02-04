@@ -1,5 +1,6 @@
 .docFooterWrap{
 	@extend %mainItem;
+	@extend %mainWrap;
 	order: 4;
 }
 .docEndLogo{

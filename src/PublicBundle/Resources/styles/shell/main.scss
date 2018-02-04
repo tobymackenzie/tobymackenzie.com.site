@@ -1,11 +1,20 @@
+@mixin mainWrap{
+	margin: auto;
+	//-# generally maintains a line length between 45 and 68 characters down to about 30em window width (with media queries) (45-75 ideal)
+	//-# width + max-width supports ie6-
+	width: $shellMainWidth; max-width: 100%;
+	@include mq('print'){
+		max-width: none;
+	}
+}
+%mainWrap, .docMainWrap{
+	@include mainWrap();
+}
 @mixin mainItem{
 	@extend %chromeContainer;
 	background: map-get($colors, mainBG);
 	margin: 1em auto 0;
 	padding: 1em;
-	//-# generally maintains a line length between 45 and 68 characters down to about 30em window width (with media queries) (45-75 ideal)
-	//-# width + max-width supports ie6-
-	width: $shellMainWidth; max-width: 100%;
 	@include mq(0){
 		position: relative;
 	}
@@ -27,7 +36,6 @@
 	}
 	@include mq('print'){
 		margin: 2em auto 0;
-		max-width: none;
 	}
 }
 %mainItem, .mainItem{
