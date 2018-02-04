@@ -1,4 +1,5 @@
 @mixin mainWrap{
+	background: map-get($colors, mainBG); background: none, none; //--old browsers might not get background on html5 elements.  ensure they have a background but newer browsers get the background in the right place.  [ie5mac,moz1]
 	margin: auto;
 	//-# generally maintains a line length between 45 and 68 characters down to about 30em window width (with media queries) (45-75 ideal)
 	//-# width + max-width supports ie6-
