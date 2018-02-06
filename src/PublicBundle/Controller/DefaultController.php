@@ -83,7 +83,7 @@ class DefaultController extends Controller{
 				$data['formats'][$format] = $this->get('router')->generate($routeName, ['_format'=> $format]);
 			}
 		}
-		$response = $this->renderPage('PublicBundle:default:simplePage.' . $request->getRequestFormat() . '.twig', $data);
+		$response = $this->renderPage('@Public/default/simplePage.' . $request->getRequestFormat() . '.twig', $data);
 
 		//--set response headers
 		$response->setPublic();

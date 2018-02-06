@@ -15,7 +15,7 @@ class MetaController extends Controller{
 		if($_format === 'html' || $_format === 'xhtml'){
 			$data['doc'] = ['title'=> 'Robots'];
 		}
-		$response = $this->renderPage('PublicBundle:meta:robots.' . $request->getRequestFormat() . '.twig', $data);
+		$response = $this->renderPage('@Public/meta/robots.' . $request->getRequestFormat() . '.twig', $data);
 		$response->setPublic();
 		$response->setMaxAge(86400);
 		// $response->headers->set('X-Reverse-Proxy-TTL', 3600000);

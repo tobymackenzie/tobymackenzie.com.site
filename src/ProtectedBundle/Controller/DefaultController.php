@@ -52,7 +52,7 @@ class DefaultController extends Controller{
 			throw $this->createNotFoundException();
 		}
 
-		return $this->renderPage('ProtectedBundle:default:notFound.' . $request->getRequestFormat() . '.twig', [
+		return $this->renderPage('@Protected/default/notFound.' . $request->getRequestFormat() . '.twig', [
 			'site'=> ['title'=> '<toby:)>']
 			,'url'=> $url
 		]);

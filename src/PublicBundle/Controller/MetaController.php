@@ -132,10 +132,10 @@ class MetaController extends Controller{
 		if(in_array($request->getRequestFormat(), ['html', 'xhtml'])){
 			//--force empty skeleton so we get bare markdown content
 			$data['page'] = [
-				'skeleton'=> 'PublicBundle:skeletons:empty.md.twig'
+				'skeleton'=> '@Public/skeletons/empty.md.twig'
 			];
 			//--render markdown template
-			$content = $this->renderPageView('PublicBundle:meta:humans.md.twig', $data);
+			$content = $this->renderPageView('@Public/meta/humans.md.twig', $data);
 			//--make sublabels into <strong> since nested <dl> doesn't seem to work
 			$content = preg_replace('/\t([\w\s-\.\(\)\[\]]+):/', "\t**$1**:", $content);
 			//--parse markdown
@@ -146,9 +146,9 @@ class MetaController extends Controller{
 				,'doc'=> ['title'=> 'Humans']
 				,'request'=> $request
 			];
-			$response = $this->renderPage('PublicBundle:default:simplePage.' . $request->getRequestFormat() . '.twig', $data);
+			$response = $this->renderPage('@Public/default/simplePage.' . $request->getRequestFormat() . '.twig', $data);
 		}else{
-			$response = $this->renderPage('PublicBundle:meta:humans.' . $request->getRequestFormat() . '.twig', $data);
+			$response = $this->renderPage('@Public/meta/humans.' . $request->getRequestFormat() . '.twig', $data);
 		}
 		$response->setPublic();
 		$response->setMaxAge(86400);
@@ -189,7 +189,7 @@ class MetaController extends Controller{
 		if($_format === 'html' || $_format === 'xhtml'){
 			$data['doc'] = ['title'=> 'Robots'];
 		}
-		$response = $this->renderPage('PublicBundle:meta:robots.' . $request->getRequestFormat() . '.twig', $data);
+		$response = $this->renderPage('@Public/meta/robots.' . $request->getRequestFormat() . '.twig', $data);
 		$response->setPublic();
 		$response->setMaxAge(86400);
 		// $response->headers->set('X-Reverse-Proxy-TTL', 3600000);
