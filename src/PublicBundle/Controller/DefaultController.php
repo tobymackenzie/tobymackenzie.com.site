@@ -49,7 +49,7 @@ class DefaultController extends Controller{
 		$name = $fileData['title'] ?? null;
 		if($name){
 			$data['doc'] = [
-				'name'=> strtolower($name)
+				'name'=> preg_replace('/[^\w\-]/', '', str_replace(' ', '-', strtolower($name)))
 			];
 			//--special treatment for home page
 			if($id === 4){
