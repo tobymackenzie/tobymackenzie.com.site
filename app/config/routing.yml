@@ -6,11 +6,19 @@ _protected_yes_www:
   subdomain: '.+'
  resource: "@ProtectedBundle/Resources/config/routing.yes-www.yml"
 _protected_pre:
- host: '%host.prefix%%protected.host%'
+ defaults:
+  request_host: '%host.prefix%%protected.host%'
+ host: '{request_host}'
  resource: "@ProtectedBundle/Resources/config/routing.pre.yml"
+ requirements:
+  request_host: '%protected.host.test%'
 _protected_post:
- host: '%host.prefix%%protected.host%'
+ defaults:
+  request_host: '%host.prefix%%protected.host%'
+ host: '{request_host}'
  resource: "@ProtectedBundle/Resources/config/routing.post.yml"
+ requirements:
+  request_host: '%protected.host.test%'
 #--base for outputting generic URLs
 protected_base:
  defaults:
@@ -29,20 +37,20 @@ _public_no_www:
  resource: "@PublicBundle/Resources/config/routing.no-www.yml"
 _public_pre:
  defaults:
-  subdomain: '%host.prefix%%public.host.subdomain%'
- host: '{subdomain}%public.host%'
- requirements:
-  subdomain: '.+'
+  request_host: '%host.prefix%%public.host.subdomain%%public.host%'
+ host: '{request_host}'
  resource: "@PublicBundle/Resources/config/routing.pre.yml"
+ requirements:
+  request_host: '%public.host.test%'
 _TJMBase:
  resource: "@TJMBaseBundle/Resources/config/routingBase.yml"
 _public_post:
  defaults:
-  subdomain: '%host.prefix%%public.host.subdomain%'
- host: '{subdomain}%public.host%'
- requirements:
-  subdomain: '.+'
+  request_host: '%host.prefix%%public.host.subdomain%%public.host%'
+ host: '{request_host}'
  resource: "@PublicBundle/Resources/config/routing.post.yml"
+ requirements:
+  request_host: '%public.host.test%'
 #--base for outputting generic URLs
 public_base:
  defaults:
