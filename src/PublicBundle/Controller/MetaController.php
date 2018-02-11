@@ -167,7 +167,7 @@ class MetaController extends Controller{
 	public function robotsAction(Request $request, $_format = 'html'){
 		$data = [];
 		//--only allow for canonical
-		if($request->getScheme() === 'https' && preg_match("/^{$this->container->getParameter('host.prefix')}{$this->container->getParameter('public.host.subdomain')}{$this->container->getParameter('public.host')}$/", $request->getHttpHost())){
+		if(preg_match("/^{$this->container->getParameter('host.prefix')}{$this->container->getParameter('public.host.subdomain')}{$this->container->getParameter('public.host')}$/", $request->getHttpHost())){
 			$data['agents'] = [
 				'*'=> []
 			];
