@@ -166,10 +166,6 @@ class MetaController extends Controller{
 	//-@ www.google.com/support/webmasters/bin/answer.py?hl=en&answer=156449
 	public function robotsAction(Request $request, $_format = 'html'){
 		$data = [];
-		//--force https to ensure crawlers are made aware of https version
-		if($_format === 'txt' && $request->getScheme() !== 'https'){
-		return $this->redirect(preg_replace('/^http:/', 'https:', $this->get('router')->generate('public_robots', Array('_format'=> $_format), UrlGeneratorInterface::ABSOLUTE_URL)), ($this->get('kernel')->getEnvironment() === 'dev' ? 302 : 301));
-		}else
 		//--only allow for canonical
 		if($request->getScheme() === 'https' && preg_match("/^{$this->container->getParameter('host.prefix')}{$this->container->getParameter('public.host.subdomain')}{$this->container->getParameter('public.host')}$/", $request->getHttpHost())){
 			$data['agents'] = [
