@@ -40,6 +40,9 @@ DirectoryIndex index.php app.php
 	#---ipv6
 	RewriteCond %{HTTP_HOST} :.*:
 	RewriteRule ^ - [E=TMCOM_SITE:public]
+	#----no host, for http 0.9 (ie really old) browsers
+	RewriteCond %{HTTP_HOST} ^$
+	RewriteRule ^ - [E=TMCOM_SITE:public,E=HTTP_HOST:www.tobymackenzie.com]
 
 	##==redirects from old pages
 	##===tobymackenzie.name / cosmicosmo.ath.cx
