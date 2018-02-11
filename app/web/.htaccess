@@ -34,11 +34,7 @@ DirectoryIndex index.php app.php
 	#----public primary
 	RewriteCond %{HTTP_HOST} ^(.*\.)?tobymackenzie\.com$ [NC,OR]
 	#----public local
-	RewriteCond %{HTTP_HOST} tm.*\.local$ [OR]
-	#---ipv4
-	RewriteCond %{HTTP_HOST} ^[0-9\.]+$ [OR]
-	#---ipv6
-	RewriteCond %{HTTP_HOST} :.*:
+	RewriteCond %{HTTP_HOST} tm.*\.local$ [NC]
 	RewriteRule ^ - [E=TMCOM_SITE:public]
 	#----no host, for http 0.9 (ie really old) browsers
 	RewriteCond %{HTTP_HOST} ^$
@@ -58,6 +54,12 @@ DirectoryIndex index.php app.php
 	RewriteRule ^([\d]{4}/?.*) /blog/$1 [L,QSA,R=302]
 
 	##==canonical
+	##--send unknown hosts and direct ip access to canonical domains
+	#-# note: this requires updating TMCOM_SITE rules if we add another site or change
+	RewriteCond %{ENV:TMCOM_SITE} default
+	#-# don't redirect for http 0.9 requests (really old browsers)
+	RewriteCond %{HTTP_HOST} ^.+$
+	RewriteRule ^ %{REQUEST_SCHEME}://www.tobymackenzie.com%{REQUEST_URI} [L,R=302,QSA]
 	##===force 'https' for blog sitemap, for fear that 'http' URL's will somehow crop up again
 	RewriteCond %{ENV:TMCOM_SITE} public
 	RewriteCond %{HTTPS} !=on
