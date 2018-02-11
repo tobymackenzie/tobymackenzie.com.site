@@ -21,22 +21,42 @@ DirectoryIndex index.php app.php
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 
+	##==config
+	##--TMCOM_SITE
+	RewriteRule ^ - [E=TMCOM_SITE:default]
+	#---protected
+	#----protected primary
+	RewriteCond %{HTTP_HOST} ^(.*\.)?protected\.tobymackenze\.com$ [NC,OR]
+	#----protected local
+	RewriteCond %{HTTP_HOST} ^protected.*\.local$ [NC]
+	RewriteRule ^ - [E=TMCOM_SITE:protected]
+	#---public
+	#----public primary
+	RewriteCond %{HTTP_HOST} ^(.*\.)?tobymackenzie\.com$ [NC,OR]
+	#----public local
+	RewriteCond %{HTTP_HOST} tm.*\.local$ [OR]
+	#---ipv4
+	RewriteCond %{HTTP_HOST} ^[0-9\.]+$ [OR]
+	#---ipv6
+	RewriteCond %{HTTP_HOST} :.*:
+	RewriteRule ^ - [E=TMCOM_SITE:public]
+
 	##==redirects from old pages
 	##===tobymackenzie.name / cosmicosmo.ath.cx
-	RewriteCond %{HTTP_HOST} ^(t\.)?(15|new|www)\.
+	RewriteCond %{ENV:TMCOM_SITE} public
 	RewriteRule ^log /blog/ [L,QSA,R=302]
-	RewriteCond %{HTTP_HOST} ^(t\.)?(15|new|www)\.
+	RewriteCond %{ENV:TMCOM_SITE} public
 	RewriteRule ^log/(.*) /blog/$1 [L,QSA,R=301]
-	RewriteCond %{HTTP_HOST} ^(t\.)?(15|new|www)\.
+	RewriteCond %{ENV:TMCOM_SITE} public
 	RewriteRule ^pages/10 /about [L,QSA,R=301]
 	##===tobymackenzie.wordpress.com
 	##--redirect blog-like urls to blog
-	RewriteCond %{HTTP_HOST} ^(t\.)?(15|new|www)\.
+	RewriteCond %{ENV:TMCOM_SITE} public
 	RewriteRule ^([\d]{4}/?.*) /blog/$1 [L,QSA,R=302]
 
 	##==canonical
 	##===force 'https' for blog sitemap, for fear that 'http' URL's will somehow crop up again
-	RewriteCond %{HTTP_HOST} ^(t\.)?(15|new|www)?\.?tobymackenzie\.com/?$
+	RewriteCond %{ENV:TMCOM_SITE} public
 	RewriteCond %{HTTPS} !=on
 	RewriteRule ^blog/sitemap.xml$ https://www.tobymackenzie.com/blog/sitemap.xml [L,QSA,R=302]
 
@@ -51,7 +71,7 @@ DirectoryIndex index.php app.php
 	RewriteRule .? - [L]
 
 	##==serve wordpress for appropriate urls
-	RewriteCond %{HTTP_HOST} ^(t\.)?(15|new|www)\.
+	RewriteCond %{ENV:TMCOM_SITE} public
 	RewriteRule ^blog _/wp/index.php [L]
 
 	##==all other routes go through symfony
