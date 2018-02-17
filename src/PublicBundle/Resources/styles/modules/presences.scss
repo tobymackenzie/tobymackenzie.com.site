@@ -25,6 +25,7 @@
 	}
 }
 .presence{
+	break-inside: avoid;
 	margin-bottom: 0.4em;
 }
 .presenceAction-writings{
@@ -70,6 +71,8 @@
 	@extend %presenceAction;
 }
 .presences{
+	column-fill: balance;
+	column-width: 13em; column-width: calc;
 	list-style: none;
 	margin-left: 0;
 	padding-left: 0;
