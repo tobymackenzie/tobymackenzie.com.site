@@ -33,6 +33,9 @@ DirectoryIndex index.php app.php
 	#---public
 	#----public primary
 	RewriteCond %{HTTP_HOST} ^(t\.)?(15\.|www\.)?tobymackenzie\.com$ [NC,OR]
+	#----direct IP access, in case DNS fails
+	RewriteCond %{HTTP_HOST} ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ [NC,OR]
+	RewriteCond %{HTTP_HOST} ^.*:.*:.*$ [NC,OR]
 	#----public local
 	RewriteCond %{HTTP_HOST} tm.*\.local$ [NC]
 	RewriteRule ^ - [E=TMCOM_SITE:public]
