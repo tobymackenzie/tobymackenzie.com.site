@@ -26,7 +26,7 @@ DirectoryIndex index.php app.php
 	RewriteRule ^ - [E=TMCOM_SITE:default]
 	#---protected
 	#----protected primary
-	RewriteCond %{HTTP_HOST} ^(.*\.)?protected\.tobymackenze\.com$ [NC,OR]
+	RewriteCond %{HTTP_HOST} ^(.*\.)?protected\.tobymackenzie\.com$ [NC,OR]
 	#----protected local
 	RewriteCond %{HTTP_HOST} ^protected.*\.local$ [NC]
 	RewriteRule ^ - [E=TMCOM_SITE:protected]
