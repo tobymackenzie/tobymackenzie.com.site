@@ -69,7 +69,7 @@ script `type="application/javascript"` to block some old browsers.  blocks IE8- 
 {% endblock %}
 
 {% block docPostScripts %}
-<script async="async" defer="defer" src="/bundles/public/scripts/{{app.environment}}/post.js?a" type="application/javascript"></script>
+<script{% if app.environment == 'dev' %} type="module"{% else %} async="async" defer="defer"{% endif %} src="/bundles/public/scripts/{{app.environment}}/post.js?a" type="application/javascript"></script>
 {% endblock %}
 
 {% block docHeader %}
