@@ -1,25 +1,18 @@
 // global document, Math, _paq, window
 (function(_w, _d, _math){
 	'use strict';
-
-	if(!(_w.operamini && ({}).toString.call(_w.operamini) === '[object OperaMini]')){ //--disable here because 'bottom/top' fails in operamini and konami code is unusable
+	/*--mustard cut
+	- block pre `addEventListener` browsers
+	- block opera mini because 'bottom/top' fails in operamini and konami code is unusable
+	*/
+	if(
+		_d.addEventListener
+		&& !(_w.operamini && ({}).toString.call(_w.operamini) === '[object OperaMini]')
+	){
 		//==lib
 		//--element.addEventListener
-		var _addListener = (function(){
-			var _nativeAddListener = _d.addEventListener || (_d.attachEvent && function(_name, _cb){ this.attachEvent('on' + _name, _cb); }) || function(_name, _cb){
-				this['on' + _name] = _cb;
-			};
-			return function(_elm, _name, _cb, _capt){
-				return _nativeAddListener.call(_elm, _name, _cb, _capt || false/*-# ff6- */);
-			};
-		})();
-		//--event.preventDefault
-		var _preventDefault = function(_event){
-			if(_event.preventDefault){
-				_event.preventDefault();
-			}else{
-				_event.returnValue = false;
-			}
+		var _addListener = function(_elm, _name, _cb, _capt){
+			return _elm.addEventListener(_name, _cb, _capt || false/*-# ff6- */);
 		};
 
 		//==ui
@@ -134,7 +127,7 @@
 							_opts.focus.setAttribute('tabindex', -1);
 							_opts.focus.focus();
 						});
-						_preventDefault(_event);
+						_event.preventDefault();
 					});
 				};
 				for(var _i = 0, _length = _docNavItems.length; _i < _length; ++_i){

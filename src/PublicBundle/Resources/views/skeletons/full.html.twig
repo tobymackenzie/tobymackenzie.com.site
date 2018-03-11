@@ -46,19 +46,21 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 {% endblock %}
 
 {% block docPreScripts %}
+{#-#
+script `type="application/javascript"` to block some old browsers.  blocks IE8- except IE5 mac, NN3 asks to download scripts (even without type)
+- prevents needing to worry about supporting them with js features: have very low usage rates
+- prevents Moz1 from throwing up 3 security exception dialogs
+#}
 {#--force https if browser supports it.  allows us to test for actual support, unlike server sent redirect. #}
 {#-#
 - putting in pre reduces rendering / loading of http content if redirect happens
-- risk of breakage in really old browsers.  nn3-4, ie 5 seem fine
 
--!!
-- mozilla 1 asks for security exception (3 dialogs).  can we prevent this?
 - probably don't need both this and html box.  maybe remove box, show dialog, and use localStorage / cookie to not show next time.  Or use box as dialog, show as modal, closing sets cookie, won't show if cookie set.
 #}
 {% if page.secureUrl is defined %}
-<script src="https://{{app.request.host}}/bundles/public/scripts/{{app.environment}}/forceHttps.js"></script>
+<script src="https://{{app.request.host}}/bundles/public/scripts/{{app.environment}}/forceHttps.js" type="application/javascript"></script>
 {% endif %}
-<script><!--//--><![CDATA[//><!--{{'\n'}}
+<script type="application/javascript"><!--//--><![CDATA[//><!--{{'\n'}}
 {# detect js support #}
 (function(H){H.className=H.className.replace(/\bua-no-js\b/,'ua-js')})(document.documentElement);
 //--><!]]></script>
@@ -67,7 +69,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 {% endblock %}
 
 {% block docPostScripts %}
-<script async="async" defer="defer" src="/bundles/public/scripts/{{app.environment}}/post.js?a"></script>
+<script async="async" defer="defer" src="/bundles/public/scripts/{{app.environment}}/post.js?a" type="application/javascript"></script>
 {% endblock %}
 
 {% block docHeader %}
