@@ -66,7 +66,7 @@ DirectoryIndex index.php app.php
 	##===force 'https' for blog sitemap, for fear that 'http' URL's will somehow crop up again
 	RewriteCond %{ENV:TMCOM_SITE} public
 	RewriteCond %{HTTPS} !=on
-	RewriteRule ^blog/sitemap.xml$ https://www.tobymackenzie.com/blog/sitemap.xml [L,QSA,R=302]
+	RewriteRule ^blog/[A-Za-z0-9]*\-?sitemap\-?[0-9]*.xml$ https://www.tobymackenzie.com%{REQUEST_URI} [L,QSA,R=302]
 
 	##==remove 'app.php' from URL to prevent duplicate content
 	RewriteCond %{ENV:REDIRECT_STATUS} ^$
