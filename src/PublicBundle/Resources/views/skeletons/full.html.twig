@@ -22,7 +22,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 
 {% block docMeta %}
 {{parent()}}
-{% if canonical is not defined and (app.request.scheme != 'https' or app.request.host != 'www.tobymackenzie.com') %}
+{% if canonical is not defined and doc.name != 'error' and (app.request.scheme != 'https' or app.request.host != 'www.tobymackenzie.com') %}
 {%	set canonical = 'https://www.tobymackenzie.com' ~ app.request.server.get('REQUEST_URI') %}
 {% endif %}
 {% if canonical is defined %}
