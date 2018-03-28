@@ -67,10 +67,9 @@ class MetaController extends Controller{
 			,'status_text'=> $statusText
 		];
 		if($code == 404){
-			$data['search'] = $request->getPathInfo();
+			$data['search'] = urldecode($request->getPathInfo());
 			foreach([
 				'/\.[\w]+$/'=> ''
-				,'/[<>]+/'=> ''
 				,'/[^a-zA-Z0-9]+/'=> ' '
 			] as $regEx=> $replace){
 				$data['search'] = preg_replace($regEx, $replace, $data['search']);
