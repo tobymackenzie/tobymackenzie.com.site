@@ -67,14 +67,18 @@ class MetaController extends Controller{
 			,'status_text'=> $statusText
 		];
 		if($code == 404){
-			$data['search'] = urldecode($request->getPathInfo());
+			//--build search from path
+			$search = urldecode($request->getPathInfo());
 			foreach([
-				'/\.[\w]+$/'=> ''
+				//---strip file extension, if any
+				'/^\/?\./'=> ''
+				,'/(\.[\w]+)$/'=> ''
+				//---strip non-useful or dangerous characters
 				,'/[^a-zA-Z0-9]+/'=> ' '
 			] as $regEx=> $replace){
-				$data['search'] = preg_replace($regEx, $replace, $data['search']);
+				$search = preg_replace($regEx, $replace, $search);
 			}
-			$data['search'] = trim($data['search']);
+			$data['search'] = trim($search);
 		}
 		$format = $request->getRequestFormat();
 		if(!in_array($format, ['html', 'xhtml'])){
