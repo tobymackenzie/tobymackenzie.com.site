@@ -197,4 +197,16 @@ class MetaController extends Controller{
 	public function showExceptionAction($code){
 		throw new HttpException($code);
 	}
+
+	/*=====
+	==seo
+	=====*/
+	public function bingVerificationAction(){
+		$response = $this->render('@Public/meta/bing-verification.xml.twig', Array('code'=> $this->container->getParameter('public.bing-verification')));
+		$response->headers->set('Content-Type', 'application/xml'); //-! symfony's supposed to be determining this based on the template, but isn't, so we must be explicit
+		return $response;
+	}
+	public function googleVerificationAction(){
+		return $this->render('@Public/meta/google-verification.html.twig', Array('code'=> $this->container->getParameter('public.google-verification')));
+	}
 }

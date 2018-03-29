@@ -34,6 +34,10 @@ parameters:
    password: 'password'
    roles: 'ROLE_ADMIN'
 
+ #==seo
+ public.bing-verification: '!!'
+ public.google-verification: 'google!!.html'
+
  #==symfony
  locale: en
  secret: 1234567890987654321234567890

@@ -69,3 +69,11 @@ public_robots:
   controller: PublicBundle:Meta:robots
   path: /robots.{_format}
   defaults: {_format: 'html'}
+
+##--seo
+public_google_verification:
+  controller: PublicBundle:Meta:bingVerification
+  path: '/BingSiteAuth.xml'
+public_google_verification:
+  controller: PublicBundle:Meta:googleVerification
+  path: '/%public.google-verification%'
