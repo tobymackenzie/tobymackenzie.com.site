@@ -103,9 +103,10 @@ if(_cutsMustard && _docMain && _math && window.scrollTo && _docMain.setAttribute
 		}
 	];
 	var _attachListeners = function(_opts){
-		_addListener(_opts.focus, 'blur', function(){
+		var _onBlur = function(){
 			_opts.focus.removeAttribute('tabindex');
-		});
+			_opts.focus.removeEventListener('blur', _onBlur);
+		};
 		_addListener(_opts.link, 'click', function(_event){
 			var _pos = (_opts.target ? _opts.target() : _getElYPos(_opts.focus));
 			_scrollTo(_pos, function(){
@@ -113,6 +114,7 @@ if(_cutsMustard && _docMain && _math && window.scrollTo && _docMain.setAttribute
 				_opts.focus.focus();
 			});
 			_event.preventDefault();
+			_addListener(_opts.focus, 'blur', _onBlur);
 		});
 	};
 	for(var _i = 0, _length = _docNavItems.length; _i < _length; ++_i){
