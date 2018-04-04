@@ -96,7 +96,7 @@ if(_cutsMustard && _docMain && _math && window.scrollTo && _docMain.setAttribute
 		}
 		,{
 			link: document.getElementById('top-link')
-			,focus: document.getElementById('top')
+			,focus: document.querySelector('a[name="top"]')
 			,target: function(){
 				return 0;
 			}
