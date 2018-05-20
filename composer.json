@@ -60,7 +60,7 @@
 		,"wpackagist-plugin/jetpack": "^6.0"
 		,"wpackagist-plugin/syntaxhighlighter": "^3.2"
 		,"wpackagist-plugin/wordpress-importer": "^0.6"
-		,"wpackagist-theme/twentyfifteen": "^1.4"
+		,"wpackagist-theme/twentyfifteen": "^2.0"
 	}
 	,"require-dev": {
 		"sensio/generator-bundle": "^3.0"
