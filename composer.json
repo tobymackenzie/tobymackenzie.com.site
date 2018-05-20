@@ -57,7 +57,7 @@
 		,"tjm/utils": "master@dev"
 		,"tjm/wpthemehelper": "0.1.x@dev"
 		,"wpackagist-plugin/akismet": "^4.0"
-		,"wpackagist-plugin/jetpack": "^5.0"
+		,"wpackagist-plugin/jetpack": "^6.0"
 		,"wpackagist-plugin/syntaxhighlighter": "^3.2"
 		,"wpackagist-plugin/wordpress-importer": "^0.6"
 		,"wpackagist-theme/twentyfifteen": "^1.4"
