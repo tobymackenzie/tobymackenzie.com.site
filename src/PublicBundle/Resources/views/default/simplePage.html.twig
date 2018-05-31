@@ -8,8 +8,8 @@
 		<hr />
 		<strong>This page also available as:</strong>
 		<ul class="mainItemAltFormatsList">
-{% 	for itemName, itemPath in formats %}
-			<li class="mainItemAltFormat"><a href="{{itemPath}}">{{itemName}}</a></li>
+{% 	for format in formats %}
+			<li class="mainItemAltFormat"><a href="{{format.path}}" rel="alternate" type="{{format.type}}">{{format.name}}</a></li>
 {% 	endfor %}
 		</ul>
 	</footer>

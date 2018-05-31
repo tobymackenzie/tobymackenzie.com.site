@@ -69,18 +69,28 @@ class DefaultController extends Controller{
 
 		//--set up formats list
 		$possibleFormats = [
-			'html'
-			,'xhtml'
-			,'txt'
+			[
+				'name'=> 'html'
+				,'type'=> 'text/html'
+			]
+			,[
+				'name'=> 'xhtml'
+				,'type'=> 'application/xhtml+xml'
+			]
+			,[
+				'name'=> 'txt'
+				,'type'=> 'text/plain'
+			]
 		];
 		$data['formats'] = [];
 		$routeName = $request->get('_route');
 		if($routeName === 'public_home'){
 			$routeName = 'public_home_formatted';
 		}
-		foreach($possibleFormats as $format){
-			if($request->getRequestFormat() !== $format){
-				$data['formats'][$format] = $this->get('router')->generate($routeName, ['_format'=> $format]);
+		foreach($possibleFormats as $formatData){
+			if($request->getRequestFormat() !== $formatData['name']){
+				$formatData['path'] = $this->get('router')->generate($routeName, ['_format'=> $formatData['name']]);
+				$data['formats'][] = $formatData;
 			}
 		}
 		$response = $this->renderPage('@Public/default/simplePage.' . $request->getRequestFormat() . '.twig', $data);
