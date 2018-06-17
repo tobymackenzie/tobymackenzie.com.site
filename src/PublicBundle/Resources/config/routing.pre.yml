@@ -71,7 +71,7 @@ public_robots:
   defaults: {_format: 'html'}
 
 ##--seo
-public_google_verification:
+public_bing_verification:
   controller: PublicBundle:Meta:bingVerification
   path: '/BingSiteAuth.xml'
 public_google_verification:
