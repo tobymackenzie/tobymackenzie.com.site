@@ -42,6 +42,8 @@ class Controller extends Base{
 					$currentRoute = $request->get('_route');
 					if($currentRoute === 'public_home_formatted'){
 						$currentRoute = 'public_home';
+					}elseif($currentRoute === 'public_page_formatted'){
+						$currentRoute = 'public_page';
 					}
 					$routeParams = $request->get('_route_params');
 					unset($routeParams['_format']);

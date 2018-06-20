@@ -4,3 +4,13 @@ public_remove_trailing_slash:
   methods: [GET]
   requirements:
     url: .*/$
+public_page_formatted:
+  controller: PublicBundle:Default:page
+  path: /{id}.{_format}
+  requirements:
+    id: .*
+public_page:
+  controller: PublicBundle:Default:page
+  path: /{id}
+  requirements:
+    id: .*

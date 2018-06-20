@@ -6,12 +6,28 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 class DefaultController extends Controller{
-	public function simpleFilePageAction(Request $request, $id){
-		$basePath = __DIR__ . '/../../../app/data/data-store/files/' . $id;
-		if(!file_exists($basePath . '/data.json')){
-			throw $this->createNotFoundException();
+	public function pageAction(Request $request, $id, $_format = null){
+		//--make sure format is supported
+		if(!in_array($_format, static::SUPPORTED_FORMATS)){
+			throw $this->createNotFoundException("Format {$_format} not currently supported");
 		}
-		$fileData = json_decode(file_get_contents($basePath . '/data.json'), true);
+		$basePath = $this->getPageBasePath($id);
+		$fileData = $this->getPageDataPath($id);
+		if(!file_exists($fileData)){
+			throw $this->createNotFoundException("No data found for id '{$id}'");
+		}
+		//--strip 'html' format, since that is the default
+		if($_format === 'html'){
+			$routeName = preg_replace('/_formatted$/', '', $request->get('_route'));
+			$routeParams = $request->get('_route_params');
+			unset($routeParams['_format']);
+			return $this->redirect($this->get('router')->generate($routeName, $routeParams));
+		}
+		//--if format isn't in url, it is 'html'
+		if(!isset($_format)){
+			$_format = 'html';
+		}
+		$fileData = json_decode(file_get_contents($fileData), true);
 		$content = file_get_contents($basePath . '/' . ($fileData['fileName'] ?? $id . '.txt'));
 		$fileNamePieces = explode('.', $fileData['fileName'], 1);
 		$fileExt = $fileNamePieces[2] ?? 'txt';
@@ -84,12 +100,23 @@ class DefaultController extends Controller{
 		];
 		$data['formats'] = [];
 		$routeName = $request->get('_route');
-		if($routeName === 'public_home'){
-			$routeName = 'public_home_formatted';
+		$htmlRouteName = preg_replace('/_formatted$/', '', $routeName);
+		if($htmlRouteName === $routeName){
+			$formattedRouteName = $routeName . '_formatted';
+		}else{
+			$formattedRouteName = $routeName;
 		}
 		foreach($possibleFormats as $formatData){
 			if($request->getRequestFormat() !== $formatData['name']){
-				$formatData['path'] = $this->get('router')->generate($routeName, ['_format'=> $formatData['name']]);
+				$isHtml = ($formatData['name'] === 'html');
+				$routeParams = ['id'=> $id];
+				if(!$isHtml){
+					$routeParams['_format'] = $formatData['name'];
+				}
+				$formatData['path'] = $this->get('router')->generate(
+					($isHtml ? $htmlRouteName : $formattedRouteName)
+					,$routeParams
+				);
 				$data['formats'][] = $formatData;
 			}
 		}
@@ -113,10 +140,32 @@ class DefaultController extends Controller{
 		}catch(ResourceNotFoundException $e){
 			$match = null;
 		}
+		//--make sure we have a real matching route to redirect to
 		if(!$match || $match['_route'] === 'public_base'){
 			throw $this->createNotFoundException();
-		}else{
-			return $this->redirect($url, ($this->get('kernel')->getEnvironment() === 'dev') ? 302 : 301);
+		}elseif($match['_route'] === 'public_page' || $match['_route'] === 'public_page_formatted'){
+			if(isset($match['_format']) && !in_array($match['_format'], static::SUPPORTED_FORMATS)){
+				throw $this->createNotFoundException("Format {$match['_format']} not currently supported");
+			}
+			if(!file_exists($this->getPageDataPath($match['id']))){
+				throw $this->createNotFoundException("No data found for id '{$match['id']}'");
+
+			}
 		}
+		return $this->redirect($url, ($this->get('kernel')->getEnvironment() === 'dev') ? 302 : 301);
+	}
+
+	/*=====
+	==page helpers
+	=====*/
+	const SUPPORTED_FORMATS = [null, 'html', 'md', 'txt', 'xhtml'];
+	protected function getPageBasePath($id){
+		if($id === '/'){
+			$id = '';
+		}
+		return __DIR__ . '/../../../app/data/data-store/files/' . $id;
+	}
+	protected function getPageDataPath($id){
+		return $this->getPageBasePath($id) . '/data.json';
 	}
 }

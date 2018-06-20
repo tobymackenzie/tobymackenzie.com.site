@@ -1,7 +1,7 @@
 public_home:
-  controller: PublicBundle:Default:simpleFilePage
+  controller: PublicBundle:Default:page
   path: /
-  defaults: {id: 4}
+  defaults: {id: index}
 public_home_default_redirect:
   controller: FrameworkBundle:Redirect:urlRedirect
   path: /index{dotformat}
@@ -11,31 +11,16 @@ public_home_default_redirect:
   requirements:
     dotformat: (\.html|\.php)?
 public_home_formatted:
-  controller: PublicBundle:Default:simpleFilePage
+  controller: PublicBundle:Default:page
   path: /index.{_format}
-  defaults: {id: 4}
-public_about_default_redirect:
-  controller: FrameworkBundle:Redirect:urlRedirect
-  path: /about.html
-  defaults: {path: /about, permanent: true}
-public_about:
-  controller: PublicBundle:Default:simpleFilePage
-  path: /about.{_format}
-  defaults: {_format: html, id: 5}
+  defaults:
+    id: index
 public_blog:
   controller: PublicBundle:Default:blog
   path: /tblog{rest}
   defaults: {_format: html, rest: '/'}
   requirements:
     rest: .*
-public_web_dev_default_redirect:
-  controller: FrameworkBundle:Redirect:urlRedirect
-  path: /web-dev.html
-  defaults: {path: /web-dev, permanent: true}
-public_web_dev:
-  controller: PublicBundle:Default:simpleFilePage
-  path: /web-dev.{_format}
-  defaults: {_format: html, id: 6}
 
 
 ##==meta
