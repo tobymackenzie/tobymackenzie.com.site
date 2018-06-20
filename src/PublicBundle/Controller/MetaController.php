@@ -83,6 +83,7 @@ class MetaController extends Controller{
 		$format = $request->getRequestFormat();
 		if(!in_array($format, ['html', 'xhtml'])){
 			$format = 'html';
+			$request->setRequestFormat($format);
 			$data['format'] = $format;
 		}
 		$response = $this->renderPage('@Public/meta/error.' . $format . '.twig', $data);
