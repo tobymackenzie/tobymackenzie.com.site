@@ -11,10 +11,15 @@ class DefaultController extends Controller{
 		if(!in_array($_format, static::SUPPORTED_FORMATS)){
 			throw $this->createNotFoundException("Format {$_format} not currently supported");
 		}
-		$basePath = $this->getPageBasePath($id);
-		$fileData = $this->getPageDataPath($id);
+		$lowerCaseId = strtolower($id);
+		$basePath = $this->getPageBasePath($lowerCaseId);
+		$fileData = $this->getPageDataPath($lowerCaseId);
 		if(!file_exists($fileData)){
 			throw $this->createNotFoundException("No data found for id '{$id}'");
+		}
+		//--make sure our id is lowercase
+		if($lowerCaseId !== $id){
+			return $this->redirect($lowerCaseId);
 		}
 		//--strip 'html' format, since that is the default
 		if($_format === 'html'){
