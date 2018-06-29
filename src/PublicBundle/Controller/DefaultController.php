@@ -4,9 +4,10 @@ use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use Symfony\Component\Routing\RouterInterface;
 
 class DefaultController extends Controller{
-	public function pageAction(Request $request, $id, $_format = null){
+	public function pageAction(Request $request, $id, RouterInterface $router, $_format = null){
 		//--make sure format is supported
 		if(!in_array($_format, static::SUPPORTED_FORMATS)){
 			throw $this->createNotFoundException("Format {$_format} not currently supported");
@@ -26,7 +27,7 @@ class DefaultController extends Controller{
 			$routeName = preg_replace('/_formatted$/', '', $request->get('_route'));
 			$routeParams = $request->get('_route_params');
 			unset($routeParams['_format']);
-			return $this->redirect($this->get('router')->generate($routeName, $routeParams));
+			return $this->redirect($router->generate($routeName, $routeParams));
 		}
 		//--if format isn't in url, it is 'html'
 		if(!isset($_format)){
@@ -118,7 +119,7 @@ class DefaultController extends Controller{
 				if(!$isHtml){
 					$routeParams['_format'] = $formatData['name'];
 				}
-				$formatData['path'] = $this->get('router')->generate(
+				$formatData['path'] = $router->generate(
 					($isHtml ? $htmlRouteName : $formattedRouteName)
 					,$routeParams
 				);
@@ -136,12 +137,12 @@ class DefaultController extends Controller{
 		return $response;
 	}
 	//-@ http://symfony.com/doc/current/cookbook/routing/redirect_trailing_slash.html
-	public function removeTrailingSlashAction(Request $request){
+	public function removeTrailingSlashAction(Request $request, RouterInterface $router){
 		$pathInfo = $request->getPathInfo();
 		$requestUri = $request->getRequestUri();
 		$url = str_replace($pathInfo, rtrim($pathInfo, ' /'), $requestUri);
 		try{
-			$match = $this->get('router')->match(str_replace('/app_dev.php', '', $url));
+			$match = $router->match(str_replace('/app_dev.php', '', $url));
 		}catch(ResourceNotFoundException $e){
 			$match = null;
 		}

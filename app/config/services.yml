@@ -1,4 +1,6 @@
 services:
+ _defaults:
+  autowire: true
  htmlToMarkdown:
   class: TJM\HtmlToMarkdown\HtmlConverter
   arguments: [{'hard_break': true, 'strip_tags': true}]
@@ -6,6 +8,13 @@ services:
  markdownToHtml:
   class: ParsedownExtra
   public: true
+ ##==controllers
+ ProtectedBundle\Controller\:
+   resource: '%kernel.project_dir%/src/ProtectedBundle/Controller'
+   tags: ['controller.service_arguments']
+ PublicBundle\Controller\:
+   resource: '%kernel.project_dir%/src/PublicBundle/Controller'
+   tags: ['controller.service_arguments']
  ##==listeners
  app.headers_listener:
   class: TJM\TMCom\Listener\HeadersListener

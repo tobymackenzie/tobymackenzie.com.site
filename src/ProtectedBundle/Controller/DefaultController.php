@@ -4,8 +4,10 @@ use DateTime;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RouterInterface;
 
 class DefaultController extends Controller{
 	public function secureAction(Request $request){
@@ -25,7 +27,7 @@ class DefaultController extends Controller{
 	Action: notFoundAction
 	Point user to public page.
 	*/
-	public function notFoundAction(Request $request, $url = null){
+	public function notFoundAction(Request $request, RouterInterface $router, $url = null){
 		$url = $this->generateUrl(
 			'public_base'
 			,['url'=> ltrim($request->getPathInfo(), '/')]
@@ -36,7 +38,6 @@ class DefaultController extends Controller{
 			$url .= '?' . explode('?', $requestUri, 2)[1];
 		}
 		preg_match('![\w]+://([\w-\.]+)/?!', $url, $domain);
-		$router = $this->get('router');
 		$routerContext = $router->getContext();
 		$requestHost = $routerContext->getHost();
 		$routerContext->setHost($domain[1]);
@@ -58,10 +59,10 @@ class DefaultController extends Controller{
 		]);
 	}
 	//-@ http://symfony.com/doc/current/cookbook/routing/redirect_trailing_slash.html
-	public function removeTrailingSlashAction(Request $request){
+	public function removeTrailingSlashAction(Request $request, KernelInterface $kernel){
 		$pathInfo = $request->getPathInfo();
 		$requestUri = $request->getRequestUri();
 		$url = str_replace($pathInfo, rtrim($pathInfo, ' /'), $requestUri);
-		return $this->redirect($url, ($this->get('kernel')->getEnvironment() === 'dev') ? 302 : 301);
+		return $this->redirect($url, ($kernel->getEnvironment() === 'dev') ? 302 : 301);
 	}
 }
