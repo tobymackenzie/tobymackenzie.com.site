@@ -5,16 +5,23 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\RouterInterface;
+use TJM\Pages\Pages;
 
 class DefaultController extends Controller{
-	public function pageAction(Request $request, $id, RouterInterface $router, $_format = null){
+	public function pageAction(
+		Request $request
+		,$id
+		,Pages $pagesService
+		,RouterInterface $router
+		,$_format = null
+	){
 		//--make sure format is supported
 		if(!in_array($_format, static::SUPPORTED_FORMATS)){
 			throw $this->createNotFoundException("Format {$_format} not currently supported");
 		}
 		$lowerCaseId = strtolower($id);
-		$basePath = $this->getPageBasePath($lowerCaseId);
-		$fileData = $this->getPageDataPath($lowerCaseId);
+		$basePath = $pagesService->getPagePath($lowerCaseId);
+		$fileData = $pagesService->getPageDataPath($lowerCaseId);
 		if(!file_exists($fileData)){
 			throw $this->createNotFoundException("No data found for id '{$id}'");
 		}
@@ -137,7 +144,11 @@ class DefaultController extends Controller{
 		return $response;
 	}
 	//-@ http://symfony.com/doc/current/cookbook/routing/redirect_trailing_slash.html
-	public function removeTrailingSlashAction(Request $request, RouterInterface $router){
+	public function removeTrailingSlashAction(
+		Request $request
+		,Pages $pagesService
+		,RouterInterface $router
+	){
 		$pathInfo = $request->getPathInfo();
 		$requestUri = $request->getRequestUri();
 		$url = str_replace($pathInfo, rtrim($pathInfo, ' /'), $requestUri);
@@ -153,7 +164,7 @@ class DefaultController extends Controller{
 			if(isset($match['_format']) && !in_array($match['_format'], static::SUPPORTED_FORMATS)){
 				throw $this->createNotFoundException("Format {$match['_format']} not currently supported");
 			}
-			if(!file_exists($this->getPageDataPath($match['id']))){
+			if(!file_exists($pagesService->getPageDataPath($match['id']))){
 				throw $this->createNotFoundException("No data found for id '{$match['id']}'");
 
 			}
@@ -165,13 +176,4 @@ class DefaultController extends Controller{
 	==page helpers
 	=====*/
 	const SUPPORTED_FORMATS = [null, 'html', 'md', 'txt', 'xhtml'];
-	protected function getPageBasePath($id){
-		if($id === '/'){
-			$id = '';
-		}
-		return __DIR__ . '/../../../app/data/data-store/files/' . $id;
-	}
-	protected function getPageDataPath($id){
-		return $this->getPageBasePath($id) . '/data.json';
-	}
 }

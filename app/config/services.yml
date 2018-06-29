@@ -8,6 +8,10 @@ services:
  markdownToHtml:
   class: ParsedownExtra
   public: true
+ TJM\Pages\Pages:
+   class: TJM\Pages\Pages
+   arguments: ['%kernel.project_dir%/app/data/data-store/files']
+   public: true
  ##==controllers
  ProtectedBundle\Controller\:
    resource: '%kernel.project_dir%/src/ProtectedBundle/Controller'
