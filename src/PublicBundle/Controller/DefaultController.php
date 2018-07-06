@@ -81,7 +81,7 @@ class DefaultController extends Controller{
 				'name'=> preg_replace('/[^\w\-]/', '', str_replace(' ', '-', strtolower($name)))
 			];
 			//--special treatment for home page
-			if($id === 4){
+			if($id === 'index'){
 				$data['site'] = Array(
 					'title'=> "<toby"
 				);
