@@ -76,25 +76,30 @@ class DefaultController extends Controller{
 
 		//--set title for pages with names besides home page
 		$name = $fileData['title'] ?? null;
-		if($name){
-			$data['doc'] = [
-				'name'=> preg_replace('/[^\w\-]/', '', str_replace(' ', '-', strtolower($name)))
-			];
-			//--special treatment for home page
-			if($id === 'index'){
-				$data['site'] = Array(
-					'title'=> "<toby"
-				);
-				if($request->getRequestFormat() === 'xhtml'){
-					$data['site']['title'] .= '/';
-				}
-				$data['site']['title'] .= "> Mackenzie's site";
-			}else{
-				$data['doc']['title'] = ucfirst($name);
-			}
-
-			$data['heading'] = ucfirst($name);
+		if(!$name){
+			$name = ucwords(
+				str_replace('/', ': ',
+					str_replace('-', ' ', $id)
+				)
+			);
 		}
+		$data['doc'] = [
+			'name'=> preg_replace('/[^\w\-]/', '', str_replace(' ', '-', strtolower($name)))
+		];
+		//--special treatment for home page
+		if($id === 'index'){
+			$data['site'] = Array(
+				'title'=> "<toby"
+			);
+			if($request->getRequestFormat() === 'xhtml'){
+				$data['site']['title'] .= '/';
+			}
+			$data['site']['title'] .= "> Mackenzie's site";
+		}else{
+			$data['doc']['title'] = $name;
+		}
+
+		$data['heading'] = $name;
 
 		//--set up formats list
 		$possibleFormats = [
