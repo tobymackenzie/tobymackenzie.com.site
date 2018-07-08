@@ -47,6 +47,10 @@ framework:
  trusted_hosts: ~
  validation: {enable_annotations: true}
 
+sensio_framework_extra:
+ router:
+  annotations: false
+
 tjm_base:
  page_wraps:
   full: ":skeletons:full.{format}.twig"
