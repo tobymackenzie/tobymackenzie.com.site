@@ -16,7 +16,7 @@ html{
 	position: relative;
 }
 .docBody{
-	align-items: center;
+	align-items: stretch;
 	display: flex; //-# used to swap order of header and doc nav
 	flex-direction: column;
 	margin-bottom: 1em;
