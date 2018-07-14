@@ -5,20 +5,24 @@
 }
 .docEndLogo{
 	@extend %docLogoBase;
-	@extend %wiggleHoverAnimation;
-	bottom: 0.2em;
-	opacity: 0.5;
-	position: absolute;
-	right: 0.8em;
-	transition: opacity 0.2s;
+	//--align right
+	$leftMargin: auto;
+	text-align: right; //--really old browsers
+	//--in front of doc bg
+	position: relative;
 	z-index: 1;
+	//--shrink-to-fit
+	display: table;
+	//--subdued, emphasise on hover
+	@extend %wiggleHoverAnimation;
+	$rightMargin: 1em; //--prevent wiggle from overflowing window
+	opacity: 0.5;
+	transition: opacity 0.2s;
 	&:hover{
 		opacity: 1;
 	}
-	@include mq('print'){
-		text-align: right;
-		position: static;
-	}
+	//--rest
+	margin: 0 $rightMargin 0 $leftMargin;
 }
 .docSecureMessage{
 	@include mq('print'){
