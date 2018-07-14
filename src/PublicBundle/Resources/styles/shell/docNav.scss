@@ -1,107 +1,88 @@
+$docTargetActionBorderWidth: 0.1875em;
+$docTargetActionWidthHeight: 2.825em;
+$docTargetNavBoxShadow: 0 0 10px rgba(map-get($colors, shadow), 0.5);
 .docTargetNavList{
-	display: inline;
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 .docTargetNavItem{
-	display: inline;
-}
-$docTargetActionBorderWidth: 0.1875em;
-$docTargetActionWidthHeight: 2.825em;
-%docTargetAction{
-	background: map-get($colors, mainBG);
-	background-clip: padding-box;
 	display: inline-block;
-	height: $docTargetActionWidthHeight;
-	bottom: 0;
-	left: 0;
-	max-width: $docTargetActionWidthHeight;
-	outline: $docTargetActionBorderWidth solid rgba(map-get($colors, boxOutline), 0.6);
-	overflow: hidden;
-	padding: 0.1em 0.45em;
-	position: relative;
-	text-align: left;
-	text-decoration: none;
-	transition: max-width 0.25s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 0.15s;
-	white-space: nowrap;
-	&:active, &:focus, &:hover{
-		max-width: 11em;
-	}
-	@include mq(map-get($bp, medium)){
-		opacity: 0.5;
-		//-@ http://easings.net/#easeOutCirc
-		&:active, &:focus, &:hover{
-			opacity: 1;
+	vertical-align: middle;
+	@include supportsFixed(){
+		@include fixedNavMQ(){
+			float: left;
+			line-height: 1;
+			margin-right: $docTargetActionBorderWidth;
 		}
 	}
+}
+%docTargetAction{
+	background: map-get($colors, mainBG);
+	display: inline-block;
+	outline: $docTargetActionBorderWidth solid rgba(map-get($colors, boxOutline), 0.6);
+	box-shadow: $docTargetNavBoxShadow;
+	margin-bottom: $docTargetActionBorderWidth;
+	min-height: $docTargetActionWidthHeight;
+	padding: 0.45em 0.65em;
+	text-decoration: none;
 	@include supportsFixed(){
-		@include fixedNavMQ(map-get($bp, medium)){
+		@include fixedNavMQ(){
+			box-shadow: none;
+			margin-bottom: 0;
+			max-width: $docTargetActionWidthHeight;
+			overflow: hidden;
+			transition: max-width 0.25s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 0.15s;
+			white-space: nowrap;
 			&:active, &:focus, &:hover{
-				box-shadow: 0 0 10px rgba(map-get($colors, shadow), 0.5);
+				max-width: 11em;
 				z-index: 1000;
+			}
+		}
+		@include fixedNavMQ(map-get($bp, medium)){
+			opacity: 0.5;
+			//-@ http://easings.net/#easeOutCirc
+			&:active, &:focus, &:hover{
+				opacity: 1;
 			}
 		}
 		@include fixedNavMQ(map-get($bp, veryBerryWide)){
 			max-width: none;
 			width: 11em;
-			&:active, &:focus, &:hover{
-				max-width: none;
-			}
 		}
 	}
 	&:before{
 		display: inline-block;
 		font-size: 1.8em;
-		height: 100%;
-		margin: 0.23em 0.3em 0 0.05em;
+		margin-right: 0.3em;
 		vertical-align: middle;
 	}
 }
 %docTargetAction-arrow{
+	padding-bottom: 0.65em;
+	padding-top: 0.65em;
 	&:before{
+		//--make icon size similar to others
 		font-size: 2.5em;
+		//--tweak vertical alignment
 		line-height: 0.6em;
-		margin-left: 0.1em;
-		margin-top: 0.15em;
-	}
-}
-%docTargetAction-topNav{
-	margin-left: $docTargetActionBorderWidth;
-	@include supportsFixed(){
-		@include fixedNavMQ(){
-			float: left;
-			height: 100%;
-		}
-		@include fixedNavMQ(map-get($bp, medium)){
-			float: none;
-			height: $docTargetActionWidthHeight;
-			margin-left: 0;
-		}
+		position: relative;
+		top: -0.05em;
 	}
 }
 %docTargetText{
 	padding-right: 0.4em;
-	position: relative;
-	top: -0.1em;
 	vertical-align: middle;
-}
-%docTargetText-arrow{
-	top: -0.2em;
 }
 .docTargetAction-bottom{
 	@extend %docTargetAction;
 	@extend %docTargetAction-arrow;
-	@extend %docTargetAction-topNav;
-	top: 0;
 	&:before{
 		@extend %icm-bottom;
-		margin-top: 0.2em;
 	}
 }
 .docTargetAction-main{
 	@extend %docTargetAction;
-	@extend %docTargetAction-topNav;
 	&:before{
 		@extend %icm-file-text;
 	}
@@ -109,17 +90,19 @@ $docTargetActionWidthHeight: 2.825em;
 .docTargetAction-top{
 	@extend %docTargetAction;
 	@extend %docTargetAction-arrow;
+	position: relative;
 	z-index: 3;
 	@include supportsFixed(){
 		@include fixedNavMQ(){
 			bottom: 0;
+			left: 0;
+			line-height: 1;
 			position: fixed;
-			top: auto;
 		}
 		@include fixedNavMQ(map-get($bp, medium)){
 			bottom: auto;
 			left: 0;
-			transform: translateY(-$docTargetActionWidthHeight * 1.5 - $docTargetActionBorderWidth);
+			transform: translateY(-$docTargetActionWidthHeight * 1.5 - $docTargetActionBorderWidth * 1.5);
 			top: 50%;
 		}
 	}
@@ -129,49 +112,28 @@ $docTargetActionWidthHeight: 2.825em;
 }
 %docTargetNav{
 	text-align: center;
-	@include mq(map-get($bp, small)){
-		text-align: left;
-	}
 	@include mq('print'){
 		display: none;
 	}
 }
 .docTargetNav-bottom{
 	@extend %docTargetNav;
-	line-height: 1;
-	padding: 0.8em 0 0;
-	@include supportsFixed(){
-		@include fixedNavMQ(){
-			padding: 0;
-		}
-	}
 }
 .docTargetNav-top{
 	@extend %docTargetNav;
 	order: 2; //--below header
-	overflow: auto; //-*1
 	position: relative;
-	white-space: nowrap; //-*1
-	width: 100%;
 	z-index: 3;
-	//-*1 fix item overflow on tiny screens
 	@include supportsFixed(){
 		@include fixedNavMQ(){
 			bottom: -$docTargetActionBorderWidth;
-			box-shadow: 0 0 10px rgba(map-get($colors, shadow), 0.5);
-			height: $docTargetActionWidthHeight + $docTargetActionBorderWidth;
+			box-shadow: $docTargetNavBoxShadow;
 			left: 0;
-			line-height: 1;
-			overflow: visible;
-			padding-left: $docTargetActionWidthHeight;
+			padding-left: $docTargetActionWidthHeight + $docTargetActionBorderWidth;
 			position: fixed;
-			white-space: normal;
-			width: auto;
 		}
 		@include fixedNavMQ(map-get($bp, medium)){
 			bottom: 50%;
-			height: $docTargetActionWidthHeight * 3 + $docTargetActionBorderWidth * 2;
-			margin-top: -$docTargetActionWidthHeight;
 			padding-left: 0;
 			padding-top: $docTargetActionWidthHeight + $docTargetActionBorderWidth;
 			transform: translateY(50%);
@@ -182,14 +144,6 @@ $docTargetActionWidthHeight: 2.825em;
 .docTargetHash{
 	display: none;
 }
-.docTargetText-bottom{
+.docTargetText{
 	@extend %docTargetText;
-	@extend %docTargetText-arrow;
-}
-.docTargetText-main{
-	@extend %docTargetText;
-}
-.docTargetText-top{
-	@extend %docTargetText;
-	@extend %docTargetText-arrow;
 }
