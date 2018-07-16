@@ -6,6 +6,9 @@ body{
 	opacity: 0.95;
 	padding: 0;
 	position: relative;
+	@include mq('print'){
+		opacity: 1;
+	}
 }
 html{
 	background: map-get($colors, baseBG);

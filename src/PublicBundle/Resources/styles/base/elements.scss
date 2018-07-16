@@ -140,6 +140,9 @@ p{
 	&:first-letter{
 		color: map-get($colors, strong);
 		font-weight: bold;
+		@include mq('print'){
+			color: #000000;
+		}
 	}
 }
 table{

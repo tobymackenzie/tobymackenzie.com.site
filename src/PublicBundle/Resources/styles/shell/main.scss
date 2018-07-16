@@ -5,7 +5,7 @@
 	//-# width + max-width supports ie6-
 	width: $shellMainWidth; max-width: 100%;
 	@include mq('print'){
-		max-width: none;
+		width: auto;
 	}
 }
 %mainWrap, .docMainWrap{

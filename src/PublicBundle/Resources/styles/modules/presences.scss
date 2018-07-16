@@ -4,13 +4,12 @@
 		text-decoration: underline;
 	}
 	&:before{
-		font-size: 1.3em;
 		margin-right: 0.6em;
 		vertical-align: middle;
 		@include mq('print'){
-			font-family: inherit !important;
-			font-size: inherit;
+			height: auto;
 			margin: 0;
+			width: auto;
 			vertical-align: baseline;
 		}
 	}
@@ -76,4 +75,7 @@
 	list-style: none;
 	margin-left: 0;
 	padding-left: 0;
+	@include mq('print'){
+		column-width: initial;
+	}
 }
