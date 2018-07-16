@@ -1,0 +1,141 @@
+/*-#
+using sprite map
+pluses:
+- fully within CSS, versus inline svg / img
+- single request, versus inline svg / img
+- cacheable, versus inline svg
+- easier alignment versus font
+- slightly smaller gzipped for new browsers, versus font / img
+minuses:
+- can't directly change colors, versus font / inline svg
+- can't easily change size, versus font / inline svg / img
+- must load all at once, versus inline svg / img
+*/
+%icm{
+	content: '';
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-image: url('/bundles/public/icomoon/sprite.png');
+	background-image: url('/bundles/public/icomoon/sprite.svg');
+	speak: none;
+}
+%icm-email{
+	@extend %icm;
+	background-position: 0 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-packagist{
+	@extend %icm;
+	background-position: -92px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-home{
+	@extend %icm;
+	background-position: -184px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-writings{
+	@extend %icm;
+	background-position: -276px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-file-text{
+	@extend %icm;
+	background-position: -368px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-about{
+	@extend %icm;
+	background-position: -460px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-portfolio{
+	@extend %icm;
+	background-position: -552px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-search{
+	@extend %icm;
+	background-position: -644px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-settings{
+	@extend %icm;
+	background-position: -736px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-link{
+	@extend %icm;
+	background-position: -828px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-info{
+	@extend %icm;
+	background-position: -920px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-menu{
+	@extend %icm;
+	background-position: -1012px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-twitter{
+	@extend %icm;
+	background-position: -1104px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-github{
+	@extend %icm;
+	background-position: -1196px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-linkedin{
+	@extend %icm;
+	background-position: -1288px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-delicious{
+	@extend %icm;
+	background-position: -1380px 0;
+	height: 32px;
+	width: 32px;
+}
+%icm-stackoverflow{
+	@extend %icm;
+	background-position: 0 -92px;
+	height: 32px;
+	width: 32px;
+}
+%icm-bottom{
+	@extend %icm;
+	background-position: -92px -92px;
+	height: 32px;
+	width: 32px;
+}
+%icm-top{
+	@extend %icm;
+	background-position: -184px -92px;
+	height: 32px;
+	width: 32px;
+}
+%icm-code{
+	@extend %icm;
+	background-position: -276px -92px;
+	height: 32px;
+	width: 32px;
+}

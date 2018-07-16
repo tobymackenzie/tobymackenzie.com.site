@@ -8,28 +8,31 @@ $docTargetNavBoxShadow: 0 0 10px rgba(map-get($colors, shadow), 0.5);
 }
 .docTargetNavItem{
 	display: inline-block;
+	margin-bottom: $docTargetActionBorderWidth;
 	vertical-align: middle;
 	@include supportsFixed(){
 		@include fixedNavMQ(){
 			float: left;
 			line-height: 1;
-			margin-right: $docTargetActionBorderWidth;
+			margin-left: $docTargetActionBorderWidth;
+		}
+		@include fixedNavMQ(map-get($bp, medium)){
+			margin-left: 0;
 		}
 	}
 }
 %docTargetAction{
 	background: map-get($colors, mainBG);
-	display: inline-block;
+	display: block;
 	outline: $docTargetActionBorderWidth solid rgba(map-get($colors, boxOutline), 0.6);
 	box-shadow: $docTargetNavBoxShadow;
-	margin-bottom: $docTargetActionBorderWidth;
 	min-height: $docTargetActionWidthHeight;
-	padding: 0.45em 0.65em;
+	padding: 0.45em 0.4em;
 	text-decoration: none;
 	@include supportsFixed(){
 		@include fixedNavMQ(){
 			box-shadow: none;
-			margin-bottom: 0;
+			// margin-bottom: 0;
 			max-width: $docTargetActionWidthHeight;
 			overflow: hidden;
 			transition: max-width 0.25s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 0.15s;
@@ -53,21 +56,8 @@ $docTargetNavBoxShadow: 0 0 10px rgba(map-get($colors, shadow), 0.5);
 	}
 	&:before{
 		display: inline-block;
-		font-size: 1.8em;
-		margin-right: 0.3em;
+		margin-right: 0.6em;
 		vertical-align: middle;
-	}
-}
-%docTargetAction-arrow{
-	padding-bottom: 0.65em;
-	padding-top: 0.65em;
-	&:before{
-		//--make icon size similar to others
-		font-size: 2.5em;
-		//--tweak vertical alignment
-		line-height: 0.6em;
-		position: relative;
-		top: -0.05em;
 	}
 }
 %docTargetText{
@@ -76,7 +66,6 @@ $docTargetNavBoxShadow: 0 0 10px rgba(map-get($colors, shadow), 0.5);
 }
 .docTargetAction-bottom{
 	@extend %docTargetAction;
-	@extend %docTargetAction-arrow;
 	&:before{
 		@extend %icm-bottom;
 	}
@@ -89,7 +78,6 @@ $docTargetNavBoxShadow: 0 0 10px rgba(map-get($colors, shadow), 0.5);
 }
 .docTargetAction-top{
 	@extend %docTargetAction;
-	@extend %docTargetAction-arrow;
 	position: relative;
 	z-index: 3;
 	@include supportsFixed(){
@@ -129,13 +117,14 @@ $docTargetNavBoxShadow: 0 0 10px rgba(map-get($colors, shadow), 0.5);
 			bottom: -$docTargetActionBorderWidth;
 			box-shadow: $docTargetNavBoxShadow;
 			left: 0;
-			padding-left: $docTargetActionWidthHeight + $docTargetActionBorderWidth;
+			padding-left: $docTargetActionWidthHeight;
+			padding-left: $docTargetActionWidthHeight - $docTargetActionBorderWidth / 3;
 			position: fixed;
 		}
 		@include fixedNavMQ(map-get($bp, medium)){
 			bottom: 50%;
 			padding-left: 0;
-			padding-top: $docTargetActionWidthHeight + $docTargetActionBorderWidth;
+			padding-top: $docTargetActionWidthHeight + $docTargetActionBorderWidth * 2;
 			transform: translateY(50%);
 			width: $docTargetActionWidthHeight;
 		}
