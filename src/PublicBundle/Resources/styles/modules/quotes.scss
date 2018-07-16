@@ -1,0 +1,32 @@
+.attribution{
+	margin: 0.5em 0 1.5em;
+	text-align: right;
+}
+blockquote{
+	@extend %block;
+	@include colorFallback('border-left', 3px solid rgba(map-get($colors, border), 0.6));
+	margin-left: 0;
+	padding: 1em 0.5em 1em 2em;
+	position: relative;
+	&:after, &:before{
+		@extend %font-bold;
+		@include colorFallback('color', rgba(map-get($colors, strong), 0.6));
+		font-size: 2em;
+		line-height: 1;
+	}
+	&:after{
+		content: "”";
+		display: inline-block;
+		height: 0;
+		line-height: 0;
+		position: relative;
+		top: 1em;
+		width: 0;
+	}
+	&:before{
+		content: "“";
+		left: 0.3em;
+		position: absolute;
+		top: 0.2em;
+	}
+}

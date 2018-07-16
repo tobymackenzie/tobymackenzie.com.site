@@ -45,34 +45,6 @@ b em, b i, em b, em strong, i b, i strong, strong em, strong i{
 	//-# only really necessary if using @font-face with a bold italic variant and having these combinations of elements.  Uncomment if desired.
 	//-! @extend %font-boldItalic;
 }
-blockquote{
-	@extend %block;
-	@include colorFallback('border-left', 3px solid rgba(map-get($colors, border), 0.6));
-	margin-left: 0;
-	padding: 1em 0.5em 1em 2em;
-	position: relative;
-	&:after, &:before{
-		@extend %font-bold;
-		@include colorFallback('color', rgba(map-get($colors, strong), 0.6));
-		font-size: 2em;
-		line-height: 1;
-	}
-	&:after{
-		content: "”";
-		display: inline-block;
-		height: 0;
-		line-height: 0;
-		position: relative;
-		top: 1em;
-		width: 0;
-	}
-	&:before{
-		content: "“";
-		left: 0.3em;
-		position: absolute;
-		top: 0.2em;
-	}
-}
 em, i{
 	//-# only really necessary if using @font-face with an italic variant
 	@extend %font-italic;
