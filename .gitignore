@@ -9,6 +9,7 @@ node_modules/
 /app/data/
 /app/files/*
 !/app/files/wp-uploads/.gitkeep
+/app/pages/
 /app/web/sites/
 /app/web/temp/
 /app/web/tmp/
