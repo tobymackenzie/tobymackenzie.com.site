@@ -20,9 +20,9 @@ class DefaultController extends Controller{
 			throw $this->createNotFoundException("Format {$_format} not currently supported");
 		}
 		$lowerCaseId = strtolower($id);
-		$basePath = $pagesService->getPagePath($lowerCaseId);
-		$fileData = $pagesService->getPageDataPath($lowerCaseId);
-		if(!file_exists($fileData)){
+		$page = $pagesService->getPage($lowerCaseId);
+
+		if(!$page){
 			throw $this->createNotFoundException("No data found for id '{$id}'");
 		}
 		//--make sure our id is lowercase
@@ -40,16 +40,15 @@ class DefaultController extends Controller{
 		if(!isset($_format)){
 			$_format = 'html';
 		}
-		$fileData = json_decode(file_get_contents($fileData), true);
-		$content = file_get_contents($basePath . '/' . ($fileData['fileName'] ?? $id . '.txt'));
-		$fileNamePieces = explode('.', $fileData['fileName'], 1);
+
+		$fileNamePieces = explode('.', $page->getFileName(), 1);
 		$fileExt = $fileNamePieces[2] ?? 'txt';
 		switch($fileExt){
 			case 'html':
 				switch($request->getRequestFormat()){
 					case 'md':
 					case 'txt':
-						$content = $this->get('htmlToMarkdown')->convert($content);
+						$page->setContent($this->get('htmlToMarkdown')->convert($page->getContent()));
 					break;
 				}
 			break;
@@ -58,24 +57,24 @@ class DefaultController extends Controller{
 				switch($request->getRequestFormat()){
 					case 'html':
 					case 'xhtml':
-						$content = $this->get('markdownToHtml')->text($content);
+						$page->setContent($this->get('markdownToHtml')->text($page->getContent()));
 						//--fix line breaks
 						//-# not sure why we have to do this, as they are correct in the content and it doesn't look like parsedown should mangle them
-						$content = str_ireplace('<br>', '<br />', $content);
+						$page->setContent(str_ireplace('<br>', '<br />', $page->getContent()));
 					break;
 					case 'txt':
-						$content = $this->get('htmlToMarkdown')->convertInMarkdown($content);
+						$page->setContent($this->get('htmlToMarkdown')->convertInMarkdown($page->getContent()));
 					break;
 				}
 			break;
 		}
 		$data = [
-			'content'=> $content
+			'content'=> $page->getContent()
 			,'request'=> $request
 		];
 
 		//--set title for pages with names besides home page
-		$name = $fileData['title'] ?? null;
+		$name = $page->hasTitle() ? $page->getTitle() : null;
 		if(!$name){
 			$name = ucwords(
 				str_replace('/', ': ',
