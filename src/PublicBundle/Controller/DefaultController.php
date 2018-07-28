@@ -25,6 +25,12 @@ class DefaultController extends Controller{
 		if(!$page){
 			throw $this->createNotFoundException("No data found for id '{$id}'");
 		}
+
+		//--redirect if page type is redirect
+		if($page->getType() === 'redirect'){
+			return $this->redirect($page->getContent());
+		}
+
 		//--make sure our id is lowercase
 		if($lowerCaseId !== $id){
 			return $this->redirect($lowerCaseId);

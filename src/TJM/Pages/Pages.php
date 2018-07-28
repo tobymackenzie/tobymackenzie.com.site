@@ -20,10 +20,17 @@ class Pages{
 		$page = new Page(json_decode(file_get_contents($data), true));
 		$page->setId($id);
 		if(!$page->hasContent()){
-			if(!$page->hasFileName()){
-				$page->setFileName($id . '.txt');
+			switch($page->getType()){
+				case 'file':
+					if(!$page->hasFileName()){
+						$page->setFileName($id . '.txt');
+					}
+					$page->setContent($this->fileStore->getFileContents($id, $page->getFileName()));
+				break;
+				case 'redirect':
+					$page->setContent('/');
+				break;
 			}
-			$page->setContent($this->fileStore->getFileContents($id, $page->getFileName()));
 		}
 		return $page;
 	}

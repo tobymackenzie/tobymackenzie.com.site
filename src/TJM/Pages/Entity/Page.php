@@ -7,4 +7,5 @@ class Page extends Model{
 	protected $id;
 	protected $fileName;
 	protected $title;
+	protected $type = 'file';
 }
