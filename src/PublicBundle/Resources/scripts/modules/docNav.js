@@ -2,9 +2,10 @@
 import {addListener as _addListener} from '../ua/dom.js';
 import {baseCut as _cutsMustard} from '../ua/mustardCut.js';
 
-var _docMain = document.getElementById('docMain');
+var _appMain = document.getElementById('appMain');
 var _math = window.Math;
-if(_cutsMustard && _docMain && _math && window.scrollTo && _docMain.setAttribute){
+if(_cutsMustard && _appMain && _math && window.scrollTo && _appMain.setAttribute){
+	//-!! https://developer.mozilla.org/en-US/docs/Web/API/Document/compatMode
 	var _de = (document.compatMode === 'CSS1Compat' ? document.documentElement : document.body);
 	//-@ http://stackoverflow.com/a/18284182/1139122
 	var _wHeight = (typeof window.innerHeight !== 'undefined'
@@ -85,7 +86,7 @@ if(_cutsMustard && _docMain && _math && window.scrollTo && _docMain.setAttribute
 	var _docNavItems = [
 		{
 			link: document.getElementById('main-link')
-			,focus: _docMain
+			,focus: _appMain
 		}
 		,{
 			link: document.getElementById('bottom-link')

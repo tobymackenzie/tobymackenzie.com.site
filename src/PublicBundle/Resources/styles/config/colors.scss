@@ -37,8 +37,14 @@ $colors: map-merge($colors, (
 Colors named for what they will be styling.  These are to be used in other files.  Do not define colors directly here.
 =====*/
 $colors: map-merge($colors, (
+	primaryBG: map-get($namedColors, whiteGreen),
+	primaryFG: map-get($namedColors, blackGreen),
+	primaryLinkFG: map-get($namedColors, aGreen),
+	secondaryBG: map-get($namedColors, darkGreen),
+	secondaryFG: map-get($namedColors, whiteGreen),
+	secondaryLinkFG: map-get($namedColors, lightGreen),
 	baseBG: map-get($namedColors, baseGreen),
-	baseFG: map-get($namedColors, blackGreen),
+	baseFG: map-get($namedColors, lighterGreen),
 	border: map-get($namedColors, darkGreen),
 	boxOutline: map-get($namedColors, darkGreen),
 	chromeHeaderBG: map-get($namedColors, darkGreen),
@@ -47,12 +53,10 @@ $colors: map-merge($colors, (
 	docNavIcon: map-get($namedColors, strongGreen),
 	heading: map-get($namedColors, strongGreen),
 	linkBG: map-get($namedColors, lightGreen),
-	linkFG: map-get($namedColors, aGreen),
 	linkFGActive: map-get($namedColors, purple),
 	linkFGFocus: map-get($namedColors, strongGreen),
 	linkFGVisited: map-get($namedColors, aVisitedGreen),
 	logo: map-get($namedColors, purple),
-	mainBG: map-get($namedColors, whiteGreen),
 	mainBorder: map-get($namedColors, baseGreen),
 	shadow: map-get($namedColors, blackGreen),
 	strong: map-get($namedColors, strongGreen)

@@ -1,0 +1,89 @@
+//==shared
+@mixin primaryAreaColors(){
+	background: map-get($colors, primaryBG);
+	color: map-get($colors, primaryFG);
+}
+%primaryAreaColors{
+	@include primaryAreaColors;
+	a{
+		color: map-get($colors, primaryLinkFG);
+		text-decoration-color: rgba(map-get($colors, primaryLinkFG), 0.4);
+	}
+}
+%secondaryAreaColors{
+	background: map-get($colors, secondaryBG);
+	color: map-get($colors, secondaryFG);
+	a{
+		color: map-get($colors, secondaryLinkFG);
+		text-decoration-color: rgba(map-get($colors, secondaryLinkFG), 0.4);
+	}
+}
+
+//==specific
+%appBodyColors{
+	background: map-get($colors, baseBG);
+	background: rgba(map-get($colors, baseBG), 0.95);
+	color: map-get($colors, baseFG);
+}
+%appColors{
+	@include mq(map-get($bp, medium)){
+		border-color: map-get($colors, secondaryBG);
+	}
+}
+@mixin appContainerColors(){
+	border-color: map-get($colors, secondaryBG);
+}
+%appContainerColors{
+	@include appContainerColors;
+}
+%appDocColors{
+	background: map-get($colors, baseBG);
+}
+%appFooterColors{
+	@extend %appContainerColors;
+	@extend %secondaryAreaColors;
+}
+%appHeaderColors{
+	@extend %appContainerColors;
+	@extend %secondaryAreaColors;
+}
+%appMainColors{
+	@extend %appContainerColors;
+}
+%appNavAreaColors{
+	@extend %appContainerColors;
+	@extend %primaryAreaColors;
+}
+@mixin appNavItemActionColors(){
+	@include appContainerColors;
+	@include supportsGrid{
+		@include primaryAreaColors;
+	}
+}
+%contentAreaColors{
+	@extend %primaryAreaColors;
+	a{
+		@extend %highlightedBGActions;
+		&:active, &:focus, &:hover{
+			color: map-get($colors, linkFGFocus);
+		}
+		&:visited{
+			color: map-get($colors, linkFGVisited);
+		}
+		&:active{
+			color: map-get($colors, linkFGActive);
+		}
+	}
+	p{
+		&:first-letter{
+			color: map-get($colors, strong);
+			font-weight: bold;
+			@include mq('print'){
+				color: #000000;
+			}
+		}
+	}
+}
+%mainItemColors{
+	@extend %contentAreaColors;
+}

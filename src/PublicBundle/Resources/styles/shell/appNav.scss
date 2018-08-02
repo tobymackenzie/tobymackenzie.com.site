@@ -1,0 +1,48 @@
+.appNav{
+	@extend %appNavAreaColors;
+	@extend %appNavLayout;
+}
+.appNavItem{
+	@extend %appNavItemLayout;
+}
+.appNavAction{
+	@extend %appNavItemActionLayout;
+	&.appNavAction{ //--beat specificity of links in secondary area
+		@include appNavItemActionColors();
+	}
+}
+.appNavItemHash{
+	@extend %appNavItemHashLayout;
+}
+.appNavItemText{
+	@extend %appNavItemTextLayout;
+}
+.appNavList{
+	@extend %appNavListLayout;
+}
+.appRestartNav{
+	@extend %appNavAreaColors;
+	@extend %appRestartNavLayout;
+}
+
+//--specific
+.appBottomAction, .appMainAction, .appRestartAction{
+	&:before{
+		@extend %appNavItemIconLayout;
+	}
+}
+.appBottomAction{
+	&:before{
+		@extend %icm-bottom;
+	}
+}
+.appMainAction{
+	&:before{
+		@extend %icm-file-text;
+	}
+}
+.appRestartAction{
+	&:before{
+		@extend %icm-top;
+	}
+}

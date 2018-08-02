@@ -1,64 +1,25 @@
+.app{
+	@extend %appColors;
+	@extend %appLayout;
+}
 body{
-	background: map-get($colors, baseBG);
-	background: rgba(map-get($colors, baseBG), 0.95);
-	margin: auto;
-	min-height: 100%; min-height: 100vh;
-	opacity: 0.95;
-	padding: 0;
+	@extend %appBodyColors;
+	@extend %appFonts;
+	@extend %appGrungeChild;
+	margin: 0;
+	padding: 0 0 0.5em;
 	position: relative;
-	@include mq('print'){
-		opacity: 1;
-	}
 }
 html{
-	background: map-get($colors, baseBG);
-	background-image: none, url('/bundles/public/grunge-pattern.png'); //-# `none,` to hide grunge background in some older browsers that show it full blast
-	margin: auto;
-	height: 100%;
+	@extend %appDocColors;
+	@extend %appGrunge;
+	@extend %tenBasedRem;
 	padding: 0;
-	position: relative;
-}
-.docBody{
-	align-items: stretch;
-	display: flex; //-# used to swap order of header and doc nav
-	flex-direction: column;
-	margin-bottom: 1em;
-	@include supportsFixed(){
-		display: block; //-# flex contains margins, preventing hover from going through to background
-		@include fixedNavMQ(){
-			margin-bottom: 0;
-			//--make room for nav
-			padding-bottom: 1em;
-		}
-		//--space for fixed header
-		@include mq('only screen and (min-height: ' + (map-get($bpHeight, 'fixedHeader') * 1em) + ')'){
-			padding-top: 3.6em;
-			@include mq('(min-width: ' + (map-get($bp, "medium") * 1em) + ')'){
-				padding-top: 2.6em;
-			}
-		}
-	}
-
-	//-- ie 10-11 has problem with 'center' and main content width, which goes out of screen bounds when narrower than vp
-	-ms-flex-align: stretch;
-	@include mq(unitless($shellMainWidth)){
-		-ms-flex-align: center;
-	}
-
-	//--padding matching spacing between mainItems
-	@include mq(map-get($bp, medium)){
-		padding-bottom: 1em;
-	}
-	@include mq('screen and (min-width: 48em) and (min-height: 40em)'){
-		padding-bottom: 2em;
-	}
-	@include mq('screen and (min-width: 48em) and (min-height: 50em)'){
-		padding-bottom: 3em;
-	}
+	// position: relative;
 }
 
-//==docBG
-.docBG{
+//==bg
+.appBG{
 	opacity: 0.05; filter: alpha(opacity=5); //-# out here to prevent flash when crossing breakpoint
 	@include mq(map-get($bp, wide)){
 		@include fullContainerCover();
@@ -69,10 +30,4 @@ html{
 			opacity: 0.60; filter: alpha(opacity=60);
 		}
 	}
-}
-
-//--don't show focus ring for non-actionable focused items
-[tabindex='-1']:focus{
-	// outline: 0;
-	// outline: none;
 }

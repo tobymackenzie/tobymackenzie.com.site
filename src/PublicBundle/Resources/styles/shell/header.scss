@@ -1,79 +1,39 @@
-.docHeader{
-	text-align: center;
-	@include mq('print'){
-		text-align: left;
-	}
+.appHeader{
+	@extend %appHeaderColors;
+	@extend %appHeaderLayout;
 }
-.docHeaderWrap{
-	@extend %chromeContainer;
-	background: map-get($colors, chromeHeaderBG);
-	color: map-get($colors, chromeHeaderFG);
-	order: 1;
-	padding: 1em;
-	width: 100%;
-	//-??? fixed header
-	@include mq('only screen and (min-height:' + (map-get($bpHeight, "fixedHeader") * 1em) + ')'){
-		background: rgba(map-get($colors, chromeHeaderBG), 0.9);
-		left: 0;
-		position: fixed;
-		top: 0;
-		z-index: 3;
-	}
-	@include mq(map-get($bp, medium)){
-		box-shadow: 0 0 12px rgba(map-get($colors, shadow), 0.35);
-		outline-bottom: 0.25em solid rgba(map-get($colors, boxOutline), 0.6);
-		padding: map-get($padding, 'chromeDocTopBottom-medium') 2em 1em;
-	}
-	@include mq('print'){
-		padding: 0;
-	}
-}
-.docLogo, .docHeaderTagline{
+.appLogo, .appHeaderTagline{
 	display: inline-block;
 	vertical-align: middle;
 }
-.docHeaderTagline{
+.appHeaderTagline{
 	@extend %wiggleHoverAnimation;
 	transform-origin: left;
 }
-.docHeaderTaglineWVP{
+.appHeaderTaglineWVP{
 	display: none;
 	@include mq(map-get($bp, small)){
 		display: inline;
 	}
 }
-%docLogoBase{
+%appLogoBase{
 	@extend %font-bold;
 	color: map-get($colors, chromeLogo);
 	font-size: map-get($fontSizes, logo);
-	@include mq(map-get($bp, verySmall)){
-		font-size: map-get($fontSizes, logo);
-	}
 }
-.docLogo{
-	@extend %docLogoBase;
+.appLogo{
+	@extend %appLogoBase;
 	@extend %spinHoverAnimation;
 	margin: -0.3em 0;
 	@include mq(map-get($bp, logoTwist)){
 		transform: rotate(-15deg) translate(5px, -1px);
 	}
 }
-.docLogoAction{
-	background: none;
+.appLogoAction{
 	text-decoration: none;
-	transition: none;
-	&.docLogoAction{
-		color: inherit;
-	}
-	&:focus, &:hover{
-		background: none;
-	}
 	@include mq('print'){
 		&:after, &:before{
 			display: none;
 		}
 	}
-}
-.docSiteName, .docSiteDescription{
-	color: map-get($colors, logo);
 }

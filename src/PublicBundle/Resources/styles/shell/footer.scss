@@ -1,10 +1,9 @@
-.docFooterWrap{
-	@extend %mainItem;
-	@extend %mainWrap;
-	order: 4;
+.appFooter{
+	@extend %appFooterColors;
+	@extend %appFooterLayout;
 }
-.docEndLogo{
-	@extend %docLogoBase;
+.appEndLogo{
+	@extend %appLogoBase;
 	//--align right
 	$leftMargin: auto;
 	text-align: right; //--really old browsers
@@ -22,10 +21,5 @@
 		opacity: 1;
 	}
 	//--rest
-	margin: 0 $rightMargin 0 $leftMargin;
-}
-.docSecureMessage{
-	@include mq('print'){
-		display: none;
-	}
+	margin: 0.5em $rightMargin 0 $leftMargin;
 }

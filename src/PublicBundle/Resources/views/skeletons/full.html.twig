@@ -1,4 +1,4 @@
-{% extends '@TJMBase/skeletons/full.html.twig' %}
+{% extends '@TJMBase/skeletons/base.html.twig' %}
 
 {% block docTitleWrap %}
 {{parent()}}
@@ -22,6 +22,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 
 {% block docMeta %}
 {{parent()}}
+<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 {% if canonical is not defined and doc.name != 'error' and (app.request.scheme != 'https' or app.request.host != 'www.tobymackenzie.com') %}
 {%	set canonical = 'https://www.tobymackenzie.com' ~ app.request.server.get('REQUEST_URI') %}
 {% endif %}
@@ -31,15 +32,6 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 <link href="{{path('public_humans', {_format: 'txt'})}}" rel="author" />
 <link href="{{path('public_app_manifest')}}" rel="manifest" />
 {% endblock %}
-
-{% block docJumpWrap %}{% endblock %}
-{% block docFooter %}
-{% if page.secureUrl is defined and doc.name != 'error' %}
-<p class="docSecureMessage">You are visiting this page over unencrypted HTTP.  It is also <a href="{{page.secureUrl}}">available over more secure HTTPS</a> (<a href="https://en.wikipedia.org/wiki/Https">more info on HTTPS</a>).</p>
-{% endif %}
-{% endblock %}
-
-{% block docNavWrap %}{# disable until we get something #}{% endblock %}
 
 {% block docStyles %}
 <link href="{{asset('bundles/public/styles/' ~ app.environment ~ '/main.css')}}" rel="stylesheet" />
@@ -72,29 +64,37 @@ script `type="application/javascript"` to block some old browsers.  blocks IE8- 
 <script{% if app.environment == 'dev' %} type="module"{% else %} async="async" defer="defer" type="application/javascript"{% endif %} src="/bundles/public/scripts/{{app.environment}}/post.js?a"></script>
 {% endblock %}
 
-{% block docHeader %}
-	{% if doc.name != 'home' %}<a class="docLogoAction" href="{{path('public_home')}}">{% endif %}
-		<span class="docLogo">&lt;toby&gt;</span>
-		<span class="docHeaderTagline"><span class="docHeaderTaglineWVP">Site of Toby </span>Mackenzie, web developer</span>
-	{% if doc.name != 'home' %}</a>{% endif %}
-{% endblock %}
-{% block docNav %}{% endblock %}
 
 {% block docBody %}
-{{ parent() }}
-<div id="bottom" class="docEndLogo">&lt;/toby&gt;</div>
-<div class="docTargetNav-bottom"><a class="docTargetAction docTargetAction-top" href="#top" id="top-link"><span class="docTargetText"><span class="docTargetHash">#</span>Page top</span></a></div>
-<div class="docBG"></div>
-{% endblock %}
-
-
-{% block docHeaderWrap %}
 <a name="top"></a>
-<div class="docTargetNav-top">
-	<ul class="docTargetNavList">
-		<li class="docTargetNavItem"><a class="docTargetAction docTargetAction-main" href="#docMain" id="main-link"><span class="docTargetText"><span class="docTargetHash">#</span>Main content</span></a></li>
-		<li class="docTargetNavItem"><a class="docTargetAction docTargetAction-bottom" href="#bottom" id="bottom-link"><span class="docTargetText"><span class="docTargetHash">#</span>Page bottom</span></a></li>
-	</ul>
+<div class="app">
+	<nav class="appNav" aria-label="app">
+		<ul class="appNavList">
+			<li class="appNavItem"><a class="appMainAction appNavAction" href="#appMain" id="main-link"><span class="appNavItemText"><span class="appNavItemHash">#</span>Main content</span></a></li>
+			<li class="appNavItem"><a class="appBottomAction appNavAction" href="#bottom" id="bottom-link"><span class="appNavItemText"><span class="appNavItemHash">#</span>Page bottom</span></a></li>
+		</ul>
+	</nav>
+	<div class="appHeader">
+		<header class="appHeaderContent" role="banner">
+			{% if doc.name != 'home' %}<a class="appLogoAction" href="{{path('public_home')}}">{% endif %}
+				<span class="appLogo">&lt;toby&gt;</span>
+				<span class="appHeaderTagline"><span class="appHeaderTaglineWVP">Site of Toby </span>Mackenzie, web developer</span>
+			{% if doc.name != 'home' %}</a>{% endif %}
+		</header>
+	</div>
+	<div id="appMain" class="appMain"><main class="appMainContent" role="main">
+		{% block docMain %}{% endblock %}
+	</main></div>
+	{% block docAside %}{% endblock %}
+	{% if page.secureUrl is defined and doc.name != 'error' %}
+	<div id="appFooter" class="appFooter">
+		<footer class="appFooterContent" role="contentinfo">
+			<p class="appSecureMessage">You are visiting this page over unencrypted HTTP.  It is also <a href="{{page.secureUrl}}">available over more secure HTTPS</a> (<a href="https://en.wikipedia.org/wiki/Https">more info on HTTPS</a>).</p>
+		</footer>
+	</div>
+	{% endif %}
+	<div class="appRestartNav"><a class="appRestartAction appNavAction" href="#top" id="top-link"><span class="appNavItemText"><span class="appNavItemHash">#</span>Page top</span></a></div>
 </div>
-{{ parent() }}
+<div id="bottom" class="appEndLogo">&lt;/toby&gt;</div>
+<div class="appBG"></div>
 {% endblock %}

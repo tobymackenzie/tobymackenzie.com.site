@@ -39,9 +39,19 @@ Load library dependencies so they are available to other files.  when 'once' fun
 =====*/
 
 /*=====
-==styles
+==features
+=====*/
+@import '../features/appColors';
+@import '../features/appFonts';
+@import '../features/appGrunge';
+@import '../features/appLayout';
+@import '../features/highlightedBGActions';
+@import '../features/tenBasedRem';
 
-These files generate actual styles.  They will have everything they need loaded from above.  Load in an order that avoids specifity problems.
+/*=====
+==modules
+
+Module / element styles.  They will have everything they need loaded from above.  Load in an order that avoids specifity problems.
 
 Lib files could also generate styles.  If there are concerns about specifity problems due to order, consider loading libs down here.
 =====*/
@@ -56,7 +66,7 @@ Lib files could also generate styles.  If there are concerns about specifity pro
 @import '../modules/quotes';
 @import '../shell/base';
 @import '../shell/footer';
-@import '../shell/docNav';
+@import '../shell/appNav';
 @import '../shell/header';
 @import '../shell/main';
 @import '../pages/home';

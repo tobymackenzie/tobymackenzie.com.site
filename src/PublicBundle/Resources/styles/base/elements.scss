@@ -1,15 +1,4 @@
 //==root styles
-body{
-	@extend %font-base;
-	// @extend %fontsize-base;
-	font-size: map-get($fontSizes, base);
-	line-height: 1.6;
-}
-html{
-	color: map-get($colors, baseFG);
-	background: map-get($colors, baseBG);
-	font-size: 62.5%; //-# sets document base font size to 10px with browser defaults, making one rem equal 10 px for easier rem math.  Will automatically scale with user configured default font size.
-}
 [tabindex='-1']:focus{
 	outline: none;
 }
@@ -19,22 +8,8 @@ html{
 	box-sizing: border-box;
 }
 a{
-	background-color: rgba(map-get($colors, linkBG), 0);
-	color: map-get($colors, linkFG);
 	margin: 0;
-	text-decoration-color: rgba(map-get($colors, linkFG), 0.4);
 	text-decoration-skip: ink;
-	transition: background-color 0.15s, color 0.15s;
-	&:active, &:focus, &:hover{
-		background-color: map-get($colors, linkBG); /*background-color: forceRGBA(map-get($colors, linkBG), 1); */
-		color: map-get($colors, linkFGFocus);
-	}
-	&:visited{
-		color: map-get($colors, linkFGVisited);
-	}
-	&:active{
-		color: map-get($colors, linkFGActive);
-	}
 }
 b, strong{
 	//-# only really necessary if using @font-face with a bold variant
@@ -109,13 +84,6 @@ input, select, textarea{
 }
 p{
 	@extend %block;
-	&:first-letter{
-		color: map-get($colors, strong);
-		font-weight: bold;
-		@include mq('print'){
-			color: #000000;
-		}
-	}
 }
 table{
 	border-collapse: collapse;

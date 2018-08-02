@@ -1,0 +1,5 @@
+%appFonts{
+	@extend %font-base;
+	font-size: map-get($fontSizes, base);
+	line-height: 1.6;
+}

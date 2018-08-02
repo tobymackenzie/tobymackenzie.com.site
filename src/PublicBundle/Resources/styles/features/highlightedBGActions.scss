@@ -1,0 +1,7 @@
+%highlightedBGActions{
+	background-color: rgba(map-get($colors, linkBG), 0);
+	transition: background-color 0.15s, color 0.15s;
+	&:active, &:focus, &:hover{
+		background-color: map-get($colors, linkBG);
+	}
+}

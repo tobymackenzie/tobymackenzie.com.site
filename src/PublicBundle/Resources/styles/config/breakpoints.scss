@@ -1,13 +1,15 @@
 $bp: (
-	logoTwist: 23.5
+	tiny: 18
+	,logoTwist: 23.5
 	,verySmall: 25
+	,prettySmall: 30
 	,small: 38
 	,medium: 48 //-# slightly wider than point where body width meets browser width
 	,wide: 55 //-# just wide enough to reasonably be able to see webStuff
 	,veryBerryWide: 100
 );
 $bpHeight: (
-	fixedHeader: 50
+	stickyHeader: 30
 	,medium: 40
 	,tall: 50
 );
