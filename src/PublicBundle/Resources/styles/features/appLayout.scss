@@ -109,7 +109,7 @@ $appNavWidth: 11;
 	}
 }
 %appNavItemActionLayout{
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	@include supportsGrid{
 		border-style: solid;
@@ -169,6 +169,7 @@ $appNavWidth: 11;
 %appRestartNavLayout{
 	@extend %appNavAreaLayout;
 	@extend %appNavItemLayout;
+	display: block;
 	margin: 0;
 	order: 20;
 	@include supportsGrid{
