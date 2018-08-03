@@ -1,5 +1,8 @@
 .doc-home{
 	h1{
 		@extend %sro;
+		+ p{
+			margin-top: 0;
+		}
 	}
 }
