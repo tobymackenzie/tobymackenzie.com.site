@@ -13,6 +13,7 @@
 		}
 		&[href]{
 			break-inside: avoid;
+			page-break-inside: avoid;
 			&:after{
 				content: '](' attr(href) ')';
 				text-decoration: none;

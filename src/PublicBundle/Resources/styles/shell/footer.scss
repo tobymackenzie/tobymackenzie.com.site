@@ -23,3 +23,8 @@
 	//--rest
 	margin: 0.5em $rightMargin 0 $leftMargin;
 }
+.appSecureMessage{
+	@include mq('print'){
+		display: none;
+	}
+}

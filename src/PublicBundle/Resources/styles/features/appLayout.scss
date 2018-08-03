@@ -27,6 +27,11 @@ $appNavWidth: 11;
 		grid-template-rows: max-content max-content max-content;
 		width: fit-content;
 	}
+	@include mq('print'){
+		display: block; //-# grid / flex was causing cut off content in FF
+		min-height: 0; //-# 100vh was cause page break in FF
+		width: auto; //-# could result in narrow content
+	}
 }
 %appContainerLayout{
 	padding: 1em;
@@ -60,6 +65,9 @@ $appNavWidth: 11;
 		border-left-style: solid;
 		border-right-style: solid;
 	}
+	@include mq('print'){
+		border: 0;
+	}
 }
 %appNavAreaLayout{
 	@extend %appContainerLayout;
@@ -70,6 +78,9 @@ $appNavWidth: 11;
 		overflow: visible;
 		padding: 0;
 		width: calc(6px + 3em);
+	}
+	@include mq('print'){
+		display: none !important;
 	}
 }
 %appNavLayout{
