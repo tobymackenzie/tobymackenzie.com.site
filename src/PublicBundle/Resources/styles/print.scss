@@ -24,6 +24,11 @@
 				text-decoration: none;
 			}
 		}
+		&[href^='/']{
+			&:after{
+				content: '](https://www.tobymackenzie.com' attr(href) ')';
+			}
+		}
 		&[href^='#'], &[href^='javascript:']{
 			&:before, &:after{
 				content: '';
@@ -45,6 +50,9 @@
 	}
 	iframe, img, object{
 		max-width: 100% !important;
+	}
+	.sf-toolbar{
+		display: none !important;
 	}
 	thead{
 		display: table-header-group; //-@ h5bp.com/t
