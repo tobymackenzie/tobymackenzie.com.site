@@ -9,7 +9,8 @@ $bp: (
 	,veryBerryWide: 100
 );
 $bpHeight: (
-	stickyHeader: 30
+	//-# sticky is kind of big. make this smaller if we can shrink sticky height
+	stickyHeader: 40
 	,medium: 40
 	,tall: 50
 );
