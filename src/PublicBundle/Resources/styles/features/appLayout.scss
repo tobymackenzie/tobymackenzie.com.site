@@ -3,11 +3,11 @@ $appNavWidth: 11;
 %appLayout{
 	align-content: stretch;
 	display: flex;
+	flex: 1 0 auto; //--push logo to bottom
 	flex-direction: column;
 	justify-content: center;
 	margin: auto;
 	max-width: 100%;
-	min-height: 100vh;
 	width: $shellMainWidth;
 	@include mq(map-get($bp, medium)){
 		border-style: solid;

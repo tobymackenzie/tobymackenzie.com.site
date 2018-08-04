@@ -4,6 +4,7 @@
 }
 .appEndLogo{
 	@extend %appLogoBase;
+	flex: 0 0 auto;
 	//--align right
 	$leftMargin: auto;
 	text-align: right; //--really old browsers
