@@ -16,6 +16,9 @@ services:
    class: TJM\Pages\Pages
    arguments: ['%kernel.project_dir%/app/pages', '@TJM\FileStore\FileStore']
    public: true
+ TJM\Views\Views:
+   arguments: ['@router', '%tjm_base.wraps%']
+   public: true
  ##==controllers
  ProtectedBundle\Controller\:
    resource: '%kernel.project_dir%/src/ProtectedBundle/Controller'
