@@ -32,6 +32,13 @@ class DefaultControllerTest extends WebTestCase{
 			$this->assertContains('</html>', $client->getResponse()->getContent(), 'Content should contain ending </html>, implying that a full html document was rendered.');
 		}
 	}
+	public function testTrailingSlash404(){
+		$path = '/foo/';
+		$client = static::createClient([], ['HTTP_HOST'=> $this->getRequestHost()]); //-# must be here because multiple subsequent requests seem to be able to affect each other if done with the same client
+		$client->request('GET', $path);
+		$this->assertTrue(!$client->getResponse()->isRedirection(), 'Non-existant path ' . $path . ' with trailing slash should not be a redirect.');
+		$this->assertEquals(404, $client->getResponse()->getStatusCode(), 'Status code for ' . $path . ' should be 404, indicating not found.');
+	}
 
 	/*=====
 	==data

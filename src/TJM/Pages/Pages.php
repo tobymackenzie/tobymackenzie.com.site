@@ -36,7 +36,7 @@ class Pages{
 	}
 
 	//--paths
-	protected function getPageDataPath($id){
+	public function getPageDataPath($id){
 		if($id{0} !== '/'){
 			$id = '/' . $id;
 		}
