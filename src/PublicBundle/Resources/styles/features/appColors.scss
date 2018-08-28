@@ -16,6 +16,11 @@
 	a{
 		color: map-get($colors, secondaryLinkFG);
 		text-decoration-color: rgba(map-get($colors, secondaryLinkFG), 0.4);
+		&:focus, &:hover{
+			background: rgba(map-get($colors, secondaryLinkFocusBG), 0.3);
+			color: map-get($colors, secondaryLinkFocusFG);
+			text-decoration-color: rgba(map-get($colors, secondaryLinkFocusFG), 0.4);
+		}
 	}
 }
 

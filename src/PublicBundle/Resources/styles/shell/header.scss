@@ -31,6 +31,10 @@
 }
 .appLogoAction{
 	text-decoration: none;
+	&:focus:focus, &:hover:hover{
+		//--fight default link styles
+		background: none;
+	}
 	@include mq('print'){
 		&:after, &:before{
 			display: none;

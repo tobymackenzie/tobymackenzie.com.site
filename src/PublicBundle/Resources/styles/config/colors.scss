@@ -43,6 +43,8 @@ $colors: map-merge($colors, (
 	secondaryBG: map-get($namedColors, darkGreen),
 	secondaryFG: map-get($namedColors, whiteGreen),
 	secondaryLinkFG: map-get($namedColors, lightGreen),
+	secondaryLinkFocusFG: map-get($namedColors, lighterGreen),
+	secondaryLinkFocusBG: map-get($namedColors, aGreen),
 	baseBG: map-get($namedColors, baseGreen),
 	baseFG: map-get($namedColors, lighterGreen),
 	border: map-get($namedColors, darkGreen),
