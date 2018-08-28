@@ -1,0 +1,7 @@
+{% extends '@Public/skeletons/simple.html.twig' %}
+
+{% block docBody %}
+<nav class="siteNav" aria-label="site">
+{% include '@Public/modules/siteNavList.html.twig' with {'items': items} %}
+</nav>
+{% endblock %}

@@ -1,0 +1,71 @@
+.siteNav{
+	@extend %appContainerLayout;
+	@extend %secondaryAreaColors;
+	padding: 1.5em;
+	font-size: 1.2em;
+	.app &{
+		bottom: 0;
+		max-width: 90%;
+		overflow: auto;
+		position: fixed;
+		right: 0;
+		top: 0;
+	}
+	&Action{
+		display: inline-block;
+		text-decoration: none;
+		white-space: nowrap;
+	}
+	&Item{
+		padding: 0 0.5em;
+		* + &{
+			margin-top: 0.6em;
+		}
+	}
+	&List{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		* + &{
+			margin-top: 0.6em;
+		}
+		& &{
+			margin-left: 2em;
+		}
+	}
+}
+
+//==icons
+.siteNavAction{
+	&:before{
+		content: '•';
+		margin-right: 0.8em;
+		vertical-align: middle;
+	}
+	&[data-type]{
+		&:before{
+			filter: hue-rotate(0) brightness(5) saturate(0.5); //-! change color of icons. would be nice if we could do this a different way.  could use tweaking
+			filter: brightness(6); //-! change color of icons. would be nice if we could do this a different way.  could use tweaking
+		}
+	}
+	&[data-type='about']{
+		&:before{
+			@extend %icm-about;
+		}
+	}
+	&[data-type='home']{
+		&:before{
+			@extend %icm-home;
+		}
+	}
+	&[data-type='blog']{
+		&:before{
+			@extend %icm-writings;
+		}
+	}
+	&:focus, &:hover{
+		&:before{
+			filter: brightness(7);
+		}
+	}
+}

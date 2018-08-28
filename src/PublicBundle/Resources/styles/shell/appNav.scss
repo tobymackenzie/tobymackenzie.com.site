@@ -26,7 +26,7 @@
 }
 
 //--specific
-.appBottomAction, .appMainAction, .appRestartAction{
+.appBottomAction, .appMainAction, .appRestartAction, .appSiteNavAction{
 	&:before{
 		@extend %appNavItemIconLayout;
 	}
@@ -44,5 +44,10 @@
 .appRestartAction{
 	&:before{
 		@extend %icm-top;
+	}
+}
+.appSiteNavAction{
+	&:before{
+		@extend %icm-menu;
 	}
 }

@@ -1,0 +1,15 @@
+{% if level is not defined %}
+{%	set level = 1 %}
+{% endif %}
+{% set tabs = '' %}
+{% if level > 1 %}
+{% for i in 2..level %}
+{%	set tabs = '\t' ~ tabs %}
+{% endfor %}
+{% endif %}
+{% for item in items %}
+{{tabs}}- [{{item.label}}]({{item.url}})
+{%	if item.items is defined %}
+{% include '@Public/modules/siteNavList.txt.twig' with {'items': item.items, 'level': level + 1} %}
+{%	endif %}
+{% endfor %}

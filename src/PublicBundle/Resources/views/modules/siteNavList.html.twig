@@ -1,0 +1,10 @@
+<ul class="siteNavList">
+{% for item in items %}
+	<li class="siteNavItem">
+		<a class="siteNavAction"{% if item.type is defined %} data-type="{{item.type}}"{% endif %} href="{{item.url}}">{{item.label}}</a>
+{%	if item.items is defined %}
+		{% include '@Public/modules/siteNavList.html.twig' with {'items': item.items} %}
+{%	endif %}
+	</li>
+{% endfor %}
+</ul>

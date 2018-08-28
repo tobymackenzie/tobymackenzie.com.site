@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RouterInterface;
 
 class MetaController extends Controller{
 	public function appManifestAction(Request $request){
@@ -199,6 +200,78 @@ class MetaController extends Controller{
 		$response->setPublic();
 		$response->setMaxAge(86400);
 		// $response->headers->set('X-Reverse-Proxy-TTL', 3600000);
+		return $response;
+	}
+	public function siteNavAction(
+		Request $request
+		,RouterInterface $router
+		, $_format = null
+	){
+		if(!in_array($_format, DefaultController::SUPPORTED_FORMATS)){
+			throw $this->createNotFoundException("Format {$_format} not currently supported");
+		}
+		//--strip 'html' format, since that is the default
+		if($_format === 'html'){
+			$routeName = preg_replace('/_formatted$/', '', $request->get('_route'));
+			$routeParams = $request->get('_route_params');
+			unset($routeParams['_format']);
+			return $this->redirect($router->generate($routeName, $routeParams));
+		}
+		//--if format isn't in url, it is 'html'
+		if(!isset($_format)){
+			$_format = $templateFormat = 'html';
+		}elseif($_format === 'xhtml'){
+			$templateFormat = 'html';
+		}elseif($_format === 'md'){
+			$templateFormat = 'txt';
+		}else{
+			$templateFormat = $_format;
+		}
+		$routeFormat = ($_format === 'html' ? null : $_format);
+		$routeReferenceType = ($templateFormat === 'txt' ? UrlGeneratorInterface::ABSOLUTE_URL : UrlGeneratorInterface::ABSOLUTE_PATH);
+
+		$data = [
+			'items'=> [
+				[
+					'items'=> [
+						[
+							'label'=> 'WWW'
+							,'url'=> '/blog/categories/www/'
+						]
+						,[
+							'label'=> 'Toby'
+							,'url'=> '/blog/categories/toby/'
+						]
+						,[
+							'label'=> 'Computer'
+							,'url'=> '/blog/categories/computer/'
+						]
+						,[
+							'label'=> 'Ideas'
+							,'url'=> '/blog/categories/ideas/'
+						]
+						,[
+							'label'=> 'Et Cetera'
+							,'url'=> '/blog/categories/et-cetera/'
+						]
+					]
+					,'label'=> 'Blog'
+					,'type'=> 'blog'
+					,'url'=> '/blog/'
+				]
+				,[
+					'label'=> 'About'
+					,'type'=> 'about'
+					,'url'=> $router->generate($routeFormat ? 'public_page_formatted' : 'public_page', ['_format'=> $routeFormat, 'id'=> 'about'], $routeReferenceType)
+				]
+				,[
+					'label'=> 'Home'
+					,'type'=> 'home'
+					,'url'=> $router->generate($routeFormat ? 'public_home_formatted' : 'public_home', ['_format'=> $routeFormat], $routeReferenceType)
+				]
+			]
+		];
+		$response = $this->renderPage('@Public/meta/site-nav.' . $templateFormat . '.twig', $data);
 		return $response;
 	}
 	public function showExceptionAction($code){
