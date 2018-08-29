@@ -272,6 +272,8 @@ class MetaController extends Controller{
 			]
 		];
 		$response = $this->renderPage('@Public/meta/site-nav.' . $templateFormat . '.twig', $data);
+		$response->setPublic();
+		$response->setMaxAge(21600); //-# 6 hours
 		return $response;
 	}
 	public function showExceptionAction($code){
