@@ -70,6 +70,17 @@ $appNavWidth: 13;
 		border: 0;
 	}
 }
+%appMainFooterLayout, %appMainHeaderLayout{
+	@extend %appContainerLayout;
+	@include remFallback('padding-bottom', 16px);
+	@include remFallback('padding-top', 16px);
+}
+%appMainFooterLayout{
+	border-width: 3px;
+	* + &{
+		border-top-style: solid;
+	}
+}
 %appNavAreaLayout{
 	@extend %appContainerLayout;
 	overflow: auto;
@@ -203,5 +214,23 @@ $appNavWidth: 13;
 	}
 	@include mq(map-get($bp, medium)){
 		padding: 3.2rem;
+	}
+}
+%mainItemContentLayout{
+	@extend %block;
+	* + &{
+		@include remFallback('margin-top', 2.5rem);
+	}
+}
+%mainItemHeaderLayout{
+	@extend %block;
+	> h1, > h2{
+		margin: 0;
+	}
+}
+%mainItemMetaLayout{
+	> *{
+		display: inline-block;
+		margin-right: 1em;
 	}
 }

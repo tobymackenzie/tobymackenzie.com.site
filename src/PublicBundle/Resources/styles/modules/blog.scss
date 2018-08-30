@@ -1,0 +1,76 @@
+//==comments
+.comment-respond{
+	@extend %block;
+}
+.commentsList{
+	&, & .children{
+		@extend %block;
+		list-style: none;
+		margin-left: 0;
+		padding: 0;
+	}
+	li{
+		@extend %block;
+		border: 1px solid;
+		padding: 0.5em;
+	}
+}
+
+//==posts
+%postMetaProp{
+	display: inline-block;
+}
+%postMetaPropHeading{
+	&:after{
+		content: ': ';
+	}
+}
+%postMetaPropList{
+	display: inline-block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.post{
+	@extend %mainItemColors;
+	@extend %mainItemLayout;
+	.more-link{
+		@extend %block;
+		display: inline-block;
+	}
+}
+.postAside{
+	@extend %mainItemColors;
+	@extend %mainItemLayout;
+}
+.postCat{
+	@extend %postMetaProp;
+}
+.postCatsHeading{
+	@extend %postMetaPropHeading;
+}
+.postCatsList{
+	@extend %postMetaPropList;
+}
+.postContent{
+	@extend %mainItemContentLayout;
+}
+.postHeader{
+	@extend %mainItemHeaderLayout;
+}
+.postHeaderExtra{
+	text-align: right;
+}
+.postMeta{
+	@extend %mainItemMetaLayout;
+}
+.postTag{
+	@extend %postMetaProp;
+}
+.postTagsHeading{
+	@extend %postMetaPropHeading;
+}
+.postTagsList{
+	@extend %postMetaPropList;
+}

@@ -20,6 +20,18 @@ b em, b i, em b, em strong, i b, i strong, strong em, strong i{
 	//-# only really necessary if using @font-face with a bold italic variant and having these combinations of elements.  Uncomment if desired.
 	//-! @extend %font-boldItalic;
 }
+code{
+	background: map-get($colors, codeBG);
+	color: map-get($colors, codeFG);
+	display: inline-block; //-# prevents wrapping of element
+	padding: 0.1em 0.4em;
+	vertical-align: middle; //-# baseline seems off, this looks best
+	pre &{
+		display: block;
+		overflow: auto;
+		padding: 1em;
+	}
+}
 em, i{
 	//-# only really necessary if using @font-face with an italic variant
 	@extend %font-italic;
@@ -85,10 +97,20 @@ input, select, td, textarea, th{
 input, select, textarea{
 	max-width: 100%;
 }
+ins{
+	background: map-get($colors, insertBG);
+	text-decoration: none;
+}
 p{
 	@extend %block;
 }
+pre{
+	@extend %block;
+	max-width: 100%;
+	overflow: auto;
+}
 table{
+	@extend %block;
 	border-collapse: collapse;
 	border-spacing: 0;
 }

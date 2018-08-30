@@ -20,6 +20,7 @@ $namedColors: (
 	,lighterGreen: lighten($namedColors-alt, 5%)
 	,aGreen: #447744
 	,aVisitedGreen: darken($namedColors, 10%)
+	,nearBlack: #002200
 	,whiteGreen: lighten($namedColors, 60%)
 );
 
@@ -40,20 +41,26 @@ $colors: map-merge($colors, (
 	primaryBG: map-get($namedColors, whiteGreen),
 	primaryFG: map-get($namedColors, blackGreen),
 	primaryLinkFG: map-get($namedColors, aGreen),
-	secondaryBG: map-get($namedColors, darkGreen),
+	secondaryBG: map-get($namedColors, blackGreen),
 	secondaryFG: map-get($namedColors, whiteGreen),
 	secondaryLinkFG: map-get($namedColors, lightGreen),
 	secondaryLinkFocusFG: map-get($namedColors, lighterGreen),
 	secondaryLinkFocusBG: map-get($namedColors, aGreen),
+	tertiaryBG: map-get($namedColors, darkGreen),
+	tertiaryFG: map-get($namedColors, whiteGreen),
+	tertiaryLinkFG: map-get($namedColors, lightGreen),
 	baseBG: map-get($namedColors, baseGreen),
 	baseFG: map-get($namedColors, lighterGreen),
-	border: map-get($namedColors, darkGreen),
+	border: map-get($namedColors, blackGreen),
 	boxOutline: map-get($namedColors, darkGreen),
 	chromeHeaderBG: map-get($namedColors, darkGreen),
 	chromeHeaderFG: map-get($namedColors, lighterGreen),
 	chromeLogo: map-get($namedColors, lightGreen),
+	codeFG: map-get($namedColors, lighterGreen),
+	codeBG: map-get($namedColors, blackGreen),
 	docNavIcon: map-get($namedColors, strongGreen),
 	heading: map-get($namedColors, strongGreen),
+	insertBG: map-get($namedColors, lighterGreen),
 	linkBG: map-get($namedColors, lightGreen),
 	linkFGActive: map-get($namedColors, purple),
 	linkFGFocus: map-get($namedColors, strongGreen),

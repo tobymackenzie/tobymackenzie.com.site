@@ -1,0 +1,16 @@
+{% extends page.skeleton %}
+{% block docPreScripts %}
+{{parent()}}
+{% if headExtra is defined %}
+{{headExtra|raw}}
+{% endif %}
+{% endblock %}
+{%block docMain %}
+	{{content|raw}}
+{% endblock %}
+{% block docPostScripts %}
+{{parent()}}
+{% if footExtra is defined %}
+{{footExtra|raw}}
+{% endif %}
+{% endblock %}

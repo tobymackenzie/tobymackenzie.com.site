@@ -1,0 +1,6 @@
+.sro{
+	@extend %sro;
+	a:focus &{
+		@extend %sroOff;
+	}
+}

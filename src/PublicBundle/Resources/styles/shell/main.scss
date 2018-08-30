@@ -2,7 +2,24 @@
 	@extend %appMainColors;
 	@extend %appMainLayout;
 }
+.appMainFooter{
+	@extend %appMainFooterColors;
+	@extend %appMainFooterLayout;
+}
+.appMainHeader{
+	@extend %appMainHeaderColors;
+	@extend %appMainHeaderLayout;
+}
 .mainItem{
 	@extend %mainItemColors;
 	@extend %mainItemLayout;
+}
+.mainItemContent{
+	@extend %mainItemContentLayout;
+}
+.mainItemHeader{
+	@extend %mainItemHeaderLayout;
+}
+.mainItemMeta{
+	@extend %mainItemMetaLayout;
 }
