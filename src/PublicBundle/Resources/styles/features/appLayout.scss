@@ -23,7 +23,7 @@ $appNavWidth: 13;
 			'appNav main'
 			'appNav foot'
 		;
-		grid-template-columns: minmax(min-content, max-content) minmax(min-content, #{$shellMainWidth + 4em});
+		grid-template-columns: minmax(min-content, max-content) minmax(6em, #{$shellMainWidth + 4em});
 		grid-template-rows: max-content max-content max-content;
 		width: fit-content;
 	}
