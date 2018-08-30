@@ -34,7 +34,7 @@ $appNavWidth: 13;
 	}
 }
 %appContainerLayout{
-	padding: 1em;
+	padding: 1.6rem;
 	//--move above bg
 	position: relative;
 	z-index: 1;
@@ -193,7 +193,14 @@ $appNavWidth: 13;
 }
 %mainItemLayout{
 	@extend %appContainerLayout;
+	border-width: 3px;
+	* + &{
+		border-top-style: solid;
+	}
+	@include mq(map-get($bp, small)){
+		padding: 3.2rem 1.6rem;
+	}
 	@include mq(map-get($bp, medium)){
-		padding: 2em;
+		padding: 3.2rem;
 	}
 }

@@ -41,6 +41,7 @@ Load library dependencies so they are available to other files.  when 'once' fun
 /*=====
 ==features
 =====*/
+@import '../modules/pre';
 @import '../features/appColors';
 @import '../features/appFonts';
 @import '../features/appGrunge';
@@ -55,7 +56,6 @@ Module / element styles.  They will have everything they need loaded from above.
 
 Lib files could also generate styles.  If there are concerns about specifity problems due to order, consider loading libs down here.
 =====*/
-@import '../modules/pre';
 @import '../base/breakpoints';
 @import '../base/elements';
 @import '../base/fonts';
