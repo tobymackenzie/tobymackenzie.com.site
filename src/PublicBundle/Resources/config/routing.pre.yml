@@ -54,6 +54,10 @@ public_robots:
   controller: PublicBundle:Meta:robots
   path: /robots.{_format}
   defaults: {_format: 'html'}
+public_site_nav:
+  controller: PublicBundle:Meta:siteNav
+  path: /_site-nav.{_format}
+  defaults: {_format: null}
 
 ##--seo
 public_bing_verification:
