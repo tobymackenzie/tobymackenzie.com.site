@@ -61,6 +61,7 @@ $appNavWidth: 13;
 	border-width: 3px;
 	grid-area: main;
 	order: 3;
+	z-index: 1;
 	@include supportsGrid{
 		border-left-style: solid;
 		border-right-style: solid;
