@@ -236,23 +236,23 @@ class MetaController extends Controller{
 					'items'=> [
 						[
 							'label'=> 'WWW'
-							,'url'=> '/blog/categories/www/'
+							,'url'=> '/blog/category/www/'
 						]
 						,[
 							'label'=> 'Toby'
-							,'url'=> '/blog/categories/toby/'
+							,'url'=> '/blog/category/toby/'
 						]
 						,[
 							'label'=> 'Computer'
-							,'url'=> '/blog/categories/computer/'
+							,'url'=> '/blog/category/computer/'
 						]
 						,[
 							'label'=> 'Ideas'
-							,'url'=> '/blog/categories/ideas/'
+							,'url'=> '/blog/category/ideas/'
 						]
 						,[
 							'label'=> 'Et Cetera'
-							,'url'=> '/blog/categories/et-cetera/'
+							,'url'=> '/blog/category/et-cetera/'
 						]
 					]
 					,'label'=> 'Blog'
