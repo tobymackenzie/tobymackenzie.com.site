@@ -113,7 +113,8 @@ add_filter('wp_title', function($title){
 	return $title;
 });
 add_filter('the_title', function($title, $id){
-	if(is_single()){
+	//-# admin post page not seen as in loop
+	if(is_single() || is_admin()){
 		if(!$title || ($title === 'Previous Post' || $title === 'Next Post')){
 			$title = TMComWPTheme::getPostTitle($id);
 		}
