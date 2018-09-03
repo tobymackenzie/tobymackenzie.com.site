@@ -14,129 +14,130 @@ minuses:
 %icm{
 	content: '';
 	display: inline-block;
-	background-repeat: no-repeat;
 	background-image: url('/bundles/public/icomoon/sprite.png');
 	background-image: url('/bundles/public/icomoon/sprite.svg');
+	background-repeat: no-repeat;
+	@include remFallback('background-size', 1412px 124px);
 	flex: 0 0 auto;
 	speak: none;
 }
 %icm-email{
 	@extend %icm;
-	background-position: 0 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', 0 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-packagist{
 	@extend %icm;
-	background-position: -92px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -92px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-home{
 	@extend %icm;
-	background-position: -184px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -184px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-writings{
 	@extend %icm;
-	background-position: -276px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -276px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-file-text{
 	@extend %icm;
-	background-position: -368px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -368px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-about{
 	@extend %icm;
-	background-position: -460px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -460px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-portfolio{
 	@extend %icm;
-	background-position: -552px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -552px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-search{
 	@extend %icm;
-	background-position: -644px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -644px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-settings{
 	@extend %icm;
-	background-position: -736px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -736px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-link{
 	@extend %icm;
-	background-position: -828px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -828px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-info{
 	@extend %icm;
-	background-position: -920px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -920px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-menu{
 	@extend %icm;
-	background-position: -1012px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -1012px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-twitter{
 	@extend %icm;
-	background-position: -1104px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -1104px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-github{
 	@extend %icm;
-	background-position: -1196px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -1196px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-linkedin{
 	@extend %icm;
-	background-position: -1288px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -1288px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-delicious{
 	@extend %icm;
-	background-position: -1380px 0;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -1380px 0);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-stackoverflow{
 	@extend %icm;
-	background-position: 0 -92px;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', 0 -92px);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-bottom{
 	@extend %icm;
-	background-position: -92px -92px;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -92px -92px);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-top{
 	@extend %icm;
-	background-position: -184px -92px;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -184px -92px);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
 %icm-code{
 	@extend %icm;
-	background-position: -276px -92px;
-	height: 32px;
-	width: 32px;
+	@include remFallback('background-position', -276px -92px);
+	@include remFallback('height', 32);
+	@include remFallback('width', 32);
 }
