@@ -1,8 +1,0 @@
-/*
-nomq.scss
-Output file targeting desktop browsers that have no media query support but we still want to give the desktop experience to.  Works by bypassing media queries.
-*/
-
-$mq: (bypass: true);
-
-@import './main';
