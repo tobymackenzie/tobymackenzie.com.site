@@ -35,9 +35,10 @@
 .post{
 	@extend %mainItemColors;
 	@extend %mainItemLayout;
-	.more-link{
-		@extend %block;
-		display: inline-block;
+	.more-link:before{
+		content: '';
+		display: block;
+		@extend %blockMargin;
 	}
 }
 .postAside{
