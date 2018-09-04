@@ -50,13 +50,13 @@
 }
 
 //==blocks
-%blockMargin{
-	@include remFallback('margin-top', 1.5rem);
-}
 %block{
 	margin: 0;
 	padding: 0;
 	* + &{
 		@extend %blockMargin;
 	}
+}
+%blockMargin{
+	@include remFallback('margin-top', 1.5rem);
 }
