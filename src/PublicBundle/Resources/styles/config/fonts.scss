@@ -58,8 +58,6 @@ $fontFamilies: map-merge($fontFamilies, (
 Font sizes, named for where they will be used.
 =====*/
 $fontSizes: map-merge($fontSizes, (
-	root: 10, //-# Root font size for use by `remFallback` mixin. Based on setting font size to 62.5% on the 'html' element, making it 10px if user hasn't changed font size, but it will adjust with users font setting
-	base: 160%,
 	h1: 2em,
 	h2: 1.5em,
 	h3: 1.17em,

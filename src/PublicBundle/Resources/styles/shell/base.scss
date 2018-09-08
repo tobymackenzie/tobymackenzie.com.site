@@ -20,7 +20,6 @@ body{
 html{
 	@extend %appDocColors;
 	@extend %appGrunge;
-	@extend %tenBasedRem;
 	padding: 0;
 	// position: relative;
 }
