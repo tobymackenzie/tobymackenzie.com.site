@@ -34,7 +34,7 @@ $appNavWidth: 13;
 	}
 }
 %appContainerLayout{
-	padding: 1.6rem;
+	padding: remFromPx(16);
 	//--move above bg
 	position: relative;
 	z-index: 1;
@@ -210,16 +210,16 @@ $appNavWidth: 13;
 		border-top-style: solid;
 	}
 	@include mq(map-get($bp, small)){
-		padding: 3.2rem 1.6rem;
+		padding: remFromPx(32) remFromPx(16);
 	}
 	@include mq(map-get($bp, medium)){
-		padding: 3.2rem;
+		padding: remFromPx(32);
 	}
 }
 %mainItemContentLayout{
 	@extend %block;
 	* + &{
-		@include remFallback('margin-top', 2.5rem);
+		@include remFallback('margin-top', 25);
 	}
 }
 %mainItemHeaderLayout{

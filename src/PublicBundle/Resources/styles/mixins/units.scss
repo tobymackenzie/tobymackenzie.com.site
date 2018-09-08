@@ -43,13 +43,13 @@ Output a property with pixel values for non 'rem' supporting browsers followed b
 		//--unitless numbers are added as if they are in pix
 		@if $unit == 'unitless' and $value != 0{
 			$px : append($px, $value + px);
-			$rem: append($rem, ($value / map-get($fontSizes, root) + rem));
+			$rem: append($rem, remFromPx($value));
 		//--px or rem get added to their list and then converted to the other unit
 		}@else if $unit == 'px' or $unit == 'rem'{
 			$unitlessVal: stripUnit($value);
 			@if $unit == 'px'{
 				$px : append($px, $value);
-				$rem: append($rem, ($unitlessVal / map-get($fontSizes, root) + rem));
+				$rem: append($rem, remFromPx($unitlessVal));
 			}@else if $unit == 'rem'{
 				$px : append($px,($unitlessVal * map-get($fontSizes, root) + px));
 				$rem: append($rem, $value);
@@ -77,4 +77,13 @@ Strip the unit from a value that has a unit
 */
 @function stripUnit($num) {
 	@return $num / ($num * 0 + 1);
+}
+
+/*
+Function: remFromPx
+Convert `px` value to `rem` value
+*/
+@function remFromPx($px){
+	$px: stripUnit($px);
+	@return $px / map-get($fontSizes, root) + rem;
 }
