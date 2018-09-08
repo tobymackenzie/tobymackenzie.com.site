@@ -16,6 +16,13 @@
 	}
 }
 
+//==jetpack
+.jp-relatedposts-post-aoverlay.jp-relatedposts-post-aoverlay{
+	&:active, &:focus, &:hover{
+		background: rgba(map-get($colors, linkBG), 0.4);
+	}
+}
+
 //==posts
 %postMetaProp{
 	display: inline-block;
