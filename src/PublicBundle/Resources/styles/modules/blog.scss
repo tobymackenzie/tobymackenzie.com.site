@@ -2,6 +2,10 @@
 .comment-respond{
 	@extend %block;
 }
+.commentContent{
+	//-# comments can have long code "words" that can overflow their container
+	overflow: auto;
+}
 .commentsList{
 	&, & .children{
 		@extend %block;
