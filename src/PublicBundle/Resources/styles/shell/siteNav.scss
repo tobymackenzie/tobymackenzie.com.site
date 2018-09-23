@@ -30,7 +30,9 @@
 			margin-top: 0.6em;
 		}
 		& &{
-			margin-left: 2em;
+			border-left: 3px solid;
+			margin-left: 0.7em;
+			padding-left: 0.4em;
 		}
 	}
 }
@@ -38,14 +40,14 @@
 //==icons
 .siteNavAction{
 	&:before{
-		content: '•';
+		@extend %secondaryAreaIconColors;
+		content: '»';
 		margin-right: 0.8em;
 		vertical-align: middle;
 	}
 	&[data-type]{
 		&:before{
-			filter: hue-rotate(0) brightness(5) saturate(0.5); //-! change color of icons. would be nice if we could do this a different way.  could use tweaking
-			filter: brightness(6); //-! change color of icons. would be nice if we could do this a different way.  could use tweaking
+			filter: brightness(7); //-! change color of icons. would be nice if we could do this a different way.  could use tweaking
 		}
 	}
 	&[data-type='about']{
@@ -61,11 +63,6 @@
 	&[data-type='blog']{
 		&:before{
 			@extend %icm-writings;
-		}
-	}
-	&:focus, &:hover{
-		&:before{
-			filter: brightness(7);
 		}
 	}
 }

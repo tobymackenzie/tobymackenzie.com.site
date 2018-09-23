@@ -20,6 +20,9 @@
 		}
 	}
 }
+%secondaryAreaIconColors{
+	color: map-get($colors, secondaryFG);
+}
 @mixin primaryAreaColors(){
 	background: map-get($colors, primaryBG);
 	color: map-get($colors, primaryFG);
