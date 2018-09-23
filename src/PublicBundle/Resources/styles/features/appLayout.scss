@@ -38,6 +38,9 @@ $appNavWidth: 13;
 	//--move above bg
 	position: relative;
 	z-index: 1;
+	//--prevent overflow of app in very narrow situations
+	max-width: 100%;
+	overflow: auto;
 }
 %appFooterLayout{
 	@extend %appContainerLayout;
