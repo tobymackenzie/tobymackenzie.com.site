@@ -90,6 +90,7 @@ $appNavWidth: 13;
 	@include supportsGrid{
 		justify-self: end;
 		margin-right: -3px;
+		max-width: none; //--override `%appContainerLayout`, causes shrinkage
 		overflow: visible;
 		padding: 0;
 		width: calc(6px + 3em);
