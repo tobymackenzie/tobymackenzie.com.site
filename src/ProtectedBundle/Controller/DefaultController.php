@@ -46,7 +46,9 @@ class DefaultController extends Controller{
 			if($match['_route'] === 'public_base'){
 				$match = null;
 			}
-		}catch(ResourceNotFoundException $e){}
+		}catch(ResourceNotFoundException $e){
+			$match = null;
+		}
 		//-# just in case
 		$routerContext->setHost($requestHost);
 		if(!$match){
