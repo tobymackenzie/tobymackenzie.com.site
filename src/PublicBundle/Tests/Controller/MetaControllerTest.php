@@ -28,7 +28,7 @@ class MetaControllerTest extends WebTestCase{
 	=====*/
 	protected function getRequestHost(){
 		$client = static::createClient();
-		return $client->getContainer()->getParameter('host.prefix') . $client->getContainer()->getParameter('public.host.subdomain') . $client->getContainer()->getParameter('public.host');
+		return $client->getContainer()->getParameter('public.host');
 	}
 	public function getUppercaseNonRedirects(){
 		return [

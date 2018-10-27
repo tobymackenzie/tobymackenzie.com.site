@@ -1,7 +1,7 @@
 security:
  access_control:
   -
-   host: '%host.prefix%%protected.host%'
+   host: '%protected.host%'
    path: '^/%protected.secure.path%'
    roles: ROLE_ADMIN
  encoders:
@@ -12,7 +12,7 @@ security:
    provider: main
    security: false
   protected:
-    host: '%host.prefix%%protected.host%'
+    host: '%protected.host%'
     http_basic:
      realm: '<toby> protected'
      provider: protected

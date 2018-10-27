@@ -1,20 +1,15 @@
 ##==protected
 #-# first because otherwise local dev setup wasn't matching (ie host as 'local')
-_protected_yes_www:
- host: '%host.prefix%{subdomain}%protected.host%'
- requirements:
-  subdomain: '.+'
- resource: "@ProtectedBundle/Resources/config/routing.yes-www.yml"
 _protected_pre:
  defaults:
-  request_host: '%host.prefix%%protected.host%'
+  request_host: '%protected.host%'
  host: '{request_host}'
  resource: "@ProtectedBundle/Resources/config/routing.pre.yml"
  requirements:
   request_host: '%protected.host.test%'
 _protected_post:
  defaults:
-  request_host: '%host.prefix%%protected.host%'
+  request_host: '%protected.host%'
  host: '{request_host}'
  resource: "@ProtectedBundle/Resources/config/routing.post.yml"
  requirements:
@@ -22,9 +17,8 @@ _protected_post:
 #--base for outputting generic URLs
 protected_base:
  defaults:
-  subdomain: null
   url: null
- host: '%host.prefix%%protected.host%'
+ host: '%protected.host%'
  path: /{url}
  requirements:
   url: .*
@@ -32,12 +26,9 @@ protected_base:
 
 
 ##==public
-_public_no_www:
- host: '%host.prefix%%public.host%'
- resource: "@PublicBundle/Resources/config/routing.no-www.yml"
 _public_pre:
  defaults:
-  request_host: '%host.prefix%%public.host.subdomain%%public.host%'
+  request_host: '%public.host%'
  host: '{request_host}'
  resource: "@PublicBundle/Resources/config/routing.pre.yml"
  requirements:
@@ -46,7 +37,7 @@ _TJMBase:
  resource: "@TJMBaseBundle/Resources/config/routingBase.yml"
 _public_post:
  defaults:
-  request_host: '%host.prefix%%public.host.subdomain%%public.host%'
+  request_host: '%public.host%'
  host: '{request_host}'
  resource: "@PublicBundle/Resources/config/routing.post.yml"
  requirements:
@@ -55,10 +46,8 @@ _public_post:
 public_base:
  defaults:
   url: null
-  subdomain: '%host.prefix%%public.host.subdomain%'
- host: '{subdomain}%public.host%'
+ host: '%public.host%'
  path: /{url}
  requirements:
   url: .*
-  subdomain: '.+'
  schemes: [https,http]

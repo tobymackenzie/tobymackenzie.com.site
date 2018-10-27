@@ -12,13 +12,10 @@ parameters:
  protected.db.password: ~
 
  #==domains
- host.prefix: ''
- protected.host: 'me.tobymackenzie.com'
+ protected.host: 'protected.tobymackenzie.com'
  protected.host.test: '^protected\.tobymackenzie\.com'
- public.host: 'tobymackenzie.com'
- public.host.subdomain: 'www.'
+ public.host: 'www.tobymackenzie.com'
  public.host.test: '(^(.*\.)?tobymackenzie\.com$)|(^[0-9\.]+$)|(^.*:.*:.*$)'
- tmname.host: 'tobymackenzie.name'
 
  #==email
  mailer_transport: smtp
