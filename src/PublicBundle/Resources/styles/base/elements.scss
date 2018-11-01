@@ -79,6 +79,11 @@ hr{
 	margin: 1.5em 0;
 	opacity: 0.4;
 }
+li{
+	& + &{
+		margin-top: 0.5em;
+	}
+}
 iframe, img, object{
 	border: 0; //-# ensure images in links don't get borders in some browsers.  ensure iframes don't get borders
 	max-width: 100%; //-# make elements responsive, will scale down with container

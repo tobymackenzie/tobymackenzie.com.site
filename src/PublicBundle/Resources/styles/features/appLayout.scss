@@ -123,7 +123,7 @@ $appNavWidth: 13;
 }
 %appNavItemLayout{
 	display: inline-block;
-	margin-right: 1em;
+	margin: 0 1em 0 0;
 	@include supportsGridOrSticky{
 		z-index: 100;
 	}

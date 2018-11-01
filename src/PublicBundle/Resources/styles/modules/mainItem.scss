@@ -1,7 +1,14 @@
 .mainItemAltFormat{
 	display: inline-block;
+	margin: 0;
+	& + &{
+		margin-left: 0.5em;
+	}
 }
 .mainItemAltFormats{
+	> strong{
+		margin-right: 0.5em;
+	}
 	@include mq('print'){
 		display: none;
 	}
