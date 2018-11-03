@@ -12,7 +12,9 @@
 	position: relative;
 	z-index: 1;
 	//--shrink-to-fit
-	display: table;
+	//-# `display:table` breaks IE5mac
+	width: 5em;
+	width: fit-content;
 	//--subdued, emphasise on hover
 	@extend %wiggleHoverAnimation;
 	$rightMargin: 1em; //--prevent wiggle from overflowing window
