@@ -51,9 +51,9 @@ if($title || $thumbnail){
 <?php
 if(!is_page()){
 ?>
-		<?php if(!$title){ ?><a class="permalink u-url" href="<?=get_the_permalink()?>" title="<?=esc_attr(sprintf(__('Post "%s"', 'tmcom'), $permalinkTitle))?>" rel="bookmark"><?php } ?>
+		<?php if(!$title){ ?><h2 class="postHeading"><a class="permalink u-url" href="<?=get_the_permalink()?>" title="<?=esc_attr(sprintf(__('Post "%s"', 'tmcom'), $permalinkTitle))?>" rel="bookmark"><?php } ?>
 			<time class="dt-published postTime" datetime="<?php the_time('Y-m-d G:i') ?>" pubdate="pubdate"><?php the_time('F jS, Y \a\t G:i') ?></time>
-		<?php if(!$title){ ?></a><?php } ?>
+		<?php if(!$title){ ?></a></h2><?php } ?>
 <?php
 	if(!is_category()){
 		echo TMComWPTheme::$helper->renderer->renderPiece('categories');
