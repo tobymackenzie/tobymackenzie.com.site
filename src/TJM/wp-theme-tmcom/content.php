@@ -14,7 +14,7 @@ if(WP_DEBUG){
 }
 
 //=====content
-$thumbnail = get_the_post_thumbnail();
+$thumbnail = get_the_post_thumbnail(null, (is_single() ? 'full' : 'post-thumbnail'));
 $title = get_the_title();
 $permalinkTitle = ($title ?: TMComWPTheme::getPostTitle(get_the_ID()));
 
