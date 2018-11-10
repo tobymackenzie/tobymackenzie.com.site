@@ -238,3 +238,8 @@ $appNavWidth: 13;
 		margin-right: 1em;
 	}
 }
+%mainItemMetaMainLayout{
+	> *{
+		display: inline-block;
+	}
+}

@@ -48,20 +48,45 @@ if($title || $thumbnail){
 }
 ?>
 	<header class="postMeta">
+		<div class="postMetaMain">
 <?php
 if(!is_page()){
 ?>
-		<?php if(!$title){ ?><h2 class="postHeading"><a class="permalink u-url" href="<?=get_the_permalink()?>" title="<?=esc_attr(sprintf(__('Post "%s"', 'tmcom'), $permalinkTitle))?>" rel="bookmark"><?php } ?>
-			<time class="dt-published postTime" datetime="<?php the_time('Y-m-d G:i') ?>" pubdate="pubdate"><?php the_time('F jS, Y \a\t G:i') ?></time>
-		<?php if(!$title){ ?></a></h2><?php } ?>
+			<?php if(!$title){ ?><h2 class="postHeading"><a class="permalink u-url" href="<?=get_the_permalink()?>" title="<?=esc_attr(sprintf(__('Post "%s"', 'tmcom'), $permalinkTitle))?>" rel="bookmark"><?php } ?>
+				<time class="dt-published postTime" datetime="<?php the_time('Y-m-d G:i') ?>" pubdate="pubdate"><?php the_time('F jS, Y \a\t G:i') ?></time>
+			<?php if(!$title){ ?></a></h2><?php } ?>
 <?php
+	$tagTerms = [];
 	if(!is_category()){
-		echo TMComWPTheme::$helper->renderer->renderPiece('categories');
+		$categories = get_the_category();
+		if($categories){
+			$tagTerms = $categories;
+		}
 	}
-	if(is_single()){
-		echo TMComWPTheme::$helper->renderer->renderPiece('tags', Array('tags'=> get_the_tags()));
+	$tags = get_the_tags();
+	if($tags){
+		$tagTerms = array_merge($tagTerms, $tags);
+	}
+	if($tagTerms){
+?>
+			<div class="postTags">
+				<?=__('in', 'tmcom')?>
+				<ul class="postTagsList">
+<?php
+		foreach($tagTerms as $tag){
+?>
+					<li class="postTag"><a class="postTagAction p-category" href="<?=esc_url(get_tag_link($tag))?>" rel="tag"><?=$tag->name?></a></li>
+<?php
+		}
+?>
+				</ul>
+			</div>
+<?php
 	}
 }
+?>
+		</div>
+<?php
 if(is_single()){
 ?>
 		<?php edit_post_link(__('Edit post', 'tmcom'), '<span class="editActionWrap">', '</span>'); ?>

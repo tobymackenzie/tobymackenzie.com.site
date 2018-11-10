@@ -28,20 +28,6 @@
 }
 
 //==posts
-%postMetaProp{
-	display: inline-block;
-}
-%postMetaPropHeading{
-	&:after{
-		content: ': ';
-	}
-}
-%postMetaPropList{
-	display: inline-block;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
 
 .post{
 	@extend %mainItemColors;
@@ -55,15 +41,6 @@
 .postAside{
 	@extend %mainItemColors;
 	@extend %mainItemLayout;
-}
-.postCat{
-	@extend %postMetaProp;
-}
-.postCatsHeading{
-	@extend %postMetaPropHeading;
-}
-.postCatsList{
-	@extend %postMetaPropList;
 }
 .postContent{
 	@extend %mainItemContentLayout;
@@ -81,12 +58,15 @@
 .postMeta{
 	@extend %mainItemMetaLayout;
 }
-.postTag{
-	@extend %postMetaProp;
+.postMetaMain{
+	@extend %mainItemMetaMainLayout;
 }
-.postTagsHeading{
-	@extend %postMetaPropHeading;
+.postTag{
+	display: inline-block;
 }
 .postTagsList{
-	@extend %postMetaPropList;
+	display: inline;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
