@@ -14,28 +14,35 @@ if(WP_DEBUG){
 }
 
 //=====content
+$thumbnail = get_the_post_thumbnail();
 $title = get_the_title();
 $permalinkTitle = ($title ?: TMComWPTheme::getPostTitle(get_the_ID()));
 
 $postType = TMComWPTheme::getPostType();
 ?>
 <article <?php post_class("post post-default post-" . get_the_ID() . " h-entry mainItem"); ?> id="post-<?php the_ID(); ?>">
-	<header class="postHeader">
-		<?php the_post_thumbnail(); ?>
 <?php
-if($title){
-	if(is_page() || is_single()){
+if($title || $thumbnail){
+?>
+	<header class="postHeader">
+		<?=$thumbnail?>
+<?php
+	if($title){
+		if(is_page() || is_single()){
 ?>
 		<h1 class="postHeading p-name"><?=$title?></h1>
 <?php
-	}else{
+		}else{
 ?>
 		<h2 class="postHeading p-name"><a class="postHeadingAction u-url" href="<?php the_permalink(); ?>"><?=$title?></a></h2>
 <?php
+		}
 	}
-}
 ?>
 	</header>
+<?php
+}
+?>
 	<header class="postMeta">
 <?php
 if(!is_page()){
