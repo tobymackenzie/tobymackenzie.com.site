@@ -25,8 +25,12 @@ $postType = TMComWPTheme::getPostType();
 if($title || $thumbnail){
 ?>
 	<header class="postHeader">
-		<?=$thumbnail?>
 <?php
+	if($thumbnail){
+?>
+		<div class="postHeaderMedia"><?=$thumbnail?></div>
+<?php
+	}
 	if($title){
 		if(is_page() || is_single()){
 ?>

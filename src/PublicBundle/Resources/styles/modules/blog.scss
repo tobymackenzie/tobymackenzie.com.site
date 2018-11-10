@@ -71,6 +71,10 @@
 .postHeader{
 	@extend %mainItemHeaderLayout;
 }
+.postHeaderMedia{
+	margin-bottom: 1em;
+	text-align: center;
+}
 .postHeaderExtra{
 	text-align: right;
 }
