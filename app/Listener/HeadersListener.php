@@ -25,6 +25,10 @@ class HeadersListener{
 		// 	}
 		// }
 
+		if(!$headers->has('X-Cetera')){
+			$headers->set('X-Cetera', 'Hello, fellow humanoids');
+		}
+
 		//--tell browser to keep using https for all requests to the domain
 		if($request->getScheme() === 'https'){
 			if(!$headers->has('Strict-Transport-Security')){
