@@ -15,8 +15,8 @@ Header always set X-Content-Type-Options 'nosniff'
 #==rewrites
 #=====
 
-##==send home page through app.php automatically.  reduce lookups for other indexes
-DirectoryIndex index.php app.php
+##==send home page through _app.php automatically.  reduce lookups for other indexes
+DirectoryIndex index.php _app.php
 
 <IfModule mod_rewrite.c>
 	RewriteEngine On
@@ -70,9 +70,9 @@ DirectoryIndex index.php app.php
 	RewriteCond %{HTTPS} !=on
 	RewriteRule /?_/wp/wp-cron\.php https://www.tobymackenzie.com%{REQUEST_URI} [L,QSA,R=307]
 
-	##==remove 'app.php' from URL to prevent duplicate content
+	##==remove '_app.php' from URL to prevent duplicate content
 	RewriteCond %{ENV:REDIRECT_STATUS} ^$
-	RewriteRule ^app\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
+	RewriteRule ^_app\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
 
 	##==serve files and directories
 	RewriteCond %{REQUEST_FILENAME} -f
@@ -85,7 +85,7 @@ DirectoryIndex index.php app.php
 	RewriteRule ^blog _/wp/index.php [L]
 
 	##==all other routes go through symfony
-	RewriteRule .? %{ENV:BASE}/app.php [L]
+	RewriteRule .? %{ENV:BASE}/_app.php [L]
 </IfModule>
 <IfModule !mod_rewrite.c>
 	<IfModule mod_alias.c>
