@@ -1,7 +1,6 @@
 <?php
 namespace TJM\Bundle\StandardEditionBundle\Component\App;
 
-use Doctrine\Common\Annotations\AnnotationRegistry;
 use Composer\Autoload\ClassLoader;
 
 error_reporting(error_reporting() & ~E_USER_DEPRECATED);
@@ -12,7 +11,6 @@ $app = require_once(__DIR__ . '/config/app.php');
 * @var ClassLoader $app['loader']
 */
 $app['loader'] = require(constant(__NAMESPACE__ . '\VENDOR_DIR') . '/autoload.php');
-AnnotationRegistry::registerLoader(array($app['loader'], 'loadClass'));
 
 /*
 Define configuration used by App singleton, such as paths.
