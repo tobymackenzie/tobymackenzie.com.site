@@ -236,7 +236,7 @@ $appNavWidth: 13;
 		align-self: end;
 		border: 3px solid;
 		border-right: 0;
-		bottom: 0;
+		bottom: -3px; //--hide bottom border until the bottom
 		padding: 0;
 		position: sticky;
 	}
