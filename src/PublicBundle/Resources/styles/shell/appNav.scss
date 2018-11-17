@@ -35,19 +35,32 @@
 	&:before{
 		@extend %icm-bottom;
 	}
+	&:after{
+		content: 'Bottom';
+	}
 }
 .appMainAction{
 	&:before{
 		@extend %icm-file-text;
 	}
+	&:after{
+		content: 'Main';
+	}
 }
 .appRestartAction{
+	@extend %appRestartNavActionLayout;
 	&:before{
 		@extend %icm-top;
+	}
+	&:after{
+		content: 'Top';
 	}
 }
 .appSiteNavAction{
 	&:before{
 		@extend %icm-menu;
+	}
+	&:after{
+		content: 'Nav';
 	}
 }

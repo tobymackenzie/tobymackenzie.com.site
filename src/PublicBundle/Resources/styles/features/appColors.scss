@@ -62,6 +62,7 @@
 %appHeaderColors{
 	@extend %appContainerColors;
 	@extend %tertiaryAreaColors;
+	border-bottom-color: map-get($colors, primaryBG);
 }
 %appMainColors{
 	@extend %appContainerColors;

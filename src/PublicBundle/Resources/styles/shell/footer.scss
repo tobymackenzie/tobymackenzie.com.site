@@ -5,9 +5,6 @@
 .appEndLogo{
 	@extend %appLogoBase;
 	flex: 0 0 auto;
-	//--align right
-	$leftMargin: auto;
-	text-align: right; //--really old browsers
 	//--in front of doc bg
 	position: relative;
 	z-index: 1;
@@ -17,14 +14,14 @@
 	width: fit-content;
 	//--subdued, emphasise on hover
 	@extend %wiggleHoverAnimation;
-	$rightMargin: 1em; //--prevent wiggle from overflowing window
+	$leftMargin: 1em; //--prevent wiggle from overflowing window
 	opacity: 0.5;
 	transition: opacity 0.2s;
 	&:hover{
 		opacity: 1;
 	}
 	//--rest
-	margin: 0.5em $rightMargin 0 $leftMargin;
+	margin: 0.5em auto 0 $leftMargin;
 }
 .appSecureMessage{
 	@include mq('print'){

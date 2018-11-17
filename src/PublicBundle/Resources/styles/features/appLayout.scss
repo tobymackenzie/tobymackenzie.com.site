@@ -51,7 +51,12 @@ $appNavWidth: 13;
 	@extend %appContainerLayout;
 	grid-area: head;
 	order: 1;
+	@include supportsSticky{
+		//--simulate top padding on nav that gets removed on scroll
+		border-bottom: 0.5em solid;
+	}
 	@include supportsGrid{
+		border-bottom: 0;
 		@include supportsSticky{
 			position: sticky;
 			top: 0;
@@ -87,6 +92,10 @@ $appNavWidth: 13;
 %appNavAreaLayout{
 	@extend %appContainerLayout;
 	overflow: auto;
+	@include supportsSticky{
+		padding-bottom: 0.5em;
+		padding-top: 0.5em;
+	}
 	@include supportsGrid{
 		justify-self: end;
 		margin-right: -3px;
@@ -136,8 +145,23 @@ $appNavWidth: 13;
 	}
 }
 %appNavItemActionLayout{
-	display: inline-flex;
-	align-items: center;
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	&:after{
+		display: block;
+		font-size: 0.75em;
+		speak: none;
+		text-align: center;
+		@include supportsGrid{
+			content: '';
+			display: none;
+		}
+	}
+	&:focus, &:hover{
+		text-decoration: underline;
+	}
 	@include supportsGrid{
 		border-style: solid;
 		border-width: 3px;
@@ -149,11 +173,11 @@ $appNavWidth: 13;
 		padding: 0.4em 0.5em;
 		position: absolute;
 		text-align: center;
-		text-decoration: none;
 		top: 0;
 		transition: max-width 0.2s;
 		white-space: nowrap;
 		&:focus, &:hover{
+			text-decoration: none; //--override
 			max-width: $appNavWidth * 1em;
 		}
 	}
@@ -168,39 +192,63 @@ $appNavWidth: 13;
 }
 %appNavItemIconLayout{
 	display: inline-block;
-	margin-right: 0.6em;
+	margin: 0;
 	text-align: center;
 	vertical-align: middle;
 	width: 1em;
+	@include supportsGrid{
+		margin-right: 0.6em;
+	}
 }
 %appNavItemTextLayout{
-	display: inline-block;
-	vertical-align: middle;
-	@supports (display: flex){
-		white-space: normal;
-	}
-	@include supportsGrid{
-		white-space: inherit;
+	margin-left: 0.6em;
+	&, _:after{ //-# hide text if pseudo supported, will show small alternative
+		@extend %sro;
+		margin-left: 0;
+		@include supportsGrid{
+			@include sroOff();
+		}
 	}
 }
 %appNavListLayout{
-	display: flex;
-	align-items: center;
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	@include supportsGrid{
 		display: block;
+		margin: 0;
+	}
+}
+%appRestartNavActionLayout{
+	@include supportsSticky{
+		padding: 0.25em 0.75em;
+	}
+	@include supportsGrid{
+		padding: 0.4em 0.5em;
 	}
 }
 %appRestartNavLayout{
 	@extend %appNavAreaLayout;
 	@extend %appNavItemLayout;
-	display: block;
 	margin: 0;
 	order: 20;
+	@include supportsSticky{
+		align-self: end;
+		border: 3px solid;
+		border-right: 0;
+		bottom: 0;
+		padding: 0;
+		position: sticky;
+	}
+	//--for no-grid wvp
+	@include mq(map-get($bp, 'medium')){
+		position: fixed;
+		right: 0;
+	}
 	@include supportsGrid{
 		align-self: end;
+		border: 0;
+		bottom: auto;
 		grid-area: appRestart;
 		margin-right: -3px; //--duplicated from `appNavAreaLayout` because of order
 		position: sticky;
