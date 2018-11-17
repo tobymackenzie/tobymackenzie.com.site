@@ -234,6 +234,7 @@ $appNavWidth: 13;
 	order: 20;
 	@include supportsSticky{
 		align-self: end;
+		-webkit-align-self: flex-end; //-# autoprefixer seems to get this wrong
 		border: 3px solid;
 		border-right: 0;
 		bottom: -3px; //--hide bottom border until the bottom
