@@ -3,7 +3,7 @@ $appNavWidth: 13;
 %appLayout{
 	align-content: stretch;
 	display: flex;
-	flex: 1 0 auto; //--push logo to bottom
+	flex: 0 0 auto;
 	flex-direction: column;
 	justify-content: center;
 	margin: auto;
