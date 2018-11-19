@@ -238,11 +238,15 @@ $appNavWidth: 13;
 		border: 3px solid;
 		border-right: 0;
 		bottom: -3px; //--hide bottom border until the bottom
+		$bottomMargin: -2.9em; //--suck down even with end logo
+		$topMargin: -3px; //--don't show top border when unstuck
+		margin: $topMargin 0 $bottomMargin;
 		padding: 0;
 		position: sticky;
 	}
 	//--for no-grid wvp
 	@include mq(map-get($bp, 'medium')){
+		margin: 0;
 		position: fixed;
 		right: 0;
 	}
@@ -251,7 +255,8 @@ $appNavWidth: 13;
 		border: 0;
 		bottom: auto;
 		grid-area: appRestart;
-		margin-right: -3px; //--duplicated from `appNavAreaLayout` because of order
+		$rightMargin: -3px; //--duplicated from `appNavAreaLayout` because of order
+		margin: 0 $rightMargin 0 0;
 		position: sticky;
 		top: 0;
 	}
