@@ -51,6 +51,11 @@ $appNavWidth: 13;
 	@extend %appContainerLayout;
 	grid-area: head;
 	order: 1;
+	z-index: 2;
+	//---allow spinning logo to overflow
+	@include mq(14){
+		overflow: visible;
+	}
 	@include supportsSticky{
 		//--simulate top padding on nav that gets removed on scroll
 		border-bottom: 0.5em solid;
@@ -113,12 +118,12 @@ $appNavWidth: 13;
 	border-width: 3px;
 	border-bottom-style: solid;
 	order: 2;
-	z-index: 100;
 	@include supportsSticky{
 		overflow: auto;
 		position: sticky;
 		top: 0;
 		white-space: nowrap;
+		z-index: 100;
 	}
 	@include supportsGrid{
 		align-self: start;
@@ -128,6 +133,7 @@ $appNavWidth: 13;
 		position: sticky;
 		top: calc(3px + 3em);
 		white-space: normal;
+		z-index: 100;
 	}
 }
 %appNavItemLayout{
