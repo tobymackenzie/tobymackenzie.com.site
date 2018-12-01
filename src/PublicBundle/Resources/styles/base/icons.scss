@@ -11,15 +11,18 @@ minuses:
 - can't easily change size, versus font / inline svg / img
 - must load all at once, versus inline svg / img
 */
-%icm{
+@mixin icm($size: 32){
 	content: '';
 	display: inline-block;
 	background-image: url('/bundles/public/icomoon/sprite.png');
 	background-image: url('/bundles/public/icomoon/sprite.svg');
 	background-repeat: no-repeat;
-	@include remFallback('background-size', 1412px 124px);
+	@include remFallback('background-size', unquote('#{(1412 / 32) * $size * 1px} #{(124 / 32) * $size * 1px}'));
 	flex: 0 0 auto;
 	speak: none;
+}
+%icm{
+	@include icm();
 }
 %icm-email{
 	@extend %icm;
@@ -63,11 +66,14 @@ minuses:
 	@include remFallback('height', 32);
 	@include remFallback('width', 32);
 }
+@mixin icm-search($size: 32){
+	@include icm($size);
+	@include remFallback('background-position', unquote('#{(644 / 32) * $size * -1px} 0'));
+	@include remFallback('height', $size);
+	@include remFallback('width', $size);
+}
 %icm-search{
-	@extend %icm;
-	@include remFallback('background-position', -644px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+	@include icm-search();
 }
 %icm-settings{
 	@extend %icm;
