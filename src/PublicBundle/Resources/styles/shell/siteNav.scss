@@ -66,12 +66,13 @@
 		}
 	}
 	input{
+		appearance: none;
 		background: none;
 		border: 1px solid;
 		color: inherit;
 		padding: 0.25em 1.75em 0.25em 0.25em;
 		transition: width 0.2s ease;
-		width: 8em;
+		width: 9em;
 		&:focus{
 			background: rgba(map-get($colors, secondaryFG), 0.05);
 			width: 14em; width: 100vw;
