@@ -73,6 +73,7 @@
 		transition: width 0.2s ease;
 		width: 8em;
 		&:focus{
+			background: rgba(map-get($colors, secondaryFG), 0.05);
 			width: 14em; width: 100vw;
 		}
 	}
