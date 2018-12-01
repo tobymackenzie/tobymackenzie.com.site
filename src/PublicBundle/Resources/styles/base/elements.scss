@@ -20,6 +20,9 @@ b em, b i, em b, em strong, i b, i strong, strong em, strong i{
 	//-# only really necessary if using @font-face with a bold italic variant and having these combinations of elements.  Uncomment if desired.
 	//-! @extend %font-boldItalic;
 }
+button{
+	font-size: 1em;
+}
 code{
 	background: map-get($colors, codeBG);
 	color: map-get($colors, codeFG);

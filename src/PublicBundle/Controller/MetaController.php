@@ -254,6 +254,12 @@ class MetaController extends Controller{
 							'label'=> 'Et Cetera'
 							,'url'=> '/blog/category/et-cetera/'
 						]
+						,[
+							'label'=> 'Search blog'
+							,'name'=> 's'
+							,'template'=> 'search'
+							,'url'=> '/blog/'
+						]
 					]
 					,'label'=> 'Blog'
 					,'type'=> 'blog'

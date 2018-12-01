@@ -1,3 +1,6 @@
+@mixin siteNavIconColors(){
+	filter: brightness(7); //-! change color of icons. would be nice if we could do this a different way.  could use tweaking
+}
 .siteNav{
 	@extend %appContainerLayout;
 	@extend %secondaryAreaColors;
@@ -36,6 +39,47 @@
 		}
 	}
 }
+//-! can probably extract some of these styles into more general form styles
+.siteNavSearch{
+	position: relative;
+	> button{
+		background: none;
+		border: 0;
+		color: inherit;
+		height: 100%;
+		line-height: 100%;
+		padding: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		&:before{
+			$size: 20;
+			@include icm-search($size);
+			@include siteNavIconColors();
+			@include remFallback('height', $size);
+			margin-right: 0.5em;
+			vertical-align: middle;
+			@include remFallback('width', $size);
+		}
+		> span{
+			@extend %sro;
+		}
+	}
+	input{
+		background: none;
+		border: 1px solid;
+		color: inherit;
+		padding: 0.25em 1.75em 0.25em 0.25em;
+		transition: width 0.2s ease;
+		width: 8em;
+		&:focus{
+			width: 14em; width: 100vw;
+		}
+	}
+	&Label{
+		@extend %sro;
+	}
+}
 
 //==icons
 .siteNavAction{
@@ -47,7 +91,7 @@
 	}
 	&[data-type]{
 		&:before{
-			filter: brightness(7); //-! change color of icons. would be nice if we could do this a different way.  could use tweaking
+			@include siteNavIconColors();
 		}
 	}
 	&[data-type='about']{
