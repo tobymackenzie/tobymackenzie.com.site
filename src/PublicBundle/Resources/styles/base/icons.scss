@@ -17,7 +17,7 @@ minuses:
 	background-image: url('/bundles/public/icomoon/sprite.png');
 	background-image: url('/bundles/public/icomoon/sprite.svg');
 	background-repeat: no-repeat;
-	@include remFallback('background-size', unquote('#{(1412 / 32) * $size * 1px} #{(124 / 32) * $size * 1px}'));
+	@include remFallback('background-size', ((1412 / 32) * $size * 1px) ((124 / 32) * $size * 1px));
 	flex: 0 0 auto;
 	speak: none;
 }
@@ -68,7 +68,7 @@ minuses:
 }
 @mixin icm-search($size: 32){
 	@include icm($size);
-	@include remFallback('background-position', unquote('#{(644 / 32) * $size * -1px} 0'));
+	@include remFallback('background-position', ((644 / 32) * $size * -1px) 0);
 	@include remFallback('height', $size);
 	@include remFallback('width', $size);
 }
