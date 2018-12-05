@@ -1,6 +1,5 @@
 imports:
  - {resource: config.yml}
- - {resource: "@TJMStandardEditionBundle/Resources/config/config_dev.yml"}
 
 framework:
  router:
@@ -12,7 +11,7 @@ monolog:
  handlers:
   console:
    bubble: false
-   channels: ['!event', '!doctrine']
+   channels: ['!event']
    type: console
   main:
    channels: ['!event']
