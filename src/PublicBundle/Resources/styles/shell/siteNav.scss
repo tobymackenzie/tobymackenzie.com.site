@@ -41,6 +41,9 @@
 }
 //-! can probably extract some of these styles into more general form styles
 .siteNavSearch{
+	$defaultWidth: 13em;
+	width: $defaultWidth;
+	max-width: 100%;
 	position: relative;
 	> button{
 		background: none;
@@ -52,6 +55,7 @@
 		position: absolute;
 		right: 0;
 		top: 0;
+		z-index: 1;
 		&:before{
 			$size: 20;
 			@include icm-search($size);
@@ -71,11 +75,22 @@
 		border: 1px solid;
 		color: inherit;
 		padding: 0.25em 1.75em 0.25em 0.25em;
-		transition: width 0.2s ease;
-		width: 9em;
+		width: $defaultWidth;
+		//--animate slightly wider for more typing space, neat effect
+		//-# kind of bulky for the value add
+		//-# must keep button in same position or click event will miss it (happens on mouseup)
+		background: map-get($colors, secondaryBG); //-# only needed for input to slide over subnav line
+		left: 0;
+		position: relative;
+		transition: left 0.2s ease, max-width 0.2s ease, width 0.2s ease;
 		&:focus{
-			background: rgba(map-get($colors, secondaryFG), 0.05);
-			width: 14em; width: 100vw;
+			box-shadow: inset 0 0 1.6em rgba(map-get($colors, secondaryFG), 0.3);
+			//--animate slightly wider
+			$widthDiff: 1.7em;
+			left: -1 * $widthDiff;
+			max-width: 130%;
+			max-width: calc(100% + #{$widthDiff});
+			width: #{$defaultWidth + $widthDiff};
 		}
 	}
 	&Label{
