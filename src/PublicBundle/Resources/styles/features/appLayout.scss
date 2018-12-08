@@ -208,6 +208,7 @@ $appNavWidth: 13;
 }
 %appNavItemTextLayout{
 	margin-left: 0.6em;
+	vertical-align: middle;
 	&, _:after{ //-# hide text if pseudo supported, will show small alternative
 		@extend %sro;
 		margin-left: 0;
