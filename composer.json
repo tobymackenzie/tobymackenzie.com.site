@@ -46,13 +46,14 @@
 		,"twig/twig": "^1.0||^2.0"
 
 		,"erusev/parsedown-extra": "~0.7"
-		,"johnpbloch/wordpress": "^4.4"
+		,"johnpbloch/wordpress": "^5.0"
 		,"league/html-to-markdown": "^4.4"
 		,"tjm/files": "master@dev"
 		,"tjm/symfony-basebundle": "master@dev"
 		,"tjm/symfony-standard-edition-bundle": "master@dev"
 		,"tjm/utils": "master@dev"
 		,"tjm/wpthemehelper": "0.1.x@dev"
+		,"wpackagist-plugin/classic-editor": "^1.2"
 		,"wpackagist-plugin/jetpack": "^6.0"
 		,"wpackagist-plugin/wordpress-importer": "^0.6"
 	}
