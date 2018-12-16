@@ -14,7 +14,25 @@
 {% endblock %}
 
 {% block docStyles %}
-<link href="{{asset('bundles/public/styles/' ~ app.environment ~ '/main.css')}}" rel="stylesheet" />
+{#-!
+special stylesheet for ancient browsers, normal one for modern
+`only all` cuts off ie8- and very old browsers
+
+- I rarely test in old browsers, and don't want to have to worry about changes breaking things in them
+- many properties can have unexpected bugs on ancient browsers
+- some selectors or properties may not be handled by ancient browsers, which may result in unexpected combinations of applied styles
+- html5 elements can't be styled by ie8- and old firefox without js html5shiv. doesn't work ie5 mac at all
+
+this solution causes the problems:
+
+- an extra stylesheet request is made by modern browsers
+- modern sheet has to undo some of ancient sheet
+- more maintenance work
+- extra markup in shell
+- ie 6-8 with js enabled rendered the site decently, but now get limited styles
+#}
+<link href="{{asset('bundles/public/styles/' ~ app.environment ~ '/ancient.css')}}" rel="stylesheet" />
+<link href="{{asset('bundles/public/styles/' ~ app.environment ~ '/main.css')}}" media="only all" rel="stylesheet" />
 {% endblock %}
 
 {% block docPreScripts %}

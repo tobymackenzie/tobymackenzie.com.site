@@ -1,0 +1,18 @@
+.app{
+	padding: 2em;
+}
+body{
+	background: map-get($colors, 'primaryBG');
+	color: map-get($colors, 'primaryFG');
+	margin: auto;
+	max-width: 100%;
+	width: 40em;
+}
+html{
+	background: map-get($colors, 'baseBG');
+	color: map-get($colors, 'baseFG');
+	padding: 0;
+}
+.appNavList{
+	margin-top: 0;
+}

@@ -87,24 +87,8 @@ li{
 		margin-top: 0.5em;
 	}
 }
-iframe, img, object{
-	border: 0; //-# ensure images in links don't get borders in some browsers.  ensure iframes don't get borders
-	max-width: 100%; //-# make elements responsive, will scale down with container
-}
-img{
-	max-height: 100vh; //-# make sure image doesn't get bigger than viewport. -@ [snookca](https://twitter.com/snookca/status/634486812803792897)
-}
-img[height]{
-	height: auto; //-# ensure aspect ratio is preserved when resizing
-}
-img[width]{
-	width: auto; //-# ensure aspect ratio is preserved when resizing
-}
 input, select, td, textarea, th{
 	font-size: 1em;
-}
-input, select, textarea{
-	max-width: 100%;
 }
 ins{
 	background: map-get($colors, insertBG);
@@ -116,8 +100,6 @@ p{
 pre{
 	@extend %block;
 	font-family: inherit;
-	max-width: 100%;
-	overflow: auto;
 }
 table{
 	@extend %block;
@@ -131,41 +113,4 @@ table
 {
 	margin: 0;
 	padding: 0;
-}
-
-//==normalize
-//-# based on [normalize.css](https://github.com/necolas/normalize.css/blob/master/normalize.css) (see also <https://github.com/necolas/normalize.css/wiki>)
-//--normalize handling of newer elements
-[hidden], template{
-	display: none; //-# enable 'hidden' attribute in IE 8-10.  Hide template element from browsers from before the element was created
-}
-article
-,aside
-,details
-,figcaption
-,figure
-,footer
-,header
-,hgroup
-,main
-,nav
-,section
-,summary
-{
-	display: block; //-# fix default 'display' value for HTML5 elements in browsers from before they existed
-}
-audio
-,canvas
-,progress
-,video
-{
-	display: inline-block; //-# fix default 'display' value for HTML5 elements in browsers from before they existed
-	vertical-align: baseline; //-# normalize vertical alignment of progess element
-}
-audio:not([controls]){
-	display: none; //-# hide audio elements without controls.  Overrides previous rule.
-	height: 0; //-# remove height in iOS 5 devices left for controls
-}
-svg:not(:root){
-	overflow: hidden; //-# fix overflow not being hidden in IE 9-11
 }

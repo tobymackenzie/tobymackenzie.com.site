@@ -13,6 +13,7 @@ body{
 	margin: 0;
 	padding: 0 0 0.5em;
 	position: relative;
+	width: auto; //--undo ancient styles
 	@include mq('print'){
 		display: block;
 	}

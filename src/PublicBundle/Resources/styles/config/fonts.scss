@@ -3,38 +3,6 @@
 
 Define font stacks in the '$namedFontFamilies' section, then create variables named for where they will be used that are set to appropriate stacks in the 'modules' section.  Don't use the '$namedFontFamilies' variables directly.
 =====*/
-@font-face{
-	font-display: swap; font-display: fallback;
-	font-family: 'cousine';
-	font-style: normal;
-	font-weight: normal;
-	src: url('/bundles/public/fonts/cousine/cousine-regular-webfont.woff2') format('woff2'),
-		 url('/bundles/public/fonts/cousine/cousine-regular-webfont.woff') format('woff');
-}
-@font-face{
-	font-display: swap; font-display: fallback;
-	font-family: 'cousine';
-	font-style: italic;
-	font-weight: normal;
-	src: url('/bundles/public/fonts/cousine/cousine-italic-webfont.woff2') format('woff2'),
-		 url('/bundles/public/fonts/cousine/cousine-italic-webfont.woff') format('woff');
-}
-@font-face{
-	font-display: swap; font-display: fallback;
-	font-family: 'cousine';
-	font-style: italic;
-	font-weight: bold;
-	src: url('/bundles/public/fonts/cousine/cousine-bolditalic-webfont.woff2') format('woff2'),
-		 url('/bundles/public/fonts/cousine/cousine-bolditalic-webfont.woff') format('woff');
-}
-@font-face{
-	font-display: swap; font-display: fallback;
-	font-family: 'cousine';
-	font-style: normal;
-	font-weight: bold;
-	src: url('/bundles/public/fonts/cousine/cousine-bold-webfont.woff2') format('woff2'),
-		 url('/bundles/public/fonts/cousine/cousine-bold-webfont.woff') format('woff');
-}
 
 //==named families
 $namedFontFamilies: (
