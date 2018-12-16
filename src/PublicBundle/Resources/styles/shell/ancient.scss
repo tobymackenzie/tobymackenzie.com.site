@@ -13,6 +13,10 @@ html{
 	color: map-get($colors, 'baseFG');
 	padding: 0;
 }
+.appNavItem{
+	display: inline;
+}
 .appNavList{
-	margin-top: 0;
+	margin: 0 0 1em;
+	padding: 0;
 }
