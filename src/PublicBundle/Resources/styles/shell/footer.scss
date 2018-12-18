@@ -5,6 +5,7 @@
 .appEndLogo{
 	@extend %appLogoBase;
 	flex: 0 0 auto;
+	padding: 0; //--undo ancient styles
 	//--in front of doc bg
 	position: relative;
 	z-index: 1;
