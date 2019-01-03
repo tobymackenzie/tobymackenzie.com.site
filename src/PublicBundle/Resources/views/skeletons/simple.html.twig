@@ -34,8 +34,9 @@ this solution causes the problems:
 <link href="{{asset('bundles/public/styles/' ~ app.environment ~ '/ancient.css')}}" rel="stylesheet" />
 <link href="{{asset('bundles/public/styles/' ~ app.environment ~ '/main.css')}}" media="only all" rel="stylesheet" />
 
-{#--christmas #}
+{#--christmas
 <link href="{{asset('bundles/public/styles/' ~ app.environment ~ '/christmas.css')}}" media="only all" rel="stylesheet" />
+#}
 {% endblock %}
 
 {% block docPreScripts %}
@@ -64,6 +65,7 @@ script `type="application/javascript"` to block some old browsers.  blocks IE8- 
 {% block docPostScripts %}
 <script{% if app.environment == 'dev' %} type="module"{% else %} async="async" defer="defer" type="application/javascript"{% endif %} src="/bundles/public/scripts/{{app.environment}}/post.js?a"></script>
 
-{#--christmas #}
+{#--christmas
 <script{% if app.environment == 'dev' %} type="module"{% else %} async="async" defer="defer" type="application/javascript"{% endif %} src="/bundles/public/scripts/{{app.environment}}/christmas.js?a"></script>
+#}
 {% endblock %}
