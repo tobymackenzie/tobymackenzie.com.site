@@ -60,6 +60,17 @@ $appNavWidth: 13;
 	@include supportsSticky{
 		//--simulate top padding on nav that gets removed on scroll
 		border-bottom: 0.5em solid;
+		//--ensure scroll paging takes into account approximate header height in ff, saf
+		&:after{
+			content: '';
+			height: 3.5em;
+			left: 0;
+			pointer-events: none;
+			position: fixed;
+			right: 0;
+			top: 0;
+			z-index: -1;
+		}
 	}
 	@include supportsGrid{
 		border-bottom: 0;
