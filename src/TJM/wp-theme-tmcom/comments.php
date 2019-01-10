@@ -13,23 +13,22 @@ if(WP_DEBUG){
 }
 
 //=====content
-if(comments_open() || get_comments_number()){
 ?>
 <aside class="postComments comments postAside" id="comments">
-<?php
-	//--if the post is requires authentication and the visitor hasn't provided it, display message instead of comments
-	if(post_password_required()){
-?>
-	<p class="notice"><?php _e('This post requires authentication.  Please enter the password to view comments.', 'tmcom'); ?></p>
-<?php
-	}else{
-		if(have_comments()){
-?>
 	<header class="commentsHeader">
 		<h2 class="commentsHeading"><?php _e('Responses', 'tmcom'); ?></h2>
 	</header>
 <?php
-			if(!empty($comments_by_type['comment'])){
+//--if the post is requires authentication and the visitor hasn't provided it, display message instead of comments
+if(post_password_required()){
+?>
+	<p class="notice"><?php _e('This post requires authentication.  Please enter the password to view comments.', 'tmcom'); ?></p>
+<?php
+}else{
+	if(have_comments()){
+?>
+<?php
+		if(!empty($comments_by_type['comment'])){
 ?>
 	<ol class="commentsList">
 		<?php
@@ -44,8 +43,8 @@ if(comments_open() || get_comments_number()){
 		?>
 	</ol>
 <?php
-			}
-			if(!empty($comments_by_type['pings'])){
+		}
+		if(!empty($comments_by_type['pings'])){
 ?>
 	<ol class="commentsList">
 		<?php
@@ -60,25 +59,30 @@ if(comments_open() || get_comments_number()){
 		?>
 	</ol>
 <?php
-			}
+		}
 
-			//--output comments navigation if there are multiple comments pages
-			if(get_comment_pages_count() > 1 && get_option('page_comments')){
-				TMComWPTheme::$helper->renderer->renderPiece('relativeNav', Array(
-					'classes'=> 'commentRelNav'
-					,'id'=> 'comment-nav-below'
-					,'nextLink'=> get_next_comments_link(__('Newer Comments', 'tmcom'))
-					,'prevLink'=> get_previous_comments_link(__('Older Comments', 'tmcom'))
-					,'title'=> __('Comment navigation', 'tmcom')
-					,'type'=> 'comments'
-				));
-			}
+		//--output comments navigation if there are multiple comments pages
+		if(get_comment_pages_count() > 1 && get_option('page_comments')){
+			TMComWPTheme::$helper->renderer->renderPiece('relativeNav', Array(
+				'classes'=> 'commentRelNav'
+				,'id'=> 'comment-nav-below'
+				,'nextLink'=> get_next_comments_link(__('Newer Comments', 'tmcom'))
+				,'prevLink'=> get_previous_comments_link(__('Older Comments', 'tmcom'))
+				,'title'=> __('Comment navigation', 'tmcom')
+				,'type'=> 'comments'
+			));
 		}
-		if(comments_open()){
-			comment_form(Array('title_reply'=> 'Leave a comment'));
-		}
+?>
+	<hr />
+<?php
 	}
+	if(comments_open()){
+		comment_form(Array('title_reply'=> 'Leave a comment'));
+	}else{
+?>
+	<p>I am no longer accepting comments via form.  To reply, <?php if(pings_open()){ ?> post on your own site and send a pingback, or <?php } ?><a href="mailto:admin@tobymackenzie.com">send me an email</a>.</p>
+<?php
+	}
+}
 ?>
 </aside>
-<?php
-}
