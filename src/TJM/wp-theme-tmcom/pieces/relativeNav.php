@@ -81,4 +81,5 @@ if(isset($nextLink) && $nextLink){
 <?php
 }
 ?>
+	<hr />
 </nav>

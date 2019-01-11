@@ -85,4 +85,5 @@ if(post_password_required()){
 	}
 }
 ?>
+	<hr />
 </aside>

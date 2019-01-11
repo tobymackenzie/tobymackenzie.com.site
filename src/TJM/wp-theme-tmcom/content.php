@@ -114,6 +114,7 @@ if(is_search()){
 		)); ?>
 	</div>
 <?php } ?>
+	<hr />
 </article>
 <?php
 if($postType === 'single' || $postType === 'page'){
