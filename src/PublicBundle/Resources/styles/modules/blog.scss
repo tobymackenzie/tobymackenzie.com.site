@@ -28,14 +28,12 @@
 }
 
 //==posts
-
 .post{
 	@extend %mainItemColors;
 	@extend %mainItemLayout;
-	.more-link:before{
-		content: '';
-		display: block;
+	.more-link{
 		@extend %blockMargin;
+		display: inline-block;
 	}
 }
 .postAside{
@@ -47,6 +45,13 @@
 }
 .postHeader{
 	@extend %mainItemHeaderLayout;
+}
+.permalink, .postHeadingAction, .postTagAction{
+	@include mq('print'){
+		&:after, &:before{
+			display: none;
+		}
+	}
 }
 .postHeaderMedia{
 	margin-bottom: 1em;
@@ -60,6 +65,11 @@
 }
 .postMetaMain{
 	@extend %mainItemMetaMainLayout;
+}
+.postPermalink{
+	@include mq('print'){
+		display: none;
+	}
 }
 .postTag{
 	display: inline-block;

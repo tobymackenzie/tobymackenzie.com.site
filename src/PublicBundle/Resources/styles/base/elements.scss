@@ -30,10 +30,23 @@ code{
 	font-family: inherit;
 	padding: 0.1em 0.4em;
 	vertical-align: middle; //-# baseline seems off, this looks best
+	@include mq('print'){
+		&:after, &:before{
+			content: '`'
+		}
+	}
 	pre &{
 		display: block;
 		overflow: auto;
 		padding: 1em;
+		@include mq('print'){
+			padding: 0;
+			white-space: normal;
+			&:after, &:before{
+				content: '\A```';
+				display: block;
+			}
+		}
 	}
 }
 em, i{
