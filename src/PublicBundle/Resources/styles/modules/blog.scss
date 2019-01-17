@@ -33,7 +33,13 @@
 	@extend %mainItemLayout;
 	.more-link{
 		@extend %blockMargin;
-		display: inline-block;
+		display: table;
+		&:before{
+			content: '…';
+			@include mq('print'){
+				content: '[…';
+			}
+		}
 	}
 }
 .postAside{
