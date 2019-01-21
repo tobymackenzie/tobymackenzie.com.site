@@ -4,7 +4,7 @@ import {CanvasSnowView} from './modules/snow/canvasSnowView.js';
 if(
 	document.querySelector
 	&& window.requestAnimationFrame
-	&& (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+	&& !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
 ){
 	_ready(function(){
 		var _view = new CanvasSnowView();

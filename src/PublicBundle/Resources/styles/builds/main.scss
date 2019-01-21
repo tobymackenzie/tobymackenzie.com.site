@@ -36,6 +36,7 @@ Module / element styles.  They will have everything they need loaded from above.
 
 Lib files could also generate styles.  If there are concerns about specifity problems due to order, consider loading libs down here.
 =====*/
+@import '../base/animation';
 @import '../base/breakpoints';
 @import '../base/fix';
 @import '../base/elements';

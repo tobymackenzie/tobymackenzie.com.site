@@ -4,7 +4,14 @@ import {baseCut as _cutsMustard} from '../ua/mustardCut.js';
 
 var _appMain = document.getElementById('appMain');
 var _math = window.Math;
-if(_cutsMustard && _appMain && _math && window.scrollTo && _appMain.setAttribute){
+if(
+	_cutsMustard
+	&& _appMain
+	&& _math
+	&& window.scrollTo
+	&& _appMain.setAttribute
+	&& !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+){
 	//-!! https://developer.mozilla.org/en-US/docs/Web/API/Document/compatMode
 	var _de = (document.compatMode === 'CSS1Compat' ? document.documentElement : document.body);
 	//-@ http://stackoverflow.com/a/18284182/1139122
