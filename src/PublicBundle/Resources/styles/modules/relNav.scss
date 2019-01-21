@@ -1,0 +1,5 @@
+.relNav{
+	@include mq('print'){
+		display: none;
+	}
+}
