@@ -1,0 +1,47 @@
+//--shadow to help separate app from bg
+@mixin appShadow(){
+	bottom: 0;
+	box-shadow: 0 0 12px 5px rgba(0,0,0,0.3);
+	content: '';
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: -1;
+}
+@mixin supportsAppShadow(){
+	@include mq(map-get($bp, medium)){
+		@content;
+	}
+	@include supportsGrid{
+		@content;
+	}
+}
+@include supportsAppShadow(){
+	.app{
+		position: relative;
+		&:before{
+			@include appShadow();
+			@include supportsGrid{
+				left: 3.25em;
+			}
+		}
+	}
+}
+//-! do we want nav to have shadow in sticky nvp / flex layout?
+//-! do we want header to have shadow in sticky grid layout?
+//-! try to give shadow to opened nav items without shadow showing on other items
+@include supportsGrid(){
+	.appNav{
+		overflow: visible;
+		&:before{
+			@include appShadow();
+			//--accomodate restart nav
+			top: -3em;
+			//--when nav opens to left, make appear level with main
+			@include mq(map-get($bp, wide) + $appNavWidth + 1em){
+				right: 10px;
+			}
+		}
+	}
+}
