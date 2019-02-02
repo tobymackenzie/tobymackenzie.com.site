@@ -67,7 +67,9 @@ $mq: map-merge((
 }
 @mixin supportsSticky(){
 	@include mq('only screen and (min-width: ' + (map-get($bp, tiny) * 1em) + ') and (min-height:' + (map-get($bpHeight, "stickyHeader") * 1em) + ')'){
-		@content;
+		@supports (position: sticky){
+			@content;
+		}
 	}
 }
 @mixin supportsVerticalText(){

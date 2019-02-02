@@ -142,10 +142,12 @@ $appNavWidth: 13;
 		border: 0;
 		grid-area: appNav;
 		overflow: visible;
-		position: sticky;
-		top: calc(3px + 3em);
 		white-space: normal;
 		z-index: 100;
+		@include supportsSticky{
+			position: sticky;
+			top: calc(3px + 3em);
+		}
 	}
 }
 %appNavItemLayout{
@@ -276,8 +278,10 @@ $appNavWidth: 13;
 		grid-area: appRestart;
 		$rightMargin: -3px; //--duplicated from `appNavAreaLayout` because of order
 		margin: 0 $rightMargin 0 0;
-		position: sticky;
 		top: 0;
+		@include supportsSticky{
+			position: sticky;
+		}
 	}
 }
 %mainItemLayout{
