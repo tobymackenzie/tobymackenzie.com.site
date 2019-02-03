@@ -86,6 +86,9 @@ $disabledSupports: () !default;
 					}
 				}
 			}
+		}@else{
+			//--must have some output or otherwise empty placeholders will throw error
+			_supports{ disabled: true; }
 		}
 	}
 }
