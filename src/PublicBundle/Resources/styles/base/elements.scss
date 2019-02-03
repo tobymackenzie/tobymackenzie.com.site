@@ -49,6 +49,9 @@ code{
 		}
 	}
 }
+del{
+	text-decoration-color: map-get($colors, proofreadersMark);
+}
 em, i{
 	//-# only really necessary if using @font-face with an italic variant
 	@extend %font-italic;
