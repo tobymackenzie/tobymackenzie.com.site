@@ -280,6 +280,7 @@ $appNavWidth: 13;
 		$rightMargin: -3px; //--duplicated from `appNavAreaLayout` because of order
 		margin: 0 $rightMargin 0 0;
 		top: 0;
+		z-index: 100;
 		@include supports('sticky-nav'){
 			position: sticky;
 		}
