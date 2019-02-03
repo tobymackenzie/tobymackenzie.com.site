@@ -47,7 +47,7 @@ $disabledSupports: () !default;
 	@each $name in $names{
 		@if not index($disabledSupports, $name){
 			@if $name == 'fixed-nav'{
-				@include mq(map-get($bp, 'medium')){
+				@include mq('only screen and (min-width: ' + (map-get($bp, tiny) * 1em) + ') and (min-height:' + (map-get($bpHeight, 'stickyHeader') * 1em) + ')'){
 					@content;
 				}
 			}@elseif $name == 'app-grid'{

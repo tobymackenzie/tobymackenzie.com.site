@@ -241,7 +241,7 @@ $appNavWidth: 13;
 	}
 }
 %appRestartNavActionLayout{
-	@include supports('sticky-nav'){
+	@include supports('fixed-nav', 'sticky-nav'){
 		padding: 0.25em 0.75em;
 	}
 	@include supports('app-grid'){
@@ -253,7 +253,7 @@ $appNavWidth: 13;
 	@extend %appNavItemLayout;
 	margin: 0;
 	order: 20;
-	@include supports('sticky-nav'){
+	@include supports('fixed-nav', 'sticky-nav'){
 		align-self: end;
 		-webkit-align-self: flex-end; //-# autoprefixer seems to get this wrong
 		border: 3px solid;
@@ -264,9 +264,10 @@ $appNavWidth: 13;
 		margin: $topMargin 0 $bottomMargin;
 		padding: 0;
 		position: sticky;
+		z-index: 99;
 	}
 	//--for no-grid wvp
-	@include mq(map-get($bp, 'medium')){
+	@include supports('fixed-nav'){
 		margin: 0;
 		position: fixed;
 		right: 0;
