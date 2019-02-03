@@ -78,7 +78,7 @@
 }
 @mixin appNavItemActionColors(){
 	@include appContainerColors;
-	@include supportsGrid{
+	@include supports('app-grid'){
 		@include primaryAreaColors;
 	}
 }

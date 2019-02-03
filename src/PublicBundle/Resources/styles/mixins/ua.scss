@@ -35,47 +35,57 @@ $mq: map-merge((
 		}
 	}
 }
-@mixin fixedNavMQ($width: 20){
-	@if unitless($width){
-		$width: $width * 1em;
-	}
-	@include mq('only screen and (min-width: ' + $width + ') and (min-height: 20em)'){
-		@content;
-	}
-}
-@mixin supportsGrid($mq: null){
-	@if $mq == null{
-		$mq: map-get($bp, 'prettySmall');
-	}
-	@supports (display: grid){
-		@if $mq{
-			@include mq($mq){
-				@content;
+
+/*
+Mixin: supports
+Provide list of named UA support levels.  Will output content wrapped in appropriate `@media` and `@supports` blocks.
+
+If name in `$disabledSupports` list, will not output at all.
+*/
+$disabledSupports: () !default;
+@mixin supports($names...){
+	@each $name in $names{
+		@if not index($disabledSupports, $name){
+			@if $name == 'fixed-nav'{
+				@include mq(map-get($bp, 'medium')){
+					@content;
+				}
+			}@elseif $name == 'app-grid'{
+				@supports (display: grid){
+					@include mq(map-get($bp, 'prettySmall')){
+						@content;
+					}
+				}
+			}@elseif $name == 'app-shadow'{
+				@include mq(map-get($bp, medium)){
+					@content;
+				}
+				@include supports('app-grid'){
+					@content;
+				}
+			}@elseif $name == 'sticky-header'{
+				@include supports('sticky-nav'){
+					@content;
+				}
+			}@elseif $name == 'sticky-nav'{
+				@include mq('only screen and (min-width: ' + (map-get($bp, tiny) * 1em) + ') and (min-height:' + (map-get($bpHeight, "stickyHeader") * 1em) + ')'){
+					@supports (position: sticky){
+						@content;
+					}
+				}
+			}@elseif $name == 'vertical-text'{
+				@include supports('fixed-nav'){
+					@supports (text-orientation: upright) and (writing-mode: vertical-rl){
+						@content;
+					}
+				}
+			}@elseif $name == 'wide-app-grid'{
+				@supports (display: grid){
+					@include mq(map-get($bp, wide) + $appNavWidth + 1em){
+						@content;
+					}
+				}
 			}
-		}@else{
-			@content;
-		}
-	}
-}
-@mixin supportsGridOrSticky($mq: null){
-	@include supportsGrid($mq){
-		@content;
-	}
-	@include supportsSticky(){
-		@content;
-	}
-}
-@mixin supportsSticky(){
-	@include mq('only screen and (min-width: ' + (map-get($bp, tiny) * 1em) + ') and (min-height:' + (map-get($bpHeight, "stickyHeader") * 1em) + ')'){
-		@supports (position: sticky){
-			@content;
-		}
-	}
-}
-@mixin supportsVerticalText(){
-	@include supportsFixed(){
-		@supports (text-orientation: upright) and (writing-mode: vertical-rl){
-			@content;
 		}
 	}
 }

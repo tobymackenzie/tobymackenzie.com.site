@@ -15,7 +15,7 @@ $appNavWidth: 13;
 		border-top-style: 0;
 		border-width: 3px
 	}
-	@include supportsGrid{
+	@include supports('app-grid'){
 		align-content: center;
 		border-style: none;
 		display: grid;
@@ -57,7 +57,7 @@ $appNavWidth: 13;
 	@include mq(14){
 		overflow: visible;
 	}
-	@include supportsSticky{
+	@include supports('sticky-header'){
 		//--simulate top padding on nav that gets removed on scroll
 		border-bottom: 0.5em solid;
 		//--ensure scroll paging takes into account approximate header height in ff, saf
@@ -72,9 +72,9 @@ $appNavWidth: 13;
 			z-index: -1;
 		}
 	}
-	@include supportsGrid{
+	@include supports('app-grid'){
 		border-bottom: 0;
-		@include supportsSticky{
+		@include supports('sticky-header'){
 			position: sticky;
 			top: 0;
 			z-index: 99;
@@ -87,7 +87,7 @@ $appNavWidth: 13;
 	grid-area: main;
 	order: 3;
 	z-index: 1;
-	@include supportsGrid{
+	@include supports('app-grid'){
 		border-left-style: solid;
 		border-right-style: solid;
 	}
@@ -109,11 +109,11 @@ $appNavWidth: 13;
 %appNavAreaLayout{
 	@extend %appContainerLayout;
 	overflow: auto;
-	@include supportsSticky{
+	@include supports('sticky-nav'){
 		padding-bottom: 0.5em;
 		padding-top: 0.5em;
 	}
-	@include supportsGrid{
+	@include supports('app-grid'){
 		justify-self: end;
 		margin-right: -3px;
 		max-width: none; //--override `%appContainerLayout`, causes shrinkage
@@ -130,21 +130,21 @@ $appNavWidth: 13;
 	border-width: 3px;
 	border-bottom-style: solid;
 	order: 2;
-	@include supportsSticky{
+	@include supports('sticky-nav'){
 		overflow: auto;
 		position: sticky;
 		top: 0;
 		white-space: nowrap;
 		z-index: 100;
 	}
-	@include supportsGrid{
+	@include supports('app-grid'){
 		align-self: start;
 		border: 0;
 		grid-area: appNav;
 		overflow: visible;
 		white-space: normal;
 		z-index: 100;
-		@include supportsSticky{
+		@include supports('sticky-nav'){
 			position: sticky;
 			top: calc(3px + 3em);
 		}
@@ -153,10 +153,10 @@ $appNavWidth: 13;
 %appNavItemLayout{
 	display: inline-block;
 	margin: 0 1em 0 0;
-	@include supportsGridOrSticky{
+	@include supports('app-grid', 'sticky-nav'){
 		z-index: 100;
 	}
-	@include supportsGrid{
+	@include supports('app-grid'){
 		display: block;
 		height: calc(3px + 3em);
 		margin: -3px 0 0;
@@ -174,7 +174,7 @@ $appNavWidth: 13;
 		font-size: 0.75em;
 		speak: none;
 		text-align: center;
-		@include supportsGrid{
+		@include supports('app-grid'){
 			content: '';
 			display: none;
 		}
@@ -182,7 +182,7 @@ $appNavWidth: 13;
 	&:focus, &:hover{
 		text-decoration: underline;
 	}
-	@include supportsGrid{
+	@include supports('app-grid'){
 		border-style: solid;
 		border-width: 3px;
 		display: block;
@@ -202,7 +202,7 @@ $appNavWidth: 13;
 		}
 	}
 	//--when we can expand to the left instead of right
-	@include supportsGrid(map-get($bp, wide) + $appNavWidth + 1em){
+	@include supports('wide-app-grid'){
 		left: auto;
 		right: 0;
 	}
@@ -216,7 +216,7 @@ $appNavWidth: 13;
 	text-align: center;
 	vertical-align: middle;
 	width: 1em;
-	@include supportsGrid{
+	@include supports('app-grid'){
 		margin-right: 0.6em;
 	}
 }
@@ -226,7 +226,7 @@ $appNavWidth: 13;
 	&, _:after{ //-# hide text if pseudo supported, will show small alternative
 		@extend %sro;
 		margin-left: 0;
-		@include supportsGrid{
+		@include supports('app-grid'){
 			@include sroOff();
 		}
 	}
@@ -235,16 +235,16 @@ $appNavWidth: 13;
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	@include supportsGrid{
+	@include supports('app-grid'){
 		display: block;
 		margin: 0;
 	}
 }
 %appRestartNavActionLayout{
-	@include supportsSticky{
+	@include supports('sticky-nav'){
 		padding: 0.25em 0.75em;
 	}
-	@include supportsGrid{
+	@include supports('app-grid'){
 		padding: 0.4em 0.5em;
 	}
 }
@@ -253,7 +253,7 @@ $appNavWidth: 13;
 	@extend %appNavItemLayout;
 	margin: 0;
 	order: 20;
-	@include supportsSticky{
+	@include supports('sticky-nav'){
 		align-self: end;
 		-webkit-align-self: flex-end; //-# autoprefixer seems to get this wrong
 		border: 3px solid;
@@ -271,7 +271,7 @@ $appNavWidth: 13;
 		position: fixed;
 		right: 0;
 	}
-	@include supportsGrid{
+	@include supports('app-grid'){
 		align-self: end;
 		border: 0;
 		bottom: auto;
@@ -279,7 +279,7 @@ $appNavWidth: 13;
 		$rightMargin: -3px; //--duplicated from `appNavAreaLayout` because of order
 		margin: 0 $rightMargin 0 0;
 		top: 0;
-		@include supportsSticky{
+		@include supports('sticky-nav'){
 			position: sticky;
 		}
 	}
