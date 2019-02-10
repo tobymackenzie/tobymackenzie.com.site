@@ -10,7 +10,7 @@ $appNavWidth: 13;
 	max-width: 100%;
 	padding: 0; //--undo ancient styles
 	width: $shellMainWidth;
-	@include mq(map-get($bp, medium)){
+	@include mq(map-get($bp, appWidth)){
 		border-style: solid;
 		border-top-style: 0;
 		border-width: 3px
