@@ -41,7 +41,6 @@ code{
 		padding: 1em;
 		@include mq('print'){
 			padding: 0;
-			white-space: normal;
 			&:after, &:before{
 				content: '\A```';
 				display: block;
@@ -130,6 +129,9 @@ p{
 pre{
 	@extend %block;
 	font-family: inherit;
+	@include mq('print'){
+		white-space: normal; white-space: pre-wrap;
+	}
 }
 table{
 	@extend %block;
