@@ -42,7 +42,7 @@
 	color: map-get($colors, baseFG);
 }
 %appColors{
-	@include mq(map-get($bp, medium)){
+	@include mq(map-get($bp, appWidth)){
 		border-color: map-get($colors, border);
 	}
 }
