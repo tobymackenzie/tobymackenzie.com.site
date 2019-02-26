@@ -5,6 +5,9 @@
 
 //==element modules
 *{
+	//-# autoprefixer versions too high for handling border box, but it is too important
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 a{
