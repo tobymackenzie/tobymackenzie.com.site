@@ -174,7 +174,7 @@ class DefaultController extends Controller{
 			if(isset($match['_format']) && !in_array($match['_format'], static::SUPPORTED_FORMATS)){
 				throw $this->createNotFoundException("Format {$match['_format']} not currently supported");
 			}
-			if(!file_exists($pagesService->getPageDataPath($match['id']))){
+			if(!$pagesService->hasPage($match['id'])){
 				throw $this->createNotFoundException("No data found for id '{$match['id']}'");
 
 			}

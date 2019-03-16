@@ -13,11 +13,10 @@ class Pages{
 
 	//--data
 	public function getPage($id){
-		$data = $this->getPageDataPath($id);
-		if(!file_exists($data)){
+		if(!$this->hasPage($id)){
 			return null;
 		}
-		$page = new Page(json_decode(file_get_contents($data), true));
+		$page = new Page(json_decode(file_get_contents($this->getPageDataPath($id)), true));
 		$page->setId($id);
 		if(!$page->hasContent()){
 			switch($page->getType()){
@@ -34,9 +33,12 @@ class Pages{
 		}
 		return $page;
 	}
+	public function hasPage($id){
+		return file_exists($this->getPageDataPath($id));
+	}
 
 	//--paths
-	public function getPageDataPath($id){
+	protected function getPageDataPath($id){
 		if($id{0} !== '/'){
 			$id = '/' . $id;
 		}
