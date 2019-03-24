@@ -52,6 +52,7 @@ module.exports = function(__grunt){
 				}]
 				,options: {
 					lineNumbers: true
+					,sourceMap: false
 					,style: 'nested'
 				}
 			}
@@ -65,7 +66,8 @@ module.exports = function(__grunt){
 					,src: ['**/*.s{a,c}ss']
 				}]
 				,options: {
-					style: 'compressed'
+					sourceMap: false
+					,style: 'compressed'
 				}
 			}
 		}
