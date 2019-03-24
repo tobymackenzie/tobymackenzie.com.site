@@ -31,7 +31,7 @@ code{
 	color: map-get($colors, codeFG);
 	display: inline-block; //-# prevents wrapping of element
 	font-family: inherit;
-	padding: 0.1em 0.4em;
+	padding: 0 0.5em;
 	vertical-align: middle; //-# baseline seems off, this looks best
 	@include mq('print'){
 		&:after, &:before{
