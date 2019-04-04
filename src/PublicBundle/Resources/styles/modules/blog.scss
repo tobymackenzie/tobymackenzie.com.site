@@ -21,6 +21,15 @@
 }
 
 //==jetpack
+#jp-relatedposts#jp-relatedposts{
+	margin-top: 1.5em;
+	.jp-relatedposts-post-a{
+		font-weight: bold;
+	}
+	.jp-relatedposts-headline{
+		font-size: 1em;
+	}
+}
 .jp-relatedposts-post-aoverlay.jp-relatedposts-post-aoverlay{
 	&:active, &:focus, &:hover{
 		background: rgba(map-get($colors, linkBG), 0.4);
