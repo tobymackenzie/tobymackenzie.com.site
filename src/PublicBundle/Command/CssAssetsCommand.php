@@ -12,7 +12,6 @@ class CssAssetsCommand extends ContainerAwareCommand{
 		$this
 			->setName('public:assets:css')
 			->setDescription("Build CSS.")
-			->addOption('watch', 'w', InputOption::VALUE_NONE)
 		;
 	}
 	protected function execute(InputInterface $input, OutputInterface $output){
