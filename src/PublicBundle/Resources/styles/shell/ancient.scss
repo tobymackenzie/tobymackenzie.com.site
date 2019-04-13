@@ -1,14 +1,12 @@
-.app{
-	padding: 2em;
-}
 .appEndLogo{
-	padding: 0 2em 1em;
+	margin: 1em 0 0;
 }
 body{
 	background: map-get($colors, 'primaryBG');
 	color: map-get($colors, 'primaryFG');
+	padding: 3% 4%;
 	margin: auto;
-	max-width: 100%;
+	max-width: 92%;
 	width: 40em;
 }
 html{
