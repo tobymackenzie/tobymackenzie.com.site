@@ -11,6 +11,7 @@ body{
 	flex-direction: column;
 	justify-content: center;
 	margin: 0;
+	max-width: none; //--undo ancient styles
 	padding: 0 0 0.5em;
 	position: relative;
 	width: auto; //--undo ancient styles
