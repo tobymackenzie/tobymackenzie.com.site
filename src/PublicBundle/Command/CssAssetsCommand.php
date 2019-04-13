@@ -22,10 +22,11 @@ class CssAssetsCommand extends ContainerAwareCommand{
 		}else{
 			throw new Exception("No sass command found on shell path.");
 		}
-		$sassBin .= " --line-numbers";
 		$env = $this->getContainer()->get('kernel')->getEnvironment();
 		if($env === 'prod'){
 			$sassBin .= ' --style compressed';
+		}else{
+			$sassBin .= " --line-numbers";
 		}
 		if(`which postcss`){
 			$postCSSBin = "postcss --config . --no-map";
