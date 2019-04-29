@@ -33,7 +33,7 @@ class DefaultController extends Controller{
 
 		//--make sure our id is lowercase
 		if($lowerCaseId !== $id){
-			return $this->redirect($lowerCaseId);
+			return $this->redirect($router->generate($request->get('_route'), ['id'=> $lowerCaseId, '_format'=> $_format]));
 		}
 		//--strip 'html' format, since that is the default
 		if($_format === 'html'){
