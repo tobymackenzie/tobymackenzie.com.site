@@ -1,0 +1,9 @@
+{
+	"plugins": {
+		"autoprefixer": {
+			"browsers": ["last 2 versions", "> 0.5%", "> 0.5% in US"]
+			,"grid": false
+			,"remove": false
+		}
+	}
+}
