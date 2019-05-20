@@ -2,7 +2,7 @@
 // use Symfony\Component\ClassLoader\ApcClassLoader;
 use TJM\Bundle\StandardEditionBundle\Component\App\App;
 
-$loader = require_once __DIR__ . '/../autoload.php';
+$loader = require_once __DIR__ . '/../bootstrap.php';
 
 if(App::getEnvironment() === 'dev'){
 	if(isset($_SERVER['HTTP_CLIENT_IP'])
