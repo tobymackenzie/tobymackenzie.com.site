@@ -2,10 +2,10 @@
 <?php
 use TJM\Bundle\StandardEditionBundle\Component\App\App;
 
-$loader = __DIR__ . '/../app/bootstrap.php';
-if(file_exists($loader)){
-	$loader = require_once($loader);
-	App::runConsole();
+$app = __DIR__ . '/../app/bootstrap.php';
+if(file_exists($app)){
+	$app = require_once($app);
+	$app->runConsole();
 }else{
 	$arg1 = (isset($argv[1])) ? $argv[1] : null;
 	switch($arg1){

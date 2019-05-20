@@ -19,9 +19,9 @@ class SymfonyHelper{
 	static public function getKernel(){
 		if(!static::$kernel){
 			$env = (defined('WP_DEBUG') && WP_DEBUG ? 'dev' : 'prod');
-			$loader = require_once __DIR__ . '/../../../app/bootstrap.php';
-			App::setEnvironment($env);
-			$kernel = App::getKernel();
+			$app = require_once __DIR__ . '/../../../app/bootstrap.php';
+			$app->setEnvironment($env);
+			$kernel = $app->getKernel();
 			$kernel->boot();
 			$kernel->getContainer()->get('request_stack')->push(Request::createFromGlobals());
 			static::$kernel = $kernel;

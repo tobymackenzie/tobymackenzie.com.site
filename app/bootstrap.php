@@ -8,7 +8,7 @@ error_reporting(error_reporting() & ~E_USER_DEPRECATED);
 define(__NAMESPACE__ . '\PROJECT_DIR', realpath(__DIR__ . '/..'));
 define(__NAMESPACE__ . '\VENDOR_DIR', constant(__NAMESPACE__ . '\PROJECT_DIR') . '/vendor');
 $loader = require(constant(__NAMESPACE__ . '\VENDOR_DIR') . '/autoload.php');
-App::getSingleton([
+$app = new App([
 	'loader'=> $loader
 	,'paths'=> [
 		//--cli paths
@@ -22,6 +22,6 @@ App::getSingleton([
 	]
 ]);
 //-# uncomment to enable Symfony's HTTPCache in 'prod' environment
-// App::getSingleton()->setCache('prod');
+// $app->setCache('prod');
 
-return App::getLoader();
+return $app;
