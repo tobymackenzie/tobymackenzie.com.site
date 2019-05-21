@@ -15,9 +15,8 @@
 		</testsuite>
 	</testsuites>
 	<php>
-		<const name="TJM\Bundle\StandardEditionBundle\Component\App\ENVIRONMENT" value="test" />
 		<ini name="error_reporting" value="-1" />
-		<server name="KERNEL_CLASS" value="AppKernel" />
+		<server name="KERNEL_CLASS" value="TJM\Bundle\StandardEditionBundle\Component\TestKernel" />
 	</php>
 	<filter>
 		<whitelist>

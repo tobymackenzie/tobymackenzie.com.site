@@ -9,7 +9,22 @@ define(__NAMESPACE__ . '\PROJECT_DIR', realpath(__DIR__ . '/..'));
 define(__NAMESPACE__ . '\VENDOR_DIR', constant(__NAMESPACE__ . '\PROJECT_DIR') . '/vendor');
 $loader = require(constant(__NAMESPACE__ . '\VENDOR_DIR') . '/autoload.php');
 $app = new App([
-	'loader'=> $loader
+	'bundles'=> [
+		'Symfony\Bundle\FrameworkBundle\FrameworkBundle'
+		,'Symfony\Bundle\SecurityBundle\SecurityBundle'
+		,'Symfony\Bundle\TwigBundle\TwigBundle'
+		,'Symfony\Bundle\MonologBundle\MonologBundle'
+		,'Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle'
+		,'TJM\Bundle\StandardEditionBundle\TJMStandardEditionBundle'
+		,'TJM\Bundle\BaseBundle\TJMBaseBundle'
+		,'PublicBundle\PublicBundle'
+		,'ProtectedBundle\ProtectedBundle'
+		,'Symfony\Bundle\DebugBundle\DebugBundle'=> ['dev', 'test']
+		,'Symfony\Bundle\WebProfilerBundle\WebProfilerBundle'=> ['dev', 'test']
+		,'Sensio\Bundle\DistributionBundle\SensioDistributionBundle'=> ['dev', 'test']
+		,'Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle'=> ['dev', 'test']
+	]
+	,'loader'=> $loader
 	,'paths'=> [
 		//--cli paths
 		'PHPCLI'=> '/usr/bin/php'
