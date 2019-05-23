@@ -37,6 +37,7 @@ DirectoryIndex index.php _app.php
 	RewriteCond %{HTTP_HOST} ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ [NC,OR]
 	RewriteCond %{HTTP_HOST} ^.*:.*:.*$ [NC,OR]
 	#----public local
+	RewriteCond %{HTTP_HOST} ^localhost$ [NC,OR]
 	RewriteCond %{HTTP_HOST} tm.*\.local$ [NC]
 	RewriteRule ^ - [E=TMWEB_SITE:public]
 	#----no host, for http 0.9 (ie really old) browsers
