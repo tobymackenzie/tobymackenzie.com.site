@@ -22,14 +22,14 @@ DirectoryIndex index.php _app.php
 	RewriteEngine On
 
 	##==config
-	##--TMCOM_SITE
-	RewriteRule ^ - [E=TMCOM_SITE:default]
+	##--TMWEB_SITE
+	RewriteRule ^ - [E=TMWEB_SITE:default]
 	#---protected
 	#----protected primary
 	RewriteCond %{HTTP_HOST} ^(.*\.)?protected\.tobymackenzie\.com$ [NC,OR]
 	#----protected local
 	RewriteCond %{HTTP_HOST} ^protected.*\.local$ [NC]
-	RewriteRule ^ - [E=TMCOM_SITE:protected]
+	RewriteRule ^ - [E=TMWEB_SITE:protected]
 	#---public
 	#----public primary
 	RewriteCond %{HTTP_HOST} ^(t\.)?(15\.|www\.)tobymackenzie\.com$ [NC,OR]
@@ -38,33 +38,33 @@ DirectoryIndex index.php _app.php
 	RewriteCond %{HTTP_HOST} ^.*:.*:.*$ [NC,OR]
 	#----public local
 	RewriteCond %{HTTP_HOST} tm.*\.local$ [NC]
-	RewriteRule ^ - [E=TMCOM_SITE:public]
+	RewriteRule ^ - [E=TMWEB_SITE:public]
 	#----no host, for http 0.9 (ie really old) browsers
 	RewriteCond %{HTTP_HOST} ^$
-	RewriteRule ^ - [E=TMCOM_SITE:public,E=HTTP_HOST:www.tobymackenzie.com]
+	RewriteRule ^ - [E=TMWEB_SITE:public,E=HTTP_HOST:www.tobymackenzie.com]
 
 	##==redirects from old pages
 	##===tobymackenzie.name / cosmicosmo.ath.cx
-	RewriteCond %{ENV:TMCOM_SITE} public
+	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^log /blog/ [L,QSA,R=302]
-	RewriteCond %{ENV:TMCOM_SITE} public
+	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^log/(.*) /blog/$1 [L,QSA,R=301]
-	RewriteCond %{ENV:TMCOM_SITE} public
+	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^pages/10 /about [L,QSA,R=301]
 	##===tobymackenzie.wordpress.com
 	##--redirect blog-like urls to blog
-	RewriteCond %{ENV:TMCOM_SITE} public
+	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^([\d]{4}/?.*) /blog/$1 [L,QSA,R=302]
 
 	##==canonical
 	##--send unknown hosts and direct ip access to canonical domains
-	#-# note: this requires updating TMCOM_SITE rules if we add another site or change
-	RewriteCond %{ENV:TMCOM_SITE} default
+	#-# note: this requires updating TMWEB_SITE rules if we add another site or change
+	RewriteCond %{ENV:TMWEB_SITE} default
 	#-# don't redirect for http 0.9 requests (really old browsers)
 	RewriteCond %{HTTP_HOST} ^.+$
 	RewriteRule ^ %{REQUEST_SCHEME}://www.tobymackenzie.com%{REQUEST_URI} [L,R=302,QSA]
 	##===force 'https' for blog sitemap and cron, to prevent 'http' URL's from showing up in the former
-	RewriteCond %{ENV:TMCOM_SITE} public
+	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteCond %{HTTPS} !=on
 	RewriteRule ^blog/[A-Za-z0-9]*\-?sitemap\-?[0-9]*.xml$ https://www.tobymackenzie.com%{REQUEST_URI} [L,QSA,R=302]
 	RewriteCond %{HTTPS} !=on
@@ -81,7 +81,7 @@ DirectoryIndex index.php _app.php
 	RewriteRule .? - [L]
 
 	##==serve wordpress for appropriate urls
-	RewriteCond %{ENV:TMCOM_SITE} public
+	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^blog _/wp/index.php [L]
 
 	##==all other routes go through symfony

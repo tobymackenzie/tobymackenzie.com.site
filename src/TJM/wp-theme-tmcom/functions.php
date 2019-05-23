@@ -39,7 +39,7 @@ class SymfonyHelper{
 		return static::getService('TJM\Views\Views')->getDocData($request, static::$viewData);
 	}
 }
-class TMComWPTheme{
+class TMWebWPTheme{
 	static public $helper;
 	static public function getPostTitle($post = null){
 		global $wp_query;
@@ -72,7 +72,7 @@ class TMComWPTheme{
 		return $type;
 	}
 }
-TMComWPTheme::$helper = new WPThemeHelper([
+TMWebWPTheme::$helper = new WPThemeHelper([
 ]);
 
 
@@ -116,7 +116,7 @@ add_filter('the_title', function($title, $id){
 	//-# admin post page not seen as in loop
 	if(is_single() || is_admin()){
 		if(!$title || ($title === 'Previous Post' || $title === 'Next Post')){
-			$title = TMComWPTheme::getPostTitle($id);
+			$title = TMWebWPTheme::getPostTitle($id);
 		}
 	}elseif(in_the_loop()){
 		//--do nothing if in loop, because we want to not show title at all in loop if no title provided

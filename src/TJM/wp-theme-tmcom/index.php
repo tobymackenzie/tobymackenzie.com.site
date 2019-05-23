@@ -10,7 +10,7 @@ get_header();
 if(WP_DEBUG){
 ?>
 <!--Debug:
-	@Template tmcom/index.php
+	@Template tmweb/index.php
 -->
 <?php
 }
@@ -29,7 +29,7 @@ ob_end_clean();
 
 //=====content
 if(have_posts()){
-	$postType = TMComWPTheme::getPostType();
+	$postType = TMWebWPTheme::getPostType();
 	if(!in_array($postType, ['page', 'single'])){
 ?>
 	<header class="appMainHeader">
@@ -50,7 +50,7 @@ if(have_posts()){
 		get_template_part('content', get_post_format());
 	}
 	if($postType !== 'page'){
-		echo TMComWPTheme::$helper->renderer->renderPiece('relativeNav', Array('id'=> 'nav-below', 'type'=> $postType));
+		echo TMWebWPTheme::$helper->renderer->renderPiece('relativeNav', Array('id'=> 'nav-below', 'type'=> $postType));
 	}
 }else{
 	get_template_part('content', 'none');

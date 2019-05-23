@@ -8,7 +8,7 @@ Content template: Renders the main content area when no more specific content te
 if(WP_DEBUG){
 ?>
 <!--Debug:
-	@Template tmcom/content.php
+	@Template tmweb/content.php
 -->
 <?php
 }
@@ -16,9 +16,9 @@ if(WP_DEBUG){
 //=====content
 $thumbnail = (is_single() ? get_the_post_thumbnail() : null);
 $title = get_the_title();
-$permalinkTitle = ($title ?: TMComWPTheme::getPostTitle(get_the_ID()));
+$permalinkTitle = ($title ?: TMWebWPTheme::getPostTitle(get_the_ID()));
 
-$postType = TMComWPTheme::getPostType();
+$postType = TMWebWPTheme::getPostType();
 ?>
 <article <?php post_class("post post-default post-" . get_the_ID() . " h-entry mainItem"); ?> id="post-<?php the_ID(); ?>">
 <?php
@@ -52,7 +52,7 @@ if($title || $thumbnail){
 <?php
 if(!is_page()){
 ?>
-			<?php if(!$title){ ?><h2 class="postHeading"><a class="permalink u-url" href="<?=get_the_permalink()?>" title="<?=esc_attr(sprintf(__('Post "%s"', 'tmcom'), $permalinkTitle))?>" rel="bookmark"><?php } ?>
+			<?php if(!$title){ ?><h2 class="postHeading"><a class="permalink u-url" href="<?=get_the_permalink()?>" title="<?=esc_attr(sprintf(__('Post "%s"', 'tmweb'), $permalinkTitle))?>" rel="bookmark"><?php } ?>
 				<time class="dt-published postTime" datetime="<?php the_time('Y-m-d G:i') ?>" pubdate="pubdate"><?php the_time('F jS, Y \a\t G:i') ?></time>
 			<?php if(!$title){ ?></a></h2><?php } ?>
 <?php
@@ -70,7 +70,7 @@ if(!is_page()){
 	if($tagTerms){
 ?>
 			<div class="postTags">
-				<?=__('in', 'tmcom')?>
+				<?=__('in', 'tmweb')?>
 				<ul class="postTagsList">
 <?php
 		foreach($tagTerms as $tag){
@@ -89,11 +89,11 @@ if(!is_page()){
 <?php
 if(is_single()){
 ?>
-		<?php edit_post_link(__('Edit post', 'tmcom'), '<span class="editActionWrap">', '</span>'); ?>
+		<?php edit_post_link(__('Edit post', 'tmweb'), '<span class="editActionWrap">', '</span>'); ?>
 <?php
 }
 if(is_single()){ ?>
-		<div><a class="postPermalink permalink u-url" href="<?=get_the_permalink()?>" title="<?=esc_attr(sprintf(__('Permalink to %s', 'tmcom'), $permalinkTitle))?>" rel="bookmark"><?php _e('Permalink', 'tmcom'); ?></a></div>
+		<div><a class="postPermalink permalink u-url" href="<?=get_the_permalink()?>" title="<?=esc_attr(sprintf(__('Permalink to %s', 'tmweb'), $permalinkTitle))?>" rel="bookmark"><?php _e('Permalink', 'tmweb'); ?></a></div>
 <?php
 }
 //-! old theme had post type as link (`/type/{type}/`)
@@ -107,10 +107,10 @@ if(is_search()){
 	<div class="postContent p-summary"><?php the_excerpt(); ?></div>
 <?php }else{ ?>
 	<div class="postContent e-content">
-		<?php the_content(__('Continue reading', 'tmcom') . '<span class="sro"> post "' . $permalinkTitle . '"</span>'); ?>
+		<?php the_content(__('Continue reading', 'tmweb') . '<span class="sro"> post "' . $permalinkTitle . '"</span>'); ?>
 		<?php wp_link_pages(Array(
 			'after'=> '</div>'
-			,'before'=> '<div class="pageLinks">' . __('Pages:', 'tmcom')
+			,'before'=> '<div class="pageLinks">' . __('Pages:', 'tmweb')
 		)); ?>
 	</div>
 <?php } ?>

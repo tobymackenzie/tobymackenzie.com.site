@@ -3,7 +3,7 @@
 	,"autoload": {
 		"psr-4": {
 			"": "src/"
-			,"TJM\\TMCom\\": "app/"
+			,"TJM\\TMWeb\\": "app/"
 		}
 	}
 	,"autoload-dev": {

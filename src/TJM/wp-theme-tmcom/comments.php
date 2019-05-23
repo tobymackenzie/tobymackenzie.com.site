@@ -7,7 +7,7 @@ Piece template: Renders the comments area.  Uses 'pieces/comment.php' to render 
 if(WP_DEBUG){
 ?>
 <!--Debug:
-	@Template tmcom/comments.php
+	@Template tmweb/comments.php
 -->
 <?php
 }
@@ -16,13 +16,13 @@ if(WP_DEBUG){
 ?>
 <aside class="postComments comments postAside" id="comments">
 	<header class="commentsHeader">
-		<h2 class="commentsHeading"><?php _e('Responses', 'tmcom'); ?></h2>
+		<h2 class="commentsHeading"><?php _e('Responses', 'tmweb'); ?></h2>
 	</header>
 <?php
 //--if the post is requires authentication and the visitor hasn't provided it, display message instead of comments
 if(post_password_required()){
 ?>
-	<p class="notice"><?php _e('This post requires authentication.  Please enter the password to view comments.', 'tmcom'); ?></p>
+	<p class="notice"><?php _e('This post requires authentication.  Please enter the password to view comments.', 'tmweb'); ?></p>
 <?php
 }else{
 	if(have_comments()){
@@ -34,7 +34,7 @@ if(post_password_required()){
 		<?php
 		//--render each comment from 'pieces/comments.php'.  Create this file in a child theme to override
 		wp_list_comments(array('style'=> 'ol', 'type'=> 'comment', 'callback'=> function($comment, $args, $depth){
-			echo TMComWPTheme::$helper->renderer->renderPiece('comment', Array(
+			echo TMWebWPTheme::$helper->renderer->renderPiece('comment', Array(
 				'args'=> $args
 				,'comment'=> $comment
 				,'depth'=> $depth
@@ -50,7 +50,7 @@ if(post_password_required()){
 		<?php
 		//--render each comment through WPThemeHelper->outputCommentPiece().  This function renders and outputs 'pieces/comment.php'.  Create this file in a child theme to override
 		wp_list_comments(array('style'=> 'ol', 'type'=> 'pings', 'callback'=> function($comment, $args, $depth){
-			echo TMComWPTheme::$helper->renderer->renderPiece('comment', Array(
+			echo TMWebWPTheme::$helper->renderer->renderPiece('comment', Array(
 				'args'=> $args
 				,'comment'=> $comment
 				,'depth'=> $depth
@@ -63,12 +63,12 @@ if(post_password_required()){
 
 		//--output comments navigation if there are multiple comments pages
 		if(get_comment_pages_count() > 1 && get_option('page_comments')){
-			TMComWPTheme::$helper->renderer->renderPiece('relativeNav', Array(
+			TMWebWPTheme::$helper->renderer->renderPiece('relativeNav', Array(
 				'classes'=> 'commentRelNav'
 				,'id'=> 'comment-nav-below'
-				,'nextLink'=> get_next_comments_link(__('Newer Comments', 'tmcom'))
-				,'prevLink'=> get_previous_comments_link(__('Older Comments', 'tmcom'))
-				,'title'=> __('Comment navigation', 'tmcom')
+				,'nextLink'=> get_next_comments_link(__('Newer Comments', 'tmweb'))
+				,'prevLink'=> get_previous_comments_link(__('Older Comments', 'tmweb'))
+				,'title'=> __('Comment navigation', 'tmweb')
 				,'type'=> 'comments'
 			));
 		}
