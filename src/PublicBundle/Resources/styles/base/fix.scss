@@ -15,7 +15,6 @@ article
 ,main
 ,nav
 ,section
-,summary
 {
 	display: block; //-# fix default 'display' value for HTML5 elements in browsers from before they existed
 }
@@ -55,4 +54,7 @@ input, select, textarea{
 pre{
 	max-width: 100%;
 	overflow: auto;
+}
+summary{
+	display: list-item; //-# fix default 'display' value for HTML5 elements in browsers from before they existed
 }
