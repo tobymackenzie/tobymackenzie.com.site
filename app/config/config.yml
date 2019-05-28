@@ -30,8 +30,8 @@ sensio_framework_extra:
 tjm_base:
  page_wraps:
   full: ":skeletons:full.{format}.twig"
-  public_full: 'PublicBundle:skeletons:full.{format}.twig'
-  protected_full: 'ProtectedBundle:skeletons:full.{format}.twig'
+  public_full: '@Public/skeletons/full.{format}.twig'
+  protected_full: '@Protected/skeletons/full.{format}.twig'
 
 twig:
  debug: "%kernel.debug%"
