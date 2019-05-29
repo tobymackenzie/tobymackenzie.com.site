@@ -150,13 +150,14 @@ DirectoryIndex index.php _app.php
 
 	##--fonts
 	ExpiresByType application/vnd.ms-fontobject 'access plus 1 year'
-	ExpiresByType application/x-font-ttf 'access plus 1 year'
 	ExpiresByType application/font-woff 'access plus 1 year'
+	ExpiresByType application/font-woff2 'access plus 1 year'
+	ExpiresByType application/x-font-ttf 'access plus 1 year'
 	ExpiresByType application/x-font-woff 'access plus 1 year'
 	ExpiresByType font/eot 'access plus 1 year'
 	ExpiresByType font/opentype 'access plus 1 year'
 	ExpiresByType font/woff 'access plus 1 year'
-	ExpiresByType application/font-woff2 'access plus 1 year'
+	ExpiresByType font/woff2 'access plus 1 year'
 
 	##--manifests
 	ExpiresByType application/manifest+json 'access plus 1 day'
