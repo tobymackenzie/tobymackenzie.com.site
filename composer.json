@@ -20,11 +20,6 @@
 			"vendor/wp/plugin-{$name}": ["type:wordpress-plugin"]
 			,"vendor/wp/theme-{$name}": ["type:wordpress-theme"]
 		}
-		,"symfony-app-dir": "app"
-		,"symfony-assets-install": "relative"
-		,"symfony-bin-dir": "bin"
-		,"symfony-var-dir": "var"
-		,"symfony-web-dir": "web"
 		,"wordpress-install-dir": "vendor/wp/wordpress"
 	}
 	,"disabled": {
@@ -34,10 +29,9 @@
 	,"prefer-stable": true
 	,"require": {
 		"php": ">=5.5.9"
-		,"symfony/symfony": "3.4.*"
+		,"symfony/symfony": "^4"
 		,"symfony/monolog-bundle": "^3.1"
 		,"symfony/polyfill-apcu": "^1.0"
-		,"sensio/distribution-bundle": "^5.0"
 		,"sensio/framework-extra-bundle": "^5.0.0"
 		,"incenteev/composer-parameter-handler": "^2.0"
 		,"twig/twig": "^1.0||^2.0"
@@ -55,8 +49,7 @@
 		,"wpackagist-plugin/wordpress-importer": "^0.6"
 	}
 	,"require-dev": {
-		"sensio/generator-bundle": "^3.0"
-		,"symfony/phpunit-bridge": "^3.0"
+		"symfony/phpunit-bridge": "^4"
 	}
 	,"repositories": [
 		{
@@ -69,17 +62,15 @@
 		}
 	]
 	,"scripts": {
-		"_symfony-scripts": [
+		"post": [
 			"Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
-			,"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap"
-			,"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache"
-			,"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets"
-			,"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
-			,"Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
-			,"bin/wp-install"
+			,"@php bin/console cache:clear --env prod"
+			,"@php bin/console cache:clear"
+			,"@php bin/console assets:install --symlink --relative web"
+			,"@php bin/wp-install"
 		]
-		,"post-install-cmd": ["@_symfony-scripts"]
-		,"post-update-cmd": ["@_symfony-scripts"]
+		,"post-install-cmd": ["@post"]
+		,"post-update-cmd": ["@post"]
 	}
 	,"type": "project"
 }

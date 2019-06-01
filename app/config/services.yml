@@ -19,6 +19,10 @@ services:
  TJM\Views\Views:
    arguments: ['@router', '%tjm_base.wraps%']
    public: true
+ ##==commands
+ PublicBundle\Command\:
+   resource: '%kernel.project_dir%/src/PublicBundle/Command'
+   tags: ['console.command']
  ##==controllers
  ProtectedBundle\Controller\:
    resource: '%kernel.project_dir%/src/ProtectedBundle/Controller'

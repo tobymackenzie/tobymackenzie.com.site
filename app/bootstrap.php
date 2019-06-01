@@ -21,8 +21,6 @@ $app = new App([
 		,'ProtectedBundle\ProtectedBundle'
 		,'Symfony\Bundle\DebugBundle\DebugBundle'=> ['dev', 'test']
 		,'Symfony\Bundle\WebProfilerBundle\WebProfilerBundle'=> ['dev', 'test']
-		,'Sensio\Bundle\DistributionBundle\SensioDistributionBundle'=> ['dev', 'test']
-		,'Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle'=> ['dev', 'test']
 	]
 	,'loader'=> $loader
 	,'paths'=> [

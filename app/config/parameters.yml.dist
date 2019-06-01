@@ -3,7 +3,7 @@ parameters:
  protected.host: 'protected.tobymackenzie.com'
  protected.host.test: '^protected\.tobymackenzie\.com'
  public.host: 'www.tobymackenzie.com'
- public.host.test: '(^(.*\.)?tobymackenzie\.com$)|(^[0-9\.]+$)|(^.*:.*:.*$)'
+ public.host.test: '^(.*\.)?tobymackenzie\.com|[0-9\.]+|.*:.*:.*$'
 
  #==security
  protected.secure.encoder: 'plaintext'

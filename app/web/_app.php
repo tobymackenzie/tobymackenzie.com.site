@@ -13,12 +13,6 @@ if($app->getEnvironment() === 'dev'){
 		header('HTTP/1.0 403 Forbidden');
 		exit('You are not allowed to access this file. Check ' . basename(__FILE__) . ' for more information.');
 	}
-}elseif($app->getEnvironment() === 'prod' && PHP_VERSION_ID < 70000){
-	include_once __DIR__ . '/../../var/bootstrap.php.cache';
-	/*
-	$loader = new ApcClassLoader('sf2', $loader);
-	$loader->register(true);
-	*/
 }
 
 $app->runWeb();
