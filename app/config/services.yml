@@ -20,9 +20,16 @@ services:
    arguments: ['@router', '%tjm_base.wraps%']
    public: true
  ##==commands
- PublicBundle\Command\:
-   resource: '%kernel.project_dir%/src/PublicBundle/Command'
-   tags: ['console.command']
+ ProtectedBundle\:
+   autowire: true
+   autoconfigure: true
+   exclude: '%kernel.project_dir%/src/ProtectedBundle/{Resources}'
+   resource: '%kernel.project_dir%/src/ProtectedBundle/*'
+ PublicBundle\:
+   autowire: true
+   autoconfigure: true
+   exclude: '%kernel.project_dir%/src/PublicBundle/{Resources}'
+   resource: '%kernel.project_dir%/src/PublicBundle/*'
  ##==controllers
  ProtectedBundle\Controller\:
    resource: '%kernel.project_dir%/src/ProtectedBundle/Controller'
