@@ -64,10 +64,10 @@
 	,"scripts": {
 		"post": [
 			"Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
-			,"@php bin/console cache:clear --env prod"
-			,"@php bin/console cache:clear"
-			,"@php bin/console assets:install --symlink --relative web"
-			,"@php bin/wp-install"
+			,"bin/console cache:clear --env prod"
+			,"bin/console cache:clear"
+			,"bin/console assets:install --symlink --relative web"
+			,"bin/wp-install"
 		]
 		,"post-install-cmd": ["@post"]
 		,"post-update-cmd": ["@post"]
