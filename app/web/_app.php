@@ -1,5 +1,4 @@
 <?php
-// use Symfony\Component\ClassLoader\ApcClassLoader;
 use TJM\Bundle\StandardEditionBundle\Component\App\App;
 
 if(!isset($app)){
