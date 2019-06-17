@@ -2,18 +2,19 @@
 <?php
 use TJM\Files\Files;
 
-require_once(__DIR__ . '/../vendor/autoload.php');
+require_once(__DIR__ . '/../../../vendor/autoload.php');
 
-$projectPath = realpath(__DIR__ . '/..');
+$projectPath = realpath(__DIR__ . '/../../..');
+$blogProjectPath = realpath(__DIR__ . '/..');
 $vendorPath = $projectPath . '/vendor';
 $webrootPath = $projectPath . '/web';
-$wpPath = $vendorPath . '/wp';
-$wordpressPath = $wpPath . '/wordpress';
+$wpVendorPath = $vendorPath . '/wp';
+$wordpressVendorPath = $wpVendorPath . '/wordpress';
 
 $appPath = $projectPath . '/app';
 $srcPath = $projectPath . '/src/TJM';
-$wpConfigPath = $appPath . '/config/wp.php';
-$wpConfigTargetPath = $wordpressPath . '/wp-config.php';
+$wpConfigPath = $blogProjectPath . '/config.php';
+$wpConfigTargetPath = $wordpressVendorPath . '/wp-config.php';
 $webEtcPath = $webrootPath . '/_';
 $wpContentPath = $webEtcPath . '/wp-content';
 $wordpressTargetPath = $webEtcPath . '/wp';
@@ -24,19 +25,21 @@ $uploadsTargetPath = $wpContentPath . '/uploads';
 Files::symlinkRelativelySafely($wpConfigTargetPath, $wpConfigPath, $projectPath);
 
 //--symlink wp folder into webroot
-Files::symlinkRelativelySafely($wordpressTargetPath, $wordpressPath, $projectPath);
+Files::symlinkRelativelySafely($wordpressTargetPath, $wordpressVendorPath, $projectPath);
+
+//--symlink theme into web path
+Files::symlinkRelativelySafely($wpContentPath . '/themes/tjm-tmcom', $blogProjectPath . '/theme', $projectPath);
 
 //--symlink plugins and themes into web path
-foreach(Array('plugin', 'theme') as $type){
-	//--tjm
-	$prefix = $srcPath . '/wp-' . $type . '-';
-	foreach(glob($prefix . '*') as $from){
-		$to = $wpContentPath . '/' . $type . 's/' . str_replace($prefix, 'tjm-', $from);
-		Files::symlinkRelativelySafely($to, $from, $projectPath);
-	}
+$type = 'plugin';
+foreach(glob($blogProjectPath . '/plugins/*') as $from){
+	$to = $wpContentPath . '/plugins/' . basename($from);
+	Files::symlinkRelativelySafely($to, $from, $projectPath);
+}
 
-	//--vendor
-	$prefix = $wpPath . '/' . $type . '-';
+//--vendor
+foreach(Array('plugin', 'theme') as $type){
+	$prefix = $wpVendorPath . '/' . $type . '-';
 	foreach(glob($prefix . '*') as $from){
 		$to = $wpContentPath . '/' . $type . 's/' . str_replace($prefix, '', $from);
 		Files::symlinkRelativelySafely($to, $from, $projectPath);

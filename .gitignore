@@ -5,7 +5,7 @@
 .sass-cache/
 node_modules/
 /app/config/parameters.yml
-/app/config/wp-local.php
+/config/blog.local.php
 /app/data/
 /app/files/*
 !/app/files/wp-uploads/.gitkeep
@@ -16,7 +16,7 @@ node_modules/
 /bin/*
 !bin/app-install
 !bin/console
-!bin/wp-install
+!bin/blog-install
 /composer.lock
 /composer.phar
 /src/PublicBundle/Resources/public/scripts/

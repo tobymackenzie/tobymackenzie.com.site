@@ -2,7 +2,8 @@
 use TJM\Component\Utils\Arrays;
 use TJM\WPThemeHelper\ConfigHelper;
 
-require_once(dirname(realpath(__FILE__)) . '/../../vendor/autoload.php');
+$projectPath = dirname(realpath(__FILE__)) . '/../..';
+require_once($projectPath . '/vendor/autoload.php');
 
 $config = [
 	'constants'=> [
@@ -10,7 +11,7 @@ $config = [
 		'ADMIN_COOKIE_PATH'=> '/'
 
 		//--paths
-		,'ABSPATH'=> dirname(realpath(__FILE__)) . '/../../vendor/wp/wordpress/'
+		,'ABSPATH'=> dirname(realpath(__FILE__)) . '/../../../vendor/wp/wordpress/'
 		,'WP_CONTENT_DIR'=> "{{ConfigHelper::vars.webRootPath}}/{{ConfigHelper::vars.contentRelativePath}}"
 
 		//--urls
@@ -35,18 +36,19 @@ $config = [
 	,'vars'=> [
 		'contentRelativePath'=> '_/wp-content'
 		// ,'debug'=> true
-		,'webRootPath'=> dirname(realpath(__FILE__)) . '/../../web'
+		,'webRootPath'=> $projectPath . '/web'
 		,'webRootUrl'=> '{{ConfigHelper::vars.protocol}}://{{ConfigHelper::vars.host}}'
 		,'wpRelativePath'=> '_/wp'
 	]
 ];
-$local = dirname(realpath(__FILE__)) . '/wp-local.php';
+$local = $projectPath . '/config/blog.local.php';
 if(file_exists($local)){
 	$config = Arrays::deepMerge($config, include($local));
 }
 ConfigHelper::init($config);
 unset($config);
 unset($local);
+unset($projectPath);
 
 if(!isset($table_prefix) && isset($GLOBALS['table_prefix'])){
 	$table_prefix = $GLOBALS['table_prefix'];
