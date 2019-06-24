@@ -65,6 +65,9 @@ $siteNavSearchWidth: 13em;
 			vertical-align: middle;
 			@include remFallback('width', $size);
 		}
+		&:focus, &:hover{
+			background-color: rgba(map-get($colors, secondaryFG), 0.3);
+		}
 		> span{
 			@extend %sro;
 		}
