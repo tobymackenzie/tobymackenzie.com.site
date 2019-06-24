@@ -40,9 +40,9 @@
 	}
 }
 //-! can probably extract some of these styles into more general form styles
+$siteNavSearchWidth: 13em;
 .siteNavSearch{
-	$defaultWidth: 13em;
-	width: $defaultWidth;
+	width: $siteNavSearchWidth;
 	max-width: 100%;
 	position: relative;
 	> button{
@@ -75,27 +75,32 @@
 		border: 1px solid;
 		color: inherit;
 		padding: 0.25em 1.75em 0.25em 0.25em;
-		width: $defaultWidth;
-		//--animate slightly wider for more typing space, neat effect
-		//-# kind of bulky for the value add
-		//-# must keep button in same position or click event will miss it (happens on mouseup)
+		width: $siteNavSearchWidth;
 		background: map-get($colors, secondaryBG); //-# only needed for input to slide over subnav line
-		left: 0;
 		position: relative;
+
+		//--animation base
+		left: 0;
 		transition: left 0.2s ease, max-width 0.2s ease, width 0.2s ease;
+
+		//--highlight focus
 		&:focus{
 			box-shadow: inset 0 0 1.6em rgba(map-get($colors, secondaryFG), 0.3);
-			//--animate slightly wider
-			$widthDiff: 1.7em;
-			left: -1 * $widthDiff;
-			max-width: 130%;
-			max-width: calc(100% + #{$widthDiff});
-			width: #{$defaultWidth + $widthDiff};
 		}
 	}
 	&Label{
 		@extend %sro;
 	}
+}
+//--animate slightly wider for more typing space, neat effect
+//-# kind of bulky for the value add
+//-# must keep button in same position or click event will miss it (happens on mouseup)
+.siteNavSearch input:focus, .siteNavSearch:hover input{
+	$widthDiff: 1.7em;
+	left: -1 * $widthDiff;
+	max-width: 130%;
+	max-width: calc(100% + #{$widthDiff});
+	width: #{$siteNavSearchWidth + $widthDiff};
 }
 
 //==icons
