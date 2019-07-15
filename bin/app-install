@@ -9,6 +9,6 @@ $srcPath = $projectPath . '/app/web';
 $webrootPath = $projectPath . '/web';
 
 foreach(glob($srcPath . '/{.??*,.[!.],*}', GLOB_BRACE) as $from){
-	$to = $webrootPath;
+	$to = $webrootPath . '/' . basename($from);
 	Files::symlinkRelativelySafely($to, $from, $projectPath);
 }
