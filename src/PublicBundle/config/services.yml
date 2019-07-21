@@ -20,26 +20,17 @@ services:
    arguments: ['@router', '%tjm_base.wraps%']
    public: true
  ##==commands
- ProtectedBundle\:
+ PublicBundle\Command\:
    autowire: true
    autoconfigure: true
-   exclude: '%kernel.project_dir%/src/ProtectedBundle/{Resources}'
-   resource: '%kernel.project_dir%/src/ProtectedBundle/*'
- PublicBundle\:
-   autowire: true
-   autoconfigure: true
-   exclude: '%kernel.project_dir%/src/PublicBundle/{Resources}'
-   resource: '%kernel.project_dir%/src/PublicBundle/*'
+   resource: '%kernel.project_dir%/src/PublicBundle/Command'
  ##==controllers
- ProtectedBundle\Controller\:
-   resource: '%kernel.project_dir%/src/ProtectedBundle/Controller'
-   tags: ['controller.service_arguments']
  PublicBundle\Controller\:
    resource: '%kernel.project_dir%/src/PublicBundle/Controller'
    tags: ['controller.service_arguments']
  ##==listeners
  app.headers_listener:
-  class: TJM\TMWeb\Listener\HeadersListener
+  class: PublicBundle\Listener\HeadersListener
   arguments: ['%kernel.environment%']
   tags:
    - {name: kernel.event_listener, event: kernel.response, priority: -129} #-# priority to prevent CSP stripping by https://github.com/symfony/symfony/pull/25532

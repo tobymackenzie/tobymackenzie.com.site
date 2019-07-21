@@ -1,0 +1,7 @@
+parameters:
+ #==seo
+ bing-verification: '!!'
+ google-verification: 'google!!.html'
+
+ #==symfony
+ secret: 1234567890987654321234567890

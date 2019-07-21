@@ -1,0 +1,47 @@
+##==protected
+protected_test:
+    controller: ProtectedBundle:Default:test
+    path: /test/{path}
+    defaults: {path: null}
+    requirements:
+        path: .*
+
+##==secure
+protected_secure:
+  controller: ProtectedBundle:Default:secure
+  path: '/%secure.path%'
+
+##==meta
+protected_robots:
+    controller: ProtectedBundle:Meta:robots
+    path: /robots.{_format}
+    defaults: {_format: 'html'}
+protected_remove_trailing_slash:
+  controller: ProtectedBundle:Default:removeTrailingSlash
+  path: /{url}
+  methods: [GET]
+  requirements:
+    url: .*/$
+protected_not_found:
+  controller: ProtectedBundle:Default:notFound
+  path: /{url}
+  requirements:
+    url: .*
+
+##==base for outputting generic URLs
+protected_base:
+ defaults:
+  url: null
+ host: '%protected.host%'
+ path: /{url}
+ requirements:
+  url: .*
+ schemes: [https,http]
+public_base:
+ defaults:
+  url: null
+ host: '%public.host%'
+ path: /{url}
+ requirements:
+  url: .*
+ schemes: [https,http]

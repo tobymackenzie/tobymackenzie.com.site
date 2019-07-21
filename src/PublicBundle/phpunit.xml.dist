@@ -4,14 +4,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
 	backupGlobals = "false"
-	bootstrap = "app/bootstrap.php"
+	bootstrap = "bootstrap.php"
 	colors = "true"
 >
 	<testsuites>
-		<testsuite name="Project Test Suite">
-			<directory>src/*Bundle/Tests</directory>
-			<directory>src/*/*Bundle/Tests</directory>
-			<directory>src/*/Bundle/*Bundle/Tests</directory>
+		<testsuite name="Public Test Suite">
+			<directory>Tests</directory>
 		</testsuite>
 	</testsuites>
 	<php>
@@ -20,14 +18,10 @@
 	</php>
 	<filter>
 		<whitelist>
-			<directory>src</directory>
+			<directory>.</directory>
 			<exclude>
-				<directory>src/*Bundle/Resources</directory>
-				<directory>src/*Bundle/Tests</directory>
-				<directory>src/*/*Bundle/Resources</directory>
-				<directory>src/*/*Bundle/Tests</directory>
-				<directory>src/*/Bundle/*Bundle/Resources</directory>
-				<directory>src/*/Bundle/*Bundle/Tests</directory>
+				<directory>Resources</directory>
+				<directory>Tests</directory>
 			</exclude>
 		</whitelist>
 	</filter>

@@ -19,7 +19,7 @@ class SymfonyHelper{
 	static public function getKernel(){
 		if(!static::$kernel){
 			$env = (defined('WP_DEBUG') && WP_DEBUG ? 'dev' : 'prod');
-			$app = require_once __DIR__ . '/../../../app/bootstrap.php';
+			$app = require_once __DIR__ . '/../../PublicBundle/bootstrap.php';
 			$app->setEnvironment($env);
 			$kernel = $app->getKernel();
 			$kernel->boot();

@@ -1,0 +1,6 @@
+imports:
+  - {resource: 'symfony.local.yml'}
+
+parameters:
+  locale: en
+  twig.extension.assets.class: TJM\Bundle\BaseBundle\Extension\AssetsExtension

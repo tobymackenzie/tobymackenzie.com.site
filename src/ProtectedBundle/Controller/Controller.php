@@ -9,7 +9,7 @@ class Controller extends Base{
 			$parameters["page"] = Array();
 		}
 		if(!array_key_exists("wrap", $parameters["page"])){
-			$parameters["page"]['wrap'] = 'protected_full';
+			$parameters["page"]['wrap'] = 'full';
 		}
 		if(!array_key_exists("site", $parameters)){
 			$parameters["site"] = Array();

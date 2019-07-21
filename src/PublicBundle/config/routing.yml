@@ -22,7 +22,6 @@ public_blog:
   requirements:
     rest: .*
 
-
 ##==meta
 public_app_manifest:
   controller: PublicBundle:Meta:appManifest
@@ -65,4 +64,31 @@ public_bing_verification:
   path: '/BingSiteAuth.xml'
 public_google_verification:
   controller: PublicBundle:Meta:googleVerification
-  path: '/%public.google-verification%'
+  path: '/%google-verification%'
+
+##==pages
+public_remove_trailing_slash:
+  controller: PublicBundle:Default:removeTrailingSlash
+  path: /{url}
+  methods: [GET]
+  requirements:
+    url: .*/$
+public_page_formatted:
+  controller: PublicBundle:Default:page
+  path: /{id}.{_format}
+  requirements:
+    id: .*
+public_page:
+  controller: PublicBundle:Default:page
+  path: /{id}
+  requirements:
+    id: .*
+#--base for outputting generic URLs
+public_base:
+ defaults:
+  url: null
+ host: '%public.host%'
+ path: /{url}
+ requirements:
+  url: .*
+ schemes: [https,http]

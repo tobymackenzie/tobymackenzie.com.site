@@ -1,0 +1,11 @@
+parameters:
+  #==security
+  secure.encoder: 'plaintext'
+  secure.path: '_admin'
+  secure.users:
+    admin:
+      password: 'password'
+      roles: 'ROLE_ADMIN'
+
+  #==symfony
+  secret: '1234567890987654321234567890'

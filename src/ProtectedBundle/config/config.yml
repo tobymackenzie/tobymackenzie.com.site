@@ -1,0 +1,67 @@
+imports:
+  - {resource: '@TJMBaseBundle/Resources/config/config.yml'}
+  - {resource: ../../../config/symfony.yml}
+  - {resource: ../../../config/protected.local.yml}
+
+framework:
+ default_locale: '%locale%'
+ http_method_override: true
+ request:
+  formats:
+   # md: 'text/x-markdown'
+   md: 'text/plain'
+   xhtml: 'application/xhtml+xml'
+ router:
+  resource: '%kernel.root_dir%/config/routing.yml'
+  strict_requirements: ~
+ secret: '%secret%'
+ templating: {engines: ['twig']} #assets_version: SomeVersionScheme
+ trusted_hosts: ~
+
+security:
+ access_control:
+  -
+   host: '%protected.host%'
+   path: '^/%secure.path%'
+   roles: ROLE_ADMIN
+ encoders:
+  Symfony\Component\Security\Core\User\User: '%secure.encoder%'
+ firewalls:
+  dev:
+   pattern: ^/(_(profiler|wdt)|css|images|js)/
+   provider: main
+   security: false
+  protected:
+    host: '%protected.host%'
+    http_basic:
+     realm: '<toby> protected'
+     provider: protected
+    logout_on_user_change: true
+    pattern: '^/%secure.path%'
+  main:
+   anonymous: ~
+   logout_on_user_change: true
+   provider: main
+ providers:
+  main:
+   memory: ~
+  protected:
+   memory:
+    users: '%secure.users%'
+
+sensio_framework_extra:
+ router:
+  annotations: false
+
+services:
+ ProtectedBundle\Controller\:
+   resource: '%kernel.project_dir%/src/ProtectedBundle/Controller'
+   tags: ['controller.service_arguments']
+tjm_base:
+ page_wraps:
+  full: '@Protected/skeletons/full.{format}.twig'
+
+twig:
+ debug: "%kernel.debug%"
+ # exception_controller: PublicBundle:Meta:exception
+ strict_variables: "%kernel.debug%"

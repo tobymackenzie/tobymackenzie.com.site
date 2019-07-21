@@ -19,6 +19,8 @@ node_modules/
 !bin/blog-install
 /composer.lock
 /composer.phar
+/config/*local.*
+!/config/*local.*.dist
 /src/PublicBundle/Resources/public/scripts/
 /src/PublicBundle/Resources/public/styles/
 /var/*

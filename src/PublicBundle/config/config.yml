@@ -1,12 +1,8 @@
 imports:
- - {resource: parameters.yml}
- - {resource: security.yml}
- - {resource: services.yml}
- - {resource: '@TJMBaseBundle/Resources/config/config.yml'}
-
-parameters:
- locale: en
- twig.extension.assets.class: TJM\Bundle\BaseBundle\Extension\AssetsExtension
+  - {resource: '@TJMBaseBundle/Resources/config/config.yml'}
+  - {resource: ../../../config/symfony.yml}
+  - {resource: ../../../config/public.local.yml}
+  - {resource: services.yml}
 
 framework:
  default_locale: '%locale%'

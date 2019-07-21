@@ -1,0 +1,4 @@
+parameters:
+  #==domains
+  protected.host: 'protected.tobymackenzie.com'
+  public.host: 'www.tobymackenzie.com'

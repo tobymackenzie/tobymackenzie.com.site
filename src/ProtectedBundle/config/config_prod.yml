@@ -1,0 +1,18 @@
+imports:
+ - {resource: config.yml}
+
+#==Monolog
+monolog:
+ handlers:
+  main:
+   action_level: error
+   excluded_404s:
+     - ^
+   handler: nested
+   type: fingers_crossed
+  nested:
+   level: debug
+   path:  '%kernel.logs_dir%/%kernel.environment%.log'
+   type:  stream
+  console:
+   type: console

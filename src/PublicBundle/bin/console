@@ -1,0 +1,199 @@
+#!/usr/bin/env php
+<?php
+use TJM\Bundle\StandardEditionBundle\Component\App\App;
+
+$app = __DIR__ . '/../bootstrap.php';
+if(file_exists($app)){
+	$app = require_once($app);
+	$app->runConsole();
+}else{
+	$arg1 = (isset($argv[1])) ? $argv[1] : null;
+	switch($arg1){
+		case 'composer':
+			SymfonyInitHelper::composer(($argc > 2) ? ' ' . implode(' ', array_slice($argv, 2)) : '');
+		break;
+		case 'init':
+			SymfonyInitHelper::init(($argc > 2) ? $argv[2] : null);
+		break;
+		case 'init:composer':
+			SymfonyInitHelper::installComposer(($argc > 2) ? $argv[2] : null);
+		break;
+		case 'init:permissions':
+			SymfonyInitHelper::permissions(($argc > 2) ? $argv[2] : null);
+		break;
+		case 'info:php':
+			SymfonyInitHelper::phpinfo();
+		break;
+		default:
+			echo "This app needs some initial setup.  Please run `bin/console init`";
+			exit(1);
+		break;
+	}
+}
+
+class SymfonyInitHelper{
+	/*
+	Command: composer
+	Pass through for running `composer` that automatically installs it if it isn't installed.  'bin/vendors' was in early versions of Symfony before 'composer' was in use.
+
+	Arguments:
+		{see composer}
+	*/
+	static public function composer($arguments = null){
+		//--install composer if not installed
+		$whichComposerResult = shell_exec("which composer");
+		$haveGlobalComposer = (empty($whichComposerResult)) ? false : true;
+		if(!$haveGlobalComposer){
+			$haveLocalComposer = file_exists(__DIR__ . '/composer.phar');
+		}
+		$haveComposer = $haveGlobalComposer || $haveLocalComposer;
+		if(!$haveComposer){
+			static::installComposer();
+			$haveGlobalComposer = (file_exists(__DIR__ . '/composer.phar')) ? false : true;
+		}
+
+		//--run composer with arguments
+		$composerCommand = ($haveGlobalComposer) ? 'composer' : 'php ' . __DIR__ . '/composer.phar';
+		passthru($composerCommand .' ' . $arguments, $return);
+		if($return !== 0){
+			exit($return);
+		}
+	}
+
+	/*
+	Method: init
+	Do initial setup for this application:
+	- set permissions for cache and log directories
+	- install vendor libraries
+	- clear the cache
+
+	Must pass argument that is passed on to bin/permissions for this to work properly.
+
+	Arguments:
+		{see permissions}
+	*/
+	static public function init($arg1 = null){
+		$binPath = __DIR__;
+
+		static::permissions($arg1);
+		static::composer('install');
+		passthru("{$binPath}/console cache:clear && {$binPath}/console cache:clear --env prod", $return);
+		if($return !== 0){
+			echo "Failed with return status: {$return}";
+			exit($return);
+		}
+	}
+
+	/*
+	Method: installComposer
+	Install composer.phar.  Moves to supplied location, or to '/usr/local/bin' for admin users by default.
+
+	Arguments:
+		moveTo: (optional) Path to move script to.
+			'global' means '/usr/local/bin/composer', default for admin users
+			'local' means this directory, default for other users
+	*/
+	static public function installComposer($moveTo = null){
+		if($moveTo === null){
+			$moveTo = (is_writable('/usr/local/bin')) ? 'global' : 'local';
+		}
+
+		echo "installing composer";
+		switch($moveTo){
+			case 'global':
+				$moveTo = '/usr/local/bin/composer';
+				echo " globally\n";
+			break;
+			case 'local':
+				$moveTo = __DIR__;
+				echo " locally\n";
+			break;
+			default:
+				echo " to '{$moveTo}'\n";
+			break;
+		}
+		passthru('curl -sS https://getcomposer.org/installer | php');
+		if($moveTo !== '.'){
+			passthru('mv composer.phar ' . $moveTo);
+		}
+	}
+
+	/*
+	Command: permissions
+	Set permissions on log and cache directories.  Remove exising files first.  Permissions part requires sudo abilities.
+
+	Arguments:
+		aclType: What type of ACL mechanism to use.  One of (chmod|setfacl|none)
+	*/
+	static public function permissions($aclType = null){
+		if($aclType){
+			$varPath = __DIR__ . '/../../../var';
+			$cachePath = $varPath . "/cache";
+			$logPath = $varPath . "/logs";
+			if(is_dir($cachePath)){
+				echo "Clearing cache folder\n";
+				passthru("rm -rf {$cachePath}/*");
+			}else{
+				echo "Creating cache folder\n";
+				passthru("mkdir {$cachePath}");
+			}
+			if(is_dir($logPath)){
+				echo "Clearing log folder\n";
+				passthru("rm -rf {$logPath}/*");
+			}else{
+				echo "Creating log folder\n";
+				passthru("mkdir {$logPath}");
+			}
+
+			$apacheUser = exec("ps aux | grep -E '[a]pache|[h]ttpd' | grep -v root | head -1 | cut -d\  -f1");
+
+			switch($aclType){
+				case 'chmod':
+					$command = "sudo chmod +a \"`whoami` allow delete,write,append,file_inherit,directory_inherit\" {$cachePath} {$logPath}";
+					if($apacheUser){
+						$command .= " && sudo chmod +a \"{$apacheUser} allow delete,write,append,file_inherit,directory_inherit\" {$cachePath} {$logPath}";
+					}
+					echo "Running: {$command}";
+					passthru($command, $return);
+				break;
+				case 'setfacl':
+					$apacheCommandPart = ($apacheUser)
+						? " -m u:{$apacheUser}:rwX"
+						: ''
+					;
+					$command = "sudo setfacl -R {$apacheCommandPart} -m u:`whoami`:rwX {$cachePath} {$logPath} && sudo setfacl -dR {$apacheCommandPart} -m u:`whoami`:rwX {$cachePath} {$logPath}";
+					echo "Running: {$command}";
+					passthru($command, $return);
+				break;
+				case 'none':
+					echo "There is no way to set the permissions directly.  Please add 'umask(0000);' to app.php and app_dev.php to bypass the need for setting permissions, though it has some security implications.";
+					$return = 1;
+				break;
+				default:
+					echo "Unrecognized option.  Please try another option.  Try 'none' if your system doesn't support ACLs.";
+					$return = 1;
+				break;
+			}
+		}else{
+			echo "Choose what type of ACLs your system supports.  Options:\n"
+				. " - chmod: supports `chmod +a` syntax\n"
+				. " - setfacl: supports `setfacl` command\n"
+				. " - none: doesn't have ACL support\n"
+			;
+			$return = 1;
+		}
+
+		//--return.  if a command failed above, set exit status.
+		if($return !== 0){
+			exit($return);
+		}
+	}
+
+	/*
+	Method: phpinfo
+	Simple command to get phpinfo.  Can add whatever other system info you want.
+	*/
+	static public function phpinfo(){
+		phpinfo();
+	}
+}

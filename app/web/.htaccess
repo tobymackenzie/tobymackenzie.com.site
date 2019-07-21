@@ -14,10 +14,6 @@ Header always set X-Content-Type-Options 'nosniff'
 ##=====
 #==rewrites
 #=====
-
-##==send home page through _app.php automatically.  reduce lookups for other indexes
-DirectoryIndex index.php _app.php
-
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 
@@ -71,31 +67,39 @@ DirectoryIndex index.php _app.php
 	RewriteCond %{HTTPS} !=on
 	RewriteRule /?_/wp/wp-cron\.php https://www.tobymackenzie.com%{REQUEST_URI} [L,QSA,R=307]
 
-	##==remove '_app.php' from URL to prevent duplicate content
+	##==remove index file from URL to prevent duplicate content
 	RewriteCond %{ENV:REDIRECT_STATUS} ^$
-	RewriteRule ^_app\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
+	RewriteRule ^_public\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
+	RewriteCond %{ENV:REDIRECT_STATUS} ^$
+	RewriteRule ^_protected\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
 
-	##==serve files and directories
+	##==serve files and directories, except root
 	RewriteCond %{REQUEST_FILENAME} -f
 	RewriteRule .? - [L]
 	RewriteCond %{REQUEST_FILENAME} -d
+	RewriteCond %{REQUEST_URI} !/?$
 	RewriteRule .? - [L]
 
-	##==serve wordpress for appropriate urls
+	##==public
+	##===serve wordpress for appropriate urls
 	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^blog _/wp/index.php [L]
+	##===all other routes go through symfony
+	RewriteCond %{ENV:TMWEB_SITE} public
+	RewriteRule ^ %{ENV:BASE}/_public.php [L]
 
-	##==all other routes go through symfony
-	RewriteRule .? %{ENV:BASE}/_app.php [L]
+	##==protected
+	RewriteCond %{ENV:TMWEB_SITE} protected
+	RewriteRule ^ %{ENV:BASE}/_protected.php [L]
 </IfModule>
 <IfModule !mod_rewrite.c>
 	<IfModule mod_alias.c>
-		##==temporary fallback if mod_rewrite isn't available.  URLs will show with 'app.php' prepended
-		RedirectMatch 302 ^/$ /app.php/
+		##==temporary fallback if mod_rewrite isn't available.  URLs will show with '_public.php' prepended
+		RedirectMatch 302 ^/$ /_public.php/
 	</IfModule>
 </IfModule>
 
-##==disable Multiviews to prevent '/app' from resolving to '/app.php'
+##==disable Multiviews to prevent '/_public' from resolving to '/_public.php', etc
 <IfModule mod_negotiation.c>
 	Options -MultiViews
 </IfModule>

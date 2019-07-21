@@ -5,7 +5,7 @@ use Composer\Autoload\ClassLoader;
 error_reporting(error_reporting() & ~E_USER_DEPRECATED);
 
 //--Define configuration used by App singleton, such as paths.
-define(__NAMESPACE__ . '\PROJECT_DIR', realpath(__DIR__ . '/..'));
+define(__NAMESPACE__ . '\PROJECT_DIR', realpath(__DIR__ . '/../..'));
 define(__NAMESPACE__ . '\VENDOR_DIR', constant(__NAMESPACE__ . '\PROJECT_DIR') . '/vendor');
 $loader = require(constant(__NAMESPACE__ . '\VENDOR_DIR') . '/autoload.php');
 $app = new App([
@@ -18,7 +18,6 @@ $app = new App([
 		,'TJM\Bundle\StandardEditionBundle\TJMStandardEditionBundle'
 		,'TJM\Bundle\BaseBundle\TJMBaseBundle'
 		,'PublicBundle\PublicBundle'
-		,'ProtectedBundle\ProtectedBundle'
 		,'Symfony\Bundle\DebugBundle\DebugBundle'=> ['dev', 'test']
 		,'Symfony\Bundle\WebProfilerBundle\WebProfilerBundle'=> ['dev', 'test']
 	]
@@ -27,7 +26,7 @@ $app = new App([
 		//--cli paths
 		'PHPCLI'=> '/usr/bin/php'
 		//--symfony paths
-		,'app'=> constant(__NAMESPACE__ . '\PROJECT_DIR') . '/app'
+		,'app'=> __DIR__
 		,'project'=> constant(__NAMESPACE__ . '\PROJECT_DIR')
 		,'src'=> constant(__NAMESPACE__ . '\PROJECT_DIR') . '/src'
 		,'var'=> constant(__NAMESPACE__ . '\PROJECT_DIR') . '/var'
