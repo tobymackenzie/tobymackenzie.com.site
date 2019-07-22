@@ -13,9 +13,17 @@
 		"bin-dir": "bin"
 	}
 	,"extra": {
-		"incenteev-parameters": {
-			"file": "app/config/parameters.yml"
-		}
+		"incenteev-parameters": [
+			{
+				"file": "config/protected.local.yml"
+			}
+			,{
+				"file": "config/public.local.yml"
+			}
+			,{
+				"file": "config/symfony.local.yml"
+			}
+		]
 		,"installer-paths": {
 			"vendor/wp/plugin-{$name}": ["type:wordpress-plugin"]
 			,"vendor/wp/theme-{$name}": ["type:wordpress-theme"]
@@ -64,9 +72,12 @@
 	,"scripts": {
 		"post": [
 			"Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
-			,"bin/console cache:clear --env prod"
-			,"bin/console cache:clear"
-			,"bin/console assets:install --symlink --relative web"
+			,"bin/public cache:clear --env prod"
+			,"bin/public cache:clear"
+			,"bin/public assets:install --symlink --relative web"
+			,"bin/protected cache:clear --env prod"
+			,"bin/protected cache:clear"
+			,"bin/protected assets:install --no-cleanup --symlink --relative web"
 			,"bin/blog-install"
 		]
 		,"post-install-cmd": ["@post"]
