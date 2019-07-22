@@ -17,6 +17,8 @@ node_modules/
 !bin/app-install
 !bin/console
 !bin/blog-install
+!bin/protected
+!bin/public
 /composer.lock
 /composer.phar
 /config/*local.*
