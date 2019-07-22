@@ -4,8 +4,6 @@
 .DS_Store
 .sass-cache/
 node_modules/
-/app/config/parameters.yml
-/config/blog.local.php
 /app/data/
 /app/files/*
 !/app/files/wp-uploads/.gitkeep
