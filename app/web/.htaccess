@@ -77,7 +77,7 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteCond %{REQUEST_FILENAME} -f
 	RewriteRule .? - [L]
 	RewriteCond %{REQUEST_FILENAME} -d
-	RewriteCond %{REQUEST_URI} !/?$
+	RewriteCond %{REQUEST_URI} !^/?$
 	RewriteRule .? - [L]
 
 	##==public
