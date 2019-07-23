@@ -9,20 +9,12 @@
 	,"autoload-dev": {
 		"files": ["vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"]
 	}
-	,"config": {
-		"bin-dir": "bin"
-	}
+	,"config": {"bin-dir": "bin"}
 	,"extra": {
 		"incenteev-parameters": [
-			{
-				"file": "config/protected.local.yml"
-			}
-			,{
-				"file": "config/public.local.yml"
-			}
-			,{
-				"file": "config/symfony.local.yml"
-			}
+			{"file": "config/protected.local.yml"}
+			,{"file": "config/public.local.yml"}
+			,{"file": "config/symfony.local.yml"}
 		]
 		,"installer-paths": {
 			"vendor/wp/plugin-{$name}": ["type:wordpress-plugin"]
