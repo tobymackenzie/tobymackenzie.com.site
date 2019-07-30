@@ -13,6 +13,7 @@ if(WP_DEBUG){
 <?php
 }
 
+
 //=====content
 $thumbnail = (is_single() ? get_the_post_thumbnail() : null);
 $title = get_the_title();
@@ -32,7 +33,7 @@ if($title || $thumbnail){
 <?php
 	}
 	if($title){
-		if(is_page() || is_single()){
+		if(is_singular()){
 ?>
 		<h1 class="postHeading p-name"><?=$title?></h1>
 <?php
@@ -101,19 +102,21 @@ if(is_single()){ ?>
 	</header>
 <?php
 
-//--Output post content.  Excerpt for search results, full content for everything else.
-if(is_search()){
+//--Output post content.  Excerpt for lists if set or search, full content for singular.
+$moreSroHTML = '<span class="sro"> post "' . $permalinkTitle . '"</span>';
 ?>
-	<div class="postContent p-summary"><?php the_excerpt(); ?></div>
+	<div class="postContent <?=is_singular() ? 'e-content' : 'p-summary'?>">
+<?php if(!is_singular() && (has_excerpt() || is_search())){ ?>
+		<?php the_excerpt(); ?>
 <?php }else{ ?>
-	<div class="postContent e-content">
-		<?php the_content(__('Continue reading', 'tmweb') . '<span class="sro"> post "' . $permalinkTitle . '"</span>'); ?>
+		<?php the_content(false, false); ?>
 		<?php wp_link_pages(Array(
 			'after'=> '</div>'
 			,'before'=> '<div class="pageLinks">' . __('Pages:', 'tmweb')
 		)); ?>
-	</div>
 <?php } ?>
+		<?php if(!is_singular()){ ?><a class="more-link" href="<?=the_permalink()?>"><?=__('Continue reading', 'tmweb')?> <?=$moreSroHTML?></a><?php } ?>
+	</div>
 	<hr />
 </article>
 <?php
