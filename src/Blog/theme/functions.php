@@ -75,15 +75,20 @@ class TMWebWPTheme{
 TMWebWPTheme::$helper = new WPThemeHelper([
 ]);
 
-
-
+//--force https if browser supports it
 add_action('wp_enqueue_scripts', function(){
-	//--force https if browser supports it
 	if(!is_ssl()){
 		//-# putting in post because I'm not sure if old browsers will fail loading content if they can't load the script
 		wp_enqueue_script('forceHttps',   'https://' . $_SERVER['HTTP_HOST'] . '/bundles/public/scripts/prod/forceHttps.js', false, null, true);
 	}
 });
+
+//--better looking ellipse for auto-generated excerpt
+add_filter('excerpt_more', function(){
+	return '…';
+});
+
+//--title output
 add_filter('get_the_archive_title', function($title){
 	if(is_category()){
 		$title = single_cat_title('', false) . __(' posts', 'tjm');
