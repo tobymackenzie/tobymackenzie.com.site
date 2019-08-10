@@ -23,10 +23,8 @@ $app = new App([
 	]
 	,'loader'=> $loader
 	,'paths'=> [
-		//--cli paths
-		'PHPCLI'=> '/usr/bin/php'
 		//--symfony paths
-		,'app'=> __DIR__
+		'app'=> __DIR__
 		,'project'=> PROJECT_DIR
 		,'src'=> PROJECT_DIR . '/src'
 		,'var'=> PROJECT_DIR . '/var'
