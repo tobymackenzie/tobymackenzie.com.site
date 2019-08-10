@@ -1,6 +1,4 @@
 <?php
-use TJM\Bundle\StandardEditionBundle\Component\App\App;
-
 if(!isset($app)){
 	$app = require_once __DIR__ . '/../bootstrap.php';
 }
