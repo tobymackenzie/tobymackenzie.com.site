@@ -1,6 +1,5 @@
 <?php
 namespace TJM\Bundle\StandardEditionBundle\Component\App;
-use Composer\Autoload\ClassLoader;
 
 error_reporting(error_reporting() & ~E_USER_DEPRECATED);
 
