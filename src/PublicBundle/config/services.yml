@@ -1,6 +1,8 @@
 services:
  _defaults:
   autowire: true
+  bind:
+   $env: '%kernel.environment%'
  htmlToMarkdown:
   class: TJM\HtmlToMarkdown\HtmlConverter
   arguments: [{'hard_break': true, 'strip_tags': true}]

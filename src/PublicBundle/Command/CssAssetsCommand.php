@@ -1,13 +1,18 @@
 <?php
 namespace PublicBundle\Command;
 use Exception;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
-class CssAssetsCommand extends ContainerAwareCommand{
+class CssAssetsCommand extends Command{
+	protected $env;
+	public function __construct($env){
+		$this->env = $env;
+		parent::__construct();
+	}
 	protected function configure(){
 		$this
 			->setName('public:assets:css')
@@ -22,8 +27,7 @@ class CssAssetsCommand extends ContainerAwareCommand{
 		}else{
 			throw new Exception("No sass command found on shell path.");
 		}
-		$env = $this->getContainer()->get('kernel')->getEnvironment();
-		if($env === 'prod'){
+		if($this->env === 'prod'){
 			$sassBin .= ' --style compressed';
 		}else{
 			$sassBin .= " --line-numbers";
@@ -45,7 +49,7 @@ class CssAssetsCommand extends ContainerAwareCommand{
 			if($postCSSBin){
 				$run .= ' | ' . $postCSSBin;
 			}
-			$run .= " > ./public/styles/{$env}/{$nameBase}.css";
+			$run .= " > ./public/styles/{$this->env}/{$nameBase}.css";
 			$process = new Process($run, $resourcesPath);
 			$process->start();
 			$processes[] = $process;
