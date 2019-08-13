@@ -4,6 +4,7 @@ imports:
   - {resource: ../../../config/protected.local.yml}
 
 framework:
+ assets: ~
  default_locale: '%locale%'
  http_method_override: true
  request:
@@ -15,7 +16,6 @@ framework:
   resource: '%kernel.root_dir%/config/routing.yml'
   strict_requirements: ~
  secret: '%secret%'
- templating: {engines: ['twig']} #assets_version: SomeVersionScheme
  trusted_hosts: ~
 
 security:
