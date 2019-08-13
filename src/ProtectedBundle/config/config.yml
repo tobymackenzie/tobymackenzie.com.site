@@ -54,6 +54,8 @@ sensio_framework_extra:
   annotations: false
 
 services:
+ _defaults:
+  autowire: true
  ProtectedBundle\Controller\:
    resource: '%kernel.project_dir%/src/ProtectedBundle/Controller'
    tags: ['controller.service_arguments']
