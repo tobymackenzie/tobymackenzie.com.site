@@ -31,5 +31,5 @@ tjm_base:
 
 twig:
  debug: "%kernel.debug%"
- exception_controller: PublicBundle:Meta:exception
+ exception_controller: 'PublicBundle\Controller\MetaController::exceptionAction'
  strict_variables: "%kernel.debug%"
