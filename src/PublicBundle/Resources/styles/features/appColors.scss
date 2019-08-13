@@ -16,7 +16,7 @@
 		&:focus, &:hover{
 			background: rgba(map-get($colors, secondaryLinkFocusBG), 0.3);
 			color: map-get($colors, secondaryLinkFocusFG);
-			text-decoration-color: rgba(map-get($colors, secondaryLinkFocusFG), 0.4);
+			text-decoration-color: map-get($colors, secondaryLinkFocusFG);
 		}
 	}
 }
@@ -88,6 +88,7 @@
 		@extend %highlightedBGActions;
 		&:active, &:focus, &:hover{
 			color: map-get($colors, linkFGFocus);
+			text-decoration-color: map-get($colors, linkFGFocus);
 		}
 		&:visited{
 			color: map-get($colors, linkFGVisited);
