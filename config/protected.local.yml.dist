@@ -1,6 +1,6 @@
 parameters:
   #==security
-  secure.encoder: 'plaintext'
+  secure.encoder: auto
   secure.path: '_admin'
   secure.users:
     admin:
