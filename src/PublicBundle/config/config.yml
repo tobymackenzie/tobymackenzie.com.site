@@ -32,4 +32,6 @@ tjm_base:
 twig:
  debug: "%kernel.debug%"
  exception_controller: 'PublicBundle\Controller\MetaController::exceptionAction'
+ paths:
+   '%kernel.root_dir%/templates': 'Public'
  strict_variables: "%kernel.debug%"

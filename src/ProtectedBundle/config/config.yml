@@ -64,4 +64,6 @@ tjm_base:
 twig:
  debug: "%kernel.debug%"
  # exception_controller: PublicBundle:Meta:exception
+ paths:
+   '%kernel.root_dir%/templates': 'Protected'
  strict_variables: "%kernel.debug%"
