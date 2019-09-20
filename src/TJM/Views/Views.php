@@ -56,9 +56,6 @@ class Views{
 					$data['canonical'] = 'https://' . $this->host . $this->router->generate($currentRoute, $routeParams);
 				}
 			}
-			if($request->getHost() !== $this->host){
-
-			}
 			if($request->getScheme() !== 'https' && !isset($data['page']['secureUrl'])){
 				$data['page']['secureUrl'] = 'https://' . $request->getHost() . $request->server->get('REQUEST_URI');
 			}
