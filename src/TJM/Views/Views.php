@@ -3,9 +3,11 @@ namespace TJM\Views;
 use Symfony\Component\HttpFoundation\Request;
 
 class Views{
+	protected $host;
 	protected $router;
 	protected $wraps;
-	public function __construct($router, array $wraps){
+	public function __construct($router, array $wraps, string $host){
+		$this->host = $host;
 		$this->router = $router;
 		$this->wraps = $wraps;
 	}
@@ -42,7 +44,7 @@ class Views{
 		}
 		if($request && $data["doc"]['name'] !== 'error'){
 			if(!isset($data['canonical']) && ($format === 'html' || $format === 'xhtml')){
-				if($request->getScheme() !== 'https' || $request->getHost() !== 'www.tobymackenzie.com' || $format !== 'html'){
+				if($request->getScheme() !== 'https' || $request->getHost() !== $this->host || $format !== 'html'){
 					$currentRoute = $request->get('_route');
 					if($currentRoute === 'public_home_formatted'){
 						$currentRoute = 'public_home';
@@ -51,8 +53,11 @@ class Views{
 					}
 					$routeParams = $request->get('_route_params');
 					unset($routeParams['_format']);
-					$data['canonical'] = 'https://www.tobymackenzie.com' . $this->router->generate($currentRoute, $routeParams);
+					$data['canonical'] = 'https://' . $this->host . $this->router->generate($currentRoute, $routeParams);
 				}
+			}
+			if($request->getHost() !== $this->host){
+
 			}
 			if($request->getScheme() !== 'https' && !isset($data['page']['secureUrl'])){
 				$data['page']['secureUrl'] = 'https://' . $request->getHost() . $request->server->get('REQUEST_URI');

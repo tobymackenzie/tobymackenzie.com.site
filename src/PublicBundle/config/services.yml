@@ -19,7 +19,7 @@ services:
    arguments: ['%kernel.project_dir%/app/pages', '@TJM\FileStore\FileStore']
    public: true
  TJM\Views\Views:
-   arguments: ['@router', '%tjm_base.wraps%']
+   arguments: ['@router', '%tjm_base.wraps%', '%public.host%']
    public: true
  ##==commands
  PublicBundle\Command\:
