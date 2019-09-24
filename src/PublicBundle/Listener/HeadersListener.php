@@ -46,6 +46,7 @@ class HeadersListener{
 			if(!$headers->has($cspHeader)){
 				//-!!! need to be able to add src's per page.  This is a quick fix
 				$defaultSrc = "'unsafe-inline' {$request->server->get('HTTP_HOST')}";
+				//--allow force domain script
 				if($this->host !== $request->getHost()){
 					$defaultSrc .= ' ' . $this->host;
 				}

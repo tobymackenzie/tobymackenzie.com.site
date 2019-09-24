@@ -45,9 +45,9 @@ script `type="application/javascript"` to block some old browsers.  blocks IE8- 
 - prevents needing to worry about supporting them with js features: have very low usage rates
 - prevents Moz1 from throwing up 3 security exception dialogs
 #}
-{#--force canonical host if available.  allows us to test for actual support, unlike server sent redirect. #}
+{#--force canonical host if available.  allows us to test for actual support, unlike server sent redirect. will allow IP visits if DNS down. #}
 {% if site.forceHost|default(false) %}
-<script src="{{site.forceHost}}/bundles/public/scripts/{{app.environment}}/forceDomain.js"></script>
+<script src="{{site.forceHost}}/bundles/public/scripts/{{app.environment}}/forceDomain.js" type="application/javascript"></script>
 {#--force https if browser supports it.  allows us to test for actual support, unlike server sent redirect. #}
 {#-#
 - putting in pre reduces rendering / loading of http content if redirect happens
