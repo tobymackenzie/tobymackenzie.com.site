@@ -6,8 +6,10 @@ use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 
 class HeadersListener{
 	protected $env;
-	public function __construct($env){
+	protected $host;
+	public function __construct($env, $host){
 		$this->env = $env;
+		$this->host = $host;
 	}
 	//-@ http://stackoverflow.com/a/21720357/1139122
 	//-@ http://php-and-symfony.matthiasnoback.nl/2011/10/symfony2-create-a-response-filter-and-set-extra-response-headers/
@@ -43,7 +45,11 @@ class HeadersListener{
 			$cspHeader = ($this->env === 'dev') ? 'Content-Security-Policy-Report-Only' : 'Content-Security-Policy';
 			if(!$headers->has($cspHeader)){
 				//-!!! need to be able to add src's per page.  This is a quick fix
-				$headers->set($cspHeader, "default-src 'unsafe-inline' {$request->server->get('HTTP_HOST')}; frame-src www.youtube.com;block-all-mixed-content");
+				$defaultSrc = "'unsafe-inline' {$request->server->get('HTTP_HOST')}";
+				if($this->host !== $request->getHost()){
+					$defaultSrc .= ' ' . $this->host;
+				}
+				$headers->set($cspHeader, "default-src {$defaultSrc}; frame-src www.youtube.com;block-all-mixed-content");
 			}
 
 			//--block iframes from showing site, except from our domain.  helps prevent clickjacking

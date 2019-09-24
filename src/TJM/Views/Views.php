@@ -30,6 +30,9 @@ class Views{
 		if(!isset($data["site"]["isResponsive"])){
 			$data["site"]['isResponsive'] = true;
 		}
+		if(!isset($data["site"]["host"])){
+			$data["site"]['host'] = $this->host;
+		}
 		if(isset($data['format'])){
 			$format = $data['format'];
 		}elseif($request){
@@ -43,8 +46,10 @@ class Views{
 			$data["site"]['title'] .= '>';
 		}
 		if($request && $data["doc"]['name'] !== 'error'){
+			$isCanonicalHost = $request->getHost() === $this->host;
+			$isHttps = $request->getScheme() === 'https';
 			if(!isset($data['canonical']) && ($format === 'html' || $format === 'xhtml')){
-				if($request->getScheme() !== 'https' || $request->getHost() !== $this->host || $format !== 'html'){
+				if(!$isHttps || !$isCanonicalHost || $format !== 'html'){
 					$currentRoute = $request->get('_route');
 					if($currentRoute === 'public_home_formatted'){
 						$currentRoute = 'public_home';
@@ -56,7 +61,10 @@ class Views{
 					$data['canonical'] = 'https://' . $this->host . $this->router->generate($currentRoute, $routeParams);
 				}
 			}
-			if($request->getScheme() !== 'https' && !isset($data['page']['secureUrl'])){
+			if(!$isCanonicalHost && filter_var($request->getHost(), FILTER_VALIDATE_IP)){
+				$data['site']['forceHost'] = $request->getScheme() . '://' . $this->host;
+			}
+			if(!$isHttps && !isset($data['page']['secureUrl'])){
 				$data['page']['secureUrl'] = 'https://' . $request->getHost() . $request->server->get('REQUEST_URI');
 			}
 		}
