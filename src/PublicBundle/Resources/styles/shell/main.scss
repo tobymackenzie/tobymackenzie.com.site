@@ -2,6 +2,12 @@
 	@extend %appMainColors;
 	@extend %appMainLayout;
 }
+a[name="appMain"]{
+	@include supports('sticky-header'){
+		position: relative;
+		top: -1 * $appHeaderHeight;
+	}
+}
 .appMainFooter{
 	@extend %appMainFooterColors;
 	@extend %appMainFooterLayout;
