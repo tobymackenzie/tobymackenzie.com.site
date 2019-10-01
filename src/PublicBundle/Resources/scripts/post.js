@@ -1,4 +1,3 @@
-import * as docNav from './modules/docNav.js';
 import * as konamiCode from './modules/konamiCode.js';
 
 //--cache proxy service worker

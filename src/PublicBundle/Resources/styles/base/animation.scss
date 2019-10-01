@@ -1,8 +1,14 @@
+//--animate automatic scrolling
+*{
+	scroll-behavior: smooth;
+}
+
 //--remove animations / transitions for users who prefer it
 //-@ https://mobile.twitter.com/scottjehl/status/1085600505299111936
 @media (prefers-reduced-motion: reduce){
 	*, *:after, *:before{
 		animation-duration: 0 !important;
+		scroll-behavior: auto !important;
 		transition: none !important;
 	}
 }
