@@ -1,6 +1,7 @@
 <?php
 use Symfony\Component\HttpFoundation\Request;
 use TJM\Bundle\StandardEditionBundle\Component\App\App;
+use TJM\Views\Views;
 use TJM\WPThemeHelper\SettingHelper;
 use TJM\WPThemeHelper\WPThemeHelper;
 
@@ -36,7 +37,7 @@ class SymfonyHelper{
 		if(!isset(static::$viewData['canonical'])){
 			static::$viewData['canonical'] = 'https://www.tobymackenzie.com' . $request->server->get('REQUEST_URI');
 		}
-		return static::getService('TJM\Views\Views')->getDocData($request, static::$viewData);
+		return static::getService(Views::class)->getDocData($request, static::$viewData);
 	}
 }
 class TMWebWPTheme{
