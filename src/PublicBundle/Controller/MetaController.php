@@ -1,5 +1,6 @@
 <?php
 namespace PublicBundle\Controller;
+use ParsedownExtra;
 use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -97,7 +98,11 @@ class MetaController extends Controller{
 		$response->setStatusCode($code);
 		return $response;
 	}
-	public function humansAction(Request $request, $_format = 'html'){
+	public function humansAction(
+		$_format = 'html'
+		,ParsedownExtra $markdownToHtml
+		,Request $request
+	){
 		$data = [
 			'sections'=> [
 				'Human / Webmaster'=> [
@@ -150,7 +155,7 @@ class MetaController extends Controller{
 			//--make sublabels into <strong> since nested <dl> doesn't seem to work
 			$content = preg_replace('/\t([\w\s-\.\(\)\[\]]+):/', "\t**$1**:", $content);
 			//--parse markdown
-			$content = $this->get('markdownToHtml')->text($content);
+			$content = $markdownToHtml->text($content);
 			//--pass new data to simplePage
 			$data = [
 				'content'=> $content

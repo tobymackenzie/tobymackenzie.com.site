@@ -1,19 +1,23 @@
 <?php
 namespace PublicBundle\Controller;
 use DateTime;
+use ParsedownExtra;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\RouterInterface;
+use TJM\HtmlToMarkdown\HtmlConverter;
 use TJM\Pages\Pages;
 
 class DefaultController extends Controller{
 	public function pageAction(
-		Request $request
+		$_format = null
+		,HtmlConverter $htmlToMarkdown
 		,$id
+		,ParsedownExtra $markdownToHtml
 		,Pages $pagesService
+		,Request $request
 		,RouterInterface $router
-		,$_format = null
 	){
 		//--make sure format is supported
 		if(!in_array($_format, static::SUPPORTED_FORMATS)){
@@ -54,7 +58,7 @@ class DefaultController extends Controller{
 				switch($request->getRequestFormat()){
 					case 'md':
 					case 'txt':
-						$page->setContent($this->get('htmlToMarkdown')->convert($page->getContent()));
+						$page->setContent($htmlToMarkdown->convert($page->getContent()));
 					break;
 				}
 			break;
@@ -63,13 +67,13 @@ class DefaultController extends Controller{
 				switch($request->getRequestFormat()){
 					case 'html':
 					case 'xhtml':
-						$page->setContent($this->get('markdownToHtml')->text($page->getContent()));
+						$page->setContent($markdownToHtml->text($page->getContent()));
 						//--fix line breaks
 						//-# not sure why we have to do this, as they are correct in the content and it doesn't look like parsedown should mangle them
 						$page->setContent(str_ireplace('<br>', '<br />', $page->getContent()));
 					break;
 					case 'txt':
-						$page->setContent($this->get('htmlToMarkdown')->convertInMarkdown($page->getContent()));
+						$page->setContent($htmlToMarkdown->convertInMarkdown($page->getContent()));
 					break;
 				}
 			break;
