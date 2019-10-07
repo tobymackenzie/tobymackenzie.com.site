@@ -59,7 +59,8 @@ $appNavWidth: 13;
 	}
 	@include supports('sticky-header'){
 		//--simulate top padding on nav that gets removed on scroll
-		border-bottom: 0.5em solid;
+		border-bottom-style: solid;
+		border-bottom-width: 0.5em;
 		//--ensure scroll paging takes into account approximate header height in ff, saf
 		&:after{
 			content: '';
@@ -256,7 +257,8 @@ $appNavWidth: 13;
 	@include supports('fixed-nav', 'sticky-nav'){
 		align-self: end;
 		-webkit-align-self: flex-end; //-# autoprefixer seems to get this wrong
-		border: 3px solid;
+		border-style: solid;
+		border-width: 3px;
 		border-right: 0;
 		bottom: -3px; //--hide bottom border until the bottom
 		$bottomMargin: -2.9em; //--suck down even with end logo

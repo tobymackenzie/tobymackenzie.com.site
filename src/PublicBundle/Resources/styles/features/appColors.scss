@@ -78,6 +78,7 @@
 	border-bottom-color: map-get($colors, primaryBG);
 	@include supports('dark-theme'){
 		background: map-get($darkThemeColors, chromeHeaderBG);
+		border-bottom-color: map-get($darkThemeColors, chromeHeaderBG);
 	}
 }
 %appMainColors{
