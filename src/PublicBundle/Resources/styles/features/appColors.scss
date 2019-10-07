@@ -26,12 +26,20 @@
 @mixin primaryAreaColors(){
 	background: map-get($colors, primaryBG);
 	color: map-get($colors, primaryFG);
+	@include supports('dark-theme'){
+		background: map-get($darkThemeColors, primaryBG);
+		color: map-get($darkThemeColors, primaryFG);
+	}
 }
 %primaryAreaColors{
 	@include primaryAreaColors;
 	a{
 		color: map-get($colors, primaryLinkFG);
 		text-decoration-color: rgba(map-get($colors, primaryLinkFG), 0.4);
+		@include supports('dark-theme'){
+			color: map-get($darkThemeColors, primaryLinkFG);
+			text-decoration-color: rgba(map-get($darkThemeColors, primaryLinkFG), 0.4);
+		}
 	}
 }
 
@@ -40,6 +48,11 @@
 	background: map-get($colors, baseBG);
 	background: rgba(map-get($colors, baseBG), 0.95);
 	color: map-get($colors, baseFG);
+	@include supports('dark-theme'){
+		background: map-get($darkThemeColors, baseBG);
+		background: rgba(map-get($darkThemeColors, baseBG), 0.95);
+		color: map-get($darkThemeColors, baseFG);
+	}
 }
 %appColors{
 	@include mq(map-get($bp, appWidth)){
@@ -63,6 +76,9 @@
 	@extend %appContainerColors;
 	@extend %tertiaryAreaColors;
 	border-bottom-color: map-get($colors, primaryBG);
+	@include supports('dark-theme'){
+		background: map-get($darkThemeColors, chromeHeaderBG);
+	}
 }
 %appMainColors{
 	@extend %appContainerColors;
@@ -86,21 +102,34 @@
 	@extend %primaryAreaColors;
 	a{
 		@extend %highlightedBGActions;
+		&:visited{
+			color: map-get($colors, linkFGVisited);
+			@include supports('dark-theme'){
+				color: map-get($darkThemeColors, linkFGVisited);
+			}
+		}
 		&:active, &:focus, &:hover{
 			color: map-get($colors, linkFGFocus);
 			text-decoration-color: map-get($colors, linkFGFocus);
-		}
-		&:visited{
-			color: map-get($colors, linkFGVisited);
+			@include supports('dark-theme'){
+				color: map-get($darkThemeColors, linkFGFocus);
+				text-decoration-color: map-get($darkThemeColors, linkFGFocus);
+			}
 		}
 		&:active{
 			color: map-get($colors, linkFGActive);
+			@include supports('dark-theme'){
+				color: map-get($darkThemeColors, linkFGActive);
+			}
 		}
 	}
 	p{
 		&:first-letter{
 			color: map-get($colors, strong);
 			font-weight: bold;
+			@include supports('dark-theme'){
+				color: map-get($darkThemeColors, strong);
+			}
 			@include mq('print'){
 				color: #000000;
 			}

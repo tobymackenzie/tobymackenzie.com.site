@@ -18,6 +18,9 @@ b, strong{
 	//-# only really necessary if using @font-face with a bold variant
 	@extend %font-bold;
 	color: map-get($colors, strong);
+	@include supports('dark-theme'){
+		color: map-get($darkThemeColors, strong);
+	}
 }
 b em, b i, em b, em strong, i b, i strong, strong em, strong i{
 	//-# only really necessary if using @font-face with a bold italic variant and having these combinations of elements.  Uncomment if desired.
@@ -63,6 +66,10 @@ h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{
 	@extend %block;
 	@extend %font-heading;
 	color: map-get($colors, heading);
+	@include supports('dark-theme'){
+		color: map-get($darkThemeColors, heading);
+	}
+
 	//--less line height than normal text. gets big otheriwse
 	line-height: 1.4;
 	* + &{
@@ -101,6 +108,9 @@ hr{
 	height: 2px;
 	margin: 1.5em 0;
 	opacity: 0.4;
+	@include supports('dark-theme'){
+		background: map-get($darkThemeColors, contentBorder);
+	}
 	&:last-child{
 		display: none;
 	}
@@ -116,6 +126,9 @@ input, select, td, textarea, th{
 ins{
 	background: map-get($colors, insertBG);
 	text-decoration: none;
+	@include supports('dark-theme'){
+		background: map-get($darkThemeColors, insertBG);
+	}
 	&:before{
 		color: map-get($colors, proofreadersMark);
 		content: '^';

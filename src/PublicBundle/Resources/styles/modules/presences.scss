@@ -17,6 +17,9 @@
 		text-decoration: underline;
 		text-decoration-color: rgba(map-get($colors, primaryLinkFG), 0.4);
 		vertical-align: middle;
+		@include supports('dark-theme'){
+			color: map-get($darkThemeColors, primaryLinkFG);
+		}
 		@include mq('print'){
 			text-decoration: none;
 			vertical-align: baseline;

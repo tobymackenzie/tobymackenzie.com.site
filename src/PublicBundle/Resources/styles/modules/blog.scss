@@ -33,6 +33,9 @@
 .jp-relatedposts-post-aoverlay.jp-relatedposts-post-aoverlay{
 	&:active, &:focus, &:hover{
 		background: rgba(map-get($colors, linkBG), 0.4);
+		@include supports('dark-theme'){
+			color: map-get($darkThemeColors, linkBG);
+		}
 	}
 }
 

@@ -63,6 +63,10 @@ $disabledSupports: () !default;
 				@include supports('app-grid'){
 					@content;
 				}
+			}@elseif $name == 'dark-theme'{
+				@media only screen and (prefers-color-scheme: dark){
+					@content;
+				}
 			}@elseif $name == 'sticky-header'{
 				@include supports('sticky-nav'){
 					@content;

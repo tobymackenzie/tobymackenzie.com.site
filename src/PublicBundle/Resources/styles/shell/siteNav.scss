@@ -1,9 +1,15 @@
 @mixin siteNavIconColors(){
 	filter: brightness(7); //-! change color of icons. would be nice if we could do this a different way.  could use tweaking
+	@include supports('dark-theme'){
+		filter: brightness(2);
+	}
 }
 .siteNav{
 	@extend %appContainerLayout;
 	@extend %secondaryAreaColors;
+	@include supports('dark-theme'){
+		background: map-get($darkThemeColors, navBG);
+	}
 	padding: 1.5em;
 	font-size: 1.2em;
 	.app &{

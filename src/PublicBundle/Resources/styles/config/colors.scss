@@ -21,6 +21,7 @@ $namedColors: (
 	,lighterGreen: lighten($namedColors-alt, 5%)
 	,aGreen: #447744
 	,aVisitedGreen: darken($namedColors, 10%)
+	,aVisitedGreenDarkTheme: lighten($namedColors, 30%)
 	,nearBlack: #002200
 	,whiteGreen: lighten($namedColors, 60%)
 );
@@ -72,7 +73,23 @@ $colors: map-merge($colors, (
 	shadow: map-get($namedColors, blackGreen),
 	strong: map-get($namedColors, strongGreen)
 ));
-
+$darkThemeColors: (
+	baseBG: map-get($namedColors, darkGreen),
+	baseFG: map-get($namedColors, lighterGreen),
+	chromeHeaderBG: map-get($namedColors, blackGreen),
+	contentBorder: map-get($namedColors, lightGreen),
+	heading: map-get($namedColors, lightGreen),
+	insertBG: map-get($namedColors, darkGreen),
+	linkBG: map-get($namedColors, darkGreen),
+	linkFGActive: map-get($namedColors, purple),
+	linkFGFocus: map-get($namedColors, lighterGreen),
+	linkFGVisited: map-get($namedColors, aVisitedGreenDarkTheme),
+	navBG: map-get($namedColors, nearBlack),
+	primaryBG: map-get($namedColors, nearBlack),
+	primaryFG: map-get($namedColors, whiteGreen),
+	primaryLinkFG: map-get($namedColors, lightGreen),
+	strong: map-get($namedColors, lighterGreen)
+);
 //--merge in colors derived from others
 $colors: map-merge($colors, (
 ));

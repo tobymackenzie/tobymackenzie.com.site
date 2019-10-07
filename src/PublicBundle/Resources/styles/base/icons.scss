@@ -20,6 +20,9 @@ minuses:
 	@include remFallback('background-size', ((1412 / 32) * $size * 1px) ((124 / 32) * $size * 1px));
 	flex: 0 0 auto;
 	speak: none;
+	@include supports('dark-theme'){
+		filter: brightness(2);
+	}
 }
 %icm{
 	@include icm();
