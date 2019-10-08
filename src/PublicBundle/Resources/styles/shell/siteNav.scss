@@ -1,7 +1,7 @@
 @mixin siteNavIconColors(){
 	filter: brightness(7); //-! change color of icons. would be nice if we could do this a different way.  could use tweaking
 	@include supports('dark-theme'){
-		filter: brightness(2);
+		filter: brightness(1.6);
 	}
 }
 .siteNav{

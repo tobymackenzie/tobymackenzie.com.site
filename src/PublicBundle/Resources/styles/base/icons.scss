@@ -21,7 +21,7 @@ minuses:
 	flex: 0 0 auto;
 	speak: none;
 	@include supports('dark-theme'){
-		filter: brightness(2);
+		filter: brightness(1.8) grayscale(0.2);
 	}
 }
 %icm{

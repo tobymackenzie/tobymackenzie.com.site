@@ -14,16 +14,21 @@ $namedColors: (
 	baseGreen: $namedColors
 	,blackGreen: #003300
 	,darkGreen: darken($namedColors, 20%)
-	,purple: rebeccapurple
+	,'purple': rebeccapurple
 	,'red': #bb6600
 	,strongGreen: #225522
 	,lightGreen: $namedColors-alt
 	,lighterGreen: lighten($namedColors-alt, 5%)
 	,aGreen: #447744
 	,aVisitedGreen: darken($namedColors, 10%)
-	,aVisitedGreenDarkTheme: lighten($namedColors, 30%)
 	,nearBlack: #002200
 	,whiteGreen: lighten($namedColors, 60%)
+
+	//==kermit
+	,brightKermitGreen: hsl(120, 60%, 52%)
+	,lessBrightKermitGreen: hsl(120, 50%, 72%)
+	,lightKermitGreen: hsl(120, 55%, 72%)
+	,subduedKermitGreen: hsl(120, 26%, 62%)
 );
 
 /*=====
@@ -64,10 +69,10 @@ $colors: map-merge($colors, (
 	heading: map-get($namedColors, strongGreen),
 	insertBG: map-get($namedColors, lighterGreen),
 	linkBG: map-get($namedColors, lightGreen),
-	linkFGActive: map-get($namedColors, purple),
+	linkFGActive: map-get($namedColors, 'purple'),
 	linkFGFocus: map-get($namedColors, strongGreen),
 	linkFGVisited: map-get($namedColors, aVisitedGreen),
-	logo: map-get($namedColors, purple),
+	logo: map-get($namedColors, 'purple'),
 	mainBorder: map-get($namedColors, baseGreen),
 	proofreadersMark: map-get($namedColors, 'red'),
 	shadow: map-get($namedColors, blackGreen),
@@ -75,20 +80,20 @@ $colors: map-merge($colors, (
 ));
 $darkThemeColors: (
 	baseBG: map-get($namedColors, darkGreen),
-	baseFG: map-get($namedColors, lighterGreen),
+	baseFG: map-get($namedColors, lightGreen),
 	chromeHeaderBG: map-get($namedColors, blackGreen),
 	contentBorder: map-get($namedColors, lightGreen),
-	heading: map-get($namedColors, lightGreen),
+	heading: map-get($namedColors, lightKermitGreen),
 	insertBG: map-get($namedColors, darkGreen),
 	linkBG: map-get($namedColors, darkGreen),
-	linkFGActive: map-get($namedColors, purple),
-	linkFGFocus: map-get($namedColors, lighterGreen),
-	linkFGVisited: map-get($namedColors, aVisitedGreenDarkTheme),
+	linkFGActive: map-get($namedColors, 'purple'),
+	linkFGFocus: map-get($namedColors, brightKermitGreen),
+	linkFGVisited: map-get($namedColors, subduedKermitGreen),
 	navBG: map-get($namedColors, nearBlack),
 	primaryBG: map-get($namedColors, nearBlack),
-	primaryFG: map-get($namedColors, whiteGreen),
-	primaryLinkFG: map-get($namedColors, lightGreen),
-	strong: map-get($namedColors, lighterGreen)
+	primaryFG: map-get($namedColors, lightGreen),
+	primaryLinkFG: map-get($namedColors, lightKermitGreen),
+	strong: map-get($namedColors, lightKermitGreen)
 );
 //--merge in colors derived from others
 $colors: map-merge($colors, (
