@@ -43,7 +43,7 @@
 		,"tjm/symfony-basebundle": "master@dev"
 		,"tjm/symfony-standard-edition-bundle": "master@dev"
 		,"tjm/utils": "master@dev"
-		,"tjm/wpthemehelper": "0.1.x@dev"
+		,"tjm/wpthemehelper": "^1"
 		,"wpackagist-plugin/classic-editor": "^1.2"
 		,"wpackagist-plugin/jetpack": "^7.0"
 		,"wpackagist-plugin/wordpress-importer": "^0.6"
