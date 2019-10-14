@@ -294,8 +294,11 @@ $appNavWidth: 13;
 	* + &{
 		border-top-style: solid;
 	}
+	@include mq(map-get($bp, verySmall)){
+		padding: remFromPx(24);
+	}
 	@include mq(map-get($bp, small)){
-		padding: remFromPx(32) remFromPx(16);
+		padding: remFromPx(32) remFromPx(24);
 	}
 	@include mq(map-get($bp, medium)){
 		padding: remFromPx(32);
