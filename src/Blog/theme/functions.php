@@ -20,7 +20,7 @@ class SymfonyHelper{
 	static public function getKernel(){
 		if(!static::$kernel){
 			$env = (defined('WP_DEBUG') && WP_DEBUG ? 'dev' : 'prod');
-			$app = require_once __DIR__ . '/../../PublicBundle/bootstrap.php';
+			$app = require_once __DIR__ . '/../../PublicApp/bootstrap.php';
 			$app->setEnvironment($env);
 			$kernel = $app->getKernel();
 			$kernel->boot();
@@ -80,7 +80,7 @@ TMWebWPTheme::$helper = new WPThemeHelper([
 add_action('wp_enqueue_scripts', function(){
 	if(!is_ssl()){
 		//-# putting in post because I'm not sure if old browsers will fail loading content if they can't load the script
-		wp_enqueue_script('forceHttps',   'https://' . $_SERVER['HTTP_HOST'] . '/bundles/public/scripts/prod/forceHttps.js', false, null, true);
+		wp_enqueue_script('forceHttps',   'https://' . $_SERVER['HTTP_HOST'] . '/_assets/scripts/prod/forceHttps.js', false, null, true);
 	}
 });
 

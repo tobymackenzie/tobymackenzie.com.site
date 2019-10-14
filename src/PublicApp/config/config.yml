@@ -1,0 +1,37 @@
+imports:
+  - {resource: '@TJMBaseBundle/Resources/config/config.yml'}
+  - {resource: ../../../config/symfony.yml}
+  - {resource: ../../../config/public.local.yml}
+  - {resource: services.yml}
+
+framework:
+ assets: ~
+ default_locale: '%locale%'
+ http_method_override: true
+ request:
+  formats:
+   # md: 'text/x-markdown'
+   md: 'text/plain'
+   xhtml: 'application/xhtml+xml'
+ router:
+  resource: '%kernel.root_dir%/config/routing.yml'
+  strict_requirements: ~
+ secret: '%secret%'
+ trusted_hosts: ~
+
+sensio_framework_extra:
+ router:
+  annotations: false
+
+tjm_base:
+ page_wraps:
+  full: ":skeletons:full.{format}.twig"
+  public_full: '@Public/skeletons/full.{format}.twig'
+  protected_full: '@Protected/skeletons/full.{format}.twig'
+
+twig:
+ debug: "%kernel.debug%"
+ exception_controller: 'PublicApp\Controller\MetaController::exceptionAction'
+ paths:
+   '%kernel.root_dir%/templates': 'Public'
+ strict_variables: "%kernel.debug%"

@@ -1,0 +1,33 @@
+services:
+ _defaults:
+  autowire: true
+  bind:
+   $env: '%kernel.environment%'
+ TJM\HtmlToMarkdown\HtmlConverter:
+  arguments: [{'hard_break': true, 'strip_tags': true}]
+ ParsedownExtra:
+   class: ParsedownExtra #-! required because not namespaced
+ TJM\FileStore\FileStore:
+   class: TJM\FileStore\FileStore
+   arguments: ['%kernel.project_dir%/app/data/data-store/files']
+ TJM\Pages\Pages:
+   class: TJM\Pages\Pages
+   arguments: ['%kernel.project_dir%/app/pages', '@TJM\FileStore\FileStore']
+ TJM\Views\Views:
+   arguments: ['@router', '%tjm_base.wraps%', '%public.host%']
+   public: true
+ ##==commands
+ PublicApp\Command\:
+   autowire: true
+   autoconfigure: true
+   resource: '%kernel.project_dir%/src/PublicApp/Command'
+ ##==controllers
+ PublicApp\Controller\:
+   resource: '%kernel.project_dir%/src/PublicApp/Controller'
+   tags: ['controller.service_arguments']
+ ##==listeners
+ app.headers_listener:
+  class: PublicApp\Listener\HeadersListener
+  arguments: ['%kernel.environment%', '%public.host%']
+  tags:
+   - {name: kernel.event_listener, event: kernel.response, priority: -129} #-# priority to prevent CSP stripping by https://github.com/symfony/symfony/pull/25532

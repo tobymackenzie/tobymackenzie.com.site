@@ -21,8 +21,8 @@ node_modules/
 /composer.phar
 /config/*local.*
 !/config/*local.*.dist
-/src/PublicBundle/Resources/public/scripts/
-/src/PublicBundle/Resources/public/styles/
+/src/PublicApp/Resources/public/scripts/
+/src/PublicApp/Resources/public/styles/
 /var/*
 !/var/cache/
 /var/cache/*
