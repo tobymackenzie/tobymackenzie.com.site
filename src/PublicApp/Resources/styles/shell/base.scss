@@ -31,7 +31,7 @@ html{
 	opacity: 0.05; filter: alpha(opacity=5); //-# out here to prevent flash when crossing breakpoint
 	@include mq(map-get($bp, wide)){
 		@include fullContainerCover();
-		background: url('/bundles/public/webStuff.jpg') left top;
+		background: url('/_assets/webStuff.jpg') left top;
 		content: ' ';
 		transition: opacity 1.8s ease /* 0.2s*/;
 		&:hover{
