@@ -1,9 +1,9 @@
 public_home:
-  controller: PublicBundle:Default:page
+  controller: PublicBundle\Controller\DefaultController::pageAction
   path: /
   defaults: {id: index}
 public_home_default_redirect:
-  controller: FrameworkBundle:Redirect:urlRedirect
+  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
   path: /index{dotformat}
   defaults:
     path: /
@@ -11,12 +11,12 @@ public_home_default_redirect:
   requirements:
     dotformat: (\.html|\.php)?
 public_home_formatted:
-  controller: PublicBundle:Default:page
+  controller: PublicBundle\Controller\DefaultController::pageAction
   path: /index.{_format}
   defaults:
     id: index
 public_blog:
-  controller: PublicBundle:Default:blog
+  controller: PublicBundle\Controller\DefaultController::blogAction
   path: /tblog{rest}
   defaults: {_format: html, rest: '/'}
   requirements:
@@ -24,62 +24,62 @@ public_blog:
 
 ##==meta
 public_app_manifest:
-  controller: PublicBundle:Meta:appManifest
+  controller: PublicBundle\Controller\MetaController::appManifestAction
   path: /app-manifest.json
 public_error_418:
-  controller: PublicBundle:Meta:showException
+  controller: PublicBundle\Controller\MetaController::showExceptionAction
   path: /418
   defaults: {code: 418}
 public_error_coffee:
-  controller: PublicBundle:Meta:showException
+  controller: PublicBundle\Controller\MetaController::showExceptionAction
   path: /coffee
   defaults: {code: 418}
 public_humans_default_redirect:
-  controller: FrameworkBundle:Redirect:urlRedirect
+  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
   path: /humans.html
   defaults: {path: /humans, permanent: true}
 public_humans:
-  controller: PublicBundle:Meta:humans
+  controller: PublicBundle\Controller\MetaController::humansAction
   path: /humans.{_format}
   defaults: {_format: 'html'}
 public_proxy_service_worker:
-  controller: PublicBundle:Meta:proxyServiceWorker
+  controller: PublicBundle\Controller\MetaController::proxyServiceWorkerAction
   path: /_proxy-sw.js
 public_robots_default_redirect:
-  controller: FrameworkBundle:Redirect:urlRedirect
+  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
   path: /robots.html
   defaults: {path: /robots, permanent: true}
 public_robots:
-  controller: PublicBundle:Meta:robots
+  controller: PublicBundle\Controller\MetaController::robotsAction
   path: /robots.{_format}
   defaults: {_format: 'html'}
 public_site_nav:
-  controller: PublicBundle:Meta:siteNav
+  controller: PublicBundle\Controller\MetaController::siteNavAction
   path: /_site-nav.{_format}
   defaults: {_format: null}
 
 ##--seo
 public_bing_verification:
-  controller: PublicBundle:Meta:bingVerification
+  controller: PublicBundle\Controller\MetaController::bingVerificationAction
   path: '/BingSiteAuth.xml'
 public_google_verification:
-  controller: PublicBundle:Meta:googleVerification
+  controller: PublicBundle\Controller\MetaController::googleVerificationAction
   path: '/%google-verification%'
 
 ##==pages
 public_remove_trailing_slash:
-  controller: PublicBundle:Default:removeTrailingSlash
+  controller: PublicBundle\Controller\DefaultController::removeTrailingSlashAction
   path: /{url}
   methods: [GET]
   requirements:
     url: .*/$
 public_page_formatted:
-  controller: PublicBundle:Default:page
+  controller: PublicBundle\Controller\DefaultController::pageAction
   path: /{id}.{_format}
   requirements:
     id: .*
 public_page:
-  controller: PublicBundle:Default:page
+  controller: PublicBundle\Controller\DefaultController::pageAction
   path: /{id}
   requirements:
     id: .*
