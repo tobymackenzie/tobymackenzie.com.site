@@ -5,10 +5,13 @@
 
 //--remove animations / transitions for users who prefer it
 //-@ https://mobile.twitter.com/scottjehl/status/1085600505299111936
-@media (prefers-reduced-motion: reduce){
+//-@ https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/
+@media (prefers-reduced-motion: reduce), (update: slow){
 	*, *:after, *:before{
-		animation-duration: 0 !important;
+		//-# short time period to ensure any animation / transition end events still fire
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
 		scroll-behavior: auto !important;
-		transition: none !important;
+		transition-duration: 0.01ms !important;
 	}
 }
