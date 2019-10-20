@@ -15,7 +15,7 @@ class CssAssetsCommand extends Command{
 	}
 	protected function configure(){
 		$this
-			->setName('public:assets:css')
+			->setName('assets:css')
 			->setDescription("Build CSS.")
 		;
 	}

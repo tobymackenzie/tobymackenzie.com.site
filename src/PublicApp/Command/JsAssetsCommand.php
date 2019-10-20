@@ -9,7 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class JsAssetsCommand extends Command{
 	protected function configure(){
 		$this
-			->setName('public:assets:js')
+			->setName('assets:js')
 			->setDescription("Build js.")
 			->addOption('compiler', 'c', InputOption::VALUE_REQUIRED)
 		;
