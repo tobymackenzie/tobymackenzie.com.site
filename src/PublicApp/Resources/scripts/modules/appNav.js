@@ -23,6 +23,5 @@ if(
 		_bottomNavItem.classList.add('appNavItem');
 		_bottomNavItem.innerHTML = '<a class="appBottomAction appNavAction" href="#bottom" id="bottom-link"><span class="appNavItemText"><span class="appNavItemHash">#</span>Page bottom</span></a>';
 		_navList.appendChild(_bottomNavItem);
-		console.log(_bottomNavItem);
 	}
 }
