@@ -146,8 +146,14 @@ $appNavWidth: 13;
 		white-space: normal;
 		z-index: 100;
 		@include supports('sticky-nav'){
+			margin-top: 3em;
 			position: sticky;
-			top: calc(3px + 3em);
+			top: 0;
+			//--accomodate restart nav
+			&[data-js]:before{
+				margin-top: 0;
+				top: calc(3px + 3em);
+			}
 		}
 	}
 }
