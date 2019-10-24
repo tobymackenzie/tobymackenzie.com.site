@@ -1,5 +1,5 @@
 //--shadow to help separate app from bg
-@mixin appShadow($depth: 6px){
+@mixin appShadow($depth: 2em){
 	bottom: 0;
 	box-shadow: 0 0 $depth round($depth / 2) rgba(0,0,0,0.3);
 	content: '';
@@ -27,14 +27,14 @@
 	.appNav{
 		overflow: visible;
 		&:before{
-			@include appShadow(8px);
+			@include appShadow();
 			//--less shadow over main
-			right: 3px;
+			right: 1em;
 			//--accomodate restart nav
 			top: -3em;
 			//--when nav opens to left, make appear level with main
 			@include mq(map-get($bp, wide) + $appNavWidth + 1em){
-				right: 10px;
+				right: 1em;
 			}
 		}
 	}
