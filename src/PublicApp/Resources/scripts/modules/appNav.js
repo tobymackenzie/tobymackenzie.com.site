@@ -14,14 +14,14 @@ if(
 	adding here to reduce markup on page load
 	*/
 	var _topNavItem = document.createElement('div');
-	_topNavItem.classList.add('appRestartNav');
+	_topNavItem.className += ' appRestartNav';
 	_topNavItem.innerHTML = '<a class="appRestartAction appNavAction" href="#top" id="top-link"><span class="appNavItemText"><span class="appNavItemHash">#</span>Page top</span></a>';
 	_appEl.appendChild(_topNavItem);
 	var _navList = document.querySelector('.appNavList');
 	if(_navList){
 		var _bottomNavItem = document.createElement('li');
-		_bottomNavItem.classList.add('appNavItem');
 		_bottomNavItem.innerHTML = '<a class="appBottomAction appNavAction" href="#bottom" id="bottom-link"><span class="appNavItemText"><span class="appNavItemHash">#</span>Page bottom</span></a>';
 		_navList.appendChild(_bottomNavItem);
+			_bottomNavItem.className += 'appNavItem';
 	}
 }
