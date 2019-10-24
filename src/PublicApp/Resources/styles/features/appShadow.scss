@@ -28,14 +28,17 @@
 		overflow: visible;
 		&:before{
 			@include appShadow();
+			top: 0;
 			//--less shadow over main
 			right: 1em;
-			//--accomodate restart nav
-			top: -3em;
 			//--when nav opens to left, make appear level with main
 			@include mq(map-get($bp, wide) + $appNavWidth + 1em){
 				right: 1em;
 			}
+		}
+		//--accomodate restart nav
+		&[data-js]:before{
+			top: -3em;
 		}
 	}
 }
