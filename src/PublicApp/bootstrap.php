@@ -10,7 +10,6 @@ $loader = require(VENDOR_DIR . '/autoload.php');
 $app = new App([
 	'bundles'=> [
 		'Symfony\Bundle\FrameworkBundle\FrameworkBundle'
-		,'Symfony\Bundle\SecurityBundle\SecurityBundle'
 		,'Symfony\Bundle\TwigBundle\TwigBundle'
 		,'Symfony\Bundle\MonologBundle\MonologBundle'
 		,'Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle'
