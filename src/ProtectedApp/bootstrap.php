@@ -13,7 +13,6 @@ $app = new App([
 		,'Symfony\Bundle\SecurityBundle\SecurityBundle'
 		,'Symfony\Bundle\TwigBundle\TwigBundle'
 		,'Symfony\Bundle\MonologBundle\MonologBundle'
-		,'Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle'
 		,'TJM\Bundle\StandardEditionBundle\TJMStandardEditionBundle'
 		,'TJM\Bundle\BaseBundle\TJMBaseBundle'
 		,'Symfony\Bundle\DebugBundle\DebugBundle'=> ['dev', 'test']

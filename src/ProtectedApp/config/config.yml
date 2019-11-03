@@ -47,10 +47,6 @@ security:
    memory:
     users: '%secure.users%'
 
-sensio_framework_extra:
- router:
-  annotations: false
-
 services:
  _defaults:
   autowire: true
