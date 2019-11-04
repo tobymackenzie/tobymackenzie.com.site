@@ -6,7 +6,7 @@
 		}
 	}
 	,"autoload-dev": {
-		"files": ["vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"]
+		"files": ["vendor/symfony/var-dumper/Resources/functions/dump.php"]
 	}
 	,"config": {"bin-dir": "bin"}
 	,"extra": {
@@ -26,11 +26,18 @@
 	}
 	,"minimum-stability": "dev"
 	,"prefer-stable": true
+	,"conflict": {
+		"symfony/symfony": "*"
+	}
 	,"require": {
 		"php": ">=7.1"
-		,"symfony/symfony": "^4"
+		,"symfony/asset": "^4"
+		,"symfony/framework-bundle": "^4"
+		,"symfony/console": "^4"
 		,"symfony/monolog-bundle": "^3.1"
 		,"symfony/polyfill-apcu": "^1.0"
+		,"symfony/security-bundle": "^4"
+		,"symfony/twig-bundle": "^4"
 		,"incenteev/composer-parameter-handler": "^2.0"
 		,"twig/twig": "^1.0||^2.0"
 
@@ -48,6 +55,10 @@
 	}
 	,"require-dev": {
 		"symfony/phpunit-bridge": "^4"
+		,"symfony/browser-kit": "^4"
+		,"symfony/stopwatch": "^4"
+		,"symfony/var-dumper": "^4"
+		,"symfony/web-profiler-bundle": "^4"
 	}
 	,"repositories": [
 		{
