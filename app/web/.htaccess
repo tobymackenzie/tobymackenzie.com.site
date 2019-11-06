@@ -17,6 +17,12 @@ Header always set X-Content-Type-Options 'nosniff'
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 
+	#==maintenance mode
+	# RewriteCond %{ENV:REDIRECT_STATUS} !=503
+	# RewriteRule ^ - [L,R=503]
+	# ErrorDocument 503 /_maintenance.html
+	# Header Set Cache-Control "max-age=0, no-store"
+
 	##==config
 	##--TMWEB_SITE
 	RewriteRule ^ - [E=TMWEB_SITE:default]
