@@ -6,12 +6,48 @@ use TJM\Pages\Entity\Page;
 class Pages{
 	protected $dataBasePath;
 	protected $fileStore;
+	protected $aliases;
 	public function __construct($dataBasePath, FileStore $fileStore){
 		$this->dataBasePath = $dataBasePath;
 		$this->fileStore = $fileStore;
 	}
 
 	//--data
+	//---aliases
+	public function getAlias($id){
+		if(!$this->hasAlias($id)){
+			return null;
+		}
+		return new Page([
+			'id'=> $id
+			,'content'=> $this->aliases[$id]
+			,'type'=> 'redirect'
+		]);
+	}
+	public function hasAlias($id){
+		if(!isset($this->aliases)){
+			$this->loadAliases();
+		}
+		return isset($this->aliases[$id]);
+	}
+	protected function loadAliases(){
+		$path = $this->getPageDataPath('_aliases');
+		if(file_exists($path)){
+			$this->aliases = json_decode(file_get_contents($path), true);
+		}else{
+			$this->aliases = [];
+		}
+	}
+
+	//---responses
+	public function hasResponse($id){
+		return $this->hasPage($id) || $this->hasAlias($id);
+	}
+	public function getResponse($id){
+		return $this->getPage($id) ?? $this->getAlias($id);
+	}
+
+	//---pages
 	public function getPage($id){
 		if(!$this->hasPage($id)){
 			return null;

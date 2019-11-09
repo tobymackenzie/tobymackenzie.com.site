@@ -24,7 +24,7 @@ class DefaultController extends Controller{
 			throw $this->createNotFoundException("Format {$_format} not currently supported");
 		}
 		$lowerCaseId = strtolower($id);
-		$page = $pagesService->getPage($lowerCaseId);
+		$page = $pagesService->getResponse($lowerCaseId);
 
 		if(!$page){
 			throw $this->createNotFoundException("No data found for id '{$id}'");
@@ -178,7 +178,7 @@ class DefaultController extends Controller{
 			if(isset($match['_format']) && !in_array($match['_format'], static::SUPPORTED_FORMATS)){
 				throw $this->createNotFoundException("Format {$match['_format']} not currently supported");
 			}
-			if(!$pagesService->hasPage($match['id'])){
+			if(!($pagesService->hasResponse($match['id']))){
 				throw $this->createNotFoundException("No data found for id '{$match['id']}'");
 
 			}
