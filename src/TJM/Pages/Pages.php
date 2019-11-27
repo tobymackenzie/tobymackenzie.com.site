@@ -70,7 +70,7 @@ class Pages{
 		return $page;
 	}
 	public function hasPage($id){
-		return file_exists($this->getPageDataPath($id));
+		return substr($id, 0, 1) !== '_' && file_exists($this->getPageDataPath($id));
 	}
 
 	//--paths
