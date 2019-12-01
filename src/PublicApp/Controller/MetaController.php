@@ -185,7 +185,9 @@ class MetaController extends Controller{
 		//--only allow for canonical
 		if(preg_match("/^{$this->container->getParameter('public.host')}$/", $request->getHttpHost())){
 			$data['agents'] = [
-				'*'=> []
+				'*'=> [
+					'Crawl-delay'=> 10
+				]
 			];
 			$data['other'] = [
 				'Sitemap'=> 'https://www.tobymackenzie.com/blog/sitemap.xml'
