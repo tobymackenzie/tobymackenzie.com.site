@@ -12,16 +12,16 @@ imports:
 #      reverse_proxy_ttl: 36000
 
 #==Monolog
+#-!! missing deprecations for unknown reason
 monolog:
  handlers:
-  main:
-   action_level: error
-   handler: nested
+  main_wrap:
+   action_level: notice
    excluded_http_codes: [401, 403, 404]
+   handler: main
    type: fingers_crossed
-  nested:
-   level: debug
-   path:  '%kernel.logs_dir%/%kernel.environment%.log'
-   type:  stream
+  main:
+   level: notice
+   type:  error_log
   console:
    type: console
