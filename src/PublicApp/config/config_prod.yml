@@ -16,9 +16,8 @@ monolog:
  handlers:
   main:
    action_level: error
-   excluded_404s:
-     - ^
    handler: nested
+   excluded_http_codes: [401, 403, 404]
    type: fingers_crossed
   nested:
    level: debug

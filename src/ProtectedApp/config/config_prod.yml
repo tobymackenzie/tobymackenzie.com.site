@@ -6,8 +6,7 @@ monolog:
  handlers:
   main:
    action_level: error
-   excluded_404s:
-     - ^
+   excluded_http_codes: [401, 403, 404]
    handler: nested
    type: fingers_crossed
   nested:
