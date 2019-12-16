@@ -5,6 +5,9 @@ var CanvasSnowView = _createClass({
 	parent: SnowView
 	,init: function(){
 		_parProto.init.apply(this, arguments);
+		if(typeof this.darkMode === 'undefined'){
+			this.darkMode = (window.matchMedia && window.matchMedia('prefers-color-scheme: dark'));
+		}
 	}
 	,props: {
 		activate: function(){
@@ -29,6 +32,7 @@ var CanvasSnowView = _createClass({
 		,clearRect: function(){
 			this.offscreenContext.clearRect(0, 0, this.el.width, this.el.height)
 		}
+		,darkMode: undefined
 		,onResize: function(){
 			_parProto.onResize.apply(this, arguments);
 			this.fixCanvDimensions();
@@ -37,6 +41,9 @@ var CanvasSnowView = _createClass({
 			_parProto.step.apply(this, arguments);
 			this.clearRect();
 			this.offscreenContext.fillStyle = 'white';
+			if(this.darkMode){
+				this.offscreenContext.globalAlpha = 0.65;
+			}
 			this.offscreenContext.beginPath();
 			for(var _i = 0; _i < this.flakes.length; ++_i){
 				var _flake = this.flakes[_i];
