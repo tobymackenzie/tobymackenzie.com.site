@@ -7,6 +7,7 @@ imports:
 framework:
  assets: ~
  default_locale: '%locale%'
+ error_controller: 'PublicApp\Controller\MetaController::exceptionAction'
  http_method_override: true
  request:
   formats:
@@ -27,7 +28,7 @@ tjm_base:
 
 twig:
  debug: "%kernel.debug%"
- exception_controller: 'PublicApp\Controller\MetaController::exceptionAction'
+ exception_controller: null
  paths:
    '%kernel.root_dir%/templates': 'Public'
  strict_variables: "%kernel.debug%"
