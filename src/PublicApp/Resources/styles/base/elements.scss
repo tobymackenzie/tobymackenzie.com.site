@@ -1,4 +1,7 @@
 //==root styles
+:root{
+	color-scheme: light dark;
+}
 [tabindex='-1']:focus{
 	outline: none;
 }
@@ -144,6 +147,10 @@ ins{
 		top: 0.7em;
 		width: 0.2em;
 	}
+}
+ol, ul{
+	padding-left: 1.5em;
+	margin-left: 0;
 }
 p{
 	@extend %block;
