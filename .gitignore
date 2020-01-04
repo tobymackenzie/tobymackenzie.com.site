@@ -8,9 +8,9 @@ node_modules/
 /app/files/*
 !/app/files/wp-uploads/.gitkeep
 /app/pages/
+/app/web/demos/
+/app/web/examples/
 /app/web/sites/
-/app/web/temp/
-/app/web/tmp/
 /bin/*
 !bin/app-install
 !bin/console
