@@ -5,7 +5,9 @@ These styles add to `main` for a christmas appearance
 @import '_config';
 $color-flake: rgba(255, 255, 255, 0.8);
 $color-greenStripe: rgba(0, 255, 0, 0.6);
+$color-greenStripeDark: rgba(0, 128, 0, 0.8);
 $color-redStripe: rgba(255, 0, 0, 0.6);
+$color-redStripeDark: rgba(128, 0, 0, 0.8);
 $stripeWidth: 2.5em;
 
 @supports (pointer-events: none){
@@ -16,6 +18,9 @@ $stripeWidth: 2.5em;
 	body{
 		background-color: map-get($colors, 'baseBG');
 		background-image: repeating-linear-gradient(125deg, $color-redStripe, $color-redStripe $stripeWidth * 1/10, $color-greenStripe $stripeWidth / 2, $color-greenStripe $stripeWidth * 3/5, $color-redStripe $stripeWidth);
+		@include supports('dark-theme'){
+			background-image: repeating-linear-gradient(125deg, $color-redStripeDark, $color-redStripeDark $stripeWidth * 1/10, $color-greenStripeDark $stripeWidth / 2, $color-greenStripeDark $stripeWidth * 3/5, $color-redStripeDark $stripeWidth);
+		}
 	}
 	.snow{
 		height: 100%;
