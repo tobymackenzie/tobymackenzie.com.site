@@ -13,5 +13,10 @@ monolog:
   main:
    level: notice
    type:  error_log
+  #-! for deprecations
+  info:
+   level: info
+   type: error_log
+   channels: [php]
   console:
    type: console
