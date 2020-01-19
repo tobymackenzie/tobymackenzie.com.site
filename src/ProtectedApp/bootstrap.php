@@ -1,8 +1,6 @@
 <?php
 namespace TJM\Bundle\StandardEditionBundle\Component\App;
 
-error_reporting(error_reporting() & ~E_USER_DEPRECATED);
-
 //--Define configuration used by App singleton, such as paths.
 define(__NAMESPACE__ . '\PROJECT_DIR', realpath(__DIR__ . '/../..'));
 define(__NAMESPACE__ . '\VENDOR_DIR', PROJECT_DIR . '/vendor');
