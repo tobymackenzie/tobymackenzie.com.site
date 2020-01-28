@@ -64,6 +64,9 @@ em, i{
 	//-# only really necessary if using @font-face with an italic variant
 	@extend %font-italic;
 	color: map-get($colors, strong);
+	@include supports('dark-theme'){
+		color: map-get($darkThemeColors, strong);
+	}
 }
 h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{
 	@extend %block;
