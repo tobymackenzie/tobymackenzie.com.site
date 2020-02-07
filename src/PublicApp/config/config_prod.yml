@@ -17,7 +17,7 @@ monolog:
  handlers:
   main_wrap:
    action_level: notice
-   excluded_http_codes: [401, 403, 404]
+   excluded_http_codes: [401, 403, 404, 418]
    handler: main
    type: fingers_crossed
   main:
