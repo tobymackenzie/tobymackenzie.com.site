@@ -15,9 +15,13 @@ monolog:
    type: console
   main:
    channels: ['!event']
-   level: debug
-   path:  '%kernel.logs_dir%/%kernel.environment%.log'
-   type:  stream
+   level: notice
+   type:  error_log
+  #-! for deprecations
+  info:
+   level: info
+   type: error_log
+   channels: [php]
 
 web_profiler:
  toolbar: true
