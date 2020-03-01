@@ -1,1 +1,0 @@
-../../src/PublicApp/www/index.php

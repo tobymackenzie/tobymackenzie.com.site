@@ -6,8 +6,10 @@ use TJM\Files\Files;
 $projectPath = realpath(__DIR__ . '/..');
 $autoloadPath = $projectPath . '/vendor/autoload.php';
 // ComposerInitHelper::$composerCommand = ''; //--set custom composer command / path
-$srcPath = $projectPath . '/app/web';
-$webrootPath = $projectPath . '/web';
+$protectedSrcPath = $projectPath . '/src/ProtectedApp/www';
+$protectedDistPath = $projectPath . '/dist/protected';
+$publicSrcPath = $projectPath . '/src/PublicApp/www';
+$publicDistPath = $projectPath . '/dist/public';
 
 //--make sure we have vendors installed
 if(!file_exists($autoloadPath)){
@@ -17,9 +19,15 @@ if(!file_exists($autoloadPath)){
 //--pull in vendors
 require_once($autoloadPath);
 
-//--install webroot files
-foreach(glob($srcPath . '/{.??*,.[!.],*}', GLOB_BRACE) as $from){
-	$to = $webrootPath . '/' . basename($from);
+//--install protected webroot files
+foreach(glob($protectedSrcPath . '/{.??*,.[!.],*}', GLOB_BRACE) as $from){
+	$to = $protectedDistPath . '/' . basename($from);
+	Files::symlinkRelativelySafely($to, $from, $projectPath);
+}
+
+//--install public webroot files
+foreach(glob($publicSrcPath . '/{.??*,.[!.],*}', GLOB_BRACE) as $from){
+	$to = $publicDistPath . '/' . basename($from);
 	Files::symlinkRelativelySafely($to, $from, $projectPath);
 }
 

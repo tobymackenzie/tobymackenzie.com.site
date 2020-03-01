@@ -76,10 +76,10 @@
 			"Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
 			,"bin/public cache:clear --env prod"
 			,"bin/public cache:clear"
-			,"bin/public assets:install --symlink --relative web"
+			,"bin/public assets:install --symlink --relative dist/public"
 			,"bin/protected cache:clear --env prod"
 			,"bin/protected cache:clear"
-			,"bin/protected assets:install --no-cleanup --symlink --relative web"
+			,"bin/protected assets:install --no-cleanup --symlink --relative dist/protected"
 			,"bin/blog-install"
 		]
 		,"post-install-cmd": ["@post"]

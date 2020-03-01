@@ -36,7 +36,7 @@ $config = [
 	,'vars'=> [
 		'contentRelativePath'=> '_/wp-content'
 		// ,'debug'=> true
-		,'webRootPath'=> $projectPath . '/web'
+		,'webRootPath'=> $projectPath . '/dist/public'
 		,'webRootUrl'=> '{{ConfigHelper::vars.protocol}}://{{ConfigHelper::vars.host}}'
 		,'wpRelativePath'=> '_/wp'
 	]

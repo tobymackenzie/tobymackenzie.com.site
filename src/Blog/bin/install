@@ -7,7 +7,7 @@ require_once(__DIR__ . '/../../../vendor/autoload.php');
 $projectPath = realpath(__DIR__ . '/../../..');
 $blogProjectPath = realpath(__DIR__ . '/..');
 $vendorPath = $projectPath . '/vendor';
-$webrootPath = $projectPath . '/web';
+$webrootPath = $projectPath . '/dist/public';
 $wpVendorPath = $vendorPath . '/wp';
 $wordpressVendorPath = $wpVendorPath . '/wordpress';
 

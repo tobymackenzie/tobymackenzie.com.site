@@ -8,9 +8,6 @@ node_modules/
 /app/files/*
 !/app/files/wp-uploads/.gitkeep
 /app/pages/
-/app/web/demos/
-/app/web/examples/
-/app/web/sites/
 /bin/*
 !bin/app-install
 !bin/console
@@ -21,6 +18,7 @@ node_modules/
 /composer.phar
 /config/*local.*
 !/config/*local.*.dist
+/dist/
 /src/PublicApp/Resources/public/scripts/
 /src/PublicApp/Resources/public/styles/
 /var/*
@@ -32,4 +30,3 @@ node_modules/
 !/var/logs/.gitkeep
 /vendor/*
 !/vendor/.gitkeep
-/web/

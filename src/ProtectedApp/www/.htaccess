@@ -5,24 +5,11 @@
 #-@ https://scotthelme.co.uk/hardening-your-http-response-headers/#x-content-type-options
 Header always set X-Content-Type-Options 'nosniff'
 
-##--block execution of php in uploads directories
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteRule ^_/wp-content/uploads/.*\.php$ - [F,L,NC]
-</IfModule>
-
 ##=====
 #==rewrites
 #=====
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-
-	#==maintenance mode
-	# RewriteCond %{ENV:REDIRECT_STATUS} !=503
-	# RewriteRule ^ - [L,R=503]
-	# ErrorDocument 503 /_maintenance.html
-	# Header Set Cache-Control "max-age=0, no-store"
-
 	##==config
 	##--TMWEB_SITE
 	RewriteRule ^ - [E=TMWEB_SITE:default]
@@ -31,33 +18,8 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteCond %{HTTP_HOST} ^(.*\.)?protected\.tobymackenzie\.com$ [NC,OR]
 	#----protected local
 	RewriteCond %{HTTP_HOST} ^protected.*\.local$ [NC]
+	RewriteCond %{HTTPS} =on
 	RewriteRule ^ - [E=TMWEB_SITE:protected]
-	#---public
-	#----public primary
-	RewriteCond %{HTTP_HOST} ^(t\.)?(15\.|www\.)tobymackenzie\.com$ [NC,OR]
-	#----direct IP access, in case DNS fails
-	RewriteCond %{HTTP_HOST} ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ [NC,OR]
-	RewriteCond %{HTTP_HOST} ^.*:.*:.*$ [NC,OR]
-	#----public local
-	RewriteCond %{HTTP_HOST} ^localhost$ [NC,OR]
-	RewriteCond %{HTTP_HOST} tm.*\.local$ [NC]
-	RewriteRule ^ - [E=TMWEB_SITE:public]
-	#----no host, for http 0.9 (ie really old) browsers
-	RewriteCond %{HTTP_HOST} ^$
-	RewriteRule ^ - [E=TMWEB_SITE:public,E=HTTP_HOST:www.tobymackenzie.com]
-
-	##==redirects from old pages
-	##===tobymackenzie.name / cosmicosmo.ath.cx
-	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^log /blog/ [L,QSA,R=302]
-	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^log/(.*) /blog/$1 [L,QSA,R=301]
-	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^pages/10 /about [L,QSA,R=301]
-	##===tobymackenzie.wordpress.com
-	##--redirect blog-like urls to blog
-	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^([\d]{4}/?.*) /blog/$1 [L,QSA,R=302]
 
 	##==canonical
 	##--send unknown hosts and direct ip access to canonical domains
@@ -66,18 +28,10 @@ Header always set X-Content-Type-Options 'nosniff'
 	#-# don't redirect for http 0.9 requests (really old browsers)
 	RewriteCond %{HTTP_HOST} ^.+$
 	RewriteRule ^ %{REQUEST_SCHEME}://www.tobymackenzie.com%{REQUEST_URI} [L,R=302,QSA]
-	##===force 'https' for blog sitemap and cron, to prevent 'http' URL's from showing up in the former
-	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteCond %{HTTPS} !=on
-	RewriteRule ^blog/[A-Za-z0-9]*\-?sitemap\-?[0-9]*.xml$ https://www.tobymackenzie.com%{REQUEST_URI} [L,QSA,R=302]
-	RewriteCond %{HTTPS} !=on
-	RewriteRule /?_/wp/wp-cron\.php https://www.tobymackenzie.com%{REQUEST_URI} [L,QSA,R=307]
 
 	##==remove index file from URL to prevent duplicate content
 	RewriteCond %{ENV:REDIRECT_STATUS} ^$
-	RewriteRule ^_public\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
-	RewriteCond %{ENV:REDIRECT_STATUS} ^$
-	RewriteRule ^_protected\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
+	RewriteRule ^index\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
 
 	##==serve files and directories, except root
 	RewriteCond %{REQUEST_FILENAME} -f
@@ -86,23 +40,9 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteCond %{REQUEST_URI} !^/?$
 	RewriteRule .? - [L]
 
-	##==public
-	##===serve wordpress for appropriate urls
-	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^blog _/wp/index.php [L]
-	##===all other routes go through symfony
-	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^ %{ENV:BASE}/_public.php [L]
-
 	##==protected
 	RewriteCond %{ENV:TMWEB_SITE} protected
-	RewriteRule ^ %{ENV:BASE}/_protected.php [L]
-</IfModule>
-<IfModule !mod_rewrite.c>
-	<IfModule mod_alias.c>
-		##==temporary fallback if mod_rewrite isn't available.  URLs will show with '_public.php' prepended
-		RedirectMatch 302 ^/$ /_public.php/
-	</IfModule>
+	RewriteRule ^ %{ENV:BASE}/index.php [L]
 </IfModule>
 
 ##==disable Multiviews to prevent '/_public' from resolving to '/_public.php', etc
