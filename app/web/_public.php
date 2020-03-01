@@ -1,1 +1,1 @@
-../../src/PublicBundle/www/index.php
+../../src/PublicApp/www/index.php
