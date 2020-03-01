@@ -9,7 +9,13 @@ protected_test:
 ##==secure
 protected_secure:
   controller: ProtectedApp\Controller\DefaultController::secureAction
-  path: '/%secure.path%'
+  path: '%secure.path%'
+protected_secure_login:
+  controller: ProtectedApp\Controller\DefaultController::loginAction
+  methods: GET|POST
+  path: '%secure.path%/login'
+protected_secure_logout:
+  path: '%secure.path%/logout'
 
 ##==meta
 protected_robots:

@@ -8,8 +8,15 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class DefaultController extends Controller{
+	public function loginAction(AuthenticationUtils $authUtils, Request $request){
+		return $this->render('@Protected/default/login.html.twig', [
+			'error'=> $authUtils->getLastAuthenticationError()
+			,'lastUser'=> $authUtils->getLastUsername()
+		]);
+	}
 	public function secureAction(Request $request){
 		//--remove trailing slash (symfony's router cannot do this, see <https://github.com/symfony/symfony/issues/12141>)
 		$pathInfo = $request->getPathInfo();

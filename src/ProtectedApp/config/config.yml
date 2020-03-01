@@ -16,13 +16,23 @@ framework:
   resource: '%kernel.root_dir%/config/routing.yml'
   strict_requirements: ~
  secret: '%secret%'
+ #--enable session for security component's csrf token
+ session:
+   enabled: true
+   #--make cookies more secure, via <https://symfony.com/doc/4.4/session.html>
+   cookie_samesite: 'lax'
+   cookie_secure: 'auto'
+   #--use PHP's session storage
+   handler_id: null
  trusted_hosts: ~
 
 security:
  access_control:
   -
-   host: '%protected.host%'
-   path: '^/%secure.path%'
+   path: '^%secure.path%/?login$'
+   roles: IS_AUTHENTICATED_ANONYMOUSLY
+  -
+   path: '^%secure.path%'
    roles: ROLE_ADMIN
  encoders:
   Symfony\Component\Security\Core\User\User: '%secure.encoder%'
@@ -32,13 +42,18 @@ security:
    provider: main
    security: false
   protected:
-    host: '%protected.host%'
-    http_basic:
-     realm: '<toby> protected'
-     provider: protected
-    pattern: '^/%secure.path%'
+    anonymous: lazy
+    form_login:
+      check_path: 'protected_secure_login'
+      csrf_token_generator: security.csrf.token_manager
+      default_target_path: protected_secure
+      login_path: 'protected_secure_login'
+    logout:
+     path: 'protected_secure_logout'
+    pattern: '^%secure.path%'
+    provider: protected
   main:
-   anonymous: ~
+   anonymous: lazy
    provider: main
  providers:
   main:

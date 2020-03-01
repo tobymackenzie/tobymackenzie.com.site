@@ -1,7 +1,7 @@
 parameters:
   #==security
   secure.encoder: auto
-  secure.path: '_admin'
+  secure.path: '/_admin'
   secure.users:
     admin:
       password: 'password'
