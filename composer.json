@@ -51,7 +51,7 @@
 		,"tjm/wpthemehelper": "^1"
 		,"wpackagist-plugin/classic-editor": "^1.2"
 		,"wpackagist-plugin/jetpack": "^8.0"
-		,"wpackagist-plugin/wordpress-importer": "^0.6"
+		,"wpackagist-plugin/wordpress-importer": "^0"
 	}
 	,"require-dev": {
 		"symfony/phpunit-bridge": "^4"
