@@ -115,7 +115,7 @@ $moreSroHTML = '<span class="sro"> post "' . $permalinkTitle . '"</span>';
 			,'before'=> '<div class="pageLinks">' . __('Pages:', 'tmweb')
 		)); ?>
 <?php } ?>
-		<?php if(!is_singular()){ ?><a class="more-link" href="<?=the_permalink()?>"><?=__('Continue reading', 'tmweb')?> <?=$moreSroHTML?></a><?php } ?>
+		<?php if(!is_singular() && TMWebWPTheme::doesPostHaveMore()){ ?><a class="more-link" href="<?=the_permalink()?>"><?=__('Continue reading', 'tmweb')?> <?=$moreSroHTML?></a><?php } ?>
 	</div>
 	<hr />
 </article>

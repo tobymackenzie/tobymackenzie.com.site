@@ -42,6 +42,16 @@ class SymfonyHelper{
 }
 class TMWebWPTheme{
 	static public $helper;
+	static public function doesPostHaveMore($post = null){
+		if(has_excerpt($post)){
+			return true;
+		}
+		if(!is_object($post)){
+			$post = get_post($post);
+		}
+		//-@ https://wordpress.stackexchange.com/a/59257
+		return is_object($post) && strpos($post->post_content, '<!--more-->') !== false;
+	}
 	static public function getPostTitle($post = null){
 		global $wp_query;
 		$title = null;
