@@ -1,0 +1,34 @@
+##=====
+#==security
+##=====
+##--don't sniff mime type (IE and Chrome)
+#-@ https://scotthelme.co.uk/hardening-your-http-response-headers/#x-content-type-options
+Header always set X-Content-Type-Options 'nosniff'
+
+##=====
+#==rewrites
+#=====
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^ %{REQUEST_SCHEME}://www.tobymackenzie.com%{REQUEST_URI} [L,R=302,QSA]
+</IfModule>
+
+##=====
+#==performance
+#=====
+##==cacheing
+#-@ https://raw.githubusercontent.com/h5bp/server-configs-apache/master/src/web_performance/expires_headers.conf
+<IfModule mod_expires.c>
+	ExpiresActive on
+	ExpiresByType image/jpeg 'access plus 5 days'
+	ExpiresByType text/html 'access plus 10 minutes'
+</IfModule>
+
+##==compression
+#--compress text files
+#-@ https://github.com/h5bp/server-configs-apache/blob/master/src/web_performance/compression.conf
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE 'text/html'
+</IfModule>

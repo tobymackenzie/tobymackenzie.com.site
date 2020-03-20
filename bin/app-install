@@ -19,6 +19,7 @@ require_once($autoloadPath);
 foreach([
 	'protected'=> $projectPath . '/src/ProtectedApp/www'
 	,'public'=> $projectPath . '/src/PublicApp/www'
+	,'short'=> $projectPath . '/src/ShortApp/www'
 ] as $name=> $srcPath){
 	foreach(glob($srcPath . '/{.??*,.[!.],*}', GLOB_BRACE) as $from){
 		$to = $projectPath . '/dist/' . $name . '/' . basename($from);
