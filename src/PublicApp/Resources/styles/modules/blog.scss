@@ -74,6 +74,10 @@
 .postHeaderMedia{
 	margin-bottom: 1em;
 	text-align: center;
+	img{
+		object-fit: contain;
+		max-height: 50vh;
+	}
 }
 .postHeaderExtra{
 	text-align: right;
