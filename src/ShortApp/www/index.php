@@ -123,6 +123,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						text-align: left;
 					}
 					.cardCol1{
+						align-self: flex-start;
 						width: 50vh;
 						margin: 0 1.5em 0 0;
 					}
