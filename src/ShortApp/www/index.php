@@ -64,13 +64,15 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				}
 				.cardLogo{
 					left: -22px;
+					opacity: 0.6;
 					position: absolute;
 					top: 0;
 					transform: rotate(-45deg);
-					transition: transform 0.8s;
+					transition: opacity 0.2s, transform 0.8s;
 					z-index: 1;
 				}
 				.cardLogo:hover{
+					opacity: 1;
 					transform: rotate(1080deg);
 				}
 				.cardMedia{
