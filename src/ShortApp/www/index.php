@@ -78,10 +78,11 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					opacity: 0.6;
 				}
 				.cardLogo{
-					left: -22px;
+					left: -0.5em;
+					line-height: 1;
 					opacity: 0.6;
 					position: absolute;
-					top: 0;
+					top: 0.8em;
 					/*-# translate3d to fix blurry text while animating image in chrome */
 					transform: rotate(-45deg) translate3d(0,0,0);
 					transition: opacity 0.2s, transform 0.8s;
@@ -147,7 +148,6 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					}
 					.cardLogo{
 						font-size: 1.5em;
-						left: -27px;
 					}
 					.cardMedia{
 						display: block;
