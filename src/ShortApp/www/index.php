@@ -78,6 +78,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					opacity: 0.6;
 				}
 				.cardLogo{
+					color: #90df90;
 					left: -0.5em;
 					line-height: 1;
 					opacity: 0.6;
@@ -99,6 +100,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				}
 				h1{
 					border-bottom: 1px solid;
+					color: #90df90;
 					font-size: 1.5em;
 					margin: 0;
 					line-height: 1.1;
