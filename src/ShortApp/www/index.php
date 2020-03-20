@@ -89,7 +89,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					/* font-size: 1.1em; */
 					height: 100%;
 				}
-				@media (min-height: 500px) or (min-width: 34em){
+				@media (min-height: 500px), (min-width: 34em){
 					.cardMedia{
 						height: auto;
 					}
