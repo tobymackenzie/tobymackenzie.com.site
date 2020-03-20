@@ -88,7 +88,6 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				html{
 					background-image: none, url("//www.tobymackenzie.com/_assets/grunge-pattern.png");
 					font-family: meslo, "Meslo LG S", menlo, "Menlo Regular", cousine, Consolas, "Courier New", courier, monospace;
-					/* font-size: 1.1em; */
 					height: 100%;
 				}
 				@media (min-height: 500px), (min-width: 34em){
