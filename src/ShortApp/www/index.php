@@ -62,18 +62,34 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					object-fit: contain;
 					opacity: 0.8;
 				}
+				.cardMedia:after{
+					background: url('/_toby.jpg') center center no-repeat;
+					background-size: contain;
+					content: '';
+					height: 100%;
+					left: 0;
+					opacity: 0;
+					position: absolute;
+					top: 0;
+					transition: opacity 0.5s;
+					width: 100%;
+				}
+				.cardMedia:hover:after{
+					opacity: 0.6;
+				}
 				.cardLogo{
 					left: -22px;
 					opacity: 0.6;
 					position: absolute;
 					top: 0;
-					transform: rotate(-45deg);
+					/*-# translate3d to fix blurry text while animating image in chrome */
+					transform: rotate(-45deg) translate3d(0,0,0);
 					transition: opacity 0.2s, transform 0.8s;
 					z-index: 1;
 				}
 				.cardLogo:hover{
 					opacity: 1;
-					transform: rotate(1080deg);
+					transform: rotate(1080deg) translate3d(0,0,0);
 				}
 				.cardMedia{
 					display: inline-block;
