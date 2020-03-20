@@ -55,6 +55,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				}
 				.cardImage{
 					display: block;
+					filter: saturate(0);
 					/*mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0) 20%, rgba(0,0,0,0.8) 100%);*/
 					max-height: 100%;
 					max-width: 100%;
