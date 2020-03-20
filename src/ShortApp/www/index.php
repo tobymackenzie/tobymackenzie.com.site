@@ -101,6 +101,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					border-bottom: 1px solid;
 					font-size: 1.5em;
 					margin: 0;
+					line-height: 1.1;
 				}
 				html{
 					background-image: none, url("//www.tobymackenzie.com/_assets/grunge-pattern.png");
@@ -151,6 +152,10 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					}
 					.cardMedia{
 						display: block;
+					}
+					h1{
+						font-size: 3em;
+						width: 5.8em;
 					}
 				}
 			--></style>
