@@ -66,20 +66,30 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					object-fit: contain;
 					opacity: 0.8;
 				}
+				.cardMedia:after, .cardMedia:before{
+					content: '';
+					position: absolute;
+				}
 				.cardMedia:after{
 					background: url('/_toby.jpg') center center no-repeat;
 					background-size: contain;
-					content: '';
 					height: 100%;
 					left: 0;
 					opacity: 0;
-					position: absolute;
 					top: 0;
 					transition: opacity 0.5s;
 					width: 100%;
 				}
 				.cardMedia:hover:after{
 					opacity: 0.6;
+				}
+				.cardMedia:before{
+					bottom: -1px;
+					box-shadow: 0 0 8px 8px rgb(38, 58, 38) inset;
+					left: -1px;
+					right: -1px;
+					top: -1px;
+					z-index: 1;
 				}
 				.cardLogo{
 					color: #90df90;
