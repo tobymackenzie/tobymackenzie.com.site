@@ -44,7 +44,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				.card{
 					background: rgb(38, 58, 38);
 					border: 3px solid #002c00;
-					box-shadow: inset 0 0 0.5em 0.5em #003300;
+					box-shadow: inset 0 0 1em 0.5em #131;
 					color: rgb(209, 255, 209);
 					padding: 1.5em;
 					min-height: 100%;
