@@ -22,6 +22,8 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 			<style><!--
 				*{
 					box-sizing: border-box;
+					word-wrap: break-word;
+					word-wrap: anywhere;
 				}
 				a{
 					color: inherit;
@@ -46,7 +48,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					border: 3px solid #002c00;
 					box-shadow: inset 0 0 1em 0.5em #131;
 					color: rgb(209, 255, 209);
-					padding: 1.5em;
+					padding: 1em;
 					min-height: 100%;
 				}
 				.cardCol1{
@@ -65,6 +67,9 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					mix-blend-mode: overlay;
 					object-fit: contain;
 					opacity: 0.8;
+				}
+				.cardItemEtc{
+					display: inline-block;
 				}
 				.cardMedia:after, .cardMedia:before{
 					content: '';
@@ -110,7 +115,6 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				.cardMedia{
 					display: inline-block;
 					position: relative;
-					height: 50vh;
 				}
 				h1{
 					border-bottom: 1px solid;
@@ -130,6 +134,14 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					background-image: none, url("//www.tobymackenzie.com/_assets/grunge-pattern.png");
 					font-family: meslo, "Meslo LG S", menlo, "Menlo Regular", cousine, Consolas, "Courier New", courier, monospace;
 					height: 100%;
+				}
+				@media (min-width: 20em){
+					.card{
+						padding: 1.5em;
+					}
+					.cardMedia{
+						height: 50vh;
+					}
 				}
 				@media (min-height: 500px), (min-width: 34em){
 					.cardMedia{
@@ -195,7 +207,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 			<div class="cardCol2">
 				<h1 class="cardItem" itemprop="name"><span itemprop="givenName">Toby</span> <span itemprop="familyName">Mackenzie</span></h1>
 				<div class="cardGroup" itemprop="hasOccupation" itemscope="itemscope" itemtype="http://schema.org/Occupation">
-					<div class="cardItem" itemprop="name">Web developer <small>(Full-stack LAMP)</small></div>
+					<div class="cardItem" itemprop="name">Web developer <small class="cardItemEtc">(Full-stack LAMP)</small></div>
 					<small class="cardSkills cardItem" itemprop="skills">HTML CSS JS PHP MySQL Linux Apache</small>
 				</div>
 				<div class="cardItem" itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress">
