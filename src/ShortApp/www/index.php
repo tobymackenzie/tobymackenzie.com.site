@@ -150,14 +150,15 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				}
 				@media (min-width: 34em){
 					.card{
-						align-items: flex-start;
+						align-items: center;
 						display: flex;
 						justify-content: center;
 						text-align: left;
 					}
+					.cardImage{
+						max-height: calc(100vh - 3em);
+					}
 					.cardCol1{
-						align-self: flex-start;
-						width: 50vh;
 						margin: 0 1.5em 0 0;
 					}
 				}
@@ -178,6 +179,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						transform: rotate(0deg);
 					}
 					.cardCol1{
+						align-self: flex-start;
 						width: auto;
 					}
 					.cardImage{
