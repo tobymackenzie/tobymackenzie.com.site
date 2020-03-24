@@ -37,16 +37,16 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					padding: 0;
 				}
 				body{
-					background: #242;
+					background: rgba(78,120,78,0.95);
 					min-height: 100%;
 					opacity: 0.95;
 					text-align: center;
 					height: 100%;
 				}
 				.card{
-					background: rgb(38, 58, 38);
+					background: #353;
 					border: 3px solid #002c00;
-					box-shadow: inset 0 0 1em 0.5em #131;
+					box-shadow: inset 0 0 1em 0.5em #242;
 					color: rgb(209, 255, 209);
 					padding: 1em;
 					min-height: 100%;
@@ -60,11 +60,11 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				}
 				.cardImage{
 					display: block;
-					filter: saturate(0);
+					filter: contrast(1.5) saturate(0);
 					/*mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0) 20%, rgba(0,0,0,0.8) 100%);*/
 					max-height: 100%;
 					max-width: 100%;
-					mix-blend-mode: overlay;
+					mix-blend-mode: soft-light;
 					object-fit: contain;
 					opacity: 0.8;
 				}
@@ -90,7 +90,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				}
 				.cardMedia:before{
 					bottom: -1px;
-					box-shadow: 0 0 8px 8px rgb(38, 58, 38) inset;
+					box-shadow: 0 0 8px 8px #353 inset;
 					left: -1px;
 					right: -1px;
 					top: -1px;
