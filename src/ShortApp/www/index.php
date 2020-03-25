@@ -156,7 +156,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						text-align: left;
 					}
 					.cardImage{
-						max-height: calc(100vh - 3em);
+						max-height: calc(100vh - 3.8em);
 					}
 					.cardCol1{
 						margin: 0 1.5em 0 0;
