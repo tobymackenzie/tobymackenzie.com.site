@@ -156,6 +156,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						text-align: left;
 					}
 					.cardImage{
+						min-height: 10em;
 						max-height: calc(100vh - 3.8em);
 					}
 					.cardCol1{
