@@ -184,7 +184,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						width: auto;
 					}
 					.cardImage{
-						max-width: 20vw;
+						max-width: 25vw;
 					}
 					.cardLogo{
 						font-size: 1.5em;
