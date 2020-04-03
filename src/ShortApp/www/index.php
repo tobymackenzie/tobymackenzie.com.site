@@ -222,5 +222,13 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				<div class="cardItem"><a href="mailto:public@tobymackenzie.com" itemprop="email">public@tobymackenzie.com</a></div>
 			</div>
 		</div>
+<?php
+$jsFile = __DIR__ . '/../../PublicApp/Resources/public/scripts/prod/short.js';
+if(file_exists($jsFile)){
+?>
+		<script><!--
+		<?=file_get_contents($jsFile)?>
+		--></script>
+<?php } ?>
 	</body>
 </html>
