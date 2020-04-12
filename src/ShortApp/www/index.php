@@ -154,11 +154,15 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						align-items: center;
 						display: flex;
 						justify-content: center;
-						text-align: left;
 					}
 					.cardImage{
 						min-height: 10em;
 						max-height: calc(100vh - 3.8em);
+					}
+					.cardCol1, .cardCol2{
+						display: inline-block;
+						text-align: left;
+						vertical-align: middle;
 					}
 					.cardCol1{
 						margin: 0 1.5em 0 0;
@@ -174,11 +178,15 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					}
 					.card{
 						align-items: flex-end;
-						transform: rotate(2deg);
-						transition: transform 0.2s;
 					}
-					.card:hover, .card:focus-within{
-						transform: rotate(0deg);
+					@supports (display: flex){
+						.card{
+							transform: rotate(2deg);
+							transition: transform 0.2s;
+						}
+						.card:hover, .card:focus-within{
+							transform: rotate(0deg);
+						}
 					}
 					.cardCol1{
 						align-self: flex-start;
