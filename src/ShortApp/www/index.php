@@ -137,10 +137,9 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				}
 				@media (min-width: 20em){
 					.card{
-						align-items: center;
 						display: flex;
-						flex-direction: column;
 						justify-content: center;
+						flex-direction: column;
 						padding: 1.5em;
 					}
 					.cardMedia{
@@ -155,6 +154,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				}
 				@media (min-width: 34em){
 					.card{
+						align-items: center;
 						flex-direction: row;
 					}
 					.cardImage{
