@@ -29,7 +29,7 @@ if($title || $thumbnail){
 <?php
 	if($thumbnail){
 ?>
-		<div class="postHeaderMedia"><a href="<?=get_the_post_thumbnail_url()?>"><?=$thumbnail?></a></div>
+		<div class="postHeaderMedia"><a href="<?=get_the_post_thumbnail_url(null, 'full')?>"><?=$thumbnail?></a></div>
 <?php
 	}
 	if($title){
