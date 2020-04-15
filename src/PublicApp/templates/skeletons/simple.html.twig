@@ -56,10 +56,6 @@ script `type="application/javascript"` to block some old browsers.  blocks IE8- 
 - prevents needing to worry about supporting them with js features: have very low usage rates
 - prevents Moz1 from throwing up 3 security exception dialogs
 #}
-<script type="application/javascript"><!--//--><![CDATA[//><!--{{'\n'}}
-{# detect js support #}
-(function(H){H.className=H.className.replace(/\bua-no-js\b/,'ua-js')})(document.documentElement);
-//--><!]]></script>
 {#-- support styling html5 elements in IE8-. just use cdn since it's quick and easy, people using IE8- will be likely to have this cached, won't be affected by CSP, and probably don't care as much about privacy / security #}
 <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script><![endif]-->
 {% endblock %}
