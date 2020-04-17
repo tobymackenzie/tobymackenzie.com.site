@@ -45,7 +45,7 @@ class HeadersListener{
 			$cspHeader = ($this->env === 'dev') ? 'Content-Security-Policy-Report-Only' : 'Content-Security-Policy';
 			if(!$headers->has($cspHeader)){
 				//-!!! need to be able to add src's per page.  This is a quick fix
-				$defaultSrc = "'unsafe-inline' 'self'";
+				$defaultSrc = "'self'";
 				//--allow force domain script
 				if($this->host !== $request->getHost()){
 					$defaultSrc .= ' ' . $this->host;
