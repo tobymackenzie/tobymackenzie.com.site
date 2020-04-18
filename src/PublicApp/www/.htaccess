@@ -43,7 +43,7 @@ Header always set X-Content-Type-Options 'nosniff'
 	##==redirects from old paths
 	##===tobymackenzie.name / cosmicosmo.ath.cx
 	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^log /blog/ [L,QSA,R=302]
+	RewriteRule ^log$ /blog/ [L,QSA,R=302]
 	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^log/(.*) /blog/$1 [L,QSA,R=301]
 	RewriteCond %{ENV:TMWEB_SITE} public
