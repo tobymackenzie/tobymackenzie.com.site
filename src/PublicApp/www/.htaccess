@@ -69,9 +69,12 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteCond %{HTTPS} !=on
 	RewriteRule /?_/wp/wp-cron\.php https://www.tobymackenzie.com%{REQUEST_URI} [L,QSA,R=307]
 
-	##==remove index file from URL to prevent duplicate content
+	#==redirect system files
+	##===remove index file from URL to prevent duplicate content
 	RewriteCond %{ENV:REDIRECT_STATUS} ^$
 	RewriteRule ^index\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
+	##===redirect wp index to blog
+	RewriteRule ^/?_/wp/(index\.php)?$ /blog/ [END,R=301]
 
 	##==serve files and directories, except root
 	RewriteCond %{REQUEST_FILENAME} -f
@@ -83,7 +86,7 @@ Header always set X-Content-Type-Options 'nosniff'
 	##==public
 	##===serve wordpress for appropriate urls
 	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^blog _/wp/index.php [L]
+	RewriteRule ^blog _/wp/index.php [END]
 	##===all other routes go through symfony
 	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^ %{ENV:BASE}/index.php [L]
