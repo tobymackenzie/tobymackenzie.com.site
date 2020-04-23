@@ -171,13 +171,14 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						margin: 0 1.5em 0 0;
 					}
 				}
-				@media (min-width: 34em) and (min-height: 20em){
+				@media (min-width: 34em) and (min-height: 22em){
 					body{
 						align-items: center;
 						display: flex;
 						justify-content: center;
 						height: auto;
 						min-height: 100%;
+						padding: 0.5em; /*--ensure rotation doesn't cause scroll bars */
 					}
 					.card{
 						align-items: flex-end;
