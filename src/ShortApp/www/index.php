@@ -28,6 +28,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				a{
 					color: inherit;
 					text-decoration-color: rgba(209, 255, 209, 0.5);
+					transition: color 0.2s;
 				}
 				a:focus, a:hover{
 					color: #90df90;
