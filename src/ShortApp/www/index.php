@@ -66,7 +66,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					max-height: 100%;
 					max-width: 100%;
 					mix-blend-mode: soft-light;
-					object-fit: contain;
+					object-fit: cover;
 					opacity: 0.8;
 				}
 				.cardItemEtc{
@@ -78,7 +78,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				}
 				.cardMedia:after{
 					background: url('/_toby.jpg') center center no-repeat;
-					background-size: contain;
+					background-size: cover;
 					height: 100%;
 					left: 0;
 					opacity: 0;
@@ -141,9 +141,9 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						display: flex;
 						justify-content: center;
 						flex-direction: column;
-						padding: 1.5em;
 					}
 					.cardMedia{
+						display: inline-flex;
 						min-height: 8em;
 						height: 50vh;
 					}
@@ -160,7 +160,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					}
 					.cardImage{
 						min-height: 10em;
-						max-height: calc(100vh - 3.8em);
+						max-height: calc(100vh - 2.8em);
 					}
 					.cardCol1, .cardCol2{
 						display: inline-block;
@@ -171,7 +171,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						margin: 0 1.5em 0 0;
 					}
 				}
-				@media (min-width: 34em) and (min-height: 22em){
+				@media (min-width: 34em) and (min-height: 24em){
 					body{
 						align-items: center;
 						display: flex;
@@ -182,18 +182,15 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					}
 					.card{
 						align-items: flex-end;
+						padding: 1.5em;
+						transform: rotate(2deg);
+						transition: transform 0.2s;
 					}
-					@supports (display: flex){
-						.card{
-							transform: rotate(2deg);
-							transition: transform 0.2s;
-						}
-						.card:hover, .card:focus-within{
-							transform: rotate(0deg);
-						}
+					.card:hover, .card:focus-within{
+						transform: rotate(0deg);
 					}
 					.cardCol1{
-						align-self: flex-start;
+						align-self: stretch;
 						width: auto;
 					}
 					.cardLogo{
@@ -205,6 +202,11 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					h1{
 						font-size: 3em;
 						width: 5.8em;
+					}
+					@supports (object-fit: cover){
+						.cardMedia{
+							height: 100%;
+						}
 					}
 				}
 			--></style>
