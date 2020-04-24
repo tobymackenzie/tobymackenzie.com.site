@@ -199,9 +199,6 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					.cardLogo{
 						font-size: 1.5em;
 					}
-					.cardMedia{
-						display: block;
-					}
 					h1{
 						font-size: 3em;
 						width: 5.8em;
