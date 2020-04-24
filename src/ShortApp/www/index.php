@@ -193,6 +193,9 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						align-self: stretch;
 						width: auto;
 					}
+					.cardCol2{
+						padding: 8px 0; /*--alignment for fuzzy image inset */
+					}
 					.cardLogo{
 						font-size: 1.5em;
 					}
