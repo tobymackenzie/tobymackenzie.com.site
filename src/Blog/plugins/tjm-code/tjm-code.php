@@ -15,7 +15,7 @@ add_shortcode('code', function($args = null, $content = null){
 	$content = str_replace('<br />', '', $content);
 	$content = str_replace('<p>', '', $content);
 	$content = str_replace('</p>', '', $content);
-	if(ord($content{0}) === 10){
+	if(ord($content[0]) === 10){
 		$content = substr($content, 1);
 	}
 	if($args && isset($args['lang'])){
