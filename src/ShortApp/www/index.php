@@ -99,11 +99,11 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				}
 				.cardLogo{
 					color: #90df90;
-					left: -0.5em;
+					left: -1em;
 					line-height: 1;
 					opacity: 0.6;
 					position: absolute;
-					top: 0.8em;
+					top: 0.3em;
 					/*-# translate3d to fix blurry text while animating image in chrome */
 					transform: rotate(-45deg) translate3d(0,0,0);
 					transition: opacity 0.2s, transform 0.8s;
