@@ -118,7 +118,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					position: relative;
 				}
 				h1{
-					border-bottom: 1px solid;
+					border-bottom: 2px solid;
 					color: #90df90;
 					font-size: 1.5em;
 					margin: 0;
