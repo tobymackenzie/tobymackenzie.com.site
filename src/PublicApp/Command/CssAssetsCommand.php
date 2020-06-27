@@ -50,7 +50,7 @@ class CssAssetsCommand extends Command{
 				$run .= ' | ' . $postCSSBin;
 			}
 			$run .= " > ./public/styles/{$this->env}/{$nameBase}.css";
-			$process = new Process($run, $resourcesPath);
+			$process = Process::fromShellCommandline($run, $resourcesPath);
 			$process->start();
 			$processes[] = $process;
 		}
