@@ -56,5 +56,6 @@ class JsAssetsCommand extends Command{
 				passthru($command);
 			}
 		}
+		return 0;
 	}
 }

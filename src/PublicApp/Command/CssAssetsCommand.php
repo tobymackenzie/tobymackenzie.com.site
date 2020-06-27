@@ -61,5 +61,6 @@ class CssAssetsCommand extends Command{
 			}
 			$output->write($process->getErrorOutput() . $process->getOutput());
 		}
+		return 0;
 	}
 }
