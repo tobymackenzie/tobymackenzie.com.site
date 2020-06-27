@@ -95,6 +95,8 @@
 }
 .postTag{
 	display: inline-block;
+	//--undo standard <li> margin, looks bad when wrapping
+	margin-top: 0;
 }
 .postTagsList{
 	display: inline;
