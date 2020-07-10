@@ -24,7 +24,7 @@ class JsAssetsCommand extends Command{
 	}
 	protected function execute(InputInterface $input, OutputInterface $output){
 		$compiler = $input->getOption('compiler');
-		$src = __DIR__ . '/../Resources/scripts';
+		$src = __DIR__ . '/../scripts';
 		$dest = __DIR__ . '/../Resources/public/scripts/prod';
 		if($compiler === 'uglify'){
 			$files = $this->recursiveGlob($src . '/*.js');

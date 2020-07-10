@@ -37,8 +37,8 @@ class CssAssetsCommand extends Command{
 		}else{
 			$postCSSBin = null;
 		}
-		$resourcesPath = __DIR__ . '/../Resources';
-		chdir($resourcesPath);
+		$basePath = __DIR__ . '/..';
+		chdir($basePath);
 		$processes = [];
 		foreach(glob('./styles/builds/*.scss') as $file){
 			$nameBase = basename($file, '.scss');
@@ -49,8 +49,8 @@ class CssAssetsCommand extends Command{
 			if($postCSSBin){
 				$run .= ' | ' . $postCSSBin;
 			}
-			$run .= " > ./public/styles/{$this->env}/{$nameBase}.css";
-			$process = Process::fromShellCommandline($run, $resourcesPath);
+			$run .= " > ./Resources/public/styles/{$this->env}/{$nameBase}.css";
+			$process = Process::fromShellCommandline($run, $basePath);
 			$process->start();
 			$processes[] = $process;
 		}
