@@ -1,3 +1,30 @@
+@mixin icon(){
+	display: inline-block;
+	speak: none;
+
+	//--focus whimsy
+	transition: transform 200ms;
+	&:focus, &:hover{
+		transform: rotate(10deg);
+	}
+}
+@mixin fa-icon($name, $size: 32px){
+	@include icon();
+	$url: '/_assets/icons/#{$name}';
+	box-sizing: border-box;
+	background: url('#{$url}') no-repeat;
+	background-position: left center;
+	background-size: contain;
+	//-# '\A' is line break to move inserted content out of visible area
+	content: '\A\A' url('#{$url}') url('#{$url}') url('#{$url}') url('#{$url}');
+	max-height: #{$size};
+	max-width: #{$size};
+	overflow: hidden;
+	vertical-align: middle;
+	width: auto;
+	white-space: pre;
+}
+
 /*-#
 using sprite map
 pluses:
@@ -12,22 +39,15 @@ minuses:
 - must load all at once, versus inline svg / img
 */
 @mixin icm($size: 32){
+	@include icon();
 	content: '';
-	display: inline-block;
 	background-image: url('/_assets/icomoon/sprite.png');
 	background-image: url('/_assets/icomoon/sprite.svg');
 	background-repeat: no-repeat;
 	@include remFallback('background-size', ((1412 / 32) * $size * 1px) ((124 / 32) * $size * 1px));
 	flex: 0 0 auto;
-	speak: none;
 	@include supports('dark-theme'){
 		filter: brightness(1.8) grayscale(0.2);
-	}
-
-	//--focus whimsy
-	transition: transform 200ms;
-	&:focus, &:hover{
-		transform: rotate(10deg);
 	}
 }
 %icm{
@@ -102,11 +122,8 @@ minuses:
 	@include remFallback('height', 32);
 	@include remFallback('width', 32);
 }
-%icm-menu{
-	@extend %icm;
-	@include remFallback('background-position', -1012px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-menu{
+	@include fa-icon('list.svg');
 }
 %icm-twitter{
 	@extend %icm;

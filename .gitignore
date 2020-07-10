@@ -4,6 +4,7 @@
 .DS_Store
 .sass-cache/
 node_modules/
+yarn.lock
 /app/data/
 /app/files/*
 !/app/files/wp-uploads/.gitkeep

@@ -1,0 +1,11 @@
+{
+	"author": "Toby Mackenzie"
+	,"dependencies": {
+		"fontawesome": "https://github.com/FortAwesome/Font-Awesome.git#semver:^5"
+	}
+	,"engines": {"yarn": ">=1.10"}
+	,"license": "UNLICENSED"
+	,"name": "tobymackenzie.com"
+	,"private": true
+	,"version": "1.0.0"
+}

@@ -1,4 +1,11 @@
 @mixin siteNavIconColors(){
+	//-@ via https://codepen.io/sosuke/pen/Pjoqqp
+	filter: invert(27%) sepia(70%) saturate(388%) hue-rotate(71deg);
+	@include supports('dark-theme'){
+		filter: invert(41%) sepia(70%) saturate(388%) hue-rotate(71deg);
+	}
+}
+@mixin siteNavIcmIconColors(){
 	filter: brightness(7); //-! change color of icons. would be nice if we could do this a different way.  could use tweaking
 	@include supports('dark-theme'){
 		filter: brightness(1.6);
@@ -65,7 +72,7 @@ $siteNavSearchWidth: 13em;
 		&:before{
 			$size: 20;
 			@include icm-search($size);
-			@include siteNavIconColors();
+			@include siteNavIcmIconColors();
 			@include remFallback('height', $size);
 			margin-right: 0.5em;
 			vertical-align: middle;
@@ -122,7 +129,7 @@ $siteNavSearchWidth: 13em;
 	}
 	&[data-type]{
 		&:before{
-			@include siteNavIconColors();
+			@include siteNavIcmIconColors();
 		}
 	}
 	&[data-type='about']{
@@ -139,5 +146,10 @@ $siteNavSearchWidth: 13em;
 		&:before{
 			@extend %icm-writings;
 		}
+	}
+}
+.appSiteNavAction{
+	&:before{
+		@include siteNavIconColors();
 	}
 }

@@ -58,7 +58,7 @@
 }
 .appSiteNavAction{
 	&:before{
-		@extend %icm-menu;
+		@extend %icon-menu;
 	}
 	&:after{
 		content: 'Nav';
