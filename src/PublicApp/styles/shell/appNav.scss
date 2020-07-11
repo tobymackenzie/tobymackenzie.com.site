@@ -1,3 +1,10 @@
+@mixin appNavFaIconColors(){
+	//-@ via https://codepen.io/sosuke/pen/Pjoqqp
+	filter: invert(22%) sepia(70%) saturate(388%) hue-rotate(71deg);
+	@include supports('dark-theme'){
+		filter: invert(47%) sepia(70%) saturate(388%) hue-rotate(71deg);
+	}
+}
 .appNav{
 	@extend %appNavAreaColors;
 	@extend %appNavLayout;
@@ -59,6 +66,7 @@
 .appSiteNavAction{
 	&:before{
 		@extend %icon-menu;
+		@include appNavFaIconColors();
 	}
 	&:after{
 		content: 'Nav';
