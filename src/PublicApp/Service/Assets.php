@@ -136,7 +136,7 @@ class Assets extends Model{
 	}
 	public function getIconsDistPath(){
 		if(substr($this->iconsDistPath, 0, 1) !== '/'){
-			return $this->distPath . '/' . $this->iconsDistPath;
+			return $this->getDistPath() . '/' . $this->iconsDistPath;
 		}else{
 			return $this->iconsDistPath;
 		}
