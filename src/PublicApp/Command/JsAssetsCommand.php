@@ -1,12 +1,20 @@
 <?php
 namespace PublicApp\Command;
-
+use PublicApp\Service\Assets;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use TJM\Files\Files;
 
 class JsAssetsCommand extends Command{
+	protected $assetsService;
+	protected $env;
+	public function __construct(Assets $assetsService, $env){
+		$this->assetsService = $assetsService;
+		$this->env = $env;
+		parent::__construct();
+	}
 	protected function configure(){
 		$this
 			->setName('assets:js')
@@ -23,37 +31,45 @@ class JsAssetsCommand extends Command{
 		return $files;
 	}
 	protected function execute(InputInterface $input, OutputInterface $output){
-		$compiler = $input->getOption('compiler');
-		$src = __DIR__ . '/../scripts';
-		$dest = __DIR__ . '/../Resources/public/scripts/prod';
-		if($compiler === 'uglify'){
-			$files = $this->recursiveGlob($src . '/*.js');
+		$src = $this->assetsService->getScriptsPath();
+		$dest = $this->assetsService->getScriptsDistPath();
+		if($this->env === 'dev'){
+			Files::symlinkRelativelySafely($dest, $src);
+			$output->writeln("symlink $dest, $src");
 		}else{
-			$files = glob($src . '/*.js');
-		}
-		foreach($files as $file){
-			$baseName = str_replace($src . '/', '', $file);
-			if($baseName !== 'proxy-worker.js' || $compiler === 'webpack'){ //-!! uglify can't seem to process es6
-				switch($compiler){
-					//-# rollup builds about 500 bytes smaller than webpack currently, so it's default.
-					case 'rollup':
-					default:
-						$command = "rollup {$file} --output.format iife | uglifyjs --compress --mangle --stats > {$dest}/{$baseName}";
-					break;
-					case 'uglify':
-						$command = str_replace("\n", '', "uglifyjs
-							--compress
-							--mangle
-							-o {$dest}/{$baseName}
-							--stats
-							-- {$file}"
-						);
-					break;
-					case 'webpack':
-						$command = "webpack {$file} --output {$dest}/{$baseName} --mode production";
-					break;
+			$compiler = $input->getOption('compiler');
+			if(!file_exists($dest)){
+				exec("mkdir -p {$dest}");
+			}
+			if($compiler === 'uglify'){
+				$files = $this->recursiveGlob($src . '/*.js');
+			}else{
+				$files = glob($src . '/*.js');
+			}
+			foreach($files as $file){
+				$baseName = str_replace($src . '/', '', $file);
+				if($baseName !== 'proxy-worker.js' || $compiler === 'webpack'){ //-!! uglify can't seem to process es6
+					switch($compiler){
+						//-# rollup builds about 500 bytes smaller than webpack currently, so it's default.
+						case 'rollup':
+						default:
+							$command = "rollup {$file} --output.format iife | uglifyjs --compress --mangle --stats > {$dest}/{$baseName}";
+						break;
+						case 'uglify':
+							$command = str_replace("\n", '', "uglifyjs
+								--compress
+								--mangle
+								-o {$dest}/{$baseName}
+								--stats
+								-- {$file}"
+							);
+						break;
+						case 'webpack':
+							$command = "webpack {$file} --output {$dest}/{$baseName} --mode production";
+						break;
+					}
+					passthru($command);
 				}
-				passthru($command);
 			}
 		}
 		return 0;

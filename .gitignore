@@ -20,8 +20,6 @@ yarn.lock
 /config/*local.*
 !/config/*local.*.dist
 /dist/
-/src/PublicApp/Resources/public/scripts/
-/src/PublicApp/Resources/public/styles/
 /var/*
 !/var/cache/
 /var/cache/*

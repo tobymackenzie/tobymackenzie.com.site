@@ -1,6 +1,7 @@
 <?php
 namespace PublicApp\Command;
 use Exception;
+use PublicApp\Service\Assets;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -8,8 +9,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
 class CssAssetsCommand extends Command{
+	protected $assetsService;
 	protected $env;
-	public function __construct($env){
+	public function __construct(Assets $assetsService, $env){
+		$this->assetsService = $assetsService;
 		$this->env = $env;
 		parent::__construct();
 	}
@@ -40,7 +43,11 @@ class CssAssetsCommand extends Command{
 		$basePath = __DIR__ . '/..';
 		chdir($basePath);
 		$processes = [];
-		foreach(glob('./styles/builds/*.scss') as $file){
+		$dest = $this->assetsService->getStylesDistPath();
+		if(!file_exists($dest)){
+			exec("mkdir -p {$dest}");
+		}
+		foreach(glob("{$this->assetsService->getStylesPath()}/builds/*.scss") as $file){
 			$nameBase = basename($file, '.scss');
 			if($nameBase[0] === '_'){
 				continue;
@@ -49,7 +56,7 @@ class CssAssetsCommand extends Command{
 			if($postCSSBin){
 				$run .= ' | ' . $postCSSBin;
 			}
-			$run .= " > ./Resources/public/styles/{$this->env}/{$nameBase}.css";
+			$run .= " > {$dest}/{$nameBase}.css";
 			$process = Process::fromShellCommandline($run, $basePath);
 			$process->start();
 			$processes[] = $process;

@@ -3,16 +3,40 @@ services:
   autowire: true
   bind:
    $env: '%kernel.environment%'
- TJM\HtmlToMarkdown\HtmlConverter:
-  arguments: [{'hard_break': true, 'strip_tags': true}]
- ParsedownExtra:
-   class: ParsedownExtra #-! required because not namespaced
+ PublicApp\Service\Assets:
+   arguments:
+     -
+       assetLinks:
+         -
+           dest: 'fonts'
+           src: 'assets/fonts/*'
+         -
+           dest: 'grunge-pattern.png'
+           src: 'assets/grunge-pattern.png'
+         -
+           dest: 'icomoon'
+           src: 'assets/icomoon/*'
+         -
+           dest: 'icons'
+           src: 'assets/icons/*'
+         -
+           dest: 'images'
+           src: 'assets/images/*'
+         -
+           dest: 'webStuff.jpg'
+           src: 'assets/webStuff.jpg'
+       distPath: '%assets.dist_path%'
+       projectPath: '%kernel.root_dir%'
  TJM\FileStore\FileStore:
    class: TJM\FileStore\FileStore
    arguments: ['%kernel.project_dir%/app/data/data-store/files']
+ TJM\HtmlToMarkdown\HtmlConverter:
+  arguments: [{'hard_break': true, 'strip_tags': true}]
  TJM\Pages\Pages:
    class: TJM\Pages\Pages
    arguments: ['%kernel.project_dir%/app/pages', '@TJM\FileStore\FileStore']
+ ParsedownExtra:
+   class: ParsedownExtra #-! required because not namespaced
  TJM\Views\Views:
    arguments: ['@router', '%tjm_base.wraps%', '%public.host%']
    public: true

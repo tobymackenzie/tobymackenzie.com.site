@@ -1,3 +1,7 @@
+parameters:
+  assets.web_root: '/_assets'
+  assets.dist_path: e'%kernel.project_dir%/dist/public/%assets.web_root%'
+
 imports:
   - {resource: '@TJMBaseBundle/Resources/config/config.yml'}
   - {resource: ../../../config/symfony.yml}
@@ -29,6 +33,11 @@ tjm_base:
 twig:
  debug: "%kernel.debug%"
  exception_controller: null
+ globals:
+   assets:
+     #-! I'd prefer these to not be hard coded, probably coming from assets service, but that will take some figuring out
+     scripts_path: '%assets.web_root%/scripts'
+     styles_path: '%assets.web_root%/styles'
  paths:
    '%kernel.root_dir%/templates': 'Public'
  strict_variables: "%kernel.debug%"

@@ -1,3 +1,7 @@
+parameters:
+  assets.web_root: '/_assets-dev'
+  assets.dist_path: '%kernel.project_dir%/dist/public/%assets.web_root%'
+
 imports:
  - {resource: config.yml}
 
