@@ -39,6 +39,7 @@ class AssetsCommand extends Command{
 		// 	$output->writeln("{$key}=> {$value}");
 		// }
 		$this->assetsService->linkAssets();
+		$this->assetsService->buildIcons();
 		return 0;
 	}
 }

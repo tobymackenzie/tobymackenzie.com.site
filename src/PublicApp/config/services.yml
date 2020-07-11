@@ -6,27 +6,35 @@ services:
  PublicApp\Service\Assets:
    arguments:
      -
-       assetLinks:
-         -
-           dest: 'fonts'
-           src: 'assets/fonts/*'
-         -
-           dest: 'grunge-pattern.png'
-           src: 'assets/grunge-pattern.png'
-         -
-           dest: 'icomoon'
-           src: 'assets/icomoon/*'
-         -
-           dest: 'icons'
-           src: 'assets/icons/*'
-         -
-           dest: 'images'
-           src: 'assets/images/*'
-         -
-           dest: 'webStuff.jpg'
-           src: 'assets/webStuff.jpg'
-       distPath: '%assets.dist_path%'
-       projectPath: '%kernel.root_dir%'
+      assetLinks:
+        -
+          dest: 'fonts'
+          src: 'assets/fonts/*'
+        -
+          dest: 'grunge-pattern.png'
+          src: 'assets/grunge-pattern.png'
+        -
+          dest: 'icomoon'
+          src: 'assets/icomoon/*'
+        -
+          dest: 'images'
+          src: 'assets/images/*'
+        -
+          dest: 'webStuff.jpg'
+          src: 'assets/webStuff.jpg'
+      distPath: '%assets.dist_path%'
+      iconDefaults:
+        attr:
+          height: 2em
+          width: 2em
+      iconSets:
+        fa: 'node_modules/fontawesome/svgs'
+      icons:
+        -
+          set: fa
+          dest: 'list.svg'
+          src: 'solid/list.svg'
+      projectPath: '%kernel.root_dir%'
  TJM\FileStore\FileStore:
    class: TJM\FileStore\FileStore
    arguments: ['%kernel.project_dir%/app/data/data-store/files']
