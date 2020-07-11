@@ -17,8 +17,8 @@
 	background-size: contain;
 	//-# '\A' is line break to move inserted content out of visible area
 	content: '\A\A' url('#{$url}') url('#{$url}') url('#{$url}') url('#{$url}');
-	max-height: #{$size};
-	max-width: #{$size};
+	@include remFallback('max-height', $size);
+	@include remFallback('max-width', $size);
 	overflow: hidden;
 	vertical-align: middle;
 	width: auto;
