@@ -1,8 +1,8 @@
 @mixin siteNavIconColors(){
 	//-@ via https://codepen.io/sosuke/pen/Pjoqqp
-	filter: invert(27%) sepia(70%) saturate(388%) hue-rotate(71deg);
+	filter: invert(22%) sepia(70%) saturate(388%) hue-rotate(71deg);
 	@include supports('dark-theme'){
-		filter: invert(41%) sepia(70%) saturate(388%) hue-rotate(71deg);
+		filter: invert(47%) sepia(70%) saturate(388%) hue-rotate(71deg);
 	}
 }
 @mixin siteNavIcmIconColors(){
