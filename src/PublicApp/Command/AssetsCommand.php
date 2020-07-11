@@ -22,22 +22,6 @@ class AssetsCommand extends Command{
 		;
 	}
 	protected function execute(InputInterface $input, OutputInterface $output){
-		// chdir('..');
-		// if(!is_dir('node_modules')){
-		// 	passthru('yarn install');
-		// }
-		// dump($this->assetsService);
-		// foreach([
-		// 	'distPath'
-		// 	,'projectPath'
-		// 	,'scriptsPath'
-		// 	,'scriptsDistPath'
-		// 	,'stylesPath'
-		// 	,'stylesDistPath'
-		// ] as $key){
-		// 	$value = $this->assetsService->{"get" . ucfirst($key)}();
-		// 	$output->writeln("{$key}=> {$value}");
-		// }
 		$this->assetsService->linkAssets();
 		$this->assetsService->buildIcons();
 		return 0;
