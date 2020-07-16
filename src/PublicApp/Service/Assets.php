@@ -114,7 +114,11 @@ class Assets extends Model{
 						$svg = new SimpleXMLElement(file_get_contents($dest));
 						if($svg){
 							foreach($attr as $key=> $value){
-								$svg->addAttribute($key, $value);
+								if(isset($svg[$key])){
+									$svg[$key] = $value;
+								}else{
+									$svg->addAttribute($key, $value);
+								}
 							}
 							file_put_contents($dest, $svg->asXML());
 						}
