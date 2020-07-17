@@ -8,12 +8,13 @@
 		transform: rotate(10deg);
 	}
 }
-@mixin fa-icon($name, $size: 32px){
+
+@mixin single-icon($name, $size: 32px){
 	@include icon();
 	$url: '/_assets/icons/#{$name}';
 	box-sizing: border-box;
 	background: url('#{$url}') no-repeat;
-	background-position: left center;
+	background-position: center;
 	background-size: contain;
 	//-# '\A' is line break to move inserted content out of visible area
 	content: '\A\A' url('#{$url}') url('#{$url}') url('#{$url}') url('#{$url}');
@@ -23,153 +24,92 @@
 	vertical-align: middle;
 	width: auto;
 	white-space: pre;
+
+	//--color
+	//-@ via https://codepen.io/sosuke/pen/Pjoqqp
+	filter: invert(22%) sepia(70%) saturate(388%) hue-rotate(71deg);
+	@include supports('dark-theme'){
+		filter: invert(47%) sepia(70%) saturate(388%) hue-rotate(71deg);
+	}
+
+}
+@mixin icon-resize($size: 3rem){
+	background-size: $size;
+}
+@mixin fa-icon($name, $size: 32px){
+	@include single-icon($name, $size);
+}
+@mixin icm-icon($name, $size: 32px){
+	@include single-icon($name, $size);
+}
+@mixin oct-icon($name, $size: 32px){
+	@include single-icon($name, $size);
 }
 
-/*-#
-using sprite map
-pluses:
-- fully within CSS, versus inline svg / img
-- single request, versus inline svg / img
-- cacheable, versus inline svg
-- easier alignment versus font
-- slightly smaller gzipped for new browsers, versus font / img
-minuses:
-- can't directly change colors, versus font / inline svg
-- can't easily change size, versus font / inline svg / img
-- must load all at once, versus inline svg / img
-*/
-@mixin icm($size: 32){
-	@include icon();
-	content: '';
-	background-image: url('/_assets/icomoon/sprite.png');
-	background-image: url('/_assets/icomoon/sprite.svg');
-	background-repeat: no-repeat;
-	@include remFallback('background-size', ((1412 / 32) * $size * 1px) ((124 / 32) * $size * 1px));
-	flex: 0 0 auto;
-	@include supports('dark-theme'){
-		filter: brightness(1.8) grayscale(0.2);
-	}
+%icon-email{
+	@include oct-icon('email.svg');
 }
-%icm{
-	@include icm();
+%icon-packagist{
+	@include oct-icon('packagist.svg');
 }
-%icm-email{
-	@extend %icm;
-	@include remFallback('background-position', 0 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-home{
+	@include icm-icon('home.svg');
 }
-%icm-packagist{
-	@extend %icm;
-	@include remFallback('background-position', -92px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-writings{
+	@include icm-icon('quill.svg');
 }
-%icm-home{
-	@extend %icm;
-	@include remFallback('background-position', -184px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-file-text{
+	@include icm-icon('file-text.svg');
 }
-%icm-writings{
-	@extend %icm;
-	@include remFallback('background-position', -276px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-about{
+	@include icm-icon('profile.svg');
 }
-%icm-file-text{
-	@extend %icm;
-	@include remFallback('background-position', -368px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-portfolio{
+	@include icm-icon('folder.svg');
 }
-%icm-about{
-	@extend %icm;
-	@include remFallback('background-position', -460px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+@mixin icon-search($size: 32){
+	@include icm-icon('search.svg', $size);
 }
-%icm-portfolio{
-	@extend %icm;
-	@include remFallback('background-position', -552px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-search{
+	@include icon-search();
 }
-@mixin icm-search($size: 32){
-	@include icm($size);
-	@include remFallback('background-position', ((644 / 32) * $size * -1px) 0);
-	@include remFallback('height', $size);
-	@include remFallback('width', $size);
+%icon-settings{
+	@include icm-icon('cog.svg');
 }
-%icm-search{
-	@include icm-search();
+%icon-link{
+	@include icm-icon('link.svg');
 }
-%icm-settings{
-	@extend %icm;
-	@include remFallback('background-position', -736px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
-}
-%icm-link{
-	@extend %icm;
-	@include remFallback('background-position', -828px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
-}
-%icm-info{
-	@extend %icm;
-	@include remFallback('background-position', -920px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-info{
+	@include icm-icon('info.svg');
 }
 %icon-menu{
 	@include fa-icon('list.svg');
 }
-%icm-twitter{
-	@extend %icm;
-	@include remFallback('background-position', -1104px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-twitter{
+	@include fa-icon('twitter.svg');
+	@include icon-resize(2.2rem);
 }
-%icm-github{
-	@extend %icm;
-	@include remFallback('background-position', -1196px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-github{
+	@include icm-icon('github.svg');
 }
-%icm-linkedin{
-	@extend %icm;
-	@include remFallback('background-position', -1288px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-linkedin{
+	@include icm-icon('linkedin.svg');
 }
-%icm-delicious{
-	@extend %icm;
-	@include remFallback('background-position', -1380px 0);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-delicious{
+	@include icm-icon('delicious.svg');
 }
-%icm-stackoverflow{
-	@extend %icm;
-	@include remFallback('background-position', 0 -92px);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-stackoverflow{
+	@include fa-icon('stack-overflow.svg');
+	// @include icon-resize(2.2rem);
 }
-%icm-bottom{
-	@extend %icm;
-	@include remFallback('background-position', -92px -92px);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-bottom{
+	@include fa-icon('caret-down.svg');
+	@include icon-resize(3rem);
 }
-%icm-top{
-	@extend %icm;
-	@include remFallback('background-position', -184px -92px);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-top{
+	@include fa-icon('caret-up.svg');
+	@include icon-resize(3rem);
 }
-%icm-code{
-	@extend %icm;
-	@include remFallback('background-position', -276px -92px);
-	@include remFallback('height', 32);
-	@include remFallback('width', 32);
+%icon-code{
+	@include fa-icon('code.svg');
 }

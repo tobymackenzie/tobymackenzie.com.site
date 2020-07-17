@@ -1,10 +1,3 @@
-@mixin appNavFaIconColors(){
-	//-@ via https://codepen.io/sosuke/pen/Pjoqqp
-	filter: invert(22%) sepia(70%) saturate(388%) hue-rotate(71deg);
-	@include supports('dark-theme'){
-		filter: invert(47%) sepia(70%) saturate(388%) hue-rotate(71deg);
-	}
-}
 .appNav{
 	@extend %appNavAreaColors;
 	@extend %appNavLayout;
@@ -40,7 +33,7 @@
 }
 .appBottomAction{
 	&:before{
-		@extend %icm-bottom;
+		@extend %icon-bottom;
 	}
 	&:after{
 		content: 'Bottom';
@@ -48,7 +41,7 @@
 }
 .appMainAction{
 	&:before{
-		@extend %icm-file-text;
+		@extend %icon-file-text;
 	}
 	&:after{
 		content: 'Main';
@@ -57,7 +50,7 @@
 .appRestartAction{
 	@extend %appRestartNavActionLayout;
 	&:before{
-		@extend %icm-top;
+		@extend %icon-top;
 	}
 	&:after{
 		content: 'Top';
@@ -66,7 +59,6 @@
 .appSiteNavAction{
 	&:before{
 		@extend %icon-menu;
-		@include appNavFaIconColors();
 	}
 	&:after{
 		content: 'Nav';

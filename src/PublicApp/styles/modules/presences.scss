@@ -32,43 +32,43 @@
 }
 .presenceAction-writings{
 	&:before{
-		@extend %icm-writings;
+		@extend %icon-writings;
 	}
 	@extend %presenceAction;
 }
 .presenceAction-github{
 	&:before{
-		@extend %icm-github;
+		@extend %icon-github;
 	}
 	@extend %presenceAction;
 }
 .presenceAction-twitter{
 	&:before{
-		@extend %icm-twitter;
+		@extend %icon-twitter;
 	}
 	@extend %presenceAction;
 }
 .presenceAction-linkedin{
 	&:before{
-		@extend %icm-linkedin;
+		@extend %icon-linkedin;
 	}
 	@extend %presenceAction;
 }
 .presenceAction-delicious{
 	&:before{
-		@extend %icm-delicious;
+		@extend %icon-delicious;
 	}
 	@extend %presenceAction;
 }
 .presenceAction-stackoverflow{
 	&:before{
-		@extend %icm-stackoverflow;
+		@extend %icon-stackoverflow;
 	}
 	@extend %presenceAction;
 }
 .presenceAction-packagist{
 	&:before{
-		@extend %icm-packagist;
+		@extend %icon-packagist;
 	}
 	@extend %presenceAction;
 }
