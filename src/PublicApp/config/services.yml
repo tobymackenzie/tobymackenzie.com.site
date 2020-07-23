@@ -14,9 +14,6 @@ services:
           dest: 'grunge-pattern.png'
           src: 'assets/grunge-pattern.png'
         -
-          dest: 'icomoon'
-          src: 'assets/icomoon/*'
-        -
           dest: 'images'
           src: 'assets/images/*'
         -
