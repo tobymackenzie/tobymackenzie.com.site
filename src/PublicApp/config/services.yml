@@ -20,15 +20,16 @@ services:
           dest: 'webStuff.jpg'
           src: 'assets/webStuff.jpg'
       distPath: '%assets.dist_path%'
-      iconDefaults:
+      projectPath: '%kernel.root_dir%'
+      svgDefaults:
         attr:
           height: 2em
           width: 2em
-      iconSets:
+      svgSets:
         fa: 'node_modules/fontawesome/svgs'
         icm: 'node_modules/icomoon/SVG'
         oct: 'node_modules/@primer/octicons/build/svg'
-      icons:
+      svgs:
         -
           set: fa
           dest: 'caret-down.svg'
@@ -109,7 +110,6 @@ services:
           set: fa
           dest: 'twitter.svg'
           src: 'brands/twitter-square.svg'
-      projectPath: '%kernel.root_dir%'
  TJM\FileStore\FileStore:
    class: TJM\FileStore\FileStore
    arguments: ['%kernel.project_dir%/app/data/data-store/files']

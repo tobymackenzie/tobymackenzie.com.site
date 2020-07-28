@@ -8,15 +8,15 @@ use TJM\Files\Files;
 class Assets extends Model{
 	protected $assetLinks = [];
 	protected $distPath = 'dist';
-	protected $iconDefaults = [];
-	protected $iconSets = [];
-	protected $icons = [];
-	protected $iconsDistPath = 'icons';
 	protected $projectPath;
 	protected $scriptsPath = 'scripts';
 	protected $scriptsDistPath = 'scripts';
 	protected $stylesPath = 'styles';
 	protected $stylesDistPath = 'styles';
+	protected $svgDefaults = [];
+	protected $svgSets = [];
+	protected $svgs = [];
+	protected $svgsDistPath = 'svgs';
 	public function __construct($values = null){
 		if($values){
 			$this->set($values);
@@ -68,27 +68,27 @@ class Assets extends Model{
 		}
 		return false;
 	}
-	public function buildIcons(){
-		if($this->icons){
-			if(!file_exists($this->getIconsDistPath())){
-				exec("mkdir -p {$this->getIconsDistPath()}");
+	public function buildSvgs(){
+		if($this->svgs){
+			if(!file_exists($this->getSvgsDistPath())){
+				exec("mkdir -p {$this->getSvgsDistPath()}");
 			}
-			foreach($this->icons as $icon){
+			foreach($this->svgs as $svg){
 				$attr = [];
-				if(is_string($icon)){
-					$dest = basename($icon);
-					$src = $icon;
+				if(is_string($svg)){
+					$dest = basename($svg);
+					$src = $svg;
 					$set = null;
 				}else{
-					$src = $icon['src'] ?? null;
-					$dest = $icon['dest'] ?? basename($src);
-					$set = $icon['set'] ?? null;
-					if(isset($icon['attr'])){
-						$attr = $icon['attr'];
+					$src = $svg['src'] ?? null;
+					$dest = $svg['dest'] ?? basename($src);
+					$set = $svg['set'] ?? null;
+					if(isset($svg['attr'])){
+						$attr = $svg['attr'];
 					}
 				}
-				if($set && isset($this->iconSets[$set])){
-					$set = $this->iconSets[$set];
+				if($set && isset($this->svgSets[$set])){
+					$set = $this->svgSets[$set];
 					if(is_string($set)){
 						$set = ['src'=> $set];
 					}
@@ -102,12 +102,12 @@ class Assets extends Model{
 						$src = $set['src'] . '/' . $src;
 					}
 				}
-				if(isset($this->iconDefaults['attr'])){
-					$attr = array_merge($this->iconDefaults['attr'], $attr);
+				if(isset($this->svgDefaults['attr'])){
+					$attr = array_merge($this->svgDefaults['attr'], $attr);
 				}
 				if($src && $dest){
 					if(substr($dest, 0, 1) !== '/'){
-						$dest = $this->getIconsDistPath() . '/' . $dest;
+						$dest = $this->getSvgsDistPath() . '/' . $dest;
 					}
 					copy($src, $dest);
 					if(pathinfo($dest, PATHINFO_EXTENSION) === 'svg' && $attr){
@@ -138,11 +138,11 @@ class Assets extends Model{
 			return $this->distPath;
 		}
 	}
-	public function getIconsDistPath(){
-		if(substr($this->iconsDistPath, 0, 1) !== '/'){
-			return $this->getDistPath() . '/' . $this->iconsDistPath;
+	public function getSvgsDistPath(){
+		if(substr($this->svgsDistPath, 0, 1) !== '/'){
+			return $this->getDistPath() . '/' . $this->svgsDistPath;
 		}else{
-			return $this->iconsDistPath;
+			return $this->svgsDistPath;
 		}
 	}
 	public function getScriptsPath(){

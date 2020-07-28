@@ -23,7 +23,7 @@ class AssetsCommand extends Command{
 	}
 	protected function execute(InputInterface $input, OutputInterface $output){
 		$this->assetsService->linkAssets();
-		$this->assetsService->buildIcons();
+		$this->assetsService->buildSvgs();
 		return 0;
 	}
 }
