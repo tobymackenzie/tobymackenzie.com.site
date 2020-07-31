@@ -14,7 +14,7 @@
 	$url: '/_assets/svgs/#{$name}';
 	box-sizing: border-box;
 	background: url('#{$url}') no-repeat;
-	background-position: center;
+	background-position: left center;
 	background-size: contain;
 	//-# '\A' is line break to move inserted content out of visible area
 	content: '\A\A' url('#{$url}') url('#{$url}') url('#{$url}') url('#{$url}');
@@ -32,6 +32,9 @@
 		filter: invert(47%) sepia(70%) saturate(388%) hue-rotate(71deg);
 	}
 
+}
+@mixin icon-with-label{
+	max-width: 2.6rem;
 }
 @mixin icon-resize($size: 3rem){
 	background-size: $size;
@@ -60,6 +63,7 @@
 }
 %icon-file-text{
 	@include icm-icon('file-text.svg');
+	background-position-x: 10%;
 }
 %icon-about{
 	@include icm-icon('profile.svg');
@@ -105,10 +109,12 @@
 %icon-bottom{
 	@include fa-icon('caret-down.svg');
 	@include icon-resize(3rem);
+	background-position-x: -0.5em;
 }
 %icon-top{
 	@include fa-icon('caret-up.svg');
 	@include icon-resize(3rem);
+	background-position-x: -0.5em;
 }
 %icon-code{
 	@include fa-icon('code.svg');

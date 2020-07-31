@@ -4,7 +4,7 @@
 		text-decoration: underline;
 	}
 	&:before{
-		margin-right: 0.6em;
+		@include icon-with-label();
 		vertical-align: middle;
 		@include mq('print'){
 			height: auto;

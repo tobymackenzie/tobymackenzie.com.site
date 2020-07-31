@@ -123,6 +123,8 @@ $siteNavSearchWidth: 13em;
 	&[data-type]{
 		&:before{
 			@include siteNavIconColors();
+			margin-right: 0;
+			@include icon-with-label();
 		}
 	}
 	&[data-type='about']{

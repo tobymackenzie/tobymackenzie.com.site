@@ -28,7 +28,7 @@
 //--specific
 .appBottomAction, .appMainAction, .appRestartAction, .appSiteNavAction{
 	&:before{
-		@extend %appNavItemIconLayout;
+		@include appNavItemIconLayout();
 	}
 }
 .appBottomAction{
