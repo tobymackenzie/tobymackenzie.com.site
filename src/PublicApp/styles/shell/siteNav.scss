@@ -57,7 +57,7 @@ $siteNavSearchWidth: 13em;
 		color: inherit;
 		height: 100%;
 		line-height: 100%;
-		padding: 0;
+		padding: 0 0.5em;
 		position: absolute;
 		right: 0;
 		top: 0;
@@ -67,7 +67,6 @@ $siteNavSearchWidth: 13em;
 			@include icon-search($size);
 			@include siteNavIconColors();
 			@include remFallback('height', $size);
-			margin-right: 0.5em;
 			vertical-align: middle;
 			@include remFallback('width', $size);
 		}
