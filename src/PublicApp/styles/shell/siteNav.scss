@@ -73,6 +73,9 @@ $siteNavSearchWidth: 13em;
 		}
 		&:focus, &:hover{
 			background-color: rgba(map-get($colors, secondaryFG), 0.3);
+			&:before{
+				animation-name: none;
+			}
 		}
 		> span{
 			@extend %sro;

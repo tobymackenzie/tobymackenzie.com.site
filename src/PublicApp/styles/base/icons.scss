@@ -3,10 +3,7 @@
 	speak: none;
 
 	//--focus whimsy
-	transition: transform 200ms;
-	&:focus, &:hover{
-		transform: rotate(10deg);
-	}
+	@extend %twistHoverAnimation;
 }
 
 @mixin single-icon($name, $size: 32px){
