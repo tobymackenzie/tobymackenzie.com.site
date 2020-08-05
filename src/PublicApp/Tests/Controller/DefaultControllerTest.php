@@ -8,7 +8,7 @@ class DefaultControllerTest extends WebTestCase{
 	* @dataProvider getSimplePageActions
 	*/
 	public function testSimplePageActions($path){
-		$client = static::createClient([], ['HTTP_HOST'=> $this->getRequestHost()]); //-# must be here because multiple subsequent requests seem to be able to affect each other if done with the same client
+		$client = static::createClient();
 		$client->request('GET', $path);
 		$extension = pathinfo($path, PATHINFO_EXTENSION);
 		if(!$extension){
@@ -34,7 +34,7 @@ class DefaultControllerTest extends WebTestCase{
 	}
 	public function testTrailingSlash404(){
 		$path = '/foo/';
-		$client = static::createClient([], ['HTTP_HOST'=> $this->getRequestHost()]); //-# must be here because multiple subsequent requests seem to be able to affect each other if done with the same client
+		$client = static::createClient();
 		$client->request('GET', $path);
 		$this->assertTrue(!$client->getResponse()->isRedirection(), 'Non-existant path ' . $path . ' with trailing slash should not be a redirect.');
 		$this->assertEquals(404, $client->getResponse()->getStatusCode(), 'Status code for ' . $path . ' should be 404, indicating not found.');
@@ -43,10 +43,9 @@ class DefaultControllerTest extends WebTestCase{
 	/*=====
 	==data
 	=====*/
-	protected function getRequestHost(){
-		$client = static::createClient();
-		return $client->getContainer()->getParameter('public.host');
-	}
+	// protected function getRequestHost($client){
+	// 	return $client->getContainer()->getParameter('public.host');
+	// }
 	public function getSimplePageActions(){
 		return [
 			['/']

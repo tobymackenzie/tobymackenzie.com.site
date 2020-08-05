@@ -8,7 +8,7 @@ class DefaultControllerTest extends WebTestCase{
 	* @dataProvider getNotFoundActions
 	*/
 	public function testNotFoundAction($path){
-		$client = static::createClient([], ['HTTP_HOST'=> $this->getRequestHost()]);
+		$client = static::createClient();
 		$client->request('GET', $path);
 		$this->assertEquals(200, $client->getResponse()->getStatusCode(), 'Status code should be 200 success');
 		$this->assertContains('</html>', $client->getResponse()->getContent(), 'Content should contain ending </html>, implying that a full html document was rendered.');
@@ -22,7 +22,7 @@ class DefaultControllerTest extends WebTestCase{
 	* @dataProvider getTestActions
 	*/
 	public function testTestAction($path, $expectedResult){
-		$client = static::createClient([], ['HTTP_HOST'=> $this->getRequestHost()]);
+		$client = static::createClient();
 		$client->request('GET', $path);
 		$this->assertEquals(200, $client->getResponse()->getStatusCode(), 'Status code should be 200, indicating a success');
 		$this->assertTrue(!$client->getResponse()->isRedirection(), 'Should not be redirection');
@@ -32,10 +32,6 @@ class DefaultControllerTest extends WebTestCase{
 	/*=====
 	==data
 	=====*/
-	protected function getRequestHost(){
-		$client = static::createClient();
-		return $client->getContainer()->getParameter('protected.host');
-	}
 	public function getNotFoundActions(){
 		return [
 			['/']
