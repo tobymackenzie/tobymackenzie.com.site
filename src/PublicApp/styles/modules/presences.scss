@@ -28,7 +28,10 @@
 }
 .presence{
 	break-inside: avoid;
-	margin-bottom: 1em;
+	//--whitespace
+	//-# padding to prevent weird wrapping of margin in webkit
+	margin: 0;
+	padding-bottom: 1.5em;
 }
 .presenceAction-writings{
 	&:before{
