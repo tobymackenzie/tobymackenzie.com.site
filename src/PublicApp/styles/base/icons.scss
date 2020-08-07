@@ -32,7 +32,10 @@
 	background-position: left center;
 	background-size: contain;
 	//-# '\A' is line break to move inserted content out of visible area
-	content: '\A\A' url('#{$url}') url('#{$url}');
+	//-# url is to expand container only if url loads
+	//-# space is for IE 9-11, which show content instead of bg
+	//-! space means extra whitespace if icon doesn't load though, which negates the whole padding instead of margin hack
+	content: '\A\A' url('#{$url}') ' ';
 	@include remFallback('max-height', $size);
 	@include remFallback('max-width', $size);
 	overflow: hidden;
