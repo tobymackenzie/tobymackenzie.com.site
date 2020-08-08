@@ -7,10 +7,8 @@
 		@include icon-with-label();
 		vertical-align: middle;
 		@include mq('print'){
-			height: auto;
-			margin: 0;
-			width: auto;
-			vertical-align: baseline;
+			filter: none;
+			max-height: none;
 		}
 	}
 	span{
@@ -32,6 +30,9 @@
 	//-# padding to prevent weird wrapping of margin in webkit
 	margin: 0;
 	padding-bottom: 1.5em;
+	@include mq('print'){
+		padding-bottom: 0.5em;
+	}
 }
 .presenceAction-writings{
 	&:before{
