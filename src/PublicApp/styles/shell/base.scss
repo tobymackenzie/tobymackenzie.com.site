@@ -28,16 +28,16 @@ html{
 
 //==bg
 .appBG{
-	opacity: 0.05; filter: alpha(opacity=5); //-# out here to prevent flash when crossing breakpoint
+	opacity: 0.05; //-# out here to prevent flash when crossing breakpoint
 	@include mq(map-get($bp, wide)){
 		@include fullContainerCover();
 		background: url('/_assets/webStuff.jpg') left top;
 		content: ' ';
 		transition: opacity 1.8s ease /* 0.2s*/;
 		&:hover{
-			opacity: 0.60; filter: alpha(opacity=60);
+			opacity: 0.60;
 			@include supports('dark-theme'){
-				opacity: 0.40; filter: alpha(opacity=40);
+				opacity: 0.40;
 			}
 		}
 	}
