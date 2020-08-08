@@ -15,23 +15,23 @@
 			break-inside: avoid;
 			page-break-inside: avoid;
 			&:after{
-				content: '](' attr(href) ')';
+				content: '](' attr(href) ')' !important;
 				text-decoration: none;
 				word-wrap: break-word;
 			}
 			&:before{
-				content: '[';
+				content: '[' !important;
 				text-decoration: none;
 			}
 		}
 		&[href^='/']{
 			&:after{
-				content: '](https://www.tobymackenzie.com' attr(href) ')';
+				content: '](https://www.tobymackenzie.com' attr(href) ')' !important;
 			}
 		}
 		&[href^='#'], &[href^='javascript:']{
 			&:before, &:after{
-				content: '';
+				content: '' !important;
 			}
 		}
 	}

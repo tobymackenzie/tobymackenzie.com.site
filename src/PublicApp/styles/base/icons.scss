@@ -7,6 +7,12 @@
 		animation-duration: 0.3s;
 		animation-name: iconHover;
 	}
+	//--print
+	@include mq('print'){
+		filter: none !important;
+		max-height: none;
+		// white-space: normal;
+	}
 }
 @keyframes iconHover{
 	0%{

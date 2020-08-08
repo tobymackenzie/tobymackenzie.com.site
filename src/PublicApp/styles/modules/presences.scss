@@ -6,10 +6,6 @@
 	&:before{
 		@include icon-with-label();
 		vertical-align: middle;
-		@include mq('print'){
-			filter: none;
-			max-height: none;
-		}
 	}
 	span{
 		text-decoration: underline;
