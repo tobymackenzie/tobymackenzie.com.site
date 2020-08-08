@@ -79,7 +79,7 @@ $colors: map-merge($colors, (
 	strong: map-get($namedColors, strongGreen)
 ));
 $darkThemeColors: (
-	baseBG: map-get($namedColors, darkGreen),
+	baseBG: darken(map-get($namedColors, darkGreen), 15%),
 	baseFG: map-get($namedColors, lightGreen),
 	chromeHeaderBG: map-get($namedColors, blackGreen),
 	contentBorder: map-get($namedColors, lightGreen),

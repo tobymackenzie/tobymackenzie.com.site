@@ -36,6 +36,9 @@ html{
 		transition: opacity 1.8s ease /* 0.2s*/;
 		&:hover{
 			opacity: 0.60; filter: alpha(opacity=60);
+			@include supports('dark-theme'){
+				opacity: 0.40; filter: alpha(opacity=40);
+			}
 		}
 	}
 }
