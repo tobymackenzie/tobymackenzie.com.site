@@ -74,7 +74,9 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteCond %{ENV:REDIRECT_STATUS} ^$
 	RewriteRule ^index\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
 	##===redirect wp index to blog
-	RewriteRule ^/?_/wp/(index\.php)?$ /blog/ [END,R=301]
+	RewriteCond %{REQUEST_URI} ^/?_/wp/?$ [OR]
+	RewriteCond %{REQUEST_URI} ^/?_/wp/index\.php$
+	RewriteRule ^ /blog/ [END,R=301]
 
 	##==serve files and directories, except root
 	RewriteCond %{REQUEST_FILENAME} -f
