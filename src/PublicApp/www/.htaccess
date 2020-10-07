@@ -40,6 +40,15 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteCond %{HTTP_HOST} ^$
 	RewriteRule ^ - [E=TMWEB_SITE:public,E=HTTP_HOST:www.tobymackenzie.com]
 
+	##==block admin access to others
+	RewriteCond %{ENV:TMWEB_SITE} public
+	RewriteCond %{HTTPS} =on
+	RewriteRule ^/?_wpmin$ /index.php [CO=12345:67890:%{HTTP_HOST}:0:/:secure:httponly,END]
+	RewriteCond %{ENV:TMWEB_SITE} public
+	RewriteCond %{HTTPS} !=on [OR]
+	RewriteCond %{HTTP_COOKIE} !^(.*;)?\ ?12345=67890\ ?(;.*)?$
+	RewriteRule ^/?_/wp/wp-login.php$ /index.php [END]
+
 	##==redirects from old paths
 	##===tobymackenzie.name / cosmicosmo.ath.cx
 	RewriteCond %{ENV:TMWEB_SITE} public
