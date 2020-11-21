@@ -20,8 +20,8 @@ force https if browser supports it.  allows us to test for actual support, unlik
 {% if canonical is defined %}
 <link href="{{canonical}}" rel="canonical" />
 {% endif %}
-<link href="{{path('public_humans', {_format: 'txt'})}}" rel="author" />
 <link href="{{path('public_app_manifest')}}" rel="manifest" />
+<meta name="author" content="Toby Mackenzie" />
 {% endblock %}
 
 {% block docStyles %}
