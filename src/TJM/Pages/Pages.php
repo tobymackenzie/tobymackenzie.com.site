@@ -14,13 +14,21 @@ class Pages{
 
 	//--data
 	//---aliases
-	public function getAlias($id){
+	public function getAlias($id, $_format = null){
 		if(!$this->hasAlias($id)){
 			return null;
 		}
+		$content = $this->aliases[$id];
+		$isPage = $this->hasPage($content);
+		if($isPage){
+			$content = "/{$content}";
+		}
+		if($_format && $_format !== 'html' && $isPage){
+			$content .= ".{$_format}";
+		}
 		return new Page([
 			'id'=> $id
-			,'content'=> $this->aliases[$id]
+			,'content'=> $content
 			,'type'=> 'redirect'
 		]);
 	}
@@ -43,8 +51,8 @@ class Pages{
 	public function hasResponse($id){
 		return $this->hasPage($id) || $this->hasAlias($id);
 	}
-	public function getResponse($id){
-		return $this->getPage($id) ?? $this->getAlias($id);
+	public function getResponse($id, $_format = null){
+		return $this->getPage($id) ?? $this->getAlias($id, $_format);
 	}
 
 	//---pages

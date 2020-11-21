@@ -24,7 +24,7 @@ class DefaultController extends Controller{
 			throw $this->createNotFoundException("Format {$_format} not currently supported");
 		}
 		$lowerCaseId = strtolower($id);
-		$page = $pagesService->getResponse($lowerCaseId);
+		$page = $pagesService->getResponse($lowerCaseId, $_format);
 
 		if(!$page){
 			throw $this->createNotFoundException("No data found for id '{$id}'");
