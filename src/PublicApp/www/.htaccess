@@ -63,6 +63,8 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteRule ^([\d]{4}/?.*) /blog/$1 [L,QSA,R=302]
 	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^/?feed/?$ /blog/feed/ [L,QSA,R=302]
+	##===wordpress slug changes
+	RewriteRule ^/?blog/2020/12/06/ive-got-home-internet-again /blog/2020/12/06/home-internet-again/  [L,QSA,R=302]
 
 	##==canonical
 	##--send unknown hosts and direct ip access to canonical domains
