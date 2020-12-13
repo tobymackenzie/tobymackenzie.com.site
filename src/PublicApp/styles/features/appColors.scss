@@ -95,6 +95,13 @@
 }
 @mixin appNavItemActionColors(){
 	@include appContainerColors;
+	background: none;
+	color: map-get($colors, primaryLinkFG);
+	text-decoration-color: rgba(map-get($colors, primaryLinkFG), 0.4);
+	@include supports('dark-theme'){
+		color: map-get($darkThemeColors, primaryLinkFG);
+		text-decoration-color: rgba(map-get($darkThemeColors, primaryLinkFG), 0.4);
+	}
 	@include supports('app-grid'){
 		@include primaryAreaColors;
 	}

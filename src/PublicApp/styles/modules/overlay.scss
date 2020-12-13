@@ -1,0 +1,61 @@
+.overlay, .overlayBlocker{
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+.overlay{
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	z-index: 9998;
+	&[hidden]{
+		display: none !important;
+	}
+	&Blocker{
+		background: rgba(black, 0.6);
+		position: absolute;
+	}
+	&CloseAct{
+		background: map-get($colors, primaryBG);
+		border: 3px solid;
+		border-radius: 2em;
+		color: map-get($colors, primaryFG);
+		cursor: pointer;
+		height: 2em;
+		position: absolute;
+		right: -0.8em;
+		text-align: center;
+		top: -0.8em;
+		z-index: 1;
+		width: 2em;
+		@include supports('dark-theme'){
+			background: map-get($darkThemeColors, primaryBG);
+			border-width: 2px;
+			color: map-get($darkThemeColors, primaryFG);
+		}
+		&:after{
+			content: 'X';
+		}
+		> b{
+			@extend %sro;
+		}
+	}
+	&Content{
+		border: 3px solid map-get($colors, primaryFG);
+		position: relative;
+		z-index: 1;
+		@include supports('dark-theme'){
+			border-color: map-get($namedColors, subduedKermitGreen);
+		}
+		&:before{
+			@include appShadow();
+		}
+		> *{
+			max-height: 90vh;
+			max-width: 90vw;
+			overflow: auto;
+		}
+	}
+}

@@ -12,14 +12,6 @@
 	}
 	padding: 1.5em;
 	font-size: 1.2em;
-	.app &{
-		bottom: 0;
-		max-width: 90%;
-		overflow: auto;
-		position: fixed;
-		right: 0;
-		top: 0;
-	}
 	&Action{
 		display: inline-block;
 		text-decoration: none;
