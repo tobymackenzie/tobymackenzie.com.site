@@ -49,8 +49,13 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					border: 3px solid #002c00;
 					box-shadow: inset 0 0 1em 0.5em #242;
 					color: rgb(209, 255, 209);
+					overflow: hidden;
 					padding: 1em;
+					position: relative;
 					min-height: 100%;
+				}
+				.card:hover{
+					overflow: visible;
 				}
 				.cardCol1{
 					text-align: center;
@@ -98,20 +103,30 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					z-index: 1;
 				}
 				.cardLogo{
-					color: #90df90;
-					left: -1em;
-					line-height: 1;
-					opacity: 0.6;
+					bottom: 0;
+					left: -0.5em;
 					position: absolute;
-					top: 0.3em;
-					/*-# translate3d to fix blurry text while animating image in chrome */
-					transform: rotate(-45deg) translate3d(0,0,0);
-					transition: opacity 0.2s, transform 0.8s;
-					z-index: 1;
+					top: 0;
+					z-index: 2;
 				}
-				.cardLogo:hover{
-					opacity: 1;
-					transform: rotate(1080deg) translate3d(0,0,0);
+				.cardLogoText{
+					color: #333;
+					font-size: 2em;
+					line-height: 1;
+					position: absolute;
+					opacity: 0.3;
+					text-align: center;
+					top: 50%;
+					/*-# translate3d to fix blurry text while animating image in chrome */
+					transform: rotate(0deg) translate3d(0,0,0) translateY(-50%);
+					transform-origin: center top;
+					transition: opacity 0.2s, transform 0.8s;
+					white-space: nowrap;
+					writing-mode: vertical-lr;
+				}
+				.cardLogoText:hover{
+					opacity: 0.6;
+					transform: rotate(1080deg) translate3d(0,0,0) translateY(-50%);
 				}
 				.cardMedia{
 					display: inline-block;
@@ -152,6 +167,9 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					.cardMedia{
 						height: auto;
 					}
+					.cardLogoText{
+						font-size: 3em;
+					}
 				}
 				@media (min-width: 34em){
 					.card{
@@ -191,13 +209,17 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					}
 					.cardCol1{
 						align-self: stretch;
+						position: relative;
 						width: auto;
 					}
 					.cardCol2{
 						padding: 8px 0; /*--alignment for fuzzy image inset */
 					}
 					.cardLogo{
-						font-size: 1.5em;
+						left: -2.2em;
+					}
+					.cardLogoText{
+						font-size: 3.5em;
 					}
 					h1{
 						font-size: 3em;
@@ -214,8 +236,8 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 	<body>
 		<div class="card" itemscope="itemscope" itemtype="http://schema.org/Person">
 			<div class="cardCol1">
+			<div class="cardLogo"><div class="cardLogoText">&lt;toby&gt;</div></div>
 				<div class="cardMedia">
-					<div class="cardLogo">&lt;toby&gt;</div>
 					<img alt="Photo of Toby" class="cardImage" itemprop="image" src="/_toby.jpg" />
 				</div>
 			</div>
