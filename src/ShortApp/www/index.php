@@ -91,7 +91,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					transition: opacity 0.5s;
 					width: 100%;
 				}
-				.cardMedia:hover:after{
+				.card:hover .cardMedia:after{
 					opacity: 0.6;
 				}
 				.cardMedia:before{
