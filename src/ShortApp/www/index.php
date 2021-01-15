@@ -117,16 +117,14 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					opacity: 0.3;
 					text-align: center;
 					top: 50%;
-					/*-# translate3d to fix blurry text while animating image in chrome */
-					transform: rotate(0deg) translate3d(0,0,0) translateY(-50%);
+					transform: translateY(-50%);
 					transform-origin: center top;
-					transition: opacity 0.2s, transform 0.8s;
+					transition: opacity 0.2s;
 					white-space: nowrap;
 					writing-mode: vertical-lr;
 				}
-				.cardLogoText:hover{
+				.card:hover .cardLogoText{
 					opacity: 0.6;
-					transform: rotate(1080deg) translate3d(0,0,0) translateY(-50%);
 				}
 				.cardMedia{
 					display: inline-block;
