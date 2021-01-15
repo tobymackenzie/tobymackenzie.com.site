@@ -157,6 +157,9 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						justify-content: center;
 						flex-direction: column;
 					}
+					.cardLogoText{
+						font-size: 3em;
+					}
 					.cardMedia{
 						display: inline-flex;
 						min-height: 8em;
@@ -168,7 +171,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						height: auto;
 					}
 					.cardLogoText{
-						font-size: 3em;
+						font-size: 4em;
 					}
 				}
 				@media (min-width: 34em){
@@ -209,6 +212,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					}
 					.cardCol1{
 						align-self: stretch;
+						padding-left: 0.5em;
 						position: relative;
 						width: auto;
 					}
@@ -216,10 +220,10 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						padding: 8px 0; /*--alignment for fuzzy image inset */
 					}
 					.cardLogo{
-						left: -2.2em;
+						left: -2.6em;
 					}
 					.cardLogoText{
-						font-size: 3.5em;
+						font-size: 6.2em;
 					}
 					h1{
 						font-size: 3em;
