@@ -258,7 +258,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 			</div>
 		</div>
 <?php
-$jsFile = __DIR__ . '/../../PublicApp/Resources/public/scripts/prod/short.js';
+$jsFile = __DIR__ . '/../../../dist/public/_assets/scripts/short.js';
 if(file_exists($jsFile)){
 ?>
 		<script><!--
