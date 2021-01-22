@@ -102,27 +102,34 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					top: -1px;
 					z-index: 1;
 				}
+				/*--hide logo from old browsers that don't rotate text properly */
 				.cardLogo{
-					bottom: 0;
-					left: -0.5em;
-					position: absolute;
-					top: 0;
-					z-index: 2;
+					display: none;
 				}
-				.cardLogoText{
-					color: #333;
-					font-size: 2em;
-					line-height: 1;
-					opacity: 0.3;
-					pointer-events: none;
-					position: absolute;
-					text-align: center;
-					top: 50%;
-					transform: translateY(-50%);
-					transform-origin: center top;
-					transition: opacity 0.2s;
-					white-space: nowrap;
-					writing-mode: vertical-lr;
+				@supports (writing-mode: vertical-lr){
+					.cardLogo{
+						bottom: 0;
+						display: block;
+						left: -0.5em;
+						position: absolute;
+						top: 0;
+						z-index: 2;
+					}
+					.cardLogoText{
+						color: #333;
+						font-size: 2em;
+						line-height: 1;
+						opacity: 0.3;
+						pointer-events: none;
+						position: absolute;
+						text-align: center;
+						top: 50%;
+						transform: translateY(-50%);
+						transform-origin: center top;
+						transition: opacity 0.2s;
+						white-space: nowrap;
+						writing-mode: vertical-lr;
+					}
 				}
 				.card:hover .cardLogoText{
 					opacity: 0.6;
