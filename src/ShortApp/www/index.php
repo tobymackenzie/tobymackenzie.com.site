@@ -113,8 +113,9 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					color: #333;
 					font-size: 2em;
 					line-height: 1;
-					position: absolute;
 					opacity: 0.3;
+					pointer-events: none;
+					position: absolute;
 					text-align: center;
 					top: 50%;
 					transform: translateY(-50%);
