@@ -74,6 +74,9 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					object-fit: cover;
 					opacity: 0.8;
 				}
+				.cardItem strong{
+					font-size: 1.4em;
+				}
 				.cardItemEtc{
 					display: inline-block;
 				}
@@ -141,8 +144,9 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				h1{
 					border-bottom: 2px solid;
 					color: #90df90;
-					font-size: 1.5em;
-					margin: 0;
+					font-size: 2em;
+					margin: 0 0 18px;
+					padding: 0 0 10px;
 					line-height: 1.1;
 				}
 				h1 span{
@@ -176,6 +180,8 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					.cardMedia{
 						height: auto;
 					}
+				}
+				@media (min-height: 500px){
 					.cardLogoText{
 						font-size: 4em;
 					}
@@ -195,7 +201,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						vertical-align: middle;
 					}
 					.cardCol1{
-						margin: 0 1.5em 0 0;
+						margin: 0 1em 0 0;
 					}
 				}
 				@media (min-width: 34em) and (min-height: 24em){
@@ -218,7 +224,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					}
 					.cardCol1{
 						align-self: stretch;
-						padding-left: 0.5em;
+						padding-left: 1.5em;
 						position: relative;
 						width: auto;
 					}
