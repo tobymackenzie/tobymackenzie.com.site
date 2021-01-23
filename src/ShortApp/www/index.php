@@ -254,21 +254,21 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 			<div class="cardCol1">
 			<div class="cardLogo"><div class="cardLogoText">&lt;toby&gt;</div></div>
 				<div class="cardMedia">
-					<img alt="Photo of Toby" class="cardImage" itemprop="image" src="/_toby.jpg" />
+					<img alt="From the background, the shape of a face presents itself. As it becomes clearer, a white, slightly scruffy humanoid male with slightly wavy, dark brown hair turning to gray, stares blankly at you.  The ghostly apparation seems distant, and yet… could it be…" class="cardImage" itemprop="image" src="/_toby.jpg" />
 				</div>
 			</div>
 			<div class="cardCol2">
 				<h1 class="cardItem" itemprop="name"><span itemprop="givenName">Toby</span> <span itemprop="familyName">Mackenzie</span></h1>
 				<div class="cardGroup" itemprop="hasOccupation" itemscope="itemscope" itemtype="http://schema.org/Occupation">
-					<div class="cardItem" itemprop="name">Web developer <small class="cardItemEtc">(Full-stack LAMP)</small></div>
-					<small class="cardSkills cardItem" itemprop="skills">HTML CSS JS PHP MySQL Linux Apache</small>
+					<div class="cardItem" itemprop="name"><strong>Web developer</strong> <small class="cardItemEtc">(LAMP stack)</small></div>
+					<small class="cardSkills cardItem" itemprop="skills">HTML CSS JS PHP MySQL Apache Linux</small>
 				</div>
+				<div class="cardItem"><a href="mailto:public@tobymackenzie.com" itemprop="email">public@tobymackenzie.com</a></div>
+				<div class="cardItem"><a href="//www.tobymackenzie.com" itemprop="url">tobymackenzie.com</a></div>
 				<div class="cardItem" itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress">
 					<span itemprop="addressLocality">Akron</span>,
 					<span itemprop="addressRegion">Ohio</span>
 				</div>
-				<div class="cardItem"><a href="//www.tobymackenzie.com" itemprop="url">tobymackenzie.com</a></div>
-				<div class="cardItem"><a href="mailto:public@tobymackenzie.com" itemprop="email">public@tobymackenzie.com</a></div>
 			</div>
 		</div>
 <?php
