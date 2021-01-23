@@ -72,6 +72,10 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					max-width: 100%;
 					mix-blend-mode: soft-light;
 					object-fit: cover;
+					opacity: 0.3;
+					transition: opacity 0.4s;
+				}
+				.card:hover .cardImage{
 					opacity: 0.8;
 				}
 				.cardItem strong{
@@ -120,21 +124,23 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					}
 					.cardLogoText{
 						color: #333;
+						filter: blur(2px);
 						font-size: 2em;
 						line-height: 1;
-						opacity: 0.3;
+						opacity: 0.2;
 						pointer-events: none;
 						position: absolute;
 						text-align: center;
 						top: 50%;
 						transform: translateY(-50%);
 						transform-origin: center top;
-						transition: opacity 0.2s;
+						transition: filter 0.4s, opacity 0.4s;
 						white-space: nowrap;
 						writing-mode: vertical-lr;
 					}
 				}
 				.card:hover .cardLogoText{
+					filter: blur(0);
 					opacity: 0.6;
 				}
 				.cardMedia{
