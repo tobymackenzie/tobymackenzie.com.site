@@ -34,11 +34,11 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					color: #90df90;
 				}
 				body, html{
+					background: rgba(78,120,78,0.95);
 					margin: 0;
 					padding: 0;
 				}
 				body{
-					background: rgba(78,120,78,0.95);
 					min-height: 100%;
 					opacity: 0.95;
 					text-align: center;
