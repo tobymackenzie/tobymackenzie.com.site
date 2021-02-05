@@ -10,7 +10,6 @@ class Controller extends Base{
 		return $this->get(Views::class)->getDocData($request, $parameters);
 	}
 	public function renderPage($view, array $parameters = array(), Response $response = null){
-		$parameters = $this->getGlobalRenderData($parameters);
 		$response = parent::renderPage($view, $parameters, $response);
 		return $response;
 	}
