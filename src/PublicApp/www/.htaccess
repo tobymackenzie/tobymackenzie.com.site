@@ -11,6 +11,13 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteRule ^_/wp-content/uploads/.*\.php$ - [F,L,NC]
 </IfModule>
 
+##--block use of blog xmlrpc by unauthorized visitors
+# <FilesMatch "^(xmlrpc\.php)">
+# 	Order Allow,Deny
+# 	Allow from 192.0.64.0/18
+# 	Deny from all
+# </FilesMatch>
+
 ##=====
 #==rewrites
 #=====
