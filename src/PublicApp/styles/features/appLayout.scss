@@ -160,6 +160,7 @@ $appNavWidth: 13;
 %appNavItemLayout{
 	display: inline-block;
 	margin: 0 1em 0 0;
+	vertical-align: middle;
 	@include supports('app-grid', 'sticky-nav'){
 		z-index: 100;
 	}
