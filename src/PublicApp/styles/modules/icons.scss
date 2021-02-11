@@ -1,0 +1,7 @@
+.bigIconBlock{
+	font-size: 180px;
+	line-height: 1.1;
+	overflow: hidden; //--because line heights are weird and there's no unit that is the height of a line of text and blocks won't contain their text if they overflow their lines, we must cut it off, or scroll bars will appear on small screens and cause weird scrolling problems
+	padding-top: 30px;
+	text-align: center;
+}
