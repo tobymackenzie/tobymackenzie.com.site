@@ -9,7 +9,8 @@ $namedFontFamilies: (
 	//-! helvetica: "1"
 	anonymousPro: ('Anonymous Pro', anonymous_pro, meslo, 'Meslo LG S', menlo, 'Menlo Regular', Consolas, 'Courier New', courier, monospace)
 	,cousine: (cousine, meslo, 'Meslo LG S', menlo, 'Menlo Regular', Consolas, 'Courier New', courier, monospace)
-	,cousineFallback: (meslo, 'Meslo LG S', menlo, 'Menlo Regular', cousine, Consolas, 'Courier New', courier, monospace) //-# fall back to cousine if meslo / menlo not found
+	//-# emoji fonts before cousine to prevent download looking for emoji if preceding system fonts are used
+	,cousineFallback: (meslo, 'Meslo LG S', menlo, 'Menlo Regular', 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', cousine, Consolas, 'Courier New', courier, monospace) //-# fall back to cousine if meslo / menlo not found
 	,meslo: (meslo, 'Meslo LG S', menlo, 'Menlo Regular', Consolas, monospace)
 	,meslolgs: (meslolgs, 'Meslo LG S', meslo, menlo, 'Menlo Regular', Consolas, monospace)
 );
