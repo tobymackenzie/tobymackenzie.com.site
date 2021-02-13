@@ -20,13 +20,13 @@ class MetaController extends Controller{
 			,'icons'=> [
 				[
 					'sizes'=> '64x64'
-					,'src'=> 'icon-64.gif'
+					,'src'=> '/icon-64.gif'
 					,'type'=> 'image/gif'
 				]
 				//--min size for installable mobile apps
 				,[
 					'sizes'=> '144x144'
-					,'src'=> 'icon-144.png'
+					,'src'=> '/icon-144.png'
 					,'type'=> 'image/png'
 				]
 			]
