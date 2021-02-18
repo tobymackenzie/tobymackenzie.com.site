@@ -86,6 +86,35 @@ class TMWebWPTheme{
 TMWebWPTheme::$helper = new WPThemeHelper([
 ]);
 
+//--remove emoji script / styles
+//-@ based on https://www.wpfaster.org/code/how-to-remove-emoji-styles-scripts-wordpress
+add_action('init', function(){
+	remove_action('admin_print_scripts', 'print_emoji_detection_script');
+	remove_action('admin_print_styles', 'print_emoji_styles');
+	remove_action('wp_head', 'print_emoji_detection_script', 7);
+	remove_action('wp_print_styles', 'print_emoji_styles');
+
+	remove_filter('comment_text_rss', 'wp_staticize_emoji');
+	remove_filter('the_content_feed', 'wp_staticize_emoji');
+	remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+
+	add_filter('tiny_mce_plugins', function($plugins){
+		if(is_array($plugins)){
+			return array_diff($plugins, ['wpemoji']);
+		}else{
+			return [];
+		}
+	});
+	add_filter('wp_resource_hints', function($urls, $relationType){
+		if($relationType === 'dns-prefetch'){
+			$urls = array_filter($urls, function($url){
+				return !preg_match('!^http[s]?://s.w.org/images/core/emoji!', $url);
+			});
+		}
+		return $urls;
+	}, 10, 2);
+});
+
 //--force https if browser supports it
 add_action('wp_enqueue_scripts', function(){
 	if(!is_ssl()){
