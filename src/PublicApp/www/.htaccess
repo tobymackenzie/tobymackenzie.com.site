@@ -49,12 +49,6 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteCond %{HTTP_COOKIE} !^(.*;)?\ ?12345=67890\ ?(;.*)?$
 	RewriteRule ^/?_/wp/wp-login.php$ /index.php [END]
 
-	##===xmlrpc: only allow jetpack
-	#-# allows more than jetpack, would be `192.0.64.0/18` but that is hard to do with regex
-	#-# does anything else need access to this?
-	RewriteCond %{REMOTE_ADDR} !^192\.0\.
-	RewriteRule ^/?_/wp/xmlrpc\.php index.php [END]
-
 	##==redirects from old paths
 	##===tobymackenzie.name / cosmicosmo.ath.cx
 	RewriteCond %{ENV:TMWEB_SITE} public
