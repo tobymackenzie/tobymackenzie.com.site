@@ -5,11 +5,22 @@ use TJM\Files\Files;
 //--config
 $projectPath = realpath(__DIR__ . '/..');
 $autoloadPath = $projectPath . '/vendor/autoload.php';
-// ComposerInitHelper::$composerCommand = ''; //--set custom composer command / path
 
 //--make sure we have vendors installed
 if(!file_exists($autoloadPath)){
-	ComposerInitHelper::init();
+	chdir($projectPath);
+	$composerCommand = $localCompser = __DIR__ . '/composer';
+	if(!file_exists($localCompser)){
+		if(empty(shell_exec("which composer"))){
+			throw new Exception("Composer must be installed to install project dependencies");
+		}else{
+			$composerCommand = 'composer';
+		}
+	}
+	passthru($composerCommand . ' install', $return);
+	if($return !== 0){
+		throw new Exception("Installing project dependencies failed");
+	}
 }
 
 //--pull in vendors
@@ -24,71 +35,5 @@ foreach([
 	foreach(glob($srcPath . '/{.??*,.[!.],*}', GLOB_BRACE) as $from){
 		$to = $projectPath . '/dist/' . $name . '/' . basename($from);
 		Files::symlinkRelativelySafely($to, $from, $projectPath);
-	}
-}
-
-
-/*=====
-==functions
-=====*/
-class ComposerInitHelper{
-	static public $composerCommand = 'composer';
-
-	/*
-	Command: composer
-	Pass through for running `composer` that automatically installs it if it isn't installed.  'bin/vendors' was in early versions of Symfony before 'composer' was in use.
-
-	Arguments:
-		{see composer}
-	*/
-	static public function composer($arguments = null){
-		//--install composer if not installed
-		$whichComposer = shell_exec("which " . static::$composerCommand);
-		if(empty($whichComposer)){
-			static::$composerCommand = __DIR__ . '/composer';
-			if(!file_exists(static::$composerCommand)){
-				static::$composerCommand = null;
-			}
-			if(!static::$composerCommand){
-				static::installComposer();
-			}
-		}
-		passthru(static::$composerCommand .' ' . $arguments, $return);
-		if($return !== 0){
-			exit($return);
-		}
-	}
-
-	/*
-	Method: init
-	Do initial setup for this application:
-	- install composer if it doesn't exist
-	- install vendor libraries
-	*/
-	static public function init(){
-		static::composer('install');
-		if($return !== 0){
-			echo "Failed with return status: {$return}";
-			exit($return);
-		}
-	}
-
-	/*
-	Method: installComposer
-	Install composer.phar.  Moves to supplied location, or to '/usr/local/bin' for admin users by default.
-
-	Arguments:
-		moveTo: (optional) Path to move script to.
-	*/
-	static public function installComposer($moveTo = null){
-		if($moveTo === null){
-			$moveTo = (is_writable('/usr/local/bin')) ? '/usr/local/bin/composer' : __DIR__ . '/composer';
-		}
-		echo "installing composer to '{$moveTo}'\n";
-		passthru('curl -sS https://getcomposer.org/installer | php');
-		if($moveTo !== '.'){
-			passthru('mv composer.phar ' . $moveTo);
-			static::$composerCommand = 'php ' . $moveTo;
-		}
 	}
 }
