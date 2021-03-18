@@ -63,6 +63,8 @@ del{
 em, i{
 	//-# only really necessary if using @font-face with an italic variant
 	@extend %font-italic;
+}
+em{
 	color: map-get($colors, strong);
 	@include supports('dark-theme'){
 		color: map-get($darkThemeColors, strong);
