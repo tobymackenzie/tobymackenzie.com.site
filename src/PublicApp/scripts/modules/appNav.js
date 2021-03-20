@@ -74,7 +74,8 @@ if(
 						}
 					}).then(function(_content){
 						_siteNavEl = document.createElement('div');
-						_siteNavEl.innerHTML = _content;
+						//-# doctype breaks parsing in XHTML
+						_siteNavEl.innerHTML = _content.replace(/<\!doctype[^>]+>/gi, '');
 						_siteNavEl = _siteNavEl.querySelector('.siteNav');
 						if(_siteNavEl){
 							_openSiteNav();
