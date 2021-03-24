@@ -42,6 +42,9 @@ $appNavWidth: 13;
 	//--prevent overflow of app in very narrow situations
 	max-width: 100%;
 	overflow: auto;
+	@include mq('print'){
+		overflow: visible;
+	}
 }
 %appFooterLayout{
 	@extend %appContainerLayout;

@@ -24,6 +24,9 @@ html{
 	@extend %appGrunge;
 	padding: 0;
 	// position: relative;
+	@include mq('print'){
+		height: auto !important;
+	}
 }
 
 //==bg
