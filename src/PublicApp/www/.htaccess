@@ -47,7 +47,7 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteCond %{HTTPS} !=on [OR]
 	RewriteCond %{HTTP_COOKIE} !^(.*;)?\ ?12345=67890\ ?(;.*)?$
-	RewriteRule ^/?_/wp/wp-login.php$ /index.php [END]
+	RewriteRule ^/?_/wp/wp-login.php /index.php [END]
 
 	##==redirects from old paths
 	##===tobymackenzie.name / cosmicosmo.ath.cx
