@@ -51,7 +51,7 @@
 		,"tjm/utils": "master@dev"
 		,"tjm/wpthemehelper": "^1"
 		,"wpackagist-plugin/classic-editor": "^1.2"
-		,"wpackagist-plugin/jetpack": "^9.0"
+		,"wpackagist-plugin/jetpack": "^10.0"
 		,"wpackagist-plugin/wordpress-importer": "^0"
 	}
 	,"require-dev": {
