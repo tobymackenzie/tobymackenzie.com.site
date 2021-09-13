@@ -47,7 +47,7 @@
 		,"league/html-to-markdown": "^4.4"
 		,"tjm/files": "master@dev"
 		,"tjm/symfony-basebundle": "master@dev"
-		,"tjm/symfony-standard-edition-bundle": "master@dev"
+		,"tjm/sy-web": "^0.6"
 		,"tjm/utils": "master@dev"
 		,"tjm/wpthemehelper": "^1"
 		,"wpackagist-plugin/classic-editor": "^1.2"

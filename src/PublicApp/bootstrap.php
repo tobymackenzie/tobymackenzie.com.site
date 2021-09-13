@@ -1,5 +1,5 @@
 <?php
-namespace TJM\Bundle\StandardEditionBundle\Component\App;
+namespace TJM\SyWeb;
 
 //--Define configuration used by App singleton, such as paths.
 define(__NAMESPACE__ . '\PROJECT_DIR', realpath(__DIR__ . '/../..'));

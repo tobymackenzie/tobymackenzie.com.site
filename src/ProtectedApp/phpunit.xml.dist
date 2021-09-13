@@ -14,7 +14,7 @@
 	</testsuites>
 	<php>
 		<ini name="error_reporting" value="-1" />
-		<server name="KERNEL_CLASS" value="TJM\Bundle\StandardEditionBundle\Component\TestKernel" />
+		<server name="KERNEL_CLASS" value="TJM\SyWeb\TestKernel" />
 	</php>
 	<filter>
 		<whitelist>

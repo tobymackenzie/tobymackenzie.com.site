@@ -1,5 +1,5 @@
 <?php
-namespace TJM\Bundle\StandardEditionBundle\Component\App;
+namespace TJM\SyWeb;
 
 //--Define configuration used by App singleton, such as paths.
 define(__NAMESPACE__ . '\PROJECT_DIR', realpath(__DIR__ . '/../..'));
@@ -11,7 +11,6 @@ $app = new App([
 		,'Symfony\Bundle\SecurityBundle\SecurityBundle'
 		,'Symfony\Bundle\TwigBundle\TwigBundle'
 		,'Symfony\Bundle\MonologBundle\MonologBundle'
-		,'TJM\Bundle\StandardEditionBundle\TJMStandardEditionBundle'
 		,'TJM\Bundle\BaseBundle\TJMBaseBundle'
 		,'Symfony\Bundle\DebugBundle\DebugBundle'=> ['dev', 'test']
 		,'Symfony\Bundle\WebProfilerBundle\WebProfilerBundle'=> ['dev', 'test']

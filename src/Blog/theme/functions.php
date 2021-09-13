@@ -1,6 +1,6 @@
 <?php
 use Symfony\Component\HttpFoundation\Request;
-use TJM\Bundle\StandardEditionBundle\Component\App\App;
+use TJM\SyWeb\App;
 use TJM\Views\Views;
 use TJM\WPThemeHelper\SettingHelper;
 use TJM\WPThemeHelper\WPThemeHelper;
