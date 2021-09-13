@@ -3,7 +3,7 @@
 {% block docMeta %}
 {{parent()}}
 {#--force canonical host if available.  allows us to test for actual support, unlike server sent redirect. will allow IP visits if DNS down. #}
-{% if site.forceHost|default(false) %}
+{% if site.forceHost|default(false) and app.environment != 'dev' %}
 <script src="{{site.forceHost}}{{assets.scripts_path}}/forceDomain.js" type="application/javascript"></script>
 {#--
 force https if browser supports it.  allows us to test for actual support, unlike server sent redirect.
