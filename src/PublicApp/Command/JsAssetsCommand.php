@@ -53,14 +53,13 @@ class JsAssetsCommand extends Command{
 						//-# rollup builds about 500 bytes smaller than webpack currently, so it's default.
 						case 'rollup':
 						default:
-							$command = "rollup {$file} --output.format iife | uglifyjs --compress --mangle --stats > {$dest}/{$baseName}";
+							$command = "rollup {$file} --output.format iife | uglifyjs --compress --mangle > {$dest}/{$baseName}";
 						break;
 						case 'uglify':
 							$command = str_replace("\n", '', "uglifyjs
 								--compress
 								--mangle
 								-o {$dest}/{$baseName}
-								--stats
 								-- {$file}"
 							);
 						break;
