@@ -1,4 +1,7 @@
-<!doctype html>
+<?php
+$date = new DateTime();
+$isChristmastime = ($date->format('m') == 12) || ($date->format('md') <= 215);
+?><!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -40,6 +43,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				}
 				body{
 					min-height: 100%;
+					/* min-height: 100vh; */
 					opacity: 0.95;
 					text-align: center;
 					height: 100%;
@@ -53,6 +57,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					padding: 1em;
 					position: relative;
 					min-height: 100%;
+					/* min-height: 100vh; */
 				}
 				.card:hover{
 					overflow: visible;
@@ -254,6 +259,14 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 					}
 				}
 			--></style>
+<?php
+if($isChristmastime){
+?>
+			<link rel="stylesheet" href="//www.tobymackenzie.com/_assets/styles/christmas.css" />
+			<script src="https://www.tobymackenzie.com/_assets/scripts/christmas.js?a" async="async"></script>
+<?php
+}
+?>
 		</head>
 	<body>
 		<div class="card" itemscope="itemscope" itemtype="http://schema.org/Person">
@@ -278,6 +291,15 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 			</div>
 		</div>
 <?php
+if($isChristmastime){
+?>
+<style>
+.appBG{ z-index: -1; }
+</style>
+<div class="appBG"></div>
+<?php
+}
+
 $jsFile = __DIR__ . '/../../../dist/public/_assets/scripts/short.js';
 if(file_exists($jsFile)){
 ?>
