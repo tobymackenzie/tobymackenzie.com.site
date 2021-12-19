@@ -4,24 +4,61 @@ These styles add to `main` for a christmas appearance
 @import '_mixins';
 @import '_config';
 $color-flake: rgba(255, 255, 255, 0.8);
-$color-greenStripe: rgba(0, 255, 0, 0.6);
-$color-greenStripeDark: rgba(0, 128, 0, 0.8);
-$color-redStripe: rgba(255, 0, 0, 0.6);
-$color-redStripeDark: rgba(128, 0, 0, 0.8);
-$stripeWidth: 2.5em;
+$color-blueLight: rgb(30,30,255);
+$color-redLight: rgb(255,0,0);
+$color-greenLight: rgb(0,255,0);
+$color-yellowLight: rgb(255,180,0);
+$lightSize: 15px;
+$lightGap: 5px;
 
-@supports (pointer-events: none){
-	.appBG{
-		//--get rid of app bg when christmas styles displayed
-		display: none;
+.appBG{
+	background: none;
+	height: 100%;
+	left: 0;
+	opacity: 1 !important;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	&:after, &:before{
+		background-image:
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) / 2}, $color-greenLight 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 1.5}, $color-redLight 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 2.5}, $color-yellowLight 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 3.5}, $color-blueLight 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 4.5}, $color-redLight 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 5.5}, $color-greenLight 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 6.5}, $color-blueLight 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 7.5}, $color-yellowLight 50%, transparent 55%)
+		;
+		background-repeat: repeat-y;
+		background-size: 100% #{($lightSize + $lightGap) * 8};
+		content: '';
+		// filter: blur(1px);
+		height: 100%;
+		opacity: 0.5;
+		padding: 0;
+		position: absolute;
+		top: 0;
+		transition: opacity 0.5s;
+		width: #{$lightSize * 3 / 4 + 2px};
+		z-index: 100;
 	}
-	body{
-		background-color: map-get($colors, 'baseBG');
-		background-image: repeating-linear-gradient(125deg, $color-redStripe, $color-redStripe $stripeWidth * 1/10, $color-greenStripe $stripeWidth / 2, $color-greenStripe $stripeWidth * 3/5, $color-redStripe $stripeWidth);
-		@include supports('dark-theme'){
-			background-image: repeating-linear-gradient(125deg, $color-redStripeDark, $color-redStripeDark $stripeWidth * 1/10, $color-greenStripeDark $stripeWidth / 2, $color-greenStripeDark $stripeWidth * 3/5, $color-redStripeDark $stripeWidth);
+	&:hover{
+		&:after, &:before{
+			opacity: 0.9;
 		}
 	}
+	&:after{
+		--ball-x: #{$lightSize * 3 / 5 };
+		right: 0;
+		transform: scaleY(-1);
+	}
+	&:before{
+		--ball-x: #{$lightSize / 4};
+		left: 0;
+	}
+}
+@supports (pointer-events: none){
 	.snow{
 		height: 100%;
 		left: 0;
