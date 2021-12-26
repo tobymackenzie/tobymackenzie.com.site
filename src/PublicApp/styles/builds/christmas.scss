@@ -21,20 +21,15 @@ $lightGap: 5px;
 	top: 0;
 	width: 100%;
 	&:after, &:before{
-		background-image:
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) / 2}, var(--greenLight) 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 1.5}, var(--orangeLight) 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 2.5}, var(--redLight) 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 3.5}, var(--yellowLight) 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 4.5}, var(--blueLight) 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 5.5}, var(--redLight) 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 6.5}, var(--greenLight) 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 7.5}, var(--orangeLight) 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 8.5}, var(--blueLight) 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 9.5}, var(--yellowLight) 50%, transparent 55%)
-		;
+		$lights: ('green', 'orange', 'red', 'yellow', 'blue', 'red', 'green', 'orange', 'blue', 'yellow');
+		$lightsCount: length($lights);
+		$background: null;
+		@for $i from 1 through $lightsCount{
+			$background: $background radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * ($i - 0.5)}, var(--#{nth($lights, $i)}Light) 50%, transparent 55%)#{if($i != $lightsCount, ',', '')}
+		}
+		background-image: $background;
 		background-repeat: repeat-y;
-		background-size: 100% #{($lightSize + $lightGap) * 10};
+		background-size: 100% #{($lightSize + $lightGap) * $lightsCount};
 		content: '';
 		// filter: blur(1px);
 		height: 100%;
