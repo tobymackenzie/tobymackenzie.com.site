@@ -4,14 +4,15 @@ These styles add to `main` for a christmas appearance
 @import '_mixins';
 @import '_config';
 $color-flake: rgba(255, 255, 255, 0.8);
-$color-blueLight: rgb(30,30,255);
-$color-redLight: rgb(255,0,0);
-$color-greenLight: rgb(0,255,0);
-$color-yellowLight: rgb(255,180,0);
 $lightSize: 15px;
 $lightGap: 5px;
 
 .appBG{
+	--blueLight: rgb(30,30,255);
+	--greenLight: rgb(0,255,0);
+	--orangeLight: rgb(255,140,0);
+	--redLight: rgb(255,0,0);
+	--yellowLight: rgb(255,200,100);
 	background: none;
 	height: 100%;
 	left: 0;
@@ -21,17 +22,19 @@ $lightGap: 5px;
 	width: 100%;
 	&:after, &:before{
 		background-image:
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) / 2}, $color-greenLight 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 1.5}, $color-redLight 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 2.5}, $color-yellowLight 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 3.5}, $color-blueLight 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 4.5}, $color-redLight 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 5.5}, $color-greenLight 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 6.5}, $color-blueLight 50%, transparent 55%),
-			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 7.5}, $color-yellowLight 50%, transparent 55%)
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) / 2}, var(--greenLight) 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 1.5}, var(--orangeLight) 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 2.5}, var(--redLight) 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 3.5}, var(--yellowLight) 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 4.5}, var(--blueLight) 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 5.5}, var(--redLight) 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 6.5}, var(--greenLight) 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 7.5}, var(--orangeLight) 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 8.5}, var(--blueLight) 50%, transparent 55%),
+			radial-gradient($lightSize circle at var(--ball-x) #{($lightSize + $lightGap) * 9.5}, var(--yellowLight) 50%, transparent 55%)
 		;
 		background-repeat: repeat-y;
-		background-size: 100% #{($lightSize + $lightGap) * 8};
+		background-size: 100% #{($lightSize + $lightGap) * 10};
 		content: '';
 		// filter: blur(1px);
 		height: 100%;
