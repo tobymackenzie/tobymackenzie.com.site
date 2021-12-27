@@ -13,6 +13,7 @@ $lightGap: 5px;
 	--orangeLight: rgb(255,140,0);
 	--redLight: rgb(255,0,0);
 	--yellowLight: rgb(255,200,100);
+	--violetLight: rgb(255,100,200);
 	background: none;
 	height: 100%;
 	left: 0;
@@ -21,7 +22,7 @@ $lightGap: 5px;
 	top: 0;
 	width: 100%;
 	&:after, &:before{
-		$lights: ('green', 'orange', 'red', 'yellow', 'blue', 'red', 'green', 'orange', 'blue', 'yellow');
+		$lights: ('green', 'orange', 'red', 'blue', 'violet', 'yellow', 'red', 'green', 'violet', 'orange', 'blue', 'yellow');
 		$lightsCount: length($lights);
 		$background: null;
 		@for $i from 1 through $lightsCount{
