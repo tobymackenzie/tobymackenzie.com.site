@@ -1,5 +1,6 @@
 <?php
 namespace TJM\Pages;
+use Exception;
 use TJM\FileStore\FileStore;
 use TJM\Pages\Entity\Page;
 
@@ -68,7 +69,11 @@ class Pages{
 					if(!$page->hasFileName()){
 						$page->setFileName($id . '.txt');
 					}
-					$page->setContent($this->fileStore->getFileContents($id, $page->getFileName()));
+					try{
+						$page->setContent($this->fileStore->getFileContents($id, $page->getFileName()));
+					}catch(Exception $e){
+						return null;
+					}
 				break;
 				case 'redirect':
 					$page->setContent('/');
