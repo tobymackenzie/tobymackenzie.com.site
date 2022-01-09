@@ -60,7 +60,9 @@ Header always set X-Content-Type-Options 'nosniff'
 	##===tobymackenzie.wordpress.com
 	##--redirect blog-like urls to blog
 	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^([\d]{4}/?.*) /blog/$1 [L,QSA,R=302]
+	RewriteRule ^/?(([\d]{4}/)([\d]{2}/)?([\d]{2}/)?)$ /blog/$1 [L,QSA,R=302]
+	RewriteCond %{ENV:TMWEB_SITE} public
+	RewriteRule ^/?([\d]{4}/[\d]{2}/[\d]{2}/.+) /blog/$1 [L,QSA,R=302]
 	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^/?feed/?$ /blog/feed/ [L,QSA,R=302]
 	##===wordpress slug changes
