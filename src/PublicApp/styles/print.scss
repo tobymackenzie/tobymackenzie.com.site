@@ -38,7 +38,7 @@
 	abbr[title]:after{
 		content: ' (' attr(title) ')';
 	}
-	blockquote, img, pre, tr{
+	blockquote, img, tr{
 		page-break-inside: avoid;
 	}
 	h1, h2, h3{
@@ -50,6 +50,10 @@
 	}
 	iframe, img, object{
 		max-width: 100% !important;
+	}
+	pre{
+		orphans: 4;
+		widows: 4;
 	}
 	.sf-toolbar{
 		display: none !important;
