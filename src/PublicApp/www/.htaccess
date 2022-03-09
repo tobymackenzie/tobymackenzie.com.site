@@ -66,6 +66,9 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^/?feed/?$ /blog/feed/ [L,QSA,R=302]
 	##===wordpress slug changes
+	RewriteCond %{ENV:TMWEB_SITE} public
+	RewriteRule ^/?blog/tag/idea/?$ /blog/tag/ideas/ [L,QSA,R=302]
+	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^/?blog/2020/12/06/ive-got-home-internet-again /blog/2020/12/06/home-internet-again/  [L,QSA,R=302]
 
 	##==canonical
