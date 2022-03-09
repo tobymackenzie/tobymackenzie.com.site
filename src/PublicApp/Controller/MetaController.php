@@ -246,15 +246,15 @@ class MetaController extends Controller{
 							,'url'=> '/blog/category/www/'
 						]
 						,[
-							'label'=> 'Toby'
+							'label'=> 'Personal'
 							,'url'=> '/blog/category/toby/'
 						]
 						,[
-							'label'=> 'Computer'
+							'label'=> 'Computers & Tech'
 							,'url'=> '/blog/category/computer/'
 						]
 						,[
-							'label'=> 'Ideas'
+							'label'=> 'Thoughts & Ideas'
 							,'url'=> '/blog/category/ideas/'
 						]
 						,[
