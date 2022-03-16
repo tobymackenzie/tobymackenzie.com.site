@@ -6,6 +6,18 @@
 	display: inline-block;
 	vertical-align: middle;
 }
+.appHeaderMessage{
+	background: map-get($colors, baseFG);
+	border: 2px solid;
+	color: map-get($colors, baseBG);
+	margin: 0.4em auto -1.5em;
+	padding: 0.1em 0.5em;
+	text-align: center;
+	width: fit-content;
+	@include mq(map-get($bp, small)){
+		margin-bottom: -2.2em;
+	}
+}
 .appHeaderTagline{
 	@extend %wiggleHoverAnimation;
 	transform-origin: left;
