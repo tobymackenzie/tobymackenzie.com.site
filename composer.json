@@ -1,5 +1,5 @@
 {
-	"name": "tjm/site-tobymackenzie.com"
+	"name": "tjm/tobymackenzie.site"
 	,"autoload": {
 		"psr-4": {
 			"": "src/"
