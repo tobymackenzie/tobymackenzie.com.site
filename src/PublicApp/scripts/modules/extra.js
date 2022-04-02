@@ -17,4 +17,7 @@ if(window.Date){
 	if(month === 11){
 		loadCSS('/_assets/styles/christmas.css');
 	}
+	if(month === 3 && now.getDate() === 1){
+		loadJS('/_assets/scripts/aprilFools.js');
+	}
 }
