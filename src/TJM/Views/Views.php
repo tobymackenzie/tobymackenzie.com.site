@@ -64,6 +64,9 @@ class Views{
 			if(!$isCanonicalHost && filter_var($request->getHost(), FILTER_VALIDATE_IP)){
 				$data['site']['forceHost'] = $request->getScheme() . '://' . $this->host;
 			}
+			if(!isset($data['page']['host'])){
+				$data['page']['host'] = $request->getHost();
+			}
 			if(!$isHttps && !isset($data['page']['secureUrl']) && $isCanonicalHost){
 				$data['page']['secureUrl'] = 'https://' . $request->getHost() . $request->server->get('REQUEST_URI');
 			}
