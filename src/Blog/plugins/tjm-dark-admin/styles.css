@@ -1,158 +1,201 @@
 @media (prefers-color-scheme: dark){
 	:root{
-		--primary-bg: #020;
-		--primary-fg: #cfc;
-		--primary-fg-alt: #afa;
-		--primary-fg-subdued: #ada;
-		--secondary-bg: #030;
-		--secondary-bg-alt: #141;
-		--action-fg: #5c5;
-		--exclaim-bg: #794;
-		--exclaim-fg: #fff;
+		--tm-primary-bg: #020;
+		--tm-primary-fg: #cfc;
+		--tm-primary-fg-alt: #afa;
+		--tm-primary-fg-subdued: #ada;
+		--tm-secondary-bg: #030;
+		--tm-secondary-bg-alt: #141;
+		--tm-action-fg: #5c5;
+		--tm-exclaim-bg: #794;
+		--tm-exclaim-fg: #fff;
+		--tm-gray: #aaa;
 	}
 
 	/*=====
 	==shell
 	*/
 	body{
-		background: var(--primary-bg);
-		color: var(--primary-fg);
+		background: var(--tm-primary-bg);
+		color: var(--tm-primary-fg);
 	}
 
 	/*--main */
 	.ac_match, .subsubsub a.current{
-		color: var(--primary-fg);
+		color: var(--tm-primary-fg);
 	}
 	.alternate, .striped > tbody > :nth-child(2n+1), ul.striped > :nth-child(2n+1){
-		background: var(--secondary-bg);
+		background: var(--tm-secondary-bg);
+	}
+	.attachments-browser .media-toolbar{
+		background: var(--tm-secondary-bg);
 	}
 	.card{
-		background: var(--secondary-bg);
+		background: var(--tm-secondary-bg);
 	}
 	.categorydiv div.tabs-panel, .customlinkdiv div.tabs-panel, .posttypediv div.tabs-panel, .taxonomydiv div.tabs-panel, .wp-tab-panel{
-		background: var(--secondary-bg);
+		background: var(--tm-secondary-bg);
 	}
 	#major-publishing-actions{
-		background: var(--secondary-bg);
+		background: var(--tm-secondary-bg);
 	}
 	.postbox{
-		background: var(--secondary-bg);
+		background: var(--tm-secondary-bg);
 	}
 	#screen-meta{
-		background: var(--primary-bg);
+		background: var(--tm-primary-bg);
 	}
 	#wp-content-editor-tools{
-		background: var(--primary-bg);
+		background: var(--tm-primary-bg);
+	}
+	#wpbody-content#wpbody-content{
+		background: var(--tm-primary-bg);
 	}
 
 	/*--sidebar */
 	#adminmenu, #adminmenuback, #adminmenuwrap{
-		background: var(--secondary-bg);
+		background: var(--tm-secondary-bg);
 	}
 	#adminmenu a{
-		color: var(--primary-fg);
+		color: var(--tm-primary-fg);
 	}
 	#adminmenu .wp-has-current-submenu .wp-submenu, #adminmenu .wp-has-current-submenu.opensub .wp-submenu, #adminmenu .wp-submenu, #adminmenu a.wp-has-current-submenu:focus + .wp-submenu{
-		background: var(--secondary-bg-alt);
+		background: var(--tm-secondary-bg-alt);
 	}
 	#wpadminbar{
-		color: var(--primary-fg);
-		background: var(--secondary-bg);
+		color: var(--tm-primary-fg);
+		background: var(--tm-secondary-bg);
 	}
 
 	/*=====
 	==modules
 	*/
 	a{
-		color: var(--action-fg);
+		color: var(--tm-action-fg);
 	}
 	h1, h2, h3, h4, h5, h6{
-		color: var(--primary-fg-alt);
+		color: var(--tm-primary-fg-alt);
 	}
 	.notice, div.error, div.updated{
-		background: var(--exclaim-bg);
-		color: var(--exclaim-fg);
+		background: var(--tm-exclaim-bg);
+		color: var(--tm-exclaim-fg);
 	}
 
 	/*--actions */
 	.wp-core-ui .button, .wp-core-ui .button-secondary{
-		background: var(--exclaim-bg);
-		color: var(--exclaim-fg);
+		background: var(--tm-exclaim-bg);
+		color: var(--tm-exclaim-fg);
 	}
 	.wp-core-ui .button-disabled, .wp-core-ui .button-secondary.disabled, .wp-core-ui .button-secondary:disabled, .wp-core-ui .button-secondary[disabled], .wp-core-ui .button.disabled, .wp-core-ui .button:disabled, .wp-core-ui .button[disabled]{
-		background: var(--secondary-bg) !important;
-		color: var(--secondary-fg) !important;
+		background: var(--tm-secondary-bg) !important;
+		color: var(--tm-secondary-fg) !important;
 	}
 	.wrap .page-title-action, .wrap .page-title-action:active{
-		background: var(--exclaim-bg);
-		color: var(--exclaim-fg);
+		background: var(--tm-exclaim-bg);
+		color: var(--tm-exclaim-fg);
 	}
 
 	/*--forms */
 	.comment-ays, .feature-filter, .imgedit-group, .popular-tags, .stuffbox, .widgets-holder-wrap, .wp-editor-container, p.popular-tags, table.widefat{
-		background: var(--primary-bg);
-		color: var(--primary-fg);
+		background: var(--tm-primary-bg);
+		color: var(--tm-primary-fg);
 	}
 	.form-table th, .form-wrap label{
-		color: var(--primary-fg-alt);
+		color: var(--tm-primary-fg-alt);
+	}
+	.form-wrap p, p.description{
+		color: var(--tm-primary-fg);
 	}
 	input[type="color"], input[type="date"], input[type="datetime-local"], input[type="datetime"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], select, textarea{
-		background-color: var(--primary-bg);
-		color: var(--primary-fg);
+		background-color: var(--tm-primary-bg);
+		color: var(--tm-primary-fg);
 	}
 	input.readonly, input[readonly], textarea.readonly, textarea[readonly]{
-		background: var(--primary-bg);
+		background: var(--tm-primary-bg);
+	}
+	.media-frame input[type="color"], .media-frame input[type="date"], .media-frame input[type="datetime-local"], .media-frame input[type="datetime"], .media-frame input[type="email"], .media-frame input[type="month"], .media-frame input[type="number"], .media-frame input[type="password"], .media-frame input[type="search"], .media-frame input[type="tel"], .media-frame input[type="text"], .media-frame input[type="time"], .media-frame input[type="url"], .media-frame input[type="week"], .media-frame select, .media-frame textarea{
+		background-color: var(--tm-primary-bg);
+		color: var(--tm-primary-fg);
 	}
 	#postcustomstuff table{
-		background: var(--secondary-bg);
+		background: var(--tm-secondary-bg);
 	}
 	#postcustomstuff thead th{
-		background: var(--secondary-bg-alt);
-		color: var(--primary-fg-alt);
+		background: var(--tm-secondary-bg-alt);
+		color: var(--tm-primary-fg-alt);
 	}
 	.quicktags-toolbar.quicktags-toolbar{
-		background: var(--secondary-bg-alt);
+		background: var(--tm-secondary-bg-alt);
 	}
 	#titlediv #title{
-		background: var(--primary-bg);
-		color: var(--primary-fg);
+		background: var(--tm-primary-bg);
+		color: var(--tm-primary-fg);
 	}
 	.wp-core-ui select{
-		background-color: var(--exclaim-bg);
-		color: var(--exclaim-fg);
+		background-color: var(--tm-exclaim-bg);
+		color: var(--tm-exclaim-fg);
 	}
 	.wp-core-ui select.disabled, .wp-core-ui select:disabled{
-		background-color: var(--primary-bg);
-		color: var(--primary-fg-subdued);
+		background-color: var(--tm-primary-bg);
+		color: var(--tm-primary-fg-subdued);
+	}
+	.wp-filter{
+		color: var(--tm-gray);
+		background-color: var(--tm-secondary-bg);
 	}
 
 	/*--tables */
 	.plugins .active td, .plugins .active th{
-		background: var(--exclaim-bg);
-		color: var(--exclaim-fg);
+		background: var(--tm-exclaim-bg);
+		color: var(--tm-exclaim-fg);
 	}
 	.plugins tr{
-		background: var(--primary-bg);
+		background: var(--tm-primary-bg);
 	}
 	.widefat ol, .widefat p, .widefat ul{
-		color: var(--primary-fg);
+		color: var(--tm-primary-fg);
 	}
 	.widefat tfoot tr td, .widefat tfoot tr th, .widefat thead tr td, .widefat thead tr th{
 		color: var(--subdued-fg);
 	}
 	.widefat td, .widefat th{
-		color: var(--primary-fg);
+		color: var(--tm-primary-fg);
 	}
 
 	/*--etc */
+	.attachment-details .setting .name, .attachment-details .setting .value, .attachment-details .setting span, .compat-item label span, .media-sidebar .checkbox-label-inline, .media-sidebar .setting .name, .media-sidebar .setting .value, .media-sidebar .setting span{
+		color: var(--tm-primary-fg-alt);
+	}
+	.attachment-info{
+		color: var(--tm-primary-fg-alt);
+	}
+	.attachment-info .filename{
+		color: var(--tm-primary-fg);
+	}
+	.edit-attachment-frame .attachment-info{
+		background: var(--tm-secondary-bg-alt);
+	}
+	.edit-attachment-frame .attachment-info .filename{
+		color: var(--tm-primary-fg);
+	}
 	#contextual-help-back{
-		background: var(--secondary-bg);
+		background: var(--tm-secondary-bg);
 	}
 	.importer-title{
-		color: var(--primary-fg);
+		color: var(--tm-primary-fg);
+	}
+	.media-frame-content{
+		background: var(--tm-secondary-bg);
+	}
+	.media-modal-content{
+		background: var(--tm-secondary-bg);
 	}
 	.privacy_requests tbody td{
-		background: var(--primary-bg);
+		background: var(--tm-primary-bg);
+	}
+	#screen-meta-links .show-settings{
+		background-color: var(--tm-exclaim-bg);
+		color: var(--tm-exclaim-fg);
 	}
 
 	/*=====
@@ -160,43 +203,89 @@
 	*/
 	/*--health check */
 	.health-check-accordion-panel, .privacy-settings-accordion-panel{
-		background: var(--secondary-bg);
-		color: var(--secondary-fg);
+		background: var(--tm-secondary-bg);
+		color: var(--tm-secondary-fg);
 	}
 	.health-check-accordion-trigger, .privacy-settings-accordion-trigger{
-		background: var(--secondary-bg);
-		color: var(--secondary-fg);
+		background: var(--tm-secondary-bg);
+		color: var(--tm-secondary-fg);
 	}
 	.health-check-accordion-trigger:active, .health-check-accordion-trigger:hover, .privacy-settings-accordion-trigger:active, .privacy-settings-accordion-trigger:hover{
-		background: var(--secondary-bg-alt);
+		background: var(--tm-secondary-bg-alt);
 	}
 	.health-check-accordion-trigger .badge, .privacy-settings-accordion-trigger .badge{
-		color: var(--secondary-fg);
+		color: var(--tm-secondary-fg);
 	}
 	.health-check-header, .privacy-settings-header{
-		background: var(--secondary-bg);
-		color: var(--secondary-fg);
+		background: var(--tm-secondary-bg);
+		color: var(--tm-secondary-fg);
 	}
 
 	/*--jetpack */
+	div.staticmetabox.staticmetabox{
+		background: var(--tm-secondary-bg);
+	}
+	.dops-banner__description.dops-banner__description .dops-banner__description, .dops-banner__info.dops-banner__info .dops-banner__list, .dops-banner__info.dops-banner__info .dops-banner__title{
+		color: var(--tm-secondary-fg);
+	}
+	.dops-button.dops-button{
+		background-color: var(--tm-exclaim-bg);
+		color: var(--tm-exclaim-fg);
+	}
+	.dops-card.dops-card{
+		background: var(--tm-secondary-bg);
+	}
+	.dops-section-header__label.dops-section-header__label{
+		color: var(--tm-primary-fg-alt);
+	}
+	.dops-section-nav.dops-section-nav{
+		background: var(--tm-secondary-fg);
+	}
+	.jetpack-logo__masthead.jetpack-logo__masthead{
+		fill: var(--tm-exclaim-bg);
+	}
+	.jitm-banner__icon-plan .jp-emblem .jitm-jp-logo.jitm-jp-logo{
+		fill: var(--tm-exclaim-bg);
+	}
 	#jetpack_summary_widget .inside #dashboard_stats #stats-info{
-		background: var(--primary-bg);
-		color: var(--primary-fg);
+		background: var(--tm-primary-bg);
+		color: var(--tm-primary-fg);
 	}
 	.jitm-card.jitm-card{
-		background: var(--secondary-bg);
-		color: var(--secondary-fg);
+		background: var(--tm-secondary-bg);
+		color: var(--tm-secondary-fg);
 	}
 	.jitm-banner__info.jitm-banner__info .jitm-banner__description, .jitm-banner__info.jitm-banner__info .jitm-banner__title{
-		color: var(--secondary-fg);
+		color: var(--tm-secondary-fg);
+	}
+	.jp-form-settings-card.jp-form-settings-card .dops-foldable-card .dops-foldable-card__header{
+		color: var(--tm-gray);
+	}
+	.jp-masthead.jp-masthead{
+		background: var(--tm-primary-bg);
+	}
+	#jp-stats-report-upgrade-wrap .postbox.postbox{
+		background: var(--tm-secondary-bg);
 	}
 	#settings-reading-relatedposts-preview .jp-relatedposts.jp-relatedposts{
-		background: var(--secondary-bg);
+		background: var(--tm-secondary-bg);
+	}
+	#statchart-box#statchart-box{
+		background: var(--tm-secondary-bg);
+	}
+	.stats-encourage-nodata.stats-encourage-nodata{
+		color: var(--tm-gray);
+	}
+	ul.metabox-tabs.metabox-tabs{
+		background: var(--tm-secondary-bg-alt);
+	}
+	.wrap.wrap .statsdiv tr.alternate{
+		background: var(--tm-secondary-bg-alt);
 	}
 
 	/*--theme */
 	.theme-overlay .theme-wrap{
-		background: var(--secondary-bg);
-		color: var(--secondary-fg);
+		background: var(--tm-secondary-bg);
+		color: var(--tm-secondary-fg);
 	}
 }
