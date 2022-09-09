@@ -1,7 +1,7 @@
 @media (prefers-color-scheme: dark){
 	:root{
 		--tm-primary-bg: #020;
-		--tm-primary-fg: #cfc;
+		--tm-primary-fg: #cfe;
 		--tm-primary-fg-alt: #afa;
 		--tm-primary-fg-subdued: #ada;
 		--tm-secondary-bg: #030;
