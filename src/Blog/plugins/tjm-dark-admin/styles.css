@@ -1,14 +1,16 @@
 @media (prefers-color-scheme: dark){
 	:root{
-		--tm-primary-bg: #020;
+		--tm-primary-bg: #010;
 		--tm-primary-fg: #cfe;
 		--tm-primary-fg-alt: #afa;
 		--tm-primary-fg-subdued: #ada;
-		--tm-secondary-bg: #030;
+		--tm-secondary-bg: #021;
 		--tm-secondary-bg-alt: #141;
+		--tm-secondary-fg: #6ea;
 		--tm-action-fg: #6ea;
 		--tm-exclaim-bg: #794;
 		--tm-exclaim-fg: #fff;
+		--tm-focus-bg: #143;
 		--tm-gray: #aaa;
 	}
 
@@ -172,6 +174,9 @@
 	.attachment-info .filename{
 		color: var(--tm-primary-fg);
 	}
+	#dashboard-widgets h3, #dashboard-widgets h4, #dashboard_quick_press .drafts h2{
+		color: var(--tm-primary-fg-alt);
+	}
 	.edit-attachment-frame .attachment-info{
 		background: var(--tm-secondary-bg-alt);
 	}
@@ -241,15 +246,24 @@
 	.dops-section-nav.dops-section-nav{
 		background: var(--tm-secondary-fg);
 	}
-	.jetpack-logo__masthead.jetpack-logo__masthead{
+	#jetpack-logo__icon, .jetpack-logo__masthead.jetpack-logo__masthead{
 		fill: var(--tm-exclaim-bg);
+	}
+	#jetpack_summary_widget canvas{
+		filter: invert(1);
+	}
+	#jetpack_summary_widget footer .blocked-container.blocked-container{
+		background-color: var(--tm-secondary-bg-alt);
+	}
+	#jetpack_summary_widget .tickLabel{
+		color: var(--tm-secondary-fg)
 	}
 	.jitm-banner__icon-plan .jp-emblem .jitm-jp-logo.jitm-jp-logo{
 		fill: var(--tm-exclaim-bg);
 	}
 	#jetpack_summary_widget .inside #dashboard_stats #stats-info{
-		background: var(--tm-primary-bg);
-		color: var(--tm-primary-fg);
+		background: var(--tm-secondary-bg);
+		color: var(--tm-secondary-fg);
 	}
 	.jitm-card.jitm-card{
 		background: var(--tm-secondary-bg);
@@ -267,6 +281,10 @@
 	#jp-stats-report-upgrade-wrap .postbox.postbox{
 		background: var(--tm-secondary-bg);
 	}
+	#searchterms#searchterms .statsDay > tbody > tr:hover, #videoplays#videoplays .statsDay > tbody > tr:hover, #postviews#postviews .statsDay > tbody > tr:hover, #clicks#clicks .statsDay > tbody > tr:hover, #stats-comments#stats-comments .statsDay > tbody > tr:hover, #authorviews#authorviews .statsDay > tbody > tr:hover, #geoviews#geoviews .statsDay > tbody > tr:hover
+	{
+		background: var(--tm-focus-bg);
+	}
 	#settings-reading-relatedposts-preview .jp-relatedposts.jp-relatedposts{
 		background: var(--tm-secondary-bg);
 	}
@@ -276,11 +294,17 @@
 	.stats-encourage-nodata.stats-encourage-nodata{
 		color: var(--tm-gray);
 	}
+	.statsDay.statsDay > tbody > tr.referrer:hover, .statsDay.statsDay > tbody > tr.click:hover, tr.table.table tr:hover, #incominglinks#incominglinks li:hover{
+		background: var(--tm-focus-bg) !important;
+	}
 	ul.metabox-tabs.metabox-tabs{
 		background: var(--tm-secondary-bg-alt);
 	}
 	.wrap.wrap .statsdiv tr.alternate{
 		background: var(--tm-secondary-bg-alt);
+	}
+	.wp-admin.toplevel_page_jetpack.toplevel_page_jetpack{
+		background-color: var(--tm-primary-bg);
 	}
 
 	/*--theme */
