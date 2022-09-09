@@ -84,6 +84,9 @@
 	}
 
 	/*--actions */
+	#post-body ul.add-menu-item-tabs li.tabs a, #post-body ul.category-tabs li.tabs a, #side-sortables .add-menu-item-tabs .tabs a, #side-sortables .category-tabs .tabs a, .wp-tab-bar .wp-tab-active a{
+		color: var(--tm-exclaim-fg);
+	}
 	.wp-core-ui .button, .wp-core-ui .button-secondary{
 		background: var(--tm-exclaim-bg);
 		color: var(--tm-exclaim-fg);
@@ -91,6 +94,10 @@
 	.wp-core-ui .button-disabled, .wp-core-ui .button-secondary.disabled, .wp-core-ui .button-secondary:disabled, .wp-core-ui .button-secondary[disabled], .wp-core-ui .button.disabled, .wp-core-ui .button:disabled, .wp-core-ui .button[disabled]{
 		background: var(--tm-secondary-bg) !important;
 		color: var(--tm-secondary-fg) !important;
+	}
+	.wp-tab-active, ul.add-menu-item-tabs li.tabs, ul.category-tabs li.tabs{
+		background: var(--tm-exclaim-bg);
+		color: var(--tm-exclaim-fg);
 	}
 	.wrap .page-title-action, .wrap .page-title-action:active{
 		background: var(--tm-exclaim-bg);
@@ -132,6 +139,9 @@
 	#titlediv #title{
 		background: var(--tm-primary-bg);
 		color: var(--tm-primary-fg);
+	}
+	.ui-autocomplete{
+		background: var(--tm-secondary-bg-alt);
 	}
 	.wp-core-ui select{
 		background-color: var(--tm-exclaim-bg);
@@ -193,6 +203,9 @@
 		background: var(--tm-secondary-bg);
 	}
 	.media-modal-content{
+		background: var(--tm-secondary-bg);
+	}
+	.media-sidebar{
 		background: var(--tm-secondary-bg);
 	}
 	.privacy_requests tbody td{
