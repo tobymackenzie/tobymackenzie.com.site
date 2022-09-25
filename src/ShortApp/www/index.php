@@ -30,8 +30,8 @@ if(file_exists($cssFile)){
 		</head>
 	<body>
 		<div class="card" itemscope="itemscope" itemtype="http://schema.org/Person">
-			<div class="cardCol1">
 			<div class="cardLogo"><div class="cardLogoText">&lt;toby&gt;</div></div>
+			<div class="cardCol1">
 				<div class="cardMedia">
 					<img alt="From the background, the shape of a face presents itself. As it becomes clearer, a white, slightly scruffy humanoid male with slightly wavy, dark brown hair turning to gray, stares blankly at you.  The ghostly apparation seems distant, and yet… could it be…" class="cardImage" itemprop="image" src="/_toby.jpg" />
 				</div>

@@ -35,10 +35,7 @@ body{
 	padding: 1em;
 	position: relative;
 	min-height: 100%;
-	/* min-height: 100vh; */
-}
-.card:hover{
-	overflow: visible;
+	/*! min-height: 100vh; */
 }
 .cardCol1{
 	text-align: center;
@@ -49,17 +46,16 @@ body{
 }
 .cardImage{
 	display: block;
-	filter: contrast(1.5) saturate(0);
-	/*mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0) 20%, rgba(0,0,0,0.8) 100%);*/
+	filter: contrast(1.5);
 	max-height: 100%;
 	max-width: 100%;
-	mix-blend-mode: soft-light;
 	object-fit: cover;
-	opacity: 0.3;
+	opacity: 0.6;
 	transition: opacity 0.4s;
+	mask-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 14%, rgba(0,0,0,1) 86%, rgba(0,0,0,0) 100%);
 }
 .card:hover .cardImage{
-	opacity: 0.8;
+	opacity: 1;
 }
 .cardItem strong{
 	font-size: 1.4em;
@@ -67,64 +63,46 @@ body{
 .cardItemEtc{
 	display: inline-block;
 }
-.cardMedia:after, .cardMedia:before{
-	content: '';
-	position: absolute;
+.cardMedia{
+	mask-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 14%, rgba(0,0,0,1) 86%, rgba(0,0,0,0) 100%);
+	mix-blend-mode: darken;
 }
-.cardMedia:after{
+.cardCol1{
+	position: relative;
+}
+.cardCol1:after{
 	background: url('/_toby.jpg') center center no-repeat;
 	background-size: cover;
+	content: '';
 	height: 100%;
 	left: 0;
 	opacity: 0;
+	position: absolute;
 	top: 0;
 	transition: opacity 0.5s;
 	width: 100%;
 }
-.cardMedia:hover:after{
-	opacity: 0.6;
+.cardCol1:hover:after{
+	opacity: 1;
 }
-.cardMedia:before{
-	bottom: -1px;
-	box-shadow: 0 0 8px 8px #353 inset;
-	left: -1px;
-	right: -1px;
-	top: -1px;
-	z-index: 1;
-}
-/*--hide logo from old browsers that don't rotate text properly */
-.cardLogo{
-	display: none;
-}
-@supports (writing-mode: vertical-lr){
-	.cardLogo{
-		bottom: 0;
-		display: block;
-		left: -0.5em;
-		position: absolute;
-		top: 0;
-		z-index: 2;
-	}
-	.cardLogoText{
-		color: #333;
-		filter: blur(2px);
-		font-size: 2em;
-		line-height: 1;
-		opacity: 0.2;
-		pointer-events: none;
-		position: absolute;
-		text-align: center;
-		top: 50%;
-		transform: translateY(-50%);
-		transform-origin: center top;
-		transition: filter 0.4s, opacity 0.4s;
-		white-space: nowrap;
-		writing-mode: vertical-lr;
-	}
+.cardLogoText{
+	color: #333;
+	font-size: 2em;
+	line-height: 1;
+	opacity: 0.9;
+	pointer-events: none;
+	position: absolute;
+	right: -0.1em;
+	text-align: center;
+	top: 1em;
+	transform: rotate(45deg);
+	transition: color 0.2s, opacity 0.2s, transform 1s;
+	white-space: nowrap;
 }
 .card:hover .cardLogoText{
-	filter: blur(0);
+	color: rgb(209, 255, 209);
 	opacity: 0.6;
+	transform: rotate(1125deg);
 }
 .cardMedia{
 	display: inline-block;
@@ -156,26 +134,18 @@ html{
 		justify-content: center;
 		flex-direction: column;
 	}
-	.cardLogoText{
-		font-size: 3em;
-	}
 	.cardMedia{
 		display: inline-flex;
 		min-height: 8em;
 		height: 50vh;
 	}
 }
-@media (min-height: 500px), (min-width: 34em){
+@media (min-height: 500px), (min-width: 30em){
 	.cardMedia{
 		height: auto;
 	}
 }
-@media (min-height: 500px){
-	.cardLogoText{
-		font-size: 4em;
-	}
-}
-@media (min-width: 34em){
+@media (min-width: 30em){
 	.card{
 		align-items: center;
 		flex-direction: row;
@@ -190,10 +160,10 @@ html{
 		vertical-align: middle;
 	}
 	.cardCol1{
-		margin: 0 1em 0 0;
+		margin: -1.5em 1em -1.5em -1.5em;
 	}
 }
-@media (min-width: 34em) and (min-height: 24em){
+@media (min-width: 30em) and (min-height: 24em){
 	body{
 		align-items: center;
 		display: flex;
@@ -213,18 +183,16 @@ html{
 	}
 	.cardCol1{
 		align-self: stretch;
-		padding-left: 1.5em;
-		position: relative;
 		width: auto;
+	}
+	.cardCol1:after{
+		mix-blend-mode: hard-light;
+	}
+	.cardCol1:hover:after{
+		opacity: 0.6;
 	}
 	.cardCol2{
 		padding: 8px 0; /*--alignment for fuzzy image inset */
-	}
-	.cardLogo{
-		left: -2.6em;
-	}
-	.cardLogoText{
-		font-size: 6.2em;
 	}
 	h1{
 		font-size: 3em;
