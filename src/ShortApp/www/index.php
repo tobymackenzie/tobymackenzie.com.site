@@ -39,7 +39,7 @@ if(file_exists($cssFile)){
 			<div class="cardCol2">
 				<h1 class="cardItem" itemprop="name"><span itemprop="givenName">Toby</span> <span itemprop="familyName">Mackenzie</span></h1>
 				<div class="cardGroup" itemprop="hasOccupation" itemscope="itemscope" itemtype="http://schema.org/Occupation">
-					<div class="cardItem" itemprop="name"><strong>Web developer</strong> <small class="cardItemEtc">(LAMP stack)</small></div>
+					<div class="cardItem" itemprop="name"><strong>Webmaster</strong> <small class="cardItemEtc">(LAMP developer)</small></div>
 					<small class="cardSkills cardItem" itemprop="skills">HTML CSS JS PHP MySQL Apache Linux</small>
 				</div>
 				<div class="cardItem"><a href="mailto:public@tobymackenzie.com" itemprop="email">public@tobymackenzie.com</a></div>
