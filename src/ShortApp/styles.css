@@ -31,19 +31,56 @@ body{
 	height: 100%;
 }
 .card{
-	background: #353;
-	border: 3px solid #002c00;
-	box-shadow: inset 0 0 1em 0.5em #242;
-	color: rgb(209, 255, 209);
-	overflow: hidden;
-	padding: 1em;
-	position: relative;
+	display: flex;
 	min-height: 100%;
 	/*! min-height: 100vh; */
+	overflow: hidden;
+	position: relative;
 }
 .cardCol1{
 	text-align: center;
 	margin-bottom: 1.5em;
+}
+.cardBack{
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.cardBackLogo{
+	font-size: 3em;
+}
+.cardFace{
+	background: #353;
+	border: 3px solid #002c00;
+	box-shadow: inset 0 0 1em 0.5em #242;
+	color: rgb(209, 255, 209);
+	flex: 1 1 auto;
+	padding: 1em;
+	position: relative;
+}
+.cardFlip{
+	appearance: none;
+	background: none;
+	border: 0;
+	bottom: 0;
+	color: #90df90;
+	font-size: 2.5em;
+	opacity: 0.5;
+	overflow: hidden;
+	position: absolute;
+	right: 0.2em;
+}
+.cardFlip:focus, .cardFlip:hover{
+	opacity: 0.7;
+}
+.cardFlip:after{
+	content: '>';
+}
+.cardFlip span{
+	opacity: 0.1;
+	position: absolute;
+	top: -2em;
 }
 * + .cardGroup, * + .cardItem{
 	margin-top: 0.5em;
@@ -138,7 +175,7 @@ html{
 	height: 100%;
 }
 @media (min-width: 20em){
-	.card{
+	.cardFront{
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
@@ -155,7 +192,7 @@ html{
 	}
 }
 @media (min-width: 30em){
-	.card{
+	.cardFront{
 		align-items: center;
 		flex-direction: row;
 	}
@@ -182,13 +219,14 @@ html{
 		padding: 0.5em; /*--ensure rotation doesn't cause scroll bars */
 	}
 	.card{
-		align-items: flex-end;
-		padding: 1.5em;
 		transform: rotate(2deg);
 		transition: transform 0.2s;
 	}
 	.card:hover, .card:focus-within{
-		transform: rotate(0deg);
+		transform: rotate(0deg) rotateY(0);
+	}
+	.cardBack{
+		margin-top: 1em;
 	}
 	.cardCol1{
 		align-self: stretch;
@@ -203,6 +241,10 @@ html{
 	.cardCol2{
 		padding: 8px 0; /*--alignment for fuzzy image inset */
 	}
+	.cardFront{
+		align-items: flex-end;
+		padding: 1.5em;
+	}
 	h1{
 		font-size: 3em;
 		width: 5.8em;
@@ -211,5 +253,29 @@ html{
 		.cardMedia{
 			height: 100%;
 		}
+	}
+}
+@supports (backface-visibility: visible){
+	.card[data-show='back']{
+		transform: rotateY(180deg);
+	}
+	.cardBack{
+		height: 100%;
+		left: 0;
+		margin: 0;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		transform: rotateY(180deg);
+		visibility: hidden;
+	}
+	.card[data-show='back'] .cardBack{
+		visibility: visible;
+	}
+	.cardFront, .cardLogo{
+		backface-visibility: hidden;
+	}
+	.card[data-show='back'] .cardLogo{
+		display: none;
 	}
 }
