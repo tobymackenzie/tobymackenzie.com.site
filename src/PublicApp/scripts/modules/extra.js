@@ -14,10 +14,13 @@ if(window.Date){
 		loadCSS('/_assets/styles/snow.css');
 		loadJS('/_assets/scripts/snow.js');
 	}
+	if(month === 9 && day >= 15){
+		loadCSS('/_assets/styles/halloween.css');
+	}
 	if(month === 11){
 		loadCSS('/_assets/styles/christmas.css');
 	}
-	if(month === 3 && now.getDate() === 1){
+	if(month === 3 && day === 1){
 		loadJS('/_assets/scripts/aprilFools.js');
 	}
 }
