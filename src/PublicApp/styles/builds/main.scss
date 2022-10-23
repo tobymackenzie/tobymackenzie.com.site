@@ -12,6 +12,7 @@ Represents basic CSS output file, importing all others that will be used on the 
 
 @import '_mixins';
 @import '_config';
+@import '../vars';
 
 /*=====
 ==library dependencies

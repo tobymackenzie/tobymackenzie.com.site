@@ -1,13 +1,9 @@
 %highlightedBGActions{
 	background-color: rgba(map-get($colors, linkBG), 0);
+	background-color: var(--linkBG);
 	transition: background-color 0.15s, color 0.15s;
-	@include supports('dark-theme'){
-		background-color: rgba(map-get($darkThemeColors, linkBG), 0);
-	}
 	&:active, &:focus, &:hover{
 		@include colorFallback('background-color', rgba(map-get($colors, linkBG), 0.8));
-		@include supports('dark-theme'){
-			@include colorFallback('background-color', rgba(map-get($darkThemeColors, linkBG), 0.8));
-		}
+		background-color: var(--linkFocusBG);
 	}
 }

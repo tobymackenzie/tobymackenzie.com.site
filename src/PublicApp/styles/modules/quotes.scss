@@ -5,20 +5,16 @@
 blockquote{
 	@extend %block;
 	@include colorFallback('border-left', 3px solid rgba(map-get($colors, border), 0.6));
+	border-left: 3px solid var(--quoteBorder);
 	margin-left: 0;
 	padding: 1em 0.5em 1em 2em;
 	position: relative;
-	@include supports('dark-theme'){
-		@include colorFallback('border-left', 3px solid rgba(map-get($darkThemeColors, contentBorder), 0.6));
-	}
 	&:after, &:before{
 		@extend %font-bold;
 		@include colorFallback('color', rgba(map-get($colors, strong), 0.6));
+		color: #{rgba(var(--strongFG), 0.6)};
 		font-size: 2em;
 		line-height: 1;
-		@include supports('dark-theme'){
-			@include colorFallback('color', rgba(map-get($darkThemeColors, strong), 0.6));
-		}
 	}
 	&:after{
 		content: "”";

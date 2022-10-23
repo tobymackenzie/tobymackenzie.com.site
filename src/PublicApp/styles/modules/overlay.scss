@@ -19,9 +19,11 @@
 	}
 	&CloseAct{
 		background: map-get($colors, primaryBG);
+		background: var(--primaryBG);
 		border: 3px solid;
 		border-radius: 2em;
 		color: map-get($colors, primaryFG);
+		color: var(--primaryFG);
 		cursor: pointer;
 		height: 2em;
 		position: absolute;
@@ -31,9 +33,7 @@
 		z-index: 1;
 		width: 2em;
 		@include supports('dark-theme'){
-			background: map-get($darkThemeColors, primaryBG);
 			border-width: 2px;
-			color: map-get($darkThemeColors, primaryFG);
 		}
 		&:after{
 			content: 'X';
@@ -44,11 +44,9 @@
 	}
 	&Content{
 		border: 3px solid map-get($colors, primaryFG);
+		border: 3px solid var(--primaryBorder);
 		position: relative;
 		z-index: 1;
-		@include supports('dark-theme'){
-			border-color: map-get($namedColors, subduedKermitGreen);
-		}
 		&:before{
 			@include appShadow();
 		}

@@ -1,0 +1,57 @@
+:root{
+	--baseBG: #{map-get($colors, baseBG)};
+	--baseFG: #{map-get($colors, baseFG)};
+	--borderColor: #{map-get($colors, border)};
+	--chromeHeaderBG: var(--primaryBG);
+	--chromeLogo: #{map-get($colors, chromeLogo)};
+	--codeBG: #{map-get($colors, codeBG)};
+	--codeFG: #{map-get($colors, codeFG)};
+	--headingFG: #{map-get($colors, heading)};
+	--insertBG: #{map-get($colors, insertBG)};
+	--linkActiveFG: #{map-get($colors, linkFGActive)};
+	--linkBG: #{rgba(map-get($colors, linkBG), 0)};
+	--linkFocusBG: #{rgba(map-get($colors, linkBG), 0.8)};
+	--linkFocusFG: #{map-get($colors, linkFGFocus)};
+	--linkVisitedFG: #{map-get($colors, linkFGVisited)};
+	--mainBorder: #{map-get($colors, border)};
+	--navActionFocusFG: #{rgba(map-get($colors, secondaryFG), 0.3)};
+	--navInputBG: var(--secondaryBG);
+	--primaryBG: #{map-get($colors, primaryBG)};
+	--primaryFG: #{map-get($colors, primaryFG)};
+	--primaryBorder: var(--primaryBorder)
+	--primaryFG: #{map-get($colors, primaryFG)};
+	--primaryLinkFG: #{map-get($colors, primaryLinkFG)};
+	--primaryLinkDecorationFG: rgba(var(--primaryLinkFG), 0.4);
+	--proofreadersMarkFG: #{map-get($colors, proofreadersMark)};
+	--quoteBorder: #{rgba(map-get($colors, border), 0.6)};
+	--secondaryBG: #{map-get($colors, secondaryBG)};
+	--secondaryFG: #{map-get($colors, secondaryFG)};
+	--secondaryLinkDecorationFG: #{rgba(map-get($colors, secondaryLinkFG), 0.4)};
+	--secondaryLinkFG: #{map-get($colors, secondaryLinkFG)};
+	--secondaryLinkFocusBG: #{rgba(map-get($colors, secondaryLinkFocusBG), 0.3)};
+	--secondaryLinkFocusFG: #{map-get($colors, secondaryLinkFocusFG)};
+	--strongFG: #{map-get($colors, strong)};
+	--tertiaryBG: #{map-get($colors, tertiaryBG)};
+	--tertiaryFG: #{map-get($colors, tertiaryFG)};
+	--tertiaryLinkDecorationFG: rgba(var(--tertiaryLinkFG), 0.4);
+	--tertiaryLinkFG: #{map-get($colors, tertiaryLinkFG)};
+
+	@include supports('dark-theme'){
+		--borderColor: #{map-get($darkThemeColors, contentBorder)};
+		--chromeHeaderBG: #{map-get($darkThemeColors, chromeHeaderBG)};
+		--headingFG: #{map-get($darkThemeColors, heading)};
+		--insertBG: #{map-get($darkThemeColors, insertBG)};
+		--linkActiveFG: #{map-get($darkThemeColors, linkFGActive)};
+		--linkBG: #{rgba(map-get($darkThemeColors, linkBG), 0)};
+		--linkFocusBG: #{rgba(map-get($darkThemeColors, linkBG), 0.8)};
+		--linkFocusFG: #{map-get($darkThemeColors, linkFGFocus)};
+		--linkVisitedFG: #{map-get($darkThemeColors, linkFGVisited)};
+		--navBG: #{map-get($darkThemeColors, navBG)};
+		--primaryBG: #{map-get($darkThemeColors, primaryBG)};
+		--primaryBorder: #{map-get($namedColors, subduedKermitGreen)};
+		--primaryFG: #{map-get($darkThemeColors, primaryFG)};
+		--primaryLinkFG: #{map-get($darkThemeColors, primaryLinkFG)};
+		--quoteBorder: #{rgba(map-get($darkThemeColors, contentBorder), 0.6)};
+		--strongFG: #{map-get($darkThemeColors, strong)};
+	}
+}

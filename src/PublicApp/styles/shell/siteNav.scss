@@ -8,7 +8,7 @@
 	@extend %appContainerLayout;
 	@extend %secondaryAreaColors;
 	@include supports('dark-theme'){
-		background: map-get($darkThemeColors, navBG);
+		background: var(--navBG);
 	}
 	padding: 1.5em;
 	font-size: 1.2em;
@@ -70,6 +70,7 @@ $siteNavSearchWidth: 13em;
 		}
 		&:focus, &:hover{
 			background-color: rgba(map-get($colors, secondaryFG), 0.3);
+			background-color: var(--navActionFocusFG);
 			&:before{
 				animation-name: none;
 			}
@@ -86,6 +87,7 @@ $siteNavSearchWidth: 13em;
 		padding: 0.25em 1.75em 0.25em 0.25em;
 		width: $siteNavSearchWidth;
 		background: map-get($colors, secondaryBG); //-# only needed for input to slide over subnav line
+		background: var(--navInputBG);
 		position: relative;
 
 		//--animation base
@@ -95,6 +97,7 @@ $siteNavSearchWidth: 13em;
 		//--highlight focus
 		&:focus{
 			box-shadow: inset 0 0 1.6em rgba(map-get($colors, secondaryFG), 0.3);
+			box-shadow: inset 0 0 1.6em var(--navActionFocusFG);
 		}
 	}
 	&Label{

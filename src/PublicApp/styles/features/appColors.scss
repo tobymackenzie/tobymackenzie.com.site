@@ -1,45 +1,53 @@
 //==shared
 %tertiaryAreaColors{
 	background: map-get($colors, tertiaryBG);
+	background: var(--tertiaryBG);
 	color: map-get($colors, tertiaryFG);
+	color: var(--tertiaryFG);
 	a{
 		color: map-get($colors, tertiaryLinkFG);
+		color: var(--tertiaryLinkFG);
 		text-decoration-color: rgba(map-get($colors, tertiaryLinkFG), 0.4);
+		text-decoration-color: var(--tertiaryLinkDecorationFG);
 	}
 }
 %secondaryAreaColors{
 	background: map-get($colors, secondaryBG);
+	background: var(--secondaryBG);
 	color: map-get($colors, secondaryFG);
+	color: var(--secondaryFG);
 	a{
 		color: map-get($colors, secondaryLinkFG);
+		color: var(--secondaryLinkFG);
 		text-decoration-color: rgba(map-get($colors, secondaryLinkFG), 0.4);
+		text-decoration-color: var(--secondaryLinkDecorationFG);
 		&:focus, &:hover{
 			background: rgba(map-get($colors, secondaryLinkFocusBG), 0.3);
+			background: var(--secondaryLinkFocusBG);
 			color: map-get($colors, secondaryLinkFocusFG);
+			color: var(--secondaryLinkFocusFG);
 			text-decoration-color: map-get($colors, secondaryLinkFocusFG);
+			text-decoration-color: var(--secondaryLinkFocusFG);
 		}
 	}
 }
 %secondaryAreaIconColors{
 	color: map-get($colors, secondaryFG);
+	color: var(--secondaryFG);
 }
 @mixin primaryAreaColors(){
 	background: map-get($colors, primaryBG);
+	background: var(--primaryBG);
 	color: map-get($colors, primaryFG);
-	@include supports('dark-theme'){
-		background: map-get($darkThemeColors, primaryBG);
-		color: map-get($darkThemeColors, primaryFG);
-	}
+	color: var(--primaryFG);
 }
 %primaryAreaColors{
 	@include primaryAreaColors;
 	a{
 		color: map-get($colors, primaryLinkFG);
+		color: var(--primaryLinkFG);
 		text-decoration-color: rgba(map-get($colors, primaryLinkFG), 0.4);
-		@include supports('dark-theme'){
-			color: map-get($darkThemeColors, primaryLinkFG);
-			text-decoration-color: rgba(map-get($darkThemeColors, primaryLinkFG), 0.4);
-		}
+		text-decoration-color: var(--primaryLinkDecorationFG);
 	}
 }
 
@@ -57,16 +65,19 @@
 %appColors{
 	@include mq(map-get($bp, appWidth)){
 		border-color: map-get($colors, border);
+		border-color: var(--borderColor);
 	}
 }
 @mixin appContainerColors(){
 	border-color: map-get($colors, border);
+	border-color: var(--mainBorder);
 }
 %appContainerColors{
 	@include appContainerColors;
 }
 %appDocColors{
 	background: map-get($colors, baseBG);
+	background: var(--baseBG);
 }
 %appFooterColors{
 	@extend %appContainerColors;
@@ -76,9 +87,9 @@
 	@extend %appContainerColors;
 	@extend %tertiaryAreaColors;
 	border-bottom-color: map-get($colors, primaryBG);
+	border-bottom-color: var(--chromeHeaderBG);
 	@include supports('dark-theme'){
-		background: map-get($darkThemeColors, chromeHeaderBG);
-		border-bottom-color: map-get($darkThemeColors, chromeHeaderBG);
+		background: var(--chromeHeaderBG);
 	}
 }
 %appMainColors{
@@ -97,11 +108,9 @@
 	@include appContainerColors;
 	background: none;
 	color: map-get($colors, primaryLinkFG);
+	color: var(--primaryLinkFG);
 	text-decoration-color: rgba(map-get($colors, primaryLinkFG), 0.4);
-	@include supports('dark-theme'){
-		color: map-get($darkThemeColors, primaryLinkFG);
-		text-decoration-color: rgba(map-get($darkThemeColors, primaryLinkFG), 0.4);
-	}
+	text-decoration-color: var(--primaryLinkDecorationFG);
 	@include supports('app-grid'){
 		@include primaryAreaColors;
 	}
@@ -112,32 +121,24 @@
 		@extend %highlightedBGActions;
 		&:visited{
 			color: map-get($colors, linkFGVisited);
-			@include supports('dark-theme'){
-				color: map-get($darkThemeColors, linkFGVisited);
-			}
+			color: var(--linkVisitedFG);
 		}
 		&:active, &:focus, &:hover{
 			color: map-get($colors, linkFGFocus);
+			color: var(--linkFocusFG);
 			text-decoration-color: map-get($colors, linkFGFocus);
-			@include supports('dark-theme'){
-				color: map-get($darkThemeColors, linkFGFocus);
-				text-decoration-color: map-get($darkThemeColors, linkFGFocus);
-			}
+			text-decoration-color: var(--linkFocusFG);
 		}
 		&:active{
 			color: map-get($colors, linkFGActive);
-			@include supports('dark-theme'){
-				color: map-get($darkThemeColors, linkFGActive);
-			}
+			color: var(--linkActiveFG);
 		}
 	}
 	p{
 		&:first-letter{
 			color: map-get($colors, strong);
+			color: var(--strongFG);
 			font-weight: bold;
-			@include supports('dark-theme'){
-				color: map-get($darkThemeColors, strong);
-			}
 			@include mq('print'){
 				color: #000000;
 			}

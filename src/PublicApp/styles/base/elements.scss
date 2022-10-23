@@ -21,9 +21,7 @@ b, strong{
 	//-# only really necessary if using @font-face with a bold variant
 	@extend %font-bold;
 	color: map-get($colors, strong);
-	@include supports('dark-theme'){
-		color: map-get($darkThemeColors, strong);
-	}
+	color: var(--strongFG);
 }
 b em, b i, em b, em strong, i b, i strong, strong em, strong i{
 	//-# only really necessary if using @font-face with a bold italic variant and having these combinations of elements.  Uncomment if desired.
@@ -34,7 +32,9 @@ button{
 }
 code{
 	background: map-get($colors, codeBG);
+	background: var(--codeBG);
 	color: map-get($colors, codeFG);
+	color: var(--codeFG);
 	display: inline-block; //-# prevents wrapping of element
 	font-family: inherit;
 	padding: 0 0.5em;
@@ -59,6 +59,7 @@ code{
 }
 del{
 	text-decoration-color: map-get($colors, proofreadersMark);
+	text-decoration-color: var(--proofreadersMarkFG);
 }
 em, i{
 	//-# only really necessary if using @font-face with an italic variant
@@ -66,17 +67,13 @@ em, i{
 }
 em{
 	color: map-get($colors, strong);
-	@include supports('dark-theme'){
-		color: map-get($darkThemeColors, strong);
-	}
+	color: var(--strongFG);
 }
 h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{
 	@extend %block;
 	@extend %font-heading;
 	color: map-get($colors, heading);
-	@include supports('dark-theme'){
-		color: map-get($darkThemeColors, heading);
-	}
+	color: var(--headingFG);
 
 	//--less line height than normal text. gets big otheriwse
 	line-height: 1.4;
@@ -113,12 +110,10 @@ h6,.h6{
 hr{
 	border: 0;
 	background: map-get($colors, border);
+	background: var(--borderColor);
 	height: 2px;
 	margin: 1.5em 0;
 	opacity: 0.4;
-	@include supports('dark-theme'){
-		background: map-get($darkThemeColors, contentBorder);
-	}
 	&:last-child{
 		display: none;
 	}
@@ -139,12 +134,11 @@ input, select, td, textarea, th{
 }
 ins{
 	background: map-get($colors, insertBG);
+	background: var(--insertBG);
 	text-decoration: none;
-	@include supports('dark-theme'){
-		background: map-get($darkThemeColors, insertBG);
-	}
 	&:before{
 		color: map-get($colors, proofreadersMark);
+		color: var(--proofreadersMarkFG);
 		content: '^';
 		display: inline-block;
 		left: -0.2em;
