@@ -55,12 +55,9 @@
 %appBodyColors{
 	background: map-get($colors, baseBG);
 	background: rgba(map-get($colors, baseBG), 0.95);
+	background: var(--bodyBG);
 	color: map-get($colors, baseFG);
-	@include supports('dark-theme'){
-		background: map-get($darkThemeColors, baseBG);
-		background: rgba(map-get($darkThemeColors, baseBG), 0.95);
-		color: map-get($darkThemeColors, baseFG);
-	}
+	color: var(--baseFG);
 }
 %appColors{
 	@include mq(map-get($bp, appWidth)){
