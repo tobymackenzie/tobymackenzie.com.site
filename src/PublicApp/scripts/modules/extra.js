@@ -6,6 +6,7 @@ import loadJS from '../ua/load-js';
 if(window.Date){
 	var now = new Date();
 	var month = now.getMonth();
+	var day = now.getDate();
 	//--load christmas
 	if(
 		month === 11
@@ -14,7 +15,7 @@ if(window.Date){
 		loadCSS('/_assets/styles/snow.css');
 		loadJS('/_assets/scripts/snow.js');
 	}
-	if(month === 9 && day >= 15){
+	if(month === 9 && day >= 22){
 		loadCSS('/_assets/styles/halloween.css');
 	}
 	if(month === 11){
