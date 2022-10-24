@@ -22,17 +22,6 @@ $darkBG: #b94e00;
 		--strongFG: #{$darkFG};
 	}
 }
-.appHeaderMessage:after,
-.appHeaderTagline:after
-{
-	position: relative;
-	transition: 0.2s transform;
-}
-.appHeaderMessage:hover:after,
-.appHeaderTagline:hover:after
-{
-	transform: scale(3);
-}
 .appHeaderMessage:after{
 	content: '👻';
 }
