@@ -41,7 +41,6 @@ var GhostView = _createClass({
 		determineGhostCount: function(){
 			var _dim = this.getElDimensions();
 			this.ghostCount = (_dim.width + _dim.height) > 1000 ? 2 : 1;
-			// this.ghostCount = 1;
 			if(this.ghostCount > this.ghosts.length){
 				for(var _i = 0, _end = this.ghostCount - this.ghosts.length; _i < _end; ++_i){
 					this.addGhost();
@@ -105,7 +104,6 @@ var GhostView = _createClass({
 				_ghost.ySpeed = this.maxSpeed;
 			}
 			this._moveGhostData(_ghost);
-			// console.log(_ghost);
 			return this;
 		},
 

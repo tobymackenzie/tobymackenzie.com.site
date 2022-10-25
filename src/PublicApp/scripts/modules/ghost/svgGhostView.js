@@ -54,8 +54,6 @@ var SVGGhostView = _createClass({
 		,positionGhostEl: function(_ghost){
 			_ghost.el.setAttributeNS(null, 'x', parseFloat(_ghost.x));
 			_ghost.el.setAttributeNS(null, 'y', parseFloat(_ghost.y));
-			// _ghost.el.x.baseVal.value = parseFloat(_ghost.x);
-			// _ghost.el.y.baseVal.value = parseFloat(_ghost.y);
 		}
 
 		//==config
