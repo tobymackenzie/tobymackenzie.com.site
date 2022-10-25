@@ -56,6 +56,13 @@ $darkBG: #b94e00;
 	top: 0;
 	width: 100%;
 	z-index: 100;
+	> *{
+		pointer-events: all;
+		transition: opacity 1s;
+		&:hover{
+			opacity: 0;
+		}
+	}
 }
 .ghost-svg{
 	opacity: 0.8;
