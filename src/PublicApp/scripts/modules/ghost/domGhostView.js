@@ -35,10 +35,15 @@ var DOMGhostView = _createClass({
 			var _ghost = _parProto.removeGhost.apply(this, arguments);
 			if(_ghost.el){
 				var _self = this;
-				var anim = _ghost.el.animate({opacity: 0}, {duration: 1000, iterations: 1});
-				anim.addEventListener('finish', function(){
+				var _gone = function(){
 					_self.el.removeChild(_ghost.el);
-				});
+				};
+				if(_ghost.el.animate){
+					var anim = _ghost.el.animate({opacity: 0}, {duration: 1000, iterations: 1});
+					anim.addEventListener('finish', _gone);
+				}else{
+					_gone();
+				}
 			}
 			return _ghost;
 		}
