@@ -17,6 +17,7 @@ if(window.Date){
 	}
 	if(month === 9 && day >= 22){
 		loadCSS('/_assets/styles/halloween.css');
+		loadJS('/_assets/scripts/halloween.js');
 	}
 	if(month === 11){
 		loadCSS('/_assets/styles/christmas.css');

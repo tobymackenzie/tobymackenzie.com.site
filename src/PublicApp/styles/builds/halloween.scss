@@ -5,6 +5,10 @@ $bg: #ea7824;
 $darkFG: #ff9057;
 $darkBG: #b94e00;
 @import '_mixins';
+
+/*=====
+==basic shell
+=====*/
 :root{
 	--baseBG: #{$bg};
 	--bodyBG: #{$bg};
@@ -31,4 +35,28 @@ $darkBG: #b94e00;
 }
 .appNavAction::before, .siteNavAction::before, [class^='presenceAction']::before{
 	filter: invert(47%) sepia(80%) saturate(388%) hue-rotate(341deg);
+}
+
+/*=====
+==ghost
+=====*/
+.extra-ghost{
+	font-size: 3em;
+	left: 0;
+	opacity: 0.8;
+	pointer-events: none;
+	position: fixed;
+	top: 0;
+}
+.ghostView{
+	pointer-events: none;
+	position: fixed;
+	height: 100%;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+.ghost-svg{
+	opacity: 0.8;
 }
