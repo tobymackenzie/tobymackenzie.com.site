@@ -42,13 +42,12 @@ var GhostView = _createClass({
 			var _dim = this.getElDimensions();
 			this.ghostCount = (_dim.width + _dim.height) > 1000 ? 2 : 1;
 			// this.ghostCount = 1;
-
 			if(this.ghostCount > this.ghosts.length){
 				for(var _i = 0, _end = this.ghostCount - this.ghosts.length; _i < _end; ++_i){
 					this.addGhost();
 				}
-			}else if(this.ghostCount > this.ghosts.length){
-				for(var _i = 0, _end = this.ghostCount - this.ghosts.length; _i < _end; ++_i){
+			}else if(this.ghostCount < this.ghosts.length){
+				for(var _i = 0, _end = this.ghosts.length - this.ghostCount; _i < _end; ++_i){
 					this.removeGhost();
 				}
 			}
