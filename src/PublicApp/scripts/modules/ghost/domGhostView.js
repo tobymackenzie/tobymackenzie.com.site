@@ -34,7 +34,11 @@ var DOMGhostView = _createClass({
 		,removeGhost: function(){
 			var _ghost = _parProto.removeGhost.apply(this, arguments);
 			if(_ghost.el){
-				this.el.removeChild(_ghost.el);
+				var _self = this;
+				var anim = _ghost.el.animate({opacity: 0}, {duration: 1000, iterations: 1});
+				anim.addEventListener('finish', function(){
+					_self.el.removeChild(_ghost.el);
+				});
 			}
 			return _ghost;
 		}
