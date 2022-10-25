@@ -40,7 +40,7 @@ var GhostView = _createClass({
 		el: undefined,
 		determineGhostCount: function(){
 			var _dim = this.getElDimensions();
-			this.ghostCount = (_dim.width + _dim.height) > 1000 ? 2 : 1;
+			this.ghostCount = Math.round((_dim.width + _dim.height) / 600);
 			if(this.ghostCount > this.ghosts.length){
 				for(var _i = 0, _end = this.ghostCount - this.ghosts.length; _i < _end; ++_i){
 					this.addGhost();
