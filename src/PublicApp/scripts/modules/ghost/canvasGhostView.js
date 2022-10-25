@@ -43,7 +43,7 @@ var CanvasGhostView = _createClass({
 			if(this.darkMode){
 				this.offscreenContext.globalAlpha = 0.65;
 			}
-			this.offscreenContext.font = '48px serif';
+			this.offscreenContext.font = this.ghostSize + 'px serif';
 			for(var _i = 0; _i < this.ghosts.length; ++_i){
 				var _ghost = this.ghosts[_i];
 				this.offscreenContext.fillText('👻', _ghost.x, _ghost.y);

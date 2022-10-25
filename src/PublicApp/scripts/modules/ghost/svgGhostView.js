@@ -17,7 +17,7 @@ var SVGGhostView = _createClass({
 			if(!_ghost.el){
 				_ghost.el = document.createElementNS(_ns, 'text');
 				_ghost.el.classList.add('snowGhost');
-				_ghost.el.setAttributeNS(null, 'font-size', '48px')
+				_ghost.el.setAttributeNS(null, 'font-size', this.ghostSize + 'px')
 				_ghost.el.appendChild(document.createTextNode('👻'));
 				_parProto.createGhostEl.apply(this, arguments);
 			}
@@ -28,8 +28,26 @@ var SVGGhostView = _createClass({
 		}
 		,getElDimensions: function(){
 			return this.el.getBoundingClientRect();
-		}
-		,onResize: function(){
+		},
+		_moveGhostData: function(_ghost){
+			//-# overide for SVG bottom baseline coordinates
+			var _dim = this.getElDimensions();
+			if(_ghost.x > _dim.width + this.offScreenPadding){
+				_ghost.x = -1 * (this.offScreenPadding + this.ghostSize);
+			}else if(_ghost.x < -1 * (this.offScreenPadding + this.ghostSize)){
+				_ghost.x = _dim.width + this.offScreenPadding;
+			}else{
+				_ghost.x += _ghost.xSpeed;
+			}
+			if(_ghost.y > _dim.height + this.offScreenPadding + this.ghostSize){
+				_ghost.y = -1 * (this.offScreenPadding + this.ghostSize);
+			}else if(_ghost.y < -1 * (this.offScreenPadding + this.ghostSize)){
+				_ghost.y = _dim.height + this.offScreenPadding + this.ghostSize;
+			}else{
+				_ghost.y += _ghost.ySpeed;
+			}
+		},
+		onResize: function(){
 			_parProto.onResize.apply(this, arguments);
 			this.fixCanvDimensions();
 		}

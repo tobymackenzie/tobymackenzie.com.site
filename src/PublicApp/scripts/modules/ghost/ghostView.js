@@ -62,6 +62,23 @@ var GhostView = _createClass({
 				height: this.el.offsetHeight,
 			};
 		},
+		_moveGhostData: function(_ghost){
+			var _dim = this.getElDimensions();
+			if(_ghost.x > _dim.width + this.offScreenPadding){
+				_ghost.x = -1 * (this.offScreenPadding + this.ghostSize);
+			}else if(_ghost.x < -1 * (this.offScreenPadding + this.ghostSize)){
+				_ghost.x = _dim.width + this.offScreenPadding;
+			}else{
+				_ghost.x += _ghost.xSpeed;
+			}
+			if(_ghost.y > _dim.height + this.offScreenPadding){
+				_ghost.y = -1 * (this.offScreenPadding + this.ghostSize);
+			}else if(_ghost.y < -1 * (this.offScreenPadding + this.ghostSize)){
+				_ghost.y = _dim.height + this.offScreenPadding;
+			}else{
+				_ghost.y += _ghost.ySpeed;
+			}
+	},
 		onResize: function(){
 			this.determineGhostCount();
 		},
@@ -76,19 +93,11 @@ var GhostView = _createClass({
 			return this;
 		},
 		stepGhost: function(_ghost){
-			var _dim = this.getElDimensions();
 			_ghost.xSpeed += Math.round(Math.random() * this.randAmount + .15) - Math.floor(this.randAmount);
 			if(_ghost.xSpeed < this.minSpeed){
 				_ghost.xSpeed = this.minSpeed;
 			}else if(_ghost.xSpeed > this.maxSpeed){
 				_ghost.xSpeed = this.maxSpeed;
-			}
-			if(_ghost.x > _dim.width + this.offScreenPadding){
-				_ghost.x = -1 * this.offScreenPadding;
-			}else if(_ghost.x < -1 * this.offScreenPadding){
-				_ghost.x = _dim.width + this.offScreenPadding;
-			}else{
-				_ghost.x += _ghost.xSpeed;
 			}
 			_ghost.ySpeed += Math.round(Math.random() * this.randAmount + .15) - Math.floor(this.randAmount);
 			if(_ghost.ySpeed < this.minSpeed){
@@ -96,23 +105,18 @@ var GhostView = _createClass({
 			}else if(_ghost.ySpeed > this.maxSpeed){
 				_ghost.ySpeed = this.maxSpeed;
 			}
-			if(_ghost.y > _dim.height + this.offScreenPadding){
-				_ghost.y = -1 * this.offScreenPadding;
-			}else if(_ghost.y < -1 * this.offScreenPadding){
-				_ghost.y = _dim.height + this.offScreenPadding;
-			}else{
-				_ghost.y += _ghost.ySpeed;
-			}
+			this._moveGhostData(_ghost);
 			// console.log(_ghost);
 			return this;
 		},
 
 		//--config
 		frameRate: 12,
+		ghostSize: 48,
 		minSpeed: -3,
 		maxSpeed: 3,
 		name: 'GhostView',
-		offScreenPadding: 10,
+		offScreenPadding: 1,
 		randAmount: 1.8,
 	}
 });
