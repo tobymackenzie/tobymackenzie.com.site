@@ -26,12 +26,15 @@ var GhostView = _createClass({
 			};
 			_go();
 		},
-		addGhost: function(){
+		addGhost: function(_dim){
+			if(!_dim){
+				_dim = this.getElDimensions();
+			}
 			var _ghost = {
-				x: 0,
-				xSpeed: 1,
-				y: 0,
-				ySpeed: 1,
+				x: Math.round(Math.random()) ? 0 : _dim.width,
+				xSpeed: Math.round(Math.random()) ? 1 : -1,
+				y: Math.round(Math.random()) ? 0 : _dim.height,
+				ySpeed: Math.round(Math.random()) ? 1 : -1,
 			};
 			this.ghosts.push(_ghost);
 			return _ghost;
@@ -43,7 +46,7 @@ var GhostView = _createClass({
 			this.ghostCount = Math.round((_dim.width + _dim.height) / 600);
 			if(this.ghostCount > this.ghosts.length){
 				for(var _i = 0, _end = this.ghostCount - this.ghosts.length; _i < _end; ++_i){
-					this.addGhost();
+					this.addGhost(_dim);
 				}
 			}else if(this.ghostCount < this.ghosts.length){
 				for(var _i = 0, _end = this.ghosts.length - this.ghostCount; _i < _end; ++_i){
