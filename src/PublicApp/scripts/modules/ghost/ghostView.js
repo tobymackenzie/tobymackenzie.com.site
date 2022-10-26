@@ -94,13 +94,13 @@ var GhostView = _createClass({
 			return this;
 		},
 		stepGhost: function(_ghost){
-			_ghost.xSpeed += Math.round(Math.random() * this.randAmount + .15) - Math.floor(this.randAmount);
+			_ghost.xSpeed += Math.round(Math.random() * this.randAmount + .13) - Math.floor(this.randAmount);
 			if(_ghost.xSpeed < -1 * this.maxSpeed){
 				_ghost.xSpeed = -1 * this.maxSpeed;
 			}else if(_ghost.xSpeed > this.maxSpeed){
 				_ghost.xSpeed = this.maxSpeed;
 			}
-			_ghost.ySpeed += Math.round(Math.random() * this.randAmount + .15) - Math.floor(this.randAmount);
+			_ghost.ySpeed += Math.round(Math.random() * this.randAmount + .13) - Math.floor(this.randAmount);
 			if(_ghost.ySpeed < -1 * this.maxSpeed){
 				_ghost.ySpeed = -1 * this.maxSpeed;
 			}else if(_ghost.ySpeed > this.maxSpeed){
