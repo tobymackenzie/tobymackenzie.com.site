@@ -92,14 +92,14 @@ var GhostView = _createClass({
 		},
 		stepGhost: function(_ghost){
 			_ghost.xSpeed += Math.round(Math.random() * this.randAmount + .15) - Math.floor(this.randAmount);
-			if(_ghost.xSpeed < this.minSpeed){
-				_ghost.xSpeed = this.minSpeed;
+			if(_ghost.xSpeed < -1 * this.maxSpeed){
+				_ghost.xSpeed = -1 * this.maxSpeed;
 			}else if(_ghost.xSpeed > this.maxSpeed){
 				_ghost.xSpeed = this.maxSpeed;
 			}
 			_ghost.ySpeed += Math.round(Math.random() * this.randAmount + .15) - Math.floor(this.randAmount);
-			if(_ghost.ySpeed < this.minSpeed){
-				_ghost.ySpeed = this.minSpeed;
+			if(_ghost.ySpeed < -1 * this.maxSpeed){
+				_ghost.ySpeed = -1 * this.maxSpeed;
 			}else if(_ghost.ySpeed > this.maxSpeed){
 				_ghost.ySpeed = this.maxSpeed;
 			}
@@ -110,7 +110,6 @@ var GhostView = _createClass({
 		//--config
 		frameRate: 12,
 		ghostSize: 48,
-		minSpeed: -3,
 		maxSpeed: 3,
 		name: 'GhostView',
 		offScreenPadding: 1,
