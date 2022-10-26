@@ -50,8 +50,8 @@ var SnowView = _createClass({
 				for(var _i = 0, _end = this.flakeCount - this.flakes.length; _i < _end; ++_i){
 					this.addFlake();
 				}
-			}else if(this.flakeCount > this.flakes.length){
-				for(var _i = 0, _end = this.flakeCount - this.flakes.length; _i < _end; ++_i){
+			}else if(this.flakeCount < this.flakes.length){
+				for(var _i = 0, _end = this.flakes.length - this.flakeCount; _i < _end; ++_i){
 					this.removeFlake();
 				}
 			}
