@@ -21,6 +21,7 @@ var SVGGhostView = _createClass({
 				_ghost.el.appendChild(document.createTextNode('👻'));
 				_parProto.createGhostEl.apply(this, arguments);
 			}
+			return _ghost;
 		}
 		,fixCanvDimensions: function(){
 			var _dim = this.getElDimensions();

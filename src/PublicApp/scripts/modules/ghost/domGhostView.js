@@ -25,8 +25,18 @@ var DOMGhostView = _createClass({
 			if(!_ghost.el){
 				this.createGhostEl(_ghost);
 				this.el.appendChild(_ghost.el);
+				this.addGhostEvents(_ghost);
 			}
 			return _ghost;
+		}
+		,addGhostEvents: function(_ghost){
+			_ghost.el.addEventListener('click', function(){
+				_ghost.el.dataset.state = 'boo';
+				setTimeout(function(){
+					alert('Boo');
+					_ghost.el.dataset.state = undefined;
+				}, 1100);
+			});
 		}
 		,createGhostEl: function(_ghost){
 			this.positionGhostEl(_ghost);

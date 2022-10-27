@@ -57,10 +57,17 @@ $darkBG: #b94e00;
 	width: 100%;
 	z-index: 100;
 	> *{
+		cursor: pointer;
 		pointer-events: all;
-		transition: opacity 1s;
+		transform-box: fill-box;
+		transform-origin: center;
+		transition: opacity 1s, transform 1s;
 		&:hover{
 			opacity: 0;
+		}
+		&[data-state='boo']{
+			opacity: 1;
+			transform: scale(5);
 		}
 	}
 }
