@@ -1,0 +1,73 @@
+//==tokens
+code .token{
+	&.atrule,
+	&.attr-value,
+	&.keyword
+	{
+		color: #f66;
+	}
+	&.attr-name,
+	&.builtin,
+	&.char,
+	&.inserted
+	&.selector,
+	&.string,
+	{
+		color: #dfee79;
+	}
+	&.bold,
+	&.important
+	{
+		font-weight: bold;
+	}
+	&.boolean,
+	&.constant,
+	&.deleted
+	&.number,
+	&.property,
+	&.symbol,
+	&.tag,
+	{
+		color: #dfbf5e;
+	}
+	&.cdata,
+	&.doctype,
+	&.prolog
+	{
+		color: #aba;
+	}
+	&.comment{
+		color: #9a9;
+	}
+	&.class-name,
+	&.function
+	{
+		color: #44f6ff;
+	}
+	&.entity{
+		cursor: help;
+	}
+	&.entity,
+	&.language-css .string,
+	&.operator,
+	&.style .string,
+	&.url
+	{
+		color: #ea7979;
+	}
+	&.important,
+	&.regex,
+	&.variable
+	{
+		color: #f9ad25;
+	}
+	&.italic{
+		font-style: italic;
+	}
+	&.namespace{
+		opacity: 0.75;
+	}
+	&.punctuation{
+		color: #3bc41e;
+	}
+}

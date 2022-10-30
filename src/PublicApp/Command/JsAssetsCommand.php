@@ -70,6 +70,10 @@ class JsAssetsCommand extends Command{
 					passthru($command);
 				}
 			}
+
+			//--loaded lib
+			Files::symlinkRelativelySafely("{$dest}/prismjs", "{$src}/lib/prismjs");
+			echo "{$dest}/prismjs" . ' ' .  "{$src}/lib/primsjs";
 		}
 		return 0;
 	}

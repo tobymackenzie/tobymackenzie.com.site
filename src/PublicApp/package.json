@@ -4,6 +4,7 @@
 		"fontawesome": "https://github.com/FortAwesome/Font-Awesome.git#semver:^5"
 		,"icomoon": "https://github.com/Keyamoon/IcoMoon-Free"
 		,"@primer/octicons": "^10"
+		,"prismjs": "^1.29"
 	}
 	,"engines": {"yarn": ">=1.10"}
 	,"license": "UNLICENSED"

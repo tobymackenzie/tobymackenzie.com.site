@@ -1,5 +1,6 @@
 import * as docNav from './modules/appNav.js';
 import * as konamiCode from './modules/konamiCode.js';
+import * as code from './modules/code.js';
 import * as extra from './modules/extra.js';
 
 //--cache proxy service worker
