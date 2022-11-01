@@ -26,9 +26,6 @@ $darkBG: #b94e00;
 		--strongFG: #{$darkFG};
 	}
 }
-.appHeaderMessage:after{
-	content: '👻';
-}
 .appHeaderTagline:after{
 	content: '🎃';
 	margin-left: 1em;

@@ -42,7 +42,7 @@ if(window.Date){
 		'0614': '🇨🇿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🇺🇸',
 		'0704': 'Happy independence 🎆',
 		'0922': 'Happy emancipation',
-		'1031': 'Happy Halloween ',
+		'1031': 'Have a spooktacular Halloween ',
 		'1105': 'Remember, remember the 5th of November',
 		'1111': 'Thanks armistace',
 		'1224': 'Merry Christmas',
