@@ -43,7 +43,7 @@ if(window.Date){
 		'0704': 'Happy independence 🎆',
 		'0922': 'Happy emancipation',
 		'1031': 'Have a spooktacular Halloween ',
-		'1105': 'Remember, remember the 5th of November',
+		'1105': '<a href="https://www.youtube.com/watch?v=RS2HLC0sipA">Remember, remember the 5th of November</a>',
 		'1111': 'Thanks armistace',
 		'1224': 'Merry Christmas',
 		'1225': 'Merry Christmas 🎄',
