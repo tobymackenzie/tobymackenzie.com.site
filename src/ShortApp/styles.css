@@ -36,6 +36,7 @@ body{
 	/*! min-height: 100vh; */
 	overflow: hidden;
 	position: relative;
+	transition: transform 0.2s;
 }
 .cardCol1{
 	text-align: center;
@@ -220,7 +221,6 @@ html{
 	}
 	.card{
 		transform: rotate(2deg);
-		transition: transform 0.2s;
 	}
 	.card:hover, .card:focus-within{
 		transform: rotate(0deg) rotateY(0);
