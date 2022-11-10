@@ -61,6 +61,7 @@ if(window.Date){
 	messages['10' + ((octDay > 1 ? 16 : 9) - octDay).toString().padStart(2, '0')] = 'Happy Columbo\'s Day 🕵️‍♀️';
 	var novDay = new Date(year, 10, 1).getDay();
 	messages['11' + ((novDay > 4 ? 33 : 26) - novDay)] = 'Thanks 🦃';
+	messages['11' + ((novDay > 1 ? 10 : 3) - novDay).toString().padStart(2, '0')] = 'Vote 🗳. It\'s important';
 	var dayString = ((month + 1).toString().padStart(2, '0')) + (day.toString().padStart(2, '0'));
 	var messageEl;
 	if(messages[dayString] && document.querySelector && (messageEl = document.querySelector('.appHeaderMessage'))){
