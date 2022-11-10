@@ -218,6 +218,7 @@ html{
 		height: auto;
 		min-height: 100%;
 		padding: 0.5em; /*--ensure rotation doesn't cause scroll bars */
+		perspective: 50em; /*--for 3d rotation, make more 3d */
 	}
 	.card{
 		transform: rotate(2deg);
