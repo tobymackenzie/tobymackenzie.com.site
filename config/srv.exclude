@@ -1,0 +1,14 @@
+.DS_Store
+.git
+.sass-cache
+.well-known/
+caches/
+/config/*.local.php
+/config/*.local.yml
+/app/files/wp-uploads/*
+/dist/public/_assets/icons/
+/dist/public/_assets-dev
+/var/cache/*
+/var/logs/*
+/var/sessions/*
+/vendor/
