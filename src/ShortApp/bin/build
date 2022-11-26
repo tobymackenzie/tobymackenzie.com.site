@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+use TJM\Files\Files;
+
+//--config
+$projectPath = realpath(__DIR__ . '/../../..');
+$autoloadPath = $projectPath . '/vendor/autoload.php';
+$shortPath = realpath(__DIR__ . '/..');
+$distPath = $projectPath . '/dist/short/';
+require_once($autoloadPath);
+
+//--install webroot files
+$srcPath = $shortPath . '/www';
+foreach(glob($srcPath . '/{.??*,.[!.],*}', GLOB_BRACE) as $from){
+	$to = $distPath . basename($from);
+	Files::symlinkRelativelySafely($to, $from, $projectPath);
+}
+
+//--build index
+$indexContent = shell_exec('php ' . $shortPath . '/index.php');
+$indexTarget = $distPath . '/index.html';
+if(!file_exists($indexTarget) || $indexContent !== file_get_contents($indexTarget)){
+	echo "writing html\n";
+	file_put_contents($indexTarget, $indexContent);
+}

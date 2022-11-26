@@ -20,7 +20,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 			<meta content="initial-scale=1,width=device-width" name="viewport" />
 			<link rel="shortcut icon" href="//www.tobymackenzie.com/favicon.ico" />
 <?php
-$cssFile = __DIR__ . '/../styles.css';
+$cssFile = __DIR__ . '/styles.css';
 if(file_exists($cssFile)){
 ?>
 			<style><!--
@@ -59,7 +59,7 @@ if(file_exists($cssFile)){
 		<div class="appBG"></div>
 <?php
 
-$jsFile = __DIR__ . '/../../../dist/public/_assets/scripts/short.js';
+$jsFile = __DIR__ . '/../../dist/public/_assets/scripts/short.js';
 if(file_exists($jsFile)){
 ?>
 		<script><!--
