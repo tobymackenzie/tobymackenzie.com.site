@@ -84,6 +84,20 @@ if(file_exists($jsFile)){
 				}
 			}
 		})();
+		//--hide darken of me image from neobrowser, possibly other old Chromium, otherwise crashes on load (aw snap)
+		(function(){
+			var matches;
+			if(
+				document.querySelector && window.CSS && CSS.supports && CSS.supports('mix-blend-mode: darken')
+				&& !(
+					(matches = navigator.userAgent.match(/Chrome\/([^ \.]+)/))
+					&& matches
+					&& parseInt(matches[1], 10) <= 85
+				)
+			){
+				document.querySelector('html').classList.add('supports-darken')
+			}
+		})();
 		--></script>
 <?php } ?>
 	</body>

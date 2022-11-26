@@ -109,6 +109,9 @@ body{
 .cardMedia{
 	-webkit-mask-image: var(--horzMask);
 	mask-image: var(--horzMask);
+}
+.supports-darken .cardMedia{
+	/*--causes problems in neobrowser */
 	mix-blend-mode: darken;
 }
 .cardCol1{
