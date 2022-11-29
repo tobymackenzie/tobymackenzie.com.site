@@ -1,3 +1,6 @@
+<?php
+require_once(__DIR__ . '/inc.php');
+?>
 <!doctype html>
 <html lang="en">
 	<head>
@@ -20,7 +23,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 			<meta content="initial-scale=1,width=device-width" name="viewport" />
 			<link rel="shortcut icon" href="//www.tobymackenzie.com/favicon.ico" />
 <?php
-$cssFile = __DIR__ . '/styles.css';
+$cssFile = STYLES_PATH;
 if(file_exists($cssFile)){
 ?>
 			<style><!--
@@ -59,7 +62,7 @@ if(file_exists($cssFile)){
 		<div class="appBG"></div>
 <?php
 
-$jsFile = __DIR__ . '/../../dist/public/_assets/scripts/short.js';
+$jsFile = JS_DIST_PATH;
 if(file_exists($jsFile)){
 ?>
 		<script><!--

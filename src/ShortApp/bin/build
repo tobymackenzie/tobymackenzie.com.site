@@ -1,25 +1,19 @@
 #!/usr/bin/env php
 <?php
 use TJM\Files\Files;
-
-//--config
-$projectPath = realpath(__DIR__ . '/../../..');
-$autoloadPath = $projectPath . '/vendor/autoload.php';
-$shortPath = realpath(__DIR__ . '/..');
-$distPath = $projectPath . '/dist/short/';
-require_once($autoloadPath);
+require_once(__DIR__ . '/../inc.php');
+require_once(AUTOLOAD_PATH);
 
 //--install webroot files
-$srcPath = $shortPath . '/www';
+$srcPath = SHORT_PATH . '/www';
 foreach(glob($srcPath . '/{.??*,.[!.],*}', GLOB_BRACE) as $from){
-	$to = $distPath . basename($from);
-	Files::symlinkRelativelySafely($to, $from, $projectPath);
+	$to = DIST_PATH . '/' . basename($from);
+	Files::symlinkRelativelySafely($to, $from, PROJECT_PATH);
 }
 
 //--build index
-$indexContent = shell_exec('php ' . $shortPath . '/index.php');
-$indexTarget = $distPath . '/index.html';
-if(!file_exists($indexTarget) || $indexContent !== file_get_contents($indexTarget)){
+$indexContent = shell_exec('php ' . INDEX_PATH);
+if(!file_exists(INDEX_DIST_PATH) || $indexContent !== file_get_contents(INDEX_DIST_PATH)){
 	echo "writing html\n";
-	file_put_contents($indexTarget, $indexContent);
+	file_put_contents(INDEX_DIST_PATH, $indexContent);
 }
