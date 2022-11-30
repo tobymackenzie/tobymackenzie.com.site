@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/inc.php');
+$cssFile = ENV !== 'dev' && file_exists(STYLES_DIST_PATH) ? STYLES_DIST_PATH : STYLES_PATH;
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,14 +23,9 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 -->
 			<meta content="initial-scale=1,width=device-width" name="viewport" />
 			<link rel="shortcut icon" href="//www.tobymackenzie.com/favicon.ico" />
-<?php
-$cssFile = STYLES_PATH;
-if(file_exists($cssFile)){
-?>
 			<style><!--
 			<?=file_get_contents($cssFile)?>
 			--></style>
-<?php } ?>
 		</head>
 	<body>
 		<div class="card" itemscope="itemscope" itemtype="http://schema.org/Person">

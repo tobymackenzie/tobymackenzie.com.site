@@ -11,6 +11,20 @@ foreach(glob($srcPath . '/{.??*,.[!.],*}', GLOB_BRACE) as $from){
 	Files::symlinkRelativelySafely($to, $from, PROJECT_PATH);
 }
 
+//--build css
+if(`which sassc`){
+	$sassBin = 'sassc';
+}elseif(`which sass`){
+	$sassBin = 'sass';
+}
+if(isset($sassBin)){
+	chdir(SHORT_PATH);
+	$cssContent = shell_exec("{$sassBin} --style compressed " . STYLES_PATH);
+	if(!file_exists(STYLES_DIST_PATH) || $cssContent !== file_get_contents(STYLES_DIST_PATH)){
+		file_put_contents(STYLES_DIST_PATH, $cssContent);
+	}
+}
+
 //--build index
 $indexContent = shell_exec('php ' . INDEX_PATH);
 if(!file_exists(INDEX_DIST_PATH) || $indexContent !== file_get_contents(INDEX_DIST_PATH)){

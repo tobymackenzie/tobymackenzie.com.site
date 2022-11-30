@@ -12,3 +12,4 @@ define('STYLES_PATH', SHORT_PATH . '/styles.css');
 define('DIST_PATH', PROJECT_PATH . '/dist/short');
 define('INDEX_DIST_PATH', DIST_PATH . '/index.html');
 define('JS_DIST_PATH', DIST_PATH . '/../public/_assets/scripts/short.js');
+define('STYLES_DIST_PATH', DIST_PATH . '/_styles.css');
