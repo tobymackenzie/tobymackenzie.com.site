@@ -4,14 +4,14 @@
 }
 blockquote{
 	@extend %block;
-	@include colorFallback('border-left', 3px solid rgba(map-get($colors, border), 0.6));
+	border-left: 3px solid rgba(map-get($colors, border), 0.6);
 	border-left: 3px solid var(--quoteBorder);
 	margin-left: 0;
 	padding: 1em 0.5em 1em 2em;
 	position: relative;
 	&:after, &:before{
 		@extend %font-bold;
-		@include colorFallback('color', rgba(map-get($colors, strong), 0.6));
+		color: rgba(map-get($colors, strong), 0.6);
 		color: #{rgba(var(--strongFG), 0.6)};
 		font-size: 2em;
 		line-height: 1;
