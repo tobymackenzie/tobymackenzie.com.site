@@ -45,6 +45,7 @@ if(window.Date){
 		'1031': 'Have a spooktacular Halloween ',
 		'1105': '<a href="https://www.youtube.com/watch?v=RS2HLC0sipA">Remember, remember the 5th of November</a>',
 		'1111': 'Thanks armistace',
+		'1130': 'Yay, web standards',
 		'1224': 'Merry Christmas',
 		'1225': 'Merry Christmas 🎄',
 		'1231': 'Goodbye, ' + now.getFullYear(),
