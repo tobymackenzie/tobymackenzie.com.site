@@ -56,7 +56,11 @@ class CssAssetsCommand extends Command{
 			if($postCSSBin){
 				$run .= ' | ' . $postCSSBin;
 			}
-			$run .= " > {$dest}/{$nameBase}.css";
+			$fileDest = "{$dest}/{$nameBase}.css";
+			$run .= " > {$fileDest}";
+			if($output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE){
+				$run .= " && echo '{$nameBase}: full size:' `cat {$fileDest} | wc -c` 'gzip size:' `gzip -c {$fileDest} | wc -c`";
+			}
 			$process = Process::fromShellCommandline($run, $basePath);
 			$process->start();
 			$processes[] = $process;
