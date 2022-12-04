@@ -30,6 +30,7 @@
 .appBottomAction, .appMainAction, .appRestartAction, .appSiteNavAction{
 	&:before{
 		@include appNavItemIconLayout();
+		@extend %icon-base-color;
 	}
 }
 .appBottomAction{

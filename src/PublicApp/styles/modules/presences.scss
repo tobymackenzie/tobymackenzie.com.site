@@ -1,9 +1,20 @@
-%presenceAction{
+.presence{
+	break-inside: avoid;
+	//--whitespace
+	//-# padding to prevent weird wrapping of margin in webkit
+	margin: 0;
+	padding-bottom: 1.5em;
+	@include mq('print'){
+		padding-bottom: 0.5em;
+	}
+}
+[class^='presenceAction-']/*, [class*=' presenceAction-']*/{
 	text-decoration: none;
 	@include mq('print'){
 		text-decoration: underline;
 	}
 	&:before{
+		@extend %icon-base-color;
 		@include icon-with-label();
 		vertical-align: middle;
 	}
@@ -21,57 +32,40 @@
 		}
 	}
 }
-.presence{
-	break-inside: avoid;
-	//--whitespace
-	//-# padding to prevent weird wrapping of margin in webkit
-	margin: 0;
-	padding-bottom: 1.5em;
-	@include mq('print'){
-		padding-bottom: 0.5em;
-	}
-}
 .presenceAction-writings{
 	&:before{
 		@extend %icon-writings;
 	}
-	@extend %presenceAction;
 }
 .presenceAction-github{
 	&:before{
 		@extend %icon-github;
 	}
-	@extend %presenceAction;
 }
 .presenceAction-twitter{
 	&:before{
 		@extend %icon-twitter;
 	}
-	@extend %presenceAction;
 }
 .presenceAction-linkedin{
 	&:before{
 		@extend %icon-linkedin;
 	}
-	@extend %presenceAction;
 }
 .presenceAction-delicious{
 	&:before{
 		@extend %icon-delicious;
 	}
-	@extend %presenceAction;
 }
 .presenceAction-stackoverflow{
 	&:before{
 		@extend %icon-stackoverflow;
 	}
-	@extend %presenceAction;
 }
 .presenceAction-packagist{
 	&:before{
 		@extend %icon-packagist;
 	}
-	@extend %presenceAction;
 }
 .presences{
 	column-fill: balance;

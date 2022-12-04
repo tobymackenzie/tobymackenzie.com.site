@@ -29,33 +29,54 @@
 	}
 }
 
-
-@mixin single-icon($name, $size: 32px){
+@mixin single-icon(){
 	@include icon();
-	$url: '/_assets/svgs/#{$name}';
 	box-sizing: border-box;
-	background: url('#{$url}') no-repeat;
 	background-position: left center;
+	background-repeat: no-repeat;
 	background-size: contain;
+	@include remFallback('max-height', 32px);
+	@include remFallback('max-width', 32px);
+	overflow: hidden;
+	vertical-align: middle;
+	width: auto;
+	white-space: pre;
+}
+%single-icon{
+	@include single-icon();
+}
+@mixin svg-icon($name){
+	$url: '/_assets/svgs/#{$name}';
+	background-image: url('#{$url}');
 	//-# '\A' is line break to move inserted content out of visible area
 	//-# url is to expand container only if url loads
 	//-# space is for IE 9-11, which show content instead of bg
 	//-! space means extra whitespace if icon doesn't load though, which negates the whole padding instead of margin hack
 	content: '\A\A' url('#{$url}') ' ';
+}
+@mixin fa-icon($name){
+	@include svg-icon($name);
+}
+@mixin icm-icon($name){
+	@include svg-icon($name);
+}
+@mixin oct-icon($name){
+	@include svg-icon($name);
+}
+@mixin icon-size($size: 32px){
 	@include remFallback('max-height', $size);
 	@include remFallback('max-width', $size);
-	overflow: hidden;
-	vertical-align: middle;
-	width: auto;
-	white-space: pre;
-
+}
+@mixin icon-base-color(){
 	//--color
 	//-@ via https://codepen.io/sosuke/pen/Pjoqqp
 	filter: invert(22%) sepia(70%) saturate(388%) hue-rotate(71deg);
 	@include supports('dark-theme'){
 		filter: invert(47%) sepia(70%) saturate(388%) hue-rotate(71deg);
 	}
-
+}
+%icon-base-color{
+	@include icon-base-color;
 }
 @mixin icon-with-label{
 	max-width: 2.6rem;
@@ -63,83 +84,93 @@
 @mixin icon-resize($size: 3rem){
 	background-size: $size;
 }
-@mixin fa-icon($name, $size: 32px){
-	@include single-icon($name, $size);
-}
-@mixin icm-icon($name, $size: 32px){
-	@include single-icon($name, $size);
-}
-@mixin oct-icon($name, $size: 32px){
-	@include single-icon($name, $size);
-}
-
 %icon-email{
+	@extend %single-icon;
 	@include oct-icon('email.svg');
 }
 %icon-packagist{
+	@extend %single-icon;
 	@include oct-icon('packagist.svg');
 }
 %icon-home{
+	@extend %single-icon;
 	@include icm-icon('home.svg');
 }
 %icon-writings{
+	@extend %single-icon;
 	@include icm-icon('quill.svg');
 }
 %icon-file-text{
+	@extend %single-icon;
 	@include icm-icon('file-text.svg');
 	background-position-x: 10%;
 }
 %icon-about{
+	@extend %single-icon;
 	@include icm-icon('profile.svg');
 }
 %icon-portfolio{
+	@extend %single-icon;
 	@include icm-icon('folder.svg');
 }
-@mixin icon-search($size: 32){
-	@include icm-icon('search.svg', $size);
+@mixin icon-search(){
+	@include icm-icon('search.svg');
 }
 %icon-search{
+	@extend %single-icon;
 	@include icon-search();
 }
 %icon-settings{
+	@extend %single-icon;
 	@include icm-icon('cog.svg');
 }
 %icon-link{
+	@extend %single-icon;
 	@include icm-icon('link.svg');
 }
 %icon-info{
+	@extend %single-icon;
 	@include icm-icon('info.svg');
 }
 %icon-menu{
+	@extend %single-icon;
 	@include fa-icon('list.svg');
 }
 %icon-twitter{
+	@extend %single-icon;
 	@include fa-icon('twitter.svg');
 	@include icon-resize(2.2rem);
 }
 %icon-github{
+	@extend %single-icon;
 	@include icm-icon('github.svg');
 }
 %icon-linkedin{
+	@extend %single-icon;
 	@include icm-icon('linkedin.svg');
 }
 %icon-delicious{
+	@extend %single-icon;
 	@include icm-icon('delicious.svg');
 }
 %icon-stackoverflow{
+	@extend %single-icon;
 	@include fa-icon('stack-overflow.svg');
 	// @include icon-resize(2.2rem);
 }
 %icon-bottom{
+	@extend %single-icon;
 	@include fa-icon('caret-down.svg');
 	@include icon-resize(3rem);
 	background-position-x: -0.5em;
 }
 %icon-top{
+	@extend %single-icon;
 	@include fa-icon('caret-up.svg');
 	@include icon-resize(3rem);
 	background-position-x: -0.5em;
 }
 %icon-code{
+	@extend %single-icon;
 	@include fa-icon('code.svg');
 }

@@ -62,7 +62,8 @@ $siteNavSearchWidth: 13em;
 		z-index: 1;
 		&:before{
 			$size: 20;
-			@include icon-search($size);
+			@extend %icon-search;
+			@include icon-size($size);
 			@include siteNavIconColors();
 			@include remFallback('height', $size);
 			vertical-align: middle;

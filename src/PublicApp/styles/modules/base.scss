@@ -16,27 +16,21 @@
 }
 	@keyframes wiggle{
 		0%{
-			transform: scale(1) skew(0);
 			transform: skew(0);
 		}
 		20%{
-			transform: scale(1.03) skew(8deg);
 			transform: skew(12deg);
 		}
 		40%{
-			transform: scale(0.96) skew(-5deg);
 			transform: skew(-12deg);
 		}
 		60%{
-			transform: scale(1.02) skew(1deg);
 			transform: skew(8deg);
 		}
 		80%{
-			transform: scale(1.03) skew(8deg);
 			transform: skew(-8deg);
 		}
 		100%{
-			transform: scale(1) skew(0);
 			transform: skew(0);
 		}
 	}
