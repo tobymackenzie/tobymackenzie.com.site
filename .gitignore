@@ -15,6 +15,7 @@ yarn.lock
 !bin/blog-install
 !bin/protected
 !bin/public
+!bin/short
 /composer.lock
 /composer.phar
 /config/*local.*
