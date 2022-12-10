@@ -25,6 +25,20 @@ if(isset($sassBin)){
 	}
 }
 
+//--build js
+if(`which rollup`){
+	chdir(SHORT_PATH);
+	echo JS_PATH . "\n";
+	$command = "rollup " . JS_PATH . " --output.format iife ";
+	if(`which uglifyjs`){
+		$command .= " | uglifyjs --compress --mangle";
+	}
+	$jsContent = shell_exec($command);
+	if(!file_exists(JS_DIST_PATH) || $jsContent !== file_get_contents(JS_DIST_PATH)){
+		file_put_contents(JS_DIST_PATH, $jsContent);
+	}
+}
+
 //--build index
 $indexContent = shell_exec('php ' . INDEX_PATH);
 if(!file_exists(INDEX_DIST_PATH) || $indexContent !== file_get_contents(INDEX_DIST_PATH)){
