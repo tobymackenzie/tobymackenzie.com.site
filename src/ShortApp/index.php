@@ -52,7 +52,11 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 			</div>
 			<div class="cardFace cardBack">
 				<div class="cardBackLogo">&lt;toby/&gt;</div>
-				<div>macn.me</div>
+				<div>
+					<?php if(GH_PAGES){ ?><a href="//macn.me"><?php } ?>
+						macn.me
+					<?php if(GH_PAGES){ ?></a><?php } ?>
+				</div>
 			</div>
 		</div>
 		<div class="appBG"></div>
