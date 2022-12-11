@@ -450,6 +450,9 @@
 	.statsDay.statsDay > tbody > tr.referrer:hover, .statsDay.statsDay > tbody > tr.click:hover, tr.table.table tr:hover, #incominglinks#incominglinks li:hover{
 		background: var(--tm-focus-bg) !important;
 	}
+	.statsDay tr.table tr{
+		background: var(--tm-secondary-bg-alt);
+	}
 	ul.metabox-tabs.metabox-tabs{
 		background: var(--tm-secondary-bg-alt);
 	}
