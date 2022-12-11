@@ -20,6 +20,7 @@ if(isset($sassBin)){
 	chdir(SHORT_PATH);
 	$cssContent = shell_exec("{$sassBin} --style compressed " . STYLES_PATH);
 	if(!file_exists(STYLES_DIST_PATH) || $cssContent !== file_get_contents(STYLES_DIST_PATH)){
+		echo "writing css\n";
 		file_put_contents(STYLES_DIST_PATH, $cssContent);
 	}
 }
@@ -27,13 +28,13 @@ if(isset($sassBin)){
 //--build js
 if(`which rollup`){
 	chdir(SHORT_PATH);
-	echo JS_PATH . "\n";
 	$command = "rollup " . JS_PATH . " --output.format iife ";
 	if(`which uglifyjs`){
 		$command .= " | uglifyjs --compress --mangle";
 	}
 	$jsContent = shell_exec($command);
 	if(!file_exists(JS_DIST_PATH) || $jsContent !== file_get_contents(JS_DIST_PATH)){
+		echo "writing js\n";
 		file_put_contents(JS_DIST_PATH, $jsContent);
 	}
 }
