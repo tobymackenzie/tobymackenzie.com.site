@@ -7,8 +7,7 @@ require_once(AUTOLOAD_PATH);
 //--install webroot files
 $srcPath = SHORT_PATH . '/www';
 foreach(glob($srcPath . '/{.??*,.[!.],*}', GLOB_BRACE) as $from){
-	$to = DIST_PATH . '/' . basename($from);
-	Files::symlinkRelativelySafely($to, $from, PROJECT_PATH);
+	Files::symlinkRelativelySafely(DIST_PATH . '/' . basename($from), $from, PROJECT_PATH);
 }
 
 //--build css
