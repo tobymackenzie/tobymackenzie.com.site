@@ -403,6 +403,10 @@
 	div.staticmetabox.staticmetabox{
 		background: var(--tm-secondary-bg);
 	}
+	.staticmetabox h4, .staticmetabox h3{
+		color: var(--tm-action-fg);
+		text-shadow: none;
+	}
 	.dops-banner__description.dops-banner__description .dops-banner__description, .dops-banner__info.dops-banner__info .dops-banner__list, .dops-banner__info.dops-banner__info .dops-banner__title{
 		color: var(--tm-secondary-fg);
 	}
