@@ -113,6 +113,9 @@
 	a{
 		color: var(--tm-action-fg);
 	}
+	a:focus:focus, a:hover:hover{
+		color: var(--tm-exclaim-bg-focus);
+	}
 	h1, h2, h3, h4, h5, h6{
 		color: var(--tm-primary-fg-alt);
 	}
