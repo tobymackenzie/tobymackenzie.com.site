@@ -197,6 +197,23 @@
 		background-color: var(--tm-secondary-bg);
 	}
 
+	/*--login */
+	.login #backtoblog a, .login #nav a{
+		color: var(--tm-action-fg);
+	}
+	.login #backtoblog a:hover, .login #nav a:hover, .login h1 a:hover{
+		color: var(--tm-exclaim-bg-focus);
+	}
+	.login form{
+		background: var(--tm-secondary-bg);
+	}
+	.login form .input, .login form input[type="checkbox"], .login input[type="text"]{
+		background: var(--tm-primary-bg);
+	}
+	.login #login_error, .login .message, .login .success{
+		background-color: var(--tm-exclaim-bg);
+	}
+
 	/*--tables */
 	.plugins .active td, .plugins .active th{
 		background: var(--tm-exclaim-bg);
