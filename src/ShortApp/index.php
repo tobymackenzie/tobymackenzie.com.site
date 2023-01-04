@@ -27,25 +27,25 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 			--></style>
 		</head>
 	<body>
-		<div class="card" itemscope="itemscope" itemtype="http://schema.org/Person">
+		<div class="card h-card" itemscope="itemscope" itemtype="http://schema.org/Person">
 			<div class="cardFace cardFront">
 				<div class="cardLogo"><div class="cardLogoText">&lt;toby&gt;</div></div>
 				<div class="cardCol1">
 					<div class="cardMedia">
-						<img alt="From the background, the shape of a face presents itself. As it becomes clearer, a white, slightly scruffy humanoid male with slightly wavy, dark brown hair turning to gray, stares blankly at you.  The ghostly apparation seems distant, and yet… could it be…" class="cardImage" itemprop="image" src="/_toby.jpg" />
+						<img alt="From the background, the shape of a face presents itself. As it becomes clearer, a white, slightly scruffy humanoid male with slightly wavy, dark brown hair turning to gray, stares blankly at you.  The ghostly apparation seems distant, and yet… could it be…" class="cardImage u-photo" itemprop="image" src="/_toby.jpg" />
 					</div>
 				</div>
 				<div class="cardCol2">
-					<h1 class="cardItem" itemprop="name"><span itemprop="givenName">Toby</span> <span itemprop="familyName">Mackenzie</span></h1>
+					<h1 class="cardItem p-name" itemprop="name"><span class="p-given-name" itemprop="givenName">Toby</span> <span class="p-family-name" itemprop="familyName">Mackenzie</span></h1>
 					<div class="cardGroup" itemprop="hasOccupation" itemscope="itemscope" itemtype="http://schema.org/Occupation">
-						<div class="cardItem" itemprop="name"><strong>Webmaster</strong> <small class="cardItemEtc">(LAMP developer)</small></div>
+						<div class="cardItem p-job-title" itemprop="name"><strong>Webmaster</strong> <small class="cardItemEtc">(LAMP developer)</small></div>
 						<small class="cardSkills cardItem" itemprop="skills">HTML CSS JS PHP MySQL Apache Linux</small>
 					</div>
-					<div class="cardItem"><a href="mailto:public@tobymackenzie.com" itemprop="email">public@tobymackenzie.com</a></div>
-					<div class="cardItem"><a href="//www.tobymackenzie.com" itemprop="url">tobymackenzie.com</a></div>
+					<div class="cardItem"><a class="u-email" href="mailto:public@tobymackenzie.com" itemprop="email">public@tobymackenzie.com</a></div>
+					<div class="cardItem"><a class="u-url" href="//www.tobymackenzie.com" itemprop="url" rel="me">tobymackenzie.com</a></div>
 					<div class="cardItem" itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress">
-						<span itemprop="addressLocality">Akron</span>,
-						<span itemprop="addressRegion">Ohio</span>
+						<span class="p-locality" itemprop="addressLocality">Akron</span>,
+						<span class="p-region" itemprop="addressRegion">Ohio</span>
 					</div>
 				</div>
 			</div>
