@@ -8,23 +8,23 @@ $loader = require(VENDOR_DIR . '/autoload.php');
 $app = new App([
 	'allowedDevIPs'=> ['127.0.0.1', '::1', '192.168.56.1'],
 	'bundles'=> [
-		'Symfony\Bundle\FrameworkBundle\FrameworkBundle'
-		,'Symfony\Bundle\TwigBundle\TwigBundle'
-		,'Symfony\Bundle\MonologBundle\MonologBundle'
-		,'TJM\Bundle\BaseBundle\TJMBaseBundle'
-		,'Symfony\Bundle\DebugBundle\DebugBundle'=> ['dev', 'test']
-		,'Symfony\Bundle\WebProfilerBundle\WebProfilerBundle'=> ['dev', 'test']
-	]
+		'Symfony\Bundle\FrameworkBundle\FrameworkBundle',
+		'Symfony\Bundle\TwigBundle\TwigBundle',
+		'Symfony\Bundle\MonologBundle\MonologBundle',
+		'TJM\Bundle\BaseBundle\TJMBaseBundle',
+		'Symfony\Bundle\DebugBundle\DebugBundle'=> ['dev', 'test'],
+		'Symfony\Bundle\WebProfilerBundle\WebProfilerBundle'=> ['dev', 'test'],
+	],
 	//-# uncomment to enable Symfony's HTTPCache in 'prod' environment
-	// ,'cache'=> 'prod'
-	,'loader'=> $loader
-	,'paths'=> [
+	// 'cache'=> 'prod',
+	'loader'=> $loader,
+	'paths'=> [
 		//--symfony paths
-		'app'=> __DIR__
-		,'project'=> PROJECT_DIR
-		,'src'=> PROJECT_DIR . '/src'
-		,'var'=> PROJECT_DIR . '/var'
-		,'vendor'=> VENDOR_DIR
-	]
+		'app'=> __DIR__,
+		'project'=> PROJECT_DIR,
+		'src'=> PROJECT_DIR . '/src',
+		'var'=> PROJECT_DIR . '/var',
+		'vendor'=> VENDOR_DIR,
+	],
 ]);
 return $app;
