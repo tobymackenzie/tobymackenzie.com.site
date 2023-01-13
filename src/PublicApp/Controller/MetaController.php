@@ -99,9 +99,9 @@ class MetaController extends Controller{
 		return $response;
 	}
 	public function humansAction(
-		$_format = 'html'
-		,ParsedownExtra $markdownToHtml
+		ParsedownExtra $markdownToHtml
 		,Request $request
+		,$_format = 'html'
 	){
 		$data = [
 			'sections'=> [
