@@ -15,6 +15,8 @@ $app = new App([
 		,'Symfony\Bundle\DebugBundle\DebugBundle'=> ['dev', 'test']
 		,'Symfony\Bundle\WebProfilerBundle\WebProfilerBundle'=> ['dev', 'test']
 	]
+	//-# uncomment to enable Symfony's HTTPCache in 'prod' environment
+	// ,'cache'=> 'prod'
 	,'loader'=> $loader
 	,'paths'=> [
 		//--symfony paths
@@ -25,7 +27,4 @@ $app = new App([
 		,'vendor'=> VENDOR_DIR
 	]
 ]);
-//-# uncomment to enable Symfony's HTTPCache in 'prod' environment
-// $app->setCache('prod');
-
 return $app;
