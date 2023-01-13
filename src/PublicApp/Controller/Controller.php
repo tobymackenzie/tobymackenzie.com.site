@@ -6,7 +6,7 @@ use TJM\Views\Views;
 
 class Controller extends Base{
 	protected function getGlobalRenderData(array $parameters = Array()){
-		$request = $this->get('request_stack')->getMasterRequest();
+		$request = $this->get('request_stack')->getMainRequest();
 		return $this->get(Views::class)->getDocData($request, $parameters);
 	}
 	public function renderPage($view, array $parameters = array(), Response $response = null){
