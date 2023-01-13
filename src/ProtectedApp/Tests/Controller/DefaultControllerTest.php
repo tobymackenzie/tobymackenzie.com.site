@@ -11,10 +11,10 @@ class DefaultControllerTest extends WebTestCase{
 		$client = static::createClient();
 		$client->request('GET', $path);
 		$this->assertEquals(200, $client->getResponse()->getStatusCode(), 'Status code should be 200 success');
-		$this->assertContains('</html>', $client->getResponse()->getContent(), 'Content should contain ending </html>, implying that a full html document was rendered.');
-		$this->assertContains('probably want to visit', $client->getResponse()->getContent());
+		$this->assertStringContainsStringIgnoringCase('</html>', $client->getResponse()->getContent(), 'Content should contain ending </html>, implying that a full html document was rendered.');
+		$this->assertStringContainsStringIgnoringCase('probably want to visit', $client->getResponse()->getContent());
 		// $desiredUrl = 'http://www.tobymackenzie.com' . $path;
-		// $this->assertContains($desiredUrl, $client->getResponse()->getContent(), 'Content should contain ending the desired URL (), implying that a full html document was rendered.');
+		// $this->assertStringContainsStringIgnoringCase($desiredUrl, $client->getResponse()->getContent(), 'Content should contain ending the desired URL (), implying that a full html document was rendered.');
 		// $this->assertEquals(301, $client->getResponse()->getStatusCode(), 'Status code should be 301, indicating a permanent redirect');
 		// $this->assertTrue($client->getResponse()->isRedirect($desiredUrl), "'{$path}' should be redirected to '{$desiredUrl}', was instead '{$client->getResponse()->headers->get('Location')}'");
 	}

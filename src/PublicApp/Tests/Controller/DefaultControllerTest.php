@@ -29,7 +29,7 @@ class DefaultControllerTest extends WebTestCase{
 		$this->assertTrue(!$client->getResponse()->isRedirection(), 'Should not be redirection');
 		$this->assertStringStartsWith($contentType, $client->getResponse()->headers->get('Content-Type'), 'Content should be of type \'' . $contentType . '\'.');
 		if($extension === 'html' || $extension === 'xhtml'){
-			$this->assertContains('</html>', $client->getResponse()->getContent(), 'Content should contain ending </html>, implying that a full html document was rendered.');
+			$this->assertStringContainsStringIgnoringCase('</html>', $client->getResponse()->getContent(), 'Content should contain ending </html>, implying that a full html document was rendered.');
 		}
 	}
 	public function testTrailingSlash404(){
