@@ -22,11 +22,5 @@ yarn.lock
 !/config/*local.*.dist
 /dist/
 /var/*
-!/var/cache/
-/var/cache/*
-!/var/cache/.gitkeep
-!/var/logs/
-/var/logs/*
-!/var/logs/.gitkeep
 /vendor/*
 !/vendor/.gitkeep

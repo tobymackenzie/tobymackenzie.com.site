@@ -6,6 +6,18 @@ use TJM\Files\Files;
 $projectPath = realpath(__DIR__ . '/..');
 $autoloadPath = $projectPath . '/vendor/autoload.php';
 
+//--make sure we have var folders
+foreach([
+	'var',
+	'var/cache',
+	'var/logs',
+] as $dir){
+	$path = $projectPath . '/' . $dir;
+	if(!file_exists($path)){
+		passthru('mkdir ' . $path);
+	}
+}
+
 //--make sure we have vendors installed
 if(!file_exists($autoloadPath)){
 	chdir($projectPath);
