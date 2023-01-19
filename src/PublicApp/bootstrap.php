@@ -2,7 +2,8 @@
 namespace TJM\SyWeb;
 
 //--Define configuration used by App singleton, such as paths.
-define(__NAMESPACE__ . '\PROJECT_DIR', realpath(__DIR__ . '/../..'));
+define(__NAMESPACE__ . '\APP_DIR', realpath(__DIR__));
+define(__NAMESPACE__ . '\PROJECT_DIR', realpath(APP_DIR . '/../..'));
 define(__NAMESPACE__ . '\VENDOR_DIR', PROJECT_DIR . '/vendor');
 $loader = require(VENDOR_DIR . '/autoload.php');
 $app = new App([

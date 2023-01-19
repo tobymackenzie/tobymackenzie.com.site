@@ -1,6 +1,6 @@
 <?php
 namespace PublicApp\Listener;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 
 //-@ https://securityheaders.io/?q=http%3A%2F%2Ftobymackenzie.com
 
@@ -13,7 +13,7 @@ class HeadersListener{
 	}
 	//-@ http://stackoverflow.com/a/21720357/1139122
 	//-@ http://php-and-symfony.matthiasnoback.nl/2011/10/symfony2-create-a-response-filter-and-set-extra-response-headers/
-	public function onKernelResponse(FilterResponseEvent $event){
+	public function onKernelResponse(ResponseEvent $event){
 		$request = $event->getRequest();
 		$headers = $event->getResponse()->headers;
 		if($this->env === 'dev'){

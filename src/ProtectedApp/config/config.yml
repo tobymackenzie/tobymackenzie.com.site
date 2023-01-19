@@ -3,6 +3,9 @@ imports:
   - {resource: ../../../config/symfony.yml}
   - {resource: ../../../config/protected.local.yml}
 
+parameters:
+    kernel.root_dir: !php/const TJM\SyWeb\APP_DIR
+
 framework:
  assets: ~
  default_locale: '%locale%'
