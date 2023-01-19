@@ -8,7 +8,5 @@ caches/
 /app/files/wp-uploads/*
 /dist/public/_assets/icons/
 /dist/public/_assets-dev
-/var/cache/*
-/var/logs/*
-/var/sessions/*
+/var/*
 /vendor/
