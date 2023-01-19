@@ -34,6 +34,9 @@ twig:
  debug: "%kernel.debug%"
  exception_controller: null
  globals:
+   tm:
+     environment: '%kernel.environment%'
+     headerMessage: '%app.header-message%'
    assets:
      #-! I'd prefer these to not be hard coded, probably coming from assets service, but that will take some figuring out
      scripts_path: '%assets.web_root%/scripts'
