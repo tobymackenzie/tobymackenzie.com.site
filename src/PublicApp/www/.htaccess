@@ -94,12 +94,14 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteCond %{REQUEST_URI} ^/?_/wp/index\.php$
 	RewriteRule ^ /blog/ [END,R=301]
 
-	##==serve files and directories, except root
-	RewriteCond %{REQUEST_FILENAME} -f
-	RewriteRule .? - [L]
-	RewriteCond %{REQUEST_FILENAME} -d
-	RewriteCond %{REQUEST_URI} !^/?$
-	RewriteRule .? - [L]
+	##==serve existing files directly
+	RewriteCond %{REQUEST_FILENAME} -f [OR]
+	#--show dir index files
+	RewriteCond %{REQUEST_FILENAME}/index\.html -f [OR]
+	RewriteCond %{REQUEST_FILENAME}/index\.php -f [OR]
+	#--allow apache indexes for specific dirs
+	RewriteCond %{REQUEST_URI} ^/?(examples|sites) [NC]
+	RewriteRule ^ - [L]
 
 	##==public
 	##===serve wordpress for appropriate urls
