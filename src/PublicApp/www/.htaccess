@@ -18,8 +18,9 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteEngine On
 
 	#==maintenance mode
+	# RewriteRule \.(css|ico|js|png)$ - [END]
 	# RewriteCond %{ENV:REDIRECT_STATUS} !=503
-	# RewriteRule ^ - [L,R=503]
+	# RewriteRule ^ - [END,R=503]
 	# ErrorDocument 503 /_maintenance.html
 	# Header Set Cache-Control "max-age=0, no-store"
 
