@@ -18,6 +18,7 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteEngine On
 
 	#==maintenance mode
+	# RewriteCond %{REQUEST_FILENAME} -f
 	# RewriteRule \.(css|ico|js|png)$ - [END]
 	# RewriteCond %{ENV:REDIRECT_STATUS} !=503
 	# RewriteRule ^ - [END,R=503]
