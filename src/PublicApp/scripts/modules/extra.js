@@ -35,6 +35,7 @@ if(window.Date){
 		'0101': 'Happy New Year 🎉',
 		'0106': 'Happy Toby Day',
 		'0107': '👨‍💻 Code',
+		'0314': '🟢 == π',
 		'0401': 'loof, lirpA ot emocleW',
 		'0422': '🌎 🌳',
 		'0504': 'May the 4th be with you',
