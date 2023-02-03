@@ -22,7 +22,7 @@ class CssAssetsCommand extends Command{
 			->setDescription("Build CSS.")
 		;
 	}
-	protected function execute(InputInterface $input, OutputInterface $output){
+	protected function execute(InputInterface $input, OutputInterface $output): int{
 		if(`which sassc`){
 			$sassBin = 'sassc';
 		}elseif(`which sass`){

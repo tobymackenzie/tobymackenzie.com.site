@@ -21,7 +21,7 @@ class AssetsCommand extends Command{
 			->setDescription("Install assets.")
 		;
 	}
-	protected function execute(InputInterface $input, OutputInterface $output){
+	protected function execute(InputInterface $input, OutputInterface $output): int{
 		$this->assetsService->linkAssets();
 		$this->assetsService->buildSvgs();
 		return 0;

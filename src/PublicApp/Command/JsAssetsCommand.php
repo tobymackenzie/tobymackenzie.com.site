@@ -30,7 +30,7 @@ class JsAssetsCommand extends Command{
 		}
 		return $files;
 	}
-	protected function execute(InputInterface $input, OutputInterface $output){
+	protected function execute(InputInterface $input, OutputInterface $output): int{
 		$src = $this->assetsService->getScriptsPath();
 		$dest = $this->assetsService->getScriptsDistPath();
 		if($this->env === 'dev'){
