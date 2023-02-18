@@ -51,11 +51,13 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 			</div>
 			<div class="cardFace cardBack">
 				<div class="cardBackLogo">&lt;toby/&gt;</div>
-				<div>
+				<div class="cardItem">
 					<?php if(GH_PAGES){ ?><a href="//macn.me"><?php } ?>
 						macn.me
 					<?php if(GH_PAGES){ ?></a><?php } ?>
 				</div>
+				<div class="cardItem"><a href="//www.tobymackenzie.com/blog/">tobymackenzie.com/blog</a></div>
+				<div class="cardItem"><a href="https://github.com/tobymackenzie">github.com/tobymackenzie</a></div>
 			</div>
 		</div>
 		<div class="appBG"></div>
