@@ -12,7 +12,7 @@ class TestCommand extends Command{
 		;
 	}
 	protected function execute(InputInterface $input, OutputInterface $output): int{
-		passthru('cd ' . __DIR__ . '/.. && phpunit');
+		passthru('cd ' . __DIR__ . '/.. && phpunit --colors=always');
 		return 0;
 	}
 }
