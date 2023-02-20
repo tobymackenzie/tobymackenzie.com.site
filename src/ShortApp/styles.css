@@ -72,6 +72,11 @@ body{
 .cardBackLogo{
 	color: #90df90;
 	font-size: 3em;
+	transform: rotate(0deg);
+	transition: transform 0.5;
+}
+.card:focus-within .cardBackLogo, .cardBackLogo:hover{
+	transform: rotate(720deg);
 }
 .cardFace{
 	background: #353;
