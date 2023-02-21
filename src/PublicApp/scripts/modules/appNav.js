@@ -59,7 +59,16 @@ if(
 			//--attach and open on click
 			_addListener(_siteNavActionEl, 'click', function(_event){
 				_event.preventDefault();
-				//-! should we open new tab on control / command click?
+				//-! may be easier to keep as link above and hook into history API
+				if(
+					_event.ctrlKey
+					|| _event.metaKey
+					|| _event.shiftKey
+					|| (_event.button && _event.button == 1)
+				){
+					window.open(_siteNavUrl);
+					return;
+				}
 				if(_siteNavEl){
 					_openSiteNav();
 				}else{
