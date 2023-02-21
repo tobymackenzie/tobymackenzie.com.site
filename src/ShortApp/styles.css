@@ -75,7 +75,7 @@ body{
 	transform: rotate(0deg);
 	transition: transform 0.5;
 }
-.card:focus-within .cardBackLogo, .cardBackLogo:hover{
+.cardBackLogo:hover{
 	transform: rotate(720deg);
 }
 .cardFace{
