@@ -6,6 +6,7 @@ body{
 	@extend %appBodyColors;
 	@extend %appFonts;
 	@extend %appGrungeChild;
+	accent-color: var(--linkFocusFG);
 	align-items: center;
 	display: flex;
 	flex-direction: column;
