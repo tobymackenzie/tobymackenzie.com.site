@@ -1,5 +1,12 @@
 @media (prefers-color-scheme: dark){
 	:root{
+		--color-neutral-0: var(--tm-primary-bg);
+		--jetpack-white-off: #010;
+		--jp-black: var(--tm-secondary-bg-alt);
+		--studio-black: var(--tm-primary-fg);
+		--studio-gray-80: var(--tm-secondary-fg);
+		--studio-gray-100: var(--tm-primary-fg-alt);
+		--studio-white: var(--tm-secondary-bg);
 		--tm-primary-bg: #010;
 		--tm-primary-fg: #cfe;
 		--tm-primary-fg-alt: #afa;
@@ -468,6 +475,9 @@
 	#statchart-box#statchart-box{
 		background: var(--tm-secondary-bg);
 	}
+	.stats{
+		background: var(--tm-primary-bg);
+	}
 	.stats-encourage-nodata.stats-encourage-nodata{
 		color: var(--tm-gray);
 	}
@@ -476,6 +486,9 @@
 	}
 	.statsDay tr.table tr{
 		background: var(--tm-secondary-bg-alt);
+	}
+	.stats-geochart rect {
+		fill: var(--tm-secondary-bg);
 	}
 	ul.metabox-tabs.metabox-tabs{
 		background: var(--tm-secondary-bg-alt);
