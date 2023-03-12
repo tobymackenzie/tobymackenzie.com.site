@@ -13,7 +13,7 @@ ConfigHelper::init((function(){
 			'ADMIN_COOKIE_PATH'=> '/',
 
 			//--paths
-			'ABSPATH'=> dirname(realpath(__FILE__)) . '/../../../vendor/wp/wordpress/',
+			'ABSPATH'=> PROJECT_PATH . '/vendor/wp/wordpress/',
 			'WP_CONTENT_DIR'=> "{{ConfigHelper::vars.webRootPath}}/{{ConfigHelper::vars.contentRelativePath}}",
 
 			//--urls
