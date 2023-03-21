@@ -44,10 +44,11 @@ if(window.Date){
 			'0106': 'Happy Toby Day',
 			'0107': '👨‍💻 Code',
 			'0202': 'Happy groundhog day',
-			'0314': '🟢 == π',
-			'0317': '☘️  Top o\' the website to you ☘️',
+			'0314': '🟢 Take it easy as π',
+			'0317': '☘️  Top o\' the website to ya ☘️',
 			'0401': 'loof, lirpA ot emocleW',
 			'0422': '🌎 🌳',
+			'0501': 'May day. May day. 💪',
 			'0504': 'May the 4th be with you',
 			'0505': 'May the 5th be with you 🌮',
 			'0521': '☕️',
@@ -57,17 +58,17 @@ if(window.Date){
 			'1031': 'Have a spooktacular Halloween ',
 			'1105': '<a href="https://www.youtube.com/watch?v=RS2HLC0sipA">Remember, remember the 5th of November</a>',
 			'1111': 'Thanks armistace',
-			'1130': 'Yay, web standards',
+			'1130': 'Yay, web standards 🏴󠁧󠁢󠁳󠁣󠁴󠁿', // Blue beanie day, St Andrews day
 			'1224': 'Merry Christmas',
 			'1225': 'Merry Christmas 🎄',
-			'1231': 'Goodbye, ' + now.getFullYear(),
+			'1231': 'Goodbye, ' + now.getFullYear() + '. Happy Hogmanay',
 		};
 		var year = now.getFullYear();
 		var mayDay = new Date(year, 4, 1).getDay();
-		messages['05' + (mayDay ? (7 - mayDay) + 8 : 8).toString().padStart(2, '0')] = 'Thanks Moms';
+		messages['05' + (mayDay ? (7 - mayDay) + 8 : 8).toString().padStart(2, '0')] = 'Thanks, Mom';
 		messages['05' + ((mayDay === 6 ? 37 : 30) - mayDay)] = 'Happy Memorial Day';
 		var juneDay = new Date(year, 5, 1).getDay();
-		messages['06' + ((juneDay > 0 ? 22 : 21) - juneDay)] = 'Thanks Dads';
+		messages['06' + ((juneDay > 0 ? 22 : 21) - juneDay)] = 'Thanks, Dad';
 		var sepDay = new Date(year, 8, 1).getDay();
 		messages['09' + ((sepDay > 1 ? 9 : 2) - sepDay).toString().padStart(2, '0')] = '💪';
 		var octDay = new Date(year, 9, 1).getDay();
