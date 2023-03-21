@@ -46,7 +46,7 @@ if(window.Date){
 			'0202': 'Happy groundhog day',
 			'0314': '🟢 Take it easy as π',
 			'0317': '☘️  Top o\' the website to ya ☘️',
-			'0401': 'loof, lirpA ot emocleW',
+			'0401': 'loof ,lirpA ot emocleW',
 			'0422': '🌎 🌳',
 			'0501': 'May day. May day. 💪',
 			'0504': 'May the 4th be with you',
