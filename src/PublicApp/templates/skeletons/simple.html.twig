@@ -2,17 +2,6 @@
 
 {% block docMeta %}
 {{parent()}}
-{#--force canonical host if available.  allows us to test for actual support, unlike server sent redirect. will allow IP visits if DNS down. #}
-{% if site.forceHost|default(false) and app.environment != 'dev' %}
-<script src="{{site.forceHost}}{{assets.scripts_path}}/forceDomain.js" type="application/javascript"></script>
-{#--
-force https if browser supports it.  allows us to test for actual support, unlike server sent redirect.
-- putting in pre reduces rendering / loading of http content if redirect happens
-- probably don't need both this and html box.  maybe remove box, show dialog, and use localStorage / cookie to not show next time.  Or use box as dialog, show as modal, closing sets cookie, won't show if cookie set.
-#}
-{% elseif page.secureUrl|default(false) %}
-<script src="https://{{app.request.host ?: page.host}}{{assets.scripts_path}}/forceHttps.js" type="application/javascript"></script>
-{% endif %}
 <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 {% if canonical is not defined and doc.name != 'error' and (app.request.scheme != 'https' or app.request.host != 'www.tobymackenzie.com') %}
 {%	set canonical = 'https://www.tobymackenzie.com' ~ app.request.server.get('REQUEST_URI') %}
@@ -20,6 +9,8 @@ force https if browser supports it.  allows us to test for actual support, unlik
 {% if canonical is defined %}
 <link href="{{canonical}}" rel="canonical" />
 {% endif %}
+{#--load pre scripts.  canonical must be in DOM beforehand #}
+<script src="{{assets.scripts_path}}/pre.js" type="application/javascript"></script>
 <link href="{{path('public_app_manifest')}}" rel="manifest" />
 <meta name="author" content="Toby Mackenzie" />
 {% endblock %}
