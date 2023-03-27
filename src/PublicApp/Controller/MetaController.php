@@ -146,9 +146,9 @@ class MetaController extends Controller{
 			,'subSeparator'=> ': '
 		];
 		if(in_array($request->getRequestFormat(), ['html', 'xhtml'])){
-			//--force empty skeleton so we get bare markdown content
+			//--force empty shell so we get bare markdown content
 			$data['page'] = [
-				'skeleton'=> '@Public/skeletons/empty.md.twig'
+				'shell'=> '@Public/shells/empty.md.twig'
 			];
 			//--render markdown template
 			$content = $this->renderPageView('@Public/meta/humans.md.twig', $data);

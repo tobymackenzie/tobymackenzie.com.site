@@ -1,7 +1,7 @@
 <?php
 namespace PublicApp\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use TJM\Bundle\BaseBundle\Controller\Controller as Base;
+use TJM\BaseBundle\Controller\Controller as Base;
 use TJM\Views\Views;
 
 class Controller extends Base{

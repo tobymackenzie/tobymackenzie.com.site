@@ -4,7 +4,7 @@ parameters:
   kernel.root_dir: !php/const TJM\SyWeb\APP_DIR
 
 imports:
-  - {resource: '@TJMBaseBundle/Resources/config/config.yml'}
+  - {resource: '@TJMBaseBundle/config/config.yml'}
   - {resource: ../../../config/symfony.yml}
   - {resource: ../../../config/public.local.yml}
   - {resource: services.yml}
@@ -27,9 +27,9 @@ framework:
 
 tjm_base:
  page_wraps:
-  full: ":skeletons:full.{format}.twig"
-  public_full: '@Public/skeletons/full.{format}.twig'
-  protected_full: '@Protected/skeletons/full.{format}.twig'
+  full: ":shells:full.{format}.twig"
+  public_full: '@Public/shells/full.{format}.twig'
+  protected_full: '@Protected/shells/full.{format}.twig'
 
 twig:
  debug: "%kernel.debug%"

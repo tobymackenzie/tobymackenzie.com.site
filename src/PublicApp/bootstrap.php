@@ -12,7 +12,7 @@ $app = new App([
 		'Symfony\Bundle\FrameworkBundle\FrameworkBundle',
 		'Symfony\Bundle\TwigBundle\TwigBundle',
 		'Symfony\Bundle\MonologBundle\MonologBundle',
-		'TJM\Bundle\BaseBundle\TJMBaseBundle',
+		\TJM\BaseBundle\TJMBaseBundle::class,
 		'Symfony\Bundle\DebugBundle\DebugBundle'=> ['dev', 'test'],
 		'Symfony\Bundle\WebProfilerBundle\WebProfilerBundle'=> ['dev', 'test'],
 	],

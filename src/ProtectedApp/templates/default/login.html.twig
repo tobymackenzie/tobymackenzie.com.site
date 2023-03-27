@@ -1,4 +1,4 @@
-{% extends '@Protected/skeletons/secure.html.twig' %}
+{% extends '@Protected/shells/secure.html.twig' %}
 {% block main %}
 <form method="post">
 	{% if error %}<div class="errors">{{error.messageKey|trans(error.messageData, 'security')}}</div>{% endif %}

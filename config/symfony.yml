@@ -3,4 +3,4 @@ imports:
 
 parameters:
   locale: en
-  twig.extension.assets.class: TJM\Bundle\BaseBundle\Extension\AssetsExtension
+  twig.extension.assets.class: TJM\BaseBundle\Extension\AssetsExtension

@@ -1,7 +1,7 @@
 <?php
 namespace ProtectedApp\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use TJM\Bundle\BaseBundle\Controller\Controller as Base;
+use TJM\BaseBundle\Controller\Controller as Base;
 
 class Controller extends Base{
 	public function renderPage($view, array $parameters = array(), Response $response = null){

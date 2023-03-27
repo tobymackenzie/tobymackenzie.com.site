@@ -68,11 +68,11 @@ class Views{
 		if(!isset($data["page"]["wrap"])){
 			$data["page"]["wrap"] = 'public_full';
 		}
-		if(!isset($data["page"]["skeleton"])){
-			$data["page"]["skeleton"] = $this->wraps[$data["page"]["wrap"]] ?? $this->wraps["public_full"];
+		if(!isset($data["page"]["shell"])){
+			$data["page"]["shell"] = $this->wraps[$data["page"]["wrap"]] ?? $this->wraps["public_full"];
 		}
 		//-!! format should come from parameters if set
-		$data['page']['skeleton'] = str_replace('{format}', $format , $data['page']['skeleton']);
+		$data['page']['shell'] = str_replace('{format}', $format , $data['page']['shell']);
 		if(!isset($data['doc'])){
 			$data['doc'] = Array();
 		}

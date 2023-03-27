@@ -1,5 +1,5 @@
 imports:
-  - {resource: '@TJMBaseBundle/Resources/config/config.yml'}
+  - {resource: '@TJMBaseBundle/config/config.yml'}
   - {resource: ../../../config/symfony.yml}
   - {resource: ../../../config/protected.local.yml}
 
@@ -73,7 +73,7 @@ services:
    tags: ['controller.service_arguments']
 tjm_base:
  page_wraps:
-  full: '@Protected/skeletons/full.{format}.twig'
+  full: '@Protected/shells/full.{format}.twig'
 
 twig:
  debug: "%kernel.debug%"
