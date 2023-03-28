@@ -4,7 +4,7 @@ parameters:
   kernel.root_dir: !php/const TJM\SyWeb\APP_DIR
 
 imports:
-  - {resource: '@TJMBaseBundle/config/config.yml'}
+  - {resource: '@TJMSySiteBundle/config/config.yml'}
   - {resource: ../../../config/symfony.yml}
   - {resource: ../../../config/public.local.yml}
   - {resource: services.yml}
@@ -25,7 +25,7 @@ framework:
  secret: '%secret%'
  trusted_hosts: ~
 
-tjm_base:
+tjm_sy_site:
  page_wraps:
   full: ":shells:full.{format}.twig"
   public_full: '@Public/shells/full.{format}.twig'

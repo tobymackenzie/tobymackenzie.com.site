@@ -1,5 +1,5 @@
 imports:
-  - {resource: '@TJMBaseBundle/config/config.yml'}
+  - {resource: '@TJMSySiteBundle/config/config.yml'}
   - {resource: ../../../config/symfony.yml}
   - {resource: ../../../config/protected.local.yml}
 
@@ -71,7 +71,7 @@ services:
  ProtectedApp\Controller\:
    resource: '%kernel.project_dir%/src/ProtectedApp/Controller'
    tags: ['controller.service_arguments']
-tjm_base:
+tjm_sy_site:
  page_wraps:
   full: '@Protected/shells/full.{format}.twig'
 

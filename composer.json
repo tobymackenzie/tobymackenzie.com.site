@@ -45,7 +45,7 @@
 		,"johnpbloch/wordpress": "^6.0"
 		,"league/html-to-markdown": "^4.4"
 		,"tjm/files": "master@dev"
-		,"tjm/symfony-basebundle": "^0.8"
+		,"tjm/sy-site": "^0.9"
 		,"tjm/sy-web": "^0.6"
 		,"tjm/utils": "master@dev"
 		,"tjm/wpthemehelper": "^1"
