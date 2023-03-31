@@ -51,19 +51,20 @@ if(window.Date){
 			'0401': 'loof ,lirpA ot emocleW',
 			'0422': '🌎 🌳',
 			'0501': 'May day. May day. 💪',
-			'0504': 'May the 4th be with you',
+			'0504': 'May the 4th be with you 🪦🪦🪦🪦',
 			'0505': 'May the 5th be with you 🌮',
-			'0521': '☕️',
+			'0521': 'Tea time ☕️',
 			'0614': '🇨🇿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🇺🇸',
 			'0704': 'Happy independence 🎆',
+			'0708': '708y says',
 			'0922': 'Happy emancipation',
-			'1031': 'Have a spooktacular Halloween ',
+			'1031': 'Have a spooktacular Halloween',
 			'1105': '<a href="https://www.youtube.com/watch?v=RS2HLC0sipA">Remember, remember the 5th of November</a>',
 			'1111': 'Thanks armistace',
 			'1130': 'Yay, web standards 🏴󠁧󠁢󠁳󠁣󠁴󠁿', // Blue beanie day, St Andrews day
 			'1224': 'Merry Christmas',
 			'1225': 'Merry Christmas 🎄',
-			'1231': 'Goodbye, ' + now.getFullYear() + '. Happy Hogmanay',
+			'1231': 'Goodbye, ' + now.getFullYear() + '. Hello, Hogmanay',
 		};
 		var year = now.getFullYear();
 		var mayDay = new Date(year, 4, 1).getDay();
