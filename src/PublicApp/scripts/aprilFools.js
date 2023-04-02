@@ -13,6 +13,7 @@ if(!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches
 		style.transform = 'scaleX(1)';
 		doc.removeEventListener('click', done);
 		doc.removeEventListener('mousemove', done);
+		doc.removeEventListener('scroll', done);
 		console.log('april fools');
 		style.position = orgPosition;
 		style.transform = orgTransform;
@@ -20,4 +21,5 @@ if(!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches
 	};
 	doc.addEventListener('click', done);
 	doc.addEventListener('mousemove', done);
+	doc.addEventListener('scroll', done);
 }
