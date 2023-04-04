@@ -49,7 +49,7 @@ if(window.Date){
 			'0317': '☘️  Top o\' the website to ya ☘️',
 			'0330': 'Go Akron',
 			'0401': 'loof ,lirpA ot emocleW',
-			'0422': '🌎 🌳',
+			'0422': '🌎 Be excellent to Earth 🌳',
 			'0501': 'May day. May day. 💪',
 			'0504': 'May the 4th be with you 🪦🪦🪦🪦',
 			'0505': 'May the 5th be with you 🌮',
