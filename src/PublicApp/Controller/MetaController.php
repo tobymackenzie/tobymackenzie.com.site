@@ -107,7 +107,7 @@ class MetaController extends Controller{
 			'sections'=> [
 				'Human / Webmaster'=> [
 					'Name'=> 'Toby Mackenzie'
-					,'Location'=> 'Cleveland, Ohio'
+					,'Location'=> 'Akron, Ohio'
 				]
 				,'Site'=> [
 					'URL'=> 'https://www.tobymackenzie.com'
@@ -115,16 +115,22 @@ class MetaController extends Controller{
 					,'Host'=> 'Dreamhost Dreamcompute VPS'
 					,'Server'=> [
 						'OS'=> 'Ubuntu'
-						,'HTTP'=> 'Apache 2'
-						,'Data'=> 'SQLite, File system'
+						,'HTTP'=> 'Apache 2.4'
+						,'Data'=> 'SQLite, File system, MySQL'
 						,'Code'=> 'PHP'
-						,'Frameworks'=> 'Symfony 3, Parsedown Extra'
+						,'Frameworks / Software'=> 'Symfony 5, Parsedown Extra, WordPress'
+						,'Provisioning'=> 'Ansible'
 					]
 					,'Development'=> [
-						'Environment'=> 'Mac OS X.11 + MacPorts'
-						,'Code'=> 'Atom / Sublime Text'
+						'Environment'=> 'Mac OS X + homebrew, Vagrant + VirtualBox'
+						,'Code'=> 'Atom / vim'
 						,'Images'=> 'Adobe Photoshop'
-						,'Deployment'=> 'Ansible with rsync'
+						,'Build'=> 'SASS, Rollup.js, Uglify'
+						,'Deployment'=> 'rsync via PHP script'
+					]
+					,'Code'=> [
+						'Server'=> 'https://github.com/tobymackenzie/tobymackenzie.srv',
+						'Site'=> 'https://github.com/tobymackenzie/tobymackenzie.site',
 					]
 				]
 			]
