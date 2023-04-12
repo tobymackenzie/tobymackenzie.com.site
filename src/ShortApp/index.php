@@ -32,7 +32,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 				<div class="cardLogo"><div class="cardLogoText">&lt;toby&gt;</div></div>
 				<div class="cardCol1">
 					<div class="cardMedia">
-						<img alt="From the background, the shape of a face presents itself. As it becomes clearer, a white, slightly scruffy humanoid male with slightly wavy, dark brown hair turning to gray, stares blankly at you.  The ghostly apparation seems distant, and yet… could it be…" class="cardImage u-photo" itemprop="image" src="/_toby.jpg" />
+						<img alt="From the background, the shape of a face presents itself. As it becomes clearer, a white, slightly scruffy humanoid male with slightly wavy, dark brown hair turning to gray, stares blankly at you.  The ghostly apparation seems distant, and yet… could it be…" class="cardImage u-photo" itemprop="image" src="/_toby.jpg" width="225" height="300" />
 					</div>
 				</div>
 				<div class="cardCol2">

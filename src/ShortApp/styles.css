@@ -116,11 +116,13 @@ body{
 .cardImage{
 	display: block;
 	filter: contrast(2);
+	height: auto;
 	max-height: 100%;
 	max-width: 100%;
 	object-fit: cover;
 	opacity: 0.6;
 	transition: opacity 0.4s;
+	width: auto;
 	-webkit-mask-image: var(--vertMask);
 	mask-image: var(--vertMask);
 }
