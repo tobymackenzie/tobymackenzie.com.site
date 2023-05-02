@@ -206,6 +206,17 @@ html{
 	font-family: meslo, "Meslo LG S", menlo, "Menlo Regular", cousine, Consolas, "Courier New", courier, monospace;
 	height: 100%;
 }
+.qr{
+	position: absolute;
+	.cardBack &{
+		left: 1em;
+		top: 1em;
+	}
+	.cardFront &{
+		bottom: 2.7em;
+		right: 1em;
+	}
+}
 @media (min-width: 20em){
 	.cardFront{
 		display: flex;
