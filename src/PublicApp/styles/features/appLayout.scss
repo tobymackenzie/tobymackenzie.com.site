@@ -91,6 +91,7 @@ $appNavWidth: 13;
 	border-width: 3px;
 	grid-area: main;
 	order: 3;
+	view-transition-name: main;
 	z-index: 1;
 	@include supports('app-grid'){
 		border-left-style: solid;
