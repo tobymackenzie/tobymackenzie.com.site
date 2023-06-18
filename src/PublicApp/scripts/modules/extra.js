@@ -55,6 +55,7 @@ if(window.Date){
 			'0505': 'May the 5th be with you 🌮',
 			'0521': 'Tea time ☕️',
 			'0614': '🇨🇿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🇺🇸',
+			'0619': 'Emancipation 💪🏾', // Juneteenth
 			'0704': 'Happy independence 🎆',
 			'0708': '708y says',
 			'0922': 'Happy emancipation',
