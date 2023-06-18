@@ -58,7 +58,7 @@ if(window.Date){
 			'0619': 'Emancipation 💪🏾', // Juneteenth
 			'0704': 'Happy independence 🎆',
 			'0708': '708y says',
-			'0922': 'Happy emancipation',
+			'0922': 'Happy emancipation', // Ohio Emancipation Day
 			'1031': 'Have a spooktacular Halloween',
 			'1105': '<a href="https://www.youtube.com/watch?v=RS2HLC0sipA">Remember, remember the 5th of November</a>',
 			'1111': 'Thanks armistace',
