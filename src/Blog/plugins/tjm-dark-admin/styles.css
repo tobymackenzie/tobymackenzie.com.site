@@ -1,5 +1,5 @@
 @media (prefers-color-scheme: dark){
-	:root{
+	:root:root{
 		--color-neutral-0: var(--tm-primary-bg);
 		--jetpack-white-off: #010;
 		--jp-black: var(--tm-secondary-bg-alt);
@@ -243,6 +243,9 @@
 	}
 
 	/*--etc */
+	#activity-widget #the-comment-list .comment-item{
+		background: var(--tm-secondary-bg-alt);
+	}
 	.attachment-details .setting .name, .attachment-details .setting .value, .attachment-details .setting span, .compat-item label span, .media-sidebar .checkbox-label-inline, .media-sidebar .setting .name, .media-sidebar .setting .value, .media-sidebar .setting span{
 		color: var(--tm-primary-fg-alt);
 	}
@@ -296,6 +299,9 @@
 	}
 	.edit-attachment-frame .attachment-info .filename{
 		color: var(--tm-primary-fg);
+	}
+	#future-posts li:nth-child(2n+1), #published-posts li:nth-child(2n+1){
+		background-color: var(--tm-secondary-bg-alt);
 	}
 	.importer-title{
 		color: var(--tm-primary-fg);
