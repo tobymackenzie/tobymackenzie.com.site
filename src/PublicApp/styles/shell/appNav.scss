@@ -49,6 +49,10 @@
 		content: 'Main';
 	}
 }
+//--hide unfocused skip link from sighted users
+.appNavItem:first-child:not(:focus-within){
+	@extend %sro;
+}
 .appRestartAction{
 	@extend %appRestartNavActionLayout;
 	&:before{
