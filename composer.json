@@ -46,7 +46,7 @@
 		,"league/html-to-markdown": "^4.4"
 		,"tjm/files": "master@dev"
 		,"tjm/sy-site": "^0.9"
-		,"tjm/sy-web": "^0.6"
+		,"tjm/sy-web": "^0.7"
 		,"tjm/utils": "master@dev"
 		,"tjm/wpthemehelper": "^1"
 		,"wpackagist-plugin/classic-editor": "^1.2"
