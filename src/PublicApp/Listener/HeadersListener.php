@@ -28,7 +28,7 @@ class HeadersListener{
 		// }
 
 		if(!$headers->has('X-Cetera')){
-			$headers->set('X-Cetera', 'Hello, fellow humanoids');
+			$headers->set('X-Cetera', 'bxln2ho3');
 		}
 
 		//--tell browser to keep using https for all requests to the domain
