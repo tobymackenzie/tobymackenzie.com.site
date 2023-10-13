@@ -88,7 +88,7 @@ class Pages{
 
 	//--paths
 	protected function getPageDataPath($id){
-		if($id{0} !== '/'){
+		if(!$id || substr($id, 0, 1) !== '/'){
 			$id = '/' . $id;
 		}
 		if($id === '/'){
