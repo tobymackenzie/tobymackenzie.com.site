@@ -4,10 +4,12 @@ use DateTime;
 use ParsedownExtra;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\RouterInterface;
 use TJM\HtmlToMarkdown\HtmlConverter;
 use TJM\Pages\Pages;
+use TJM\WikiSite\WikiSite;
 
 class DefaultController extends Controller{
 	public function pageAction(
@@ -18,7 +20,16 @@ class DefaultController extends Controller{
 		,Pages $pagesService
 		,Request $request
 		,RouterInterface $router
+		,WikiSite $wikiSite
 	){
+		//-!! temporarily pass through to new action with fall back to old logic until we have redirects implemented properly
+		try{
+			return $wikiSite->viewAction($_format && $_format !== 'html' ? $id . '.' . $_format : $id);
+		}catch(\Exception $e){ }
+
+		//==old logic for redirects
+		//-! still have anything else here that is needed?
+
 		//--make sure format is supported
 		if(!in_array($_format, static::SUPPORTED_FORMATS)){
 			throw $this->createNotFoundException("Format {$_format} not currently supported");

@@ -1,7 +1,7 @@
 public_home:
   controller: PublicApp\Controller\DefaultController::pageAction
   path: /
-  defaults: {id: index}
+  defaults: {id: ''}
 public_home_default_redirect:
   controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
   path: /index{dotformat}
@@ -83,6 +83,11 @@ public_page:
   path: /{id}
   requirements:
     id: .*
+public_wiki_page:
+  controller: TJM\WikiSite\WikiSite::viewAction
+  path: /{path}
+  requirements:
+    path: .*
 #--base for outputting generic URLs
 public_base:
  defaults:

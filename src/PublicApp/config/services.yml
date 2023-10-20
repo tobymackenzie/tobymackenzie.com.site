@@ -1,3 +1,7 @@
+imports:
+  - {resource: '@TJMWikiSiteBundle/config/common-mark.yml'}
+  - {resource: '@TJMWikiSiteBundle/config/converters.yml'}
+  - {resource: '@TJMWikiSiteBundle/config/html-to-markdown.yml'}
 services:
  _defaults:
   autowire: true
@@ -123,6 +127,22 @@ services:
  TJM\Views\Views:
    arguments: ['@router', '%tjm_sy_site.wraps%', '%public.host%']
    public: true
+ TJM\Wiki\Wiki:
+    arguments: ['%kernel.project_dir%/app/data/wiki']
+ TJM\WikiSite\WikiSite:
+    arguments:
+      $opts:
+        converters:
+          - '@TJM\WikiSite\FormatConverter\HtmlToMarkdownConverter'
+          - '@TJM\WikiSite\FormatConverter\MarkdownToCleanMarkdownConverter'
+          - '@TJM\WikiSite\FormatConverter\MarkdownToHtmlConverter'
+        eventDispatcher: '@event_dispatcher'
+        name: "Toby Mackenzie's Site"
+        router: '@router'
+        shellTemplate: ~
+        twig: '@twig'
+        viewRoute: 'public_wiki_page'
+        viewTemplate: '@@Public/default/simplePage'
  ##==commands
  PublicApp\Command\:
    autowire: true
@@ -138,3 +158,9 @@ services:
   arguments: ['%kernel.environment%', '%public.host%']
   tags:
    - {name: kernel.event_listener, event: kernel.response, priority: -129} #-# priority to prevent CSP stripping by https://github.com/symfony/symfony/pull/25532
+ PublicApp\Listener\ViewDataListener:
+  arguments:
+   - '@request_stack'
+   - '@router'
+  tags:
+   - {name: kernel.event_listener, event: 'TJM\WikiSite\Event\ViewDataEvent'}

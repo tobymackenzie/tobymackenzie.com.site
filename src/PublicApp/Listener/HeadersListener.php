@@ -38,6 +38,13 @@ class HeadersListener{
 			}
 		}
 
+		if(in_array($request->get('_route'), ['public_home', 'public_home_formatted', 'public_page', 'public_page_formatted'])){
+			//--set cache headers
+			$event->getResponse()->setPublic();
+			$event->getResponse()->setMaxAge(600);
+			$event->getResponse()->setSharedMaxAge(600);
+			// $headers->set('X-Reverse-Proxy-TTL', 3600000);
+		}
 		if($request->getRequestFormat() === 'html' || $request->getRequestFormat() === 'xhtml'){
 			//--tell browser where safe scripts can be loaded from
 			//-# consider a nonce or hash

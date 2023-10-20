@@ -58,6 +58,9 @@ class Views{
 					}
 					$routeParams = $request->get('_route_params');
 					unset($routeParams['_format']);
+					if($currentRoute === 'public_home'){
+						unset($routeParams['id']);
+					}
 					$data['canonical'] = 'https://' . $this->host . $this->router->generate($currentRoute, $routeParams);
 				}
 			}

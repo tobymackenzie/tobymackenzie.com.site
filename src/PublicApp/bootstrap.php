@@ -13,6 +13,7 @@ $app = new App([
 		'Symfony\Bundle\TwigBundle\TwigBundle',
 		'Symfony\Bundle\MonologBundle\MonologBundle',
 		'TJM\SySite\TJMSySiteBundle',
+		'TJM\WikiSiteBundle\TJMWikiSiteBundle',
 		'Symfony\Bundle\DebugBundle\DebugBundle'=> ['dev', 'test'],
 		'Symfony\Bundle\WebProfilerBundle\WebProfilerBundle'=> ['dev', 'test'],
 	],

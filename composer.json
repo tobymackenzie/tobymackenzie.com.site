@@ -41,10 +41,9 @@
 		,"incenteev/composer-parameter-handler": "^2.0"
 		,"twig/twig": "2.13|^3.0.4"
 
-		,"erusev/parsedown-extra": "~0.7"
 		,"johnpbloch/wordpress": "^6.0"
-		,"league/html-to-markdown": "^4.4"
 		,"tjm/files": "master@dev"
+		,"tjm/wiki-site": "^0.0"
 		,"tjm/sy-site": "^0.9"
 		,"tjm/sy-web": "^0.7"
 		,"tjm/utils": "master@dev"
@@ -52,6 +51,10 @@
 		,"wpackagist-plugin/classic-editor": "^1.2"
 		,"wpackagist-plugin/jetpack": "^12.0"
 		,"wpackagist-plugin/wordpress-importer": "^0"
+
+
+		,"erusev/parsedown-extra": "~0.7"
+		,"league/html-to-markdown": "^5"
 	}
 	,"require-dev": {
 		"chillerlan/php-qrcode": "^4.3"
