@@ -84,7 +84,7 @@ if(window.Date){
 		if(messages[dayString]){
 			messageEl.innerHTML = messages[dayString];
 		}else if(messageAdded){
-			messageEl.innerHTML = 'Be excellent to each other';
+			messageEl.innerHTML = '<a href="//bxln2ho3.com">Be excellent to each other</a>';
 		}
 	}
 }
