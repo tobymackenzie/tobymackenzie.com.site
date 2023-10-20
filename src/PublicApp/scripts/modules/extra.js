@@ -76,7 +76,7 @@ if(window.Date){
 		var sepDay = new Date(year, 8, 1).getDay();
 		messages['09' + ((sepDay > 1 ? 9 : 2) - sepDay).toString().padStart(2, '0')] = '💪';
 		var octDay = new Date(year, 9, 1).getDay();
-		messages['10' + ((octDay > 1 ? 16 : 9) - octDay).toString().padStart(2, '0')] = 'Happy Columbo\'s Day 🕵️‍♀️';
+		messages['10' + ((octDay > 1 ? 16 : 9) - octDay).toString().padStart(2, '0')] = 'Happy Columbo\'s Day 🕵️‍';
 		var novDay = new Date(year, 10, 1).getDay();
 		messages['11' + ((novDay > 4 ? 33 : 26) - novDay)] = 'Thanks 🦃';
 		messages['11' + ((novDay > 1 ? 10 : 3) - novDay).toString().padStart(2, '0')] = 'Vote 🗳. It\'s important';
