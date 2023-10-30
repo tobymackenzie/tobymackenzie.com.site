@@ -52,7 +52,7 @@ if(window.Date){
 			'0422': '🌎 Be excellent to Earth 🌳',
 			'0501': 'May day. May day. 💪',
 			'0504': 'May the 4th be with you 🪦🪦🪦🪦',
-			'0505': 'May the 5th be with you 🌮',
+			'0505': 'Mayo the cinco be with you 🌮',
 			'0521': 'Tea time ☕️',
 			'0614': '🇨🇿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🇺🇸',
 			'0619': 'Emancipation 💪🏾', // Juneteenth
