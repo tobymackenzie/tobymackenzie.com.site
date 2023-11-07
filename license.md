@@ -1,5 +1,5 @@
 SPDX-License-Identifier: 0BSD OR Unlicense OR CC0-1.0  
-Copyright 2015 by Toby Mackenzie  
+Copyright MMXV by Toby Mackenzie  
 No rights reserved
 
 This work, its contents, and any portion thereof, is free and open source, dedicated to the public benefit, and freely licensed to use, copy, modify, and distribute in any way, for any purpose, by anyone.
