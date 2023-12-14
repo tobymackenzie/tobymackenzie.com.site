@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
-use Symfony\Component\Routing\RouterInterface;
 use TJM\HtmlToMarkdown\HtmlConverter;
 use TJM\Pages\Pages;
 use TJM\WikiSite\WikiSite;
@@ -19,7 +18,6 @@ class DefaultController extends Controller{
 		,ParsedownExtra $markdownToHtml
 		,Pages $pagesService
 		,Request $request
-		,RouterInterface $router
 		,WikiSite $wikiSite
 	){
 		//-!! temporarily pass through to new action with fall back to old logic until we have redirects implemented properly
@@ -48,14 +46,14 @@ class DefaultController extends Controller{
 
 		//--make sure our id is lowercase
 		if($lowerCaseId !== $id){
-			return $this->redirect($router->generate($request->get('_route'), ['id'=> $lowerCaseId, '_format'=> $_format]));
+			return $this->redirect($this->router->generate($request->get('_route'), ['id'=> $lowerCaseId, '_format'=> $_format]));
 		}
 		//--strip 'html' format, since that is the default
 		if($_format === 'html'){
 			$routeName = preg_replace('/_formatted$/', '', $request->get('_route'));
 			$routeParams = $request->get('_route_params');
 			unset($routeParams['_format']);
-			return $this->redirect($router->generate($routeName, $routeParams));
+			return $this->redirect($this->router->generate($routeName, $routeParams));
 		}
 		//--if format isn't in url, it is 'html'
 		if(!isset($_format)){
@@ -151,7 +149,7 @@ class DefaultController extends Controller{
 				if(!$isHtml){
 					$routeParams['_format'] = $formatData['name'];
 				}
-				$formatData['path'] = $router->generate(
+				$formatData['path'] = $this->router->generate(
 					($isHtml ? $htmlRouteName : $formattedRouteName)
 					,$routeParams
 				);
@@ -172,13 +170,12 @@ class DefaultController extends Controller{
 	public function removeTrailingSlashAction(
 		Request $request
 		,Pages $pagesService
-		,RouterInterface $router
 	){
 		$pathInfo = $request->getPathInfo();
 		$requestUri = $request->getRequestUri();
 		$url = str_replace($pathInfo, rtrim($pathInfo, ' /'), $requestUri);
 		try{
-			$match = $router->match(str_replace('/app_dev.php', '', $url));
+			$match = $this->router->match(str_replace('/app_dev.php', '', $url));
 		}catch(ResourceNotFoundException $e){
 			$match = null;
 		}
@@ -194,7 +191,7 @@ class DefaultController extends Controller{
 
 			}
 		}
-		return $this->redirect($url, ($this->get('kernel')->getEnvironment() === 'dev') ? 302 : 301);
+		return $this->redirect($url, ($this->env === 'dev') ? 302 : 301);
 	}
 
 	/*=====

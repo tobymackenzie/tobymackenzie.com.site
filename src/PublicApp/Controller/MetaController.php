@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Routing\RouterInterface;
 
 class MetaController extends Controller{
 	public function appManifestAction(Request $request){
@@ -51,7 +50,7 @@ class MetaController extends Controller{
 			$pathInfo = $request->getPathInfo();
 			if(preg_match('/[A-Z]/', $pathInfo)){
 				try{
-					$match = $this->get('router')->match(strtolower($pathInfo));
+					$match = $this->router->match(strtolower($pathInfo));
 					if(!in_array($match['_route'], [
 						'public_page'
 						,'public_page_formatted'
@@ -217,7 +216,6 @@ class MetaController extends Controller{
 	}
 	public function siteNavAction(
 		Request $request
-		,RouterInterface $router
 		, $_format = null
 	){
 		if(!in_array($_format, DefaultController::SUPPORTED_FORMATS)){
@@ -228,7 +226,7 @@ class MetaController extends Controller{
 			$routeName = preg_replace('/_formatted$/', '', $request->get('_route'));
 			$routeParams = $request->get('_route_params');
 			unset($routeParams['_format']);
-			return $this->redirect($router->generate($routeName, $routeParams));
+			return $this->redirect($this->router->generate($routeName, $routeParams));
 		}
 		//--if format isn't in url, it is 'html'
 		if(!isset($_format)){
@@ -281,12 +279,12 @@ class MetaController extends Controller{
 				,[
 					'label'=> 'About'
 					,'type'=> 'about'
-					,'url'=> $router->generate($routeFormat ? 'public_page_formatted' : 'public_page', ['_format'=> $routeFormat, 'id'=> 'about'], $routeReferenceType)
+					,'url'=> $this->router->generate($routeFormat ? 'public_page_formatted' : 'public_page', ['_format'=> $routeFormat, 'id'=> 'about'], $routeReferenceType)
 				]
 				,[
 					'label'=> 'Home'
 					,'type'=> 'home'
-					,'url'=> $router->generate($routeFormat ? 'public_home_formatted' : 'public_home', ['_format'=> $routeFormat], $routeReferenceType)
+					,'url'=> $this->router->generate($routeFormat ? 'public_home_formatted' : 'public_home', ['_format'=> $routeFormat], $routeReferenceType)
 				]
 			]
 		];
