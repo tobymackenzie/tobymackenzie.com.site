@@ -8,7 +8,7 @@ use TJM\Views\Views;
 
 class Controller extends Base{
 	protected string $env;
-	protected RequestStack $requestStack;
+	protected ?RequestStack $requestStack;
 	protected RouterInterface $router;
 	protected Views $views;
 	public function __construct(
