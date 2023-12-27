@@ -18,6 +18,7 @@ framework:
  router:
   resource: '%kernel.root_dir%/config/routing.yml'
   strict_requirements: ~
+  utf8: true
  secret: '%secret%'
  #--enable session for security component's csrf token
  session:
