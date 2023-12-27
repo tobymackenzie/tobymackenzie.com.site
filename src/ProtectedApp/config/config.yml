@@ -67,10 +67,10 @@ security:
 
 services:
  _defaults:
+  autoconfigure: true
   autowire: true
  ProtectedApp\Controller\:
    resource: '%kernel.project_dir%/src/ProtectedApp/Controller'
-   tags: ['controller.service_arguments']
 tjm_sy_site:
  page_wraps:
   full: '@Protected/shells/full.{format}.twig'

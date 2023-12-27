@@ -4,6 +4,7 @@ imports:
   - {resource: '@TJMWikiSiteBundle/config/html-to-markdown.yml'}
 services:
  _defaults:
+  autoconfigure: true
   autowire: true
   bind:
    $env: '%kernel.environment%'
@@ -151,7 +152,6 @@ services:
  ##==controllers
  PublicApp\Controller\:
    resource: '%kernel.project_dir%/src/PublicApp/Controller'
-   tags: ['controller.service_arguments']
  ##==listeners
  app.headers_listener:
   class: PublicApp\Listener\HeadersListener
