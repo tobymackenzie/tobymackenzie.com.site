@@ -188,7 +188,7 @@ class MetaController extends Controller{
 	public function robotsAction(Request $request, $_format = 'html'){
 		$data = [];
 		//--only allow for canonical
-		if(preg_match("/^{$this->container->getParameter('public.host')}$/", $request->getHttpHost())){
+		if(preg_match("/^{$this->getParameter('public.host')}$/", $request->getHttpHost())){
 			$data['agents'] = [
 				'*'=> [
 					'Crawl-delay'=> 10
@@ -301,13 +301,13 @@ class MetaController extends Controller{
 	==seo
 	=====*/
 	public function bingVerificationAction(){
-		$response = $this->render('@Public/meta/bing-verification.xml.twig', Array('code'=> $this->container->getParameter('bing-verification')));
+		$response = $this->render('@Public/meta/bing-verification.xml.twig', Array('code'=> $this->getParameter('bing-verification')));
 		$response->headers->set('Content-Type', 'application/xml'); //-! symfony's supposed to be determining this based on the template, but isn't, so we must be explicit
 		$response->setMaxAge(86400); //-# 24 hours
 		return $response;
 	}
 	public function googleVerificationAction(){
-		$response = $this->render('@Public/meta/google-verification.html.twig', Array('code'=> $this->container->getParameter('google-verification')));
+		$response = $this->render('@Public/meta/google-verification.html.twig', Array('code'=> $this->getParameter('google-verification')));
 		$response->setMaxAge(86400); //-# 24 hours
 		return $response;
 	}
