@@ -158,7 +158,7 @@ class MetaController extends Controller{
 			//--render markdown template
 			$content = $this->renderPageView('@Public/meta/humans.md.twig', $data);
 			//--make sublabels into <strong> since nested <dl> doesn't seem to work
-			$content = preg_replace('/\t([\w\s-\.\(\)\[\]]+):/', "\t**$1**:", $content);
+			$content = preg_replace('/\t([\w\s\-\.\(\)\[\]]+):/', "\t**$1**:", $content);
 			//--parse markdown
 			$content = $markdownToHtml->text($content);
 			//--pass new data to simplePage
