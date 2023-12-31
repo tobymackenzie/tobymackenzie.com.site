@@ -80,6 +80,8 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteRule ^/?(examples/css)/innerborderwrappedgrid(.*)$ /$1/innerBorderWrappedGrid$2  [L,NC,QSA,R=302]
+	##--misread src / href
+	RewriteRule ^/*(cdnjs\.cloudflare\.com/ajax/libs/html5shiv/3\.7\.3/html5shiv-printshiv\.min\.js)$ http://$1 [END,R=302]
 
 	##==canonical
 	##--send unknown hosts and direct ip access to canonical domains
