@@ -74,6 +74,12 @@ Header always set X-Content-Type-Options 'nosniff'
 	RewriteRule ^/?blog/tag/idea/?$ /blog/tag/ideas/ [L,QSA,R=302]
 	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^/?blog/2020/12/06/ive-got-home-internet-again /blog/2020/12/06/home-internet-again/  [L,QSA,R=302]
+	##==fix urls
+	##--wrong case
+	RewriteCond %{ENV:TMWEB_SITE} public
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^/?(examples/css)/innerborderwrappedgrid(.*)$ /$1/innerBorderWrappedGrid$2  [L,NC,QSA,R=302]
 
 	##==canonical
 	##--send unknown hosts and direct ip access to canonical domains
