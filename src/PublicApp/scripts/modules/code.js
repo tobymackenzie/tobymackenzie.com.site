@@ -11,6 +11,25 @@ if(document.querySelector){
 
 	//--load prism syntax highlighting
 	if(document.querySelector('code[class^="language-"],code[class*=" language-"]')){
+		//--add language class aliases
+		var aliases = {
+			'asp': 'vb',
+			'conf': 'apacheconf',
+			'zsh': 'bash',
+			//'js': 'javascript',
+			//'md': 'markdown',
+			//'sh': 'bash',
+			//'yml': 'yaml',
+		};
+		var els = document.querySelectorAll('code[class^="language-"],code[class*=" language-"]');
+		for(var i = 0; i < els.length; ++i){
+			var el = els[i];
+			var match = el.className.match(/language-([\w-]+)/);
+			if(aliases[match[1]]){
+				el.className = el.className.replace('language-' + match[1], 'language-' + aliases[match[1]]);
+			}
+		}
+
 		//--load prism
 		window.Prism = window.Prism || {};
 		Prism.manual = true;
