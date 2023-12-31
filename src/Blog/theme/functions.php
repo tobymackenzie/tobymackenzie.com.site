@@ -115,14 +115,6 @@ add_action('init', function(){
 	}, 10, 2);
 });
 
-//--force https if browser supports it
-add_action('wp_enqueue_scripts', function(){
-	if(!is_ssl()){
-		//-# putting in post because I'm not sure if old browsers will fail loading content if they can't load the script
-		wp_enqueue_script('forceHttps',   'https://' . $_SERVER['HTTP_HOST'] . '/_assets/scripts/prod/forceHttps.js', false, null, true);
-	}
-});
-
 //--better looking ellipse for auto-generated excerpt
 add_filter('excerpt_more', function(){
 	return '…';
