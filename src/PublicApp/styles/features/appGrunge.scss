@@ -1,11 +1,15 @@
 %appGrunge{
 	background-image: none, url('/_assets/grunge-pattern.png'); //-# `none,` to hide grunge background in some older browsers that show it full blast
 	height: 100%; //--ensure full grunge coverage
+	@include mq('print'){
+		height: auto !important;
+	}
 }
 %appGrungeChild{
 	opacity: 0.95; //--let grunge peek through
 	min-height: 100%; //--ensure full grunge coverage
 	@include mq('print'){
+		min-height: auto;
 		opacity: 1;
 	}
 }
