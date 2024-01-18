@@ -1,8 +1,30 @@
 @import '_mixins';
 @import '_config';
 @import '../base/fix';
-@import '../shell/ancient';
 
+.appEndLogo{
+	margin: 1em 0 0;
+}
+body{
+	background: map-get($colors, 'primaryBG');
+	color: map-get($colors, 'primaryFG');
+	padding: 3% 4%;
+	margin: auto;
+	max-width: 92%;
+	width: 40em;
+}
+html{
+	background: map-get($colors, 'baseBG');
+	color: map-get($colors, 'baseFG');
+	padding: 0;
+}
+.appNavItem{
+	display: inline;
+}
+.appNavList{
+	margin: 0 0 1em;
+	padding: 0;
+}
 a{
 	color: map-get($colors, 'primaryLinkFG');
 	&:focus, &:hover{
