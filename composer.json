@@ -11,8 +11,7 @@
 	,"config": {"bin-dir": "bin"}
 	,"extra": {
 		"incenteev-parameters": [
-			{"file": "config/protected.local.yml"}
-			,{"file": "config/public.local.yml"}
+			{"file": "config/public.local.yml"}
 			,{"file": "config/symfony.local.yml"}
 		]
 		,"installer-paths": {
