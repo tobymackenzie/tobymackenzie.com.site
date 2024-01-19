@@ -20,7 +20,7 @@ body{
 	accent-color: var(--linkFocusFG);
 	background: none; //--override ancient
 	color: map-get($colors, baseFG);
-	color: var(--baseFG);	
+	color: var(--baseFG);
 
 	//==texture
 	@supports (pointer-events: none){
