@@ -36,7 +36,6 @@
 		,"symfony/console": "^5.4"
 		,"symfony/monolog-bundle": "^3.8"
 		,"symfony/http-kernel": "^5.4"
-		,"symfony/security-bundle": "^5"
 		,"symfony/twig-bundle": "^5.4"
 		,"incenteev/composer-parameter-handler": "^2.0"
 		,"twig/twig": "2.13|^3.0.4"
@@ -77,9 +76,6 @@
 			,"bin/public cache:clear --env prod"
 			,"bin/public cache:clear"
 			,"bin/public assets:install --symlink --relative dist/public"
-			,"bin/protected cache:clear --env prod"
-			,"bin/protected cache:clear"
-			,"bin/protected assets:install --no-cleanup --symlink --relative dist/protected"
 			,"bin/blog-install"
 		]
 		,"post-install-cmd": ["@post"]
