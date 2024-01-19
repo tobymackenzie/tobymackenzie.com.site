@@ -11,14 +11,12 @@ $darkBG: #b94e00;
 =====*/
 :root{
 	--baseBG: #{$bg};
-	--bodyBG: #{$bg};
 	--headingFG: #{$bg};
 	--linkVisitedFG: #{$bg};
 	--primaryLinkFG: #{$bg};
 	--strongFG: #{$bg};
 	@include supports('dark-theme'){
 		--baseBG: #{$darkBG};
-		--bodyBG: #{$darkBG};
 		--headingFG: #{$darkFG};
 		--linkVisitedFG: #{$darkFG};
 		--primaryBG: #111;

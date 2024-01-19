@@ -1,7 +1,6 @@
 :root{
 	--baseBG: #{map-get($colors, baseBG)};
 	--baseFG: #{map-get($colors, baseFG)};
-	--bodyBG: #{rgba(map-get($colors, baseBG), 0.95)};
 	--borderColor: #{map-get($colors, border)};
 	--chromeHeaderBG: var(--primaryBG);
 	--chromeLogo: #{map-get($colors, chromeLogo)};
@@ -38,7 +37,7 @@
 	--tertiaryLinkFG: #{map-get($colors, tertiaryLinkFG)};
 
 	@include supports('dark-theme'){
-		--bodyBG: #{rgba(map-get($darkThemeColors, baseBG), 0.95)};
+		--baseBG: #{map-get($darkThemeColors, baseBG)};
 		--borderColor: #{map-get($darkThemeColors, contentBorder)};
 		--chromeHeaderBG: #{map-get($darkThemeColors, chromeHeaderBG)};
 		--headingFG: #{map-get($darkThemeColors, heading)};
