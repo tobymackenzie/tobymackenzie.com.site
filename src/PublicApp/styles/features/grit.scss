@@ -1,0 +1,26 @@
+@mixin grit(
+	$position: null,
+	$pseudo: after,
+	$zIndex: 9999
+){
+	//==texture
+	@supports (pointer-events: none){
+		position: $position;
+		&:#{$pseudo}{
+			background-image: url('/_assets/grunge-pattern.png');
+			bottom: 0;
+			content: '';
+			left: 0;
+			opacity: 0.1;
+			pointer-events: none;
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: $zIndex;
+			@include mq('print'){
+				display: none;
+			}
+		}
+	}
+
+}

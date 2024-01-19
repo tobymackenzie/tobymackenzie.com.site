@@ -4,6 +4,7 @@
 }
 body{
 	@extend %appFonts;
+	@include grit($position: relative);
 	align-items: center;
 	display: flex;
 	flex-direction: column;
@@ -21,26 +22,6 @@ body{
 	background: none; //--override ancient
 	color: map-get($colors, baseFG);
 	color: var(--baseFG);
-
-	//==texture
-	@supports (pointer-events: none){
-		position: relative;
-		&:after{
-			background-image: url('/_assets/grunge-pattern.png');
-			bottom: 0;
-			content: '';
-			left: 0;
-			opacity: 0.1;
-			pointer-events: none;
-			position: absolute;
-			right: 0;
-			top: 0;
-			z-index: 9999;
-			@include mq('print'){
-				display: none;
-			}
-		}
-	}
 }
 html{
 	padding: 0;
