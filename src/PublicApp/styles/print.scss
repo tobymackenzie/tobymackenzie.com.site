@@ -15,18 +15,18 @@
 			break-inside: avoid;
 			page-break-inside: avoid;
 			&:after{
-				content: '](' attr(href) ')' !important;
+				content: '](' attr(href) ')';
 				text-decoration: none;
 				word-wrap: break-word;
 			}
 			&:before{
-				content: '[' !important;
+				content: '[';
 				text-decoration: none;
 			}
 		}
 		&[href^='/']{
 			&:after{
-				content: '](https://www.tobymackenzie.com' attr(href) ')' !important;
+				content: '](https://www.tobymackenzie.com' attr(href) ')';
 			}
 		}
 		&[href^='#'], &[href^='javascript:']{
