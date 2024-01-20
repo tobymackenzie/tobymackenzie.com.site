@@ -21,6 +21,10 @@
 	@include mq(map-get($bp, small)){
 		margin-bottom: -2.2em;
 	}
+	@include mq('print'){
+		border: 0;
+		margin-bottom: -0.5em;
+	}
 	a{
 		color: inherit;
 		text-decoration: none;
