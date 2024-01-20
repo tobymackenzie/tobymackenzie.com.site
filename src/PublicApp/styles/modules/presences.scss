@@ -17,6 +17,12 @@
 		@extend %icon-base-color;
 		@include icon-with-label();
 		vertical-align: middle;
+		@include mq('print'){
+			height: auto;
+			margin: 0;
+			vertical-align: initial;
+			width: auto;
+		}
 	}
 	span{
 		text-decoration: underline;
