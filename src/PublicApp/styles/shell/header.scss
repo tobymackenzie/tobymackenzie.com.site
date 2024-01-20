@@ -24,6 +24,11 @@
 	a{
 		color: inherit;
 		text-decoration: none;
+		@include mq('print'){
+			&:after, &:before{
+				content: none !important;
+			}
+		}
 	}
 }
 .appHeaderTagline{
