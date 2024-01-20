@@ -24,11 +24,11 @@ Load library dependencies so they are available to other files.  when 'once' fun
 ==features
 =====*/
 @import '../modules/pre';
+@import '../features/grit';
 @import '../features/appColors';
 @import '../features/appFonts';
 @import '../features/appLayout';
 @import '../features/appShadow';
-@import '../features/grit';
 @import '../features/highlightedBGActions';
 
 /*=====

@@ -52,6 +52,7 @@ $appNavWidth: 13;
 	order: 5;
 }
 %appHeaderLayout{
+	@include grit($pseudo: before);
 	@extend %appContainerLayout;
 	grid-area: head;
 	order: 1;
@@ -82,7 +83,7 @@ $appNavWidth: 13;
 		@include supports('sticky-header'){
 			position: sticky;
 			top: 0;
-			z-index: 99;
+			z-index: 101;
 		}
 	}
 }
@@ -141,7 +142,7 @@ $appNavWidth: 13;
 		position: sticky;
 		top: 0;
 		white-space: nowrap;
-		z-index: 100;
+		z-index: 101;
 	}
 	@include supports('app-grid'){
 		align-self: start;
@@ -149,7 +150,7 @@ $appNavWidth: 13;
 		grid-area: appNav;
 		overflow: visible;
 		white-space: normal;
-		z-index: 100;
+		z-index: 101;
 		@include supports('sticky-nav'){
 			margin-top: -3em;
 			position: sticky;
@@ -167,7 +168,7 @@ $appNavWidth: 13;
 	margin: 0 1em 0 0;
 	vertical-align: middle;
 	@include supports('app-grid', 'sticky-nav'){
-		z-index: 100;
+		z-index: 101;
 	}
 	@include supports('app-grid'){
 		display: block;
@@ -237,6 +238,7 @@ $appNavWidth: 13;
 	}
 }
 %appNavItemTextLayout{
+	@include grit();
 	margin-left: 0.6em;
 	vertical-align: middle;
 	&, _:after{ //-# hide text if pseudo supported, will show small alternative
@@ -248,12 +250,16 @@ $appNavWidth: 13;
 	}
 }
 %appNavListLayout{
+	@include grit();
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	@include supports('app-grid'){
 		display: block;
 		margin: 0;
+		&:after{
+			content: none;
+		}
 	}
 }
 %appRestartNavActionLayout{
@@ -281,7 +287,7 @@ $appNavWidth: 13;
 		margin: $topMargin 0 $bottomMargin;
 		padding: 0;
 		position: sticky;
-		z-index: 99;
+		z-index: 100;
 	}
 	//--for no-grid wvp
 	@include supports('fixed-nav'){
@@ -297,7 +303,7 @@ $appNavWidth: 13;
 		$rightMargin: -3px; //--duplicated from `appNavAreaLayout` because of order
 		margin: 0 $rightMargin 0 0;
 		top: 0;
-		z-index: 100;
+		z-index: 101;
 		@include supports('sticky-nav'){
 			position: sticky;
 		}

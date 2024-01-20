@@ -7,6 +7,7 @@
 	vertical-align: middle;
 }
 .appHeaderMessage{
+	@include grit($position: relative);
 	background: map-get($colors, baseFG);
 	background: var(--baseFG);
 	border: 2px solid;
@@ -16,6 +17,7 @@
 	padding: 0.1em 0.5em;
 	text-align: center;
 	width: fit-content;
+	z-index: 101;
 	@include mq(map-get($bp, small)){
 		margin-bottom: -2.2em;
 	}

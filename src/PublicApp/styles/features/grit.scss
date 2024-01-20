@@ -1,7 +1,7 @@
 @mixin grit(
 	$position: null,
 	$pseudo: after,
-	$zIndex: 9999
+	$zIndex: 100
 ){
 	//==texture
 	@supports (pointer-events: none){
