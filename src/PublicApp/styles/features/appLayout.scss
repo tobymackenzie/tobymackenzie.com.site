@@ -50,6 +50,10 @@ $appNavWidth: 13;
 	@extend %appContainerLayout;
 	grid-area: foot;
 	order: 5;
+	@include mq('print'){
+		//-! hiding for now since this is empty currently.  May need something better if we start using it more.
+		display:  none;
+	}
 }
 %appHeaderLayout{
 	@include grit($pseudo: before);
