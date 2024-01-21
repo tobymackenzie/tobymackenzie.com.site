@@ -3,7 +3,6 @@
 	@extend %appLayout;
 }
 body{
-	@extend %appFonts;
 	@include grit($position: relative);
 	align-items: center;
 	display: flex;
@@ -22,6 +21,10 @@ body{
 	background: none; //--override ancient
 	color: map-get($colors, baseFG);
 	color: var(--baseFG);
+
+	//==fonts
+	@extend %font-base;
+	line-height: 1.6;
 }
 html{
 	padding: 0;
