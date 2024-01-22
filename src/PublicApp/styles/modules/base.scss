@@ -34,16 +34,3 @@
 			transform: skew(0);
 		}
 	}
-
-//==blocks
-%chromeContainer{
-	position: relative;
-	z-index: 2;
-}
-@mixin fullContainerCover(){
-	bottom: 0;
-	left: 0;
-	right: 0;
-	position: absolute;
-	top: 0;
-}
