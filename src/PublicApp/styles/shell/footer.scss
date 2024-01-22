@@ -5,9 +5,6 @@
 .appEndLogo{
 	@extend %appLogoBase;
 	flex: 0 0 auto;
-	//--in front of doc bg
-	position: relative;
-	z-index: 1;
 	//--shrink-to-fit
 	//-# `display:table` breaks IE5mac
 	width: 5em;
