@@ -5,6 +5,16 @@
 		border-color: map-get($colors, border);
 		border-color: var(--borderColor);
 	}
+	//==shadow
+	@include supports('app-shadow'){
+		position: relative;
+		&:before{
+			@include appShadow();
+			@include supports('app-grid'){
+				left: 3.25em;
+			}
+		}
+	}
 }
 body{
 	@include grit($position: relative);
