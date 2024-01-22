@@ -1,6 +1,10 @@
 .app{
-	@extend %appColors;
 	@extend %appLayout;
+	//==colors
+	@include mq(map-get($bp, appWidth)){
+		border-color: map-get($colors, border);
+		border-color: var(--borderColor);
+	}
 }
 body{
 	@include grit($position: relative);

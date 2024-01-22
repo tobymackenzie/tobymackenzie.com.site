@@ -1,6 +1,13 @@
 .appHeader{
-	@extend %appHeaderColors;
 	@extend %appHeaderLayout;
+	//==colors
+	@extend %appContainerColors;
+	@extend %tertiaryAreaColors;
+	border-bottom-color: map-get($colors, primaryBG);
+	border-bottom-color: var(--chromeHeaderBG);
+	@include supports('dark-theme'){
+		background: var(--chromeHeaderBG);
+	}
 }
 .appLogo, .appHeaderTagline{
 	display: inline-block;

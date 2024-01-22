@@ -1,6 +1,8 @@
 .appMain{
-	@extend %appMainColors;
 	@extend %appMainLayout;
+	//==colors
+	@extend %appContainerColors;
+	@extend %secondaryAreaColors;
 }
 a[name="appMain"]{
 	@include supports('sticky-header'){
@@ -9,12 +11,16 @@ a[name="appMain"]{
 	}
 }
 .appMainFooter{
-	@extend %appMainFooterColors;
 	@extend %appMainFooterLayout;
+	//==colors
+	@extend %appContainerColors;
+	@extend %contentAreaColors;
 }
 .appMainHeader{
-	@extend %appMainHeaderColors;
 	@extend %appMainHeaderLayout;
+	//==colors
+	@extend %appContainerColors;
+	@extend %contentAreaColors;
 }
 .mainItem{
 	@extend %mainItemColors;

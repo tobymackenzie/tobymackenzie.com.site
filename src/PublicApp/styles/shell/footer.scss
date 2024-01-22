@@ -1,6 +1,8 @@
 .appFooter{
-	@extend %appFooterColors;
 	@extend %appFooterLayout;
+	//==colors
+	@extend %appContainerColors;
+	@extend %secondaryAreaColors;
 }
 .appEndLogo{
 	@extend %appLogoBase;

@@ -52,12 +52,6 @@
 }
 
 //==specific
-%appColors{
-	@include mq(map-get($bp, appWidth)){
-		border-color: map-get($colors, border);
-		border-color: var(--borderColor);
-	}
-}
 @mixin appContainerColors(){
 	border-color: map-get($colors, border);
 	border-color: var(--mainBorder);
@@ -65,41 +59,9 @@
 %appContainerColors{
 	@include appContainerColors;
 }
-%appFooterColors{
-	@extend %appContainerColors;
-	@extend %secondaryAreaColors;
-}
-%appHeaderColors{
-	@extend %appContainerColors;
-	@extend %tertiaryAreaColors;
-	border-bottom-color: map-get($colors, primaryBG);
-	border-bottom-color: var(--chromeHeaderBG);
-	@include supports('dark-theme'){
-		background: var(--chromeHeaderBG);
-	}
-}
-%appMainColors{
-	@extend %appContainerColors;
-	@extend %secondaryAreaColors;
-}
-%appMainFooterColors, %appMainHeaderColors{
-	@extend %appContainerColors;
-	@extend %contentAreaColors;
-}
 %appNavAreaColors{
 	@extend %appContainerColors;
 	@extend %primaryAreaColors;
-}
-@mixin appNavItemActionColors(){
-	@include appContainerColors;
-	background: none;
-	color: map-get($colors, primaryLinkFG);
-	color: var(--primaryLinkFG);
-	text-decoration-color: rgba(map-get($colors, primaryLinkFG), 0.4);
-	text-decoration-color: var(--primaryLinkDecorationFG);
-	@include supports('app-grid'){
-		@include primaryAreaColors;
-	}
 }
 %contentAreaColors{
 	@extend %primaryAreaColors;
