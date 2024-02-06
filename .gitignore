@@ -21,7 +21,7 @@ yarn.lock
 /composer.phar
 /config/*local.*
 !/config/*local.*.dist
-/content/
+/data/
 /dist/
 /var/*
 /vendor/*
