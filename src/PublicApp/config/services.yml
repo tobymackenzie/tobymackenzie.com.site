@@ -21,9 +21,6 @@ services:
         -
           dest: 'images'
           src: 'assets/images/*'
-        -
-          dest: 'webStuff.jpg'
-          src: 'assets/webStuff.jpg'
       distPath: '%assets.dist_path%'
       projectPath: '%kernel.root_dir%'
       svgDefaults:
