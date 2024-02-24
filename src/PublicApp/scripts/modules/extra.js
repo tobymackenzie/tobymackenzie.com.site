@@ -67,7 +67,7 @@ if(window.Date){
 			'1130': 'Yay, web standards 🏴󠁧󠁢󠁳󠁣󠁴󠁿', // Blue beanie day, St Andrews day
 			'1224': 'Merry Christmas',
 			'1225': 'Merry Christmas 🎄',
-			'1231': 'Goodbye, ' + now.getFullYear() + '. Hello, Hogmanay',
+			'1231': 'Goodbye, ' + now.getFullYear() + '.  For auld lang syne.',
 		};
 		var year = now.getFullYear();
 		var mayDay = new Date(year, 4, 1).getDay();
