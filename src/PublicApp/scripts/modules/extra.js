@@ -45,6 +45,7 @@ if(window.Date){
 			'0107': '👨‍💻 Code for good',
 			'0202': 'Happy groundhog day',
 			'0216': 'Go Cleveland',
+			'0229': 'Happy Leap Day',
 			'0314': '🟢 Take it easy as π',
 			'0317': '☘️  Top o\' the website to ya ☘️',
 			'0330': 'Go Akron',
