@@ -17,7 +17,7 @@
 	}
 }
 body{
-	@include grit($position: relative);
+	@include grit($position: relative, $opacity: 0.08);
 	align-items: center;
 	display: flex;
 	flex-direction: column;
