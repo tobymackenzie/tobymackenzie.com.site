@@ -112,14 +112,11 @@ services:
           set: fa
           dest: 'twitter.svg'
           src: 'brands/twitter-square.svg'
- TJM\FileStore\FileStore:
-   class: TJM\FileStore\FileStore
-   arguments: ['%kernel.project_dir%/app/data/data-store/files']
  TJM\HtmlToMarkdown\HtmlConverter:
   arguments: [{'hard_break': true, 'strip_tags': true}]
  TJM\Pages\Pages:
    class: TJM\Pages\Pages
-   arguments: ['%kernel.project_dir%/app/pages', '@TJM\FileStore\FileStore']
+   arguments: ['%kernel.project_dir%/app/pages']
  ParsedownExtra:
    class: ParsedownExtra #-! required because not namespaced
  TJM\Views\Views:

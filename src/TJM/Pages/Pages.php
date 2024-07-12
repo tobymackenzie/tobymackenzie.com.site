@@ -1,16 +1,13 @@
 <?php
 namespace TJM\Pages;
 use Exception;
-use TJM\FileStore\FileStore;
 use TJM\Pages\Entity\Page;
 
 class Pages{
 	protected $dataBasePath;
-	protected $fileStore;
 	protected $aliases;
-	public function __construct($dataBasePath, FileStore $fileStore){
+	public function __construct($dataBasePath){
 		$this->dataBasePath = $dataBasePath;
-		$this->fileStore = $fileStore;
 	}
 
 	//--data
@@ -49,41 +46,14 @@ class Pages{
 	}
 
 	//---responses
+	public function hasPage($id){
+		return substr($id, 0, 1) !== '_' && file_exists($this->getPageDataPath($id));
+	}
 	public function hasResponse($id){
 		return $this->hasPage($id) || $this->hasAlias($id);
 	}
 	public function getResponse($id, $_format = null){
-		return $this->getPage($id) ?? $this->getAlias($id, $_format);
-	}
-
-	//---pages
-	public function getPage($id){
-		if(!$this->hasPage($id)){
-			return null;
-		}
-		$page = new Page(json_decode(file_get_contents($this->getPageDataPath($id)), true));
-		$page->setId($id);
-		if(!$page->hasContent()){
-			switch($page->getType()){
-				case 'file':
-					if(!$page->hasFileName()){
-						$page->setFileName($id . '.txt');
-					}
-					try{
-						$page->setContent($this->fileStore->getFileContents($id, $page->getFileName()));
-					}catch(Exception $e){
-						return null;
-					}
-				break;
-				case 'redirect':
-					$page->setContent('/');
-				break;
-			}
-		}
-		return $page;
-	}
-	public function hasPage($id){
-		return substr($id, 0, 1) !== '_' && file_exists($this->getPageDataPath($id));
+		return $this->getAlias($id, $_format);
 	}
 
 	//--paths
