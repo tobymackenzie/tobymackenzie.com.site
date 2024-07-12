@@ -59,6 +59,7 @@
 		display: none !important;
 	}
 	thead{
-		display: table-header-group; //-@ h5bp.com/t
+		//-! ensures thead is repeated on each page for multi-page tables, seems to only apply to really old browsers.  We don't have those type of tables, do we even need?
+		display: table-header-group; //-@ https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
 	}
 }
