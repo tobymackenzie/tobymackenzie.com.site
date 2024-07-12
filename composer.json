@@ -8,7 +8,13 @@
 	,"autoload-dev": {
 		"files": ["vendor/symfony/var-dumper/Resources/functions/dump.php"]
 	}
-	,"config": {"bin-dir": "bin"}
+	,"config": {
+		"allow-plugins": {
+			"composer/installers": true,
+			"johnpbloch/wordpress-core-installer": true
+		},
+		"bin-dir": "bin"
+	}
 	,"extra": {
 		"incenteev-parameters": [
 			{"file": "config/public.local.yml"}
