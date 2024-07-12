@@ -9,5 +9,7 @@ caches/
 /app/files/wp-uploads/*
 /dist/public/_assets/icons/
 /dist/public/_assets-dev
+/dist/public/index-dev.php
+/dist/short/_dev.php
 /var/*
 /vendor/
