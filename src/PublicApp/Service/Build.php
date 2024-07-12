@@ -5,7 +5,7 @@ use SimpleXMLElement;
 use TJM\Data\Model;
 use TJM\Files\Files;
 
-class Assets extends Model{
+class Build extends Model{
 	protected $assetLinks = [];
 	protected $distPath = 'dist';
 	protected $projectPath;

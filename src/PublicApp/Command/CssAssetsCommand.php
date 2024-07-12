@@ -1,7 +1,7 @@
 <?php
 namespace PublicApp\Command;
 use Exception;
-use PublicApp\Service\Assets;
+use PublicApp\Service\Build;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -9,10 +9,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
 class CssAssetsCommand extends Command{
-	protected $assetsService;
+	protected $buildService;
 	protected $env;
-	public function __construct(Assets $assetsService, $env){
-		$this->assetsService = $assetsService;
+	public function __construct(Build $buildService, $env){
+		$this->buildService = $buildService;
 		$this->env = $env;
 		parent::__construct();
 	}
@@ -43,11 +43,11 @@ class CssAssetsCommand extends Command{
 		$basePath = __DIR__ . '/..';
 		chdir($basePath);
 		$processes = [];
-		$dest = $this->assetsService->getStylesDistPath();
+		$dest = $this->buildService->getStylesDistPath();
 		if(!file_exists($dest)){
 			exec("mkdir -p {$dest}");
 		}
-		foreach(glob("{$this->assetsService->getStylesPath()}/builds/*.scss") as $file){
+		foreach(glob("{$this->buildService->getStylesPath()}/builds/*.scss") as $file){
 			$nameBase = basename($file, '.scss');
 			if($nameBase[0] === '_'){
 				continue;

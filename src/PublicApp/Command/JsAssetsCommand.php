@@ -1,6 +1,6 @@
 <?php
 namespace PublicApp\Command;
-use PublicApp\Service\Assets;
+use PublicApp\Service\Build;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -8,10 +8,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 use TJM\Files\Files;
 
 class JsAssetsCommand extends Command{
-	protected $assetsService;
+	protected $buildService;
 	protected $env;
-	public function __construct(Assets $assetsService, $env){
-		$this->assetsService = $assetsService;
+	public function __construct(Build $buildService, $env){
+		$this->buildService = $buildService;
 		$this->env = $env;
 		parent::__construct();
 	}
@@ -31,8 +31,8 @@ class JsAssetsCommand extends Command{
 		return $files;
 	}
 	protected function execute(InputInterface $input, OutputInterface $output): int{
-		$src = $this->assetsService->getScriptsPath();
-		$dest = $this->assetsService->getScriptsDistPath();
+		$src = $this->buildService->getScriptsPath();
+		$dest = $this->buildService->getScriptsDistPath();
 		if($this->env === 'dev'){
 			Files::symlinkRelativelySafely($dest, $src);
 			$output->writeln("symlink $dest, $src");

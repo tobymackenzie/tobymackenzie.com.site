@@ -8,7 +8,7 @@ services:
   autowire: true
   bind:
    $env: '%kernel.environment%'
- PublicApp\Service\Assets:
+ PublicApp\Service\Build:
    arguments:
      -
       assetLinks:
