@@ -175,7 +175,7 @@ class DefaultController extends Controller{
 		$requestUri = $request->getRequestUri();
 		$url = str_replace($pathInfo, rtrim($pathInfo, ' /'), $requestUri);
 		try{
-			$match = $this->router->match(str_replace('/app_dev.php', '', $url));
+			$match = $this->router->match(str_replace('/index-dev.php', '', $url));
 		}catch(ResourceNotFoundException $e){
 			$match = null;
 		}
