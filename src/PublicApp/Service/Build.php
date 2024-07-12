@@ -2,6 +2,8 @@
 namespace PublicApp\Service;
 use Exception;
 use SimpleXMLElement;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Process\Process;
 use TJM\Data\Model;
 use TJM\Files\Files;
 
@@ -129,6 +131,113 @@ class Build extends Model{
 	}
 
 	/*=====
+	==css
+	=====*/
+	public function buildCSS($env = 'dev', OutputInterface $output = null){
+		if(`which sassc`){
+			$sassBin = 'sassc';
+		}elseif(`which sass`){
+			$sassBin = 'sass';
+		}else{
+			throw new Exception("No sass command found on shell path.");
+		}
+		if($env === 'prod'){
+			$sassBin .= ' --style compressed';
+		}else{
+			$sassBin .= " --line-numbers";
+		}
+		if(`which postcss`){
+			$postCSSBin = "postcss --config . --no-map";
+		}else{
+			$postCSSBin = null;
+		}
+		$basePath = __DIR__ . '/..';
+		chdir($basePath);
+		$processes = [];
+		$dest = $this->getStylesDistPath();
+		if(!file_exists($dest)){
+			exec("mkdir -p {$dest}");
+		}
+		foreach(glob("{$this->getStylesPath()}/builds/*.scss") as $file){
+			$nameBase = basename($file, '.scss');
+			if($nameBase[0] === '_'){
+				continue;
+			}
+			$run = "{$sassBin} {$file}";
+			if($postCSSBin){
+				$run .= ' | ' . $postCSSBin;
+			}
+			$fileDest = "{$dest}/{$nameBase}.css";
+			$run .= " > {$fileDest}";
+			if($output && $output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE){
+				$run .= " && echo '{$nameBase}: full size:' `cat {$fileDest} | wc -c` 'gzip size:' `gzip -c {$fileDest} | wc -c`";
+			}
+			$process = Process::fromShellCommandline($run, $basePath);
+			$process->start();
+			$processes[] = $process;
+		}
+		foreach($processes as $process){
+			$process->wait();
+			if(!$process->isSuccessful()){
+				if($output){
+					$output->writeln('<error>CSS build failure</error>');
+				}else{
+					throw new Exception("CSS build failure");
+				}
+			}
+			if($output) $output->write($process->getErrorOutput() . $process->getOutput());
+		}
+	}
+
+	/*=====
+	==js
+	=====*/
+	public function buildJS($compiler = 'rollup', $env = 'dev', OutputInterface $output = null){
+		$src = $this->getScriptsPath();
+		$dest = $this->getScriptsDistPath();
+		if($env === 'dev'){
+			Files::symlinkRelativelySafely($dest, $src);
+			if($output) $output->writeln("symlink $dest, $src");
+		}else{
+			if(!file_exists($dest)){
+				exec("mkdir -p {$dest}");
+			}
+			if($compiler === 'uglify'){
+				$files = $this->recursiveGlob($src . '/*.js');
+			}else{
+				$files = glob($src . '/*.js');
+			}
+			foreach($files as $file){
+				$baseName = str_replace($src . '/', '', $file);
+				if($baseName !== 'proxy-worker.js' || $compiler === 'webpack'){ //-!! uglify can't seem to process es6
+					switch($compiler){
+						//-# rollup builds about 500 bytes smaller than webpack currently, so it's default.
+						case 'rollup':
+						default:
+							$command = "rollup {$file} --output.format iife | uglifyjs --compress --mangle > {$dest}/{$baseName}";
+						break;
+						case 'uglify':
+							$command = str_replace("\n", '', "uglifyjs
+								--compress
+								--mangle
+								-o {$dest}/{$baseName}
+								-- {$file}"
+							);
+						break;
+						case 'webpack':
+							$command = "webpack {$file} --output {$dest}/{$baseName} --mode production";
+						break;
+					}
+					passthru($command);
+				}
+			}
+
+			//--loaded lib
+			Files::symlinkRelativelySafely("{$dest}/prismjs", "{$src}/lib/prismjs");
+			if($output) $output->writeln("{$dest}/prismjs" . ' ' .  "{$src}/lib/primsjs");
+		}
+	}
+	/*=====
 	==paths
 	=====*/
 	public function getDistPath(){
@@ -172,5 +281,17 @@ class Build extends Model{
 		}else{
 			return $this->stylesDistPath;
 		}
+	}
+
+	/*=====
+	==helpers
+	=====*/
+	protected function recursiveGlob($pattern, $flags = 0){
+		//-@http://stackoverflow.com/a/17161106/1139122
+		$files = glob($pattern, $flags);
+		foreach(glob(dirname($pattern) . '/*', GLOB_ONLYDIR | GLOB_NOSORT) as $dir){
+			$files = array_merge($files, $this->recursiveGlob($dir . '/' . basename($pattern), $flags));
+		}
+		return $files;
 	}
 }
