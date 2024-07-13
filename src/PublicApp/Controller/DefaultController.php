@@ -1,21 +1,17 @@
 <?php
 namespace PublicApp\Controller;
 use DateTime;
-use ParsedownExtra;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
-use TJM\HtmlToMarkdown\HtmlConverter;
 use TJM\Pages\Pages;
 use TJM\WikiSite\WikiSite;
 
 class DefaultController extends Controller{
 	public function pageAction(
 		$_format = null
-		,HtmlConverter $htmlToMarkdown
 		,$id
-		,ParsedownExtra $markdownToHtml
 		,Pages $pagesService
 		,Request $request
 		,WikiSite $wikiSite
@@ -25,21 +21,11 @@ class DefaultController extends Controller{
 			return $wikiSite->viewAction($_format && $_format !== 'html' ? $id . '.' . $_format : $id);
 		}catch(\Exception $e){ }
 		//==old logic for redirects
-		//--make sure format is supported
-		if(!in_array($_format, static::SUPPORTED_FORMATS)){
-			throw $this->createNotFoundException("Format {$_format} not currently supported");
-		}
-		$lowerCaseId = strtolower($id);
-		$page = $pagesService->getResponse($lowerCaseId, $_format);
-
-		if(!$page){
-			throw $this->createNotFoundException("No data found for id '{$id}'");
-		}
-
-		//--redirect if page type is redirect
-		if($page->getType() === 'redirect'){
+		$page = $pagesService->getResponse(strtolower($id), $_format);
+		if($page && $page->getType() === 'redirect'){
 			return $this->redirect($page->getContent());
 		}
+		throw $this->createNotFoundException();
 	}
 	//-@ http://symfony.com/doc/current/cookbook/routing/redirect_trailing_slash.html
 	public function removeTrailingSlashAction(

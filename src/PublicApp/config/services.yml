@@ -112,8 +112,6 @@ services:
           set: fa
           dest: 'twitter.svg'
           src: 'brands/twitter-square.svg'
- TJM\HtmlToMarkdown\HtmlConverter:
-  arguments: [{'hard_break': true, 'strip_tags': true}]
  TJM\Pages\Pages:
    class: TJM\Pages\Pages
    arguments: ['%kernel.project_dir%/app/pages']

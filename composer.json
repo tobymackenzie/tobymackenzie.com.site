@@ -58,7 +58,6 @@
 
 
 		,"erusev/parsedown-extra": "~0.7"
-		,"league/html-to-markdown": "^5"
 	}
 	,"require-dev": {
 		"chillerlan/php-qrcode": "^4.3"
