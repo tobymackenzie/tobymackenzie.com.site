@@ -67,12 +67,6 @@ public_google_verification:
   path: '/%google-verification%'
 
 ##==pages
-public_remove_trailing_slash:
-  controller: PublicApp\Controller\DefaultController::removeTrailingSlashAction
-  path: /{url}
-  methods: [GET]
-  requirements:
-    url: .*/$
 public_page_formatted:
   controller: PublicApp\Controller\DefaultController::pageAction
   path: /{id}.{_format}
