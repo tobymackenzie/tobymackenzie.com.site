@@ -14,22 +14,22 @@ use TJM\WikiSite\WikiSite;
 
 class Build extends Model{
 	static protected $isBuild = false;
-	
+
 	protected $assetLinks = [];
 	protected string $buildPath = 'dist';
 	protected string $canonicalHost;
-	protected $distPath = 'dist';
+	protected $assetsBuildPath = 'dist';
 	protected $projectPath;
 	protected ?RouterInterface $router = null;
 	protected $scriptsPath = 'scripts';
-	protected $scriptsDistPath = 'scripts';
+	protected $scriptsAssetsBuildPath = 'scripts';
 	protected array $staticFormats = ['md', 'txt', 'xhtml'];
 	protected $stylesPath = 'styles';
-	protected $stylesDistPath = 'styles';
+	protected $stylesAssetsBuildPath = 'styles';
 	protected $svgDefaults = [];
 	protected $svgSets = [];
 	protected $svgs = [];
-	protected $svgsDistPath = 'svgs';
+	protected $svgsAssetsBuildPath = 'svgs';
 	protected ?WikiSite $wikiSite = null;
 
 	public function __construct($values = null){
@@ -42,7 +42,7 @@ class Build extends Model{
 	}
 	public function linkAssets(){
 		if($this->assetLinks){
-			$this->createDistDir();
+			$this->createAssetsDir();
 			foreach($this->assetLinks as $link){
 				if(is_string($link)){
 					$link = ['dest'=> $link, 'src'=> $link];
@@ -58,7 +58,7 @@ class Build extends Model{
 				if(substr($link['dest'], 0, 1) === '/'){
 					$at = $link['dest'];
 				}else{
-					$at = $this->getDistPath() . '/' . $link['dest'];
+					$at = $this->getAssetsBuildPath() . '/' . $link['dest'];
 				}
 				if(strpos($from, '*') !== false){
 					if(!file_exists($at)){
@@ -74,22 +74,22 @@ class Build extends Model{
 			}
 		}
 	}
-	public function clearDistDir(){
-		if($this->getDistPath()){
-			return exec("rm -rf {$this->getDistPath()}/*");
+	public function clearAssetsDir(){
+		if($this->getAssetsBuildPath()){
+			return exec("rm -rf {$this->getAssetsBuildPath()}/*");
 		}
 		return false;
 	}
-	public function createDistDir(){
-		if($this->getDistPath() && !file_exists($this->getDistPath())){
-			return exec("mkdir -p {$this->getDistPath()}");
+	public function createAssetsDir(){
+		if($this->getAssetsBuildPath() && !file_exists($this->getAssetsBuildPath())){
+			return exec("mkdir -p {$this->getAssetsBuildPath()}");
 		}
 		return false;
 	}
 	public function buildSvgs(){
 		if($this->svgs){
-			if(!file_exists($this->getSvgsDistPath())){
-				exec("mkdir -p {$this->getSvgsDistPath()}");
+			if(!file_exists($this->getSvgsAssetsBuildPath())){
+				exec("mkdir -p {$this->getSvgsAssetsBuildPath()}");
 			}
 			foreach($this->svgs as $svg){
 				$attr = [];
@@ -125,7 +125,7 @@ class Build extends Model{
 				}
 				if($src && $dest){
 					if(substr($dest, 0, 1) !== '/'){
-						$dest = $this->getSvgsDistPath() . '/' . $dest;
+						$dest = $this->getSvgsAssetsBuildPath() . '/' . $dest;
 					}
 					copy($src, $dest);
 					if(pathinfo($dest, PATHINFO_EXTENSION) === 'svg' && $attr){
@@ -170,7 +170,7 @@ class Build extends Model{
 		$basePath = __DIR__ . '/..';
 		chdir($basePath);
 		$processes = [];
-		$dest = $this->getStylesDistPath();
+		$dest = $this->getStylesAssetsBuildPath();
 		if(!file_exists($dest)){
 			exec("mkdir -p {$dest}");
 		}
@@ -210,7 +210,7 @@ class Build extends Model{
 	=====*/
 	public function buildJS($compiler = 'rollup', $env = 'dev', OutputInterface $output = null){
 		$src = $this->getScriptsPath();
-		$dest = $this->getScriptsDistPath();
+		$dest = $this->getScriptsAssetsBuildPath();
 		if($env === 'dev'){
 			Files::symlinkRelativelySafely($dest, $src);
 			if($output) $output->writeln("symlink $dest, $src");
@@ -338,18 +338,18 @@ class Build extends Model{
 	/*=====
 	==paths
 	=====*/
-	public function getDistPath(){
-		if(substr($this->distPath, 0, 1) !== '/'){
-			return $this->projectPath . '/' . $this->distPath;
+	public function getAssetsBuildPath(){
+		if(substr($this->assetsBuildPath, 0, 1) !== '/'){
+			return $this->projectPath . '/' . $this->assetsBuildPath;
 		}else{
-			return $this->distPath;
+			return $this->assetsBuildPath;
 		}
 	}
-	public function getSvgsDistPath(){
-		if(substr($this->svgsDistPath, 0, 1) !== '/'){
-			return $this->getDistPath() . '/' . $this->svgsDistPath;
+	public function getSvgsAssetsBuildPath(){
+		if(substr($this->svgsAssetsBuildPath, 0, 1) !== '/'){
+			return $this->getAssetsBuildPath() . '/' . $this->svgsAssetsBuildPath;
 		}else{
-			return $this->svgsDistPath;
+			return $this->svgsAssetsBuildPath;
 		}
 	}
 	public function getScriptsPath(){
@@ -359,11 +359,11 @@ class Build extends Model{
 			return $this->scriptsPath;
 		}
 	}
-	public function getScriptsDistPath(){
-		if(substr($this->scriptsDistPath, 0, 1) !== '/'){
-			return $this->getDistPath() . '/' . $this->scriptsDistPath;
+	public function getScriptsAssetsBuildPath(){
+		if(substr($this->scriptsAssetsBuildPath, 0, 1) !== '/'){
+			return $this->getAssetsBuildPath() . '/' . $this->scriptsAssetsBuildPath;
 		}else{
-			return $this->scriptsDistPath;
+			return $this->scriptsAssetsBuildPath;
 		}
 	}
 	public function getStylesPath(){
@@ -373,11 +373,11 @@ class Build extends Model{
 			return $this->stylesPath;
 		}
 	}
-	public function getStylesDistPath(){
-		if(substr($this->stylesDistPath, 0, 1) !== '/'){
-			return $this->getDistPath() . '/' . $this->stylesDistPath;
+	public function getStylesAssetsBuildPath(){
+		if(substr($this->stylesAssetsBuildPath, 0, 1) !== '/'){
+			return $this->getAssetsBuildPath() . '/' . $this->stylesAssetsBuildPath;
 		}else{
-			return $this->stylesDistPath;
+			return $this->stylesAssetsBuildPath;
 		}
 	}
 

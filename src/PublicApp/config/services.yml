@@ -21,9 +21,9 @@ services:
         -
           dest: 'images'
           src: 'assets/images/*'
+      assetsBuildPath: '%assets.path%'
       buildPath: '%build.path%'
       canonicalHost: '%public.canonical_host%'
-      distPath: '%assets.dist_path%'
       projectPath: '%kernel.root_dir%'
       router: '@router'
       svgDefaults:
