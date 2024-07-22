@@ -1,12 +1,15 @@
 <?php
 namespace TJM\Views;
 use Symfony\Component\HttpFoundation\Request;
+use PublicApp\Service\Build;
 
 class Views{
+	protected $canonicalHost;
 	protected $host;
 	protected $router;
 	protected $wraps;
-	public function __construct($router, array $wraps, string $host){
+	public function __construct($router, array $wraps, string $host, string $canonicalHost){
+		$this->canonicalHost = $canonicalHost;
 		$this->host = $host;
 		$this->router = $router;
 		$this->wraps = $wraps;
@@ -48,8 +51,9 @@ class Views{
 		if($request && $data["doc"]['name'] !== 'error'){
 			$isCanonicalHost = $request->getHost() === $this->host;
 			$isHttps = $request->getScheme() === 'https';
-			if(!isset($data['canonical']) && ($format === 'html' || $format === 'xhtml')){
-				if(!$isHttps || !$isCanonicalHost || $format !== 'html'){
+			$forceCanonical = Build::isBuilding();
+			if(!isset($data['canonical']) && ($format === 'html' || $format === 'xhtml') || $forceCanonical){
+				if(!$isHttps || !$isCanonicalHost || $format !== 'html' || $forceCanonical){
 					$currentRoute = $request->get('_route');
 					if($currentRoute === 'public_home_formatted'){
 						$currentRoute = 'public_home';
@@ -61,7 +65,7 @@ class Views{
 					if($currentRoute === 'public_home'){
 						unset($routeParams['id']);
 					}
-					$data['canonical'] = 'https://' . $this->host . $this->router->generate($currentRoute, $routeParams);
+					$data['canonical'] = 'https://' . ($forceCanonical ? $this->canonicalHost : $this->host) . $this->router->generate($currentRoute, $routeParams);
 				}
 			}
 			if(!$isHttps && !isset($data['page']['secureUrl']) && $isCanonicalHost){

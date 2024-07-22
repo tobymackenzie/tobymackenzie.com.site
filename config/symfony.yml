@@ -3,4 +3,5 @@ imports:
 
 parameters:
   locale: en
+  public.canonical_host: 'www.tobymackenzie.com'
   twig.extension.assets.class: TJM\BaseBundle\Extension\AssetsExtension

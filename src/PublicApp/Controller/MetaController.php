@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use PublicApp\Service\Build;
 
 class MetaController extends Controller{
 	public function appManifestAction(Request $request){
@@ -188,7 +189,10 @@ class MetaController extends Controller{
 	public function robotsAction(Request $request, $_format = 'html'){
 		$data = [];
 		//--only allow for canonical
-		if(preg_match("/^{$this->getParameter('public.host')}$/", $request->getHttpHost())){
+		if(
+			preg_match("/^{$this->getParameter('public.host')}$/", $request->getHttpHost())
+			|| Build::isBuilding()
+		){
 			$data['agents'] = [
 				'*'=> [
 					'Crawl-delay'=> 10

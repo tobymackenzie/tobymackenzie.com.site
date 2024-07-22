@@ -3,26 +3,42 @@ namespace PublicApp\Service;
 use Exception;
 use SimpleXMLElement;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Routing\RouterInterface;
 use TJM\Data\Model;
 use TJM\Files\Files;
+use TJM\StaticWebTasks\Task as StaticWebTask;
+use TJM\WebCrawler\Response;
+use TJM\WikiSite\WikiSite;
 
 class Build extends Model{
+	static protected $isBuild = false;
+	
 	protected $assetLinks = [];
+	protected string $buildPath = 'dist';
+	protected string $canonicalHost;
 	protected $distPath = 'dist';
 	protected $projectPath;
+	protected ?RouterInterface $router = null;
 	protected $scriptsPath = 'scripts';
 	protected $scriptsDistPath = 'scripts';
+	protected array $staticFormats = ['md', 'txt', 'xhtml'];
 	protected $stylesPath = 'styles';
 	protected $stylesDistPath = 'styles';
 	protected $svgDefaults = [];
 	protected $svgSets = [];
 	protected $svgs = [];
 	protected $svgsDistPath = 'svgs';
+	protected ?WikiSite $wikiSite = null;
+
 	public function __construct($values = null){
 		if($values){
 			$this->set($values);
 		}
+	}
+	static public function isBuilding(){
+		return static::$isBuild;
 	}
 	public function linkAssets(){
 		if($this->assetLinks){
@@ -237,6 +253,88 @@ class Build extends Model{
 			if($output) $output->writeln("{$dest}/prismjs" . ' ' .  "{$src}/lib/primsjs");
 		}
 	}
+
+	/*=====
+	==pages
+	=====*/
+	public function buildStaticPages($destRoot = null, $target = null, OutputInterface $output = null){
+		static::$isBuild = true;
+		$this->router->getContext()->setHost($this->canonicalHost);
+
+		//--build path array
+		//---get wiki page paths
+		$paths = $this->wikiSite->getPagePaths();
+		//---add multi-format other paths
+		$paths[] = $this->router->generate('public_robots');
+		$paths[] = $this->router->generate('public_site_nav');
+		foreach($paths as $path){
+			if(!pathinfo($path, PATHINFO_EXTENSION)){
+				if($path === '/'){
+					$path = '/index';
+				}
+				foreach($this->staticFormats as $format){
+					$paths[] = $path . '.' . $format;
+				}
+			}
+		}
+		//---add single format other paths
+		$paths[] = $this->router->generate('public_app_manifest');
+		$paths[] = $this->router->generate('public_bing_verification');
+		$paths[] = $this->router->generate('public_google_verification');
+		// $paths[] = $this->router->generate('public_proxy_service_worker');
+
+		//--build
+		//-! for certain targets eg github pages, we will need to generate redirect files for aliases
+		$host = $this->canonicalHost;
+		$task = new StaticWebTask(
+			[
+				// 'client'=> 'php ' . __DIR__ . '/../bin/console web:request',
+				'client'=> function($path) use($host){
+					global $app;
+					//--need clean output
+					if($app->getEnvironment() !== 'prod'){
+						$app->setEnvironment('prod');
+						$app->setKernel($app->createKernel());
+					}
+					$syResponse = $app->getResponse(Request::create($path, 'GET', [], [], [], [
+						'HTTP_HOST'=> $host,
+						'HTTPS'=> 'on',
+					]));
+					$headers = [];
+					foreach($syResponse->headers as $key=> $value){
+						foreach($value as $subValue){
+							$headers[] = $key . ': ' . $subValue;
+						}
+					}
+					$response = new Response($syResponse->getContent(), $syResponse->getStatusCode(), $headers);
+					return $response;
+				},
+				'follow'=> false,
+			],
+			$destRoot ?? $this->buildPath,
+			[
+				//-! should come up with list from building these elsewhere?
+				'exclude'=> [
+					'/.htaccess',
+					'/_/*',
+					'/_assets/*',
+					'/_assets-dev/*',
+					'/_maintenance.html',
+					'/examples',
+					'/favicon.ico',
+					'/icon-*',
+					'/index*.php',
+					'/sites',
+				],
+				'paths'=> $paths,
+			]
+		);
+		$task->do();
+		//-! should task return paths?
+		static::$isBuild = false;
+		return $paths;
+	}
+
 	/*=====
 	==paths
 	=====*/
