@@ -7,7 +7,8 @@ Header always set X-Content-Type-Options 'nosniff'
 
 ##--tell browser where safe scripts, etc can be loaded from
 #-@ https://scotthelme.co.uk/content-security-policy-an-introduction/
-Header setifempty Content-Security-Policy "default-src 'self'; frame-src 'self' www.youtube.com;block-all-mixed-content" "expr=%{CONTENT_TYPE} =~ /html/"
+#-# not for wp admin, breaks it
+Header setifempty Content-Security-Policy "default-src 'self' 'unsafe-inline' data:; frame-src 'self' www.youtube.com;block-all-mixed-content" "expr=%{CONTENT_TYPE} =~ /html/ && %{REQUEST_URI} !~ m#_/wp/wp-admin#"
 
 ##--tell browser to keep using https for all requests to the domain
 Header setifempty Strict-Transport-Security "max-age=2592000" "expr=%{CONTENT_TYPE} =~ /html/"
