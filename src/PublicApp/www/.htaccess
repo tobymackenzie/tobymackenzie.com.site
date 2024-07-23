@@ -5,6 +5,21 @@
 #-@ https://scotthelme.co.uk/hardening-your-http-response-headers/#x-content-type-options
 Header always set X-Content-Type-Options 'nosniff'
 
+##--tell browser where safe scripts, etc can be loaded from
+#-@ https://scotthelme.co.uk/content-security-policy-an-introduction/
+Header setifempty Content-Security-Policy "default-src 'self'; frame-src 'self' www.youtube.com;block-all-mixed-content" "expr=%{CONTENT_TYPE} =~ /html/"
+
+##--tell browser to keep using https for all requests to the domain
+Header setifempty Strict-Transport-Security "max-age=2592000" "expr=%{CONTENT_TYPE} =~ /html/"
+
+##--block iframes from showing site, except from our domain.  helps prevent clickjacking
+#-@ https://scotthelme.co.uk/hardening-your-http-response-headers/#x-frame-options
+Header setifempty X-Frame-Options "sameorigin" "expr=%{CONTENT_TYPE} =~ /html/"
+
+##--force enable xss protection and block rendering of page if attack detected.  IE and Chrome.  may not be necessary, since the default behavior should be satisfactory
+#-@ https://scotthelme.co.uk/hardening-your-http-response-headers/#x-xss-protection
+Header setifempty X-Xss-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ /html/"
+
 ##--block execution of php in uploads directories
 <IfModule mod_rewrite.c>
 	RewriteEngine On
@@ -146,8 +161,10 @@ Header always set X-Content-Type-Options 'nosniff'
 	# ExpiresDefault 'access plus 1 seconds'
 
 	#--docs
-	# ExpiresByType text/html 'access plus 1 seconds'
-	# ExpiresByType text/xml 'access plus 1 seconds'
+	ExpiresByType text/html 'access plus 10 minutes'
+	ExpiresByType text/xml 'access plus 10 minutes'
+	ExpiresByType application/xhtml+xml 'access plus 10 minutes'
+	ExpiresByType application/xml 'access plus 10 minutes'
 
 	##--data
 	ExpiresByType application/json 'access plus 0 seconds'
@@ -252,3 +269,8 @@ Header always set X-Content-Type-Options 'nosniff'
 
 ##==etags
 ##-! consider implementing (https://github.com/h5bp/server-configs-apache/blob/master/src/web_performance/etags.conf), ie removing etags for items that have far future expirations
+
+##=====
+##==whimsy
+##=====
+Header setifempty X-Cetera "bxln2ho3" "expr=%{CONTENT_TYPE} =~ /html/"
