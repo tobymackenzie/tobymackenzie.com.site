@@ -7,8 +7,15 @@ Header always set X-Content-Type-Options 'nosniff'
 
 ##--tell browser where safe scripts, etc can be loaded from
 #-@ https://scotthelme.co.uk/content-security-policy-an-introduction/
-#-# not for wp admin, breaks it
-Header setifempty Content-Security-Policy "default-src 'self' 'unsafe-inline' data:; frame-src 'self' www.youtube.com;block-all-mixed-content" "expr=%{CONTENT_TYPE} =~ /html/ && %{REQUEST_URI} !~ m#_/wp/wp-admin#"
+<If "%{REQUEST_URI} =~ m#^/?_/wp/wp-admin#i || %{REQUEST_URI} =~ m#^/?blog/#i || %{REQUEST_URI} =~ m#^/?_/wp/index\.php#i">
+	#-# do nothing for WordPress, CSP causes problems, outright breaks admin
+</If>
+<ElseIf "%{REQUEST_URI} =~ m#^/?examples/#i">
+	Header setifempty Content-Security-Policy "default-src 'self' 'unsafe-inline' data:" "expr=%{CONTENT_TYPE} =~ /html/"
+</ElseIf>
+<Else>
+	Header setifempty Content-Security-Policy "default-src 'self' data:; frame-src 'self' www.youtube.com;block-all-mixed-content" "expr=%{CONTENT_TYPE} =~ /html/"
+</Else>
 
 ##--tell browser to keep using https for all requests to the domain
 Header setifempty Strict-Transport-Security "max-age=2592000" "expr=%{CONTENT_TYPE} =~ /html/"
