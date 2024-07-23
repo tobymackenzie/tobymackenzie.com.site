@@ -1,5 +1,7 @@
-#--ensure proper charset when unknown
+#--ensure proper charset
 AddDefaultCharset utf-8
+AddCharset utf-8 .css .js .svg .xhtml
+
 ##=====
 #==security
 ##=====
