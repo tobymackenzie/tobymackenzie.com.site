@@ -1,3 +1,5 @@
+#--ensure proper charset when unknown
+AddDefaultCharset utf-8
 ##=====
 #==security
 ##=====
