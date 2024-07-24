@@ -1,6 +1,6 @@
 #--ensure proper charset
 AddDefaultCharset utf-8
-AddCharset utf-8 .css .js .svg .xhtml
+AddCharset utf-8 .css .js .md .svg .xhtml
 
 ##=====
 #==security
