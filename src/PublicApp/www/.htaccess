@@ -138,13 +138,15 @@ Header setifempty X-Xss-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ /htm
 	# home special handling
 	RewriteRule ^/?index(\.html)?/?$ / [END,QSA,R]
 	# no trailing slash
-	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME}\.html -f
 	RewriteRule ^(.*)/$ /$1 [END,QSA,R]
 	# no .html
 	RewriteCond %{REQUEST_FILENAME} -f
 	RewriteRule ^(.+)\.html$ /$1 [END,QSA,R]
 	#--rewrite node to html file
+	<If "-d '%{REQUEST_FILENAME}' && -f '%{REQUEST_FILENAME}\.html'">
+		DirectorySlash Off
+	</If>
 	RewriteCond %{REQUEST_FILENAME}\.html -f
 	RewriteRule ^ %{REQUEST_URI}.html [END]
 
