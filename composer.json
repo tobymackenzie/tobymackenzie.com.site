@@ -67,7 +67,7 @@
 		,"symfony/stopwatch": "^5.4"
 		,"symfony/var-dumper": "^5.4"
 		,"symfony/web-profiler-bundle": "^5.4"
-		,"tjm/static-web-tasks": "^0.1"
+		,"tjm/static-web-tasks": "^0.2"
 	}
 	,"repositories": [
 		{

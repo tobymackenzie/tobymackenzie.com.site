@@ -133,16 +133,25 @@ Header setifempty X-Xss-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ /htm
 	RewriteCond %{REQUEST_URI} ^/?_/wp/index\.php$
 	RewriteRule ^ /blog/ [END,R=301]
 
-	##==no trailing slash
-	DirectorySlash Off
-	RewriteCond %{REQUEST_FILENAME} -d
-	RewriteCond %{REQUEST_URI} !/$
-	RewriteCond %{REQUEST_FILENAME}/index.html -f
-	RewriteRule (.*) $1/index.html [END]
+	##==no trailing slash for index files
+	#--redirect to canonical
+	# home special handling
+	RewriteRule ^/?index(\.html)?/?$ / [END,QSA,R]
+	# no trailing slash
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME}\.html -f
+	RewriteRule ^(.*)/$ /$1 [END,QSA,R]
+	# no .html
+	RewriteCond %{REQUEST_FILENAME} -f
+	RewriteRule ^(.+)\.html$ /$1 [END,QSA,R]
+	#--rewrite node to html file
+	RewriteCond %{REQUEST_FILENAME}\.html -f
+	RewriteRule ^ %{REQUEST_URI}.html [END]
 
 	##==serve existing files directly
 	RewriteCond %{REQUEST_FILENAME} -f [OR]
 	#--show dir index files
+	RewriteCond %{REQUEST_FILENAME}/index.html -f [OR]
 	RewriteCond %{REQUEST_FILENAME}/index\.php -f [OR]
 	#--allow apache indexes for specific dirs
 	RewriteCond %{REQUEST_URI} ^/?(examples|sites) [NC]
