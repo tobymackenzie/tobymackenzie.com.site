@@ -62,8 +62,9 @@ Header setifempty X-Xss-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ /htm
 	RewriteCond %{HTTP_HOST} ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ [NC,OR]
 	RewriteCond %{HTTP_HOST} ^.*:.*:.*$ [NC,OR]
 	#----public local
-	RewriteCond %{HTTP_HOST} ^localhost$ [NC,OR]
-	RewriteCond %{HTTP_HOST} tm.*\.local$ [NC]
+	RewriteCond %{HTTP_HOST} ^tm\.t$ [NC,OR]
+	RewriteCond %{HTTP_HOST} ^deploy\.t$ [NC,OR]
+	RewriteCond %{HTTP_HOST} ^localhost$ [NC]
 	RewriteRule ^ - [E=TMWEB_SITE:public]
 	#----no host, for http 0.9 (ie really old) browsers
 	RewriteCond %{HTTP_HOST} ^$
