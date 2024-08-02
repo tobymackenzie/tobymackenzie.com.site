@@ -6,7 +6,7 @@ Description: modify the rel canonical links to have https instead of http
 Version: 0.1
 Author: Toby Mackenzie
 Author URI: https://www.tobymackenzie.com
-License: GPL2
+License: 0BSD OR GPL-2.0-or-later
 */
 
 remove_action('wp_head', 'rel_canonical');

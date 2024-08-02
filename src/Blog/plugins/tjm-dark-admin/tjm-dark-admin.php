@@ -5,7 +5,7 @@ Description: quick and dirty dark(ish) mode for wp admin
 Version: 0.1
 Author: Toby Mackenzie
 Author URI: https://www.tobymackenzie.com
-License: GPL2
+License: 0BSD OR GPL-2.0-or-later
 */
 
 add_action('login_enqueue_scripts', function(){

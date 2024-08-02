@@ -6,7 +6,7 @@ Description: Simple handler of 'code' shorttag
 Version: 0.1
 Author: Toby Mackenzie
 Author URI: https://www.tobymackenzie.com
-License: licenseName
+License: 0BSD OR GPL-2.0-or-later
 */
 
 add_shortcode('code', function($args = null, $content = null){
