@@ -16,7 +16,8 @@ if('location' in w){
 		url = origin + l.pathname + l.search + l.hash;
 	}
 	//--attempt force https if http
-	else if(l.protocol === 'http:'){
+	//-# not on dev
+	else if(l.protocol === 'http:' && l.host.slice(-2) !== '.t'){
 		origin = 'https://' + l.host
 		url = origin + l.pathname + l.search + l.hash;
 	}
