@@ -9,29 +9,10 @@ Author URI: https://www.tobymackenzie.com
 License: 0BSD OR GPL-2.0-or-later
 */
 
+//--use our template canonical instead of WPs
 remove_action('wp_head', 'rel_canonical');
-add_action('wp_head', function(){
-	if(!is_singular()){
-		return;
-	}
-	$id = get_queried_object_id();
-	if(!$id){
-		return;
-	}
-	$cpage = get_query_var('cpage');
-	if($cpage){
-		$url = get_comments_pagenum_link($cpage);
-	}else{
-		$url = get_permalink($id);
-		$page = get_query_var('page');
-		if($page > 1){
-			if(get_option('permalink_structure') == ''){
-				$url = add_query_arg('page', $page, $url);
-			}else{
-				$url = trailingslashit($url) . user_trailingslashit($page, 'single_paged');
-			}
-		}
-	}
+//--ensure WPs canonical is always HTTPS
+add_filter('get_canonical_url', function($url){
 	$url = str_replace('http://', 'https://', $url);
-	echo "<link href=\"{$url}\" rel=\"canonical\" />\n";
+	return $url;
 });
