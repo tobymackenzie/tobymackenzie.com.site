@@ -80,15 +80,16 @@ class Build extends Model{
 			}
 		}
 	}
-	public function clearAssetsDir($dist = 'public'){
-		if($this->getAssetsDest($dist)){
-			return exec("rm -rf {$this->getAssetsDest($dist)}/*");
-		}
-		return false;
-	}
 	public function createAssetsDir($dist = 'public'){
 		if($this->getAssetsDest($dist) && !file_exists($this->getAssetsDest($dist))){
 			return exec("mkdir -p {$this->getAssetsDest($dist)}");
+		}
+		return false;
+	}
+	public function clearBuildDir($dist = 'public'){
+		$dest = $this->getDistPath($dist);
+		if($dest && is_dir($dest)){
+			return passthru("find -P {$dest} -mindepth 1 -delete");
 		}
 		return false;
 	}

@@ -11,6 +11,7 @@ class BuildCommand extends Command{
 	protected $buildService;
 	const TASKS = [
 		'assets',
+		'clear',
 		'css',
 		'js',
 		'static',
@@ -47,6 +48,9 @@ class BuildCommand extends Command{
 			switch($task){
 				case 'assets':
 					$this->buildService->linkAssets($input->getOption('dist'));
+				break;
+				case 'clear':
+					$this->buildService->clearBuildDir($input->getOption('dist'));
 				break;
 				case 'css':
 					$this->buildService->buildCSS($input->getOption('dist'), $output);
