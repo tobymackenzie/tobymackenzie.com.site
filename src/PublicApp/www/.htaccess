@@ -11,8 +11,9 @@ Header always set X-Content-Type-Options 'nosniff'
 
 ##--tell browser where safe scripts, etc can be loaded from
 #-@ https://scotthelme.co.uk/content-security-policy-an-introduction/
-<If "%{REQUEST_URI} =~ m#^/?_/wp/wp-admin#i || %{REQUEST_URI} =~ m#^/?blog/#i || %{REQUEST_URI} =~ m#^/?_/wp/index\.php#i">
+<If "%{REQUEST_URI} =~ m#^/?_/wp/wp-admin#i || %{REQUEST_URI} =~ m#^/?blog/#i || %{REQUEST_URI} =~ m#^/?_/wp/index\.php#i || %{HTTP_HOST} =~ m#\.t#">
 	#-# do nothing for WordPress, CSP causes problems, outright breaks admin
+	#-# do nothing for dev
 </If>
 <ElseIf "%{REQUEST_URI} =~ m#^/?examples/#i">
 	Header setifempty Content-Security-Policy "default-src 'self' 'unsafe-inline' data: www.tobymackenzie.com" "expr=%{CONTENT_TYPE} =~ /html/"
