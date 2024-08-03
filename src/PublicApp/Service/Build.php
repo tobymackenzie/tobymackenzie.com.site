@@ -156,6 +156,12 @@ class Build extends Model{
 			}
 		}
 	}
+	public function installWebRootFiles($dist = 'public'){
+		foreach(glob(__DIR__ . '/../www/{.??*,.[!.],*}', GLOB_BRACE) as $from){
+			$to = $this->getDistPath($dist) . '/' . basename($from);
+			Files::symlinkRelativelySafely($to, $from, $this->projectPath);
+		}
+	}
 
 	/*=====
 	==css

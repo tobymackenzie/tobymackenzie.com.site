@@ -25,7 +25,7 @@ class BuildCommand extends Command{
 	}
 	protected function execute(InputInterface $input, OutputInterface $output): int{
 		$this->buildService->buildStaticPages($input->getOption('dist'));
-		//-! should eventually take any dist related stuff from `bin/app-install`
+		$this->buildService->installWebRootFiles($input->getOption('dist'));
 		//-! should eventually support doing all build steps
 		//-! should eventually support different host targets
 		// $this->buildService->linkAssets();

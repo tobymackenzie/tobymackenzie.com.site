@@ -40,8 +40,7 @@ require_once($autoloadPath);
 
 //--install webroot files
 foreach([
-	'public'=> $projectPath . '/src/PublicApp/www'
-	,'short'=> $projectPath . '/src/ShortApp/www'
+	'short'=> $projectPath . '/src/ShortApp/www'
 ] as $name=> $srcPath){
 	foreach(glob($srcPath . '/{.??*,.[!.],*}', GLOB_BRACE) as $from){
 		$to = $projectPath . '/dist/' . $name . '/' . basename($from);
