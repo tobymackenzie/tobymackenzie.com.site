@@ -39,7 +39,7 @@ class BuildCommand extends Command{
 	protected function execute(InputInterface $input, OutputInterface $output): int{
 		$command = explode(':', $input->getArgument('command'));
 		if(count($command) === 1){
-			$tasks = ['assets', 'css', 'js', 'static', 'svg'];
+			$tasks = ['assets', 'css', 'js', 'static', 'webroot', 'svg'];
 		}else{
 			$tasks = [$command[1]];
 		}
