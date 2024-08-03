@@ -8,10 +8,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class JsAssetsCommand extends Command{
 	protected $buildService;
-	protected $env;
-	public function __construct(Build $buildService, $env){
+	public function __construct(Build $buildService){
 		$this->buildService = $buildService;
-		$this->env = $env;
 		parent::__construct();
 	}
 	protected function configure(){
@@ -19,10 +17,11 @@ class JsAssetsCommand extends Command{
 			->setName('assets:js')
 			->setDescription("Build js.")
 			->addOption('compiler', 'c', InputOption::VALUE_REQUIRED)
+			->addOption('dist', 'd', InputOption::VALUE_REQUIRED, 'Which dist folder to build to.  May also change some characteristics of how build is done', 'public')
 		;
 	}
 	protected function execute(InputInterface $input, OutputInterface $output): int{
-		$this->buildService->buildJS($input->getOption('compiler'), $this->env, $output);
+		$this->buildService->buildJS($input->getOption('compiler'), $input->getOption('dist'), $output);
 		return 0;
 	}
 }

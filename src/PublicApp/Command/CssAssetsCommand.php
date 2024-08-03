@@ -9,20 +9,19 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CssAssetsCommand extends Command{
 	protected $buildService;
-	protected $env;
-	public function __construct(Build $buildService, $env){
+	public function __construct(Build $buildService){
 		$this->buildService = $buildService;
-		$this->env = $env;
 		parent::__construct();
 	}
 	protected function configure(){
 		$this
 			->setName('assets:css')
 			->setDescription("Build CSS.")
+			->addOption('dist', 'd', InputOption::VALUE_REQUIRED, 'Which dist folder to build to.  May also change some characteristics of how build is done', 'public')
 		;
 	}
 	protected function execute(InputInterface $input, OutputInterface $output): int{
-		$this->buildService->buildCSS($this->env, $output);
+		$this->buildService->buildCSS($input->getOption('dist'), $output);
 		return 0;
 	}
 }

@@ -1,7 +1,6 @@
 parameters:
   assets.web_root: '/_assets'
-  assets.path: '%build.path%%assets.web_root%'
-  build.path: '%kernel.project_dir%/dist/public'
+  build.path: '%kernel.project_dir%/dist'
   kernel.root_dir: !php/const TJM\SyWeb\APP_DIR
 
 imports:

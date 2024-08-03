@@ -18,18 +18,18 @@ class Build extends Model{
 	protected $assetLinks = [];
 	protected string $buildPath = 'dist';
 	protected string $canonicalHost;
-	protected $assetsBuildPath = 'dist';
+	protected $assetsRoot = '/_assets';
 	protected $projectPath;
 	protected ?RouterInterface $router = null;
 	protected $scriptsPath = 'scripts';
-	protected $scriptsAssetsBuildPath = 'scripts';
+	protected $scriptsDest = 'scripts';
 	protected array $staticFormats = ['md', 'txt', 'xhtml'];
 	protected $stylesPath = 'styles';
-	protected $stylesAssetsBuildPath = 'styles';
+	protected $stylesDest = 'styles';
 	protected $svgDefaults = [];
 	protected $svgSets = [];
 	protected $svgs = [];
-	protected $svgsAssetsBuildPath = 'svgs';
+	protected $svgsDest = 'svgs';
 	protected ?WikiSite $wikiSite = null;
 
 	public function __construct($values = null){
@@ -40,105 +40,116 @@ class Build extends Model{
 	static public function isBuilding(){
 		return static::$isBuild;
 	}
-	public function linkAssets(){
+	public function linkAssets($dist = 'public'){
 		if($this->assetLinks){
-			$this->createAssetsDir();
-			foreach($this->assetLinks as $link){
-				if(is_string($link)){
-					$link = ['dest'=> $link, 'src'=> $link];
+			$this->createAssetsDir($dist);
+			if($dist === 'dev'){
+				foreach($this->assetLinks as $link){
+					Files::symlinkRelativelySafely($this->getAssetsDest($dist) . '/' . $link['dest'], $this->getAssetsDest('public') . '/' . $link['dest']);
 				}
-				if(!(isset($link['dest']) && $link['src'])){
-					throw new Exception('Assets link is malformed: ' . json_encode($link));
-				}
-				if(substr($link['src'], 0, 1) === '/'){
-					$from = $link['src'];
-				}else{
-					$from = $this->projectPath . '/' . $link['src'];
-				}
-				if(substr($link['dest'], 0, 1) === '/'){
-					$at = $link['dest'];
-				}else{
-					$at = $this->getAssetsBuildPath() . '/' . $link['dest'];
-				}
-				if(strpos($from, '*') !== false){
-					if(!file_exists($at)){
-						exec("mkdir -p {$at}");
+			}else{
+				foreach($this->assetLinks as $link){
+					if(is_string($link)){
+						$link = ['dest'=> $link, 'src'=> $link];
 					}
-					$froms = glob($from);
-				}else{
-					$froms = [$from];
-				}
-				foreach($froms as $from){
-					Files::symlinkRelativelySafely($at, $from);
-				}
-			}
-		}
-	}
-	public function clearAssetsDir(){
-		if($this->getAssetsBuildPath()){
-			return exec("rm -rf {$this->getAssetsBuildPath()}/*");
-		}
-		return false;
-	}
-	public function createAssetsDir(){
-		if($this->getAssetsBuildPath() && !file_exists($this->getAssetsBuildPath())){
-			return exec("mkdir -p {$this->getAssetsBuildPath()}");
-		}
-		return false;
-	}
-	public function buildSvgs(){
-		if($this->svgs){
-			if(!file_exists($this->getSvgsAssetsBuildPath())){
-				exec("mkdir -p {$this->getSvgsAssetsBuildPath()}");
-			}
-			foreach($this->svgs as $svg){
-				$attr = [];
-				if(is_string($svg)){
-					$dest = basename($svg);
-					$src = $svg;
-					$set = null;
-				}else{
-					$src = $svg['src'] ?? null;
-					$dest = $svg['dest'] ?? basename($src);
-					$set = $svg['set'] ?? null;
-					if(isset($svg['attr'])){
-						$attr = $svg['attr'];
+					if(!(isset($link['dest']) && $link['src'])){
+						throw new Exception('Assets link is malformed: ' . json_encode($link));
 					}
-				}
-				if($set && isset($this->svgSets[$set])){
-					$set = $this->svgSets[$set];
-					if(is_string($set)){
-						$set = ['src'=> $set];
+					if(substr($link['src'], 0, 1) === '/'){
+						$from = $link['src'];
+					}else{
+						$from = $this->projectPath . '/' . $link['src'];
 					}
-					if(isset($set['attr'])){
-						$attr = array_merge($set['attr'], $attr);
+					if(substr($link['dest'], 0, 1) === '/'){
+						$at = $link['dest'];
+					}else{
+						$at = $this->getAssetsDest() . '/' . $link['dest'];
 					}
-					if(isset($set['src']) && substr($src, 0, 1) !== '/'){
-						if(substr($set['src'], 0, 1) !== '/'){
-							$set['src'] = $this->projectPath . '/' . $set['src'];
+					if(strpos($from, '*') !== false){
+						if(!file_exists($at)){
+							exec("mkdir -p {$at}");
 						}
-						$src = $set['src'] . '/' . $src;
+						$froms = glob($from);
+					}else{
+						$froms = [$from];
+					}
+					foreach($froms as $from){
+						Files::symlinkRelativelySafely($at, $from);
 					}
 				}
-				if(isset($this->svgDefaults['attr'])){
-					$attr = array_merge($this->svgDefaults['attr'], $attr);
+			}
+		}
+	}
+	public function clearAssetsDir($dist = 'public'){
+		if($this->getAssetsDest($dist)){
+			return exec("rm -rf {$this->getAssetsDest($dist)}/*");
+		}
+		return false;
+	}
+	public function createAssetsDir($dist = 'public'){
+		if($this->getAssetsDest($dist) && !file_exists($this->getAssetsDest($dist))){
+			return exec("mkdir -p {$this->getAssetsDest($dist)}");
+		}
+		return false;
+	}
+	public function buildSvgs($dist = 'public'){
+		if($this->svgs){
+			$distPath = $this->getSvgDistPath($dist);
+			if($dist === 'dev'){
+				Files::symlinkRelativelySafely($distPath, $this->getSvgDistPath('public'));
+			}else{
+				if(!file_exists($distPath)){
+					exec("mkdir -p {$distPath}");
 				}
-				if($src && $dest){
-					if(substr($dest, 0, 1) !== '/'){
-						$dest = $this->getSvgsAssetsBuildPath() . '/' . $dest;
+				foreach($this->svgs as $svg){
+					$attr = [];
+					if(is_string($svg)){
+						$dest = basename($svg);
+						$src = $svg;
+						$set = null;
+					}else{
+						$src = $svg['src'] ?? null;
+						$dest = $svg['dest'] ?? basename($src);
+						$set = $svg['set'] ?? null;
+						if(isset($svg['attr'])){
+							$attr = $svg['attr'];
+						}
 					}
-					copy($src, $dest);
-					if(pathinfo($dest, PATHINFO_EXTENSION) === 'svg' && $attr){
-						$svg = new SimpleXMLElement(file_get_contents($dest));
-						if($svg){
-							foreach($attr as $key=> $value){
-								if(isset($svg[$key])){
-									$svg[$key] = $value;
-								}else{
-									$svg->addAttribute($key, $value);
-								}
+					if($set && isset($this->svgSets[$set])){
+						$set = $this->svgSets[$set];
+						if(is_string($set)){
+							$set = ['src'=> $set];
+						}
+						if(isset($set['attr'])){
+							$attr = array_merge($set['attr'], $attr);
+						}
+						if(isset($set['src']) && substr($src, 0, 1) !== '/'){
+							if(substr($set['src'], 0, 1) !== '/'){
+								$set['src'] = $this->projectPath . '/' . $set['src'];
 							}
-							file_put_contents($dest, $svg->asXML());
+							$src = $set['src'] . '/' . $src;
+						}
+					}
+					if(isset($this->svgDefaults['attr'])){
+						$attr = array_merge($this->svgDefaults['attr'], $attr);
+					}
+					if($src && $dest){
+						if(substr($dest, 0, 1) !== '/'){
+							$dest = $distPath . '/' . $dest;
+						}
+						copy($src, $dest);
+						if(pathinfo($dest, PATHINFO_EXTENSION) === 'svg' && $attr){
+							$svg = new SimpleXMLElement(file_get_contents($dest));
+							if($svg){
+								foreach($attr as $key=> $value){
+									if(isset($svg[$key])){
+										$svg[$key] = $value;
+									}else{
+										$svg->addAttribute($key, $value);
+									}
+								}
+								file_put_contents($dest, $svg->asXML());
+							}
 						}
 					}
 				}
@@ -149,7 +160,7 @@ class Build extends Model{
 	/*=====
 	==css
 	=====*/
-	public function buildCSS($env = 'dev', OutputInterface $output = null){
+	public function buildCSS($dist = 'public', OutputInterface $output = null){
 		if(`which sassc`){
 			$sassBin = 'sassc';
 		}elseif(`which sass`){
@@ -157,7 +168,7 @@ class Build extends Model{
 		}else{
 			throw new Exception("No sass command found on shell path.");
 		}
-		if($env === 'prod'){
+		if($dist === 'public'){
 			$sassBin .= ' --style compressed';
 		}else{
 			$sassBin .= " --line-numbers";
@@ -170,7 +181,7 @@ class Build extends Model{
 		$basePath = __DIR__ . '/..';
 		chdir($basePath);
 		$processes = [];
-		$dest = $this->getStylesAssetsBuildPath();
+		$dest = $this->getStylesDistPath($dist);
 		if(!file_exists($dest)){
 			exec("mkdir -p {$dest}");
 		}
@@ -208,10 +219,10 @@ class Build extends Model{
 	/*=====
 	==js
 	=====*/
-	public function buildJS($compiler = 'rollup', $env = 'dev', OutputInterface $output = null){
+	public function buildJS($compiler = 'rollup', $dist = 'dev', OutputInterface $output = null){
 		$src = $this->getScriptsPath();
-		$dest = $this->getScriptsAssetsBuildPath();
-		if($env === 'dev'){
+		$dest = $this->getScriptsDistPath($dist);
+		if($dist === 'dev'){
 			Files::symlinkRelativelySafely($dest, $src);
 			if($output) $output->writeln("symlink $dest, $src");
 		}else{
@@ -257,7 +268,11 @@ class Build extends Model{
 	/*=====
 	==pages
 	=====*/
-	public function buildStaticPages($destRoot = null, $target = null, OutputInterface $output = null){
+	public function buildStaticPages($dist = 'public', OutputInterface $output = null){
+		//--no static for dev site
+		if($dist === 'dev'){
+			return false;
+		}
 		static::$isBuild = true;
 		$this->router->getContext()->setHost($this->canonicalHost);
 
@@ -311,7 +326,7 @@ class Build extends Model{
 				},
 				'follow'=> false,
 			],
-			$destRoot ?? $this->buildPath,
+			$this->getDistPath($dist),
 			[
 				//-! should come up with list from building these elsewhere?
 				'exclude'=> [
@@ -338,19 +353,17 @@ class Build extends Model{
 	/*=====
 	==paths
 	=====*/
-	public function getAssetsBuildPath(){
-		if(substr($this->assetsBuildPath, 0, 1) !== '/'){
-			return $this->projectPath . '/' . $this->assetsBuildPath;
-		}else{
-			return $this->assetsBuildPath;
-		}
+	public function getAssetsDest($dist = 'public'){
+		return $this->getDistPath($dist) . $this->assetsRoot;
 	}
-	public function getSvgsAssetsBuildPath(){
-		if(substr($this->svgsAssetsBuildPath, 0, 1) !== '/'){
-			return $this->getAssetsBuildPath() . '/' . $this->svgsAssetsBuildPath;
-		}else{
-			return $this->svgsAssetsBuildPath;
+	public function getDistPath($dist = 'public'){
+		if($dist === 'prod'){
+			$dist = 'public';
 		}
+		return $this->buildPath . '/' . $dist;
+	}
+	public function getSvgDistPath($dist = 'public'){
+		return $this->getAssetsDest($dist) . '/' . $this->svgsDest;
 	}
 	public function getScriptsPath(){
 		if(substr($this->scriptsPath, 0, 1) !== '/'){
@@ -359,12 +372,8 @@ class Build extends Model{
 			return $this->scriptsPath;
 		}
 	}
-	public function getScriptsAssetsBuildPath(){
-		if(substr($this->scriptsAssetsBuildPath, 0, 1) !== '/'){
-			return $this->getAssetsBuildPath() . '/' . $this->scriptsAssetsBuildPath;
-		}else{
-			return $this->scriptsAssetsBuildPath;
-		}
+	public function getScriptsDistPath($dist = 'public'){
+		return $this->getAssetsDest($dist) . '/' . $this->scriptsDest;
 	}
 	public function getStylesPath(){
 		if(substr($this->stylesPath, 0, 1) !== '/'){
@@ -373,12 +382,8 @@ class Build extends Model{
 			return $this->stylesPath;
 		}
 	}
-	public function getStylesAssetsBuildPath(){
-		if(substr($this->stylesAssetsBuildPath, 0, 1) !== '/'){
-			return $this->getAssetsBuildPath() . '/' . $this->stylesAssetsBuildPath;
-		}else{
-			return $this->stylesAssetsBuildPath;
-		}
+	public function getStylesDistPath($dist = 'public'){
+		return $this->getAssetsDest($dist) . '/' . $this->stylesDest;
 	}
 
 	/*=====

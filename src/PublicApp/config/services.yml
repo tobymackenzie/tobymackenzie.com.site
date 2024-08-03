@@ -21,7 +21,7 @@ services:
         -
           dest: 'images'
           src: 'assets/images/*'
-      assetsBuildPath: '%assets.path%'
+      assetsRoot: '%assets.web_root%'
       buildPath: '%build.path%'
       canonicalHost: '%public.canonical_host%'
       projectPath: '%kernel.root_dir%'
