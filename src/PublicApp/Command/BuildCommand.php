@@ -32,17 +32,18 @@ class BuildCommand extends Command{
 			->setAliases($aliases)
 			->setDescription("Run site build task(s).  Run all with `build` command, one with `build:*` command.")
 			->addOption('dist', 'd', InputOption::VALUE_REQUIRED, 'Which dist folder to build to.  May also change some characteristics of how build is done', 'public')
-			//-! arg: dest (folder to build into)
-			//-! opt: host type (eg apache, github pages, cloudflare pages)
-			//-! opt: tasks, array of build steps to run, eg clear (not default), assets, js, css, static pages
+			->addOption('tasks', 't', InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED, 'Build tasks to run.')
 		;
 	}
 	protected function execute(InputInterface $input, OutputInterface $output): int{
 		$command = explode(':', $input->getArgument('command'));
+		$tasks = $input->getOption('tasks') ?? [];
 		if(count($command) === 1){
-			$tasks = ['assets', 'css', 'js', 'static', 'webroot', 'svg'];
+			if(empty($tasks)){
+				$tasks = ['assets', 'css', 'js', 'static', 'webroot', 'svg'];
+			}
 		}else{
-			$tasks = [$command[1]];
+			array_unshift($tasks, $command[1]);
 		}
 		foreach($tasks as $task){
 			switch($task){
@@ -69,7 +70,6 @@ class BuildCommand extends Command{
 				break;
 			}
 		}
-		//-! should eventually support different host targets
 		return 0;
 	}
 }
