@@ -72,7 +72,7 @@ Header setifempty X-Xss-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ /htm
 	RewriteRule ^ - [E=TMWEB_SITE:public,E=HTTP_HOST:www.tobymackenzie.com]
 	##--TMWEB_DEV
 	RewriteCond %{HTTP_HOST} ^tmdev\.t$ [NC]
-	RewriteRule ^ - [E=TMWEB_DEV:dev]
+	RewriteRule ^ - [E=TMWEB_DEV:1]
 
 	##==block admin access to others
 	RewriteCond %{ENV:TMWEB_SITE} public
