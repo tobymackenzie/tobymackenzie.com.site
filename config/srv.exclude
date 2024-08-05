@@ -7,9 +7,8 @@ caches/
 /config/*.local.php
 /config/*.local.yml
 /app/files/wp-uploads/*
+/dist/dev
 /dist/public/_assets/icons/
-/dist/public/_assets-dev
-/dist/public/index-dev.php
 /dist/short/_dev.php
 /var/*
 /vendor/
