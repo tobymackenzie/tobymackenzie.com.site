@@ -49,7 +49,7 @@
 		,"tjm/files": "master@dev"
 		,"tjm/wiki-site": "^0.0"
 		,"tjm/sy-site": "^0.9"
-		,"tjm/sy-web": "^0.9"
+		,"tjm/sy-web": "^0.10"
 		,"tjm/utils": "master@dev"
 		,"tjm/wpthemehelper": "^1"
 		,"wpackagist-plugin/classic-editor": "^1.2"
