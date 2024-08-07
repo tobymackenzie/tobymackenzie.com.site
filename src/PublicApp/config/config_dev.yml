@@ -26,3 +26,121 @@ monolog:
 web_profiler:
  toolbar: true
  intercept_redirects: false
+
+services:
+ _defaults:
+  autoconfigure: true
+  autowire: true
+ PublicApp\Service\Build:
+   arguments:
+     -
+      assetLinks:
+        -
+          dest: 'fonts'
+          src: 'assets/fonts/*'
+        -
+          dest: 'grunge-pattern.png'
+          src: 'assets/grunge-pattern.png'
+        -
+          dest: 'images'
+          src: 'assets/images/*'
+      assetsRoot: '%assets.web_root%'
+      buildPath: '%build.path%'
+      canonicalHost: '%public.canonical_host%'
+      projectPath: '%kernel.root_dir%'
+      router: '@router'
+      svgDefaults:
+        attr:
+          height: 2em
+          width: 2em
+      svgSets:
+        fa: 'node_modules/fontawesome/svgs'
+        icm: 'node_modules/icomoon/SVG'
+        oct: 'node_modules/@primer/octicons/build/svg'
+      svgs:
+        -
+          set: fa
+          dest: 'caret-down.svg'
+          src: 'solid/caret-down.svg'
+        -
+          set: fa
+          dest: 'caret-up.svg'
+          src: 'solid/caret-up.svg'
+        -
+          set: fa
+          dest: 'code.svg'
+          src: 'solid/code.svg'
+        -
+          set: icm
+          dest: 'cog.svg'
+          src: '149-cog.svg'
+        -
+          set: icm
+          dest: 'delicious.svg'
+          src: '462-delicious.svg'
+        -
+          set: oct
+          dest: 'email.svg'
+          src: 'mail-24.svg'
+        -
+          set: icm
+          dest: 'file-text.svg'
+          src: '035-file-text.svg'
+        -
+          set: icm
+          dest: 'folder.svg'
+          src: '049-folder-open.svg'
+        -
+          set: icm
+          dest: 'github.svg'
+          src: '433-github.svg'
+        -
+          set: icm
+          dest: 'home.svg'
+          src: '003-home3.svg'
+        -
+          set: icm
+          dest: 'info.svg'
+          src: '269-info.svg'
+        -
+          set: icm
+          dest: 'link.svg'
+          src: '204-link.svg'
+        -
+          set: icm
+          dest: 'linkedin.svg'
+          src: '458-linkedin.svg'
+        -
+          set: fa
+          dest: 'list.svg'
+          src: 'solid/list.svg'
+        -
+          set: oct
+          dest: 'packagist.svg'
+          src: 'archive-24.svg'
+        -
+          set: icm
+          dest: 'profile.svg'
+          src: '036-profile.svg'
+        -
+          set: icm
+          dest: 'quill.svg'
+          src: '008-quill.svg'
+        -
+          set: icm
+          dest: 'search.svg'
+          src: '135-search.svg'
+        -
+          set: icm
+          dest: 'stack-overflow.svg'
+          src: '465-stackoverflow.svg'
+        -
+          set: fa
+          dest: 'twitter.svg'
+          src: 'brands/twitter-square.svg'
+      wikiSite: '@TJM\WikiSite\WikiSite'
+ ##==commands
+ PublicApp\Dev\:
+   autowire: true
+   autoconfigure: true
+   resource: '%kernel.project_dir%/src/PublicApp/Dev'
