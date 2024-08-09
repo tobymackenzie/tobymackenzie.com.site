@@ -289,7 +289,13 @@ class Build extends Model{
 		//---add multi-format other paths
 		$paths[] = $this->router->generate('public_robots');
 		$paths[] = $this->router->generate('public_site_nav');
-		foreach($paths as $path){
+		foreach($paths as $key=> $path){
+			//--disable blog for now
+			if(substr($path, 0, 5) === '/blog'){
+				unset($paths[$key]);
+				continue;
+			}
+
 			if(!pathinfo($path, PATHINFO_EXTENSION)){
 				if($path === '/'){
 					$path = '/index';

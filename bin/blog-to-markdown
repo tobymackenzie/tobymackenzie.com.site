@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+use TJM\WPToMarkdown;
+require_once(__DIR__ . '/../vendor/autoload.php');
+$conf = include(__DIR__ . '/../config/blog-to-markdown.local.php') ?? [];
+(new WPToMarkdown([
+	'db'=> [
+		'dsn'=> $conf['dsn'] ?? 'mysql:dbname=tobymackenzie_com;host=127.0.0.1:8306',
+		'user'=> $conf['user'] ?? 'root',
+		'password'=> $conf['password'] ?? '12345',
+		'sshID'=> $conf['ssh'] ?? 'toby',
+	],
+	'dbPrefix'=> '15wp_',
+	'destination'=> __DIR__ . '/../data/content/blog',
+]))();
+
