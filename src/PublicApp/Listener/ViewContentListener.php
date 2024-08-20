@@ -18,7 +18,7 @@ class ViewContentListener{
 		//--support github friendly URLs in content repo
 		//-! should we just do this as part of wiki-site?
 		$router = $this->router;
-		$format = pathinfo($path, PATHINFO_EXTENSION) ?? 'html';
+		$format = pathinfo($path, PATHINFO_EXTENSION) ?: 'html';
 		$content = preg_replace_callback(':(href=["\'])/content/([^\'"]*):', function($matches) use($format, $router){
 			$result = $matches[1] . $router->generate('public_home');
 			//--must strip off / replace trailing '.md', needed for github URLs
