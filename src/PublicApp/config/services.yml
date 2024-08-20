@@ -46,6 +46,9 @@ services:
   arguments: ['%kernel.environment%', '%public.host%']
   tags:
    - {name: kernel.event_listener, event: kernel.response, priority: -129} #-# priority to prevent CSP stripping by https://github.com/symfony/symfony/pull/25532
+ PublicApp\Listener\ViewContentListener:
+  tags:
+   - {name: kernel.event_listener, event: 'TJM\WikiSite\Event\ViewContentEvent'}
  PublicApp\Listener\ViewDataListener:
   arguments:
    - '@request_stack'
