@@ -1,8 +1,43 @@
 #!/usr/bin/env php
 <?php
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use TJM\WPToMarkdown\Event\ConvertedContentEvent;
 use TJM\WPToMarkdown;
 require_once(__DIR__ . '/../vendor/autoload.php');
 $conf = include(__DIR__ . '/../config/blog-to-markdown.local.php') ?? [];
+$events = new EventDispatcher();
+//--github friendly URLs
+$events->addListener(ConvertedContentEvent::class, function($event){
+	$content = $event->getContent();
+	$content = preg_replace_callback(':(\]\()(/[^\)]*):', function($matches){
+		//--ignore double slash protocol relative links
+		if(
+			substr($matches[2], 0, 2) === '//'
+			|| $matches[2] === '/418'
+		){
+			return $matches[1] . $matches[2];
+		}
+
+		$result = $matches[1] . '/content';
+
+		//--fix old log links
+		if(substr($matches[2], 0, 5) === '/log/'){
+			$matches[2] = preg_replace(':^/log:', '/blog', $matches[2]);
+		}
+
+		if($matches[2] === '/'){
+			$result .= $matches[2] . 'index';
+		}elseif(substr($matches[2], -1) === '/'){
+			$result .= substr($matches[2], 0, -1);
+		}else{
+			$result .= $matches[2];
+		}
+		$result .= '.md';
+		return $result;
+	}, $content);
+	$event->setContent($content);
+});
+//--run
 (new WPToMarkdown([
 	'db'=> [
 		'dsn'=> $conf['dsn'] ?? 'mysql:dbname=tobymackenzie_com;host=127.0.0.1:8306',
@@ -12,5 +47,6 @@ $conf = include(__DIR__ . '/../config/blog-to-markdown.local.php') ?? [];
 	],
 	'dbPrefix'=> '15wp_',
 	'destination'=> __DIR__ . '/../data/content/blog',
+	'eventDispatcher'=> $events,
 ]))();
 
