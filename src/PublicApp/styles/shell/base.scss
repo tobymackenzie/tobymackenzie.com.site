@@ -1,5 +1,38 @@
 .app{
-	@extend %appLayout;
+	align-content: stretch;
+	display: flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	justify-content: center;
+	margin: auto;
+	max-width: 100%;
+	padding: 0; //--undo ancient styles
+	width: $shellMainWidth;
+	@include mq(map-get($bp, appWidth)){
+		border-style: solid;
+		border-top-style: 0;
+		border-width: 3px
+	}
+	@include supports('app-grid'){
+		align-content: center;
+		border-style: none;
+		display: grid;
+		grid-template-areas:
+			'appRestart head'
+			'appNav main'
+			'appNav foot'
+		;
+		grid-template-columns: minmax(min-content, max-content) minmax(6em, #{$shellMainWidth + 4em});
+		grid-template-rows: max-content max-content max-content;
+		//-!!! need to not polyfill for webkit, doesn't work right in Safari
+		width: fit-content;
+	}
+	@include mq('print'){
+		display: block; //-# grid / flex was causing cut off content in FF
+		min-height: 0; //-# 100vh was cause page break in FF
+		width: auto; //-# could result in narrow content
+	}
+
 	//==colors
 	@include mq(map-get($bp, appWidth)){
 		border-color: map-get($colors, border);

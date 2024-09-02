@@ -1,5 +1,12 @@
 .appFooter{
-	@extend %appFooterLayout;
+	@extend %appContainerLayout;
+	grid-area: foot;
+	order: 5;
+	@include mq('print'){
+		//-! hiding for now since this is empty currently.  May need something better if we start using it more.
+		display:  none;
+	}
+
 	//==colors
 	@extend %appContainerColors;
 	@extend %secondaryAreaColors;

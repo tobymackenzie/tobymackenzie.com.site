@@ -1,6 +1,35 @@
 .appNav{
 	@extend %appNavAreaColors;
-	@extend %appNavLayout;
+	@extend %appNavAreaLayout;
+	border-width: 3px;
+	border-bottom-style: solid;
+	order: 2;
+	@include supports('sticky-nav'){
+		overflow: auto;
+		position: sticky;
+		top: 0;
+		white-space: nowrap;
+		z-index: 101;
+	}
+	@include supports('app-grid'){
+		align-self: start;
+		border: 0;
+		grid-area: appNav;
+		overflow: visible;
+		white-space: normal;
+		z-index: 101;
+		@include supports('sticky-nav'){
+			margin-top: -3em;
+			position: sticky;
+			top: 0;
+			//--accomodate restart nav
+			&[data-js]{
+				margin-top: 0;
+				top: calc(3px + 3em);
+			}
+		}
+	}
+
 	//==shadow
 	//-! do we want nav to have shadow in sticky nvp / flex layout?
 	//-! do we want header to have shadow in sticky grid layout?
@@ -27,7 +56,56 @@
 	@extend %appNavItemLayout;
 }
 .appNavAction{
-	@extend %appNavItemActionLayout;
+	background: none;
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+
+	//--undo native button styles
+	border: 0;
+	font-family: inherit;
+	line-height: inherit;
+	padding: 0;
+
+	&:after{
+		display: block;
+		font-size: 0.75em;
+		speak: none;
+		text-align: center;
+		@include supports('app-grid'){
+			content: '';
+			display: none;
+		}
+	}
+	&:focus, &:hover{
+		text-decoration: underline;
+	}
+	@include supports('app-grid'){
+		border-style: solid;
+		border-width: 3px;
+		display: block;
+		height: 100%;
+		left: 0;
+		max-width: 100%;
+		overflow: hidden;
+		padding: 0.4em 0.5em;
+		position: absolute;
+		text-align: center;
+		top: 0;
+		transition: max-width 0.2s;
+		white-space: nowrap;
+		&:focus, &:hover{
+			text-decoration: none; //--override
+			max-width: $appNavWidth * 1em;
+		}
+	}
+	//--when we can expand to the left instead of right
+	@include supports('wide-app-grid'){
+		left: auto;
+		right: 0;
+	}
+
 	cursor: pointer;
 	//==colors
 	&.appNavAction{ //--beat specificity of links in secondary area
@@ -43,24 +121,81 @@
 	}
 }
 .appNavItemHash{
-	@extend %appNavItemHashLayout;
+	display: none;
 }
 .appNavItemText{
-	@extend %appNavItemTextLayout;
+	@include grit();
+	margin-left: 0.6em;
+	vertical-align: middle;
+	&, _:after{ //-# hide text if pseudo supported, will show small alternative
+		@extend %sro;
+		margin-left: 0;
+		@include supports('app-grid'){
+			@include sroOff();
+		}
+	}
 }
 .appNavList{
-	@extend %appNavListLayout;
+	@include grit();
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	@include supports('app-grid'){
+		display: block;
+		margin: 0;
+		&:after{
+			content: none;
+		}
+	}
 }
 .appRestartNav{
 	@extend %appNavAreaColors;
-	@extend %appRestartNavLayout;
+	@extend %appNavAreaLayout;
+	@extend %appNavItemLayout;
+	margin: 0;
+	order: 20;
+	@include supports('fixed-nav', 'sticky-nav'){
+		align-self: end;
+		-webkit-align-self: flex-end; //-# autoprefixer seems to get this wrong
+		border-style: solid;
+		border-width: 3px;
+		border-right: 0;
+		bottom: -3px; //--hide bottom border until the bottom
+		$bottomMargin: -2.9em; //--suck down even with end logo
+		$topMargin: -3px; //--don't show top border when unstuck
+		margin: $topMargin 0 $bottomMargin;
+		padding: 0;
+		position: sticky;
+		z-index: 100;
+	}
+	//--for no-grid wvp
+	@include supports('fixed-nav'){
+		margin: 0;
+		position: fixed;
+		right: 0;
+	}
+	@include supports('app-grid'){
+		align-self: end;
+		border: 0;
+		bottom: auto;
+		grid-area: appRestart;
+		$rightMargin: -3px; //--duplicated from `appNavAreaLayout` because of order
+		margin: 0 $rightMargin 0 0;
+		top: 0;
+		z-index: 101;
+		@include supports('sticky-nav'){
+			position: sticky;
+		}
+	}
 }
 
 //--specific
 .appBottomAction, .appMainAction, .appRestartAction, .appSiteNavAction{
 	&:before{
-		@include appNavItemIconLayout();
 		@extend %icon-base-color;
+		@include supports('app-grid'){
+			@include icon-with-label();
+		}
 	}
 }
 .appBottomAction{
@@ -84,7 +219,13 @@
 	@extend %sro;
 }
 .appRestartAction{
-	@extend %appRestartNavActionLayout;
+	@include supports('fixed-nav', 'sticky-nav'){
+		padding: 0.25em 0.75em;
+	}
+	@include supports('app-grid'){
+		padding: 0.4em 0.5em;
+	}
+
 	&:before{
 		@extend %icon-top;
 	}

@@ -1,5 +1,40 @@
 .appHeader{
-	@extend %appHeaderLayout;
+	@include grit($pseudo: before);
+	@extend %appContainerLayout;
+	grid-area: head;
+	order: 1;
+	position: relative;
+	text-align: center;
+	z-index: 1;
+	//---allow spinning logo to overflow
+	@include mq(14){
+		overflow: visible;
+	}
+	@include supports('sticky-header'){
+		//--simulate top padding on nav that gets removed on scroll
+		border-bottom-style: solid;
+		border-bottom-width: 0.5em;
+		//--ensure scroll paging takes into account approximate header height in ff, saf
+		&:after{
+			content: '';
+			height: $appHeaderHeight;
+			left: 0;
+			pointer-events: none;
+			position: fixed;
+			right: 0;
+			top: 0;
+			z-index: -1;
+		}
+	}
+	@include supports('app-grid'){
+		border-bottom: 0;
+		@include supports('sticky-header'){
+			position: sticky;
+			top: 0;
+			z-index: 101;
+		}
+	}
+
 	//==colors
 	@extend %appContainerColors;
 	@extend %tertiaryAreaColors;

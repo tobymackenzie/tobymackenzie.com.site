@@ -1,5 +1,17 @@
 .appMain{
-	@extend %appMainLayout;
+	border-bottom-style: solid;
+	border-width: 3px;
+	grid-area: main;
+	order: 3;
+	view-transition-name: main;
+	@include supports('app-grid'){
+		border-left-style: solid;
+		border-right-style: solid;
+	}
+	@include mq('print'){
+		border: 0;
+	}
+
 	//==colors
 	@extend %appContainerColors;
 	@extend %secondaryAreaColors;
@@ -10,14 +22,22 @@ a[name="appMain"]{
 		top: -1 * $appHeaderHeight;
 	}
 }
+.appMainFooter, .appMainHeader{
+	@extend %appContainerLayout;
+	@include remFallback('padding-bottom', 16px);
+	@include remFallback('padding-top', 16px);
+}
 .appMainFooter{
-	@extend %appMainFooterLayout;
+	border-width: 3px;
+	* + &{
+		border-top-style: solid;
+	}
+
 	//==colors
 	@extend %appContainerColors;
 	@extend %contentAreaColors;
 }
 .appMainHeader{
-	@extend %appMainHeaderLayout;
 	//==colors
 	@extend %appContainerColors;
 	@extend %contentAreaColors;
