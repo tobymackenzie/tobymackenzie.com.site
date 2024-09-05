@@ -17,13 +17,12 @@
 		align-content: center;
 		border-style: none;
 		display: grid;
-		grid-template-areas:
-			'appRestart head'
-			'appNav main'
-			'appNav foot'
+		grid:
+			'appRestart head' max-content
+			'appNav main' max-content
+			'appNav foot' max-content
+			/ minmax(min-content, max-content) minmax(6em, #{$shellMainWidth + 4em})
 		;
-		grid-template-columns: minmax(min-content, max-content) minmax(6em, #{$shellMainWidth + 4em});
-		grid-template-rows: max-content max-content max-content;
 		//-!!! need to not polyfill for webkit, doesn't work right in Safari
 		width: fit-content;
 	}
