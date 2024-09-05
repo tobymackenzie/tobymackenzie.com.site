@@ -46,8 +46,8 @@
 }
 @mixin font-base{
 	@include font-familyBase();
-	font-weight: 400;
-	font-style: none;
+	// font-weight: 400;
+	// font-style: none;
 }
 %font-base{
 	@include font-base();
@@ -55,7 +55,7 @@
 
 //--bold
 @mixin font-bold{
-	font-style: normal;
+	// font-style: normal;
 	font-weight: 700;
 }
 %font-bold{
@@ -65,7 +65,7 @@
 //--italic
 @mixin font-italic{
 	font-style: italic;
-	font-weight: normal;
+	// font-weight: normal;
 }
 %font-italic{
 	@include font-italic();
