@@ -4,8 +4,7 @@
 
 	//--focus whimsy
 	&:hover{
-		animation-duration: 0.3s;
-		animation-name: iconHover;
+		animation: 0.3s iconHover;
 	}
 	//--print
 	@include mq('print'){

@@ -9,8 +9,7 @@
 %wiggleHoverAnimation{
 	@supports (animation-name: a){ //--loses safari 5.1, which has a weird bug with this animation (flashing of main content area).  Also loses ie and others though
 		&:hover{
-			animation-duration: 0.4s;
-			animation-name: wiggle;
+			animation: 0.4s wiggle;
 		}
 	}
 }
