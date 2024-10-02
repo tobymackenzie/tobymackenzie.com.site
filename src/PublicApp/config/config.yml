@@ -39,7 +39,7 @@ twig:
  globals:
    tm:
      environment: '%kernel.environment%'
-     headerMessage: '%app.header-message%'
+     headerMessage: '<a href="//bxln2ho3.com">Be excellent to each other</a>'
    assets:
      #-! I'd prefer these to not be hard coded, probably coming from assets service, but that will take some figuring out
      scripts_path: '%assets.web_root%/scripts'

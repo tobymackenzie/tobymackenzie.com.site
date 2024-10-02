@@ -1,5 +1,4 @@
 parameters:
- app.header-message: ~
  #==seo
  bing-verification: '!!'
  google-verification: 'google!!.html'

@@ -91,7 +91,8 @@ URL:https://www.tobmackenzie.com
 URL:https://macn.me
 END:VCARD';
 ?>
-<img class="qr" src="<?=$qr->render($vCard)?>" alt="QR code: vCard" />
+				<img class="qr" src="<?=$qr->render($vCard)?>" alt="QR code: vCard" />
+				<div class="appHeaderMessage"><a href="//bxln2ho3.com">Be excellent to each other</a></div>
 			</div>
 		</div>
 		<div class="appBG"></div>
