@@ -53,6 +53,7 @@ body{
 }
 .card{
 	display: flex;
+	flex-direction: column; /* purely for when no backface-visibility support */
 	min-height: 100%;
 	/*! min-height: 100vh; */
 	overflow: hidden;
