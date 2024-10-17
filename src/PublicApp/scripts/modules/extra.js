@@ -16,7 +16,7 @@ if(window.Date){
 		loadCSS(assetBase + '/_assets/styles/snow.css');
 		loadJS(assetBase + '/_assets/scripts/snow.js');
 	}
-	if(month === 9 && day >= 22){
+	if((month === 9 && day >= 22) || (month === 10 && day === 1)){
 		loadCSS(assetBase + '/_assets/styles/halloween.css');
 		loadJS(assetBase + '/_assets/scripts/halloween.js');
 	}
