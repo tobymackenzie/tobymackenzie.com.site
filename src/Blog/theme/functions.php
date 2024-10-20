@@ -172,3 +172,9 @@ add_filter('the_title', function($title, $id){
 	}
 	return $title;
 }, 10, 2);
+
+//--remove comment feed links
+add_action('after_setup_theme', function(){
+	add_theme_support('automatic-feed-links');
+	add_filter('feed_links_show_comments_feed', '__return_false');
+});
