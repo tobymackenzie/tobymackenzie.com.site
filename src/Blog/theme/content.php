@@ -72,15 +72,15 @@ if(!is_page()){
 ?>
 			<div class="postTags">
 				<?=__('in', 'tmweb')?>
-				<ul class="postTagsList">
+				<span class="postTagsList">
 <?php
 		foreach($tagTerms as $tag){
 ?>
-					<li class="postTag"><a class="postTagAction p-category" href="<?=esc_url(get_tag_link($tag))?>" rel="tag"><?=$tag->name?></a></li>
+					<span class="postTag"><a class="postTagAction p-category" href="<?=esc_url(get_tag_link($tag))?>" rel="tag"><?=$tag->name?></a></span>
 <?php
 		}
 ?>
-				</ul>
+				</span>
 			</div>
 <?php
 	}
