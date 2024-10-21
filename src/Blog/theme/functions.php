@@ -173,8 +173,13 @@ add_filter('the_title', function($title, $id){
 	return $title;
 }, 10, 2);
 
-//--remove comment feed links
+//---remove feed links
 add_action('after_setup_theme', function(){
+	//---comment feed links
 	add_theme_support('automatic-feed-links');
 	add_filter('feed_links_show_comments_feed', '__return_false');
+	//--rest api links
+	remove_action('wp_head', 'rest_output_link_wp_head', 10);
+	//--oembed
+	remove_action('wp_head', 'wp_oembed_add_discovery_links');
 });
