@@ -61,7 +61,7 @@ if(window.Date){
 			'0708': '708y says',
 			'0922': 'Emancipate', // Ohio Emancipation Day
 			'1031': 'Have a spooktacular Hallowe\'en',
-			'1101': 'Rest in peace',
+			'1101': 'Hallow there, all',
 			'1105': '<a href="https://www.youtube.com/watch?v=RS2HLC0sipA">Remember, remember the 5th of November</a>',
 			'1111': 'Remember armistice, seek peace',
 			'1130': 'Yay, web standards 🏴󠁧󠁢󠁳󠁣󠁴󠁿', // Blue beanie day, St Andrews day
