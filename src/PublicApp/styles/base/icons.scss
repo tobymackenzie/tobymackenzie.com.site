@@ -135,11 +135,6 @@
 	@extend %single-icon;
 	@include fa-icon('list.svg');
 }
-%icon-twitter{
-	@extend %single-icon;
-	@include fa-icon('twitter.svg');
-	@include icon-resize(2.2rem);
-}
 %icon-github{
 	@extend %single-icon;
 	@include icm-icon('github.svg');

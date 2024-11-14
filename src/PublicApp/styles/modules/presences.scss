@@ -48,11 +48,6 @@
 		@extend %icon-github;
 	}
 }
-.presenceAction-twitter{
-	&:before{
-		@extend %icon-twitter;
-	}
-}
 .presenceAction-linkedin{
 	&:before{
 		@extend %icon-linkedin;
