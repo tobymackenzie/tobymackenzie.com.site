@@ -11,12 +11,6 @@ $lightGap: 5px;
 	--redLight: rgb(255,0,0);
 	--yellowLight: rgb(255,200,100);
 	--violetLight: rgb(255,100,200);
-	height: 100%;
-	left: 0;
-	pointer-events: none;
-	position: absolute;
-	top: 0;
-	width: 100%;
 	&:after, &:before{
 		$lights: ('green', 'orange', 'red', 'blue', 'violet', 'yellow', 'red', 'green', 'violet', 'orange', 'blue', 'yellow');
 		$lightsCount: length($lights);
