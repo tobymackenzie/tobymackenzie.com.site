@@ -44,7 +44,8 @@ var SnowView = _createClass({
 		,el: undefined
 		,determineFlakeCount: function(){
 			var _dim = this.getElDimensions();
-			this.flakeCount = Math.ceil((_dim.width + _dim.height) / 5);
+			//-# random divisor between 5 and 10
+			this.flakeCount = Math.ceil((_dim.width + _dim.height) / (5 + (5 * Math.random())));
 
 			if(this.flakeCount > this.flakes.length){
 				for(var _i = 0, _end = this.flakeCount - this.flakes.length; _i < _end; ++_i){
