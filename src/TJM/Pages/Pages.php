@@ -17,9 +17,8 @@ class Pages{
 			return null;
 		}
 		$content = $this->aliases[$id];
-		$isPage = $this->hasPage($content);
-		if($isPage){
-			$content = "/{$content}";
+		if(strpos($content, '/') === false){
+			$content = '/' . $content;
 		}
 		if($_format && $_format !== 'html' && $isPage){
 			$content .= ".{$_format}";
