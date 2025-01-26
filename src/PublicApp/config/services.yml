@@ -10,7 +10,7 @@ services:
    $env: '%kernel.environment%'
  TJM\Pages\Pages:
    class: TJM\Pages\Pages
-   arguments: ['%kernel.project_dir%/app/pages']
+   arguments: ['%kernel.project_dir%/data']
  ParsedownExtra:
    class: ParsedownExtra #-! required because not namespaced
  TJM\Views\Views:

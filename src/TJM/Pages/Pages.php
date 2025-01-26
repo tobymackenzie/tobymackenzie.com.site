@@ -37,7 +37,7 @@ class Pages{
 		return isset($this->aliases[$id]);
 	}
 	protected function loadAliases(){
-		$path = $this->getPageDataPath('_aliases');
+		$path = $this->dataBasePath . '/aliases.json';
 		if(file_exists($path)){
 			$this->aliases = json_decode(file_get_contents($path), true);
 		}else{
