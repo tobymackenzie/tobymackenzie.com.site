@@ -43,26 +43,7 @@ class Pages{
 			$this->aliases = [];
 		}
 	}
-
-	//---responses
-	public function hasPage($id){
-		return substr($id, 0, 1) !== '_' && file_exists($this->getPageDataPath($id));
-	}
-	public function hasResponse($id){
-		return $this->hasPage($id) || $this->hasAlias($id);
-	}
 	public function getResponse($id, $_format = null){
 		return $this->getAlias($id, $_format);
-	}
-
-	//--paths
-	protected function getPageDataPath($id){
-		if(!$id || substr($id, 0, 1) !== '/'){
-			$id = '/' . $id;
-		}
-		if($id === '/'){
-			$id = '/index';
-		}
-		return $this->dataBasePath . $id . '.json';
 	}
 }
