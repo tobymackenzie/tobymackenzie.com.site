@@ -19,7 +19,7 @@ if(
 		_nav.setAttribute('data-js', 1);
 		var _navList = _nav.querySelector('.appNavList');
 		if(_navList){
-			var _bottomNavItem = document.createElement('li');
+			var _bottomNavItem = document.createElement('span');
 			_bottomNavItem.className += 'appNavItem';
 			_bottomNavItem.innerHTML = '<a class="appBottomAction appNavAction" href="#bottom" id="bottom-link"><span class="appNavItemText"><span class="appNavItemHash">#</span>Page bottom</span></a>';
 			_navList.appendChild(_bottomNavItem);

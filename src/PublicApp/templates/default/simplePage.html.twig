@@ -7,11 +7,11 @@
 	<footer class="mainItemAltFormats">
 		<hr />
 		<strong>This page also available as:</strong>
-		<ul class="mainItemAltFormatsList">
+		<span class="mainItemAltFormatsList">
 {% 	for format in formats %}
-			<li class="mainItemAltFormat"><a href="{{format.path}}" rel="alternate" type="{{format.type}}">{{format.name}}</a></li>
+			<span class="mainItemAltFormat"><a href="{{format.path}}" rel="alternate" type="{{format.type}}">{{format.name}}</a></span>
 {% 	endfor %}
-		</ul>
+		</span>
 		<hr />
 	</footer>
 {% endif %}
