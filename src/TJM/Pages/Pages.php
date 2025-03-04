@@ -20,7 +20,7 @@ class Pages{
 		if(strpos($content, '/') === false){
 			$content = '/' . $content;
 		}
-		if($_format && $_format !== 'html' && $isPage){
+		if($_format && $_format !== 'html'){
 			$content .= ".{$_format}";
 		}
 		return new Page([
