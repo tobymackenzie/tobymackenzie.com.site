@@ -11,11 +11,11 @@ use TJM\WikiSite\WikiSite;
 class DefaultController extends Controller{
 	const SUPPORTED_FORMATS = [null, 'html', 'md', 'txt', 'xhtml'];
 	public function pageAction(
-		$_format = null
-		,$id
+		$id
 		,Pages $pagesService
 		,Request $request
 		,WikiSite $wikiSite
+		,$_format = null
 	){
 		//-!! temporarily pass through to new action with fall back to old logic until we have redirects implemented properly
 		try{
