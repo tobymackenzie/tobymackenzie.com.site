@@ -12,12 +12,9 @@ function replaceStringInNode(node, find, replacement){
 			for(var i = 0; i < match.length; ++i){
 				var char = match.charAt(i);
 				var replaceChar = replacement.charAt(i);
-				var mutate = 'no';
 				if(char.match(/[A-Z]/)){
-					var mutate = 'up';
 					str += replaceChar.toUpperCase();
 				}else if(char.match(/[a-z]/)){
-					var mutate = 'down';
 					str += replaceChar.toLowerCase();
 				}else{
 					str += replaceChar;
@@ -78,6 +75,9 @@ if(doc.querySelector){
 			['Cleveland', 'Bomb City'],
 			['Cuyahoga Falls', 'Caucasian Falls'],
 			['Ohio', 'Great River'],
+			['Winking Lizard', 'Blinking Wizard'],
+			['winking', 'blinking'],
+			['lizard', 'wizard'],
 			//--scots
 			[/\bcannot\b/gi, 'cannae'],
 			[/\bcan't\b/gi, 'cannae'],
@@ -109,6 +109,7 @@ if(doc.querySelector){
 				'Breaking news.  ',
 				'Comrade!  ',
 				'Don\'t be ignorant.  ',
+				'Don\'t panic.  ',
 				'Dear web surfer, ',
 				'Dude!  ',
 				'Foolish person.  ',
@@ -154,6 +155,7 @@ if(doc.querySelector){
 		if($main){
 			var phrases = [
 				'All hail King Bluetooth!',
+				'Always know where your towel is.',
 				'And he trailed off into the sunset.',
 				'And just like that, as quickly as it had started, it was finished.',
 				'And no one was the wiser.',
@@ -161,6 +163,7 @@ if(doc.querySelector){
 				'And so it goes.',
 				'And that is the word of god.',
 				'And that will be our downfall.',
+				'And they were never heard from again.',
 				'April Fools!',
 				'Be excellent to each other, and party on dudes!',
 				'Buck up, little camper:  We\'ll beat that slope… together.',
@@ -170,10 +173,10 @@ if(doc.querySelector){
 				'For the greater good!',
 				'From this, the obvious conclusion is that birds aren\'t real.',
 				'Good day!  I said good day!',
-				'Good luck!',
 				'Got ya!',
 				'Heed this message, and you will be saved.',
 				'I plum told ya',
+				'It\'s thoroughly pizzled.',
 				'Like, totally!',
 				'Me want cookies.',
 				'My balls are now in your court.',
@@ -182,18 +185,20 @@ if(doc.querySelector){
 				'Now go, you fool!',
 				'Now you try.',
 				'Prove me wrong.',
-				'Reporing live from macn.me, this is Boby Mackerby, signing off.',
+				'Reporting live from macn.me, this is Boby Mackerby, signing off.',
 				'Seize the day!',
+				'So long, and thanks for all the fish.',
 				'So suck it.',
 				'That\'s all folks!',
-				'The end!',
+				'The end is nigh!',
 				'Think about it.',
 				'This information is classified.',
 				'This message will self destruct.',
+				'Thus, the answer to life, the universe, and everything is 42.',
 				'To arms!',
 				'Use this information wisely.',
 				'Vague but exciting.',
-				'We can obviously conclude that birds are CIA spy drones.',
+				'We can obviously conclude that they\'re spying on us.',
 				'Who knew?',
 				'Ya ken?',
 				'You\'ll see.',
