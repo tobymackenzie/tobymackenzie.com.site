@@ -15,8 +15,8 @@ class BuildCommand extends Command{
 		'css',
 		'js',
 		'static',
-		'webroot',
 		'svg',
+		'webroot',
 	];
 	public function __construct(Build $buildService){
 		$this->buildService = $buildService;
