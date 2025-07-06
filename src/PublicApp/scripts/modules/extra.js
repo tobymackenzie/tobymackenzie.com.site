@@ -1,6 +1,6 @@
 import loadCSS from '../ua/load-css.js';
 import loadJS from '../ua/load-js.js';
-import onday from '../ua/onday.js';
+import onnextday from '../ua/onnextday.js';
 
 //--load christmas script if december or early january
 //-! simple onload.  we may want to have it run repeatedly and enable / disable as necessary
@@ -15,7 +15,7 @@ if(window.Date){
 			document.querySelector('.appHeaderContent, .cardBack').appendChild(messageEl);
 		}
 	}
-	onday(function(){
+	onnextday(function(){
 		var now = new Date();
 		var month = now.getMonth();
 		var day = now.getDate();

@@ -1,4 +1,4 @@
-export default function onday(cb){
+export default function onnextday(cb){
 	cb();
 	var then = new Date();
 	then.setHours(24, 0, 0, 0);
