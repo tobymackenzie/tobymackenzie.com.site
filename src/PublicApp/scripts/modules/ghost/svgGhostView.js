@@ -1,4 +1,4 @@
-import {create as _createClass} from './classes.js';
+import {create as _createClass} from '../../holiday/classes.js';
 import {DOMGhostView} from './domGhostView.js';
 var _parProto = DOMGhostView.prototype;
 var _ns = 'http://www.w3.org/2000/svg';

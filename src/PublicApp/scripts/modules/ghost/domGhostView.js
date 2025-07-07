@@ -1,4 +1,4 @@
-import {create as _createClass} from './classes.js';
+import {create as _createClass} from '../../holiday/classes.js';
 import {GhostView} from './ghostView.js';
 var _parProto = GhostView.prototype;
 var DOMGhostView = _createClass({

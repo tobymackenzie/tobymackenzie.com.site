@@ -1,4 +1,4 @@
-import {BaseClass, create as _createClass} from './classes.js';
+import {BaseClass, create as _createClass} from '../../holiday/classes.js';
 
 var SnowView = _createClass({
 	init: function(){

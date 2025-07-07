@@ -1,4 +1,4 @@
-import {create as _createClass} from './classes.js';
+import {create as _createClass} from '../../holiday/classes.js';
 import {HTMLSnowView} from './htmlSnowView.js';
 var _parProto = HTMLSnowView.prototype;
 var HTMLTransformSnowView = _createClass({
