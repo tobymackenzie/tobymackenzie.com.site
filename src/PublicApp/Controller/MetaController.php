@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Twig\Error\LoaderError;
 use PublicApp\Service\Build;
 
 class MetaController extends Controller{
@@ -187,6 +188,11 @@ class MetaController extends Controller{
 	//-@ www.robotstxt.org/
 	//-@ www.google.com/support/webmasters/bin/answer.py?hl=en&answer=156449
 	public function robotsAction(Request $request, $_format = 'html'){
+		if($_format === 'php'){
+			$routeParams = $request->get('_route_params');
+			$routeParams['_format'] = 'txt';
+			return $this->redirect($this->router->generate('public_robots', $routeParams));
+		}
 		$data = [];
 		//--only allow for canonical
 		if(
@@ -212,7 +218,11 @@ class MetaController extends Controller{
 		if($_format === 'html' || $_format === 'xhtml'){
 			$data['doc'] = ['title'=> 'Robots'];
 		}
-		$response = $this->renderPage('@Public/meta/robots.' . $request->getRequestFormat() . '.twig', $data);
+		try{
+			$response = $this->renderPage('@Public/meta/robots.' . $request->getRequestFormat() . '.twig', $data);
+		}catch(LoaderError $e){
+			throw $this->createNotFoundException("Format {$_format} not currently supported");
+		}
 		$response->setPublic();
 		$response->setMaxAge(86400);
 		// $response->headers->set('X-Reverse-Proxy-TTL', 3600000);
