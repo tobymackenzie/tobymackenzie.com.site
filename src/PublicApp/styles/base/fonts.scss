@@ -2,7 +2,7 @@
 //==font faces
 //=====
 @font-face{
-	font-display: swap; font-display: fallback;
+	font-display: optional;
 	font-family: 'cousine';
 	font-style: normal;
 	font-weight: normal;
@@ -10,7 +10,7 @@
 		 url('/_assets/fonts/cousine/cousine-regular-webfont.woff') format('woff');
 }
 @font-face{
-	font-display: swap; font-display: fallback;
+	font-display: optional;
 	font-family: 'cousine';
 	font-style: italic;
 	font-weight: normal;
@@ -18,7 +18,7 @@
 		 url('/_assets/fonts/cousine/cousine-italic-webfont.woff') format('woff');
 }
 @font-face{
-	font-display: swap; font-display: fallback;
+	font-display: optional;
 	font-family: 'cousine';
 	font-style: italic;
 	font-weight: bold;
@@ -26,7 +26,7 @@
 		 url('/_assets/fonts/cousine/cousine-bolditalic-webfont.woff') format('woff');
 }
 @font-face{
-	font-display: swap; font-display: fallback;
+	font-display: optional;
 	font-family: 'cousine';
 	font-style: normal;
 	font-weight: bold;
