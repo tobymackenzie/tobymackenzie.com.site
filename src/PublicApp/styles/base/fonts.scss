@@ -38,14 +38,11 @@
 //==text
 //=====
 //--base
-@mixin font-familyBase{
+@mixin font-base{
 	font-family: map-get($fontFamilies, base);
 	@include mq(map-get($bp, small)){
 		font-family: map-get($fontFamilies, baseWVP);
 	}
-}
-@mixin font-base{
-	@include font-familyBase();
 	// font-weight: 400;
 	// font-style: none;
 }
