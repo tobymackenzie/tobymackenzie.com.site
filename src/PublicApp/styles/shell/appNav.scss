@@ -137,8 +137,8 @@
 }
 .appNavList{
 	@include grit();
+	margin: 0;
 	@include supports('app-grid'){
-		margin: 0;
 		&:after{
 			content: none;
 		}
