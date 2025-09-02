@@ -39,7 +39,7 @@
 	@extend %appContainerColors;
 	@extend %tertiaryAreaColors;
 	border-bottom-color: map-get($colors, primaryBG);
-	border-bottom-color: var(--chromeHeaderBG);
+	border-bottom-color: var(--navBG);
 	@include supports('dark-theme'){
 		background: var(--chromeHeaderBG);
 	}
