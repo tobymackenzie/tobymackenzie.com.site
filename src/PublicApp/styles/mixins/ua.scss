@@ -56,13 +56,6 @@ $disabledSupports: () !default;
 						@content;
 					}
 				}
-			}@elseif $name == 'app-shadow'{
-				@include mq(map-get($bp, medium)){
-					@content;
-				}
-				@include supports('app-grid'){
-					@content;
-				}
 			}@elseif $name == 'dark-theme'{
 				@media only screen and (prefers-color-scheme: dark){
 					@content;

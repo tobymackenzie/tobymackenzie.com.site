@@ -48,9 +48,6 @@
 		border: 3px solid var(--primaryBorder);
 		position: relative;
 		z-index: 1;
-		&:before{
-			@include appShadow();
-		}
 		> *{
 			max-height: 90vh;
 			max-width: 90vw;

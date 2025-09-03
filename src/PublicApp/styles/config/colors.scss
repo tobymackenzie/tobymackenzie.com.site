@@ -75,7 +75,6 @@ $colors: map-merge($colors, (
 	logo: map-get($namedColors, 'purple'),
 	mainBorder: map-get($namedColors, baseGreen),
 	proofreadersMark: map-get($namedColors, 'red'),
-	shadow: map-get($namedColors, blackGreen),
 	strong: map-get($namedColors, strongGreen)
 ));
 $darkThemeColors: (
