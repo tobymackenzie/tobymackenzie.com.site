@@ -258,6 +258,11 @@ class MetaController extends Controller{
 		$data = [
 			'items'=> [
 				[
+					'label'=> 'About'
+					,'type'=> 'about'
+					,'url'=> $this->router->generate($routeFormat ? 'public_page_formatted' : 'public_page', ['_format'=> $routeFormat, 'id'=> 'about'], $routeReferenceType)
+				],
+				[
 					'items'=> [
 						[
 							'label'=> 'WWW'
@@ -291,9 +296,14 @@ class MetaController extends Controller{
 					,'url'=> '/blog/'
 				]
 				,[
-					'label'=> 'About'
-					,'type'=> 'about'
-					,'url'=> $this->router->generate($routeFormat ? 'public_page_formatted' : 'public_page', ['_format'=> $routeFormat, 'id'=> 'about'], $routeReferenceType)
+					'label'=> 'My Github'
+					,'type'=> 'github'
+					,'url'=> 'https://github.com/tobymackenzie'
+				]
+				,[
+					'label'=> 'My Packagist'
+					,'type'=> 'packagist'
+					,'url'=> 'https://packagist.org/users/tobymackenzie/'
 				]
 				,[
 					'label'=> 'Home'

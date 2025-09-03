@@ -139,6 +139,11 @@ $siteNavSearchWidth: 13em;
 			@extend %icon-about;
 		}
 	}
+	&[data-type='github']{
+		&:before{
+			@extend %icon-github;
+		}
+	}
 	&[data-type='home']{
 		&:before{
 			@extend %icon-home;
@@ -147,6 +152,11 @@ $siteNavSearchWidth: 13em;
 	&[data-type='blog']{
 		&:before{
 			@extend %icon-writings;
+		}
+	}
+	&[data-type='packagist']{
+		&:before{
+			@extend %icon-packagist;
 		}
 	}
 }
