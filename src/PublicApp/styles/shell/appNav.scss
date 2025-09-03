@@ -138,7 +138,11 @@
 .appNavList{
 	@include grit();
 	margin: 0;
+	@include supports('tiny'){
+		padding-left: 6em;
+	}
 	@include supports('app-grid'){
+		padding-left: 0;
 		&:after{
 			content: none;
 		}
@@ -178,7 +182,7 @@
 		$rightMargin: -3px; //--duplicated from `appNavAreaLayout` because of order
 		margin: 0 $rightMargin 0 0;
 		top: 0;
-		z-index: 101;
+		z-index: 104;
 		@include supports('sticky-nav'){
 			position: sticky;
 		}

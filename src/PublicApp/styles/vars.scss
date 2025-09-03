@@ -14,8 +14,7 @@
 	--linkFocusFG: #{map-get($colors, linkFGFocus)};
 	--linkVisitedFG: #{map-get($colors, linkFGVisited)};
 	--mainBorder: #{map-get($colors, border)};
-	--messageBG: var(--baseFG);
-	--messageFG: #{map-get($colors, baseBG)};
+	--messageFG: var(--chromeLogo);
 	--navActionFocusFG: #{rgba(map-get($colors, secondaryFG), 0.3)};
 	--navInputBG: var(--secondaryBG);
 	--primaryBG: #{map-get($colors, primaryBG)};
@@ -49,8 +48,6 @@
 		--linkFocusBG: #{rgba(map-get($darkThemeColors, linkBG), 0.8)};
 		--linkFocusFG: #{map-get($darkThemeColors, linkFGFocus)};
 		--linkVisitedFG: #{map-get($darkThemeColors, linkFGVisited)};
-		--messageBG: var(--baseBG);
-		--messageFG: var(--chromeLogo);
 		--navBG: #{map-get($darkThemeColors, navBG)};
 		--primaryBG: #{map-get($darkThemeColors, primaryBG)};
 		--primaryBorder: #{map-get($namedColors, subduedKermitGreen)};

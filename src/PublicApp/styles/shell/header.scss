@@ -4,35 +4,17 @@
 	grid-area: head;
 	order: 1;
 	position: relative;
-	text-align: center;
-	z-index: 1;
 	//---allow spinning logo to overflow
 	@include mq(14){
 		overflow: visible;
 	}
-	@include supports('sticky-header'){
+	@include supports('sticky-nav'){
 		//--simulate top padding on nav that gets removed on scroll
 		border-bottom-style: solid;
 		border-bottom-width: 0.5em;
-		//--ensure scroll paging takes into account approximate header height in ff, saf
-		&:after{
-			content: '';
-			height: $appHeaderHeight;
-			left: 0;
-			pointer-events: none;
-			position: fixed;
-			right: 0;
-			top: 0;
-			z-index: -1;
-		}
 	}
 	@include supports('app-grid'){
 		border-bottom: 0;
-		@include supports('sticky-header'){
-			position: sticky;
-			top: 0;
-			z-index: 101;
-		}
 	}
 
 	//==colors
@@ -42,29 +24,16 @@
 	border-bottom-color: var(--navBG);
 	background: var(--chromeHeaderBG);
 }
-.appLogo, .appHeaderTagline{
-	display: inline-block;
-	vertical-align: middle;
+.appHeaderContent{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1em;
 }
 .appHeaderMessage{
-	@include grit($position: relative);
-	background: map-get($colors, baseFG);
-	background: var(--messageBG);
-	border: 2px solid;
 	color: var(--messageFG);
+	display: inline-block;
 	font-size: 0.9em;
-	margin: 0.5em auto -1.5em;
-	padding: 0.1em 0.5em;
-	text-align: center;
-	width: fit-content;
-	z-index: 101;
-	@include mq(map-get($bp, small)){
-		margin-bottom: -2.2em;
-	}
-	@include mq('print'){
-		border: 0;
-		margin-bottom: -0.5em;
-	}
+	margin-left: auto;
 	a{
 		color: inherit;
 		text-decoration: none;
@@ -78,6 +47,11 @@
 .appHeaderTagline{
 	@extend %wiggleHoverAnimation;
 	transform-origin: left;
+	@include supports('tiny'){
+		margin-left: 5.5em;
+		position: relative;
+		z-index: 103;
+	}
 }
 .appHeaderTaglineWVP{
 	display: none;
@@ -94,7 +68,15 @@
 .appLogo{
 	@extend %appLogoBase;
 	@extend %spinHoverAnimation;
-	margin: -0.3em 0;
+	@include supports('tiny'){
+		padding: 0 0.3em;
+		position: absolute; position: fixed;
+		top: 0.5em;
+		z-index: 102;
+	}
+	@include supports('app-grid'){
+		background: var(--chromeHeaderBG);
+	}
 	@include mq(map-get($bp, logoTwist)){
 		transform: rotate(-15deg) translate(5px, -1px);
 	}
@@ -111,3 +93,4 @@
 		}
 	}
 }
+

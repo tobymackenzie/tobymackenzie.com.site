@@ -16,12 +16,6 @@
 	@extend %appContainerColors;
 	@extend %secondaryAreaColors;
 }
-a[name="appMain"]{
-	@include supports('sticky-header'){
-		position: relative;
-		top: -1 * $appHeaderHeight;
-	}
-}
 .appMainFooter, .appMainHeader{
 	@extend %appContainerLayout;
 	@include remFallback('padding-bottom', 16px);

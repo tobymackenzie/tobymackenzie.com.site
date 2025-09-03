@@ -47,7 +47,7 @@ $disabledSupports: () !default;
 	@each $name in $names{
 		@if not index($disabledSupports, $name){
 			@if $name == 'fixed-nav'{
-				@include mq('only screen and (min-width: ' + (map-get($bp, tiny) * 1em) + ') and (min-height:' + (map-get($bpHeight, 'stickyHeader') * 1em) + ')'){
+				@include mq('only screen and (min-width: ' + (map-get($bp, 'verySmall') * 1em) + ') and (min-height:' + (map-get($bpHeight, 'stickyHeader') * 1em) + ')'){
 					@content;
 				}
 			}@elseif $name == 'app-grid'{
@@ -65,10 +65,6 @@ $disabledSupports: () !default;
 				}
 			}@elseif $name == 'dark-theme'{
 				@media only screen and (prefers-color-scheme: dark){
-					@content;
-				}
-			}@elseif $name == 'sticky-header'{
-				@include supports('sticky-nav'){
 					@content;
 				}
 			}@elseif $name == 'sticky-nav'{

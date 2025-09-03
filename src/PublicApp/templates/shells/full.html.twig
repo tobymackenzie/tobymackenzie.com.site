@@ -33,7 +33,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 		<header class="appHeaderContent" role="banner">
 			{% if doc.name != 'home' %}<a class="appLogoAction" href="{{path('public_home')}}">{% endif %}
 				<span class="appLogo">&lt;toby&gt;</span>
-				<span class="appHeaderTagline">Mackenzie's site<span class="appHeaderTaglineWVP"> 🕸🧑‍💻</span></span>
+				<span class="appHeaderTagline"><span class="appHeaderTaglineWVP">Mackenzie</span>'s site</span>
 			{% if doc.name != 'home' %}</a>{% endif %}
 			{% if tm.headerMessage is not empty %}<div class="appHeaderMessage">{{tm.headerMessage|raw}}{% endif %}
 		</header>
