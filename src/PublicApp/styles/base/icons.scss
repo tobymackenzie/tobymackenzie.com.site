@@ -31,15 +31,12 @@
 @mixin single-icon(){
 	@include icon();
 	box-sizing: border-box;
-	background-position: left center;
+	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
-	@include remFallback('max-height', 32px);
-	@include remFallback('max-width', 32px);
-	overflow: hidden;
+	@include remFallback('height', 32px);
+	@include remFallback('width', 32px);
 	vertical-align: middle;
-	width: auto;
-	white-space: pre;
 }
 %single-icon{
 	@include single-icon();
@@ -47,11 +44,7 @@
 @mixin svg-icon($name){
 	$url: '/_assets/svgs/#{$name}';
 	background-image: url('#{$url}');
-	//-# '\A' is line break to move inserted content out of visible area
-	//-# url is to expand container only if url loads
-	//-# space is for IE 9-11, which show content instead of bg
-	//-! space means extra whitespace if icon doesn't load though, which negates the whole padding instead of margin hack
-	content: '\A\A' url('#{$url}') ' ';
+	content: '';
 }
 @mixin fa-icon($name){
 	@include svg-icon($name);
@@ -63,8 +56,8 @@
 	@include svg-icon($name);
 }
 @mixin icon-size($size: 32px){
-	@include remFallback('max-height', $size);
-	@include remFallback('max-width', $size);
+	@include remFallback('height', $size);
+	@include remFallback('width', $size);
 }
 @mixin icon-base-color(){
 	//--color
@@ -78,7 +71,7 @@
 	@include icon-base-color;
 }
 @mixin icon-with-label{
-	max-width: 2.6rem;
+	margin-right: 0.8em;
 }
 @mixin icon-resize($size: 3rem){
 	background-size: $size;
