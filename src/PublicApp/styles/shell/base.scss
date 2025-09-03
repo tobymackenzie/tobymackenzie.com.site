@@ -47,7 +47,7 @@ body{
 	margin: 0;
 	max-width: none; //--undo ancient styles
 	min-height: 100vh; //--ensure full grunge coverage, centered short content
-	padding: 0 0 0.5em;
+	padding: 0;
 	width: auto; //--undo ancient styles
 	@include mq('print'){
 		display: block;

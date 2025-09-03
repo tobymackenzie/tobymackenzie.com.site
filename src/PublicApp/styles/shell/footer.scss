@@ -13,11 +13,9 @@
 }
 .appEndLogo{
 	@extend %appLogoBase;
+	align-self: start;
 	flex: 0 0 auto;
-	//--shrink-to-fit
-	//-# `display:table` breaks IE5mac
-	width: 5em;
-	width: fit-content;
+	display: inline-block;
 	//--subdued, emphasise on hover
 	@extend %wiggleHoverAnimation;
 	$leftMargin: 1em; //--prevent wiggle from overflowing window
@@ -27,7 +25,15 @@
 		opacity: 1;
 	}
 	//--rest
-	margin: 0.5em auto 0 $leftMargin;
+	margin: 0.5em;
+	padding: 0 0.5em;
+	@include supports('app-grid'){
+		margin-left: 2em;
+	}
+	@include supports('medium'){
+		align-self: center;
+		margin-left: -30em;
+	}
 }
 .appSecureMessage{
 	@include mq('print'){
