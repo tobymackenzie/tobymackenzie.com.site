@@ -89,6 +89,10 @@ $disabledSupports: () !default;
 						@content;
 					}
 				}
+			}@elseif map-has-key($bp, $name) != null{
+				@include mq(map-get($bp, $name)){
+					@content;
+				}
 			}@else{
 				@warn '#{$name} not a valid `supports()` option';
 			}
