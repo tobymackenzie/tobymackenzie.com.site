@@ -11,16 +11,11 @@
 %appNavAreaLayout{
 	@extend %appContainerLayout;
 	overflow: auto;
-	@include supports('sticky-nav'){
-		padding-bottom: 0.5em;
-		padding-top: 0.5em;
-	}
 	@include supports('app-grid'){
 		justify-self: end;
 		margin-right: -3px;
 		max-width: none; //--override `%appContainerLayout`, causes shrinkage
 		overflow: visible;
-		padding: 0;
 		width: calc(6px + 3em);
 	}
 	@include mq('print'){

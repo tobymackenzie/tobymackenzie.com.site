@@ -1,5 +1,4 @@
 .appHeader{
-	@include grit($pseudo: before);
 	@extend %appContainerLayout;
 	grid-area: head;
 	order: 1;
@@ -8,20 +7,10 @@
 	@include mq(14){
 		overflow: visible;
 	}
-	@include supports('sticky-nav'){
-		//--simulate top padding on nav that gets removed on scroll
-		border-bottom-style: solid;
-		border-bottom-width: 0.5em;
-	}
-	@include supports('app-grid'){
-		border-bottom: 0;
-	}
 
 	//==colors
 	@extend %appContainerColors;
 	@extend %tertiaryAreaColors;
-	border-bottom-color: map-get($colors, primaryBG);
-	border-bottom-color: var(--navBG);
 	background: var(--chromeHeaderBG);
 }
 .appHeaderContent{
@@ -68,14 +57,12 @@
 .appLogo{
 	@extend %appLogoBase;
 	@extend %spinHoverAnimation;
+	background: var(--chromeHeaderBG);
 	@include supports('tiny'){
 		padding: 0 0.3em;
 		position: absolute; position: fixed;
-		top: 0.5em;
+		top: 0.6em;
 		z-index: 102;
-	}
-	@include supports('app-grid'){
-		background: var(--chromeHeaderBG);
 	}
 	@include mq(map-get($bp, logoTwist)){
 		transform: rotate(-15deg) translate(5px, -1px);

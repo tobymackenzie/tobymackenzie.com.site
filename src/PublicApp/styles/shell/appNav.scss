@@ -4,7 +4,10 @@
 	border-width: 3px;
 	border-bottom-style: solid;
 	order: 2;
+	padding: 0;
 	@include supports('sticky-nav'){
+		background: var(--chromeHeaderBG);
+		padding-left: 8em;
 		overflow: auto;
 		position: sticky;
 		top: 0;
@@ -16,6 +19,7 @@
 		border: 0;
 		grid-area: appNav;
 		overflow: visible;
+		padding: 0;
 		white-space: normal;
 		z-index: 101;
 		@include supports('sticky-nav'){
@@ -115,12 +119,11 @@
 }
 .appNavList{
 	@include grit();
+	background: var(--primaryBG);
 	margin: 0;
-	@include supports('tiny'){
-		padding-left: 6em;
-	}
+	padding: 0.5em 0.8em;
 	@include supports('app-grid'){
-		padding-left: 0;
+		padding: 0;
 		&:after{
 			content: none;
 		}
