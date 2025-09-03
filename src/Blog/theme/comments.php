@@ -15,10 +15,12 @@ if(WP_DEBUG){
 //=====content
 ?>
 <aside class="postComments comments postAside" id="comments">
+<?php if(have_comments()){ ?>
 	<header class="commentsHeader">
 		<h2 class="commentsHeading"><?php _e('Responses', 'tmweb'); ?></h2>
 	</header>
 <?php
+}
 //--if the post is requires authentication and the visitor hasn't provided it, display message instead of comments
 if(post_password_required()){
 ?>
@@ -80,7 +82,7 @@ if(post_password_required()){
 		comment_form(Array('title_reply'=> 'Leave a comment'));
 	}else{
 ?>
-	<p>I am no longer accepting comments via form.  To reply, <?php if(pings_open()){ ?> post on your own site and send a pingback, or <?php } ?><a href="mailto:admin@tobymackenzie.com">send me an email</a>.</p>
+	<p>To reply to this post, <?php if(pings_open()){ ?> post on your blog and send a pingback, or <?php } ?><a href="mailto:admin@tobymackenzie.com">email me</a>.</p>
 <?php
 	}
 }
