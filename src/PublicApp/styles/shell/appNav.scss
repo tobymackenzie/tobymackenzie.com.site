@@ -106,7 +106,6 @@
 	display: none;
 }
 .appNavItemText{
-	@include grit();
 	margin-left: 0.6em;
 	vertical-align: middle;
 	&, _:after{ //-# hide text if pseudo supported, will show small alternative
@@ -118,7 +117,6 @@
 	}
 }
 .appNavList{
-	@include grit();
 	background: var(--primaryBG);
 	margin: 0;
 	padding: 0.5em 0.8em;

@@ -39,7 +39,7 @@
 	}
 }
 body{
-	@include grit($position: relative, $opacity: 0.08);
+	@include grit($position: relative);
 	align-items: center;
 	display: flex;
 	flex-direction: column;
