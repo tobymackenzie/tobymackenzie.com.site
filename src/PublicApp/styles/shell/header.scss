@@ -40,9 +40,7 @@
 	@extend %tertiaryAreaColors;
 	border-bottom-color: map-get($colors, primaryBG);
 	border-bottom-color: var(--navBG);
-	@include supports('dark-theme'){
-		background: var(--chromeHeaderBG);
-	}
+	background: var(--chromeHeaderBG);
 }
 .appLogo, .appHeaderTagline{
 	display: inline-block;

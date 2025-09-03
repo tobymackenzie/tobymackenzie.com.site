@@ -2,7 +2,7 @@
 	--baseBG: #{map-get($colors, baseBG)};
 	--baseFG: #{map-get($colors, baseFG)};
 	--borderColor: #{map-get($colors, border)};
-	--chromeHeaderBG: var(--primaryBG);
+	--chromeHeaderBG:#{map-get($colors, chromeHeaderBG)};
 	--chromeLogo: #{map-get($colors, chromeLogo)};
 	--codeBG: #{map-get($colors, codeBG)};
 	--codeFG: #{map-get($colors, codeFG)};
