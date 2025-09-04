@@ -1,0 +1,10 @@
+//-@ https://github.com/WICG/view-transitions/blob/main/cross-doc-explainer.md
+@view-transition{
+	navigation: auto;
+}
+@media (prefers-reduced-motion: reduce), (update: slow){
+	@view-transition{
+		navigation: none;
+	}
+}
+

@@ -3,7 +3,7 @@
 	border-width: 3px;
 	grid-area: main;
 	order: 3;
-	view-transition-name: main;
+	// view-transition-name: main;
 	@include supports('app-grid'){
 		border-left-style: solid;
 		border-right-style: solid;
