@@ -14,15 +14,17 @@
 	background: var(--chromeHeaderBG);
 }
 .appHeaderContent{
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1em;
+	@include supports('tiny'){
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5em;
+	}
 }
 .appHeaderMessage{
 	color: var(--messageFG);
 	display: inline-block;
 	font-size: 0.9em;
-	margin-left: auto;
 	a{
 		color: inherit;
 		text-decoration: none;
@@ -37,7 +39,7 @@
 	@extend %wiggleHoverAnimation;
 	transform-origin: left;
 	@include supports('tiny'){
-		margin-left: 5.5em;
+		margin: 0 auto 0 5.1em;
 		position: relative;
 		z-index: 103;
 	}
@@ -59,6 +61,7 @@
 	@extend %spinHoverAnimation;
 	background: var(--chromeHeaderBG);
 	@include supports('tiny'){
+		margin-left: -0.3em;
 		padding: 0 0.3em;
 		position: absolute; position: fixed;
 		top: 0.6em;
@@ -69,6 +72,7 @@
 	}
 }
 .appLogoAction{
+	margin-right: auto;
 	text-decoration: none;
 	&:focus:focus, &:hover:hover{
 		//--fight default link styles
