@@ -1,5 +1,6 @@
 <?php
 namespace PublicApp\Service;
+use DateTime;
 use Exception;
 use SimpleXMLElement;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -167,7 +168,7 @@ class Build extends Model{
 	/*=====
 	==css
 	=====*/
-	public function buildCSS($dist = 'public', OutputInterface $output = null){
+	public function buildCSS($dist = 'public', $force = false, OutputInterface $output = null){
 		if(`which sassc`){
 			$sassBin = 'sassc';
 		}elseif(`which sass`){
@@ -197,11 +198,21 @@ class Build extends Model{
 			if($nameBase[0] === '_'){
 				continue;
 			}
+			$fileDest = "{$dest}/{$nameBase}.css";
+
+			//--check if need built, skip if not
+			//-# need to check whole src styles dir, no easy way to check only files that would be in this build
+			if(!$force && !$this->doesFileNeedBuilt($fileDest, $this->getStylesPath())){
+				if($output && $output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE){
+					$output->writeln("Skipping '{$nameBase}' build source, doesn't need built");
+				}
+				continue;
+			}
+
 			$run = "{$sassBin} {$file}";
 			if($postCSSBin){
 				$run .= ' | ' . $postCSSBin;
 			}
-			$fileDest = "{$dest}/{$nameBase}.css";
 			$run .= " > {$fileDest}";
 			if($output && $output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE){
 				$run .= " && echo '{$nameBase}: full size:' `cat {$fileDest} | wc -c` 'gzip size:' `gzip -c {$fileDest} | wc -c`";
@@ -209,6 +220,12 @@ class Build extends Model{
 			$process = Process::fromShellCommandline($run, $basePath);
 			$process->start();
 			$processes[] = $process;
+		}
+		if(empty($processes)){
+			if($output && $output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE){
+				$output->writeln("No styles need built");
+			}
+			return false;
 		}
 		foreach($processes as $process){
 			$process->wait();
@@ -402,6 +419,29 @@ class Build extends Model{
 	/*=====
 	==helpers
 	=====*/
+	protected function doesFileNeedBuilt($dest, $src){
+		if(!file_exists($dest)){
+			return true;
+		}
+		if(!file_exists($src)){
+			return false;
+		}
+		if(is_dir($dest)){
+			$var = exec('find ' . $dest . ' -type f -name "*.scss" -printf "%T@ %p\n" | sort -n | tail -1');
+			$var = explode(' ', $var)[0];
+			$destMod = new DateTime('@' . $var);
+		}else{
+			$destMod = new DateTime('@' . filemtime($dest));
+		}
+		if(is_dir($src)){
+			$var = exec('find ' . $src . ' -type f -name "*.scss" -printf "%T@ %p\n" | sort -n | tail -1');
+			$var = explode(' ', $var)[0];
+			$srcMod = new DateTime('@' . $var);
+		}else{
+			$srcMod = new DateTime('@' . filemtime($src));
+		}
+		return $destMod < $srcMod;
+	}
 	protected function recursiveGlob($pattern, $flags = 0){
 		//-@http://stackoverflow.com/a/17161106/1139122
 		$files = glob($pattern, $flags);

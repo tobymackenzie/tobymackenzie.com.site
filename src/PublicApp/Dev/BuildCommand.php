@@ -33,11 +33,13 @@ class BuildCommand extends Command{
 			->setDescription("Run site build task(s).  Run all with `build` command, one with `build:*` command.")
 			->addOption('dist', 'd', InputOption::VALUE_REQUIRED, 'Which dist folder to build to.  May also change some characteristics of how build is done', 'public')
 			->addOption('tasks', 't', InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED, 'Build tasks to run.')
+			->addOption('force', 'f', InputOption::VALUE_NONE, 'Force task to ignore checks for if rebuild needed.')
 		;
 	}
 	protected function execute(InputInterface $input, OutputInterface $output): int{
 		$command = explode(':', $input->getArgument('command'));
 		$tasks = $input->getOption('tasks') ?? [];
+		$force = $input->getOption('force');
 		if(count($command) === 1){
 			if(empty($tasks)){
 				$tasks = ['assets', 'css', 'js', 'static', 'webroot', 'svg'];
@@ -54,7 +56,7 @@ class BuildCommand extends Command{
 					$this->buildService->clearBuildDir($input->getOption('dist'));
 				break;
 				case 'css':
-					$this->buildService->buildCSS($input->getOption('dist'), $output);
+					$this->buildService->buildCSS($input->getOption('dist'), $force, $output);
 				break;
 				case 'js':
 					$this->buildService->buildJS(null, $input->getOption('dist'), $output);
