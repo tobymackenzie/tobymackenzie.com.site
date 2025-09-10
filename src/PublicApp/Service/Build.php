@@ -292,7 +292,7 @@ class Build extends Model{
 	/*=====
 	==pages
 	=====*/
-	public function buildStaticPages($dist = 'public', OutputInterface $output = null){
+	public function buildStaticPages($dist = 'public', $force = false, OutputInterface $output = null){
 		//--no static for dev site
 		if($dist === 'dev'){
 			return false;
@@ -301,6 +301,18 @@ class Build extends Model{
 		$this->router->getContext()->setHost($this->canonicalHost);
 
 		//--build path array
+		$exclude = [
+			'/.htaccess',
+			'/_/*',
+			'/_assets/*',
+			'/_assets-dev/*',
+			'/_maintenance.html',
+			'/examples',
+			'/favicon.ico',
+			'/icon-*',
+			'/index*.php',
+			'/sites',
+		];
 		//---get wiki page paths
 		$paths = $this->wikiSite->getPagePaths();
 		//---add multi-format other paths
@@ -322,6 +334,51 @@ class Build extends Model{
 				}
 			}
 		}
+
+		//--remove files not modified since last build
+		//-! must force if template changes are made
+		if(!$force){
+			$wiki = $this->wikiSite->getWiki();
+			$self = $this;
+			$needsBuilt = function($path) use($dist, $self, $wiki){
+				//-! misses non-page, symfony paths
+				//-! this getting path logic is indirect, recreating logic that WikiSite has to do.  WikiSite or Wiki should provide method to get the path directly
+				$srcPath = $path;
+				if(substr($srcPath, 0, 1) === '/'){
+					$srcPath = substr($srcPath, 1);
+				}
+				if(empty($srcPath)){
+					$srcPath = 'index';
+				}
+				$extension = pathinfo($srcPath, PATHINFO_EXTENSION);
+				$srcPath = $extension ? substr($srcPath, 0, -1 * (strlen($extension) + 1)) : $srcPath;
+				$srcPath = $wiki->getPageFilePath($srcPath);
+				if(!file_exists($srcPath)){
+					return true;
+				}
+				$destPath = $path;
+				if($destPath === '/'){
+					$destPath = '/index.html';
+				}elseif(!$extension){
+					$destPath .= '.html';
+				}
+				$destPath = $self->getDistPath($dist) . $destPath;
+				return $self->doesFileNeedBuilt($destPath, $srcPath);
+			};
+			foreach($paths as $key=> $path){
+				if(!$needsBuilt($path)){
+					unset($paths[$key]);
+
+					//--must exclude dest from rsync so that it doesn't get removed by task for not being part of build
+					if(pathinfo($path, PATHINFO_EXTENSION)){
+						$exclude[] = $path;
+					}else{
+						$exclude[] = $path . '.html';
+					}
+				}
+			}
+		}
+
 		//---add single format other paths
 		$paths[] = $this->router->generate('public_app_manifest');
 		$paths[] = $this->router->generate('public_bing_verification');
@@ -359,18 +416,7 @@ class Build extends Model{
 			$this->getDistPath($dist),
 			[
 				//-! should come up with list from building these elsewhere?
-				'exclude'=> [
-					'/.htaccess',
-					'/_/*',
-					'/_assets/*',
-					'/_assets-dev/*',
-					'/_maintenance.html',
-					'/examples',
-					'/favicon.ico',
-					'/icon-*',
-					'/index*.php',
-					'/sites',
-				],
+				'exclude'=> $exclude,
 				'paths'=> $paths,
 			]
 		);
