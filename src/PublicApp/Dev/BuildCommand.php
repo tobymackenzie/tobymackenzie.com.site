@@ -59,7 +59,7 @@ class BuildCommand extends Command{
 					$this->buildService->buildCSS($input->getOption('dist'), $force, $output);
 				break;
 				case 'js':
-					$this->buildService->buildJS(null, $input->getOption('dist'), $output);
+					$this->buildService->buildJS(null, $input->getOption('dist'), $force, $output);
 				break;
 				case 'static':
 					$this->buildService->buildStaticPages($input->getOption('dist'), $force);

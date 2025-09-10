@@ -243,7 +243,7 @@ class Build extends Model{
 	/*=====
 	==js
 	=====*/
-	public function buildJS($compiler = 'rollup', $dist = 'dev', OutputInterface $output = null){
+	public function buildJS($compiler = 'rollup', $dist = 'dev', $force = false, OutputInterface $output = null){
 		$src = $this->getScriptsPath();
 		$dest = $this->getScriptsDistPath($dist);
 		if($dist === 'dev'){
@@ -261,22 +261,27 @@ class Build extends Model{
 			foreach($files as $file){
 				$baseName = str_replace($src . '/', '', $file);
 				if($baseName !== 'proxy-worker.js' || $compiler === 'webpack'){ //-!! uglify can't seem to process es6
+					$destPath = "{$dest}/{$baseName}";
+					//-! using whole src dir date since we can't easily determine which files are imported
+					if(!$force && file_exists($destPath) && file_exists($file) && !$this->doesFileNeedBuilt($destPath, $src, ['srcFind'=> '-name "*.js"'])){
+						continue;
+					}
 					switch($compiler){
 						//-# rollup builds about 500 bytes smaller than webpack currently, so it's default.
 						case 'rollup':
 						default:
-							$command = "rollup {$file} --output.format iife | uglifyjs --compress --mangle > {$dest}/{$baseName}";
+							$command = "rollup {$file} --output.format iife | uglifyjs --compress --mangle > {$destPath}";
 						break;
 						case 'uglify':
 							$command = str_replace("\n", '', "uglifyjs
 								--compress
 								--mangle
-								-o {$dest}/{$baseName}
+								-o {$destPath}
 								-- {$file}"
 							);
 						break;
 						case 'webpack':
-							$command = "webpack {$file} --output {$dest}/{$baseName} --mode production";
+							$command = "webpack {$file} --output {$destPath} --mode production";
 						break;
 					}
 					passthru($command);
