@@ -202,7 +202,7 @@ class Build extends Model{
 
 			//--check if need built, skip if not
 			//-# need to check whole src styles dir, no easy way to check only files that would be in this build
-			if(!$force && !$this->doesFileNeedBuilt($fileDest, $this->getStylesPath())){
+			if(!$force && !$this->doesFileNeedBuilt($fileDest, $this->getStylesPath(), ['srcFind'=> '-name "*.scss"'])){
 				if($output && $output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE){
 					$output->writeln("Skipping '{$nameBase}' build source, doesn't need built");
 				}
@@ -465,7 +465,7 @@ class Build extends Model{
 	/*=====
 	==helpers
 	=====*/
-	protected function doesFileNeedBuilt($dest, $src){
+	protected function doesFileNeedBuilt($dest, $src, $opts = []){
 		if(!file_exists($dest)){
 			return true;
 		}
@@ -473,14 +473,16 @@ class Build extends Model{
 			return false;
 		}
 		if(is_dir($dest)){
-			$var = exec('find ' . $dest . ' -type f -name "*.scss" -printf "%T@ %p\n" | sort -n | tail -1');
+			$findOpts = $opts['destFind'] ?? '';
+			$var = exec('find ' . $dest . ' ' . $findOpts . ' -type f -printf "%T@ %p\n" | sort -n | tail -1');
 			$var = explode(' ', $var)[0];
 			$destMod = new DateTime('@' . $var);
 		}else{
 			$destMod = new DateTime('@' . filemtime($dest));
 		}
 		if(is_dir($src)){
-			$var = exec('find ' . $src . ' -type f -name "*.scss" -printf "%T@ %p\n" | sort -n | tail -1');
+			$findOpts = $opts['srcFind'] ?? '';
+			$var = exec('find ' . $src . ' ' . $findOpts . ' -type f -printf "%T@ %p\n" | sort -n | tail -1');
 			$var = explode(' ', $var)[0];
 			$srcMod = new DateTime('@' . $var);
 		}else{
