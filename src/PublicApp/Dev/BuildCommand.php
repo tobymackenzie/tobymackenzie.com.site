@@ -65,7 +65,7 @@ class BuildCommand extends Command{
 					$this->buildService->buildStaticPages($input->getOption('dist'), $force);
 				break;
 				case 'svg':
-					$this->buildService->buildSvgs($input->getOption('dist'));
+					$this->buildService->buildSvgs($input->getOption('dist'), $force);
 				break;
 				case 'webroot':
 					$this->buildService->installWebRootFiles($input->getOption('dist'));

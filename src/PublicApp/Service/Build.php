@@ -94,7 +94,7 @@ class Build extends Model{
 		}
 		return false;
 	}
-	public function buildSvgs($dist = 'public'){
+	public function buildSvgs($dist = 'public', $force = false){
 		if($this->svgs){
 			$distPath = $this->getSvgDistPath($dist);
 			if($dist === 'dev'){
@@ -138,6 +138,9 @@ class Build extends Model{
 					if($src && $dest){
 						if(substr($dest, 0, 1) !== '/'){
 							$dest = $distPath . '/' . $dest;
+						}
+						if(!$force && !$this->doesFileNeedBuilt($dest, $src)){
+							continue;
 						}
 						copy($src, $dest);
 						if(pathinfo($dest, PATHINFO_EXTENSION) === 'svg' && $attr){
