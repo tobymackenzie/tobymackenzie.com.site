@@ -64,7 +64,6 @@
 		margin-left: -0.3em;
 		padding: 0 0.3em;
 		position: absolute; position: fixed;
-		top: 0.6em;
 		z-index: 102;
 	}
 	@include mq(map-get($bp, logoTwist)){
