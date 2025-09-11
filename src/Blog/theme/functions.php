@@ -183,3 +183,13 @@ add_action('after_setup_theme', function(){
 	//--oembed
 	remove_action('wp_head', 'wp_oembed_add_discovery_links');
 });
+
+//--prevent indexing some pages not useful in search results
+add_filter('wp_robots', function($robots){
+	if(is_tag()){
+		unset($robots['max-image-preview']);
+		$robots['noindex'] = true;
+		$robots['follow'] = true;
+	}
+	return $robots;
+});
