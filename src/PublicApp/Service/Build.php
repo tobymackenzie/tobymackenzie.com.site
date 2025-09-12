@@ -484,17 +484,17 @@ class Build extends Model{
 			$findOpts = $opts['destFind'] ?? '';
 			$var = exec('find ' . $dest . ' ' . $findOpts . ' -type f -printf "%T@ %p\n" | sort -n | tail -1');
 			$var = explode(' ', $var)[0];
-			$destMod = new DateTime('@' . $var);
+			$destMod = (int) $var;
 		}else{
-			$destMod = new DateTime('@' . filemtime($dest));
+			$destMod = filemtime($dest);
 		}
 		if(is_dir($src)){
 			$findOpts = $opts['srcFind'] ?? '';
 			$var = exec('find ' . $src . ' ' . $findOpts . ' -type f -printf "%T@ %p\n" | sort -n | tail -1');
 			$var = explode(' ', $var)[0];
-			$srcMod = new DateTime('@' . $var);
+			$srcMod = (int) $var;
 		}else{
-			$srcMod = new DateTime('@' . filemtime($src));
+			$srcMod = filemtime($src);
 		}
 		return $destMod < $srcMod;
 	}
