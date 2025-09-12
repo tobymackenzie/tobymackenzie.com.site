@@ -17,7 +17,7 @@ services:
    arguments: ['@router', '%tjm_sy_site.wraps%', '%public.host%', '%public.canonical_host%']
    public: true
  TJM\Wiki\Wiki:
-    arguments: ['%data_content.path%']
+   arguments: [{'path': '%data_content.path%', 'fileSystemCaseInsensitvity': false}]
  TJM\WikiSite\WikiSite:
     arguments:
       $opts:
