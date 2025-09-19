@@ -33,9 +33,17 @@
 			}
 		}
 	}
+	&:focus-within{
+		//--put above other nav when focused inside, ensures focus outline not cut off
+		z-index: 106;
+	}
 }
 .appNavItem{
 	@extend %appNavItemLayout;
+	&:focus-within{
+		//--put above other nav when focused inside, ensures focus outline not cut off
+		z-index: 106;
+	}
 }
 .appNavAction{
 	background: none;
