@@ -1,7 +1,7 @@
 import {baseCut as _cutsMustard} from '../ua/mustardCut.js';
 import {addListener, removeListener} from '../ua/dom.js';
 
-var overlay = {
+var dialog = {
 	close: function(){}
 	,open: function(){}
 };
@@ -12,7 +12,7 @@ if(_cutsMustard && window.HTMLDialogElement){
 	var _closeEl;
 	var _el;
 	var _contentInternalEl;
-	overlay.close = function(){
+	dialog.close = function(){
 		if(_isOpen){
 			_el.close();
 			if(_contentInternalEl){
@@ -22,7 +22,7 @@ if(_cutsMustard && window.HTMLDialogElement){
 			_isOpen = false;
 		}
 	};
-	overlay.open = function(_content){
+	dialog.open = function(_content){
 		if(_contentInternalEl){
 			_el.removeChild(_contentInternalEl);
 		}
@@ -30,14 +30,14 @@ if(_cutsMustard && window.HTMLDialogElement){
 		if(!_inited){
 			_el = document.createElement('dialog');
 			_el.closedBy = 'any';
-			_el.classList.add('overlayContent');
+			_el.classList.add('dialogContent');
 
 			_closeEl = document.createElement('button');
 			_closeEl.classList.add('closeAct');
 			_closeEl.innerHTML = '<b>Close dialog</b>';
 			_closeEl.setAttribute('title', 'Close dialog');
 			_closeEl.setAttribute('type', 'button');
-			addListener(_closeEl, 'click', overlay.close);
+			addListener(_closeEl, 'click', dialog.close);
 			_el.appendChild(_closeEl);
 
 			document.body.appendChild(_el);
@@ -49,4 +49,4 @@ if(_cutsMustard && window.HTMLDialogElement){
 		_isOpen = true;
 	};
 }
-export default overlay
+export default dialog

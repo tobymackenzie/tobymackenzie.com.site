@@ -1,7 +1,7 @@
 // global document, window
 import {addListener as _addListener} from '../ua/dom.js';
 import {baseCut as _cutsMustard} from '../ua/mustardCut.js';
-import _overlay from './overlay.js';
+import _dialog from './dialog.js';
 
 var _appEl = document.querySelector && document.querySelector('.app');
 if(
@@ -32,7 +32,7 @@ if(
 	}
 
 	/*
-	--overlay nav when clicked
+	--dialog nav when clicked
 	*/
 	if(
 		window.fetch
@@ -53,7 +53,7 @@ if(
 			_siteNavActionEl = _newSiteNavActionEl;
 
 			var _openSiteNav = function(){
-				_overlay.open(_siteNavEl);
+				_dialog.open(_siteNavEl);
 			};
 
 			//--attach and open on click
