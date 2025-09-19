@@ -74,8 +74,8 @@ $siteNavSearchWidth: 13em;
 			@include remFallback('width', $size);
 		}
 		&:focus, &:hover{
-			background-color: rgba(map-get($colors, secondaryFG), 0.3);
-			background-color: var(--navActionFocusFG);
+			background-color: map-get($namedColors, subduedKermitGreen);
+			background-color: var(--navBorder);
 			&:before{
 				animation-name: none;
 			}
