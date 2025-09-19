@@ -1,56 +1,33 @@
-.overlay, .overlayBlocker{
-	bottom: 0;
-	left: 0;
-	right: 0;
-	top: 0;
+::backdrop{
+	background: rgba(black, 0.6);
 }
-.overlay{
-	align-items: center;
-	display: flex;
-	justify-content: center;
-	position: fixed;
-	z-index: 9998;
-	&[hidden]{
-		display: none !important;
+dialog{
+	@extend %secondaryAreaColors;
+	border: 3px solid var(--navBorder);
+	@include supports('dark-theme'){
+		background: var(--navBG);
 	}
-	&Blocker{
-		background: rgba(black, 0.6);
-		position: absolute;
+}
+.closeAct{
+	background: none;
+	border: 0;
+	color: map-get($colors, navBorder);
+	color: var(--navBorder);
+	cursor: pointer;
+	height: 2em;
+	position: absolute;
+	right: 0.5em;
+	text-align: center;
+	top: 0.5em;
+	width: 2em;
+	&:focus, &:hover{
+		background: var(--secondaryLinkFocusBG);
+		color: var(--codeFG);
 	}
-	&CloseAct{
-		background: map-get($colors, primaryBG);
-		background: var(--primaryBG);
-		border: 3px solid;
-		border-radius: 2em;
-		color: map-get($colors, primaryFG);
-		color: var(--primaryFG);
-		cursor: pointer;
-		height: 2em;
-		position: absolute;
-		right: -0.8em;
-		text-align: center;
-		top: -0.8em;
-		z-index: 1;
-		width: 2em;
-		@include supports('dark-theme'){
-			border-width: 2px;
-		}
-		&:after{
-			content: 'X';
-		}
-		> b{
-			@extend %sro;
-		}
+	&:after{
+		content: 'X';
 	}
-	&Content{
-		border: 3px solid map-get($colors, primaryFG);
-		border: 3px solid var(--primaryBorder);
-		position: relative;
-		z-index: 1;
-		> *{
-			max-height: 90vh;
-			max-width: 90vw;
-			overflow: auto;
-		}
+	> b{
+		@extend %sro;
 	}
 }

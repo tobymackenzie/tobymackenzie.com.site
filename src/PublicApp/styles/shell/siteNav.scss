@@ -10,8 +10,12 @@
 	@include supports('dark-theme'){
 		background: var(--navBG);
 	}
-	padding: 1.5em;
 	font-size: 1.2em;
+	//--for no-js fallback
+	body > &{
+		padding: 1.5em;
+	}
+
 	&Action{
 		display: inline-block;
 		text-decoration: none;
