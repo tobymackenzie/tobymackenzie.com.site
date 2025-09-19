@@ -6,14 +6,13 @@ import onday from '../holiday/onday.js';
 //--load christmas script if december or early january
 //-! simple onload.  we may want to have it run repeatedly and enable / disable as necessary
 if(window.Date && document.querySelector){
-	var qs = document.querySelector;
 	var assetBase = (window.location.host.match(/github\.io|macn\.me$/i) ? '//www.tobymackenzie.com' : '');
-	var messageEl = qs('.appHeaderMessage');
+	var messageEl = document.querySelector('.appHeaderMessage');
 	var messageAdded = !messageEl;
 	if(messageAdded){
 		messageEl = document.createElement('div');
 		messageEl.classList.add('appHeaderMessage');
-		qs('.appHeaderContent, .cardBack').appendChild(messageEl);
+		document.querySelector('.appHeaderContent, .cardBack').appendChild(messageEl);
 	}
 
 	var removeNode = function(node){
@@ -51,7 +50,7 @@ if(window.Date && document.querySelector){
 			if(this.js){
 				removeNode(this.js);
 				this.js = undefined;
-				var el = qs('.snow');
+				var el = document.querySelector('.snow');
 				if(el){
 					removeNode(el);
 				}
