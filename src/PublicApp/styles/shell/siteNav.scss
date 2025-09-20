@@ -10,7 +10,7 @@
 	@include supports('dark-theme'){
 		background: var(--navBG);
 	}
-	font-size: 1.2em;
+	font-size: 1.1em;
 	//--for no-js fallback
 	body > &{
 		padding: 1.5em;

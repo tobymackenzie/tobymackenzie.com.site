@@ -14,11 +14,12 @@ dialog{
 	color: map-get($colors, navBorder);
 	color: var(--navBorder);
 	cursor: pointer;
+	font-size: 1.2em;
 	height: 2em;
 	position: absolute;
-	right: 0.5em;
+	right: 0em;
 	text-align: center;
-	top: 0.5em;
+	top: 0em;
 	width: 2em;
 	&:focus, &:hover{
 		background: var(--secondaryLinkFocusBG);
