@@ -78,6 +78,7 @@ $siteNavSearchWidth: 13em;
 			background-color: var(--navBorder);
 			&:before{
 				animation-name: none;
+				filter: none;
 			}
 		}
 		> span{
