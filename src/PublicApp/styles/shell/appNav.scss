@@ -8,19 +8,15 @@
 	@include supports('sticky-nav'){
 		background: var(--chromeHeaderBG);
 		padding-left: 6.5em;
-		overflow: auto;
 		position: sticky;
 		top: 0;
-		white-space: nowrap;
 		z-index: 101;
 	}
 	@include supports('app-grid'){
 		align-self: start;
 		border: 0;
 		grid-area: appNav;
-		overflow: visible;
 		padding: 0;
-		white-space: normal;
 		z-index: 101;
 		@include supports('sticky-nav'){
 			margin-top: -3em;
@@ -29,7 +25,7 @@
 			//--accomodate restart nav
 			&[data-js]{
 				margin-top: 0;
-				top: calc(3px + 3em);
+				top: calc(3px + 4em);
 			}
 		}
 	}
@@ -48,9 +44,11 @@
 .appNavAction{
 	background: none;
 	display: inline-block;
+	font-size: 0.75em;
 	position: relative;
 	text-align: center;
 	text-decoration: none;
+	text-align: center;
 
 	//--undo native button styles
 	border: 0;
@@ -58,46 +56,26 @@
 	line-height: inherit;
 	padding: 0.4em 0.5em;
 
-	&:after{
-		display: block;
-		font-size: 0.75em;
-		speak: none;
-		text-align: center;
-		@include supports('app-grid'){
-			content: '';
-			display: none;
-		}
-	}
 	&:focus, &:hover{
 		text-decoration: underline;
 	}
 	@include supports('tiny'){
-		min-width: 4em;
+		min-width: 5em;
 	}
 	@include supports('app-grid'){
 		border-style: solid;
 		border-width: 3px;
 		display: block;
-		height: 100%;
-		left: 0;
-		min-width: auto;
-		max-width: 100%;
-		overflow: hidden;
-		position: absolute;
 		text-align: center;
-		top: 0;
 		transition: max-width 0.2s;
 		white-space: nowrap;
+		width: 100%;
 		&:focus, &:hover{
 			text-decoration: none; //--override
 			max-width: $appNavWidth * 1em;
 		}
 	}
 	//--when we can expand to the left instead of right
-	@include supports('wide-app-grid'){
-		left: auto;
-		right: 0;
-	}
 
 	cursor: pointer;
 	//==colors
@@ -108,28 +86,14 @@
 		text-decoration-color: var(--primaryLinkDecorationFG);
 	}
 }
-.appNavItemHash{
-	display: none;
-}
 .appNavItemText{
-	margin-left: 0.6em;
-	vertical-align: middle;
-	&, _:after{ //-# hide text if pseudo supported, will show small alternative
-		@extend %sro;
-		margin-left: 0;
-		@include supports('app-grid'){
-			@include sroOff();
-		}
-	}
+	display: block;
 }
 .appNavList{
 	margin: 0;
 	padding: 0 0.8em;
 	@include supports('app-grid'){
 		padding: 0;
-		&:after{
-			content: none;
-		}
 	}
 }
 .appRestartNav{
@@ -165,6 +129,7 @@
 		grid-area: appRestart;
 		$rightMargin: -3px; //--duplicated from `appNavAreaLayout` because of order
 		margin: 0 $rightMargin 0 0;
+		padding: 0;
 		top: 0;
 		z-index: 104;
 		@include supports('sticky-nav'){
@@ -177,25 +142,16 @@
 .appBottomAction, .appMainAction, .appRestartAction, .appSiteNavAction{
 	&:before{
 		@extend %icon-base-color;
-		@include supports('app-grid'){
-			@include icon-with-label();
-		}
 	}
 }
 .appBottomAction{
 	&:before{
 		@extend %icon-bottom;
 	}
-	&:after{
-		content: 'Bottom';
-	}
 }
 .appMainAction{
 	&:before{
 		@extend %icon-file-text;
-	}
-	&:after{
-		content: 'Main';
 	}
 }
 //--hide unfocused skip link from sighted users
@@ -213,15 +169,9 @@
 	&:before{
 		@extend %icon-top;
 	}
-	&:after{
-		content: 'Top';
-	}
 }
 .appSiteNavAction{
 	&:before{
 		@extend %icon-menu;
-	}
-	&:after{
-		content: 'Nav';
 	}
 }

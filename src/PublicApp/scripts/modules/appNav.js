@@ -21,12 +21,12 @@ if(
 		if(_navList){
 			var _bottomNavItem = document.createElement('span');
 			_bottomNavItem.className += 'appNavItem';
-			_bottomNavItem.innerHTML = '<a class="appBottomAction appNavAction" href="#bottom" id="bottom-link"><span class="appNavItemText"><span class="appNavItemHash">#</span>Page bottom</span></a>';
+			_bottomNavItem.innerHTML = '<a class="appBottomAction appNavAction" href="#bottom" id="bottom-link" title="#Page bottom"><span class="appNavItemText">Bottom</span></a>';
 			_navList.appendChild(_bottomNavItem);
 
 			var _topNavItem = document.createElement('div');
 			_topNavItem.className += ' appRestartNav';
-			_topNavItem.innerHTML = '<a class="appRestartAction appNavAction" href="#top" id="top-link"><span class="appNavItemText"><span class="appNavItemHash">#</span>Page top</span></a>';
+			_topNavItem.innerHTML = '<a class="appRestartAction appNavAction" href="#top" id="top-link" title="#Page top"><span class="appNavItemText">Top</span></a>';
 			_appEl.appendChild(_topNavItem);
 		}
 	}
@@ -47,6 +47,7 @@ if(
 			var _newSiteNavActionEl = document.createElement('button');
 			_newSiteNavActionEl.setAttribute('type', 'button');
 			_newSiteNavActionEl.classList = _siteNavActionEl.classList;
+			_newSiteNavActionEl.title = _siteNavActionEl.title;
 			_newSiteNavActionEl.innerHTML = _siteNavActionEl.innerHTML;
 			_siteNavActionEl.parentNode.insertBefore(_newSiteNavActionEl, _siteNavActionEl);
 			_siteNavActionEl.remove();

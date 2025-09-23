@@ -16,7 +16,7 @@
 		margin-right: -3px;
 		max-width: none; //--override `%appContainerLayout`, causes shrinkage
 		overflow: visible;
-		width: calc(6px + 3em);
+		width: calc(6px + 3.5em);
 	}
 	@include mq('print'){
 		display: none !important;
@@ -31,10 +31,8 @@
 	}
 	@include supports('app-grid'){
 		display: block;
-		height: calc(3px + 3em);
 		margin-top: -3px;
 		position: relative;
-		width: calc(6px + 3em);
 	}
 }
 %mainItemLayout{
