@@ -19,7 +19,7 @@
 		padding: 0;
 		z-index: 101;
 		@include supports('stickyGrid'){
-			margin-top: -3em;
+			margin-top: calc(-3px - 4em);
 			position: sticky;
 			top: 0;
 			//--accomodate restart nav
