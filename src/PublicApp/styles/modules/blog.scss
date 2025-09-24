@@ -72,6 +72,10 @@
 .postHeaderMedia{
 	margin-bottom: 1em;
 	text-align: center;
+	@include supports('pretty-small'){
+		float: right;
+		margin-left: 1em;
+	}
 	img{
 		object-fit: contain;
 		max-height: 40vh;
