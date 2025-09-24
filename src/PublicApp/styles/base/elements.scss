@@ -51,7 +51,7 @@ code{
 		@include mq('print'){
 			padding: 0;
 			&:after, &:before{
-				content: '\A```';
+				content: '```';
 				display: block;
 			}
 		}
