@@ -2,7 +2,8 @@
 //-@ http://www.smashingmagazine.com/2011/11/24/how-to-set-up-a-print-style-sheet/
 @include mq('print'){
 	*, *:before, *:after{
-		background: transparent !important;
+		//-# doing background color only could leave some undesired background images in place, but that's needed to allow for icons
+		background-color: transparent !important;
 		color: #000000 !important;
 		box-shadow: none !important;
 		text-shadow: none !important;
