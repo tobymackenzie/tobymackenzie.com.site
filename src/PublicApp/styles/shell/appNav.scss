@@ -18,7 +18,7 @@
 		grid-area: appNav;
 		padding: 0;
 		z-index: 101;
-		@include supports('sticky-nav'){
+		@include supports('stickyGrid'){
 			margin-top: -3em;
 			position: sticky;
 			top: 0;
@@ -132,7 +132,7 @@
 		padding: 0;
 		top: 0;
 		z-index: 104;
-		@include supports('sticky-nav'){
+		@include supports('stickyGrid'){
 			position: sticky;
 		}
 	}

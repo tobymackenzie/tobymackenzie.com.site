@@ -60,6 +60,12 @@ $disabledSupports: () !default;
 				@media only screen and (prefers-color-scheme: dark){
 					@content;
 				}
+			}@elseif $name == 'stickyGrid'{
+				@media #{'only screen and (min-height: ' + (map-get($bpHeight, 'stickyGrid') * 1em) + ')'}{
+					@supports (position: sticky){
+						@content;
+					}
+				}
 			}@elseif $name == 'sticky-nav'{
 				@include mq('only screen and (min-width: ' + (map-get($bp, tiny) * 1em) + ') and (min-height:' + (map-get($bpHeight, "stickyHeader") * 1em) + ')'){
 					@supports (position: sticky){

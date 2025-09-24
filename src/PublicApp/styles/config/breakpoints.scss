@@ -10,6 +10,9 @@ $bp: (
 	,veryBerryWide: 100
 );
 $bpHeight: (
+	//-# doesn't check grid support for brevity, always inside 'appGrid' supports check
+	//-# if taller than appnav, will get cut off
+	stickyGrid: 15,
 	//-# sticky is kind of big. make this smaller if we can shrink sticky height
 	stickyHeader: 40
 	,medium: 40
