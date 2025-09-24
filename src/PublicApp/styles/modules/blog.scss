@@ -76,6 +76,11 @@
 		object-fit: contain;
 		max-height: 40vh;
 	}
+	@media print{
+		a:after, a:before{
+			display: none;
+		}
+	}
 }
 .postHeaderExtra{
 	text-align: right;
