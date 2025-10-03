@@ -325,7 +325,7 @@ class MetaController extends Controller{
 	==seo
 	=====*/
 	public function bingVerificationAction(){
-		$response = $this->render('@Public/meta/bing-verification.xml.twig', Array('code'=> $this->getParameter('bing-verification')));
+		$response = $this->render('@Public/meta/bing-verification.xml.twig', ['code'=> $this->getParameter('bing-verification')]);
 		$response->headers->set('Content-Type', 'application/xml'); //-! symfony's supposed to be determining this based on the template, but isn't, so we must be explicit
 		$response->setMaxAge(86400); //-# 24 hours
 		return $response;

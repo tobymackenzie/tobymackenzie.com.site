@@ -52,13 +52,13 @@ $commentType = ($comment->comment_type === 'pingback' || $comment->comment_type 
 		<div class="commentContent"><?php comment_text(); ?></div>
 		<?php
 		if($commentType !== 'ping'){
-			comment_reply_link(array_merge($args, array(
+			comment_reply_link(array_merge($args, [
 				'after'=> '</footer>'
 				,'before'=> '<footer class="commentFooter">'
 				,'depth'=> $depth
 				,'max_depth'=> $args['max_depth']
 				,'reply_text'=> sprintf(__('Reply to %1$s', 'tjmbase'), get_comment_author())
-			)));
+			]));
 		}
 		?>
 <?php

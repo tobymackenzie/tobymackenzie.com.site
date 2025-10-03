@@ -35,13 +35,13 @@ if(post_password_required()){
 	<ol class="commentsList">
 		<?php
 		//--render each comment from 'pieces/comments.php'.  Create this file in a child theme to override
-		wp_list_comments(array('style'=> 'ol', 'type'=> 'comment', 'callback'=> function($comment, $args, $depth){
-			echo TMWebWPTheme::$helper->renderer->renderPiece('comment', Array(
+		wp_list_comments(['style'=> 'ol', 'type'=> 'comment', 'callback'=> function($comment, $args, $depth){
+			echo TMWebWPTheme::$helper->renderer->renderPiece('comment', [
 				'args'=> $args
 				,'comment'=> $comment
 				,'depth'=> $depth
-			));
-		}));
+			]);
+		}]);
 		?>
 	</ol>
 <?php
@@ -51,13 +51,13 @@ if(post_password_required()){
 	<ol class="commentsList">
 		<?php
 		//--render each comment through WPThemeHelper->outputCommentPiece().  This function renders and outputs 'pieces/comment.php'.  Create this file in a child theme to override
-		wp_list_comments(array('style'=> 'ol', 'type'=> 'pings', 'callback'=> function($comment, $args, $depth){
-			echo TMWebWPTheme::$helper->renderer->renderPiece('comment', Array(
+		wp_list_comments(['style'=> 'ol', 'type'=> 'pings', 'callback'=> function($comment, $args, $depth){
+			echo TMWebWPTheme::$helper->renderer->renderPiece('comment', [
 				'args'=> $args
 				,'comment'=> $comment
 				,'depth'=> $depth
-			));
-		}));
+			]);
+		}]);
 		?>
 	</ol>
 <?php
@@ -65,21 +65,21 @@ if(post_password_required()){
 
 		//--output comments navigation if there are multiple comments pages
 		if(get_comment_pages_count() > 1 && get_option('page_comments')){
-			TMWebWPTheme::$helper->renderer->renderPiece('relativeNav', Array(
+			TMWebWPTheme::$helper->renderer->renderPiece('relativeNav', [
 				'classes'=> 'commentRelNav'
 				,'id'=> 'comment-nav-below'
 				,'nextLink'=> get_next_comments_link(__('Newer Comments', 'tmweb'))
 				,'prevLink'=> get_previous_comments_link(__('Older Comments', 'tmweb'))
 				,'title'=> __('Comment navigation', 'tmweb')
 				,'type'=> 'comments'
-			));
+			]);
 		}
 ?>
 	<hr />
 <?php
 	}
 	if(comments_open()){
-		comment_form(Array('title_reply'=> 'Leave a comment'));
+		comment_form(['title_reply'=> 'Leave a comment']);
 	}else{
 ?>
 	<p>To reply to this post, <?php if(pings_open()){ ?> post on your blog and send a pingback, or <?php } ?><a href="mailto:admin@tobymackenzie.com">email me</a>.</p>

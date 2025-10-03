@@ -22,15 +22,15 @@ class Controller extends Base{
 		$this->router = $router;
 		$this->views = $views;
 	}
-	protected function getGlobalRenderData(array $parameters = Array()){
+	protected function getGlobalRenderData(array $parameters = []){
 		$request = $this->requestStack->getMainRequest();
 		return $this->views->getDocData($request, $parameters);
 	}
-	public function renderPage($view, array $parameters = array(), Response $response = null){
+	public function renderPage($view, array $parameters = [], Response $response = null){
 		$response = parent::renderPage($view, $parameters, $response);
 		return $response;
 	}
-	public function renderPageView($view, array $parameters = array()){
+	public function renderPageView($view, array $parameters = []){
 		$parameters = $this->getGlobalRenderData($parameters);
 		return parent::renderView($view, $parameters);
 	}

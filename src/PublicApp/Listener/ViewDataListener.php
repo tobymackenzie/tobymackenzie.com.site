@@ -94,7 +94,7 @@ class ViewDataListener{
 	}
 	public function getDocData(Request $request = null, array $data = null){
 		if(!$data){
-			$data = Array();
+			$data = [];
 		}
 		if(!isset($data["doc"])){
 			$data["doc"] = [];
@@ -103,10 +103,10 @@ class ViewDataListener{
 			$data["doc"]['name'] = null;
 		}
 		if(!isset($data["page"])){
-			$data["page"] = Array();
+			$data["page"] = [];
 		}
 		if(!isset($data["site"])){
-			$data["site"] = Array();
+			$data["site"] = [];
 		}
 		if(!isset($data["site"]["isResponsive"])){
 			$data["site"]['isResponsive'] = true;
@@ -159,7 +159,7 @@ class ViewDataListener{
 		//-!! format should come from parameters if set
 		$data['page']['shell'] = str_replace('{format}', $format , $data['page']['shell']);
 		if(!isset($data['doc'])){
-			$data['doc'] = Array();
+			$data['doc'] = [];
 		}
 		if(!isset($data['doc']['attr'])){
 			$data['doc']['attr'] = '';

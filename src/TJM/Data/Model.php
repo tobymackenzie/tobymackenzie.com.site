@@ -12,7 +12,7 @@ class Model{
 		$match = preg_match('/^([a-z]+)([A-Z][\w]+)$/', $name, $matches);
 		if($match){
 			array_unshift($args, lcfirst($matches[2]));
-			return call_user_func_array(Array($this, $matches[1]), $args);
+			return call_user_func_array([$this, $matches[1]], $args);
 		}else{
 			throw new Exception(get_class($this) . " has no method {$name}.");
 		}

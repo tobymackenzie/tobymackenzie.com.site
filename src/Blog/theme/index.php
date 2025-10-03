@@ -50,7 +50,7 @@ if(have_posts()){
 		get_template_part('content', get_post_format());
 	}
 	if($postType !== 'page'){
-		echo TMWebWPTheme::$helper->renderer->renderPiece('relativeNav', Array('id'=> 'nav-below', 'type'=> $postType));
+		echo TMWebWPTheme::$helper->renderer->renderPiece('relativeNav', ['id'=> 'nav-below', 'type'=> $postType]);
 	}
 }else{
 	get_template_part('content', 'none');
