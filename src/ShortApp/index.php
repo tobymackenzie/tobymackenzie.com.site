@@ -65,7 +65,7 @@ __     __    _      ______ ._.    __._______.._    ._. _______.._______.._______
 						<span class="p-locality" itemprop="addressLocality">Akron</span>,
 						<span class="p-region" itemprop="addressRegion">Ohio</span>
 					</div>
-					<img class="qr" src="<?=$qr->render('https://www.tobymackenzie.com')?>" alt="QR code: tobymackenie.com" />
+					<img class="qr" src="<?=$qr->render('https://www.tobymackenzie.com')?>" alt="QR code: tobymackenzie.com" />
 				</div>
 			</div>
 			<div class="cardFace cardBack">
