@@ -2,7 +2,6 @@
 namespace PublicApp\Listener;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
-use TJM\Views\Views;
 use TJM\WikiSite\Event\ViewContentEvent;
 
 class ViewContentListener{

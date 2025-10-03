@@ -1,20 +1,20 @@
 <?php
 namespace PublicApp\Controller;
+use PublicApp\Listener\ViewDataListener;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use TJM\SySite\Controller\Controller as Base;
-use TJM\Views\Views;
 
 class Controller extends Base{
 	protected string $env;
 	protected ?RequestStack $requestStack;
 	protected RouterInterface $router;
-	protected Views $views;
+	protected ViewDataListener $views;
 	public function __construct(
 		RequestStack $requestStack,
 		RouterInterface $router,
-		Views $views,
+		ViewDataListener $views,
 		string $env = 'prod'
 	){
 		$this->env = $env;

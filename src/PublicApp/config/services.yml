@@ -13,9 +13,6 @@ services:
    arguments: ['%kernel.project_dir%/data']
  ParsedownExtra:
    class: ParsedownExtra #-! required because not namespaced
- TJM\Views\Views:
-   arguments: ['@router', '%tjm_sy_site.wraps%', '%public.host%', '%public.canonical_host%']
-   public: true
  TJM\Wiki\Wiki:
    arguments: [{'path': '%data_content.path%', 'fileSystemCaseInsensitvity': false}]
  TJM\WikiSite\WikiSite:
@@ -53,5 +50,9 @@ services:
   arguments:
    - '@request_stack'
    - '@router'
+   - '%tjm_sy_site.wraps%'
+   - '%public.host%'
+   - '%public.canonical_host%'
+  public: true
   tags:
    - {name: kernel.event_listener, event: 'TJM\WikiSite\Event\ViewDataEvent'}
