@@ -75,6 +75,9 @@
 	@include mq(map-get($bp, logoTwist)){
 		transform: rotate(-15deg) translate(5px, -1px);
 	}
+	a:focus &{
+		@extend %spinHovered;
+	}
 }
 .appLogoAction{
 	margin-right: auto;
