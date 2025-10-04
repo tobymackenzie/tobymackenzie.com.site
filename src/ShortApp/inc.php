@@ -7,6 +7,7 @@ define('PROJECT_PATH', realpath(__DIR__ . '/../..'));
 define('AUTOLOAD_PATH', (GH_PAGES ? getenv('GITHUB_WORKSPACE') : PROJECT_PATH) . '/vendor/autoload.php');
 
 define('SHORT_PATH', realpath(__DIR__));
+define('DATA_PATH', SHORT_PATH . '/../../data');
 define('INDEX_PATH', SHORT_PATH . '/index.php');
 define('JS_PATH', SHORT_PATH . '/scripts.js');
 define('STYLES_PATH', SHORT_PATH . '/styles.css');
