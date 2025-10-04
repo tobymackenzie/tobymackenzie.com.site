@@ -53,3 +53,8 @@ services:
   public: true
   tags:
    - {name: kernel.event_listener, event: 'TJM\WikiSite\Event\ViewDataEvent'}
+ ##==templates
+ PublicApp\Twig\IncludeDataExtension:
+   arguments:
+     - '%data.path%'
+   tags: ['twig.extension']
