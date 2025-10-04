@@ -34,6 +34,30 @@ if(window.Date && document.querySelector){
 		},
 	});
 
+	//--halloween
+	initHoliday({
+		date: '1022',
+		endDate: '1101',
+		do: function(){
+			this.css = loadCSS(assetBase + '/_assets/styles/halloween.css');
+			this.js = loadJS(assetBase + '/_assets/scripts/halloween.js');
+		},
+		undo: function(){
+			if(this.css){
+				removeNode(this.css);
+				this.css = undefined;
+			}
+			if(this.js){
+				removeNode(this.js);
+				this.js = undefined;
+				var el = document.querySelector('.ghostView');
+				if(el){
+					removeNode(el);
+				}
+			}
+		},
+	});
+
 	//--snow
 	initHoliday({
 		date: '1201',
