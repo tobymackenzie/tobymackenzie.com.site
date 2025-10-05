@@ -1,12 +1,10 @@
-import {init as initHoliday} from '../holiday/holiday.js';
-import loadCSS from '../ua/load-css.js';
-import loadJS from '../ua/load-js.js';
+import {init as initHoliday} from '../holiday/holidayLoad.js';
 import onday from '../holiday/onday.js';
 
 //--load christmas script if december or early january
 //-! simple onload.  we may want to have it run repeatedly and enable / disable as necessary
 if(window.Date && document.querySelector){
-	var assetBase = (window.location.host.match(/github\.io|macn\.me$/i) ? '//www.tobymackenzie.com' : '');
+	var assetBase = (window.location.host.match(/github\.io|macn\.me$/i) ? '//www.tobymackenzie.com' : '') + '/_assets';
 	var messageEl = document.querySelector('.appHeaderMessage');
 	var messageAdded = !messageEl;
 	if(messageAdded){
@@ -15,86 +13,35 @@ if(window.Date && document.querySelector){
 		document.querySelector('.appHeaderContent, .cardBack').appendChild(messageEl);
 	}
 
-	var removeNode = function(node){
-		node.parentNode.removeChild(node);
-	};
-
 	//--april fools
 	initHoliday({
 		date: '0401',
-		do: function(){
-			this.js = loadJS(assetBase + '/_assets/scripts/aprilFools.js');
-		},
-		undo: function(){
-			if(this.js){
-				removeNode(this.js);
-				this.js = undefined;
-				//-! ideally would undo text content changes
-			}
-		},
+		js: assetBase + '/scripts/aprilFools.js',
 	});
 
 	//--halloween
 	initHoliday({
 		date: '1022',
 		endDate: '1101',
-		do: function(){
-			this.css = loadCSS(assetBase + '/_assets/styles/halloween.css');
-			this.js = loadJS(assetBase + '/_assets/scripts/halloween.js');
-		},
-		undo: function(){
-			if(this.css){
-				removeNode(this.css);
-				this.css = undefined;
-			}
-			if(this.js){
-				removeNode(this.js);
-				this.js = undefined;
-				var el = document.querySelector('.ghostView');
-				if(el){
-					removeNode(el);
-				}
-			}
-		},
+		elSelect: '.ghostView',
+		css: assetBase + '/styles/halloween.css',
+		js: assetBase + '/scripts/halloween.js',
 	});
 
 	//--snow
 	initHoliday({
 		date: '1201',
 		endDate: '0201',
-		do: function(){
-			this.css = loadCSS(assetBase + '/_assets/styles/snow.css');
-			this.js = loadJS(assetBase + '/_assets/scripts/snow.js');
-		},
-		undo: function(){
-			if(this.css){
-				removeNode(this.css);
-				this.css = undefined;
-			}
-			if(this.js){
-				removeNode(this.js);
-				this.js = undefined;
-				var el = document.querySelector('.snow');
-				if(el){
-					removeNode(el);
-				}
-			}
-		},
+		elSelect: '.snow',
+		css: assetBase + '/styles/snow.css',
+		js: assetBase + '/scripts/snow.js',
 	});
 
 	//--christmas
 	initHoliday({
 		date: '1201',
 		endDate: '1231',
-		do: function(){
-			this.css = loadCSS(assetBase + '/_assets/styles/christmas.css');
-		},
-		undo: function(){
-			if(this.css){
-				removeNode(this.css);
-				this.css = undefined;
-			}
-		},
+		css: assetBase + '/styles/christmas.css',
 	});
 
 	onday(function(){
