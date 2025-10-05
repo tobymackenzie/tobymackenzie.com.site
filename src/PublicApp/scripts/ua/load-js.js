@@ -5,6 +5,10 @@ export default function loadJS(_src, _props, _target){
 	var _script = _d.createElement('script');
 	_script.src = _src;
 	_script.async = true;
+	//--in dev, we want to load as module
+	if(window.TJMDEV){
+		_script.type = 'module';
+	}
 	//-! we probably want to be able to set attributes instead of props
 	if(typeof _props === 'function'){
 		_props(_script);
