@@ -14,7 +14,7 @@
 <div class="app">
 	<nav class="appNav" aria-label="app">
 		<div class="appNavList">
-			<span class="appNavItem"><a class="appMainAction appNavAction" href="#appMain" title="#Main content"><span class="appNavItemText">Main</span></a></span>
+			<span class="appNavItem"><a class="appMainAction appNavAction" href="#main" title="#Main content"><span class="appNavItemText">Main</span></a></span>
 			<span class="appNavItem"><a class="appSiteNavAction appNavAction" href="{{path('public_site_nav')}}" title="Site navigation"><span class="appNavItemText">Nav</span></a></span>
 		</div>
 	</nav>
@@ -29,7 +29,7 @@
 		<hr />
 	</div>
 	<div class="appMain"><main class="appMainContent" role="main">
-		<a name="appMain"></a>
+		<a name="main" id="main"></a>
 		{% block docMain %}{% endblock %}
 	</main></div>
 	{% block docAside %}{% endblock %}
