@@ -1,16 +1,16 @@
-<ul class="siteNavList">
+<ul class="a--snavl">
 {% for item in items %}
-	<li class="siteNavItem">
+	<li class="a--snavi">
 {%	if item.template is defined and item.template == 'search' %}
-		<form action="{{item.url}}" class="siteNavSearch">
+		<form action="{{item.url}}" class="a--snavsearch">
 			<label>
-				<span class="siteNavSearchLabel">{{item.label}}</span>
+				<a--snavsearcht>{{item.label}}</a--snavsearcht>
 				<input name="{{item.name}}" placeholder="{{item.label}}" required="required" type="search" />
 			</label>
 			<button><span>{{item.label}}</span></button>
 		</form>
 {%	else %}
-		<a class="siteNavAction"{% if item.type is defined %} data-type="{{item.type}}"{% endif %} href="{{item.url}}">{{item.label}}</a>
+		<a class="a--snava"{% if item.type is defined %} data-type="{{item.type}}"{% endif %} href="{{item.url}}">{{item.label}}</a>
 {% 	endif %}
 {%	if item.items is defined %}
 		{% include '@Public/modules/siteNavList.html.twig' with {'items': item.items} %}

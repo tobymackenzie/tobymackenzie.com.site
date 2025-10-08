@@ -24,11 +24,11 @@ $darkBG: #b94e00;
 		--strongFG: #{$darkFG};
 	}
 }
-.appHeaderTagline:after{
+a--htag:after{
 	content: '🎃';
 	margin-left: 1em;
 }
-.appNavAction::before, .siteNavAction::before{
+.a--nava::before, .a--snava::before{
 	filter: invert(47%) sepia(80%) saturate(388%) hue-rotate(341deg);
 }
 

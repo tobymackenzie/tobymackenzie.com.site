@@ -1,10 +1,11 @@
 {% extends page.shell %}
 {%block docMain %}
-<div class="mainItem">
+<div class="m--0">
 	<h1>Error {{status_code}}{% if status_text %}: {{status_text}}{% endif %}</h1>
 {%	if status_code == 404 %}
 	<p>The page you requested was not found.  Try searching for it with the form below, or peruse the <a href="/">home page</a>.</p>
 	<br />{#-!! temporary, use css #}
+	{#-! can we use brave? #}
 	<form action="https://duckduckgo.com">
 		<label>Search via DuckDuckGo: <input name="q" rel="search" title="Search"{% if search is defined %} value="{{search}}"{% endif %} /></label>
 		<input type="hidden" name="sites" value="www.tobymackenzie.com" />

@@ -2,8 +2,8 @@
 @import '_config';
 @import '../base/fix';
 
-.appEndLogo{
-	margin: 1em 0 0;
+.a--0{
+	margin: 0 0 1em;
 }
 body{
 	background: map-get($colors, 'primaryBG');
@@ -18,10 +18,7 @@ html{
 	color: map-get($colors, 'baseFG');
 	padding: 0;
 }
-.appNavItem{
-	display: inline;
-}
-.appNavList{
+.a--navl{
 	margin: 0 0 1em;
 }
 a{

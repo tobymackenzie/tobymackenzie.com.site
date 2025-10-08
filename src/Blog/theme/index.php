@@ -32,7 +32,7 @@ if(have_posts()){
 	$postType = TMWebWPTheme::getPostType();
 	if(!in_array($postType, ['page', 'single'])){
 ?>
-	<header class="appMainHeader">
+	<header class="a--mhead">
 		<h1><?=get_the_title()?></h1>
 <?php
 		$paged = get_query_var('paged') ?: 1;

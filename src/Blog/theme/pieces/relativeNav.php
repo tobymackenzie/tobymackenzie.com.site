@@ -22,7 +22,7 @@ if(isset($type) && $type){
 	switch($type){
 		case 'page':
 		case 'single':
-			$classes .= ' relNav-item appMainFooter';
+			$classes .= ' relNav-item a--mfoot';
 			$title = 'posts';
 			if(!isset($nextLink)){
 				$nextLink = get_next_post_link('%link', __('Next post:', 'tjmbase') . ' %title');
@@ -38,7 +38,7 @@ if(isset($type) && $type){
 			if($wp_query->max_num_pages < 2){
 				return;
 			}
-			$classes .= ' relNav-list appMainFooter';
+			$classes .= ' relNav-list a--mfoot';
 			$title = 'posts';
 			if(!isset($nextLink)){
 				$nextLink = get_next_posts_link(__('Older posts', 'tjmbase'));

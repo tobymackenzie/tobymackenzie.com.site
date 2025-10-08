@@ -14,7 +14,7 @@ if(WP_DEBUG){
 
 //=====content
 ?>
-<article class="post post-none post-0 mainItem" id="post-0">
+<article class="post post-none post-0 m--0" id="post-0">
 	<header class="postHeader">
 <?php if(is_search()){ ?>
 		<h1 class="postHeading"><?php _e('Nothing found', 'tmweb'); ?></h1>

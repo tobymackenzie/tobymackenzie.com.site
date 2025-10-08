@@ -33,8 +33,8 @@ this solution causes the problems:
 - extra markup in shell
 - ie 6-8 with js enabled rendered the site decently, but now get limited styles
 #}
-<link href="{{asset(assets.styles_path ~ '/ancient.css')}}" rel="stylesheet" />
-<link href="{{asset(assets.styles_path ~ '/main.css')}}" media="only all" rel="stylesheet" />
+<link href="{{asset(assets.styles_path ~ '/ancient.css')}}?c" rel="stylesheet" />
+<link href="{{asset(assets.styles_path ~ '/main.css')}}?c" media="only all" rel="stylesheet" />
 
 {% endblock %}
 
@@ -49,6 +49,6 @@ script `type="application/javascript"` to block some old browsers.  blocks IE8- 
 {% endblock %}
 
 {% block docPostScripts %}
-<script{% if app.environment == 'dev' %} type="module"{% else %} async="async" defer="defer" type="application/javascript"{% endif %} src="{{assets.scripts_path}}/post.js?a"></script>
+<script{% if app.environment == 'dev' %} type="module"{% else %} async="async" defer="defer" type="application/javascript"{% endif %} src="{{assets.scripts_path}}/post.js?c"></script>
 
 {% endblock %}

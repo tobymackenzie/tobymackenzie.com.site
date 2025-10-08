@@ -15,7 +15,7 @@ a{
 a:focus, a:hover{
 	color: #90df90;
 }
-.appBG{
+a--bg{
 	z-index: -1;
 }
 body, html{
@@ -45,7 +45,7 @@ body{
 		z-index: 9;
 	}
 }
-.appHeaderMessage{
+.a--message{
 	border-top: 1px solid;
 	color: #90df90;
 	margin-top: 1em;

@@ -11,37 +11,35 @@
 
 {% block docBody %}
 <a name="top"></a>
-<div class="app">
-	<nav class="appNav" aria-label="app">
-		<div class="appNavList">
-			<span class="appNavItem"><a class="appMainAction appNavAction" href="#main" title="#Main content"><span class="appNavItemText">Main</span></a></span>
-			<span class="appNavItem"><a class="appSiteNavAction appNavAction" href="{{path('public_site_nav')}}" title="Site navigation"><span class="appNavItemText">Nav</span></a></span>
+<div class="a--0">
+	<nav class="a--nav" aria-label="app">
+		<div class="a--navl">
+			<a--navi><a class="a--navma a--nava" href="#main" title="#Main content"><a--navt>Main</a--navt></a></a--navi>
+			<a--navi><a class="a--navsa a--nava" href="{{path('public_site_nav')}}" title="Site navigation"><a--navt>Nav</a--navt></a></a--navi>
 		</div>
 	</nav>
-	<div class="appHeader">
-		<header class="appHeaderContent" role="banner">
-			{% if doc.name != 'home' %}<a class="appLogoAction" href="{{path('public_home')}}">{% endif %}
-				<span class="appLogo">&lt;toby&gt;</span>
-				<span class="appHeaderTagline"><span class="appHeaderTaglineWVP">Mackenzie</span>'s site</span>
-			{% if doc.name != 'home' %}</a>{% endif %}
-			{% if tm.headerMessage is not empty %}<div class="appHeaderMessage">{{tm.headerMessage|raw}}</div>{% endif %}
-		</header>
+	<header class="a--head" role="banner">
+		{% if doc.name != 'home' %}<a class="a--logoa" href="{{path('public_home')}}">{% endif %}
+			<a--logo>&lt;toby&gt;</a--logo>
+			<a--htag><a--htagw>Mackenzie</a--htagw>'s site</a--htag>
+		{% if doc.name != 'home' %}</a>{% endif %}
+		{% if tm.headerMessage is not empty %}<div class="a--message">{{tm.headerMessage|raw}}</div>{% endif %}
 		<hr />
-	</div>
-	<div class="appMain"><main class="appMainContent" role="main">
+	</header>
+	<a--main><main role="main">
 		<a name="main" id="main"></a>
 		{% block docMain %}{% endblock %}
-	</main></div>
+	</main></a--main>
 	{% block docAside %}{% endblock %}
 	{% if page.secureUrl is defined and doc.name != 'error' %}
-	<div id="appFooter" class="appFooter">
-		<footer class="appFooterContent" role="contentinfo">
-			<p class="appSecureMessage">This page is also <a href="{{page.secureUrl}}" rel="alternate">available over more secure, encrypted HTTPS</a>.</p>
+	<a-foot>
+		<footer role="contentinfo">
+			<p class="a--sec">This page is also <a href="{{page.secureUrl}}" rel="alternate">available over more secure, encrypted HTTPS</a>.</p>
 		</footer>
-	</div>
+	</a-foot>
 	{% endif %}
 </div>
-<div id="bottom" class="appEndLogo">&lt;/toby&gt;</div>
-<div class="appBG"></div>
+<a--end id="bottom">&lt;/toby&gt;</a--end>
+<a--bg></a--bg>
 {% if app.environment == 'dev' %}<s id="TJMDEV" hidden=""></s>{% endif %}
 {% endblock %}

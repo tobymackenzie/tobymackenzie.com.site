@@ -1,4 +1,4 @@
-.appNav{
+.a--nav{
 	@extend %appNavAreaColors;
 	@extend %appNavAreaLayout;
 	border-width: 3px;
@@ -34,14 +34,14 @@
 		z-index: 106;
 	}
 }
-.appNavItem{
+a--navi{
 	@extend %appNavItemLayout;
 	&:focus-within{
 		//--put above other nav when focused inside, ensures focus outline not cut off
 		z-index: 106;
 	}
 }
-.appNavAction{
+.a--nava{
 	background: none;
 	display: inline-block;
 	font-size: 0.75em;
@@ -79,24 +79,24 @@
 
 	cursor: pointer;
 	//==colors
-	&.appNavAction{ //--beat specificity of links in secondary area
+	&.a--nava{ //--beat specificity of links in secondary area
 		@include appContainerColors;
 		@include primaryAreaColors;
 		text-decoration-color: rgba(map-get($colors, primaryLinkFG), 0.4);
 		text-decoration-color: var(--primaryLinkDecorationFG);
 	}
 }
-.appNavItemText{
+a--navt{
 	display: block;
 }
-.appNavList{
+.a--navl{
 	margin: 0;
 	padding: 0 0.8em;
 	@include supports('app-grid'){
 		padding: 0;
 	}
 }
-.appRestartNav{
+.a--navr{
 	@extend %appNavAreaColors;
 	@extend %appNavAreaLayout;
 	@extend %appNavItemLayout;
@@ -139,26 +139,26 @@
 }
 
 //--specific
-.appBottomAction, .appMainAction, .appRestartAction, .appSiteNavAction{
+.a--navba, .a--navma , .a--navra, .a--navsa{
 	&:before{
 		@extend %icon-base-color;
 	}
 }
-.appBottomAction{
+.a--navba{
 	&:before{
 		@extend %icon-bottom;
 	}
 }
-.appMainAction{
+.a--navma{
 	&:before{
 		@extend %icon-file-text;
 	}
 }
 //--hide unfocused skip link from sighted users
-.appNavItem:first-child:not(:focus-within){
+a--navi:first-child:not(:focus-within){
 	@extend %sro;
 }
-.appRestartAction{
+.a--navra{
 	@include supports('fixed-nav', 'sticky-nav'){
 		padding: 0.25em 0.75em;
 	}
@@ -170,7 +170,7 @@
 		@extend %icon-top;
 	}
 }
-.appSiteNavAction{
+.a--navsa{
 	&:before{
 		@extend %icon-menu;
 	}

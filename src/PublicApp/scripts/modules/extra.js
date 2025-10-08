@@ -5,12 +5,12 @@ import onday from '../holiday/onday.js';
 //-! simple onload.  we may want to have it run repeatedly and enable / disable as necessary
 if(window.Date && document.querySelector){
 	var assetBase = (window.location.host.match(/github\.io|macn\.me$/i) ? '//www.tobymackenzie.com' : '') + '/_assets';
-	var messageEl = document.querySelector('.appHeaderMessage');
+	var messageEl = document.querySelector('.a--message');
 	var messageAdded = !messageEl;
 	if(messageAdded){
 		messageEl = document.createElement('div');
-		messageEl.classList.add('appHeaderMessage');
-		document.querySelector('.appHeaderContent, .cardBack').appendChild(messageEl);
+		messageEl.classList.add('a--message');
+		document.querySelector('.a--head, .cardBack').appendChild(messageEl);
 	}
 
 	//--april fools

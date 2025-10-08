@@ -1,4 +1,4 @@
-.appFooter{
+a--foot{
 	@extend %appContainerLayout;
 	grid-area: foot;
 	order: 5;
@@ -11,7 +11,7 @@
 	@extend %appContainerColors;
 	@extend %secondaryAreaColors;
 }
-.appEndLogo{
+a--end{
 	@extend %appLogoBase;
 	align-self: start;
 	flex: 0 0 auto;
@@ -35,7 +35,7 @@
 		margin-left: -30em;
 	}
 }
-.appSecureMessage{
+.a--sec{
 	@include mq('print'){
 		display: none;
 	}

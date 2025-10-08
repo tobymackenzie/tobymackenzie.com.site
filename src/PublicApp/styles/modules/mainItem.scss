@@ -1,11 +1,11 @@
-.mainItemAltFormat{
+.m--alti{
 	display: inline-block;
 	margin: 0;
 	& + &{
 		margin-left: 0.5em;
 	}
 }
-.mainItemAltFormats{
+.m--alt{
 	> strong{
 		margin-right: 0.5em;
 	}
@@ -13,7 +13,7 @@
 		display: none;
 	}
 }
-.mainItemAltFormatsList{
+.m--altl{
 	display: inline-block;
 	margin: 0;
 	padding: 0;

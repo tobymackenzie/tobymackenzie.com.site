@@ -21,7 +21,7 @@ $permalinkTitle = ($title ?: TMWebWPTheme::getPostTitle(get_the_ID()));
 
 $postType = TMWebWPTheme::getPostType();
 ?>
-<article <?php post_class("post post-default post-" . get_the_ID() . " h-entry mainItem"); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class("post post-default post-" . get_the_ID() . " h-entry m--0"); ?> id="post-<?php the_ID(); ?>">
 <?php
 if($title || $thumbnail){
 ?>

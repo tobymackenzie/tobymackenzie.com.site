@@ -1,4 +1,4 @@
-.appMain{
+a--main{
 	border-bottom-style: solid;
 	border-width: 3px;
 	grid-area: main;
@@ -16,12 +16,12 @@
 	@extend %appContainerColors;
 	@extend %secondaryAreaColors;
 }
-.appMainFooter, .appMainHeader{
+.a--mfoot, .a--mhead{
 	@extend %appContainerLayout;
 	@include remFallback('padding-bottom', 16px);
 	@include remFallback('padding-top', 16px);
 }
-.appMainFooter{
+.a--mfoot{
 	border-width: 3px;
 	* + &{
 		border-top-style: solid;
@@ -31,21 +31,21 @@
 	@extend %appContainerColors;
 	@extend %contentAreaColors;
 }
-.appMainHeader{
+.a--mhead{
 	//==colors
 	@extend %appContainerColors;
 	@extend %contentAreaColors;
 }
-.mainItem{
+.m--0{
 	@extend %mainItemColors;
 	@extend %mainItemLayout;
 }
-.mainItemContent{
+.m--cont{
 	@extend %mainItemContentLayout;
 }
-.mainItemHeader{
+.m--head{
 	@extend %mainItemHeaderLayout;
 }
-.mainItemMeta{
+.m--meta{
 	@extend %mainItemMetaLayout;
 }

@@ -3,7 +3,7 @@ import {addListener as _addListener} from '../ua/dom.js';
 import {baseCut as _cutsMustard} from '../ua/mustardCut.js';
 import _dialog from './dialog.js';
 
-var _appEl = document.querySelector && document.querySelector('.app');
+var _appEl = document.querySelector && document.querySelector('.a--0');
 if(
 	_cutsMustard
 	&& document.createElement
@@ -14,19 +14,18 @@ if(
 	--insert top / bottom nav actions
 	adding here to reduce markup on page load
 	*/
-	var _nav = document.querySelector('.appNav');
+	var _nav = document.querySelector('.a--nav');
 	if(_nav){
 		_nav.setAttribute('data-js', 1);
-		var _navList = _nav.querySelector('.appNavList');
+		var _navList = _nav.querySelector('.a--navl');
 		if(_navList){
-			var _bottomNavItem = document.createElement('span');
-			_bottomNavItem.className += 'appNavItem';
-			_bottomNavItem.innerHTML = '<a class="appBottomAction appNavAction" href="#bottom" id="bottom-link" title="#Page bottom"><span class="appNavItemText">Bottom</span></a>';
+			var _bottomNavItem = document.createElement('a--navi');
+			_bottomNavItem.innerHTML = '<a class="a--navba a--nava" href="#bottom" id="bottom-link" title="#Page bottom"><a--navt>Bottom</a--navt></a>';
 			_navList.appendChild(_bottomNavItem);
 
 			var _topNavItem = document.createElement('div');
-			_topNavItem.className += ' appRestartNav';
-			_topNavItem.innerHTML = '<a class="appRestartAction appNavAction" href="#top" id="top-link" title="#Page top"><span class="appNavItemText">Top</span></a>';
+			_topNavItem.className += ' a--navr';
+			_topNavItem.innerHTML = '<a class="a--navra a--nava" href="#top" id="top-link" title="#Page top"><a--navt>Top</a--navt></a>';
 			_appEl.appendChild(_topNavItem);
 		}
 	}
@@ -38,7 +37,7 @@ if(
 		window.fetch
 		&& _navList
 	){
-		var _siteNavActionEl = _navList.querySelector('.appSiteNavAction');
+		var _siteNavActionEl = _navList.querySelector('.a--navsa');
 		if(_siteNavActionEl){
 			var _siteNavUrl = _siteNavActionEl.getAttribute('href');
 			var _siteNavEl;
@@ -87,11 +86,11 @@ if(
 						_siteNavEl = document.createElement('div');
 						//-# doctype breaks parsing in XHTML
 						_siteNavEl.innerHTML = _content.replace(/<\!doctype[^>]+>/gi, '');
-						_siteNavEl = _siteNavEl.querySelector('.siteNav');
+						_siteNavEl = _siteNavEl.querySelector('.a--snav');
 						if(_siteNavEl){
 							_openSiteNav();
 						}else{
-							throw new Error('no .siteNav in response: ' + _content);
+							throw new Error('no .a--snav in response: ' + _content);
 						}
 					}).catch(_defaultAction);
 				}

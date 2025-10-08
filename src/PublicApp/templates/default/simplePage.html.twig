@@ -1,17 +1,17 @@
 {% extends page.shell %}
 {%block docMain %}
-<article class="mainItem">
+<article class="m--0">
 	{% if heading is defined %}<h1>{{heading}}</h1>{% endif %}
 	{{content|raw}}
 {% if formats is defined %}
-	<footer class="mainItemAltFormats">
+	<footer class="m--alt">
 		<hr />
 		<strong>This page also available as:</strong>
-		<span class="mainItemAltFormatsList">
+		<m--altl>
 {% 	for format in formats %}
-			<span class="mainItemAltFormat"><a href="{{format.path}}" rel="alternate" type="{{format.type}}">{{format.name}}</a></span>
+			<m--alti><a href="{{format.path}}" rel="alternate" type="{{format.type}}">{{format.name}}</a></m--alti>
 {% 	endfor %}
-		</span>
+		</m--altl>
 		<hr />
 	</footer>
 {% endif %}

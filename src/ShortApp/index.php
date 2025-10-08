@@ -50,10 +50,10 @@ require_once(__DIR__ . '/qr.php');
 				<div class="cardItem"><a href="//www.tobymackenzie.com/blog/">tobymackenzie.com/blog</a></div>
 				<div class="cardItem"><a href="https://github.com/tobymackenzie">github.com/tobymackenzie</a></div>
 				<img class="qr" src="<?=$qr->render($vCard)?>" alt="QR code: vCard" />
-				<div class="appHeaderMessage"><a href="//bxln2ho3.com">Be excellent to each other</a></div>
+				<div class="a--message"><a href="//bxln2ho3.com">Be excellent to each other</a></div>
 			</div>
 		</div>
-		<div class="appBG"></div>
+		<a--bg></a--bg>
 <?php
 if(file_exists(JS_DIST_PATH)){
 ?>

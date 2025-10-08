@@ -148,7 +148,7 @@ if(doc.querySelector){
 			];
 			$firstP.childNodes[0].textContent = getRandItem(phrases) + $firstP.childNodes[0].textContent;
 		}
-		var $main = doc.querySelector('main .mainItem:last-of-type');
+		var $main = doc.querySelector('main .m--0:last-of-type');
 		if(!$main){
 			$main = doc.querySelector('main');
 		}
