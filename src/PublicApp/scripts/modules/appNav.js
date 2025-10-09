@@ -20,12 +20,12 @@ if(
 		var _navList = _nav.querySelector('.a--navl');
 		if(_navList){
 			var _bottomNavItem = document.createElement('a--navi');
-			_bottomNavItem.innerHTML = '<a class="a--navba a--nava" href="#bottom" id="bottom-link" title="#Page bottom"><a--navt>Bottom</a--navt></a>';
+			_bottomNavItem.innerHTML = '<a class="a--navba a--nava" href="#bottom" title="#Page bottom"><a--navt>Bottom</a--navt></a>';
 			_navList.appendChild(_bottomNavItem);
 
 			var _topNavItem = document.createElement('div');
 			_topNavItem.className += ' a--navr';
-			_topNavItem.innerHTML = '<a class="a--navra a--nava" href="#top" id="top-link" title="#Page top"><a--navt>Top</a--navt></a>';
+			_topNavItem.innerHTML = '<a class="a--navra a--nava" href="#top" title="#Page top"><a--navt>Top</a--navt></a>';
 			_appEl.appendChild(_topNavItem);
 		}
 	}
