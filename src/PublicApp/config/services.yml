@@ -54,7 +54,9 @@ services:
   tags:
    - {name: kernel.event_listener, event: 'TJM\WikiSite\Event\ViewDataEvent'}
  ##==templates
- PublicApp\Twig\IncludeDataExtension:
+ tjm.twig.include_data:
+   class: 'PublicApp\Twig\IncludeFileExtension'
    arguments:
+     - 'include_data'
      - '%data.path%'
    tags: ['twig.extension']
