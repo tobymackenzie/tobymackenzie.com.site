@@ -3,7 +3,7 @@ namespace PublicApp\Twig;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-class IncludeFileExtension extends AbstractExtension{
+abstract class IncludeFileExtension extends AbstractExtension{
 	protected string $func;
 	protected string $path;
 	public function __construct(string $func, string $path){
