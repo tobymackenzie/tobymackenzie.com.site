@@ -35,37 +35,4 @@ a--htag:after{
 /*=====
 ==ghost
 =====*/
-.extra-ghost{
-	font-size: 3em;
-	left: 0;
-	opacity: 0.8;
-	pointer-events: none;
-	position: fixed;
-	top: 0;
-}
-.ghostView{
-	pointer-events: none;
-	position: fixed;
-	height: 100%;
-	left: 0;
-	top: 0;
-	width: 100%;
-	z-index: 9999;
-	> *{
-		cursor: pointer;
-		pointer-events: all;
-		transform-box: fill-box;
-		transform-origin: center;
-		transition: opacity 1s, transform 1s;
-		&:hover{
-			opacity: 0;
-		}
-		&[data-state='boo']{
-			opacity: 1;
-			transform: scale(5);
-		}
-	}
-}
-.ghost-svg{
-	opacity: 0.8;
-}
+@import '../../node_modules/@tobymackenzie/ghosts/src/ghosts';

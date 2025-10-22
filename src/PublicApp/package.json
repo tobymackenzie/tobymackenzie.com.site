@@ -5,6 +5,7 @@
 		,"icomoon": "https://github.com/Keyamoon/IcoMoon-Free"
 		,"@primer/octicons": "^10"
 		,"prismjs": "^1.29"
+		,"@tobymackenzie/ghosts": "tobymackenzie/ghosts.js"
 	}
 	,"engines": {"yarn": ">=1.10"}
 	,"license": "UNLICENSED"
