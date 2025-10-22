@@ -1,6 +1,7 @@
 // global window
 import {addListener as _addListener} from '../ua/dom.js';
 import {baseCut as _cutsMustard} from '../ua/mustardCut.js';
+import loadJS from '../ua/load-js.js';
 
 if(_cutsMustard){
 	var _current = 0;
@@ -10,9 +11,8 @@ if(_cutsMustard){
 		if(_key === _keys[_current]){
 			if(_current === 9){
 				_current = 0;
-				if(confirm('You win!  Want to celebrate?')){
-					window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-				}
+				loadJS((window.location.host.match(/github\.io|macn\.me$/i) ? '//www.tobymackenzie.com' : '') + '/_assets/scripts/aprilFools.js');
+				alert('Be excellent to each other… and party on, dudes');
 			}else{
 				++_current;
 			}
