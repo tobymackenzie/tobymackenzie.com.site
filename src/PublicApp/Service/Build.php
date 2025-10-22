@@ -292,8 +292,12 @@ class Build extends Model{
 			}
 
 			//--loaded lib
-			Files::symlinkRelativelySafely("{$dest}/prismjs", "{$src}/lib/prismjs");
-			if($output) $output->writeln("{$dest}/prismjs" . ' ' .  "{$src}/lib/primsjs");
+			foreach([
+				"{$src}/lib/prismjs"=> "{$dest}/prismjs",
+			] as $to=> $from){
+				Files::symlinkRelativelySafely($from, $to);
+				if($output) $output->writeln($from . ' ' . $to);
+			}
 		}
 	}
 
