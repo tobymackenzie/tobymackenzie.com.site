@@ -11,7 +11,7 @@ if(_cutsMustard){
 		if(_key === _keys[_current]){
 			if(_current === 9){
 				_current = 0;
-				loadJS((window.location.host.match(/github\.io|macn\.me$/i) ? '//www.tobymackenzie.com' : '') + '/_assets/scripts/aprilFools.js');
+				loadJS('/_assets/scripts/aprilFools.js');
 				alert('Be excellent to each other… and party on, dudes');
 			}else{
 				++_current;
