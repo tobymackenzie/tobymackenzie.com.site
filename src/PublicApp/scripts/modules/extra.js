@@ -1,8 +1,6 @@
 import {init as initHoliday} from '../holiday/holidayLoad.js';
 import onday from '../holiday/onday.js';
 
-//--load christmas script if december or early january
-//-! simple onload.  we may want to have it run repeatedly and enable / disable as necessary
 if(window.Date && document.querySelector){
 	var assetBase = (window.location.host.match(/github\.io|macn\.me$/i) ? '//www.tobymackenzie.com' : '') + '/_assets';
 	var messageEl = document.querySelector('.a--message');
@@ -50,7 +48,6 @@ if(window.Date && document.querySelector){
 		var day = now.getDate();
 
 		//--message for date
-		//-# too small to put in separate files
 		//-! Easter has complicated algorithm: https://stackoverflow.com/a/44480326
 		//-! solstices / equinoxes are complicated
 		var messages = {

@@ -1,4 +1,4 @@
-/*-! based on loadJS: [c]2014 @scottjehl, Filament Group, Inc. Licensed MIT */
+/*-@ based on loadJS: [c]2014 @scottjehl, Filament Group, Inc. Licensed MIT */
 var _d = window.document;
 var _defaultTarget = (_d.head || _d.body);
 export default function loadJS(_src, _props, _target){

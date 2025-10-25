@@ -1,4 +1,4 @@
-/*-! based on loadCSS <https://github.com/filamentgroup/loadCSS/blob/master/src/loadCSS.js>: [c]2020 Filament Group, Inc. Licensed MIT */
+/*-@ based on loadCSS <https://github.com/filamentgroup/loadCSS/blob/master/src/loadCSS.js>: [c]2020 Filament Group, Inc. Licensed MIT */
 var _d = window.document;
 var _defaultTarget = (_d.head || _d.body);
 export default function loadCSS(_src, _props, _insertBefore){

@@ -48,7 +48,7 @@ class MetaController extends Controller{
 		$code = $exception->getStatusCode();
 		if($code === 404){
 			//--if the path contains uppercase letters, check if we have this route in all lowercase
-			//-! for public_page*, case redirect must be handled in its action, to make sure we have item to redirect to
+			//-# for public_page*, case redirect must be handled in its action, to make sure we have item to redirect to
 			$pathInfo = $request->getPathInfo();
 			if(preg_match('/[A-Z]/', $pathInfo)){
 				try{
