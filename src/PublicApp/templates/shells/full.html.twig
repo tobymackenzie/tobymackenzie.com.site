@@ -31,11 +31,11 @@
 	</main></a--main>
 	{% block docAside %}{% endblock %}
 	{% if page.secureUrl is defined and doc.name != 'error' %}
-	<a-foot>
+	<a--foot>
 		<footer role="contentinfo">
 			<p class="a--sec">This page is also <a href="{{page.secureUrl}}" rel="alternate">available over more secure, encrypted HTTPS</a>.</p>
 		</footer>
-	</a-foot>
+	</a--foot>
 	{% endif %}
 </div>
 <a--end id="bottom">&lt;/toby&gt;</a--end>
