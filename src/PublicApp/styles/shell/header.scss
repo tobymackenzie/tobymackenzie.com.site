@@ -63,12 +63,14 @@ a--logo{
 	@extend %spinHoverAnimation;
 	background: var(--chromeHeaderBG);
 	@include supports('tiny'){
-		align-self: baseline;
-		margin-left: -0.4em;
-		margin-top: -0.2em;
+		margin-left: -0.3em;
 		padding: 0 0.3em;
 		position: absolute; position: fixed;
 		z-index: 102;
+		top: 0.5em;
+	}
+	@include supports('app-grid'){
+		top: 0.7em;
 	}
 	@include mq(map-get($bp, logoTwist)){
 		transform: rotate(-15deg) translate(5px, -1px);
