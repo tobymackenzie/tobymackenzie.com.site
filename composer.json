@@ -5,9 +5,6 @@
 			"": "src/"
 		}
 	}
-	,"autoload-dev": {
-		"files": ["vendor/symfony/var-dumper/Resources/functions/dump.php"]
-	}
 	,"config": {
 		"allow-plugins": {
 			"composer/installers": true,
