@@ -32,7 +32,7 @@
 		"symfony/symfony": "*"
 	}
 	,"require": {
-		"php": ">=7.2.5"
+		"php": ">=8.1"
 		,"symfony/asset": "^6.4"
 		,"symfony/framework-bundle": "^6.4"
 		,"symfony/console": "^6.4"
