@@ -58,3 +58,6 @@ services:
    arguments: ['%data.path%']
  PublicApp\Twig\IncludeScriptExtension:
    arguments: ['%scripts.path%']
+ templates:
+   alias: twig
+   public: true

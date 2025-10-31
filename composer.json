@@ -36,20 +36,20 @@
 	}
 	,"require": {
 		"php": ">=7.2.5"
-		,"symfony/asset": "^5.4"
-		,"symfony/framework-bundle": "^5.4"
+		,"symfony/asset": "^6.4"
+		,"symfony/framework-bundle": "^6.4"
 		,"symfony/console": "^5.4"
 		,"symfony/monolog-bundle": "^3.8"
-		,"symfony/http-kernel": "^5.4"
-		,"symfony/twig-bundle": "^5.4"
+		,"symfony/http-kernel": "^6.4"
+		,"symfony/twig-bundle": "^6.4"
 		,"incenteev/composer-parameter-handler": "^2.0"
-		,"twig/twig": "2.13|^3.0.4"
+		,"twig/twig": "^2.13|^3.0.4"
 
 		,"johnpbloch/wordpress": "^6.0"
 		,"tjm/files": "^0.0"
-		,"tjm/wiki-site": "^0.0"
+		,"tjm/wiki-site": "^0.1"
 		,"tjm/sy-site": "^0.9"
-		,"tjm/sy-web": "^0.10"
+		,"tjm/sy-web": "^0.11"
 		,"tjm/utils": "^0.0"
 		,"tjm/wpthemehelper": "^1"
 		,"tjm/wp-to-markdown": "^0.0"
@@ -62,12 +62,12 @@
 	}
 	,"require-dev": {
 		"chillerlan/php-qrcode": "^4.3"
-		,"symfony/phpunit-bridge": "^5.4"
-		,"symfony/process": "^5.4"
-		,"symfony/browser-kit": "^5.4"
-		,"symfony/stopwatch": "^5.4"
-		,"symfony/var-dumper": "^5.4"
-		,"symfony/web-profiler-bundle": "^5.4"
+		,"symfony/phpunit-bridge": "^6.4"
+		,"symfony/process": "^6.4"
+		,"symfony/browser-kit": "^6.4"
+		,"symfony/stopwatch": "^6.4"
+		,"symfony/var-dumper": "^6.4"
+		,"symfony/web-profiler-bundle": "^6.4"
 		,"tjm/static-web-tasks": "^0.2"
 	}
 	,"repositories": [
