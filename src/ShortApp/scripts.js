@@ -1,9 +1,8 @@
 import * as extra from '../PublicApp/scripts/modules/extra.js';
 import * as konamiCode from '../PublicApp/scripts/modules/konamiCode.js';
 
-//-!! forcing disable in safari because it's not working currently: back disappearing
 (function(){
-	if(document.querySelector && window.CSS && CSS.supports && CSS.supports('backface-visibility: visible') && !(/^((?!chrome|android).)*safari/i.test(navigator.userAgent))){
+	if(document.querySelector && window.CSS && CSS.supports && CSS.supports('backface-visibility: visible')){
 		var $card = document.querySelector('.card');
 		var $cardFaces = $card.querySelectorAll('.cardFace');
 		for(var i = 0; i < $cardFaces.length; ++i){
