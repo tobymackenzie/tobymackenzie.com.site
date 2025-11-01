@@ -40,7 +40,7 @@
 		,"symfony/http-kernel": "^6.4"
 		,"symfony/twig-bundle": "^6.4"
 		,"incenteev/composer-parameter-handler": "^2.0"
-		,"twig/twig": "^2.13|^3.0.4"
+		,"twig/twig": "^2.13|^3.11.2"
 
 		,"johnpbloch/wordpress": "^6.0"
 		,"tjm/files": "^0.0"
