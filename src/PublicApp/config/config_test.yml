@@ -4,6 +4,9 @@ imports:
 #==Framework
 framework:
  test: ~
+ handle_all_throwables: true
+ php_errors:
+   log: true
  profiler:
   collect: false
 

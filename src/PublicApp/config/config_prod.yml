@@ -1,6 +1,11 @@
 imports:
  - {resource: config.yml}
 
+framework:
+ handle_all_throwables: false
+ php_errors:
+   log: false
+
 #==FOS HTTP Cache
 # fos_http_cache:
 #  cache_control:
