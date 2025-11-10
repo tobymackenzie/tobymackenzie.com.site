@@ -3,7 +3,7 @@ use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\QROptions;
 require_once(AUTOLOAD_PATH);
-try{
+if(class_exists('chillerlan\QRCode\QRCode', true)){
 	$qr = (new QRCode(new QROptions([
 		'addQuietzone'=> false,
 		//'outputType'=> QRCode::OUTPUT_MARKUP_SVG,
@@ -31,4 +31,4 @@ try{
 		URL:https://macn.me
 		END:VCARD'
 	;
-}catch(Exception $e){}
+}
