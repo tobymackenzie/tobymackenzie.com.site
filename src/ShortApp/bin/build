@@ -41,7 +41,7 @@ if(`which rollup`){
 
 //--build index
 $indexContent = shell_exec('php ' . INDEX_PATH);
-if(!file_exists(INDEX_DIST_PATH) || $indexContent !== file_get_contents(INDEX_DIST_PATH)){
+if(!file_exists(INDEX_DIST_PATH) || ($indexContent && $indexContent !== file_get_contents(INDEX_DIST_PATH))){
 	echo "writing html\n";
 	file_put_contents(INDEX_DIST_PATH, $indexContent);
 }
