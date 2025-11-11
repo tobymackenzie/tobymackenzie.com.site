@@ -107,9 +107,8 @@ body{
 	content: '>';
 }
 .cardFlip span{
-	opacity: 0.1;
+	top: 3em;
 	position: absolute;
-	top: -2em;
 }
 * + .cardGroup, * + .cardItem{
 	margin-top: 0.5em;
