@@ -1,18 +1,19 @@
 {% extends '@TJMSySite/shells/base.html.twig' %}
 
 {% block docMeta %}
-{{parent()}}
-<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+{#--meta for user #}
+<meta name="author" content="Toby Mackenzie" />
 {% if canonical is not defined and doc.name != 'error' and (app.request.scheme != 'https' or app.request.host != 'www.tobymackenzie.com') %}
 {%	set canonical = 'https://www.tobymackenzie.com' ~ app.request.server.get('REQUEST_URI') %}
 {% endif %}
 {% if canonical is defined %}
 <link href="{{canonical}}" rel="canonical" />
 {% endif %}
+{#--meta for browser #}
+{{parent()}}
+<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 {#--load pre scripts.  canonical must be in DOM beforehand #}
 <script src="{{assets.scripts_path}}/pre.js" type="application/javascript"></script>
-<link href="{{path('public_app_manifest')}}" rel="manifest" />
-<meta name="author" content="Toby Mackenzie" />
 {% endblock %}
 
 {% block docStyles %}
@@ -35,7 +36,7 @@ this solution causes the problems:
 #}
 <link href="{{asset(assets.styles_path ~ '/ancient.css')}}?c" rel="stylesheet" />
 <link href="{{asset(assets.styles_path ~ '/main.css')}}?c" media="only all" rel="stylesheet" />
-
+<link href="{{path('public_app_manifest')}}" rel="manifest" />
 {% endblock %}
 
 {% block docPreScripts %}
