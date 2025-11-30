@@ -175,3 +175,8 @@ a--navi:first-child:not(:focus-within){
 		@extend %icon-menu;
 	}
 }
+.a--navsta{
+	&:before{
+		@extend %icon-settings;
+	}
+}

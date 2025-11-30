@@ -8,7 +8,7 @@ dialog{
 		background: var(--navBG);
 	}
 }
-.closeAct{
+.closeAct, .closeBtn{
 	background: none;
 	border: 0;
 	color: map-get($colors, navBorder);
@@ -32,3 +32,8 @@ dialog{
 		@extend %sro;
 	}
 }
+//--specific
+.tjmThemeSwitch{
+	padding: 1rem;
+}
+

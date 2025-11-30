@@ -6,6 +6,7 @@
 		,"@primer/octicons": "^10"
 		,"prismjs": "^1.29"
 		,"@tobymackenzie/ghosts": "tobymackenzie/ghosts.js"
+		,"@tobymackenzie/theme-switch": "https://github.com/tobymackenzie/theme-switch.js.git#semver:^0.0"
 	}
 	,"engines": {"yarn": ">=1.10"}
 	,"license": "UNLICENSED"
