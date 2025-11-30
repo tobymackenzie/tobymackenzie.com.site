@@ -10,8 +10,14 @@ Represents basic CSS output file, importing all others that will be used on the 
 *
 */
 
-@import '../_mixins';
-@import '../_config';
+@import 'mixins/colors';
+@import 'mixins/fonts';
+@import 'mixins/ua';
+@import 'mixins/units';
+@import 'config/breakpoints';
+@import 'config/colors';
+@import 'config/fonts';
+@import 'config/etc';
 @import 'vars';
 
 /*=====

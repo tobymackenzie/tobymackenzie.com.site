@@ -4,7 +4,6 @@ These styles add to `main` for a halloween appearance
 $bg: #ea7824;
 $darkFG: #ff9057;
 $darkBG: #b94e00;
-@import '_mixins';
 
 /*=====
 ==basic shell
@@ -15,7 +14,7 @@ $darkBG: #b94e00;
 	--linkVisitedFG: #{$bg};
 	--primaryLinkFG: #{$bg};
 	--strongFG: #{$bg};
-	@include supports('dark-theme'){
+	@media only screen and (prefers-color-scheme: dark){
 		--baseBG: #{$darkBG};
 		--headingFG: #{$darkFG};
 		--linkVisitedFG: #{$darkFG};

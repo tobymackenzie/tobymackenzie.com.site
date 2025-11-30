@@ -1,30 +1,28 @@
-@import '_mixins';
-@import '_config';
-@import '15/base/fix';
+@import 'share/fix';
 
 .a--0{
 	margin: 0 0 1em;
 }
 body{
-	background: map-get($colors, 'primaryBG');
-	color: map-get($colors, 'primaryFG');
+	background: #fbfdfb;
+	color: #030;
 	padding: 3% 4%;
 	margin: auto;
 	max-width: 92%;
 	width: 40em;
 }
 html{
-	background: map-get($colors, 'baseBG');
-	color: map-get($colors, 'baseFG');
+	background: #4e784e;
+	color: #ebffeb;
 	padding: 0;
 }
 .a--navl{
 	margin: 0 0 1em;
 }
 a{
-	color: map-get($colors, 'primaryLinkFG');
+	color: #474;
 	&:focus, &:hover{
-		color: map-get($colors, 'strong');
+		color: #252;
 	}
 }
 b, strong
@@ -32,5 +30,5 @@ b, strong
 ,em
 ,h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6
 {
-	color: map-get($colors, 'strong');
+	color: #252;
 }
