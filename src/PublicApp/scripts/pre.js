@@ -5,7 +5,7 @@ import loadJS from './ua/load-js.js';
 - putting in pre reduces rendering / loading of http content if redirect happens
 */
 var w = window;
-if('location' in w){
+if('location' in w && !w.TJMDEV){
 	var canonicalHost = 'www.tobymackenzie.com'
 	var l = location;
 	var origin, url;

@@ -13,7 +13,8 @@
 {{parent()}}
 <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 {#--load pre scripts.  canonical must be in DOM beforehand #}
-<script src="{{assets.scripts_path}}/pre.js" type="application/javascript"></script>
+{% if app.environment == 'dev' %}<script type="importmap">{{include_script('imports.json')|raw-}}</script>{% endif %}
+<script src="{{assets.scripts_path}}/pre.js" type="{% if app.environment == 'dev' %}module{% else %}application/javascript{% endif %}"></script>
 {% endblock %}
 
 {% block docStyles %}
