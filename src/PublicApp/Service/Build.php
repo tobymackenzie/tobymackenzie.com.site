@@ -196,20 +196,35 @@ class Build extends Model{
 		if(!file_exists($dest)){
 			exec("mkdir -p {$dest}");
 		}
-		foreach(glob("{$this->getStylesPath()}/builds/*.scss") as $file){
-			$nameBase = basename($file, '.scss');
-			if($nameBase[0] === '_'){
+		$stylesPath = $this->getStylesPath();
+		$stylesLength = strlen($stylesPath);
+		foreach(array_merge(
+			glob("{$stylesPath}/*.scss"),
+			glob("{$stylesPath}/*/main.scss")
+		)as $file){
+			$subPath = substr($file, $stylesLength + 1);
+			$fileBase = basename($file, '.scss');
+			if($fileBase[0] === '_'){
 				continue;
 			}
-			$fileDest = "{$dest}/{$nameBase}.css";
+			$isDir = strpos($subPath, '/') !== false;
+			$name = $isDir ? explode('/', $subPath)[0] : $fileBase;
+			$fileDest = "{$dest}/{$name}.css";
 
 			//--check if need built, skip if not
 			//-# need to check whole src styles dir, no easy way to check only files that would be in this build
-			if(!$force && !$this->doesFileNeedBuilt($fileDest, $this->getStylesPath(), ['srcFind'=> '-name "*.scss"'])){
-				if($output && $output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE){
-					$output->writeln("Skipping '{$nameBase}' build source, doesn't need built");
+			if(!$force){
+				if($isDir){
+					$needsBuilt = $this->doesFileNeedBuilt($fileDest, $this->getStylesPath() . '/' . $name, ['srcFind'=> '-name "*.scss"']);
+				}else{
+					$needsBuilt = $this->doesFileNeedBuilt($fileDest, $file);
 				}
-				continue;
+				if(!$needsBuilt){
+					if($output && $output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE){
+						$output->writeln("Skipping '{$name}' build source, doesn't need built");
+					}
+					continue;
+				}
 			}
 
 			$run = "{$sassBin} {$file}";
@@ -218,7 +233,7 @@ class Build extends Model{
 			}
 			$run .= " > {$fileDest}";
 			if($output && $output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE){
-				$run .= " && echo '{$nameBase}: full size:' `cat {$fileDest} | wc -c` 'gzip size:' `gzip -c {$fileDest} | wc -c`";
+				$run .= " && echo '{$name}: full size:' `cat {$fileDest} | wc -c` 'gzip size:' `gzip -c {$fileDest} | wc -c`";
 			}
 			$process = Process::fromShellCommandline($run, $basePath);
 			$process->start();
