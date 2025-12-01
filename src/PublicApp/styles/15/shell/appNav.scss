@@ -7,7 +7,7 @@
 	padding: 0;
 	@include supports('sticky-nav'){
 		background: var(--chromeHeaderBG);
-		padding-left: 6.5em;
+		padding-left: 5.7em;
 		position: sticky;
 		top: 0;
 		z-index: 101;
@@ -90,9 +90,12 @@ a--navt{
 	display: block;
 }
 .a--navl{
+	display: flex;
+	gap: 0.5em;
 	margin: 0;
 	padding: 0 0.8em;
 	@include supports('app-grid'){
+		display: block;
 		padding: 0;
 	}
 }
