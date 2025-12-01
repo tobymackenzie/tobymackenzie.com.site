@@ -4,6 +4,10 @@ These styles add to `main` for a christmas appearance
 $lightSize: 15px;
 $lightGap: 5px;
 
+html{
+	//--ensure lights go full document height in ancient theme, etc
+	position: relative;
+}
 a--bg{
 	--blueLight: rgb(30,30,255);
 	--greenLight: rgb(0,255,0);
