@@ -234,6 +234,9 @@ class Build extends Model{
 			$run .= " > {$fileDest}";
 			if($output && $output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE){
 				$run .= " && echo '{$name}: full size:' `cat {$fileDest} | wc -c` 'gzip size:' `gzip -c {$fileDest} | wc -c`";
+				if(file_exists($fileDest)){
+					$run = "ORIG=$(cat {$fileDest} | wc -c || echo 0); ORIGGZIP=$(gzip -c {$fileDest} | wc -c || echo 0) && {$run} ', orig:' \$ORIG ' gzip:' \$ORIGGZIP ";
+				}
 			}
 			$process = Process::fromShellCommandline($run, $basePath);
 			$process->start();
