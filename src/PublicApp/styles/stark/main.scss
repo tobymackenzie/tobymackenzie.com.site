@@ -105,12 +105,23 @@ body{
 	max-width: 92%;
 	width: 48em;
 }
+//--header
+.a--head{
+	margin-top: 1em;
+}
+a--htag{
+	margin-right: 1em;
+}
+.a--message{
+	display: inline-block;
+}
 //--app nav
 .a--navl{
 	display: flex;
+	flex-wrap: wrap;
 	gap: 0.5em;
 	margin: 0 0 0.5em;
-	@media screen and (min-width: 30em){
+	@media screen and (min-width: 25em){
 		position: fixed;
 		right: 0;
 		top: 0;
