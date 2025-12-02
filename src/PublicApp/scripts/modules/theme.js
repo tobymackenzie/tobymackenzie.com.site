@@ -2,7 +2,7 @@ import switchTheme from '../lib/@tobymackenzie/theme-switch/src/switcher.js';
 
 switchTheme(
 	{
-		'main': 'Default',
+		'15': 'Default',
 		'stark': 'Stark',
 		'ancient': 'Fallback'
 	},
