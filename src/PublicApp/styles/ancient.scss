@@ -1,6 +1,6 @@
 @import 'share/fix';
 
-.a--0{
+.a--0, .a--navl, main{
 	margin: 0 0 1em;
 }
 body{
@@ -15,14 +15,23 @@ html{
 	background: #4e784e;
 	padding: 0;
 }
-.a--navl{
-	float: right;
-	margin: 0 0 1em;
+.a--nava{
+	background: none;
+	border: 0;
+	font: inherit;
+	padding: 0;
+	text-decoration: underline;
 }
-a{
+.a--navl{
+	align-items: baseline;
+	display: flex;
+	float: right;
+	gap: 0.5em;
+}
+a, .a--nava{
 	color: #474;
 	&:focus, &:hover{
-		color: #252;
+		color: #2b5;
 	}
 }
 b, strong
