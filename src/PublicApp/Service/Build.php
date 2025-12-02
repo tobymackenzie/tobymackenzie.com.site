@@ -305,6 +305,12 @@ class Build extends Model{
 							$command = "webpack {$file} --output {$destPath} --mode production";
 						break;
 					}
+					if($output && $output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE){
+						$command .= " && echo '{$baseName}: full size:' `cat {$destPath} | wc -c` 'gzip size:' `gzip -c {$destPath} | wc -c`";
+						if(file_exists($destPath)){
+							$command = "ORIG=$(cat {$destPath} | wc -c || echo 0); ORIGGZIP=$(gzip -c {$destPath} | wc -c || echo 0) && {$command} ', orig:' \$ORIG ' gzip:' \$ORIGGZIP ";
+						}
+					}
 					passthru($command);
 				}
 			}
