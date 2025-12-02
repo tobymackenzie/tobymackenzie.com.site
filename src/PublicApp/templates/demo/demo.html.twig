@@ -1,0 +1,80 @@
+{% extends page.shell %}
+{%block docMain %}
+<div class="m--0">
+	<h1>Demo</h1>
+	<h2>Lipsum</h2>
+	<p>Lorem ipsum <a href="https://www.lipsum.com/">dolor sit amet</a>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<p>
+	<h2>Blog</h2>
+	<ul>
+		<li><a href="/blog/2024/07/26/site-partially-static">Site partially static</a> (2024 in WWW)</li>
+		<li><a href="/blog/2023/12/27/bumping-version-tags-with-git">Bumping version tags with git</a> (2023 in WWW)</li>
+		<li><a href="/blog/2023/02/25/css-wishlist">CSS Wishlist</a> (2023 in WWW)</li>
+		<li><a href="/blog/2022/11/23/idea-declarative-alternative-to-js">Ideas: Cascading Behavior Sheets, a declarative alternative to JS</a> (2022 in WWW)</li>
+		<li><a href="/blog/2021/02/18/ideas-compute-furnace">Ideas: compute furnace</a> (2021 in Thoughts &amp; Ideas)</li>
+		<li><a href="/blog/2020/09/19/simple-mysql-backup-script">Simple MySQL backup script</a> (2020 in WWW)</li>
+		<li><a href="/blog/2019/09/30/forcing-https-progressive-enhancement">Forcing HTTPS and progressive enhancement</a> (2019 in WWW)</li>
+		<li><a href="/blog/2018/12/26/website-snow-script">Website Snow Script</a> (2018 in WWW)</li>
+		<li><a href="/blog/2016/08/14/remotely-hosted-personal-site-with-home-data-store">Ideas: Remotely hosted personal site with home data store that syncs as client</a> (2016 in WWW)</li>
+		<li><a href="/blog/2015/12/13/line-mode-progressive-enhancement">Line Mode Browser, or progressive enhancement all the way back</a> (2015 in WWW)</li>
+		<li><a href="/blog/2007/05/04/mail-to-person-not-address">mail to person, not address</a> (2007 in Thoughts &amp; Ideas)</li>
+		<li><a href="/blog/2006/10/19/multiple-votes">multiple votes</a> (2006 in Thoughts &amp; Ideas)</li>
+	</ul>
+	<h2>Quotes</h2>
+	<blockquote>Be excellent to each other</blockquote>
+	<div class="attribution">- Abraham Lincoln<br /> &amp; Ted "Theodore" Logan,<br /> <i>Bill &amp; Ted's Excellent Adventure</i></div>
+	<blockquote>To all wrongdoers, may you see, and atone</blockquote>
+	<blockquote>Repay no one evil for evil. Have regard for good things in the sight of all men.</blockquote>
+	<div class="attribution">- <a href="https://biblehub.com/romans/12-17.htm">Romans 12:17</a></div>
+	<blockquote>Having something requires giving something else up.</blockquote>
+	<p><a href="/quotes">More quotes &gt;</a></p>
+	<h2>Code</h2>
+	<h3>PHP</h3>
+	<pre><code class="language-php">&lt;?php
+class SymfonyHelper{
+	static protected $container;
+	static protected $kernel;
+	static public $viewData = [];
+	static public function getContainer(){
+		if(!static::$container){
+			static::$container = static::getKernel()-&gt;getContainer();
+		}
+		return static::$container;
+	}
+	static public function getKernel(){
+		if(!static::$kernel){
+			require_once(__DIR__ . '/../../../vendor/autoload.php');
+			$env = (defined('WP_DEBUG') &amp;&amp; WP_DEBUG ? 'dev' : 'prod');
+			$kernel = new AppKernel($env, $env === 'dev');
+			$kernel-&gt;boot();
+			$kernel-&gt;getContainer()-&gt;get('request_stack')-&gt;push(Request::createFromGlobals());
+			static::$kernel = $kernel;
+		}
+		return static::$kernel;
+	}
+	static public function getService($name){
+		return static::getContainer()-&gt;get($name);
+	}
+	static public function getViewData(){
+		if(!isset(static::$viewData['canonical'])){
+			$request = static::getService('request_stack')-&gt;getCurrentRequest();
+			static::$viewData['canonical'] = 'https://www.tobymackenzie.com' . $request-&gt;server-&gt;get('REQUEST_URI');
+		}
+		return static::$viewData;
+	}
+}
+	</code></pre>
+	<h3>Shell</h3>
+	<pre><code class="language-sh">grep -E '(fatal error|Fatal|Critical|internal redir|PHP Parse|Stack trace)' /var/log/{apache2,httpd}/*error.log 2&gt; /dev/null </code></pre>
+	<h2>Form</h2>
+	<form class="a--snavsearch">
+		<label>
+			<a--snavsearcht>Search blog</a--snavsearcht>
+			<input name="s" placeholder="Search blog" required="required" type="search">
+		</label>
+		<button><span>Search blog</span></button>
+	</form>
+	<h2>Cicero</h2>
+	<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+</div>
+{% endblock %}
