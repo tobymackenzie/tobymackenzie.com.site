@@ -233,10 +233,7 @@ class Build extends Model{
 			}
 			$run .= " > {$fileDest}";
 			if($output && $output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE){
-				$run .= " && echo '{$name}: full size:' `cat {$fileDest} | wc -c` 'gzip size:' `gzip -c {$fileDest} | wc -c`";
-				if(file_exists($fileDest)){
-					$run = "ORIG=$(cat {$fileDest} | wc -c || echo 0); ORIGGZIP=$(gzip -c {$fileDest} | wc -c || echo 0) && {$run} ', orig:' \$ORIG ' gzip:' \$ORIGGZIP ";
-				}
+				$run = $this->modifyCommandToOutputSizes($run, $fileDest, $name);
 			}
 			$process = Process::fromShellCommandline($run, $basePath);
 			$process->start();
@@ -306,10 +303,7 @@ class Build extends Model{
 						break;
 					}
 					if($output && $output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE){
-						$command .= " && echo '{$baseName}: full size:' `cat {$destPath} | wc -c` 'gzip size:' `gzip -c {$destPath} | wc -c`";
-						if(file_exists($destPath)){
-							$command = "ORIG=$(cat {$destPath} | wc -c || echo 0); ORIGGZIP=$(gzip -c {$destPath} | wc -c || echo 0) && {$command} ', orig:' \$ORIG ' gzip:' \$ORIGGZIP ";
-						}
+						$command = $this->modifyCommandToOutputSizes($command, $destPath, $baseName);
 					}
 					passthru($command);
 				}
@@ -525,6 +519,13 @@ class Build extends Model{
 			$srcMod = filemtime($src);
 		}
 		return $destMod < $srcMod;
+	}
+	protected function modifyCommandToOutputSizes(string $command, string $file, string $name){
+		$command .= " && echo '{$name}: full size:' `cat {$file} | wc -c` 'gzip size:' `gzip -c {$file} | wc -c`";
+		if(file_exists($file)){
+			$command = "ORIG=$(cat {$file} | wc -c || echo 0); ORIGGZIP=$(gzip -c {$file} | wc -c || echo 0) && {$command} ', orig:' \$ORIG ' gzip:' \$ORIGGZIP ";
+		}
+		return $command;
 	}
 	protected function recursiveGlob($pattern, $flags = 0){
 		//-@http://stackoverflow.com/a/17161106/1139122
