@@ -1,0 +1,199 @@
+//=====
+//==mixins
+//=====
+@mixin sro(
+	$border: 0
+	,$clip: rect(0 0 0 0)
+	,$height: 1px
+	,$margin: -1px
+	,$overflow: hidden
+	,$padding: 0
+	,$position: absolute
+	,$width: 1px
+	,$wordWrap: normal
+){
+	border: $border;
+	clip: $clip;
+	height: $height;
+	margin: $margin;
+	overflow: $overflow;
+	padding: $padding;
+	position: $position;
+	width: $width;
+	word-wrap: $wordWrap;
+}
+%sro{
+	@include sro();
+}
+@mixin sroOff(
+	$border: initial
+	,$clip: auto
+	,$height: auto
+	,$margin: initial
+	,$overflow: visible
+	,$padding: initial
+	,$position: static
+	,$width: auto
+){
+	border: $border;
+	clip: $clip;
+	height: $height;
+	margin: $margin;
+	overflow: $overflow;
+	padding: $padding;
+	position: $position;
+	width: $width;
+}
+%sroOff{
+	@include sroOff();
+}
+
+//=====
+//==styles
+//=====
+@import '../share/fix';
+
+:root{
+	color-scheme: light dark;
+	--bg: white;
+	--fg: black;
+	@media only screen and (prefers-color-scheme: dark){
+		--bg: black;
+		--fg: white;
+	}
+}
+[tabindex='-1']:focus{
+	outline: none;
+}
+
+//==elements
+*{
+	//-# autoprefixer versions too high for handling border box, but it is too important
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+html, body, a, button:focus, button:hover, .a--nava:focus, .a--nava:hover, dialog, hr{
+	background: white;
+	background: var(--bg);
+	color: black;
+	color: var(--fg);
+}
+button, a:focus, a:hover, .a--nava, code, input, select{
+	background: black;
+	background: var(--fg);
+	color: white;
+	color: var(--bg);
+}
+button, .a--nava, input, select{
+	border: 1px solid var(--fg);
+	display: inline-block;
+	font: inherit;
+	padding: 0.2em 0.3em;
+	text-decoration: none;
+}
+
+//==shell
+html{
+	font-family: 'Century Gothic', sans-serif;
+	font-size: 1.1em;
+	line-height: 1.5;
+}
+body{
+	padding: 1em;
+	margin: auto;
+	max-width: 92%;
+	width: 48em;
+}
+//--app nav
+.a--navl{
+	display: flex;
+	gap: 0.5em;
+	margin: 0 0 0.5em;
+	@media screen and (min-width: 30em){
+		position: fixed;
+		right: 0;
+		top: 0;
+	}
+}
+.a--navr{
+	bottom: 0;
+	position: fixed;
+	right: 0;
+}
+.a--navba, .a--navra{
+	a--navt{
+		@extend %sro;
+	}
+	&:before{
+	}
+}
+.a--navra{
+	&:before{
+		content: '▲';
+	}
+}
+.a--navba{
+	&:before{
+		content: '▼';
+	}
+}
+//--site nav
+.a--snava{
+	text-decoration: none;
+}
+a--snavsearcht{
+	@extend %sro;
+}
+
+//==modules
+//--dialog
+dialog{
+	//--hack to ensure close button doesn't cover stuff on theme dialog
+	min-width: 15em;
+}
+.closeAct, .closeBtn{
+	cursor: pointer;
+	font-size: 1.2em;
+	height: 1.3em;
+	line-height: 1;
+	position: absolute;
+	right: 0em;
+	text-align: center;
+	top: 0em;
+	width: 1.2em;
+	&:after{
+		content: 'X';
+	}
+	> b{
+		@extend %sro;
+	}
+}
+
+//--hr
+hr{
+	margin: 1em 0;
+}
+
+//--quotes
+.attribution{
+	margin: 0.5em 0 1.5em;
+	text-align: right;
+}
+blockquote{
+	border-left: 3px solid;
+	border-left: 3px solid;
+	margin-left: 0;
+	padding: 0.5em 1em;
+}
+
+//==pages
+.doc-home{
+	h1{
+		@extend %sro;
+		+ p{
+			margin-top: 0;
+		}
+	}
+}
+
