@@ -121,11 +121,12 @@ body{
 	position: fixed;
 	right: 0;
 }
-.a--navba, .a--navra{
+.a--navba, .a--navra, a--navsearch{
 	a--navt{
 		@extend %sro;
 	}
 	&:before{
+		margin: 0 0.2em;
 	}
 }
 .a--navra{
@@ -142,9 +143,28 @@ body{
 .a--snava{
 	text-decoration: none;
 }
+.a--snavsearch{
+	button{
+		&:before{
+			content: '▶';
+			margin: 0 0.2em;
+		}
+		span{
+			@extend %sro;
+		}
+	}
+	input{
+		transition: width 0.2s;
+		width: 8em;
+		&:focus{
+			width: 12em;
+		}
+	}
+}
 a--snavsearcht{
 	@extend %sro;
 }
+
 
 //==modules
 //--code
