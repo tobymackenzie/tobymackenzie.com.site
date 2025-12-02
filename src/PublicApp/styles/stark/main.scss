@@ -147,6 +147,81 @@ a--snavsearcht{
 }
 
 //==modules
+//--code
+pre code{
+	display: block;
+	padding: 0.5em;
+}
+pre:has(code){
+	background: black;
+	background: var(--fg);
+}
+.token{
+	&.atrule,
+	&.attr-value,
+	&.keyword
+	{
+		font-weight: bold;
+	}
+	&.attr-name,
+	&.builtin,
+	&.char,
+	&.inserted
+	&.selector,
+	&.string,
+	{
+		opacity: 0.85;
+	}
+	&.bold,
+	&.important
+	{
+		font-weight: bold;
+	}
+	&.boolean,
+	&.constant,
+	&.deleted
+	&.number,
+	&.property,
+	&.symbol,
+	&.tag,
+	{
+		opacity: 0.8;
+	}
+	&.comment{
+		opacity: 0.5;
+	}
+	&.cdata,
+	&.doctype,
+	&.prolog
+	&.class-name,
+	&.function
+	{
+		opacity: 0.65;
+	}
+	&.entity{
+		cursor: help;
+	}
+	&.entity,
+	&.language-css .string,
+	&.operator,
+	&.style .string,
+	&.url
+	{
+		opacity: 0.85;
+	}
+	&.italic{
+		font-style: italic;
+	}
+	&.important,
+	&.namespace,
+	&.punctuation
+	&.regex,
+	&.variable
+	{
+		opacity: 0.75;
+	}
+}
+
 //--dialog
 dialog{
 	//--hack to ensure close button doesn't cover stuff on theme dialog
