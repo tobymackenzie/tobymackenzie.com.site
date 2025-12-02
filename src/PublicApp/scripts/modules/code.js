@@ -1,4 +1,3 @@
-import loadCSS from '../ua/load-css.js';
 import loadJS from '../ua/load-js.js';
 
 if(document.querySelector){
