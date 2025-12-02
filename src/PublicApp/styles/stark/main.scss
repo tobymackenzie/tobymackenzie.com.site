@@ -115,6 +115,23 @@ a--htag{
 .a--message{
 	display: inline-block;
 }
+a--logo, a--end{
+	display: inline-block;
+	transform: rotate(0);
+	transition: transform 0.5s ease;
+	&:hover{
+		transform: rotate(-720deg) translate(0, 0);
+		//--only color in theme
+		color: #0f0;
+	}
+}
+a--logo{
+	transform: rotate(-15deg) translate(5px, -1px);
+}
+.a--logoa{
+	text-decoration: none;
+}
+
 //--app nav
 .a--navl{
 	display: flex;
