@@ -38,6 +38,7 @@ if(document.querySelector){
 					onload: function(){
 						Prism.highlightAll();
 					},
+					type: '',
 				});
 			},
 		});
