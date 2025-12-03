@@ -105,6 +105,10 @@
 	//--undo standard <li> margin, looks bad when wrapping
 	margin-top: 0;
 }
+.postTags{
+	//--mainly for better flow when we have header image
+	display: inline;
+}
 .postTagsList{
 	display: inline;
 	list-style: none;
