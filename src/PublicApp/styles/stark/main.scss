@@ -302,6 +302,7 @@ pre:has(code){
 
 //--dialog
 dialog{
+	border: 5px solid;
 	//--hack to ensure close button doesn't cover stuff on theme dialog
 	min-width: 15em;
 }
@@ -325,6 +326,7 @@ dialog{
 
 //--hr
 hr{
+	border: 3px solid;
 	margin: 1em 0;
 }
 
