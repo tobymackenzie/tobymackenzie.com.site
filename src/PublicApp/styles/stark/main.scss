@@ -80,7 +80,7 @@ html, body, a, button:focus, button:hover, .a--nava:focus, .a--nava:hover, dialo
 	color: black;
 	color: var(--fg);
 }
-button, a:focus, a:hover, .a--nava, code, input, select{
+button, a:focus, a:hover, .a--nava, code, h1, input, select{
 	background: black;
 	background: var(--fg);
 	color: white;
@@ -95,6 +95,10 @@ button, .a--nava, input, select{
 	font: inherit;
 	padding: 0.3em 0.4em;
 	text-decoration: none;
+}
+h1{
+	margin: 0 0 1em;
+	padding: 0.2em 0.3em;
 }
 iframe, img, svg, video{
 	filter: grayscale(1);
@@ -121,6 +125,9 @@ body{
 //--header
 .a--head{
 	margin-top: 1em;
+	hr{
+		margin-bottom: 0;
+	}
 }
 a--htag{
 	margin-right: 1em;
@@ -337,9 +344,6 @@ blockquote{
 .doc-home{
 	h1{
 		@extend %sro;
-		+ p{
-			margin-top: 0;
-		}
 	}
 }
 
