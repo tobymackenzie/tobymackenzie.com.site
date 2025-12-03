@@ -57,7 +57,7 @@
 	color-scheme: light dark;
 	--bg: white;
 	--fg: black;
-	accent-color: #6a6;	
+	accent-color: var(--fg);	
 	@media only screen and (prefers-color-scheme: dark){
 		--bg: black;
 		--fg: white;
@@ -86,11 +86,14 @@ button, a:focus, a:hover, .a--nava, code, input, select{
 	color: white;
 	color: var(--bg);
 }
+a:hover, .a--nava:hover{
+	outline: 0.2em solid var(--fg);
+}
 button, .a--nava, input, select{
-	border: 1px solid var(--fg);
+	border: 0;
 	display: inline-block;
 	font: inherit;
-	padding: 0.2em 0.3em;
+	padding: 0.3em 0.4em;
 	text-decoration: none;
 }
 iframe, img, svg, video{
