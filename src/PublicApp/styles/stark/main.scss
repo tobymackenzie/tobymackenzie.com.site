@@ -92,6 +92,16 @@ button, .a--nava, input, select{
 	padding: 0.2em 0.3em;
 	text-decoration: none;
 }
+iframe, img, svg, video{
+	filter: grayscale(1);
+	transition: filter 0.2s;
+	&:focus, &:hover{
+		filter: grayscale(0.2);
+	}
+	&:focus-within{
+		filter: grayscale(0.2);
+	}
+}
 
 //==shell
 html{
