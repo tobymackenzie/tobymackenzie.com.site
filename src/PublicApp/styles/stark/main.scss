@@ -120,13 +120,13 @@ a--logo, a--end{
 	transform: rotate(0);
 	transition: transform 0.5s ease;
 	&:hover{
-		transform: rotate(-720deg) translate(0, 0);
+		transform: rotate(-720deg);
 		//--only color in theme
 		color: #0f0;
 	}
 }
 a--logo{
-	transform: rotate(-15deg) translate(5px, -1px);
+	transform: rotate(-15deg);
 }
 .a--logoa{
 	text-decoration: none;
