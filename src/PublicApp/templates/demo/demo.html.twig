@@ -64,6 +64,58 @@ class SymfonyHelper{
 	}
 }
 	</code></pre>
+	<h3>HTML</h3>
+	<pre><code class="language-html">&lt;div class="switchField field"&gt;
+	&lt;span class="fieldWidget"&gt;
+		&lt;input class="fieldControl" id="f-switch" name="switch" type="checkbox" /&gt;
+		&lt;i&gt;&lt;/i&gt;
+	&lt;/span&gt;
+	&lt;span class="fieldLabel"&gt;&lt;label for="f-switch"&gt;Switch me&lt;/label&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+	<h3>CSS</h3>
+	<pre><code class="language-css">*{
+	box-sizing: border-box;
+}
+.box{
+	border-bottom: 3px dotted black;
+	padding: 1em;
+}
+.boxes{
+	margin-bottom: -3px;
+}
+.boxesWrap{
+	overflow: hidden;
+}
+@media screen and (min-width: 38em){
+	.box{
+		border-right: 3px dotted black;
+		flex: 0 1 50%;
+		-ms-flex-positive: 1;
+	}
+	.boxes{
+		display: flex;
+		display: grid;
+		flex-wrap: wrap;
+		grid-template-columns: repeat(2, 1fr);
+		 margin-right: -3px;
+	}
+}
+@media screen and (min-width: 48em){
+	.box{
+		flex-basis: 33.33%;
+	}
+	.boxes{
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media screen and (min-width: 60em){
+	.box{
+		flex-basis: 25%;
+	}
+	.boxes{
+		grid-template-columns: repeat(4, 1fr);
+	}
+}</code></pre>
 	<h3>Shell</h3>
 	<pre><code class="language-sh">grep -E '(fatal error|Fatal|Critical|internal redir|PHP Parse|Stack trace)' /var/log/{apache2,httpd}/*error.log 2&gt; /dev/null </code></pre>
 	<h2>Form</h2>
