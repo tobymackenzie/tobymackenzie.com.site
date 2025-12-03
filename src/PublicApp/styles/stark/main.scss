@@ -205,23 +205,30 @@ pre:has(code){
 	background: var(--fg);
 }
 .token{
-	&.atrule,
 	&.attr-value,
 	&.keyword
+	&.cdata,
+	&.doctype,
+	&.prolog
 	{
-		font-weight: bold;
+		opacity: 0.65;
 	}
 	&.attr-name,
 	&.builtin,
 	&.char,
 	&.inserted
-	&.selector,
 	&.string,
 	{
 		opacity: 0.85;
 	}
+	&.atrule,
+	&.class-name,
 	&.bold,
-	&.important
+	&.function,
+	&.important,
+	&.selector,
+	&.tag,
+	&.variable
 	{
 		font-weight: bold;
 	}
@@ -231,20 +238,11 @@ pre:has(code){
 	&.number,
 	&.property,
 	&.symbol,
-	&.tag,
 	{
 		opacity: 0.8;
 	}
 	&.comment{
 		opacity: 0.5;
-	}
-	&.cdata,
-	&.doctype,
-	&.prolog
-	&.class-name,
-	&.function
-	{
-		opacity: 0.65;
 	}
 	&.entity{
 		cursor: help;
@@ -260,11 +258,11 @@ pre:has(code){
 	&.italic{
 		font-style: italic;
 	}
+	&.punctuation
+	{}
 	&.important,
 	&.namespace,
-	&.punctuation
-	&.regex,
-	&.variable
+	&.regex
 	{
 		opacity: 0.75;
 	}
