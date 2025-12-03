@@ -57,6 +57,7 @@
 	color-scheme: light dark;
 	--bg: white;
 	--fg: black;
+	accent-color: #6a6;	
 	@media only screen and (prefers-color-scheme: dark){
 		--bg: black;
 		--fg: white;
@@ -94,7 +95,6 @@ button, .a--nava, input, select{
 }
 iframe, img, svg, video{
 	filter: grayscale(1);
-	transition: filter 0.2s;
 	&:focus, &:hover{
 		filter: grayscale(0.2);
 	}
@@ -128,7 +128,7 @@ a--htag{
 a--logo, a--end{
 	display: inline-block;
 	transform: rotate(0);
-	transition: transform 0.5s ease;
+	transition: transform 2s ease;
 	&:hover{
 		transform: rotate(-720deg);
 		//--only color in theme
@@ -194,7 +194,6 @@ a--logo{
 		}
 	}
 	input{
-		transition: width 0.2s;
 		width: 8em;
 		&:focus{
 			width: 12em;
