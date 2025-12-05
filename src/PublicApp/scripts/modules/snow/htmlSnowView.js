@@ -8,8 +8,9 @@ var HTMLSnowView = _createClass({
 			if(!_flake.el){
 				_flake.el = document.createElement('i');
 				_flake.el.className = 'snowFlake';
-				_flake.el.style.height = _flake.size + 'px';
-				_flake.el.style.width = _flake.size + 'px';
+				var tmp = Math.ceil(_flake.size + Math.random() * _flake.size);
+				_flake.el.style.height = tmp + 'px';
+				_flake.el.style.width = tmp + 'px';
 				_parProto.createFlakeEl.apply(this, arguments);
 			}
 		}
