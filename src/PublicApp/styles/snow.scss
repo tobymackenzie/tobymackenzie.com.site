@@ -2,6 +2,7 @@ $color-flake: rgba(255, 255, 255, 0.8);
 
 @supports (pointer-events: none){
 	.snow{
+		contain: strict;
 		height: 100%;
 		left: 0;
 		pointer-events: none;
