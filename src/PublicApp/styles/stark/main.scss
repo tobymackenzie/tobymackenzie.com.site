@@ -139,6 +139,15 @@ body{
 	max-width: 92%;
 	width: 48em;
 }
+.a--0{
+	border-bottom: 6px solid var(--fg);
+	margin-bottom: 1em;
+	padding-bottom: 1em;
+}
+footer hr:last-child{
+	display: none;
+}
+
 //--header
 .a--head{
 	@media screen and (min-width: 20em){
