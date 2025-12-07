@@ -100,6 +100,23 @@ h1{
 	margin: 0 0 1em;
 	padding: 0.2em 0.3em;
 }
+h3:before, h4:before, h5:before, h6:before{
+	background: var(--fg);
+	content: '';
+	display: inline-block;
+	height: 10px;
+	margin-right: 16px;
+	width: 20px;
+}
+h4:before{
+	width: 40px;
+}
+h5:before{
+	width: 60px;
+}
+h6:before{
+	width: 80px;
+}
 iframe, img, svg, video{
 	filter: grayscale(1);
 	&:focus, &:hover{
