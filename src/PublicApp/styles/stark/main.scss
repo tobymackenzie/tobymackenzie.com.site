@@ -57,7 +57,7 @@
 	color-scheme: light dark;
 	--bg: white;
 	--fg: black;
-	accent-color: var(--fg);	
+	accent-color: var(--fg);
 	@media only screen and (prefers-color-scheme: dark){
 		--bg: black;
 		--fg: white;
@@ -124,7 +124,12 @@ body{
 }
 //--header
 .a--head{
-	margin-top: 1em;
+	@media screen and (min-width: 20em){
+		margin-top: 1.5em;
+	}
+	@media screen and (min-width: 45em){
+		margin-top: 0;
+	}
 	hr{
 		margin-bottom: 0;
 	}
@@ -157,9 +162,11 @@ a--logo{
 .a--navl{
 	display: flex;
 	flex-wrap: wrap;
+	float: right;
 	gap: 0.5em;
+	justify-content: end;
 	margin: 0 0 0.5em;
-	@media screen and (min-width: 25em){
+	@media screen and (min-width: 20em){
 		position: fixed;
 		right: 0;
 		top: 0;
