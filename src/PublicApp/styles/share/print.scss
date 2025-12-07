@@ -1,6 +1,6 @@
 //-@ h5bp
 //-@ http://www.smashingmagazine.com/2011/11/24/how-to-set-up-a-print-style-sheet/
-@include mq('print'){
+@media print{
 	*, *:before, *:after{
 		//-# doing background color only could leave some undesired background images in place, but that's needed to allow for icons
 		background-color: transparent !important;
@@ -56,11 +56,13 @@
 		orphans: 4;
 		widows: 4;
 	}
-	.sf-toolbar{
-		display: none !important;
-	}
 	thead{
 		//-! ensures thead is repeated on each page for multi-page tables, seems to only apply to really old browsers.  We don't have those type of tables, do we even need?
 		display: table-header-group; //-@ https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
+	}
+
+	//==general
+	.a--nav, .a--navr, .sf-toolbar, .a--head a:before, .a--head a:after, .m--alt{
+		display: none !important;
 	}
 }
