@@ -101,10 +101,9 @@ h1{
 	padding: 0.2em 0.3em;
 }
 h3:before, h4:before, h5:before, h6:before{
-	background: var(--fg);
+	border-bottom: 6px solid var(--fg);
 	content: '';
 	display: inline-block;
-	height: 10px;
 	margin-right: 16px;
 	width: 20px;
 }
