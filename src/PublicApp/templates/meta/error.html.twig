@@ -11,17 +11,17 @@
 		<button>Go</button>
 	</form>
 {%	elseif status_code >= 500 %}
-		<p>Apologies.  There was an error.  If you are unable to do what you were trying to do, please let me know what happened at admin at tobymackenzie.com.</p>
+	<p>Apologies.  There was an error.  If you are unable to do what you were trying to do, please let me know what happened at admin at tobymackenzie.com.</p>
 {%	elseif status_code == 401 %}
-		<p>Unauthorized.  Please try again.</p>
-		<iframe style="width:100%;" width="560" height="315" src="https://www.youtube.com/embed/fmz-K2hLwSI?autoplay=1" allowfullscreen>Ah ah ah:  You didn't say the magic word.</iframe>
+	<p>Unauthorized.  Please try again.</p>
+	<iframe style="width:100%;" width="560" height="315" src="https://www.youtube.com/embed/fmz-K2hLwSI?autoplay=1" allowfullscreen>Ah ah ah:  You didn't say the magic word.</iframe>
 {%	elseif status_code == 403 %}
-		<iframe style="width:100%;" width="560" height="315" src="https://www.youtube.com/embed/fmz-K2hLwSI?autoplay=1" allowfullscreen>Ah ah ah:  You didn't say the magic word.</iframe>
+	<iframe style="width:100%;" width="560" height="315" src="https://www.youtube.com/embed/fmz-K2hLwSI?autoplay=1" allowfullscreen>Ah ah ah:  You didn't say the magic word.</iframe>
 {%	elseif status_code == 418 %}
-		<p>Your attempt to brew coffee has failed.  Please have some tea instead.</p>
-		<div class="bigIconBlock">☕️</tea>
+	<p>Your attempt to brew coffee has failed.  Please have some tea instead.</p>
+	<div class="bigIconBlock">☕️</tea>
 {%	else %}
-		<p>Apologies.  An error occurred.  You cannot do what you were trying to do.</p>
+	<p>Apologies.  An error occurred.  You cannot do what you were trying to do.</p>
 {%	endif %}
 </div>
 {% endblock %}
