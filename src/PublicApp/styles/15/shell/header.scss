@@ -60,23 +60,30 @@ a--htagw{
 }
 a--logo{
 	@extend %appLogoBase;
-	@extend %spinHoverAnimation;
 	background: var(--chromeHeaderBG);
+
 	@include supports('tiny'){
 		margin-left: -0.3em;
 		padding: 0 0.3em;
 		position: absolute; position: fixed;
 		z-index: 102;
-		top: 0.5em;
 	}
-	@include supports('app-grid'){
-		top: 0.7em;
-	}
+
+	//--rotate
+	transform: rotate(0);
+	transition: transform 0.5s ease;
 	@include mq(map-get($bp, logoTwist)){
-		transform: rotate(-15deg) translate(5px, -1px);
+		transform: rotate(-15deg);
+		//--being inside link affects position for some reason, must compensate
+		a &{
+			transform: rotate(-15deg) translateY(-5px);
+		}
 	}
-	a:focus &{
-		@extend %spinHovered;
+	&:hover{
+		transform: rotate(-720deg);
+	}
+	a:focus &, a:hover &{
+		transform: rotate(-720deg) translateY(-5px);
 	}
 }
 .a--logoa{
