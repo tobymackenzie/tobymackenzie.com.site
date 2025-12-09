@@ -19,8 +19,10 @@
 	</nav>
 	<header class="a--head" role="banner">
 		{% if doc.name != 'home' %}<a class="a--logoa" href="{{path('public_home')}}">{% endif %}
-			<a--logo>&lt;toby&gt;</a--logo>
-			<a--htag><a--htagw>Mackenzie</a--htagw>'s site</a--htag>
+			<a--hmain>
+				<a--logo>&lt;toby&gt;</a--logo>
+				<a--htag><a--htagw>Mackenzie</a--htagw>'s site</a--htag>
+			</a--hmain>
 		{% if doc.name != 'home' %}</a>{% endif %}
 		{% if tm.headerMessage is not empty %}<div class="a--message">{{tm.headerMessage|raw}}</div>{% endif %}
 		<hr />

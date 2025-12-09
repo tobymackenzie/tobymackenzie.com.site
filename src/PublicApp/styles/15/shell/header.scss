@@ -37,11 +37,16 @@
 		padding-top: 0.4em;
 	}
 }
+a--hmain{
+	@include supports('tiny'){
+		margin-right: auto;
+	}
+}
 a--htag{
 	@extend %wiggleHoverAnimation;
 	transform-origin: left;
 	@include supports('tiny'){
-		margin: 0 auto 0 5.1em;
+		margin: 0 0 0 5.1em;
 		position: relative;
 		z-index: 103;
 	}
@@ -66,6 +71,8 @@ a--logo{
 		margin-left: -0.3em;
 		padding: 0 0.3em;
 		position: absolute; position: fixed;
+		//--position seems to be off a bit for some reason when fixed
+		transform: translateY(-5px);
 		z-index: 102;
 	}
 
@@ -73,16 +80,9 @@ a--logo{
 	transform: rotate(0);
 	transition: transform 0.5s ease;
 	@include mq(map-get($bp, logoTwist)){
-		transform: rotate(-15deg);
-		//--being inside link affects position for some reason, must compensate
-		a &{
-			transform: rotate(-15deg) translateY(-5px);
-		}
+		transform: rotate(-15deg) translateY(-5px);
 	}
-	&:hover{
-		transform: rotate(-720deg);
-	}
-	a:focus &, a:hover &{
+	&:hover, a:focus &{
 		transform: rotate(-720deg) translateY(-5px);
 	}
 }
