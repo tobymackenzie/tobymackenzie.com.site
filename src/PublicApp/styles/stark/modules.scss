@@ -15,6 +15,16 @@
 	display: inline;
 }
 
+//--icons
+.bigIconBlock{
+	font-size: 180px;
+	font-size: clamp(180px, 50vmin, 300px); //--can get bigger on modern browsers
+	line-height: 1;
+	padding-top: 30px;
+	overflow: hidden; //- for very narrow viewports
+	text-align: center;
+}
+
 //---jetpack
 #jp-relatedposts#jp-relatedposts h3.jp-relatedposts-headline{
 	font-size: initial;
