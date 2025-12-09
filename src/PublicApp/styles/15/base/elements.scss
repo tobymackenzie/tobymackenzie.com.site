@@ -70,6 +70,9 @@ em{
 	color: map-get($colors, strong);
 	color: var(--strongFG);
 }
+main form{
+	@extend %block;
+}
 h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{
 	@extend %block;
 	@extend %font-heading;
@@ -129,6 +132,9 @@ li{
 	& + &{
 		margin-top: 0.5em;
 	}
+}
+iframe{
+	@extend %block;
 }
 input, select, td, textarea, th{
 	font-size: 1em;

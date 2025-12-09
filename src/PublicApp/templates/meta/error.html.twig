@@ -4,7 +4,6 @@
 	<h1>Error {{status_code}}{% if status_text %}: {{status_text}}{% endif %}</h1>
 {%	if status_code == 404 %}
 	<p>The page you requested was not found.  Try searching for it with the form below, or peruse the <a href="/">home page</a>.</p>
-	<br />{#-!! temporary, use css #}
 	{#-! can we use brave? #}
 	<form action="https://duckduckgo.com">
 		<label>Search via DuckDuckGo: <input name="q" rel="search" title="Search"{% if search is defined %} value="{{search}}"{% endif %} /></label>
@@ -15,11 +14,9 @@
 		<p>Apologies.  There was an error.  If you are unable to do what you were trying to do, please let me know what happened at admin at tobymackenzie.com.</p>
 {%	elseif status_code == 401 %}
 		<p>Unauthorized.  Please try again.</p>
-		<br />{#-!! temporary, use css #}
 		<iframe style="width:100%;" width="560" height="315" src="https://www.youtube.com/embed/fmz-K2hLwSI?autoplay=1" allowfullscreen>Ah ah ah:  You didn't say the magic word.</iframe>
 {%	elseif status_code == 403 %}
 		<p>Forbidden</p>
-		<br />{#-!! temporary, use css #}
 		<iframe style="width:100%;" width="560" height="315" src="https://www.youtube.com/embed/fmz-K2hLwSI?autoplay=1" allowfullscreen>Ah ah ah:  You didn't say the magic word.</iframe>
 {%	elseif status_code == 418 %}
 		<p>Your attempt to brew coffee has failed.  Please have some tea instead.</p>
