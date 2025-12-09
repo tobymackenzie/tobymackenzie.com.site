@@ -1,0 +1,85 @@
+:root{
+	color-scheme: light dark;
+	--bg: white;
+	--fg: black;
+	accent-color: var(--fg);
+	@media only screen and (prefers-color-scheme: dark){
+		--bg: black;
+		--fg: white;
+	}
+}
+%normalTheme{
+	background: white;
+	background: var(--bg);
+	color: black;
+	color: var(--fg);
+}
+%altTheme{
+	background: black;
+	background: var(--fg);
+	color: white;
+	color: var(--bg);
+}
+
+//=====
+//==mixins
+//=====
+//--a11y
+@mixin sro(
+	$border: 0
+	,$clip: rect(0 0 0 0)
+	,$height: 1px
+	,$margin: -1px
+	,$overflow: hidden
+	,$padding: 0
+	,$position: absolute
+	,$width: 1px
+	,$wordWrap: normal
+){
+	border: $border;
+	clip: $clip;
+	height: $height;
+	margin: $margin;
+	overflow: $overflow;
+	padding: $padding;
+	position: $position;
+	width: $width;
+	word-wrap: $wordWrap;
+}
+%sro{
+	@include sro();
+}
+@mixin sroOff(
+	$border: initial
+	,$clip: auto
+	,$height: auto
+	,$margin: initial
+	,$overflow: visible
+	,$padding: initial
+	,$position: static
+	,$width: auto
+){
+	border: $border;
+	clip: $clip;
+	height: $height;
+	margin: $margin;
+	overflow: $overflow;
+	padding: $padding;
+	position: $position;
+	width: $width;
+}
+%sroOff{
+	@include sroOff();
+}
+
+//--actions
+%buttonish{
+	border: 0;
+	display: inline-block;
+	font: inherit;
+	padding: 0.3em 0.4em;
+	text-decoration: none;
+}
+%buttonishHover{
+	outline: 0.2em solid var(--fg);
+}

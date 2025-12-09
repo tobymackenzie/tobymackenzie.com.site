@@ -1,0 +1,58 @@
+[tabindex='-1']:focus{
+	outline: none;
+}
+*{
+	//-# autoprefixer versions too high for handling border box, but it is too important
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+html, body, a, button:focus, button:hover, dialog, hr{
+	@extend %normalTheme;
+}
+button, a:focus, a:hover, code, h1, input, select{
+	@extend %altTheme;
+}
+a:hover{
+	@extend %buttonishHover;
+}
+button, input, select{
+	@extend %buttonish;
+}
+h1{
+	margin: 0 0 1em;
+	padding: 0.2em 0.3em;
+}
+h3:before, h4:before, h5:before, h6:before{
+	border-bottom: 6px solid var(--fg);
+	content: '';
+	display: inline-block;
+	margin-right: 16px;
+	width: 20px;
+}
+h4:before{
+	width: 40px;
+}
+h5:before{
+	width: 60px;
+}
+h6:before{
+	width: 80px;
+}
+hr{
+	border: 3px solid;
+	margin: 1em 0;
+}
+iframe, img, svg, video{
+	filter: grayscale(1);
+	&:focus, &:hover{
+		filter: grayscale(0.2);
+	}
+	&:focus-within{
+		filter: grayscale(0.2);
+	}
+}
+main ol, main ul{
+	padding-left: 0;
+}
+

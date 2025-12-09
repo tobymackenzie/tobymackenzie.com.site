@@ -1,0 +1,123 @@
+//--blog
+.postHeaderMedia{
+	text-align: center;
+	margin: 0 0 1em;
+	@media screen and (min-width: 30em){
+		float: right;
+		margin-left: 1em;
+		max-width: 50%;
+	}
+}
+.postTags{
+	display: inline;
+}
+
+//--code
+pre code{
+	display: block;
+	padding: 0.5em;
+}
+pre:has(code){
+	background: black;
+	background: var(--fg);
+}
+.token{
+	&.attr-value,
+	&.keyword
+	&.cdata,
+	&.doctype,
+	&.prolog
+	{
+		opacity: 0.65;
+	}
+	&.attr-name,
+	&.builtin,
+	&.char,
+	&.inserted
+	&.string,
+	{
+		opacity: 0.85;
+	}
+	&.atrule,
+	&.class-name,
+	&.bold,
+	&.function,
+	&.important,
+	&.selector,
+	&.tag,
+	&.variable
+	{
+		font-weight: bold;
+	}
+	&.boolean,
+	&.constant,
+	&.deleted
+	&.number,
+	&.property,
+	&.symbol,
+	{
+		opacity: 0.8;
+	}
+	&.comment{
+		opacity: 0.5;
+	}
+	&.entity{
+		cursor: help;
+	}
+	&.entity,
+	&.language-css .string,
+	&.operator,
+	&.style .string,
+	&.url
+	{
+		opacity: 0.85;
+	}
+	&.italic{
+		font-style: italic;
+	}
+	&.punctuation
+	{}
+	&.important,
+	&.namespace,
+	&.regex
+	{
+		opacity: 0.75;
+	}
+}
+
+//--dialog
+dialog{
+	border: 5px solid;
+	//--hack to ensure close button doesn't cover stuff on theme dialog
+	min-width: 15em;
+}
+.closeAct, .closeBtn{
+	cursor: pointer;
+	font-size: 1.2em;
+	height: 1.3em;
+	line-height: 1;
+	position: absolute;
+	right: 0em;
+	text-align: center;
+	top: 0em;
+	width: 1.2em;
+	&:after{
+		content: 'X';
+	}
+	> b{
+		@extend %sro;
+	}
+}
+
+//--quotes
+.attribution{
+	margin: 0.5em 0 1.5em;
+	text-align: right;
+}
+blockquote{
+	border-left: 3px solid;
+	border-left: 3px solid;
+	margin-left: 0;
+	padding: 0.5em 1em;
+}
+
