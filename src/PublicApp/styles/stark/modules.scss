@@ -1,4 +1,7 @@
 //--blog
+.relNav hr:last-child{
+	display: none;
+}
 .postHeaderMedia{
 	text-align: center;
 	margin: 0 0 1em;
@@ -10,6 +13,14 @@
 }
 .postTags{
 	display: inline;
+}
+
+//---jetpack
+#jp-relatedposts#jp-relatedposts h3.jp-relatedposts-headline{
+	font-size: initial;
+	em:before{
+		display: none;
+	}
 }
 
 //--code
