@@ -45,6 +45,13 @@ a--logo, a--end{
 		//--only color in theme
 		color: #6a6;
 	}
+	//--remove transitions for users who prefer it
+	//-@ https://mobile.twitter.com/scottjehl/status/1085600505299111936
+	//-@ https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/
+	@media (prefers-reduced-motion: reduce), (update: slow){
+		//-# short time period to ensure any animation / transition end events still fire
+		transition-duration: 0.01ms !important;
+	}
 }
 a--logo{
 	font-size: 1.2em;
