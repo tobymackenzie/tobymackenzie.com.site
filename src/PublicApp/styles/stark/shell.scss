@@ -39,7 +39,7 @@ a--htag{
 a--logo, a--end{
 	display: inline-block;
 	transform: rotate(0);
-	transition: transform 2s ease;
+	transition: transform 5s ease;
 	&:hover{
 		transform: rotate(-720deg);
 		//--only color in theme
