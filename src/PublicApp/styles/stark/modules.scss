@@ -44,28 +44,32 @@ pre:has(code){
 }
 .token{
 	&.attr-value,
-	&.keyword
 	&.cdata,
 	&.doctype,
-	&.prolog
+	&.prolog,
+	&.property
 	{
 		opacity: 0.65;
 	}
 	&.attr-name,
 	&.builtin,
 	&.char,
-	&.inserted
-	&.string,
+	&.inserted,
+	&.string
 	{
 		opacity: 0.85;
 	}
 	&.atrule,
-	&.class-name,
+	&.attr-value,
 	&.bold,
+	&.constant,
+	&.class-name,
 	&.function,
 	&.important,
+	&.property,
+	&.punctuation,
 	&.selector,
-	&.tag,
+	&.tag .tag, //--html has the full tag and then tag name as a nested tag.  We just want the tag name
 	&.variable
 	{
 		font-weight: bold;
@@ -74,7 +78,6 @@ pre:has(code){
 	&.constant,
 	&.deleted
 	&.number,
-	&.property,
 	&.symbol,
 	{
 		opacity: 0.8;
@@ -96,8 +99,6 @@ pre:has(code){
 	&.italic{
 		font-style: italic;
 	}
-	&.punctuation
-	{}
 	&.important,
 	&.namespace,
 	&.regex
