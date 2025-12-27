@@ -1,0 +1,18 @@
+/*
+hand theme
+like hand-written.  light is on paper, dark is on chalkboard.
+ideas / inspiration from:
+- [paper css](https://www.getpapercss.com/)
+- [simple paperlike border](https://lisilinhart.info/)
+- [stacked paper effect](https://css-tricks.com/snippets/css/stack-of-paper/)
+- [messy stacked paper effect](https://codepen.io/mhoumark/pen/rNqERmO)
+- [lined paper effect](https://codepen.io/nomack/pen/DrKzQK)
+- [sheet with image notches, shadow](https://codepen.io/webinspect/pen/npxxqW)
+*/
+@import '_inc';
+@import '../share/fix';
+@import 'base';
+@import 'shell';
+@import 'modules';
+@import 'pages';
+@import '../share/print';

@@ -1,0 +1,121 @@
+/*=====
+==conf
+=====*/
+//==colors
+$boardColor: #222;
+$boardEdgeColor: silver;
+$chalkColor: #eee;
+$darkAccentColor: #ccffcc;
+$deskColor: #80461b;
+$lightAccentColor: #272;
+$paperColor: #eee;
+$pencilColor: #343;
+$wallColor: #242;
+$wallColor: #883833;
+$wallColor2: #666;
+
+/*=====
+==basics
+=====*/
+:root{
+	color-scheme: light dark;
+	--accent: #{$lightAccentColor};
+	--backdrop: #{$deskColor};
+	--bg: #{$paperColor};
+	--fg: #{$pencilColor};
+	accent-color: var(--accent);
+	@media only screen and (prefers-color-scheme: dark){
+		--accent: #{$darkAccentColor};
+		--backdrop: #{$wallColor};
+		--bg: #{$boardColor};
+		--fg: #{$chalkColor};
+	}
+}
+%normalTheme{
+	background: $paperColor;
+	background: var(--bg);
+	color: $pencilColor;
+	color: var(--fg);
+}
+%altTheme{
+	// background: black;
+	// background: var(--fg);
+	// color: white;
+	// color: var(--bg);
+}
+
+//=====
+//==mixins
+//=====
+%box{
+	@extend %normalTheme;
+	border: 3px solid;
+	border-radius: 1em 12em 1em 14em / 14em 1em 12em 1em;
+	font: inherit;
+	padding: 0.3em 0.4em;
+}
+%line{
+	border: 0;
+	border-bottom: 5px solid $pencilColor;
+	border-bottom: 5px solid var(--fg);
+	border-radius: 0 0 3em 2em / 0 0 3px 4px;
+}
+
+//--a11y
+@mixin sro(
+	$border: 0
+	,$clip: rect(0 0 0 0)
+	,$height: 1px
+	,$margin: -1px
+	,$overflow: hidden
+	,$padding: 0
+	,$position: absolute
+	,$width: 1px
+	,$wordWrap: normal
+){
+	border: $border;
+	clip: $clip;
+	height: $height;
+	margin: $margin;
+	overflow: $overflow;
+	padding: $padding;
+	position: $position;
+	width: $width;
+	word-wrap: $wordWrap;
+}
+%sro{
+	@include sro();
+}
+@mixin sroOff(
+	$border: initial
+	,$clip: auto
+	,$height: auto
+	,$margin: initial
+	,$overflow: visible
+	,$padding: initial
+	,$position: static
+	,$width: auto
+){
+	border: $border;
+	clip: $clip;
+	height: $height;
+	margin: $margin;
+	overflow: $overflow;
+	padding: $padding;
+	position: $position;
+	width: $width;
+}
+%sroOff{
+	@include sroOff();
+}
+
+//--actions
+%buttonish{
+	@extend %box;
+	display: inline-block;
+}
+%buttonishHover{
+	color: $lightAccentColor;
+	color: var(--accent);
+	box-shadow: inset 0 0 3px;
+}

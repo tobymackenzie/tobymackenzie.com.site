@@ -1,0 +1,163 @@
+//--blog
+.relNav hr:last-child{
+	display: none;
+}
+.postHeaderMedia{
+	text-align: center;
+	margin: 0 0 1em;
+	@media screen and (min-width: 30em){
+		float: right;
+		margin: 1em 0 1em 1em;
+		max-width: 50%;
+	}
+}
+.postTags{
+	display: inline;
+}
+
+//--icons
+.bigIconBlock{
+	font-size: 180px;
+	font-size: clamp(180px, 50vmin, 300px); //--can get bigger on modern browsers
+	line-height: 1;
+	padding-top: 30px;
+	overflow: hidden; //- for very narrow viewports
+	text-align: center;
+}
+
+//---jetpack
+#jp-relatedposts#jp-relatedposts h3.jp-relatedposts-headline{
+	font-size: initial;
+	em:before{
+		display: none;
+	}
+}
+
+//--code
+code, pre{
+	font-family: inherit;
+}
+pre code{
+	@extend %box;
+	display: block;
+	overflow: auto;
+	padding: 0.8em;
+}
+pre:has(code){
+	// background: black;
+	// background: var(--fg);
+}
+.token{
+	&.atrule,
+	&.attr-value,
+	&.keyword
+	{
+		color: #f66;
+	}
+	&.attr-name,
+	&.builtin,
+	&.char,
+	&.inserted
+	&.selector,
+	&.string,
+	{
+		color: #ceaa68;
+		@media only screen and (prefers-color-scheme: dark){
+			color: #dfee79;
+		}
+	}
+	&.bold,
+	&.important
+	{
+		font-weight: bold;
+	}
+	&.boolean,
+	&.constant,
+	&.deleted
+	&.number,
+	&.property,
+	&.symbol,
+	&.tag,
+	{
+		color: #dfbf5e;
+	}
+	&.cdata,
+	&.doctype,
+	&.prolog
+	{
+		color: #aba;
+	}
+	&.comment{
+		color: #9a9;
+	}
+	&.class-name,
+	&.function
+	{
+		color: #44c6cc;
+		@media only screen and (prefers-color-scheme: dark){
+			color: #44f6ff;
+		}
+	}
+	&.entity{
+		cursor: help;
+	}
+	&.entity,
+	&.language-css .string,
+	&.operator,
+	&.style .string,
+	&.url
+	{
+		color: #ea7979;
+	}
+	&.important,
+	&.regex,
+	&.variable
+	{
+		color: #f9ad25;
+	}
+	&.italic{
+		font-style: italic;
+	}
+	&.namespace{
+		opacity: 0.75;
+	}
+	&.punctuation{
+		color: #3bc41e;
+	}
+}
+
+//--dialog
+dialog{
+	border: 5px solid;
+	//--hack to ensure close button doesn't cover stuff on theme dialog
+	min-width: 19em;
+}
+.closeAct, .closeBtn{
+	border: 0;
+	cursor: pointer;
+	font-size: 1.2em;
+	line-height: 1;
+	position: absolute;
+	right: 0.2em;
+	text-align: center;
+	top: 0.2em;
+	&:after{
+		content: 'X';
+	}
+	> b{
+		@extend %sro;
+	}
+}
+
+//--quotes
+.attribution{
+	margin: 0.5em 0 1.5em;
+	text-align: right;
+}
+blockquote{
+	border-left: 3px solid;
+	border-radius: 3px 0 0 3px / 3em 0 0 3em;
+	margin-left: 0;
+	padding: 0.5em 1em;
+}
+

@@ -1,0 +1,152 @@
+html{
+	background: $deskColor;
+	background: var(--backdrop);
+	font-family: 'Architects Daughter', 'Bradley Hand', Noteworthy, 'Marker Felt', 'Shadows Into Light', Chalkboard, Luminari, 'Burlington Script', 'Apple Chancery', Papyrus, 'Comic Sans', cursive;
+	font-size: 1.2em;
+	line-height: 1.6;
+	//--wood
+	//-@ https://codepen.io/melissamcewen/pen/EPBPbv
+	background-image: linear-gradient(95deg, rgba(90,35,8,0.1) 0%, rgba(85,30,5,0.32) 24%,rgba(75,25,5,0.41) 46%, rgba(80,25,4,0.44) 70%, rgba(82,25,5,0.59) 74%, rgba(95,30,4,0.2) 85%, rgba(115,40,5,0.5) 100%),
+		linear-gradient(100deg, rgba(90,35,8,0.1) 0%, rgba(85,30,5,0.25) 22%, rgba(75,25,5,0.38) 48%, rgba(80,25,4,0.4) 70%, rgba(82,25,5,0.6) 75%,rgba(95,30,4,0.2) 82%,rgba(115,40,5,0.5) 100%),
+		linear-gradient(89deg, #7a3000 50%, #632400 50%)
+	;
+	background-size: 40px 175px,
+		75px 200px,
+		27px 27px
+	;
+	@media only screen and (prefers-color-scheme: dark){
+		font-family: Chalkboard, 'Marker Felt', Papyrus, 'Comic Sans', 'Architects Daughter', 'Bradley Hand', Noteworthy, 'Burlington Script', Luminari, 'Shadows Into Light', 'Apple Chancery', cursive;
+		//--brick
+		--brick: conic-gradient(at 95% 46%, #0000 75%, #{$wallColor} 0);
+		--brickSize: 5em;
+		background: var(--brick), var(--brick) var(--brickSize) var(--brickSize) #{$wallColor2};
+		background-size: calc(2 * var(--brickSize)) calc(2 * var(--brickSize));
+	}
+}
+body{
+	@extend %box;
+	padding: 1.5em 1.5em 2.5em;
+	margin: 0.5em auto;
+	max-width: 92%;
+	width: 48em;
+	//--stack
+	border: 1px solid;
+	box-shadow: 3px 3px 0 var(--bg);
+	@media only screen and (prefers-color-scheme: dark){
+		border: 8px groove $boardEdgeColor;
+		border-bottom-width: 2.5em;
+		border-radius: 0;
+		box-shadow: 0 0 10px black;
+		width: 55em;
+	}
+}
+.a--0{
+	margin-bottom: 1em;
+}
+footer hr:last-child{
+	display: none;
+}
+
+//--header
+.a--head{
+	a{
+		border: 0;
+	}
+	hr{
+		margin-bottom: 0;
+	}
+}
+a--logo, a--end{
+	display: inline-block;
+	transform: rotate(0);
+	transition: transform 0.5s ease;
+	&:hover{
+		transform: rotate(-720deg);
+	}
+	//--remove transitions for users who prefer it
+	//-@ https://mobile.twitter.com/scottjehl/status/1085600505299111936
+	//-@ https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/
+	@media (prefers-reduced-motion: reduce), (update: slow){
+		//-# short time period to ensure any animation / transition end events still fire
+		transition-duration: 0.01ms !important;
+	}
+}
+a--end{
+	float: right;
+}
+a--logo{
+	font-size: 1.2em;
+	transform: rotate(-15deg);
+}
+
+//--app nav
+.a--nava{
+	@extend %buttonish;
+	&:focus, &:hover{
+		@extend %buttonishHover;
+	}
+}
+.a--navl{
+	display: flex;
+	flex-wrap: wrap;
+	float: right;
+	gap: 0.5em;
+	justify-content: end;
+	margin: 0 0 0.5em;
+	@media screen and (min-width: 20em){
+		// position: fixed;
+		// right: 0;
+		// top: 0;
+		// z-index: 100;
+	}
+}
+.a--navr{
+	bottom: 0;
+	position: fixed;
+	right: 0;
+	z-index: 100;
+}
+.a--navba, .a--navra, a--navsearch{
+	a--navt{
+		@extend %sro;
+	}
+	&:before{
+		margin: 0 0.2em;
+	}
+}
+.a--navra{
+	@extend %box;
+	&:before{
+		content: '▲';
+	}
+}
+.a--navba{
+	&:before{
+		content: '▼';
+	}
+}
+//--site nav
+nav a{
+	border: 0;
+}
+.a--snavsearch{
+	button{
+		&:before{
+			content: '▶';
+			margin: 0 0.2em;
+		}
+		span{
+			@extend %sro;
+		}
+	}
+	input{
+		width: 8em;
+		&:focus{
+			width: 12em;
+		}
+	}
+}
+a--snavsearcht{
+	@extend %sro;
+}
+
