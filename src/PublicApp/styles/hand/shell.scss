@@ -26,12 +26,18 @@ html{
 body{
 	@extend %box;
 	padding: 1.5em 1.5em 2.5em;
-	margin: 0.5em auto;
+	margin: 0.5em auto 1em;
 	max-width: 92%;
 	width: 48em;
 	//--stack
-	border: 1px solid;
-	box-shadow: 3px 3px 0 var(--bg);
+	border: 0;
+	box-shadow:
+		1px 1px 0 var(--fg),
+		3px 3px 0 var(--bg),
+		4px 4px 0 var(--fg),
+		6px 6px 0 var(--bg),
+		4px 4px 12px 3px black
+	;
 	@media only screen and (prefers-color-scheme: dark){
 		border: 8px groove $boardEdgeColor;
 		border-bottom-width: 2.5em;
