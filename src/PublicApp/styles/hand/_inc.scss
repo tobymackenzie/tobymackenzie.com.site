@@ -50,8 +50,8 @@ $wallColor2: #666;
 }
 %line{
 	border: 0;
-	border-bottom: 5px solid $pencilColor;
-	border-bottom: 5px solid var(--fg);
+	border-bottom: 4px solid $pencilColor;
+	border-bottom: 4px solid var(--fg);
 	border-radius: 0 0 3em 2em / 0 0 3px 4px;
 }
 
