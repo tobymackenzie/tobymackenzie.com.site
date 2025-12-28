@@ -43,10 +43,6 @@ pre code{
 	overflow: auto;
 	padding: 0.8em;
 }
-pre:has(code){
-	// background: black;
-	// background: var(--fg);
-}
 .token{
 	&.atrule,
 	&.attr-value,
