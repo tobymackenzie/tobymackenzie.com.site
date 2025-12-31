@@ -1,0 +1,113 @@
+html{
+	line-height: 1.2;
+}
+body{
+	@extend %box;
+	padding: 2.4rem 1.2rem 1.2rem;
+	@media screen and (min-width: 46em){
+		padding: 2.4rem 2rem 1.2rem;
+	}
+}
+footer hr:last-child{
+	display: none;
+}
+
+//--header
+a--logo, a--end{
+	display: inline-block;
+	transform: rotate(0);
+	transition: transform 0.5s ease;
+	&:hover{
+		transform: rotate(-720deg);
+	}
+	//--remove transitions for users who prefer it
+	//-@ https://mobile.twitter.com/scottjehl/status/1085600505299111936
+	//-@ https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/
+	@media (prefers-reduced-motion: reduce), (update: slow){
+		//-# short time period to ensure any animation / transition end events still fire
+		transition-duration: 0.01ms !important;
+	}
+}
+a--end{
+	margin-top: 1.2rem;
+}
+
+//--app nav
+.a--nav{
+	background: $darkBG;
+	background: var(--fg);
+	color: $darkFG;
+	color: var(--bg);
+	left: 0;
+	max-width: 100vw;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+.a--nava{
+	@extend %buttonish;
+	&:focus, &:hover{
+		@extend %buttonishHover;
+	}
+}
+.a--navl{
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	justify-content: center;
+}
+.a--navr{
+	bottom: 0;
+	position: fixed;
+	right: 0;
+	z-index: 100;
+}
+.a--navba, .a--navra, a--navsearch{
+	a--navt{
+		@extend %sro;
+	}
+	&:before{
+		margin: 0 0.2rem;
+	}
+}
+.a--navra{
+	@extend %box;
+	&:before{
+		content: '▲';
+		position: relative;
+		top: -0.1em;
+	}
+}
+.a--navba{
+	&:before{
+		content: '▼';
+		position: relative;
+		top: -0.1em;
+	}
+}
+//--site nav
+.a--snavsearch{
+	button{
+		&:before{
+			content: '▶';
+			margin: 0 0.2rem;
+			position: relative;
+			top: -0.1em;
+		}
+		span{
+			@extend %sro;
+		}
+	}
+	input{
+		width: 8rem;
+		&:focus{
+			width: 12rem;
+		}
+	}
+}
+a--snavsearcht{
+	@extend %sro;
+}
+

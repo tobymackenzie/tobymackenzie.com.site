@@ -1,0 +1,171 @@
+//--blog
+.relNav hr:last-child{
+	display: none;
+}
+.postContent{
+	margin-top: 1.2rem;
+}
+.postHeaderMedia{
+	text-align: center;
+	margin: 0 0 1rem;
+	@media screen and (min-width: 30em){
+		float: right;
+		margin: 1rem 0 1rem 1rem;
+		max-width: 50%;
+	}
+}
+.postTags{
+	display: inline;
+}
+
+//--icons
+.bigIconBlock{
+	font-size: 180px;
+	font-size: clamp(180px, 50vmin, 300px); //--can get bigger on modern browsers
+	line-height: 1;
+	padding-top: 2rem;
+	overflow: hidden; //- for very narrow viewports
+	text-align: center;
+}
+
+//---jetpack
+#jp-relatedposts#jp-relatedposts h3.jp-relatedposts-headline{
+	font-size: initial;
+	em:before{
+		display: none;
+	}
+}
+
+//--code
+code, pre{
+	font-family: inherit;
+}
+pre code{
+	@extend %box;
+	@extend %charLeftBorder;
+	display: block;
+	overflow: auto;
+	margin: 1.2rem 0;
+	&:before{
+		content: '| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |';
+	}
+}
+.token{
+	&.atrule,
+	&.attr-value,
+	&.keyword
+	{
+		color: #f66;
+	}
+	&.attr-name,
+	&.builtin,
+	&.char,
+	&.inserted
+	&.selector,
+	&.string,
+	{
+		color: #dfee79;
+		@media only screen and (prefers-color-scheme: light){
+			color: #ceaa68;
+		}
+	}
+	&.bold,
+	&.important
+	{
+		font-weight: bold;
+	}
+	&.boolean,
+	&.constant,
+	&.deleted
+	&.number,
+	&.property,
+	&.symbol,
+	&.tag,
+	{
+		color: #dfbf5e;
+	}
+	&.cdata,
+	&.doctype,
+	&.prolog
+	{
+		color: #aba;
+	}
+	&.comment{
+		color: #9a9;
+	}
+	&.class-name,
+	&.function
+	{
+		color: #44f6ff;
+		@media only screen and (prefers-color-scheme: light){
+			color: #44c6cc;
+		}
+	}
+	&.entity{
+		cursor: help;
+	}
+	&.entity,
+	&.language-css .string,
+	&.operator,
+	&.style .string,
+	&.url
+	{
+		color: #ea7979;
+	}
+	&.important,
+	&.regex,
+	&.variable
+	{
+		color: #f9ad25;
+	}
+	&.italic{
+		font-style: italic;
+	}
+	&.namespace{
+		opacity: 0.75;
+	}
+	&.punctuation{
+		color: #3bc41e;
+	}
+}
+
+//--dialog
+::backdrop{
+	background: var(--bg);
+}
+dialog{
+	border: 5px solid;
+	margin: auto;
+	//--hack to ensure close button doesn't cover stuff on theme dialog
+	min-width: 19rem;
+}
+.closeAct, .closeBtn{
+	cursor: pointer;
+	line-height: 1;
+	position: absolute;
+	right: 0.2rem;
+	text-align: center;
+	top: 0.2rem;
+	&:after{
+		content: 'X';
+	}
+	> b{
+		@extend %sro;
+	}
+}
+
+//--quotes
+.attribution{
+	text-align: right;
+}
+blockquote{
+	@extend %charLeftBorder;
+	margin-left: 0;
+	* + &{
+		margin-top: 1.2rem;
+	}
+	&:before{
+		content: '> > > > > > > > > > > > > > > > >';
+	}
+}
+

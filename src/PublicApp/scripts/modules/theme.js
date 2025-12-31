@@ -5,6 +5,7 @@ switchTheme(
 		'15': 'Default',
 		'stark': 'Stark',
 		'hand': 'Hand',
+		'console': 'Console',
 		'ancient': 'Fallback',
 		'Third Party': {
 			'https://unpkg.com/magick.css': 'Magick CSS',

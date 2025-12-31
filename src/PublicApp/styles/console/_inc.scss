@@ -1,0 +1,120 @@
+/*=====
+==conf
+=====*/
+//==colors
+$lightAccentColor: #0a0;
+$lightAltColor: #050;
+$lightBG: #dfd;
+$lightFG: black;
+$darkAccentColor: #0f0;
+$darkAltColor: #2fa;
+$darkBG: #020;
+$darkFG: #afa;
+
+/*=====
+==basics
+=====*/
+:root{
+	color-scheme: dark light;
+	--accent: #{$darkAccentColor};
+	--alt: #{$darkAltColor};
+	--bg: #{$darkBG};
+	--fg: #{$darkFG};
+	accent-color: var(--accent);
+	@media only screen and (prefers-color-scheme: light){
+		--accent: #{$lightAccentColor};
+		--alt: #{$lightAltColor};
+		--bg: #{$lightBG};
+		--fg: #{$lightFG};
+	}
+}
+%normalTheme{
+	background: $darkBG;
+	background: var(--bg);
+	color: $darkFG;
+	color: var(--fg);
+}
+
+//=====
+//==mixins
+//=====
+%box{
+	@extend %normalTheme;
+}
+%charLeftBorder{
+	padding-left: 2em;
+	position: relative;
+	&:before{
+		display: inline-block;
+		height: 100%;
+		left: 0;
+		margin-right: 0.5em;
+		position: absolute;
+		overflow: hidden;
+		top: 0;
+		white-space: normal;
+		width: 0.8em;
+	}
+}
+
+//--a11y
+@mixin sro(
+	$border: 0
+	,$clip: rect(0 0 0 0)
+	,$height: 1px
+	,$margin: -1px
+	,$overflow: hidden
+	,$padding: 0
+	,$position: absolute
+	,$width: 1px
+	,$wordWrap: normal
+){
+	border: $border;
+	clip: $clip;
+	height: $height;
+	margin: $margin;
+	overflow: $overflow;
+	padding: $padding;
+	position: $position;
+	width: $width;
+	word-wrap: $wordWrap;
+}
+%sro{
+	@include sro();
+}
+@mixin sroOff(
+	$border: initial
+	,$clip: auto
+	,$height: auto
+	,$margin: initial
+	,$overflow: visible
+	,$padding: initial
+	,$position: static
+	,$width: auto
+){
+	border: $border;
+	clip: $clip;
+	height: $height;
+	margin: $margin;
+	overflow: $overflow;
+	padding: $padding;
+	position: $position;
+	width: $width;
+}
+%sroOff{
+	@include sroOff();
+}
+
+//--actions
+%buttonish{
+	background: var(--fg);
+	color: var(--bg);
+	display: inline-block;
+	text-decoration: none;
+}
+%buttonishHover{
+	background: $darkAccentColor;
+	background: var(--accent);
+	color: var(--bg);
+	outline: 2px solid var(--accent);
+}
