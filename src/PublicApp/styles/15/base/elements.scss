@@ -168,6 +168,10 @@ pre{
 		white-space: normal; white-space: pre-wrap;
 	}
 }
+::selection{
+	background: var(--selectionBG);
+	color: var(--selectionFG);
+}
 table{
 	@extend %block;
 	border-collapse: collapse;

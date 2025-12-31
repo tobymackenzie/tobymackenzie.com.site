@@ -31,6 +31,8 @@
 	--secondaryLinkFG: #{map-get($colors, secondaryLinkFG)};
 	--secondaryLinkFocusBG: #{rgba(map-get($colors, secondaryLinkFocusBG), 0.3)};
 	--secondaryLinkFocusFG: #{map-get($colors, secondaryLinkFocusFG)};
+	--selectionFG: #{map-get($colors, chromeLogo)};
+	--selectionBG: #{map-get($colors, chromeHeaderBG)};
 	--strongFG: #{map-get($colors, strong)};
 	--tertiaryBG: #{map-get($colors, tertiaryBG)};
 	--tertiaryFG: #{map-get($colors, tertiaryFG)};
@@ -52,6 +54,8 @@
 		--primaryFG: #{map-get($darkThemeColors, primaryFG)};
 		--primaryLinkFG: #{map-get($darkThemeColors, primaryLinkFG)};
 		--quoteBorder: #{rgba(map-get($darkThemeColors, contentBorder), 0.6)};
+		--selectionFG: #{map-get($darkThemeColors, baseBG)};
+		--selectionBG: #{map-get($colors, chromeLogo)};
 		--strongFG: #{map-get($darkThemeColors, strong)};
 	}
 }

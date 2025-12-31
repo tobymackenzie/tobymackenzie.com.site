@@ -85,6 +85,10 @@ p{
 		margin: 0;
 	}
 }
+::selection{
+	background: var(--accent);
+	color: var(--bg);
+}
 main ol, main ul{
 	padding-left: 1rem;
 }
