@@ -13,9 +13,9 @@ html *{
 	font-size: 1rem;
 	margin: 0;
 	//--text glow
-	text-shadow: 0 0 3px rgba($darkFG, 0.6);
+	text-shadow: 0 0 5px color-mix(in srgb, currentColor 80%, currentColor 10%);
 	@media only screen and (prefers-color-scheme: light){
-		text-shadow: 0 0 2px rgba($lightFG, 0.4);
+		text-shadow: 0 0 2px color-mix(in srgb, currentColor 50%, currentColor 10%);
 	}
 }
 html{
