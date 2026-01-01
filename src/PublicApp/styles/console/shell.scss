@@ -14,6 +14,8 @@ footer hr:last-child{
 
 //--header
 a--logo, a--end{
+	color: $darkAccentColor;
+	color: var(--accent);
 	display: inline-block;
 	transform: rotate(0);
 	transition: transform 0.5s ease;

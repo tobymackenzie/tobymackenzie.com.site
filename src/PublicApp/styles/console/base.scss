@@ -22,13 +22,16 @@ html{
 	@extend %normalTheme;
 }
 a{
-	color: $darkAltColor;
-	color: var(--alt);
-}
-a:focus, a:hover{
 	color: $darkAccentColor;
 	color: var(--accent);
+}
+a:focus, a:hover{
+	color: $darkAltColor;
+	color: var(--alt);
 	outline: 2px solid;
+}
+b, h1, h2, h3, h4, h5, h6, strong{
+	color: var(--accent);
 }
 button, input, select{
 	@extend %buttonish;
