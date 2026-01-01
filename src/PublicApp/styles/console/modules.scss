@@ -40,12 +40,18 @@
 code, pre{
 	font-family: inherit;
 }
+pre{
+	margin: 1.2rem 0;
+}
 pre code{
 	@extend %box;
-	@extend %charLeftBorder;
 	display: block;
 	overflow: auto;
-	margin: 1.2rem 0;
+	padding-left: 1em;
+}
+pre:has(code){
+	@extend %charLeftBorder;
+	padding-left: 1rem;
 	&:before{
 		content: '| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |';
 	}
