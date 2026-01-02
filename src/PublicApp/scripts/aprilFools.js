@@ -27,7 +27,11 @@ function replaceStringInNode(node, find, replacement){
 		});
 	}else{
 		for(var sub in node.childNodes){
-			replaceStringInNode(node.childNodes[sub], find, replacement);
+			var childNode = node.childNodes[sub];
+			if((childNode.nodeName || '').toLowerCase() === 'code'){
+				continue;
+			}
+			replaceStringInNode(childNode, find, replacement);
 		}
 	}
 }
