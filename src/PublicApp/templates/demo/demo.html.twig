@@ -64,6 +64,36 @@ class SymfonyHelper{
 	}
 }
 	</code></pre>
+	<h3>JS</h3>
+	<pre><code class="language-html">(function(){
+	window.tjmSetTheme = function(theme){
+		if(theme){
+			// modify selector if you have other stylesheets before the one you want for your theme
+			var styleEl = document.querySelector('link[rel="stylesheet"]');
+			if(styleEl){
+				// path structure for themes set up here
+				styleEl.href = '/_themes/' + theme + '.css';
+			}
+		}
+	};
+	var theme = (window.localStorage &amp;&amp; localStorage.getItem('tjm-theme'));
+	if(theme){
+		var opts = '';
+		for(var i in themes){
+			if(themes.hasOwnProperty(i)){
+				var opt = themes[i];
+				var optEl = document.createElement('option');
+				if(i === theme){
+					optEl.selected = true;
+				}
+				optEl.value = i;
+				optEl.innerHTML = opt;
+				selectEl.appendChild(optEl);
+			}
+		}
+	}
+})();
+	</code></pre>
 	<h3>HTML</h3>
 	<pre><code class="language-html">&lt;div class="switchField field"&gt;
 	&lt;span class="fieldWidget"&gt;
