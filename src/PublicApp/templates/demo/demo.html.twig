@@ -28,6 +28,29 @@
 	<div class="attribution">- <a href="https://biblehub.com/romans/12-17.htm">Romans 12:17</a></div>
 	<blockquote>Having something requires giving something else up.</blockquote>
 	<p><a href="/quotes">More quotes &gt;</a></p>
+	<h2>Lists</h2>
+{% for el in ['ul', 'ol'] %}
+	<p>A {{el}} to follow.</p>
+	<{{el}}>
+		<li>Item one</li>
+		<li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</li>
+		<li>Item three
+			<{{el}}>
+				<li>Sub 3.1</li>
+				<li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</li>
+				<li>Sub 3.3
+					<{{el}}>
+						<li>Sub 3.3.1</li>
+						<li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</li>
+						<li>Sub 3.3.3</li>
+						<li>Sub 3.3.4</li>
+					</{{el}}>
+				</li>
+			</{{el}}>
+		</li>
+		<li>Item four</li>
+	</{{el}}>
+{% endfor %}
 	<h2>Code</h2>
 	<h3>PHP</h3>
 	<pre><code class="language-php">&lt;?php
