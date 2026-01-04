@@ -19,6 +19,10 @@
 	background: var(--fg);
 	color: white;
 	color: var(--bg);
+	::selection{
+		background: var(--bg);
+		color: var(--fg);
+	}
 }
 
 //=====

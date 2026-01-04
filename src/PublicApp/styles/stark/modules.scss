@@ -39,8 +39,7 @@ pre code{
 	padding: 0.5em;
 }
 pre:has(code){
-	background: black;
-	background: var(--fg);
+	@extend %altTheme;
 }
 .token{
 	&.attr-value,
