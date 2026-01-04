@@ -19,7 +19,9 @@
 	background: var(--fg);
 	color: white;
 	color: var(--bg);
-	::selection{
+	//--must reverse selection:  default selection colors are this and thus invisible in alt
+	// need both children and el to get both direct descendant text nodes and text nodes of children
+	::selection, &::selection{
 		background: var(--bg);
 		color: var(--fg);
 	}
