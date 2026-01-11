@@ -186,7 +186,7 @@ add_action('after_setup_theme', function(){
 
 //--prevent indexing some pages not useful in search results
 add_filter('wp_robots', function($robots){
-	if(is_tag()){
+	if(!(is_singular() || is_home() || (is_category() && !is_paged()))){
 		unset($robots['max-image-preview']);
 		$robots['noindex'] = true;
 		$robots['follow'] = true;
