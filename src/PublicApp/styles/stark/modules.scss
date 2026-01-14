@@ -115,13 +115,13 @@ dialog{
 .closeAct, .closeBtn{
 	cursor: pointer;
 	font-size: 1.2em;
-	height: 1.3em;
+	height: 1.5em;
 	line-height: 1;
 	position: absolute;
 	right: 0em;
 	text-align: center;
 	top: 0em;
-	width: 1.2em;
+	width: 1.4em;
 	&:after{
 		content: 'X';
 	}
