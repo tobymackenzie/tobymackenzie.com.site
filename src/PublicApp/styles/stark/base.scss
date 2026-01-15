@@ -45,12 +45,13 @@ hr{
 	margin: 1em 0;
 }
 iframe, img, svg, video{
-	filter: grayscale(1);
+	filter: contrast(10) grayscale(1);
+	transition: filter 0.4s;
 	&:focus, &:hover{
-		filter: grayscale(0.2);
+		filter: contrast(1) grayscale(0.2);
 	}
 	&:focus-within{
-		filter: grayscale(0.2);
+		filter: contrast(1) grayscale(0.2);
 	}
 }
 main ol, main ul{
