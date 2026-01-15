@@ -39,16 +39,27 @@ button, input, select{
 dialog{
 	@extend %box;
 }
+h1, h2{
+	min-width: 4.8em;
+	overflow: hidden;
+	padding-bottom: 1.2em;
+	position: relative;
+	width: fit-content;
+	&:after{
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		white-space: pre;
+	}
+}
 h1{
 	&:after{
-		content: '====================';
-		display: block;
+		content: repeat('=', 120);
 	}
 }
 h2{
 	&:after{
-		content: '--------------------';
-		display: block;
+		content: repeat('-', 120);
 	}
 }
 h2, h3, h4, h5, h6{
@@ -69,7 +80,7 @@ h6:before{
 hr{
 	margin-bottom: 1.2rem;
 	&:after{
-		content: '--------------------';
+		content: repeat('-', 120);
 		display: block;
 	}
 }

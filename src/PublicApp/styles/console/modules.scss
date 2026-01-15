@@ -53,7 +53,7 @@ pre:has(code){
 	@extend %charLeftBorder;
 	padding-left: 1rem;
 	&:before{
-		content: '| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |';
+		content: repeat('| ', 80);
 	}
 }
 .token{
@@ -171,7 +171,7 @@ blockquote{
 		margin-top: 1.2rem;
 	}
 	&:before{
-		content: '> > > > > > > > > > > > > > > > >';
+		content: repeat('> ', 50);
 	}
 }
 
