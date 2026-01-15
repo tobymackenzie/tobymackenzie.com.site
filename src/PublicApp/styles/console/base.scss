@@ -73,8 +73,20 @@ hr{
 		display: block;
 	}
 }
-iframe, img, svg, video{
+img, svg, video{
 	filter: contrast(200%) saturate(0.5);
+	//--pixelate
+	//-@ https://stackoverflow.com/a/66625778
+	filter: saturate(2) url('data:image/svg+xml,\
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0">\
+		<filter id="px" x="0" y="0"> \
+			<feFlood x="2" y="2" height="2" width="1" /> \
+			<feComposite width="5" height="5" /> \
+			<feTile result="t" /> \
+			<feComposite in="SourceGraphic" in2="t" operator="in" /> \
+			<feMorphology operator="dilate" radius="2" /> \
+		</filter> \
+		</svg>#px');
 	&:focus, &:hover{
 		filter: none;
 	}
