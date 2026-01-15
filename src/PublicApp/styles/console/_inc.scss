@@ -56,6 +56,13 @@ $darkFG: #afa;
 		width: 0.8em;
 	}
 }
+@function repeat($char, $n){
+	$str: '';
+	@for $i from 1 through $n{
+		$str: $str + $char;
+	}
+	@return $str;
+}
 
 //--a11y
 @mixin sro(
