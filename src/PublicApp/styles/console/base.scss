@@ -1,3 +1,4 @@
+//==common
 [tabindex='-1']:focus{
 	outline: none;
 }
@@ -23,6 +24,40 @@ html *{
 		margin-top: 1.2rem;
 	}
 }
+%box{
+	@extend %normalTheme;
+}
+%charLeftBorder{
+	padding-left: 2em;
+	position: relative;
+	&:before{
+		display: inline-block;
+		height: 100%;
+		left: 0;
+		margin-right: 0.5em;
+		position: absolute;
+		overflow: hidden;
+		top: 0;
+		white-space: normal;
+		width: 0.8em;
+	}
+}
+
+//--actions
+%buttonish{
+	background: var(--fg);
+	color: var(--bg);
+	display: inline-block;
+	text-decoration: none;
+}
+%buttonishHover{
+	background: $darkAccentColor;
+	background: var(--accent);
+	color: var(--bg);
+	outline: 2px solid var(--accent);
+}
+
+//==elements
 html{
 	@extend %normalTheme;
 }

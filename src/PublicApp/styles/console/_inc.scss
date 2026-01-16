@@ -38,24 +38,6 @@ $darkFG: #afa;
 //=====
 //==mixins
 //=====
-%box{
-	@extend %normalTheme;
-}
-%charLeftBorder{
-	padding-left: 2em;
-	position: relative;
-	&:before{
-		display: inline-block;
-		height: 100%;
-		left: 0;
-		margin-right: 0.5em;
-		position: absolute;
-		overflow: hidden;
-		top: 0;
-		white-space: normal;
-		width: 0.8em;
-	}
-}
 @function repeat($char, $n){
 	$str: '';
 	@for $i from 1 through $n{
@@ -110,18 +92,4 @@ $darkFG: #afa;
 }
 %sroOff{
 	@include sroOff();
-}
-
-//--actions
-%buttonish{
-	background: var(--fg);
-	color: var(--bg);
-	display: inline-block;
-	text-decoration: none;
-}
-%buttonishHover{
-	background: $darkAccentColor;
-	background: var(--accent);
-	color: var(--bg);
-	outline: 2px solid var(--accent);
 }
