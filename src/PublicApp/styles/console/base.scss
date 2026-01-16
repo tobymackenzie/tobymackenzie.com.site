@@ -18,6 +18,11 @@ html *{
 		text-shadow: 0 0 2px color-mix(in srgb, currentColor 50%, currentColor 10%);
 	}
 }
+%block{
+	* + &{
+		margin-top: 1.2rem;
+	}
+}
 html{
 	@extend %normalTheme;
 }
@@ -58,12 +63,13 @@ h1{
 	}
 }
 h2{
+	@extend %block;
 	&:after{
 		content: repeat('-', 120);
 	}
 }
 h2, h3, h4, h5, h6{
-	margin: 1.2rem 0 0;
+	@extend %block;
 }
 h3:before{
 	content: '### ';
@@ -106,21 +112,15 @@ img, svg, video{
 	}
 }
 p{
-	margin-bottom: 1.2rem;
-	&:last-child{
-		margin: 0;
-	}
+	@extend %block;
 }
 ::selection{
 	background: var(--accent);
 	color: var(--bg);
 }
 main ol, main ul{
+	@extend %block;
 	padding-left: 1rem;
-	margin-bottom: 1.2rem;
-	&:last-child{
-		margin: 0;
-	}
 }
 main ol{
 	padding-left: 1.8rem;
