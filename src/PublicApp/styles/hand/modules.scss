@@ -37,8 +37,12 @@
 code, pre{
 	font-family: inherit;
 }
-pre code{
+code{
 	@extend %box;
+	display: inline-block;
+	padding: 0 0.1em;
+}
+pre code{
 	display: block;
 	overflow: auto;
 	padding: 0.8em;
