@@ -33,15 +33,13 @@ html *{
 	padding-left: 1.3em;
 	position: relative;
 	&:before{
-		display: inline-block;
 		height: 100%;
 		left: 0;
-		margin-right: 0.5em;
 		position: absolute;
 		overflow: hidden;
 		top: 0;
 		white-space: normal;
-		width: 0.8em;
+		width: 1em;
 	}
 }
 %charBottomBorder{
