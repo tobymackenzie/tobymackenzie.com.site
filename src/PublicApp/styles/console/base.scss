@@ -30,7 +30,7 @@ html *{
 
 //--borders
 %charLeftBorder{
-	padding-left: 2em;
+	padding-left: 1.3em;
 	position: relative;
 	&:before{
 		display: inline-block;
@@ -160,7 +160,7 @@ p{
 }
 main ol, main ul{
 	@extend %block;
-	padding-left: 1rem;
+	padding-left: 1.2rem;
 }
 main ol{
 	padding-left: 1.8rem;

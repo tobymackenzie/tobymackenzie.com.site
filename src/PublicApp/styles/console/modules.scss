@@ -51,7 +51,7 @@ pre code{
 }
 pre:has(code){
 	@extend %charLeftBorder;
-	padding-left: 1rem;
+	padding-left: 0.2rem;
 	&:before{
 		content: repeat('| ', 80);
 	}
