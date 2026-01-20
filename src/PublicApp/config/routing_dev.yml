@@ -10,9 +10,5 @@ _errors:
  resource: "@FrameworkBundle/Resources/config/routing/errors.xml"
  prefix: /_error
 
-_demo:
-  controller: PublicApp\Controller\DemoController::demoAction
-  path: /_demo
-
 main:
  resource: routing.yml

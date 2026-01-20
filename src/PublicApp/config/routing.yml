@@ -66,6 +66,11 @@ public_google_verification:
   controller: PublicApp\Controller\MetaController::googleVerificationAction
   path: '/%google-verification%'
 
+##==demo
+_demo:
+  controller: PublicApp\Controller\DemoController::demoAction
+  path: /_demo
+
 ##==pages
 public_page_formatted:
   controller: PublicApp\Controller\DefaultController::pageAction
