@@ -45,6 +45,9 @@ services:
           dest: 'grunge-pattern.png'
           src: 'assets/grunge-pattern.png'
         -
+          dest: 'demo'
+          src: 'assets/demo'
+        -
           dest: 'images'
           src: 'assets/images/*'
       assetsRoot: '%assets.web_root%'
