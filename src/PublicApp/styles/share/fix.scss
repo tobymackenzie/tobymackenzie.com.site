@@ -41,12 +41,7 @@ iframe, img, object{
 }
 img{
 	max-height: 100vh; //-# make sure image doesn't get bigger than viewport. -@ [snookca](https://twitter.com/snookca/status/634486812803792897)
-}
-img[height]{
-	height: auto; //-# ensure aspect ratio is preserved when resizing
-}
-img[width]{
-	width: auto; //-# ensure aspect ratio is preserved when resizing
+	object-fit: contain; //-# ensure image isn't squished / stretched if it ends up wrong aspect ratio
 }
 input, select, textarea{
 	max-width: 100%;
