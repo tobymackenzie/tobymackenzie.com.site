@@ -57,7 +57,7 @@ class HeadersListener{
 				if($this->host !== $request->getHost()){
 					$defaultSrc .= ' ' . $this->host;
 				}
-				$headers->set($cspHeader, "default-src {$defaultSrc}; frame-src www.youtube.com;block-all-mixed-content");
+				$headers->set($cspHeader, "default-src {$defaultSrc}; frame-src www.youtube.com;img-src 'self' data:;block-all-mixed-content");
 			}
 
 			//--block iframes from showing site, except from our domain.  helps prevent clickjacking
