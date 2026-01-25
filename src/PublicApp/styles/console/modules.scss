@@ -40,6 +40,11 @@
 code, pre{
 	font-family: inherit;
 }
+code{
+	&:after, &:before{
+		content: '`';
+	}
+}
 pre{
 	@extend %block;
 }
@@ -48,6 +53,9 @@ pre code{
 	display: block;
 	overflow: auto;
 	padding-left: 1em;
+	&:after, &:before{
+		content: '';
+	}
 }
 pre:has(code){
 	@extend %charLeftBorder;
