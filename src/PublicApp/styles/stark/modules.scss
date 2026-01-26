@@ -107,6 +107,10 @@ pre:has(code){
 }
 
 //--dialog
+::backdrop{
+	background: var(--bg);
+	opacity: 0.95;
+}
 dialog{
 	border: 5px solid;
 	//--hack to ensure close button doesn't cover stuff on theme dialog

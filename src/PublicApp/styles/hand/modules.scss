@@ -127,8 +127,13 @@ pre code{
 }
 
 //--dialog
+::backdrop{
+	background: none;
+}
 dialog{
 	border: 5px solid;
+	//--distinguish from other text, look a bit like erased and written over
+	box-shadow: 0 0 5px 20px var(--bg);
 	//--hack to ensure close button doesn't cover stuff on theme dialog
 	min-width: 19em;
 }

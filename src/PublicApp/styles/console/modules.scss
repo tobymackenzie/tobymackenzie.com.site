@@ -146,6 +146,7 @@ pre:has(code){
 //--dialog
 ::backdrop{
 	background: var(--bg);
+	opacity: 0.96;
 }
 dialog{
 	border: 5px solid;
