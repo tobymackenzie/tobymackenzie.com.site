@@ -14,6 +14,22 @@ body{
 	margin-bottom: 1em;
 	padding-bottom: 1em;
 }
+a--bg{
+	@media only screen and (min-width: 60em){
+		background: url('/_assets/images/stark.webp') bottom right no-repeat;
+		background-size: contain;
+		height: 100%;
+		left: 0;
+		pointer-events: none;
+		position: fixed;
+		top: 0;
+		width: calc(50vw - 25em);
+		z-index: -1;
+	}
+	@media only screen and (prefers-color-scheme: dark){
+		filter: invert(1);
+	}
+}
 footer hr:last-child{
 	display: none;
 }
