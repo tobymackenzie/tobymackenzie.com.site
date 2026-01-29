@@ -7,24 +7,21 @@ import loadTheme from './lib/@tobymackenzie/theme-switch/src/load.js';
 */
 var w = window;
 if('location' in w && !w.TJMDEV){
-	var canonicalHost = 'www.tobymackenzie.com'
 	var l = location;
-	var origin, url;
-	//--attempt force canonicalHost if IP access
+	var origin;
+	//--attempt force canonical host if IP access
 	//-# rough check if visiting via IP
-	if(l.host !== canonicalHost && l.host.match(/^([\d\.]+|[\w:]+:[\w:]+)$/)){
-		origin = l.protocol + '//' + canonicalHost;
-		url = origin + l.pathname + l.search + l.hash;
+	if(l.host.match(/^([\d\.]+|[\w:]+:[\w:]+)$/)){
+		origin = l.protocol + '//www.tobymackenzie.com';
 	}
 	//--attempt force https if http
 	//-# not on dev
 	else if(l.protocol === 'http:' && l.host.slice(-2) !== '.t'){
 		origin = 'https://' + l.host
-		url = origin + l.pathname + l.search + l.hash;
 	}
-	if(url){
+	if(origin){
 		if(w.TJMFRCR){
-			w.location = url;
+			w.location = origin + l.pathname + l.search + l.hash;
 		}else{
 			w.TJMFRCR = 1;
 			loadJS(origin + '/_assets/scripts/pre.js');
