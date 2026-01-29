@@ -154,6 +154,11 @@ a--snavsearcht{
 			@extend %icon-home;
 		}
 	}
+	&[data-type='info']{
+		&:before{
+			@extend %icon-info;
+		}
+	}
 	&[data-type='blog']{
 		&:before{
 			@extend %icon-writings;

@@ -304,8 +304,13 @@ class MetaController extends Controller{
 					'label'=> 'My Packagist'
 					,'type'=> 'packagist'
 					,'url'=> 'https://packagist.org/users/tobymackenzie/'
-				]
-				,[
+				],
+				[
+					'label'=> 'Site info'
+					,'type'=> 'info'
+					,'url'=> $this->router->generate($routeFormat ? 'public_page_formatted' : 'public_page', ['_format'=> $routeFormat, 'id'=> 'site'], $routeReferenceType)
+				],
+				[
 					'label'=> 'Home'
 					,'type'=> 'home'
 					,'url'=> $this->router->generate($routeFormat ? 'public_home_formatted' : 'public_home', ['_format'=> $routeFormat], $routeReferenceType)
