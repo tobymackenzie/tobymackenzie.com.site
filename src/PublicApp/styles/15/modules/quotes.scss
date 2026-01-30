@@ -31,4 +31,8 @@ blockquote{
 		position: absolute;
 		top: 0.2em;
 	}
+	//-# friendly to markdown blockquotes which have a single `<p>` for one line quotes
+	p:last-child{
+		display: inline;
+	}
 }
