@@ -33,7 +33,7 @@ blockquote{
 		top: 0.2em;
 	}
 	//--make more friendly to markdown blockquotes which have a single `<p>` for one line quotes
-	&has(:only-child)::after{
+	&:has(:only-child)::after{
 		left: -0.2em;
 	}
 	p:last-child{
