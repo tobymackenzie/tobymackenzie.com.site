@@ -60,3 +60,16 @@
 %blockMargin{
 	@include remFallback('margin-top', 15);
 }
+
+//==coverlay
+@mixin coverlay(){
+	bottom: 0;
+	left: 0;
+	pointer-events: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	@include mq('print'){
+		display: none;
+	}
+}
