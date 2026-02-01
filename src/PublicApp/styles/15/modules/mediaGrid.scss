@@ -1,14 +1,14 @@
 .mediaGrid{
 	@extend %block;
 	list-style: none;
-	@include mq(map-get($bp, 'tiny')){
+	@include supports('tiny'){
 		align-items: center;
 		display: grid;
 		grid-gap: 1em;
 		justify-content: center;
 		grid-template-columns: repeat(2,auto);
 	}
-	@include mq(map-get($bp, 'small')){
+	@include supports('small'){
 		grid-template-columns: repeat(3,auto);
 	}
 }

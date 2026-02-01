@@ -40,7 +40,7 @@
 //--base
 @mixin font-base{
 	font-family: map-get($fontFamilies, base);
-	@include mq(map-get($bp, small)){
+	@include supports('small'){
 		font-family: map-get($fontFamilies, baseWVP);
 	}
 	// font-weight: 400;

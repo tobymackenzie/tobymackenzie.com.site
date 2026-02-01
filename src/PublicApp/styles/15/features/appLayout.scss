@@ -41,13 +41,13 @@
 	* + &{
 		border-top-style: solid;
 	}
-	@include mq(map-get($bp, verySmall)){
+	@include supports('verySmall'){
 		padding: remFromPx(24);
 	}
-	@include mq(map-get($bp, small)){
+	@include supports('small'){
 		padding: remFromPx(32) remFromPx(24);
 	}
-	@include mq(map-get($bp, medium)){
+	@include supports('medium'){
 		padding: remFromPx(32);
 	}
 }
