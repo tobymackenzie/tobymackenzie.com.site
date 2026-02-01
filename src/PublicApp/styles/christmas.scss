@@ -9,6 +9,7 @@ html{
 	position: relative;
 }
 a--bg{
+	all: revert;
 	--blueLight: rgb(30,30,255);
 	--greenLight: rgb(0,255,0);
 	--orangeLight: rgb(255,140,0);
@@ -16,6 +17,12 @@ a--bg{
 	--yellowLight: rgb(255,200,100);
 	--violetLight: rgb(255,100,200);
 	&:after, &:before{
+		//--reset
+		background: none;
+		left: auto;
+		mask: none;
+
+		//--set
 		$lights: ('green', 'orange', 'red', 'blue', 'violet', 'yellow', 'red', 'green', 'violet', 'orange', 'blue', 'yellow');
 		$lightsCount: length($lights);
 		$background: null;

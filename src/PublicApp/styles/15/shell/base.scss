@@ -66,8 +66,43 @@ body{
 html{
 	padding: 0;
 	// position: relative;
-	//==colors
+	//==background
 	background: map-get($colors, baseBG);
 	background: var(--baseBG);
+	//-!much simpler version of tree bg, but not quite as nice, especially in light mode
+	// @supports (background-blend-mode: color-burn){
+		// background-blend-mode: color-burn;
+		// background-image: url('/_assets/images/15-tree.webp');
+		// background-size: cover;
+	// }
 }
-
+a--bg{
+	@include supports('appWidth'){
+		@supports (mask-size: cover) and (pointer-events: none){
+			&:after, &:before{
+				background: var(--borderColor);
+				content: '';
+				mask: url('/_assets/images/15-tree.webp') luminance;
+				mask-size: cover;
+				height: 100%;
+				left: 0;
+				opacity: 0.4;
+				pointer-events: none;
+				position: absolute;
+				top: 0;
+				width: 100%;
+				z-index: -1;
+				@include supports('dark-theme'){
+					opacity: 0.1;
+				}
+			}
+			&:before{
+				opacity: 0.1;
+				z-index: 1;
+				@include supports('dark-theme'){
+					opacity: 0.08;
+				}
+			}
+		}
+	}
+}
