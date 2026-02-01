@@ -18,7 +18,6 @@ a--end{
 	display: inline-block;
 	//--subdued, emphasise on hover
 	@extend %wiggleHoverAnimation;
-	$leftMargin: 1em; //--prevent wiggle from overflowing window
 	opacity: 0.5;
 	transition: opacity 0.2s;
 	&:hover{

@@ -65,7 +65,6 @@ body{
 }
 html{
 	padding: 0;
-	// position: relative;
 	//==background
 	background: map-get($colors, baseBG);
 	background: var(--baseBG);

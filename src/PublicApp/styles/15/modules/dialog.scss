@@ -17,9 +17,9 @@ dialog{
 	font-size: 1.2em;
 	height: 2em;
 	position: absolute;
-	right: 0em;
+	right: 0;
 	text-align: center;
-	top: 0em;
+	top: 0;
 	width: 2em;
 	&:focus, &:hover{
 		background: var(--secondaryLinkFocusBG);
