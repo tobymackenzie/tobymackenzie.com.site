@@ -44,7 +44,7 @@ a--hmain{
 }
 a--htag{
 	@extend %wiggleHoverAnimation;
-	transform-origin: left;
+	display: inline-block;
 	@include supports('tiny'){
 		margin: 0 0 0 5.1em;
 		position: relative;
