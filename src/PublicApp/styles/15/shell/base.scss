@@ -39,7 +39,6 @@
 	}
 }
 body{
-	@include grit($position: relative);
 	align-items: center;
 	display: flex;
 	flex-direction: column;
@@ -62,6 +61,18 @@ body{
 	//==fonts
 	@extend %font-base;
 	line-height: 1.6;
+
+	//==texture
+	@supports (pointer-events: none){
+		position: relative;
+		&:after{
+			@include coverlay();
+			background-image: url('/_assets/grunge-pattern.png');
+			content: '';
+			opacity: 0.06;
+			z-index: 9999;
+		}
+	}
 }
 html{
 	padding: 0;
