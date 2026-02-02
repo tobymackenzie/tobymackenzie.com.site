@@ -89,7 +89,7 @@ $siteNavSearchWidth: 13em;
 		appearance: none;
 		background: none;
 		border: 1px solid;
-		color: inherit;
+		color: map-get($colors, secondaryFG);
 		padding: 0.25em 1.75em 0.25em 0.25em;
 		width: $siteNavSearchWidth;
 		background: map-get($colors, secondaryBG); //-# only needed for input to slide over subnav line
