@@ -90,11 +90,11 @@ a--bg{
 	@include supports('appWidth'){
 		@supports (mask-size: cover) and (pointer-events: none){
 			&:after, &:before{
-				@include coverlay();
+				@include coverlay($position: fixed);
 				background: var(--borderColor);
 				content: '';
 				mask: url('/_assets/images/15-tree.webp') luminance repeat-y;
-				mask-size: contain;
+				mask-size: cover;
 				opacity: 0.4;
 				z-index: -1;
 				@include supports('dark-theme'){

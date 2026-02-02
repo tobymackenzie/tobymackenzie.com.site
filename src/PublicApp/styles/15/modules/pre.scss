@@ -62,11 +62,11 @@
 }
 
 //==coverlay
-@mixin coverlay(){
+@mixin coverlay($position: absolute){
 	bottom: 0;
 	left: 0;
 	pointer-events: none;
-	position: absolute;
+	position: $position;
 	right: 0;
 	top: 0;
 	@include mq('print'){
