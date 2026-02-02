@@ -93,7 +93,7 @@ a--bg{
 				@include coverlay();
 				background: var(--borderColor);
 				content: '';
-				mask: url('/_assets/images/15-tree.webp') luminance;
+				mask: url('/_assets/images/15-tree.webp') luminance repeat-y;
 				mask-size: contain;
 				opacity: 0.4;
 				z-index: -1;
