@@ -52,7 +52,7 @@ if(window.Date && document.querySelector){
 		//-! solstices / equinoxes are complicated
 		var messages = {
 			'0101': 'Happy New Year 🎉',
-			'0106': 'Happy Toby Day',
+			'0106': 'Toby M A C, yeah, you know me',
 			'0107': '👨‍💻 Code for good',
 			'0202': 'Happy groundhog day',
 			'0216': 'Go Cleveland',
