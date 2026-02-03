@@ -1,7 +1,11 @@
 html{
 	background: $deskColor;
 	background: var(--backdrop);
-	font-family: 'Architects Daughter', 'Bradley Hand', Noteworthy, 'Marker Felt', 'Shadows Into Light', Chalkboard, Luminari, 'Burlington Script', 'Apple Chancery', Papyrus, 'Comic Sans', cursive;
+	/*-#
+	Z003 for Ubuntu Chrom*
+	sans-serif: some OS don't have `cursive` font definted
+	*/
+	font-family: 'Architects Daughter', 'Bradley Hand', Noteworthy, 'Marker Felt', 'Shadows Into Light', Chalkboard, Luminari, 'Burlington Script', 'Apple Chancery', Papyrus, 'Comic Sans', cursive, Z003, sans-serif;
 	font-size: 1.2em;
 	line-height: 1.6;
 	//--wood
@@ -15,7 +19,7 @@ html{
 		27px 27px
 	;
 	@media only screen and (prefers-color-scheme: dark){
-		font-family: Chalkboard, 'Marker Felt', Papyrus, 'Comic Sans', 'Architects Daughter', 'Bradley Hand', Noteworthy, 'Burlington Script', Luminari, 'Shadows Into Light', 'Apple Chancery', cursive;
+		font-family: Chalkboard, 'Marker Felt', Papyrus, 'Comic Sans', 'Architects Daughter', 'Bradley Hand', Noteworthy, 'Burlington Script', Luminari, 'Shadows Into Light', 'Apple Chancery', cursive, Z003, sans-serif;
 		//--brick
 		--brick: conic-gradient(at 95% 46%, #0000 75%, #{$wallColor} 0);
 		--brickSize: 5em;
