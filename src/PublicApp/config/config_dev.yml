@@ -49,7 +49,7 @@ services:
           src: 'assets/demo'
         -
           dest: 'images'
-          src: 'assets/images/*'
+          src: 'assets/images'
       assetsRoot: '%assets.web_root%'
       buildPath: '%build.path%'
       canonicalHost: '%public.canonical_host%'
