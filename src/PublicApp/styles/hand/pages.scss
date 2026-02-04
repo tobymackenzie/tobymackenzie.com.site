@@ -2,15 +2,5 @@
 	h1{
 		@extend %sro;
 	}
-	//-# selector will need to be more limited if we add more images
-	main img{
-		display: block;
-		margin: 0 auto 1em;
-		max-height: 50vh;
-		@media screen and (min-width: 28em){
-			float: right;
-			margin: 0 0 1em 1em;
-		}
-	}
 }
 
