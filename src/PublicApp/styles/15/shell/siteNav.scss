@@ -15,6 +15,9 @@
 	body > &{
 		padding: 1.5em;
 	}
+	//--columns
+	column-count: 2;
+	column-width: 14em;
 
 	&a{
 		display: inline-block;
@@ -39,6 +42,7 @@
 		}
 		& &{
 			border-left: 3px solid;
+			break-inside: avoid;
 			margin-left: 0.7em;
 			padding-left: 0.4em;
 		}
