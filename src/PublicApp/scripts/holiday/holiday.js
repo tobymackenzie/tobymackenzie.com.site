@@ -1,4 +1,5 @@
 import {BaseClass, create as _createClass} from './classes.js';
+import getNow from './getNow.js';
 import onnextday from './onnextday.js';
 
 var nill = undefined;
@@ -49,7 +50,7 @@ var Holiday = _createClass({
 		},
 		is: function(now){
 			if(this.date){
-				now = Holiday.formatDate(now || new Date());
+				now = Holiday.formatDate(now || getNow());
 				var date = Holiday.formatDate(this.date);
 				if(this.endDate){
 					var endDate = Holiday.formatDate(this.endDate);

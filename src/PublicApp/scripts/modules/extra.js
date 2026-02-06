@@ -1,4 +1,5 @@
 import {init as initHoliday} from '../holiday/holidayLoad.js';
+import getNow from '../holiday/getNow.js';
 import onday from '../holiday/onday.js';
 
 if(window.Date && document.querySelector){
@@ -43,7 +44,7 @@ if(window.Date && document.querySelector){
 	});
 
 	onday(function(){
-		var now = new Date();
+		var now = getNow();
 		var month = now.getMonth();
 		var day = now.getDate();
 
