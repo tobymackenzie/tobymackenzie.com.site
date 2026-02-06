@@ -100,6 +100,13 @@ if(window.Date && document.querySelector){
 			messageAdded = true;
 		}else if(messageAdded){
 			messageEl.innerHTML = '<a href="//bxln2ho3.com">Be excellent to each other</a>';
+		}else{
+			//--random other message
+			//-! add more?
+			var rand = Math.floor(Math.random() * 100);
+			if(rand < 10){
+				messageEl.innerHTML = messages['0106'];
+			}
 		}
 	});
 }
