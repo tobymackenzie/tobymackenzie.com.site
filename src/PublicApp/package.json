@@ -8,6 +8,9 @@
 		,"@tobymackenzie/ghosts": "https://github.com/tobymackenzie/ghosts.js.git#semver:^0.1"
 		,"@tobymackenzie/theme-switch": "https://github.com/tobymackenzie/theme-switch.js.git#semver:^0.0"
 	}
+	,"devDependencies": {
+		"@rollup/plugin-strip": "^2"
+	}
 	,"engines": {"yarn": ">=1.10"}
 	,"license": "UNLICENSED"
 	,"name": "tobymackenzie.com"
