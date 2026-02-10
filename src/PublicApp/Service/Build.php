@@ -2,7 +2,7 @@
 namespace PublicApp\Service;
 use DateTime;
 use Exception;
-use SimpleXMLElement;
+use DOMDocument;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Process\Process;
@@ -142,19 +142,16 @@ class Build extends Model{
 						if(!$force && !$this->doesFileNeedBuilt($dest, $src)){
 							continue;
 						}
-						copy($src, $dest);
 						if(pathinfo($dest, PATHINFO_EXTENSION) === 'svg' && $attr){
-							$svg = new SimpleXMLElement(file_get_contents($dest));
-							if($svg){
-								foreach($attr as $key=> $value){
-									if(isset($svg[$key])){
-										$svg[$key] = $value;
-									}else{
-										$svg->addAttribute($key, $value);
-									}
-								}
-								file_put_contents($dest, $svg->asXML());
+							$svg = new DOMDocument();
+							$svg->load($src);
+							$root = $svg->documentElement;
+							foreach($attr as $key=> $value){
+								$root->setAttribute($key, $value);
 							}
+							file_put_contents($dest, $svg->saveXML());
+						}else{
+							copy($src, $dest);
 						}
 					}
 				}
