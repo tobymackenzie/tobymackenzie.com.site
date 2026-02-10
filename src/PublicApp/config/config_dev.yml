@@ -81,10 +81,6 @@ services:
           dest: 'cog.svg'
           src: '149-cog.svg'
         -
-          set: icm
-          dest: 'delicious.svg'
-          src: '462-delicious.svg'
-        -
           set: oct
           dest: 'email.svg'
           src: 'mail-24.svg'
@@ -113,10 +109,6 @@ services:
           dest: 'link.svg'
           src: '204-link.svg'
         -
-          set: icm
-          dest: 'linkedin.svg'
-          src: '458-linkedin.svg'
-        -
           set: fa
           dest: 'list.svg'
           src: 'solid/list.svg'
@@ -136,14 +128,6 @@ services:
           set: icm
           dest: 'search.svg'
           src: '135-search.svg'
-        -
-          set: icm
-          dest: 'stack-overflow.svg'
-          src: '465-stackoverflow.svg'
-        -
-          set: fa
-          dest: 'twitter.svg'
-          src: 'brands/twitter-square.svg'
       wikiSite: '@TJM\WikiSite\WikiSite'
  ##==commands
  PublicApp\Dev\:

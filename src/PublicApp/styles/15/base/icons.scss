@@ -132,19 +132,6 @@
 	@extend %single-icon;
 	@include icm-icon('github.svg');
 }
-%icon-linkedin{
-	@extend %single-icon;
-	@include icm-icon('linkedin.svg');
-}
-%icon-delicious{
-	@extend %single-icon;
-	@include icm-icon('delicious.svg');
-}
-%icon-stackoverflow{
-	@extend %single-icon;
-	@include fa-icon('stack-overflow.svg');
-	// @include icon-resize(2.2rem);
-}
 %icon-bottom{
 	@extend %single-icon;
 	@include fa-icon('caret-down.svg');
