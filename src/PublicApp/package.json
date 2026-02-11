@@ -5,8 +5,8 @@
 		,"icomoon": "https://github.com/Keyamoon/IcoMoon-Free"
 		,"@primer/octicons": "^10"
 		,"prismjs": "^1.29"
-		,"@tobymackenzie/ghosts": "https://github.com/tobymackenzie/ghosts.js.git#semver:^0.1"
-		,"@tobymackenzie/theme-switch": "https://github.com/tobymackenzie/theme-switch.js.git#semver:^0.0"
+		,"@tobymackenzie/ghosts": "https://github.com/tobymackenzie/ghosts.js"
+		,"@tobymackenzie/theme-switch": "https://github.com/tobymackenzie/theme-switch.js"
 	}
 	,"devDependencies": {
 		"@rollup/plugin-strip": "^2"
