@@ -6,6 +6,7 @@
 		,"@primer/octicons": "^10"
 		,"prismjs": "^1.29"
 		,"@tobymackenzie/ghosts": "https://github.com/tobymackenzie/ghosts.js"
+		,"@tobymackenzie/snow": "https://github.com/tobymackenzie/snow.js"
 		,"@tobymackenzie/theme-switch": "https://github.com/tobymackenzie/theme-switch.js"
 	}
 	,"devDependencies": {
