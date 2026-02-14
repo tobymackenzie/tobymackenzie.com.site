@@ -87,7 +87,7 @@ html{
 	// }
 }
 a--bg{
-	@include supports('appWidth'){
+	@include supports('verySmall'){
 		@supports (mask-size: cover) and (pointer-events: none){
 			&:after, &:before{
 				@include coverlay($position: fixed);
