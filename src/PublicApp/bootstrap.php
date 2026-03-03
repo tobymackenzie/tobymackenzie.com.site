@@ -22,4 +22,7 @@ $app = new App([
 		'project'=> PROJECT_DIR,
 	],
 ]);
+if(getenv('TMWEB_DEV')){
+	$app->setEnvironment('dev');
+}
 return $app;
