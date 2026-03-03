@@ -20,9 +20,9 @@ switchTheme(
 	'insertBefore'
 );
 
-//--disable ancient if we're themeing
-//-# not for default, since we want to ensure no-js browsers work fine
-if(window.localStorage && localStorage.getItem('tjm-theme')){
+//--disable ancient if we're theming
+//-# since this is done in js browsers, make sure to check ancient styles, no-js in modern browsers occasionally
+if(document.addEventListener){
 	var ancientStyles = document.querySelector('link[rel="stylesheet"]');
 	ancientStyles.rel = 'x';
 }
