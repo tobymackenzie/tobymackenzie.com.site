@@ -389,7 +389,12 @@ class Build extends Model{
 				}elseif(!$extension){
 					$destPath .= '.html';
 				}
+				//-# force build index.html because it seemed to disappear on alternate runs otherwise
+				$isMain = $destPath === '/index.html';
 				$destPath = $self->getDistPath($dist) . $destPath;
+				if($isMain){
+					return true;
+				}
 				return $self->doesFileNeedBuilt($destPath, $srcPath);
 			};
 			foreach($paths as $key=> $path){
