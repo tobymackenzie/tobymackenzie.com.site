@@ -1,0 +1,127 @@
+$color-lightAcc: #7c3030;
+$color-lightAccAlt: #c04000;
+$color-lightBG: #d5b595;
+$color-lightFG: #355e3b;
+$color-darkAcc: #de8f43;
+$color-darkAccAlt: #e97451;
+$color-darkBG: #5e3d26;
+$color-darkFG: #61d989;
+:root{
+	color-scheme: light dark;
+	--acc: #{$color-lightAcc};
+	--accAlt: #{$color-lightAccAlt};
+	--bg: #{$color-lightBG};
+	--fg: #{$color-lightFG};
+	accent-color: var(--acc);
+	@media only screen and (prefers-color-scheme: dark){
+		--acc: #{$color-darkAcc};
+		--accAlt: #{$color-darkAccAlt};
+		--bg: #{$color-darkBG};
+		--fg: #{$color-darkFG};
+	}
+}
+%normalTheme{
+	background: $color-lightBG;
+	background: var(--bg);
+	color: $color-lightFG;
+	color: var(--fg);
+}
+%altTheme{
+	background: $color-lightFG;
+	background: var(--fg);
+	color: $color-lightBG;
+	color: var(--bg);
+}
+
+//=====
+//==mixins
+//=====
+//--a11y
+@mixin sro(
+	$border: 0
+	,$clip: rect(0 0 0 0)
+	,$height: 1px
+	,$margin: -1px
+	,$overflow: hidden
+	,$padding: 0
+	,$position: absolute
+	,$width: 1px
+	,$wordWrap: normal
+){
+	border: $border;
+	clip: $clip;
+	height: $height;
+	margin: $margin;
+	overflow: $overflow;
+	padding: $padding;
+	position: $position;
+	width: $width;
+	word-wrap: $wordWrap;
+}
+%sro{
+	@include sro();
+}
+@mixin sroOff(
+	$border: initial
+	,$clip: auto
+	,$height: auto
+	,$margin: initial
+	,$overflow: visible
+	,$padding: initial
+	,$position: static
+	,$width: auto
+){
+	border: $border;
+	clip: $clip;
+	height: $height;
+	margin: $margin;
+	overflow: $overflow;
+	padding: $padding;
+	position: $position;
+	width: $width;
+}
+%sroOff{
+	@include sroOff();
+}
+
+//--actions
+%buttonish{
+	border: 0;
+	border-radius: 0.4em 0.8em 0.8em 0.8em;
+	background: $color-lightFG;
+	background: var(--fg);
+	color: $color-lightBG;
+	color: var(--bg);
+	display: inline-block;
+	font: inherit;
+	padding: 0.3em 0.4em 0.1em;
+	text-decoration: none;
+}
+%buttonishHover{
+	background: $color-lightAccAlt;
+	background: var(--accAlt);
+	color: $color-lightBG;
+	color: var(--bg);
+}
+
+//--decoration
+%leaf{
+	display: inline-block;
+	content: '';
+	height: 0.7em;
+	background: var(--fg);
+	border-radius: 0 80%;
+	width: 0.8em;
+}
+%leafAlt{
+	@extend %leaf;
+	border-radius: 80% 0;
+}
+%wavyLine{
+	content: '⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝⏜⏝';
+	display: block;
+	max-width: 100%;
+	overflow: hidden;
+	white-space: pre;
+}
+

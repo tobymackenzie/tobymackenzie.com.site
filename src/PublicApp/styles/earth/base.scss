@@ -1,0 +1,103 @@
+[tabindex='-1']:focus{
+	outline: none;
+}
+*{
+	//-# autoprefixer versions too high for handling border box, but it is too important
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+a{
+	color: $color-lightAcc;
+	color: var(--acc);
+	&:focus, &:hover{
+		color: $color-lightAccAlt;
+		color: var(--accAlt);
+	}
+}
+html, body, dialog, hr{
+	@extend %normalTheme;
+}
+button, input, select{
+	@extend %buttonish;
+	&:focus, &:hover{
+		@extend %buttonishHover;
+	}
+}
+h1{
+	border-bottom: 6px double var(--fg);
+	color: $color-lightAccAlt;
+	color: var(--accAlt);
+	margin: 0 0 1em;
+	text-align: center;
+	&:before{
+		@extend %leafAlt;
+		margin-right: 0.4em;
+	}
+	&:after{
+		@extend %leaf;
+		margin-left: 0.4em;
+	}
+/*
+	🍂
+	🍁
+	🍃
+	🌿
+	🌱
+	🪻
+	🌏
+	🪨
+	☘
+	🐌
+	🦋
+	☘︎
+	⏜⏝
+*/
+}
+h2, h3, h4, h5, h6{
+	margin: 1.5em 0 1em;
+}
+h2, h4, h6{
+	&:before{
+		@extend %leaf;
+		margin-right: 0.4em;
+	}
+}
+h3, h5{
+	&:before{
+		@extend %leafAlt;
+		margin-right: 0.4em;
+	}
+}
+hr{
+	border: 0;
+	line-height: 1;
+	margin: 1.5em 0;
+	overflow: hidden;
+	text-align: center;
+	&:before{
+		@extend %wavyLine;
+	}
+}
+iframe, img, svg, video{
+	border-radius: 0.8em;
+	filter: sepia(1);
+	opacity: 0.8;
+	transition: filter 0.5s, opacity 0.5s;
+	&:focus, &:hover{
+		filter: sepia(0);
+		opacity: 1;
+	}
+	&:focus-within{
+		filter: sepia(0);
+		opacity: 1;
+	}
+}
+main ol, main ul{
+	padding-left: 1em;
+}
+::selection{
+	background: var(--acc);
+	color: var(--bg);
+}
+
