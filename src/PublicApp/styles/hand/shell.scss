@@ -93,10 +93,20 @@ a--logo{
 }
 
 //--app nav
+.a--nav{
+	@media screen and (min-height: 20em){
+		position: sticky;
+		top: 0;
+		z-index: 1;
+	}
+}
 .a--nava{
 	@extend %buttonish;
 	&:focus, &:hover{
 		@extend %buttonishHover;
+	}
+	@media screen and (min-height: 20em){
+		box-shadow: 0 0 5px 8px var(--bg);
 	}
 }
 .a--navl{
