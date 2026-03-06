@@ -11,6 +11,7 @@ a--main{
 	display: block;
 	margin: auto;
 	max-width: 92%;
+	min-width: 8em;
 	padding: 0.5em;
 	width: 52em;
 	@media screen and (min-width: 25em){
@@ -91,19 +92,19 @@ a--end{
 
 //--app nav
 .a--nav{
-	@media screen and (min-height: 30em){
+	@media screen and (min-height: 20em){
 		position: sticky;
 		top: 0;
 		z-index: 100;
-		@media screen and (min-width: 62em){
-			left: 0;
-			position: fixed;
-		}
+	}
+	@media screen and (min-height: 20em) and (min-width: 62em){
+		left: 0;
+		position: fixed;
 	}
 }
 .a--nava{
 	@extend %buttonish;
-	@media screen and (min-width: 62em){
+	@media screen and (min-height: 20em) and (min-width: 62em){
 		border-radius: 0 0.3em 0.8em 0;
 	}
 	&:focus, &:hover{
@@ -116,7 +117,7 @@ a--end{
 	flex-wrap: wrap;
 	gap: 0.5em;
 	margin: 0 0 0.5em;
-	@media screen and (min-width: 62em){
+	@media screen and (min-height: 20em) and (min-width: 62em){
 		flex-direction: column;
 	}
 }
