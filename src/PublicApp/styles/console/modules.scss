@@ -74,6 +74,19 @@ pre:has(code){
 		content: repeat('| ', 80);
 	}
 }
+@include codeLabels(
+	$bg: var(--bg),
+	$fg: var(--fg),
+	$left: -0.5em,
+	$position: absolute,
+	$postContent: '":"',
+	$pseudo: after,
+	$top: -1.8em
+);
+pre[class^="language-"]:has(code){
+	overflow: visible;
+	margin-top: 2.8em;
+}
 .token{
 	&.atrule,
 	&.attr-value,

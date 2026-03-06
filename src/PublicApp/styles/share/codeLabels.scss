@@ -1,0 +1,35 @@
+@mixin codeLabels(
+	$bg: 'black',
+	$fg: '#ccc',
+	$indent: -5.9em,
+	$left: 0,
+	$position: sticky,
+	$postContent: null,
+	$pseudo: before,
+	$side: left,
+	$top: 0
+){
+	pre[class^="language-"]:has(code){
+		position: relative;
+		&:#{$pseudo}{
+			background: #{$bg};
+			border-left: 8px solid #{$bg};
+			color: #{$fg};
+			content: attr(class) #{$postContent};
+			display: block;
+			#{$side}: $left;
+			@if $side == 'right'{
+				margin-left: auto;
+			}
+			overflow: hidden;
+			padding: 0.2em 0.5em;
+			@if $position == 'sticky'{
+				position: absolute;
+			}
+			position: $position;
+			text-indent: $indent;
+			top: $top;
+			width: fit-content;
+		}
+	}
+}

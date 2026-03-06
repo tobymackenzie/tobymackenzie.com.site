@@ -51,6 +51,7 @@ pre code{
 pre:has(code){
 	@extend %altTheme;
 }
+@include codeLabels($bg: var(--bg), $fg: var(--fg));
 .token{
 	&.attr-value,
 	&.cdata,

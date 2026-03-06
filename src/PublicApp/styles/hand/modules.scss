@@ -57,6 +57,19 @@ pre code{
 	overflow: auto;
 	padding: 0.8em;
 }
+@include codeLabels(
+	$bg: var(--fg),
+	$fg: var(--bg),
+	$indent: -4.9em,
+	$position: relative
+);
+pre[class^="language-"]:has(code){
+	overflow: visible;
+	&:before{
+		border-radius: 1em 12em 1em 14em / 14em 1em 12em 1em;
+		transform: translate(-0.6em, 0.7em) rotate(-20deg);
+	}
+}
 .token{
 	&.atrule,
 	&.attr-value,

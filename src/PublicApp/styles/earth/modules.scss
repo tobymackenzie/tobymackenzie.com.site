@@ -58,6 +58,7 @@ pre:has(code){
 		@extend %normalTheme;
 	}
 }
+@include codeLabels($bg: var(--fg), $fg: var(--bg));
 .token{
 	&.atrule,
 	&.attr-value,

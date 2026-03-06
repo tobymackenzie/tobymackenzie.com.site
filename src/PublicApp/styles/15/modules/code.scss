@@ -1,4 +1,5 @@
 //==tokens
+@include codeLabels($bg: var(--codeBG), $fg: var(--codeFG));
 .token{
 	&.atrule,
 	&.attr-value,
