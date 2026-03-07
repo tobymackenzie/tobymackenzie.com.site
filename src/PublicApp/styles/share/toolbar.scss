@@ -1,0 +1,23 @@
+@mixin toolbar($spacing: -1.9em, $type: null){
+	.toolbar{
+		display: flex;
+		justify-content: end;
+		left: 0;
+		pointer-events: none;
+		position: sticky;
+		top: 0;
+		//--properly overlay content, a hack
+		margin-bottom: $spacing;
+		pre[class^='language-'] &{
+			@if $type == 'subtab'{
+				margin: 0 0 $spacing;
+			}@else{
+				margin: $spacing 0 0;
+			}
+		}
+		> *{
+			pointer-events: all;
+		}
+	}
+}
+@include toolbar();

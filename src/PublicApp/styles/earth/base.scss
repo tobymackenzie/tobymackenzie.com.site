@@ -18,6 +18,9 @@ a{
 html, body, dialog, hr{
 	@extend %normalTheme;
 }
+:popover-open{
+	@extend %normalTheme;
+}
 button, input, select{
 	@extend %buttonish;
 	&:focus, &:hover{

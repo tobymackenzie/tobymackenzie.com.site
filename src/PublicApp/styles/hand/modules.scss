@@ -7,6 +7,7 @@ m--img img{
 		margin: 0 0 1em 1em;
 	}
 }
+@include toolbar($spacing: -2.5em, $type: 'subtab');
 
 //--blog
 .relNav hr:last-child{
@@ -159,6 +160,10 @@ dialog{
 	box-shadow: 0 0 5px 20px var(--bg);
 	//--hack to ensure close button doesn't cover stuff on theme dialog
 	min-width: 19em;
+}
+:popover-open:has(code){
+	background: none;
+	border: 0;
 }
 .closeAct, .closeBtn{
 	border: 0;
