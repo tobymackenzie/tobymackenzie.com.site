@@ -27,3 +27,11 @@ if(document.addEventListener){
 	var ancientStyles = document.querySelector('link[rel="stylesheet"]');
 	ancientStyles.rel = 'x';
 }
+dev: {
+	if(document.querySelector){
+		var navsta = document.querySelector('.a--navsta');
+		if(navsta){
+			navsta.accessKey = 't';
+		}
+	}
+}
