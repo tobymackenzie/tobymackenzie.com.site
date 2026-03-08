@@ -8,9 +8,7 @@ function main(container){
 		container = body;
 	}
 	var els = container.querySelectorAll('pre:has(code)');
-	console.log(els);
 	els.forEach(function(el){
-		console.log(el);
 		el.setAttribute('data-breakover', '1');
 		var toolbar = el.querySelector('.toolbar');
 		if(!toolbar){
