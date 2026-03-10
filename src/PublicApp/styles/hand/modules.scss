@@ -71,6 +71,15 @@ pre[class^="language-"]:has(code){
 		transform: translate(-0.6em, 0.7em) rotate(-20deg);
 	}
 }
+pre:has(code){
+	&:popover-open:popover-open:popover-open{
+		overflow: visible;
+		code{
+			max-height: 82vh;
+			max-width: 90vw;
+		}
+	}
+}
 .token{
 	&.atrule,
 	&.attr-value,

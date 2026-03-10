@@ -1,20 +1,23 @@
 ::backdrop{
 	background: rgba(black, 0.6);
 }
-%dialog{
+%dialogColor{
 	@extend %secondaryAreaColors;
-	border: 3px solid var(--navBorder);
 	@include supports('dark-theme'){
 		background: var(--navBG);
 	}
 }
 dialog{
-	@extend %dialog;
+	border: 3px solid var(--navBorder);
+	@extend %dialogColor;
 }
 :popover-open{
-	@extend %dialog;
+	border: 3px solid var(--navBorder);
+	&:not(:has(code)){
+		@extend %dialogColor;
+	}
 }
-@include toolbar($spacing: -1.7em, $type: 'subtab');
+@include toolbar($spacing: -1.7em);
 .closeAct, .closeBtn{
 	background: none;
 	border: 0;

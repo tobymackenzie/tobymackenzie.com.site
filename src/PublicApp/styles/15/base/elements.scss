@@ -45,18 +45,27 @@ code{
 			content: '`'
 		}
 	}
+	pre[class^='language-'] &{
+		padding-top: 0.4em;
+	}
 	pre &{
 		display: block;
-		overflow: auto;
 		padding: 1em;
 		@include mq('print'){
-			padding: 0;
+			padding: 0 !important;
 			&:after, &:before{
 				content: '```';
 				display: block;
 			}
 		}
 	}
+}
+pre:has(code){
+	background: map-get($colors, codeBG);
+	background: var(--codeBG);
+	color: map-get($colors, codeFG);
+	color: var(--codeFG);
+	overflow: auto;
 }
 del{
 	text-decoration-color: map-get($colors, proofreadersMark);

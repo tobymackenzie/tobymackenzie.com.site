@@ -75,6 +75,20 @@ pre:has(code){
 		content: repeat('| ', 80);
 	}
 }
+pre:popover-open{
+	background: var(--bg);
+	color: var(--fg);
+	&:popover-open:popover-open:after{
+		position: fixed;
+		top: 0;
+	}
+	&:before{
+		display: none;
+	}
+	code{
+		overflow: visible;
+	}
+}
 @include codeLabels(
 	$bg: var(--bg),
 	$fg: var(--fg),
