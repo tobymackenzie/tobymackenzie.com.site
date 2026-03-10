@@ -1,5 +1,5 @@
 //==tokens
-@include codeLabels($bg: var(--codeFG), $fg: var(--codeBG));
+@include codeLabels($bg: var(--linkFocusFG), $fg: var(--linkFocusBG));
 .token{
 	&.atrule,
 	&.attr-value,
