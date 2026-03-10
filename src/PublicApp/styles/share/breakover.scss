@@ -2,9 +2,15 @@
 	&[data-breakover='open']:popover-open{
 		margin: auto;
 		max-height: 90vh;
+		max-height: 96dvh;
 		max-width: 90vw;
+		max-width: 96dvw;
 		overflow: auto;
 		position: fixed;
+		@media screen and (min-width: 32em){
+			max-height: 90vh;
+			max-width: 90vw;
+		}
 	}
 }
 [data-breakover]{
