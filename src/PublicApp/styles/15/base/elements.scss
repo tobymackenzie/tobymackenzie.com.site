@@ -31,42 +31,6 @@ b em, b i, em b, em strong, i b, i strong, strong em, strong i{
 button{
 	font-size: 1em;
 }
-code{
-	background: map-get($colors, codeBG);
-	background: var(--codeBG);
-	color: map-get($colors, codeFG);
-	color: var(--codeFG);
-	display: inline-block; //-# prevents wrapping of element
-	font-family: inherit;
-	padding: 0 0.5em;
-	vertical-align: middle; //-# baseline seems off, this looks best
-	@include mq('print'){
-		&:after, &:before{
-			content: '`'
-		}
-	}
-	pre[class^='language-'] &{
-		padding-top: 0.4em;
-	}
-	pre &{
-		display: block;
-		padding: 1em;
-		@include mq('print'){
-			padding: 0 !important;
-			&:after, &:before{
-				content: '```';
-				display: block;
-			}
-		}
-	}
-}
-pre:has(code){
-	background: map-get($colors, codeBG);
-	background: var(--codeBG);
-	color: map-get($colors, codeFG);
-	color: var(--codeFG);
-	overflow: auto;
-}
 del{
 	text-decoration-color: map-get($colors, proofreadersMark);
 	text-decoration-color: var(--proofreadersMarkFG);
