@@ -12,9 +12,6 @@ code{
 			content: '`'
 		}
 	}
-	pre[class^='language-'] &{
-		padding-top: 0.4em;
-	}
 	pre &{
 		display: block;
 		padding: 1em;
@@ -26,12 +23,16 @@ code{
 			}
 		}
 	}
+	pre[class^='language-'] &{
+		padding-top: 0.4em;
+	}
 }
 pre:has(code){
 	background: map-get($colors, codeBG);
 	background: var(--codeBG);
 	color: map-get($colors, codeFG);
 	color: var(--codeFG);
+	max-height: 80dvh;
 	overflow: auto;
 }
 //==tokens
