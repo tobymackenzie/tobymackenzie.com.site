@@ -175,6 +175,55 @@ class SymfonyHelper{
 }</code></pre>
 	<h3 id="code-shell">Shell</h3>
 	<pre><code class="language-sh">grep -E '(fatal error|Fatal|Critical|internal redir|PHP Parse|Stack trace)' /var/log/{apache2,httpd}/*error.log 2&gt; /dev/null </code></pre>
+	<pre><code>#!/bin/sh
+(shopt -s expand_aliases 2&gt; /dev/null) &amp;&amp; shopt -s expand_aliases
+#--edit: edit argument(s) in `vi`. If passed a command, will run that command and pipe to `vi`.  Otherwise, pass as arguments to `vi`.
+editor="${VISUAL:-${EDITOR:-vi}}"
+if [ -s /dev/stdin ]; then
+	usingStdin=1
+else
+	usingStdin=0
+fi
+if [ ! -e "$1" ] &amp;&amp; ([ -x "$(command -v "$1")" ] || type "$1" &gt;/dev/null 2&gt;&amp;1); then
+	useCmd=1
+else
+	useCmd=0
+fi
+if [ "$usingStdin" = 1 ] || [ "$useCmd" = 1 ]; then
+	dashOpt=''
+	ro=''
+	case "$editor" in
+		vi|vim|gvim|mvim)
+			addDash=1
+			for opt in "$@"; do
+				if [ "$opt" = '-' ]; then
+					addDash=0
+				fi
+			done
+			if [ "$addDash" = 1 ]; then
+				dashOpt='-'
+			fi
+			ro='-R'
+		;;
+	esac
+	if [ "$usingStdin" = 1 ]; then
+		set -- "$ro" "$@" "$dashOpt"
+		$editor "$@"
+	else
+		cmd="$1"
+		shift
+		args="$*"
+		set -- "$ro" "$dashOpt"
+		if [ -n "$args" ]; then
+			# shellcheck disable=SC2086
+			$cmd $args | $editor "$@"
+		else
+			$cmd | $editor "$@"
+		fi
+	fi
+else
+	$editor "$@"
+fi</code></pre>
 	<h2 id="images">Images</h2>
 	<div>
 		<a href="/_assets/demo/tree.jpg"><img src="/_assets/demo/tree.jpg" alt="redbud tree in bloom" width="400" /></a>
