@@ -9,6 +9,7 @@ switchTheme(
 		'earth': 'Earth',
 		'agua': 'Agua',
 		'ancient': 'Fallback',
+		'': 'None',
 		'Third Party': {
 			'https://unpkg.com/magick.css': 'Magick CSS',
 			'https://unpkg.com/papercss@1.9.2/dist/paper.min.css': 'Paper CSS',
