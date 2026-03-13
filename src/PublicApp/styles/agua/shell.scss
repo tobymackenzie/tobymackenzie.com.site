@@ -1,0 +1,168 @@
+html{
+	background: repeating-linear-gradient(55deg, #0090, var(--bgAlt), #0090 22em), var(--bg);
+	font-family: 'Marker Felt', Papyrus, Luminari, Chalkduster, fantasy, sans-serif;
+	font-size: 1.1em;
+	line-height: 1.5;
+	text-shadow: 0 0 4px;
+	@media only screen and (prefers-color-scheme: dark){
+		text-shadow: 0 0 7px;
+	}
+}
+body{
+	margin: 0;
+	padding: 0;
+}
+a--main{
+	display: block;
+	margin: auto;
+	max-width: 92%;
+	min-width: 8em;
+	padding: 0.5em;
+	width: 52em;
+	@media screen and (min-width: 25em){
+		padding: 1em;
+	}
+}
+.a--0{
+	border-bottom: 6px double var(--fg);
+}
+footer hr:last-child{
+	display: none;
+}
+// a--bg{
+// }
+
+//--header
+.a--head{
+	padding: 1em 1em 0.1em;
+	text-align: center;
+	hr{
+		margin: 1em 0 0;
+	}
+}
+a--htag{
+	margin-right: 1em;
+}
+.a--message{
+	display: inline-block;
+}
+a--logo, a--end, a--htag{
+	color: $color-lightFG;
+	color: var(--accAlt);
+}
+a--logo, a--end{
+	display: inline-block;
+	font-weight: bold;
+	transform: rotate(0);
+	transition: transform 0.5s ease;
+	&:hover{
+		transform: rotate(-720deg);
+		color: #6a6;
+	}
+	//--remove transitions for users who prefer it
+	//-@ https://mobile.twitter.com/scottjehl/status/1085600505299111936
+	//-@ https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/
+	@media (prefers-reduced-motion: reduce), (update: slow){
+		//-# short time period to ensure any animation / transition end events still fire
+		transition-duration: 0.01ms !important;
+	}
+}
+a--logo{
+	font-size: 1.2em;
+	transform: rotate(-15deg);
+}
+.a--logoa{
+	text-decoration: none;
+}
+a--end{
+	padding: 1em;
+}
+
+//--app nav
+.a--nav{
+	@media screen and (min-height: 20em){
+		position: sticky;
+		top: 0;
+		z-index: 100;
+	}
+	@media screen and (min-height: 20em) and (min-width: 62em){
+		left: 0;
+		position: fixed;
+	}
+}
+.a--nava{
+	@extend %buttonish;
+	@media screen and (min-height: 20em) and (min-width: 62em){
+		border-radius: 0 0.3em 0.8em 0;
+	}
+	&:focus, &:hover{
+		@extend %buttonishHover;
+	}
+}
+.a--navl{
+	align-items: start;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5em;
+	margin: 0 0 0.5em;
+	@media screen and (min-height: 20em) and (min-width: 62em){
+		flex-direction: column;
+	}
+}
+.a--navr{
+	bottom: 0;
+	position: fixed;
+	right: 0;
+	z-index: 100;
+}
+.a--navba, .a--navra, a--navsearch{
+	a--navt{
+		@extend %sro;
+	}
+	&:before{
+		margin: 0 0.2em;
+	}
+}
+.a--navra{
+	border-radius: 0.8em 0 0 0;
+	padding: 0.1em 0.2em 0 0.4em;
+	&:before{
+		content: '▲';
+		font-size: 1.4em;
+		position: relative;
+	}
+}
+.a--navba{
+	&:before{
+		content: '▼';
+		position: relative;
+		top: 0.1em;
+	}
+}
+//--site nav
+.a--snava{
+	text-decoration: none;
+}
+.a--snavsearch{
+	button{
+		&:before{
+			content: '▶';
+			margin: 0 0.2em;
+			position: relative;
+			top: 0.1em;
+		}
+		span{
+			@extend %sro;
+		}
+	}
+	input{
+		width: 8em;
+		&:focus{
+			width: 12em;
+		}
+	}
+}
+a--snavsearcht{
+	@extend %sro;
+}
+

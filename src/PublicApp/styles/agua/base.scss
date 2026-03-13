@@ -1,0 +1,96 @@
+[tabindex='-1']:focus{
+	outline: none;
+}
+*{
+	//-# autoprefixer versions too high for handling border box, but it is too important
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+a{
+	color: $color-lightAcc;
+	color: var(--acc);
+	&:focus, &:hover{
+		color: $color-lightAccAlt;
+		color: var(--accAlt);
+	}
+}
+html, dialog, hr{
+	@extend %normalTheme;
+}
+:popover-open{
+	@extend %normalTheme;
+}
+button, input, select{
+	@extend %buttonish;
+	&:focus, &:hover{
+		@extend %buttonishHover;
+	}
+}
+h1, h2, h3, h4, h5, h6{
+	&:before{
+		margin-right: 0.4em;
+		text-shadow: none;
+	}
+}
+h1{
+	border-bottom: 6px double var(--fg);
+	color: $color-lightAccAlt;
+	color: var(--accAlt);
+	margin: 0 0 1em;
+	text-align: center;
+	&:before{
+		content: '🐟 🐠 🐡';
+	}
+	&:after{
+		content: '🐳 🦈 🪸';
+		margin-left: 0.4em;
+	}
+}
+h2, h3, h4, h5, h6{
+	color: var(--accAlt);
+	margin: 1.5em 0 1em;
+}
+h2:before{
+	content: '🐠';
+}
+h3:before{
+	content: '🐬';
+}
+h4:before{
+	content: '🐡';
+}
+h5:before{
+	content: '🐟';
+}
+h6:before{
+	content: '🪸';
+}
+hr{
+	border: 0;
+	border-top: 6px double var(--fg);
+	margin: 1.5em 0;
+}
+iframe, img, svg, video{
+	border-radius: 0.8em;
+	box-shadow: 0 0 2px 2px var(--fg);
+	filter: sepia(1) hue-rotate(120deg);
+	opacity: 0.8;
+	transition: filter 0.5s, opacity 0.5s;
+	&:focus, &:hover{
+		filter: sepia(0);
+		opacity: 1;
+	}
+	&:focus-within{
+		filter: sepia(0);
+		opacity: 1;
+	}
+}
+main ol, main ul{
+	padding-left: 1em;
+}
+::selection{
+	background: var(--acc);
+	color: var(--bg);
+}
+

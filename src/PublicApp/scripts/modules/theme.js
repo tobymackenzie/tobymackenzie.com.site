@@ -7,6 +7,7 @@ switchTheme(
 		'hand': 'Hand',
 		'console': 'Console',
 		'earth': 'Earth',
+		'agua': 'Agua',
 		'ancient': 'Fallback',
 		'Third Party': {
 			'https://unpkg.com/magick.css': 'Magick CSS',

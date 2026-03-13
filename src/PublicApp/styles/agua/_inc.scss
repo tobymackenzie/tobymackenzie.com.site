@@ -1,0 +1,140 @@
+/*
+🐟
+🐠
+🐡
+💦
+💧
+🦀
+🐬
+🐙
+🐳
+🦈
+🦑
+🪸
+🏝️
+*/
+//20b2aa light sea blue
+//00008b dark blue
+//8fbc8f dark sea green
+//2e8b57 sea green
+//00ffff aqua
+//3cb371 medium sea green
+//000080 navy
+//7fffd4 aquamarine
+$color-lightAcc: #2a6321;
+$color-lightAccAlt: #572; // dark green yellow
+$color-lightBG: #20b2aa; // aquamarine
+$color-lightBGAlt: #20ccba;
+$color-lightFG: #000060;
+$color-darkAcc: #9c9;
+$color-darkAccAlt: #00ffff; // aqua
+$color-darkBG: #000040;
+$color-darkBGAlt: #000070;
+$color-darkFG: #20b2cc;
+:root{
+	color-scheme: light dark;
+	--acc: #{$color-lightAcc};
+	--accAlt: #{$color-lightAccAlt};
+	--bg: #{$color-lightBG};
+	--bgAlt: #{$color-lightBGAlt};
+	--fg: #{$color-lightFG};
+	accent-color: var(--acc);
+	@media only screen and (prefers-color-scheme: dark){
+		--acc: #{$color-darkAcc};
+		--accAlt: #{$color-darkAccAlt};
+		--bg: #{$color-darkBG};
+		--bgAlt: #{$color-darkBGAlt};
+		--fg: #{$color-darkFG};
+	}
+}
+%normalTheme{
+	background: $color-lightBG;
+	background: var(--bg);
+	color: $color-lightFG;
+	color: var(--fg);
+}
+%altTheme{
+	background: $color-lightFG;
+	background: var(--fg);
+	color: $color-lightBG;
+	color: var(--bg);
+}
+
+//=====
+//==mixins
+//=====
+//--a11y
+@mixin sro(
+	$border: 0
+	,$clip: rect(0 0 0 0)
+	,$height: 1px
+	,$margin: -1px
+	,$overflow: hidden
+	,$padding: 0
+	,$position: absolute
+	,$width: 1px
+	,$wordWrap: normal
+){
+	border: $border;
+	clip: $clip;
+	height: $height;
+	margin: $margin;
+	overflow: $overflow;
+	padding: $padding;
+	position: $position;
+	width: $width;
+	word-wrap: $wordWrap;
+}
+%sro{
+	@include sro();
+}
+@mixin sroOff(
+	$border: initial
+	,$clip: auto
+	,$height: auto
+	,$margin: initial
+	,$overflow: visible
+	,$padding: initial
+	,$position: static
+	,$width: auto
+){
+	border: $border;
+	clip: $clip;
+	height: $height;
+	margin: $margin;
+	overflow: $overflow;
+	padding: $padding;
+	position: $position;
+	width: $width;
+}
+%sroOff{
+	@include sroOff();
+}
+
+//--actions
+%buttonish{
+	border: 0;
+	border-radius: 0.4em 0.8em 0.8em 0.8em;
+	background: $color-lightFG;
+	background: var(--acc);
+	box-shadow: 0 0 3px 2px var(--acc);
+	color: $color-lightBG;
+	color: var(--bg);
+	display: inline-block;
+	font: inherit;
+	padding: 0.3em 0.4em 0.1em;
+	text-decoration: none;
+	text-shadow: none;
+}
+%buttonishHover{
+	background: $color-lightAccAlt;
+	box-shadow: 0 0 3px 2px var(--accAlt);
+	background: var(--accAlt);
+	color: $color-lightBG;
+	color: var(--bg);
+}
+
+//--decoration
+%wavyLine{
+	wavy: wavy;
+}
