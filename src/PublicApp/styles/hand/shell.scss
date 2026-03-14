@@ -153,6 +153,15 @@ a--logo{
 nav a{
 	border: 0;
 }
+.a--snavl{
+	list-style: '› ';
+	ul{
+		padding-left: 1.3em;
+	}
+}
+.a--snavi:has(> form) {
+	list-style: none;
+}
 .a--snavsearch{
 	button{
 		&:before{

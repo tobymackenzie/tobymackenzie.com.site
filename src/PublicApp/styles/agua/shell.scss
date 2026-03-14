@@ -143,6 +143,15 @@ a--end{
 .a--snava{
 	text-decoration: none;
 }
+.a--snavl{
+	list-style: '💦 ';
+	ul{
+		list-style: '💧 ';
+	}
+}
+.a--snavi:has(> form) {
+	list-style: none;
+}
 .a--snavsearch{
 	button{
 		&:before{

@@ -155,6 +155,13 @@ a--end{
 .a--snava{
 	text-decoration: none;
 }
+.a--snavl{
+	list-style: none;
+	padding-left: 0;
+	ul{
+		padding-left: 2em;
+	}
+}
 .a--snavsearch{
 	button{
 		&:before{

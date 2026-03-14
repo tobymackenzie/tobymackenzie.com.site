@@ -131,6 +131,15 @@ a--logo{
 .a--snava{
 	text-decoration: none;
 }
+.a--snavl{
+	list-style: none;
+	padding-left: 0;
+	ul{
+		border-left: 6px solid;
+		margin-left: 0.2em;
+		padding-left: 1em;
+	}
+}
 .a--snavsearch{
 	button{
 		&:before{
