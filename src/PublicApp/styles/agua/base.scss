@@ -74,7 +74,7 @@ hr{
 iframe, img, svg, video{
 	border-radius: 0.8em;
 	box-shadow: 0 0 2px 2px var(--fg);
-	filter: sepia(1) hue-rotate(120deg);
+	filter: blur(1px) sepia(1) hue-rotate(120deg);
 	opacity: 0.8;
 	transition: filter 0.5s, opacity 0.5s;
 	&:focus, &:hover{
