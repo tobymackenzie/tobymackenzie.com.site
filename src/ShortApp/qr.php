@@ -18,17 +18,5 @@ if(class_exists('chillerlan\QRCode\QRCode', true)){
 
 		],
 	])));
-	$vCard = 'BEGIN:VCARD
-		VERSION:4.0
-		ADR:;;;Akron;Ohio;;USA
-		CATEGORIES:CSS,HTML,JavaScript,PHP
-		FN:Toby Mackenzie
-		EMAIL:public@tobymackenzie.com
-		N:Mackenzie;Toby
-		PHOTO:https://macn.me/_toby.jpg
-		TITLE:Webmaster
-		URL:https://www.tobmackenzie.com
-		URL:https://macn.me
-		END:VCARD'
-	;
+	$vCard = file_get_contents(DATA_PATH . '/card.vcf');
 }
