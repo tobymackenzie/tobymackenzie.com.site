@@ -57,6 +57,7 @@ if(doc.querySelector){
 			['god', 'dog'],
 			[/\boh boy\b/gi, 'oh buoy'],
 			[/\bi /gi, 'I, Boby, '],
+			['scientist', 'sciencetist'],
 			//--tech
 			['blog', 'web-pipe'],
 			['internet', 'information superhighway'],
