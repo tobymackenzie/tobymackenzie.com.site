@@ -166,7 +166,8 @@ Header setifempty X-Xss-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ /htm
 
 	##==public
 	##===serve wordpress for appropriate urls
-	RewriteCond %{ENV:TMWEB_SITE} public
+	RewriteCond %{HTTP_HOST} ^www\.tobymackenzie\.com$ [NC]
+	# RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^blog _/wp/index.php [END]
 	##===all other routes go through symfony
 	RewriteCond %{ENV:TMWEB_SITE} public
