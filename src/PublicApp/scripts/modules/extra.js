@@ -101,7 +101,7 @@ if(window.Date && document.querySelector){
 			//--make sure we update for all future runs
 			messageAdded = true;
 		}else if(messageAdded){
-			messageEl.innerHTML = '<a href="//bxln2ho3.com">Be excellent to each other</a>';
+			messageEl.innerHTML = 'Be excellent to each other';
 		}else{
 			//--random other message
 			//-! add more?
@@ -109,6 +109,10 @@ if(window.Date && document.querySelector){
 			if(rand < 10){
 				messageEl.innerHTML = messages['0106'];
 			}
+		}
+		//--wrap all with link to bxln site unless they have HTML
+		if(messageEl.children.length === 0){
+			messageEl.innerHTML = '<a href="//bxln2ho3.com">' + messageEl.innerHTML + '</a>';
 		}
 	});
 }
