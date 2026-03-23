@@ -67,6 +67,7 @@ if(window.Date && document.querySelector){
 			'0504': 'May the 4th be with you 🪦🪦🪦🪦',
 			'0505': 'Mayo the cinco be with you 🌮',
 			'0521': 'Tea time ☕️',
+			'0525': 'Don\'t Panic', // towel day
 			'0614': '🇨🇿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🇺🇸',
 			'0619': 'Emancipate 💪🏾', // Juneteenth
 			'0704': 'Happy independence 🎆',
