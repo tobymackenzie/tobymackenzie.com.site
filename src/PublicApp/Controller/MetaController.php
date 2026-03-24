@@ -201,6 +201,13 @@ class MetaController extends Controller{
 		){
 			$data['agents'] = [
 				'*'=> [
+					// 'Disallow'=> [
+						//--wp generated lists not that useful for search engines
+						//-! let tag sit for a while with 'noindex' to let google deindex
+						// '/blog/category/',
+						// '/blog/page/',
+						// '/blog/tag/',
+					// ],
 					'Crawl-delay'=> 10
 				]
 			];
