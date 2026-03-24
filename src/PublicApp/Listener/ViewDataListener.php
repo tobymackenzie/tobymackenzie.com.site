@@ -27,7 +27,7 @@ class ViewDataListener{
 		RequestStack $requestStack,
 		RouterInterface $router,
 		array $wraps,
-		string $host, 
+		string $host,
 		string $canonicalHost
 	){
 		$this->canonicalHost = $canonicalHost;
@@ -92,10 +92,7 @@ class ViewDataListener{
 		$data = $this->getDocData($request, $data);
 		$event->setData($data);
 	}
-	public function getDocData(Request $request = null, array $data = null){
-		if(!$data){
-			$data = [];
-		}
+	public function getDocData(Request $request = null, array $data = []){
 		if(!isset($data["doc"])){
 			$data["doc"] = [];
 		}
