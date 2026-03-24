@@ -58,7 +58,7 @@ Header setifempty X-Xss-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ /htm
 	RewriteRule ^ - [E=TMWEB_SITE:default]
 	#---public
 	#----public primary
-	RewriteCond %{HTTP_HOST} ^(t\.)?(www\.)tobymackenzie\.com$ [NC,OR]
+	RewriteCond %{HTTP_HOST} ^(www\.)tobymackenzie\.com$ [NC,OR]
 	#----direct IP access, in case DNS fails
 	RewriteCond %{HTTP_HOST} ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ [NC,OR]
 	RewriteCond %{HTTP_HOST} ^.*:.*:.*$ [NC,OR]
