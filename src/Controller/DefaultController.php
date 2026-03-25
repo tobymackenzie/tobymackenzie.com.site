@@ -19,7 +19,7 @@ class DefaultController extends Controller{
 		try{
 			return $wikiSite->viewAction($_format && $_format !== 'html' ? $id . '.' . $_format : $id);
 		}catch(\Exception $e){
-			$aliases = json_decode(file_get_contents(__DIR__ . '/../../../data/aliases.json'), true);
+			$aliases = json_decode(file_get_contents(__DIR__ . '/../../data/aliases.json'), true);
 			$alias = $aliases[$id] ?? null;
 			if($alias === null){
 				throw $this->createNotFoundException();

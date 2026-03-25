@@ -2,8 +2,8 @@
 namespace TJM\SyWeb;
 
 //--configure paths
-const APP_DIR = __DIR__;
-const PROJECT_DIR = APP_DIR . '/../..';
+const APP_DIR = __DIR__ . '/..';
+const PROJECT_DIR = APP_DIR;
 require(PROJECT_DIR . '/vendor/autoload.php');
 //--build app
 $app = new App([

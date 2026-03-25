@@ -285,7 +285,7 @@ class Build extends Model{
 						//-# rollup builds about 500 bytes smaller than webpack currently, so it's default.
 						case 'rollup':
 						default:
-							$command = "rollup {$file} --output.format iife --plugin " . escapeshellarg('./src/PublicApp/node_modules/@rollup/plugin-strip={labels: ["dev"]}') . " | uglifyjs --compress --mangle > {$destPath}";
+							$command = "rollup {$file} --output.format iife --plugin " . escapeshellarg('./node_modules/@rollup/plugin-strip={labels: ["dev"]}') . " | uglifyjs --compress --mangle > {$destPath}";
 						break;
 						case 'uglify':
 							$command = str_replace("\n", '', "uglifyjs

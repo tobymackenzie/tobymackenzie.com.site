@@ -30,10 +30,10 @@ services:
  PublicApp\Command\:
    autowire: true
    autoconfigure: true
-   resource: '%kernel.project_dir%/src/PublicApp/Command'
+   resource: '%kernel.project_dir%/src/Command'
  ##==controllers
  PublicApp\Controller\:
-   resource: '%kernel.project_dir%/src/PublicApp/Controller'
+   resource: '%kernel.project_dir%/src/Controller'
  ##==listeners
  app.headers_listener:
   class: PublicApp\Listener\HeadersListener

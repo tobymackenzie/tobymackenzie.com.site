@@ -133,4 +133,4 @@ services:
  PublicApp\Dev\:
    autowire: true
    autoconfigure: true
-   resource: '%kernel.project_dir%/src/PublicApp/Dev'
+   resource: '%kernel.project_dir%/src/Dev'
