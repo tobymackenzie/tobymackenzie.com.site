@@ -52,9 +52,12 @@ if($title || $thumbnail){
 		<div class="postMetaMain">
 <?php
 if(!is_page()){
+	//-# shorter date on list pages
+	$y = get_the_time('Y') == date('Y') ? '' : ', Y';
+	$dateFormat = is_singular() ? "F j$y \\a\\t H:i" : "M jS$y";
 ?>
 			<?php if(!$title){ ?><h2 class="postHeading"><a class="permalink u-url" href="<?=get_the_permalink()?>" title="<?=esc_attr(sprintf(__('Post "%s"', 'tmweb'), $permalinkTitle))?>" rel="bookmark"><?php } ?>
-				<time class="dt-published postTime" datetime="<?php the_time('Y-m-d G:i') ?>" pubdate="pubdate"><?php the_time('F jS, Y \a\t H:i') ?></time>
+				<time class="dt-published postTime" datetime="<?php the_time('Y-m-d G:i') ?>" pubdate="pubdate"><?php the_time($dateFormat) ?></time>
 			<?php if(!$title){ ?></a></h2><?php } ?>
 <?php
 	$tagTerms = [];
