@@ -57,18 +57,18 @@ if(window.Date && document.querySelector){
 			'0107': '👨‍💻 Code for good',
 			'0202': 'Happy groundhog day',
 			'0216': 'Go Cleveland',
-			'0229': 'Happy Leap Day',
+			'0229': 'Leap for joy',
 			'0314': '🟢 Take it easy as π',
 			'0317': '☘️  Top o\' the website to ya ☘️',
 			'0330': 'Go Akron',
 			'0401': 'loof ,lirpA ot emocleW',
-			'0422': '🌎 Be excellent to Earth 🌳',
-			'0501': 'May day. May day. 💪',
-			'0504': 'May the 4th be with you 🪦🪦🪦🪦',
+			'0422': '🌎 Love Mother Earth 🌳',
+			'0501': '<a href="https://youtu.be/tYJxU0TKr_Y">May day. May day.</a> 💪',
+			'0504': 'May the 4th be with you <a href="https://www.kent.edu/">🪦🪦🪦🪦</a>',
 			'0505': 'Mayo the cinco be with you 🌮',
 			'0521': 'Tea time ☕️',
-			'0525': 'Don\'t Panic', // towel day
-			'0614': '🇨🇿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🇺🇸',
+			'0525': '<a href="/42">Don\'t Panic</a>', // towel day
+			'0614': '🇨🇿 🏴󠁧󠁢󠁳󠁣󠁴󠁿 🇺🇸', // flag day
 			'0619': 'Emancipate 💪🏾', // Juneteenth
 			'0704': 'Happy independence 🎆',
 			'0708': '708y says',
@@ -77,7 +77,7 @@ if(window.Date && document.querySelector){
 			'1101': 'Hallow there, all',
 			'1105': '<a href="https://www.youtube.com/watch?v=RS2HLC0sipA">Remember, remember the 5th of November</a>',
 			'1111': 'Remember armistice, seek peace',
-			'1130': 'Yay, web standards 🏴󠁧󠁢󠁳󠁣󠁴󠁿', // Blue beanie day, St Andrews day
+			'1130': '<a href="https://www.w3.org/standards/">Yay, web standards</a> 🏴󠁧󠁢󠁳󠁣󠁴󠁿', // Blue beanie day, St Andrews day
 			'1224': 'Merry Christmas',
 			'1225': 'Merry Christmas 🎄',
 			'1231': 'Goodbye, ' + now.getFullYear() + '.  For auld lang syne.',
