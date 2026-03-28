@@ -173,7 +173,7 @@ if(doc.querySelector){
 					phrase += '  ';
 				break;
 				default:
-					phrase += '  ';
+					phrase += ' ';
 				break;
 			}
 			$firstP.childNodes[0].textContent = phrase + $firstP.childNodes[0].textContent;
