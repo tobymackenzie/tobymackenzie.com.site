@@ -104,6 +104,13 @@ if(doc.querySelector){
 		//--funny intro / outro
 		var $firstP = doc.querySelector('p');
 		if($firstP){
+			//--we want first real `<p>`
+			if($firstP.firstChild.nodeName.toLowerCase() === 'm--img'){
+				var $p2 = doc.querySelector('p:nth-of-type(2)');
+				if($p2){
+					$firstP = $p2;
+				}
+			}
 			var phrases = [
 				'Here ye, here ye!',
 				'Abraham Lincoln once said:',
@@ -176,6 +183,11 @@ if(doc.querySelector){
 			$main = doc.querySelector('main');
 		}
 		if($main){
+// Potato, potato.
+// It was a simpler time.
+// And with his dying breath
+// Viva LA revolution
+
 			var phrases = [
 				'All hail King Bluetooth!',
 				'Always know where your towel is.',
