@@ -271,6 +271,7 @@ if(doc.querySelector){
 			while(!done && ++i < 10){
 				try{
 					$main.insertBefore($p, $footer);
+					done = true;
 				}catch(e){
 					$footer = $footer.parentNode;
 				}
