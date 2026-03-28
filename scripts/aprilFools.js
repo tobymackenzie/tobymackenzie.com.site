@@ -265,16 +265,11 @@ if(doc.querySelector){
 			];
 			var $p = document.createElement('p');
 			$p.innerText = getRandItem(phrases);
-			var $footer = $main.querySelector('footer');
-			var done = false;
-			var i = 0;
-			while(!done && ++i < 10){
-				try{
-					$main.insertBefore($p, $footer);
-					done = true;
-				}catch(e){
-					$footer = $footer.parentNode;
-				}
+			var $foot = $main.querySelector('.jp-relatedposts, footer, .relNav');
+			try{
+				$foot.parentNode.insertBefore($p, $foot);
+			}catch(e){
+				$main.appendChild($p);
 			}
 		}
 	};
