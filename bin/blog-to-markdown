@@ -46,6 +46,7 @@ $events->addListener(ConvertedContentEvent::class, function($event){
 		'sshID'=> $conf['ssh'] ?? 'toby',
 	],
 	'dbPrefix'=> '15wp_',
+	'defaultCategory'=> 'toby',
 	'destination'=> __DIR__ . '/../data/content/blog',
 	'eventDispatcher'=> $events,
 ]))();
