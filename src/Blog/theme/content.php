@@ -78,9 +78,13 @@ if(!is_page()){
 				<span class="postTagsList">
 <?php
 		foreach($tagTerms as $tag){
+			if(is_singular() || !TMWebWPTheme::doesPostHaveMore()){
 ?>
 					<span class="postTag"><a class="postTagAction p-category" href="<?=esc_url(get_tag_link($tag))?>" rel="tag"><?=$tag->name?></a></span>
+<?php 		}else{ ?>
+					<span class="postTag p-category" rel="tag"><?=$tag->name?></span>
 <?php
+			}
 		}
 ?>
 				</span>
