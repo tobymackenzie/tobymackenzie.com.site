@@ -18,6 +18,19 @@ if(window.Date && document.querySelector){
 		js: assetBase + '/scripts/aprilFools.js',
 	});
 
+	//--css naked day
+	if(window.TJM_THEMELOAD){
+		initHoliday({
+			date: '0409',
+			do: function(){
+				TJM_THEMELOAD('');
+			},
+			undo: function(){
+				TJM_THEMELOAD(localStorage.getItem('tjm-theme') || '15');
+			},
+		});
+	}
+
 	//--halloween
 	initHoliday({
 		date: '1022',
@@ -62,6 +75,7 @@ if(window.Date && document.querySelector){
 			'0317': '☘️  Top o\' the website to ya ☘️',
 			'0330': 'Go Akron',
 			'0401': 'loof ,lirpA ot emocleW',
+			'0409': '<a href="https://css-naked-day.org/">Lay it bare with HTML</a>',
 			'0422': '🌎 Love Mother Earth 🌳',
 			'0501': '<a href="https://youtu.be/tYJxU0TKr_Y">May day. May day.</a> 💪',
 			'0504': 'May the 4th be with you <a href="https://www.kent.edu/">🪦🪦🪦🪦</a>',
