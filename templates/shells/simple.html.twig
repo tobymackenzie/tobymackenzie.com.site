@@ -7,7 +7,7 @@
 {%	set canonical = 'https://www.tobymackenzie.com' ~ app.request.server.get('REQUEST_URI') %}
 {% endif %}
 {% if canonical is defined %}
-<link href="{{canonical}}" rel="canonical" />
+<link rel="canonical" href="{{canonical}}" />
 {% endif %}
 {#--meta for browser #}
 {{parent()}}
@@ -32,15 +32,15 @@ this solution causes the problems:
 - extra markup in shell
 - ie 6-8 with js enabled rendered the site decently, but now get limited styles
 #}
-<link href="{{asset(assets.styles_path ~ '/ancient.css')}}?c" rel="stylesheet" />
-<link href="{{asset(assets.styles_path ~ '/15.css')}}?c" media="only all" rel="stylesheet" />
+<link rel="stylesheet" href="{{asset(assets.styles_path ~ '/ancient.css')}}?c" />
+<link rel="stylesheet" href="{{asset(assets.styles_path ~ '/15.css')}}?c" media="only all" />
 {#--
 load pre scripts.  canonical must be in DOM beforehand
 blocking render until executed because of reload and re-theme potential
 #}
 <script src="{{assets.scripts_path}}/pre.js" blocking="render" type="{% if app.environment == 'dev' %}module{% else %}application/javascript{% endif %}"></script>
 {#--other meta #}
-<link href="{{path('public_app_manifest')}}" rel="manifest" />
+<link rel="manifest" href="{{path('public_app_manifest')}}" />
 {% endblock %}
 
 {% block docPreScripts %}
@@ -54,6 +54,6 @@ script `type="application/javascript"` to block some old browsers.  blocks IE8- 
 {% endblock %}
 
 {% block docPostScripts %}
-<script{% if app.environment == 'dev' %} type="module"{% else %} async="async" defer="defer" type="application/javascript"{% endif %} src="{{assets.scripts_path}}/post.js?c"></script>
+<script src="{{assets.scripts_path}}/post.js?c"{% if app.environment == 'dev' %} type="module"{% else %} async="async" defer="defer" type="application/javascript"{% endif %}></script>
 
 {% endblock %}
