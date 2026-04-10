@@ -45,7 +45,7 @@
 		,"tjm/sy-web": "^0.11"
 		,"tjm/utils": "^0.0"
 		,"tjm/wpthemehelper": "^1"
-		,"tjm/wp-to-markdown": "^0.0"
+		,"tjm/wp-to-markdown": "^0"
 		,"wpackagist-plugin/classic-editor": "^1.2"
 		,"wpackagist-plugin/jetpack": "^15.0"
 		,"wpackagist-plugin/wordpress-importer": "^0"

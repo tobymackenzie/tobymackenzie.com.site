@@ -49,5 +49,6 @@ $events->addListener(ConvertedContentEvent::class, function($event){
 	'defaultCategory'=> 'toby',
 	'destination'=> __DIR__ . '/../data/content/blog',
 	'eventDispatcher'=> $events,
+	'mediaSyncPath'=> "{$conf['ssh']}:/var/www/sites/tobymackenzie.com/dist/public/_/wp-content/uploads",
 ]))();
 
