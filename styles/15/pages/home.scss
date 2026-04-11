@@ -5,4 +5,25 @@
 			margin-top: 0;
 		}
 	}
+	main ul{
+		list-style: none;
+		padding-left: 0;
+		@include supports('small'){
+			// column-count: 2;
+			column-width: 12em;
+			// display: flex;
+			// flex-wrap: wrap;
+			gap: 1em 1em;
+		}
+	}
+	main li{
+		@include supports('small'){
+			border: 1px solid var(--quoteBorder);
+			break-inside: avoid;
+			// flex: 1 1 15em;
+			padding: 0.5em;
+			text-wrap: balance;
+			text-align: center;
+		}
+	}
 }
