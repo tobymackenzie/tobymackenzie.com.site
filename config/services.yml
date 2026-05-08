@@ -11,7 +11,13 @@ services:
  ParsedownExtra:
    class: ParsedownExtra #-! required because not namespaced
  TJM\Wiki\Wiki:
-   arguments: [{'path': '%data_content.path%', 'fileSystemCaseInsensitvity': false}]
+   arguments:
+      $opts:
+        path: '%data_content.path%'
+        eventDispatcher: '@event_dispatcher'
+        fileSystemCaseInsensitvity: false
+   calls:
+      - addPlugin: ['@TJM\WikiSite\WikiSite']
  TJM\WikiSite\WikiSite:
     arguments:
       $opts:
@@ -19,13 +25,14 @@ services:
           - '@TJM\WikiSite\FormatConverter\HtmlToMarkdownConverter'
           - '@TJM\WikiSite\FormatConverter\MarkdownToCleanMarkdownConverter'
           - '@TJM\WikiSite\FormatConverter\MarkdownToHtmlConverter'
-        eventDispatcher: '@event_dispatcher'
         name: "Toby Mackenzie's Site"
         router: '@router'
         shellTemplate: ~
         twig: '@twig'
         viewRoute: 'public_wiki_page'
         viewTemplate: '@@Public/default/simplePage'
+        #--set to hydrate, otherwise not instantiated
+        wiki: '@TJM\Wiki\Wiki'
  ##==commands
  PublicApp\Command\:
    autowire: true
