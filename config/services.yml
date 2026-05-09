@@ -18,6 +18,12 @@ services:
         fileSystemCaseInsensitvity: false
    calls:
       - addPlugin: ['@TJM\WikiSite\WikiSite']
+      - addPlugin: ['@TJM\WikiBlog\Blog']
+ TJM\WikiBlog\Blog:
+   arguments:
+      $site: '@TJM\WikiSite\WikiSite'
+      $opts:
+        name: "Toby's Log"
  TJM\WikiSite\WikiSite:
     arguments:
       $opts:
@@ -27,7 +33,7 @@ services:
           - '@TJM\WikiSite\FormatConverter\MarkdownToHtmlConverter'
         name: "Toby Mackenzie's Site"
         router: '@router'
-        shellTemplate: ~
+        shellTemplate: '@@Public/shells/full'
         twig: '@twig'
         viewRoute: 'public_wiki_page'
         viewTemplate: '@@Public/default/simplePage'

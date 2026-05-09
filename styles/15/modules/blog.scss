@@ -38,6 +38,9 @@
 }
 
 //==posts
+.blogPosts{
+	border-top: 3px solid var(--mainBorder);
+}
 .post{
 	@extend %mainItemColors;
 	@extend %mainItemLayout;

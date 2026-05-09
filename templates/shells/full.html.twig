@@ -30,6 +30,8 @@
 	<a--main><main role="main">
 		<a name="main" id="main"></a>
 		{% block docMain %}{% endblock %}
+		{# for blog #}
+		{% block content %}{% endblock %}
 	</main></a--main>
 	{% block docAside %}{% endblock %}
 	{% if page.secureUrl is defined and doc.name != 'error' %}

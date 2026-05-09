@@ -17,6 +17,9 @@ class DefaultController extends Controller{
 	){
 		//-!! temporarily pass through to new action with fall back to old logic until we have redirects implemented properly
 		try{
+			//--set our timezone for this request only, unsure if ini would cause problems elsewhere
+			date_default_timezone_set('America/New_York');
+
 			return $wikiSite->viewAction($_format && $_format !== 'html' ? $id . '.' . $_format : $id);
 		}catch(\Exception $e){
 			$aliases = json_decode(file_get_contents(__DIR__ . '/../../data/aliases.json'), true);

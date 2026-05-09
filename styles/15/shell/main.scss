@@ -24,6 +24,10 @@ a--main{
 	* + &{
 		border-top-style: solid;
 	}
+	article &{
+		border: none;
+		padding: 0;
+	}
 
 	//==colors
 	@extend %appContainerColors;

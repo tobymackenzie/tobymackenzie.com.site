@@ -341,17 +341,21 @@ class Build extends Model{
 			'/sites',
 		];
 		//---get wiki page paths
-		$paths = $this->wikiSite->getPagePaths();
+		$findOpts = '-not -path "*/mentions/*" -not -path "*/comments/*"';
+		//----temp disabled problem posts
+		$findOpts .= ' -not -path "*/blog/2018/01/16/1752*"';
+		$findOpts .= ' -not -path "*/blog/2020/04/02/2764*"';
+		$findOpts .= ' -not -path "*/blog/2022/01/18/3600*"';
+		$findOpts .= ' -not -path "*/blog/2023/06/14/welcome-redbud-tree*"';
+		$findOpts .= ' -not -path "*/blog/2024/08/08/4418*"';
+		$findOpts .= ' -not -path "*/blog/2026/04/20/4864*"';
+		$findOpts .= ' -not -path "*/blog/category/*"';
+
+		$paths = $this->wikiSite->getPagePaths(null, $findOpts);
 		//---add multi-format other paths
 		$paths[] = $this->router->generate('public_robots');
 		$paths[] = $this->router->generate('public_site_nav');
 		foreach($paths as $key=> $path){
-			//--disable blog for now
-			if(substr($path, 0, 5) === '/blog'){
-				unset($paths[$key]);
-				continue;
-			}
-
 			if(!pathinfo($path, PATHINFO_EXTENSION)){
 				if($path === '/'){
 					$path = '/index';

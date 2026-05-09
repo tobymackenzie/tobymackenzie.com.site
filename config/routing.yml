@@ -84,9 +84,9 @@ public_page:
     id: .*
 public_wiki_page:
   controller: TJM\WikiSite\WikiSite::viewAction
-  path: /{path}
+  path: '{path}'
   requirements:
-    path: .*
+    path: '.*'
 #--base for outputting generic URLs
 public_base:
  defaults:
