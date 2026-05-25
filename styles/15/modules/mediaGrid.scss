@@ -1,14 +1,12 @@
 .mediaGrid{
 	@extend %block;
 	list-style: none;
+	text-align: center;
 	@include supports('tiny'){
 		align-items: center;
-		display: grid;
-		grid-gap: 1em;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1em 2em;
 		justify-content: center;
-		grid-template-columns: repeat(2,auto);
-	}
-	@include supports('small'){
-		grid-template-columns: repeat(3,auto);
 	}
 }
