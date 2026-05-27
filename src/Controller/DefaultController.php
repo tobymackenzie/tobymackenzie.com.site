@@ -4,6 +4,7 @@ use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use TJM\WikiSite\WikiSite;
+use TJM\Wiki\Exception\InvalidPathException;
 
 class DefaultController extends Controller{
 	const SUPPORTED_FORMATS = [null, 'html', 'md', 'txt', 'xhtml'];
@@ -19,6 +20,8 @@ class DefaultController extends Controller{
 			date_default_timezone_set('America/New_York');
 
 			return $wikiSite->viewAction($_format && $_format !== 'html' ? $id . '.' . $_format : $id);
+		}catch(InvalidPathException $e){
+			throw $this->createNotFoundException();
 		}catch(NotFoundHttpException $e){
 			$aliases = json_decode(file_get_contents(__DIR__ . '/../../data/aliases.json'), true);
 			$alias = $aliases[$id] ?? null;
