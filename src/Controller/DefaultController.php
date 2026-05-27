@@ -25,7 +25,7 @@ class DefaultController extends Controller{
 			if($alias === null){
 				throw $this->createNotFoundException();
 			}
-			if(strpos($alias, '/') === false){
+			if(strpos($alias, '/') !== 0){
 				$alias = '/' . $alias;
 			}
 			if($_format && $_format !== 'html'){
