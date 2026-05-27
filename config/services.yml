@@ -23,6 +23,7 @@ services:
    arguments:
       $site: '@TJM\WikiSite\WikiSite'
       $opts:
+        maxCount: 50
         name: "Toby's Log"
  TJM\WikiSite\WikiSite:
     arguments:

@@ -11,6 +11,7 @@ use TJM\Data\Model;
 use TJM\Files\Files;
 use TJM\StaticWebTasks\Task as StaticWebTask;
 use TJM\WebCrawler\Response;
+use TJM\Wiki\Wiki;
 use TJM\WikiSite\WikiSite;
 
 class Build extends Model{
@@ -342,19 +343,32 @@ class Build extends Model{
 		];
 		//---get wiki page paths
 		$findOpts = '-not -path "*/mentions/*" -not -path "*/comments/*"';
-		//----temp disabled problem posts
-		$findOpts .= ' -not -path "*/blog/2018/01/16/1752*"';
-		$findOpts .= ' -not -path "*/blog/2020/04/02/2764*"';
-		$findOpts .= ' -not -path "*/blog/2022/01/18/3600*"';
-		$findOpts .= ' -not -path "*/blog/2023/06/14/welcome-redbud-tree*"';
-		$findOpts .= ' -not -path "*/blog/2024/08/08/4418*"';
-		$findOpts .= ' -not -path "*/blog/2026/04/20/4864*"';
-		$findOpts .= ' -not -path "*/blog/category/*"';
-
 		$paths = $this->wikiSite->getPagePaths(null, $findOpts);
+		//-! add blog tags, years, months, days, blog home, feed, media (maybe symlink?)
 		//---add multi-format other paths
 		$paths[] = $this->router->generate('public_robots');
 		$paths[] = $this->router->generate('public_site_nav');
+		$paths[] = $this->router->generate('public_page', ['id'=> 'blog']);
+		foreach($this->wikiSite->getWiki()->listDir('/blog', Wiki::LIST_WIKIPATH) as $path){
+			if(is_numeric(pathinfo($path, PATHINFO_FILENAME))){
+				$paths[] = $this->router->generate('public_page', ['id'=> substr($path, 1)]);
+				//-! takes too long to build currently
+				// foreach($this->wikiSite->getWiki()->listDir($path, Wiki::LIST_WIKIPATH) as $mPath){
+					// $paths[] = $this->router->generate('public_page', ['id'=> substr($mPath, 1)]);
+					// foreach($this->wikiSite->getWiki()->listDir($mPath, Wiki::LIST_WIKIPATH) as $dPath){
+						// $paths[] = $this->router->generate('public_page', ['id'=> substr($dPath, 1)]);
+					// }
+				// }
+			}
+		}
+		//-! takes too long to build currently
+		// foreach(explode("\n", $this->wikiSite->getWiki()->getFile('/blog/tag.csv')->getContent()) as $key=> $tagLine){
+			// if($key === 0 || empty($tagLine)){
+				// continue;
+			// }
+			// $tag = explode(',', $tagLine)[0];
+			// $paths[] = $this->router->generate('public_page', ['id'=> 'blog/tag/' . $tag]);
+		// }
 		foreach($paths as $key=> $path){
 			if(!pathinfo($path, PATHINFO_EXTENSION)){
 				if($path === '/'){

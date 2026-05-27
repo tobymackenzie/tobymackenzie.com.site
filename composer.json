@@ -8,8 +8,7 @@
 	}
 	,"config": {
 		"allow-plugins": {
-			"composer/installers": true,
-			"johnpbloch/wordpress-core-installer": true
+			"composer/installers": true
 		},
 		"bin-dir": "bin"
 	}
@@ -18,11 +17,6 @@
 			{"file": "config/public.local.yml"}
 			,{"file": "config/symfony.local.yml"}
 		]
-		,"installer-paths": {
-			"vendor/wp/plugin-{$name}": ["type:wordpress-plugin"]
-			,"vendor/wp/theme-{$name}": ["type:wordpress-theme"]
-		}
-		,"wordpress-install-dir": "vendor/wp/wordpress"
 	}
 	,"conflict": {
 		"symfony/symfony": "*"
@@ -38,19 +32,12 @@
 		,"incenteev/composer-parameter-handler": "^2.0"
 		,"twig/twig": "^2.13|^3.11.2"
 
-		,"johnpbloch/wordpress": "^6.0"
 		,"tjm/files": "^0.0"
 		,"tjm/wiki-blog": "^0.0"
 		,"tjm/wiki-site": "^0.4"
 		,"tjm/sy-site": "^0.11"
 		,"tjm/sy-web": "^0.11"
 		,"tjm/utils": "^0.0"
-		,"tjm/wpthemehelper": "^1"
-		,"tjm/wp-to-markdown": "^0"
-		,"wpackagist-plugin/classic-editor": "^1.2"
-		,"wpackagist-plugin/jetpack": "^15.0"
-		,"wpackagist-plugin/wordpress-importer": "^0"
-
 
 		,"erusev/parsedown-extra": "~0.7"
 	}
@@ -64,19 +51,12 @@
 		,"symfony/web-profiler-bundle": "^6.4"
 		,"tjm/static-web-tasks": "^0.2"
 	}
-	,"repositories": [
-		{
-			"type": "composer"
-			,"url": "https://wpackagist.org"
-		}
-	]
 	,"scripts": {
 		"post": [
 			"Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
 			,"bin/public cache:clear --env prod"
 			,"bin/public cache:clear"
 			,"bin/public assets:install --symlink --relative dist/public"
-			,"bin/blog-install"
 		]
 		,"post-install-cmd": ["@post"]
 		,"post-update-cmd": ["@post"]

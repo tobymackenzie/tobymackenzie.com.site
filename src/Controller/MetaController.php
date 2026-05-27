@@ -119,7 +119,7 @@ class MetaController extends Controller{
 						,'HTTP'=> 'Apache 2.4'
 						,'Data'=> 'SQLite, File system, MySQL'
 						,'Code'=> 'PHP'
-						,'Frameworks / Software'=> 'Symfony 5, Parsedown Extra, WordPress'
+						,'Frameworks / Software'=> 'Symfony 5, CommonMark, Parsedown Extra'
 						,'Provisioning'=> 'Ansible'
 					]
 					,'Development'=> [
@@ -211,9 +211,9 @@ class MetaController extends Controller{
 					'Crawl-delay'=> 10
 				]
 			];
-			$data['other'] = [
-				'Sitemap'=> 'https://www.tobymackenzie.com/blog/sitemap.xml'
-			];
+			// $data['other'] = [
+				// 'Sitemap'=> 'https://www.tobymackenzie.com/blog/sitemap.xml'
+			// ];
 		//--disallow for all others
 		}else{
 			$data['agents'] = [
@@ -273,34 +273,34 @@ class MetaController extends Controller{
 					'items'=> [
 						[
 							'label'=> 'WWW'
-							,'url'=> '/blog/category/www/'
+							,'url'=> '/blog/category/www'
 						]
 						,[
 							'label'=> 'Personal'
-							,'url'=> '/blog/category/toby/'
+							,'url'=> '/blog/category/toby'
 						]
 						,[
 							'label'=> 'Computers & Tech'
-							,'url'=> '/blog/category/computer/'
+							,'url'=> '/blog/category/computer'
 						]
 						,[
 							'label'=> 'Thoughts & Ideas'
-							,'url'=> '/blog/category/ideas/'
+							,'url'=> '/blog/category/ideas'
 						]
 						,[
 							'label'=> 'Et Cetera'
-							,'url'=> '/blog/category/et-cetera/'
+							,'url'=> '/blog/category/et-cetera'
 						]
-						,[
-							'label'=> 'Search blog'
-							,'name'=> 's'
-							,'template'=> 'search'
-							,'url'=> '/blog/'
-						]
+						// ,[
+							// 'label'=> 'Search blog'
+							// ,'name'=> 's'
+							// ,'template'=> 'search'
+							// ,'url'=> '/blog/'
+						// ]
 					]
 					,'label'=> 'Blog'
 					,'type'=> 'blog'
-					,'url'=> '/blog/'
+					,'url'=> '/blog'
 				]
 				,[
 					'label'=> 'My Github'

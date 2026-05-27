@@ -11,8 +11,7 @@ Header always set X-Content-Type-Options 'nosniff'
 
 ##--tell browser where safe scripts, etc can be loaded from
 #-@ https://scotthelme.co.uk/content-security-policy-an-introduction/
-<If "%{REQUEST_URI} =~ m#^/?_/wp/wp-admin#i || %{REQUEST_URI} =~ m#^/?blog/#i || %{REQUEST_URI} =~ m#^/?_/wp/index\.php#i || %{HTTP_HOST} =~ m#\.t#">
-	#-# do nothing for WordPress, CSP causes problems, outright breaks admin
+<If "%{HTTP_HOST} =~ m#\.t#">
 	#-# do nothing for dev
 </If>
 <ElseIf "%{REQUEST_URI} =~ m#^/?examples/#i">
@@ -32,12 +31,6 @@ Header setifempty X-Frame-Options "sameorigin" "expr=%{CONTENT_TYPE} =~ /html/"
 ##--force enable xss protection and block rendering of page if attack detected.  IE and Chrome.  may not be necessary, since the default behavior should be satisfactory
 #-@ https://scotthelme.co.uk/hardening-your-http-response-headers/#x-xss-protection
 Header setifempty X-Xss-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ /html/"
-
-##--block execution of php in uploads directories
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteRule ^_/wp-content/uploads/.*\.php$ - [F,L,NC]
-</IfModule>
 
 ##=====
 #==rewrites
@@ -74,23 +67,14 @@ Header setifempty X-Xss-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ /htm
 	RewriteCond %{HTTP_HOST} ^tmdev\.t$ [NC]
 	RewriteRule ^ - [E=TMWEB_DEV:1]
 
-	##==block admin access to others
-	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteCond %{HTTPS} =on
-	RewriteRule ^/?_wpmin$ /index.php [CO=12345:67890:%{HTTP_HOST}:0:/:secure:httponly,END]
-	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteCond %{HTTPS} !=on [OR]
-	RewriteCond %{HTTP_COOKIE} !^(.*;)?\ ?12345=67890\ ?(;.*)?$
-	RewriteRule ^/?_/wp/wp-login.php /index.php [END]
-
 	##==redirects from old paths
 	##===tobymackenzie.name / cosmicosmo.ath.cx
 	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^log$ /blog/ [L,QSA,R=302]
+	RewriteRule ^/?log/?$ /blog [L,QSA,R=302]
 	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^log/(.*) /blog/$1 [L,QSA,R=301]
+	RewriteRule ^/?log/(.*) /blog/$1 [L,QSA,R=301]
 	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^pages/10 /about [L,QSA,R=301]
+	RewriteRule ^/?pages/10 /about [L,QSA,R=301]
 	##===tobymackenzie.wordpress.com
 	##--redirect blog-like urls to blog
 	RewriteCond %{ENV:TMWEB_SITE} public
@@ -98,14 +82,14 @@ Header setifempty X-Xss-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ /htm
 	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^/?([\d]{4}/[\d]{2}/[\d]{2}/.+) /blog/$1 [L,QSA,R=302]
 	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^/?feed/?$ /blog/feed/ [L,QSA,R=302]
-	##===wordpress slug changes
+	RewriteRule ^/?feed/?$ /blog/feed [L,QSA,R=302]
+	##===blog slug changes
 	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^/?blog/category/webd/?$ /blog/category/www/ [L,QSA,R=302]
+	RewriteRule ^/?blog/category/webd/?$ /blog/category/www [L,QSA,R=302]
 	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^/?blog/tag/idea/?$ /blog/tag/ideas/ [L,QSA,R=302]
+	RewriteRule ^/?blog/tag/idea/?$ /blog/tag/ideas [L,QSA,R=302]
 	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^/?blog/2020/12/06/ive-got-home-internet-again /blog/2020/12/06/home-internet-again/  [L,QSA,R=302]
+	RewriteRule ^/?blog/2020/12/06/ive-got-home-internet-again /blog/2020/12/06/home-internet-again  [L,QSA,R=302]
 	##==fix urls
 	##--wrong case
 	RewriteCond %{ENV:TMWEB_SITE} public
@@ -122,21 +106,11 @@ Header setifempty X-Xss-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ /htm
 	#-# don't redirect for http 0.9 requests (really old browsers)
 	RewriteCond %{HTTP_HOST} ^.+$
 	RewriteRule ^ %{REQUEST_SCHEME}://www.tobymackenzie.com%{REQUEST_URI} [L,R=302,QSA]
-	##===force 'https' for blog sitemap and cron, to prevent 'http' URL's from showing up in the former
-	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteCond %{HTTPS} !=on
-	RewriteRule ^blog/[A-Za-z0-9]*\-?sitemap\-?[0-9]*.xml$ https://www.tobymackenzie.com%{REQUEST_URI} [L,QSA,R=302]
-	RewriteCond %{HTTPS} !=on
-	RewriteRule /?_/wp/wp-cron\.php https://www.tobymackenzie.com%{REQUEST_URI} [L,QSA,R=307]
 
 	#==redirect system files
 	##===remove index file from URL to prevent duplicate content
 	RewriteCond %{ENV:REDIRECT_STATUS} ^$
 	RewriteRule ^index\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
-	##===redirect wp index to blog
-	RewriteCond %{REQUEST_URI} ^/?_/wp/?$ [OR]
-	RewriteCond %{REQUEST_URI} ^/?_/wp/index\.php$
-	RewriteRule ^ /blog/ [END,R=301]
 
 	##==no trailing slash for index files
 	#--redirect to canonical
@@ -167,14 +141,7 @@ Header setifempty X-Xss-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ /htm
 		Options +Indexes
 	</If>
 
-	##==public
-	##===serve wordpress for appropriate urls
-	RewriteCond %{HTTP_HOST} ^www\.tobymackenzie\.com$ [NC]
-	# RewriteCond %{ENV:TMWEB_SITE} public
-	#--allow media paths through to normal index
-	RewriteCond %{REQUEST_URI} !^/?blog/media [NC]
-	RewriteRule ^blog _/wp/index.php [END]
-	##===all other routes go through symfony
+	##==public: all other routes go through symfony
 	RewriteCond %{ENV:TMWEB_SITE} public
 	RewriteRule ^ %{ENV:BASE}/index.php [L]
 
