@@ -21,7 +21,7 @@ class DefaultController extends Controller{
 			date_default_timezone_set('America/New_York');
 
 			return $wikiSite->viewAction($_format && $_format !== 'html' ? $id . '.' . $_format : $id);
-		}catch(\Exception $e){
+		}catch(NotFoundHttpException $e){
 			$aliases = json_decode(file_get_contents(__DIR__ . '/../../data/aliases.json'), true);
 			$alias = $aliases[$id] ?? null;
 			if($alias === null){
