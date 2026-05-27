@@ -2,9 +2,7 @@
 namespace PublicApp\Controller;
 use DateTime;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use TJM\WikiSite\WikiSite;
 
 class DefaultController extends Controller{
