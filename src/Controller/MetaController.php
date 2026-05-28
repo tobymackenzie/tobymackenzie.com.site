@@ -96,6 +96,11 @@ class MetaController extends Controller{
 			$data['format'] = $format;
 		}
 		$response = $this->renderPage('@Public/meta/error.' . $format . '.twig', $data);
+		if($format === 'xhtml'){
+			$response->headers->set('Content-Type', 'application/xhtml+xml');
+		}else{
+			$response->headers->set('Content-Type', 'text/html');
+		}
 		$response->setStatusCode($code);
 		return $response;
 	}
