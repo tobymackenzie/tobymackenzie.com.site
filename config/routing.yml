@@ -34,14 +34,6 @@ public_error_coffee:
   controller: PublicApp\Controller\MetaController::showExceptionAction
   path: /coffee
   defaults: {code: 418}
-public_humans_default_redirect:
-  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
-  path: /humans.html
-  defaults: {path: /humans, permanent: true}
-public_humans:
-  controller: PublicApp\Controller\MetaController::humansAction
-  path: /humans.{_format}
-  defaults: {_format: 'html'}
 public_proxy_service_worker:
   controller: PublicApp\Controller\MetaController::proxyServiceWorkerAction
   path: /_proxy-sw.js
