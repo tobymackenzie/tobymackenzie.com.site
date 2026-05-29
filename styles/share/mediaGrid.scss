@@ -1,8 +1,13 @@
 .mediaGrid{
-	@extend %block;
 	list-style: none;
 	text-align: center;
-	@include supports('tiny'){
+	margin: 0;
+	padding: 0;
+	* + &{
+		margin-top: 15px;
+		margin-top: 0.9375rem;
+	}
+	@media screen and (min-width: 18em){
 		align-items: center;
 		display: flex;
 		flex-wrap: wrap;
