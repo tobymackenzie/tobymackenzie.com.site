@@ -43,6 +43,16 @@ class MetaController extends Controller{
 		$response->setMaxAge(86400);
 		return $response;
 	}
+	public function blankAction(string $_format){
+		try{
+			$response = $this->renderPage('@Public/default/simplePage.' . $_format . '.twig', ['content'=> '']);
+		}catch(LoaderError $e){
+			throw $this->createNotFoundException("Format {$_format} not currently supported");
+		}
+		$response->setPublic();
+		$response->setMaxAge(86400);
+		return $response;
+	}
 	//-@ https://symfony.com/doc/current/controller/error_pages.html#custom-exception-controller
 	public function exceptionAction(Request $request, FlattenException $exception){
 		$code = $exception->getStatusCode();

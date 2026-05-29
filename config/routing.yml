@@ -26,6 +26,14 @@ public_blog:
 public_app_manifest:
   controller: PublicApp\Controller\MetaController::appManifestAction
   path: /app-manifest.json
+public_blank_default_redirect:
+  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+  path: /blank.html
+  defaults: {path: /blank, permanent: true}
+public_blank:
+  controller: PublicApp\Controller\MetaController::blankAction
+  path: /blank.{_format}
+  defaults: {_format: 'html'}
 public_error_418:
   controller: PublicApp\Controller\MetaController::showExceptionAction
   path: /418
