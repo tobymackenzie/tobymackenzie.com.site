@@ -25,6 +25,7 @@ services:
       $opts:
         maxCount: 50
         name: "Toby's Log"
+        shortName: "Blog"
  TJM\WikiSite\WikiSite:
     arguments:
       $opts:
