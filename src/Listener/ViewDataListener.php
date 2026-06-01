@@ -44,11 +44,15 @@ class ViewDataListener{
 		}
 		$format = $data['format'] ?? $request->getRequestFormat();
 		$isHtmlish = $format === 'html' || $format === 'xhtml';
-		if($isHtmlish && !empty(preg_match(':<h1.*>(.*)</h1>:i', $data['content'], $matches))){
-			$data['doc']['title'] = $matches[1];
-		}
 		if(empty($data['doc']['title'])){
-			$data['doc']['title'] = $data['name'];
+			if(!empty($data['title'])){
+				$data['doc']['title'] =  $data['title'];
+			}elseif($isHtmlish && !empty(preg_match(':<h1.*>(.*)</h1>:i', $data['content'], $matches))){
+				$data['doc']['title'] = $matches[1];
+			}
+			if(empty($data['doc']['title'])){
+				$data['doc']['title'] =  $data['name'];
+			}
 		}
 		$isHome = !empty($data['pagePath']) && preg_match(':^/?index(\.[\w]+)?:', $data['pagePath']);
 		if(empty($data['doc']['name'])){
