@@ -26,6 +26,7 @@ services:
         maxCount: 50
         name: "Toby's Log"
         shortName: "Blog"
+        timezone: 'America/New_York'
  TJM\WikiSite\WikiSite:
     arguments:
       $opts:
@@ -34,6 +35,7 @@ services:
           - '@TJM\WikiSite\FormatConverter\MarkdownToCleanMarkdownConverter'
           - '@TJM\WikiSite\FormatConverter\MarkdownToHtmlConverter'
         name: "Toby Mackenzie's Site"
+        domain: '%public.canonical_host%'
         router: '@router'
         shellTemplate: '@@Public/shells/full'
         twig: '@twig'
@@ -46,6 +48,8 @@ services:
    autowire: true
    autoconfigure: true
    resource: '%kernel.project_dir%/src/Command'
+ TJM\WikiBlog\Command\PublishPostCommand:
+   tags: ['console.command']
  ##==controllers
  PublicApp\Controller\:
    resource: '%kernel.project_dir%/src/Controller'
