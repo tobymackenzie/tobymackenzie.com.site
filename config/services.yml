@@ -14,6 +14,7 @@ services:
    arguments:
       $opts:
         path: '%data_content.path%'
+        gitPath: '%data.path%'
         eventDispatcher: '@event_dispatcher'
         fileSystemCaseInsensitvity: false
    calls:
