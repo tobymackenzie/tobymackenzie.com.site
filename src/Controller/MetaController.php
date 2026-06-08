@@ -1,6 +1,5 @@
 <?php
 namespace PublicApp\Controller;
-use ParsedownExtra;
 use Symfony\Component\ErrorHandler\Exception\FlattenException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;

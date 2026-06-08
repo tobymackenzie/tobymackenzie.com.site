@@ -38,8 +38,6 @@
 		,"tjm/sy-site": "^0.11"
 		,"tjm/sy-web": "^0.11"
 		,"tjm/utils": "^0.0"
-
-		,"erusev/parsedown-extra": "~0.7"
 	}
 	,"require-dev": {
 		"chillerlan/php-qrcode": "^4.3"
