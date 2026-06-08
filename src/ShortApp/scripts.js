@@ -1,5 +1,5 @@
-import * as extra from '../PublicApp/scripts/modules/extra.js';
-import * as konamiCode from '../PublicApp/scripts/modules/konamiCode.js';
+import * as extra from '../../scripts/modules/extra.js';
+import * as konamiCode from '../../scripts/modules/konamiCode.js';
 
 (function(){
 	if(document.querySelector && window.CSS && CSS.supports && CSS.supports('backface-visibility: visible')){
