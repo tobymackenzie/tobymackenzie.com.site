@@ -208,14 +208,14 @@ html{
 }
 .qr{
 	position: absolute;
-	.cardBack &{
-		left: 1em;
-		top: 1em;
-	}
-	.cardFront &{
-		bottom: 2.7em;
-		right: 1em;
-	}
+}
+.qr-v{
+	left: 1em;
+	top: 1em;
+}
+.qr-url{
+	bottom: 2.7em;
+	right: 1em;
 }
 @media (min-width: 20em){
 	.cardFront{

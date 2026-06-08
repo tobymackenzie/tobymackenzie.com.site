@@ -39,9 +39,6 @@ $data = Yaml::parse(file_get_contents(DATA_PATH . '/card.yml'));
 						<span class="p-locality" itemprop="addressLocality"><?=$data['locality']?></span>,
 						<span class="p-region" itemprop="addressRegion"><?=$data['region']?></span>
 					</div>
-<?php if(!empty($qr)){ ?>
-					<img class="qr" src="<?=$qr->render($data['url'])?>" alt="QR code: <?=$data['urlLabel']?>" />
-<?php } ?>
 				</div>
 			</div>
 			<div class="cardFace cardBack">
@@ -54,7 +51,10 @@ $data = Yaml::parse(file_get_contents(DATA_PATH . '/card.yml'));
 				<div class="cardItem"><a href="<?=$data['blogUrl']?>"><?=$data['blogUrlLabel']?></a></div>
 				<div class="cardItem"><a href="<?=$data['githubUrl']?>"><?=$data['githubUrlLabel']?></a></div>
 <?php if(!empty($qr) && !empty($vCard)){ ?>
-				<img class="qr" src="<?=$qr->render($vCard)?>" alt="QR code: vCard" />
+				<img class="qr qr-v" src="<?=$qr->render($vCard)?>" alt="QR code: vCard" />
+<?php } ?>
+<?php if(!empty($qr)){ ?>
+					<img class="qr qr-url" src="<?=$qr->render($data['url'])?>" alt="QR code: <?=$data['urlLabel']?>" />
 <?php } ?>
 				<div class="a--message"><a href="<?=$data['messageUrl']?>"><?=$data['message']?></a></div>
 			</div>
