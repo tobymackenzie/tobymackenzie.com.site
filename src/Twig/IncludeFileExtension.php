@@ -10,7 +10,7 @@ abstract class IncludeFileExtension extends AbstractExtension{
 		$this->func = $func;
 		$this->path = $path;
 	}
-	public function getFunctions(){
+	public function getFunctions(): array{
 		return [
 			new TwigFunction($this->func, [$this, 'include']),
 		];

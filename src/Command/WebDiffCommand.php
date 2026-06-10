@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class WebDiffCommand extends Command{
-	protected function configure(){
+	protected function configure(): void{
 		$this
 			->setName('web:diff')
 			->setDescription("Compare output response for two different requests.")

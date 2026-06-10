@@ -8,7 +8,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 class WebRequestCommand extends Command{
-	protected function configure(){
+	protected function configure(): void{
 		$this
 			->setName('web:request')
 			->setDescription("Output response for a given request.")
