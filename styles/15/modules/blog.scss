@@ -41,6 +41,13 @@
 .postAside{
 	@extend %mainItemColors;
 	@extend %mainItemLayout;
+	.post &{
+		border: 0;
+		padding: 0;
+	}
+	.a--mhead{
+		padding: 0;
+	}
 }
 .postContent{
 	@extend %mainItemContentLayout;

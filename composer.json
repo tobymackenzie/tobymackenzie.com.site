@@ -33,7 +33,7 @@
 		,"twig/twig": "^2.13|^3.11.2"
 
 		,"tjm/files": "^0.0"
-		,"tjm/wiki-blog": "^0.0"
+		,"tjm/wiki-blog": "^0.1"
 		,"tjm/wiki-site": "^0.4"
 		,"tjm/sy-site": "^0.11"
 		,"tjm/sy-web": "^0.11"

@@ -342,7 +342,7 @@ class Build extends Model{
 			'/sites',
 		];
 		//---get wiki page paths
-		$findOpts = '-not -path "*/mentions/*" -not -path "*/comments/*"';
+		$findOpts = '-not -path "*/mentions/*"';
 		$paths = $this->wikiSite->getPagePaths(null, $findOpts);
 		//-! add blog tags, years, months, days, blog home, feed, media (maybe symlink?)
 		//---add multi-format other paths
