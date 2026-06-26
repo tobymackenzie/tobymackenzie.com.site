@@ -10,6 +10,8 @@ use Symfony\Component\Routing\RouterInterface;
 use TJM\Data\Model;
 use TJM\Files\Files;
 use TJM\StaticWebTasks\Task as StaticWebTask;
+use TJM\StaticWebTasks\SinglePathTask;
+use TJM\WebCrawler\Crawler;
 use TJM\WebCrawler\Response;
 use TJM\Wiki\Wiki;
 use TJM\WikiSite\WikiSite;
@@ -92,6 +94,10 @@ class Build extends Model{
 		$dest = $this->getDistPath($dist);
 		if($dest && is_dir($dest)){
 			return passthru("find -P {$dest} -mindepth 1 -delete");
+		}
+		$cache = $this->getDistCachePath($dist);
+		if(file_exists($cache)){
+			passthru("rm -r " . escapeshellarg($cache));
 		}
 		return false;
 	}
@@ -340,6 +346,52 @@ class Build extends Model{
 			$this->wikiSite = $kernel->getContainer()->get(WikiSite::class);
 		}
 
+		//--check for changed files since last build via cache, unless forcing
+		$buildMethod = 'full';
+		if(!$force && file_exists($this->getStaticCacheLastPath($dist))){
+			$paths = [];
+			$wikiPath = $this->wikiSite->getWiki()->getPath();
+			$newPaths = shell_exec('find ' . escapeshellarg($wikiPath) . ' -type f -newer ' . escapeshellarg($this->getStaticCacheLastPath($dist)));
+			if($newPaths && trim($newPaths)){
+				$newPaths = explode("\n", trim($newPaths));
+				//--we want to do something with the paths
+				if(count($newPaths) < 11){
+					$buildMethod = 'single';
+					$crawler = $this->getStaticPageCrawler();
+					foreach($newPaths as $path){
+						$path = substr($path, strlen($wikiPath));
+						$ext = pathinfo($path, PATHINFO_EXTENSION);
+						if($ext && $ext === 'md'){
+							if(strpos($path, '/') === false || strrpos($path, '/') !== 0){
+								$path = pathinfo($path, PATHINFO_DIRNAME) . '/' . pathinfo($path, PATHINFO_FILENAME);
+							}else{
+								$path = '/' . pathinfo($path, PATHINFO_FILENAME);
+							}
+						}
+						$paths[] = $path;
+						$task = new SinglePathTask($crawler, $this->getDistPath($dist), $path);
+						echo "building path $path\n";
+						$task->do();
+						if($ext === 'md'){
+							foreach($this->staticFormats as $format){
+								$altPath = $path . '.' . $format;
+								$paths[] = $altPath;
+								$task = new SinglePathTask($crawler, $this->getDistPath($dist), $altPath);
+								echo "building path $altPath\n";
+								$task->do();
+							}
+						}
+					}
+				}
+			}elseif($newPaths === null){
+				$buildMethod = 'none';
+				if($output){
+					$output->writeln("Nothing to build");
+				}
+			}
+		}
+
+		if($buildMethod === 'full'){
 		//--build path array
 		$exclude = [
 			'/.htaccess',
@@ -449,27 +501,8 @@ class Build extends Model{
 
 		//--build
 		//-! for certain targets eg github pages, we will need to generate redirect files for aliases
-		$host = $this->canonicalHost;
 		$task = new StaticWebTask(
-			[
-				// 'client'=> 'php ' . __DIR__ . '/../bin/console web:request',
-				'client'=> function($path) use($host){
-					global $app;
-					$syResponse = $app->getResponse(Request::create($path, 'GET', [], [], [], [
-						'HTTP_HOST'=> $host,
-						'HTTPS'=> 'on',
-					]));
-					$headers = [];
-					foreach($syResponse->headers as $key=> $value){
-						foreach($value as $subValue){
-							$headers[] = $key . ': ' . $subValue;
-						}
-					}
-					$response = new Response($syResponse->getContent(), $syResponse->getStatusCode(), $headers);
-					return $response;
-				},
-				'follow'=> false,
-			],
+			$this->getStaticPageCrawler(),
 			$this->getDistPath($dist),
 			[
 				//-! should come up with list from building these elsewhere?
@@ -479,12 +512,37 @@ class Build extends Model{
 		);
 		$task->do();
 		//-! should task return paths?
+		}
+
+		$this->markStaticCacheLast($dist);
 		static::$isBuild = false;
 		if(isset($origKernel)){
 			$app->setEnvironment($origEnv);
 			$app->setKernel($origKernel);
 		}
 		return $paths;
+	}
+	protected function getStaticPageCrawler(){
+		$host = $this->canonicalHost;
+		return new Crawler([
+			// 'client'=> 'php ' . __DIR__ . '/../bin/console web:request',
+			'client'=> function($path) use($host){
+				global $app;
+				$syResponse = $app->getResponse(Request::create($path, 'GET', [], [], [], [
+					'HTTP_HOST'=> $host,
+					'HTTPS'=> 'on',
+				]));
+				$headers = [];
+				foreach($syResponse->headers as $key=> $value){
+					foreach($value as $subValue){
+						$headers[] = $key . ': ' . $subValue;
+					}
+				}
+				$response = new Response($syResponse->getContent(), $syResponse->getStatusCode(), $headers);
+				return $response;
+			},
+			'follow'=> false,
+		]);
 	}
 
 	/*=====
@@ -521,6 +579,20 @@ class Build extends Model{
 	}
 	public function getStylesDistPath($dist = 'public'){
 		return $this->getAssetsDest($dist) . '/' . $this->stylesDest;
+	}
+	protected function getDistCachePath(string $dist = 'public', bool $create = false){
+		$path = $this->buildPath . '/.cache/' . $dist;
+		if($create && !is_dir($path)){
+			shell_exec('mkdir -p ' . escapeshellarg($path));
+		}
+		return $path;
+	}
+	protected function getStaticCacheLastPath(string $dist = 'public'){
+		return $this->getDistCachePath($dist) . '/static-last';
+	}
+	protected function markStaticCacheLast(string $dist = 'public'){
+		$this->getDistCachePath($dist, true);
+		return shell_exec('touch ' . escapeshellarg($this->getStaticCacheLastPath($dist)));
 	}
 
 	/*=====
