@@ -29,6 +29,9 @@ services:
         shortName: "Blog"
         timezone: 'America/New_York'
  TJM\WikiSite\WikiSite:
+    #--public only for build
+    #-? can we make this public only when prod created from dev?
+    public: true
     arguments:
       $opts:
         converters:

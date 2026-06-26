@@ -128,7 +128,6 @@ services:
           set: icm
           dest: 'search.svg'
           src: '135-search.svg'
-      wikiSite: '@TJM\WikiSite\WikiSite'
  ##==commands
  PublicApp\Dev\:
    autowire: true

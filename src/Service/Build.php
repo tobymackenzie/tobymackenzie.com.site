@@ -321,12 +321,24 @@ class Build extends Model{
 	==pages
 	=====*/
 	public function buildStaticPages($dist = 'public', $force = false, OutputInterface $output = null){
+		global $app;
 		//--no static for dev site
 		if($dist === 'dev'){
 			return false;
 		}
 		static::$isBuild = true;
 		$this->router->getContext()->setHost($this->canonicalHost);
+
+		//--need clean output in task, so use separate kernel, done here so we can get same Wiki for sharing cache
+		if($app->getEnvironment() !== 'prod'){
+			$origEnv = $app->getEnvironment();
+			$origKernel = $app->getKernel();
+			$app->setEnvironment('prod');
+			$app->setKernel($app->createKernel());
+			$kernel = $app->getKernel();
+			$kernel->boot();
+			$this->wikiSite = $kernel->getContainer()->get(WikiSite::class);
+		}
 
 		//--build path array
 		$exclude = [
@@ -443,11 +455,6 @@ class Build extends Model{
 				// 'client'=> 'php ' . __DIR__ . '/../bin/console web:request',
 				'client'=> function($path) use($host){
 					global $app;
-					//--need clean output
-					if($app->getEnvironment() !== 'prod'){
-						$app->setEnvironment('prod');
-						$app->setKernel($app->createKernel());
-					}
 					$syResponse = $app->getResponse(Request::create($path, 'GET', [], [], [], [
 						'HTTP_HOST'=> $host,
 						'HTTPS'=> 'on',
@@ -473,6 +480,10 @@ class Build extends Model{
 		$task->do();
 		//-! should task return paths?
 		static::$isBuild = false;
+		if(isset($origKernel)){
+			$app->setEnvironment($origEnv);
+			$app->setKernel($origKernel);
+		}
 		return $paths;
 	}
 
