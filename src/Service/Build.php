@@ -368,17 +368,33 @@ class Build extends Model{
 								$path = '/' . pathinfo($path, PATHINFO_FILENAME);
 							}
 						}
-						$paths[] = $path;
-						$task = new SinglePathTask($crawler, $this->getDistPath($dist), $path);
-						echo "building path $path\n";
-						$task->do();
-						if($ext === 'md'){
-							foreach($this->staticFormats as $format){
-								$altPath = $path . '.' . $format;
-								$paths[] = $altPath;
-								$task = new SinglePathTask($crawler, $this->getDistPath($dist), $altPath);
-								echo "building path $altPath\n";
-								$task->do();
+						$buildPath = function($path) use($crawler, $dist, &$paths){
+							$paths[] = $path;
+							$task = new SinglePathTask($crawler, $this->getDistPath($dist), $path);
+							echo "building path $path\n";
+							$task->do();
+						};
+						$buildPage = function($path) use($buildPath, $ext){
+							$buildPath($path);
+							if($ext === 'md'){
+								foreach($this->staticFormats as $format){
+									$buildPath($path . '.' . $format);
+								}
+							}
+						};
+						$buildPage($path);
+						if($ext === 'md' && substr($path, 0, 5) === '/blog'){
+							$fn = pathinfo($path, PATHINFO_FILENAME);
+							if($fn === 'mentions'){
+								//--for mentions, only need to build connected post
+								$buildPage(pathinfo($path, PATHINFO_DIRNAME));
+							}else{
+								//--for posts, we must build all parent "dirs"
+								$otherPath = pathinfo($path, PATHINFO_DIRNAME);
+								while(strlen($otherPath) > 1){
+									$buildPage($otherPath);
+									$otherPath = pathinfo($otherPath, PATHINFO_DIRNAME);
+								}
 							}
 						}
 					}
