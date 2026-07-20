@@ -15,8 +15,11 @@ use TJM\WebCrawler\Crawler;
 use TJM\WebCrawler\Response;
 use TJM\Wiki\Wiki;
 use TJM\WikiSite\WikiSite;
+use TJM\Data\AutoAccessorTrait;
 
-class Build extends Model{
+class Build{
+	use AutoAccessorTrait;
+
 	static protected $isBuild = false;
 
 	protected $assetLinks = [];
@@ -36,11 +39,6 @@ class Build extends Model{
 	protected $svgsDest = 'svgs';
 	protected ?WikiSite $wikiSite = null;
 
-	public function __construct($values = null){
-		if($values){
-			$this->set($values);
-		}
-	}
 	static public function isBuilding(){
 		return static::$isBuild;
 	}
