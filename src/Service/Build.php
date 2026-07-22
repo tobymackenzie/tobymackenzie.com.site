@@ -349,7 +349,7 @@ class Build{
 		if(!$force && file_exists($this->getStaticCacheLastPath($dist))){
 			$paths = [];
 			$wikiPath = $this->wikiSite->getWiki()->getPath();
-			$newPaths = shell_exec('find ' . escapeshellarg($wikiPath) . ' -not -path "*/blog/drafts/*" -type f -newer ' . escapeshellarg($this->getStaticCacheLastPath($dist)));
+			$newPaths = shell_exec('find ' . escapeshellarg($wikiPath) . ' -not -path "*/blog/drafts/*" -type f -not -name ".*" -newer ' . escapeshellarg($this->getStaticCacheLastPath($dist)));
 			if($newPaths && trim($newPaths)){
 				$newPaths = explode("\n", trim($newPaths));
 				//--we want to do something with the paths
