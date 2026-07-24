@@ -3,8 +3,7 @@ namespace TJM\SyWeb;
 
 //--configure paths
 const APP_DIR = __DIR__ . '/..';
-const PROJECT_DIR = APP_DIR;
-require(PROJECT_DIR . '/vendor/autoload.php');
+require(APP_DIR . '/vendor/autoload.php');
 //--build app
 $app = new App([
 	'bundles'=> [
@@ -19,7 +18,7 @@ $app = new App([
 	],
 	'paths'=> [
 		'app'=> APP_DIR,
-		'project'=> PROJECT_DIR,
+		'project'=> APP_DIR,
 	],
 ]);
 if(getenv('TMWEB_DEV')){
