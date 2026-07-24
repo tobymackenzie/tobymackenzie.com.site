@@ -1,5 +1,6 @@
 <?php
 namespace PublicApp\Controller;
+use PublicApp\TMSite;
 use Symfony\Component\ErrorHandler\Exception\FlattenException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -132,7 +133,7 @@ class MetaController extends Controller{
 		//--only allow for canonical
 		if(
 			preg_match("/^{$this->getParameter('public.host')}$/", $request->getHttpHost())
-			|| Build::isBuilding()
+			|| TMSite::isBuilding()
 		){
 			$data['agents'] = [
 				'*'=> [

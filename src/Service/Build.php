@@ -2,6 +2,7 @@
 namespace PublicApp\Service;
 use Exception;
 use DOMDocument;
+use PublicApp\TMSite;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Process\Process;
@@ -17,8 +18,6 @@ use TJM\Data\AutoAccessorTrait;
 
 class Build{
 	use AutoAccessorTrait;
-
-	static protected $isBuild = false;
 
 	protected $assetLinks = [];
 	protected string $buildPath = 'dist';
@@ -37,9 +36,6 @@ class Build{
 	protected $svgsDest = 'svgs';
 	protected ?WikiSite $wikiSite = null;
 
-	static public function isBuilding(){
-		return static::$isBuild;
-	}
 	public function linkAssets($dist = 'public'){
 		if($this->assetLinks){
 			$this->createAssetsDir($dist);
@@ -328,7 +324,7 @@ class Build{
 		if($dist === 'dev'){
 			return false;
 		}
-		static::$isBuild = true;
+		TMSite::setBuild(true);
 		$this->router->getContext()->setHost($this->canonicalHost);
 
 		//--need clean output in task, so use separate kernel, done here so we can get same Wiki for sharing cache
@@ -527,7 +523,7 @@ class Build{
 		}
 
 		$this->markStaticCacheLast($dist);
-		static::$isBuild = false;
+		TMSite::setBuild(false);
 		if(isset($origKernel)){
 			$app->setEnvironment($origEnv);
 			$app->setKernel($origKernel);

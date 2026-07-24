@@ -1,6 +1,6 @@
 <?php
 namespace PublicApp\Listener;
-use PublicApp\Service\Build;
+use PublicApp\TMSite;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\RouterInterface;
@@ -130,7 +130,7 @@ class ViewDataListener{
 		if($request && $data["doc"]['name'] !== 'error'){
 			$isCanonicalHost = $request->getHost() === $this->host;
 			$isHttps = $request->getScheme() === 'https';
-			$forceCanonical = Build::isBuilding();
+			$forceCanonical = TMSite::isBuilding();
 			if(!isset($data['canonical']) && ($format === 'html' || $format === 'xhtml') || $forceCanonical){
 				if(!$isHttps || !$isCanonicalHost || $format !== 'html' || $forceCanonical){
 					$currentRoute = $request->get('_route');
