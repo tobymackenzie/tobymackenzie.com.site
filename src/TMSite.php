@@ -9,6 +9,6 @@ class TMSite{
 		return static::$isBuild;
 	}
 	static public function setIsBuild(bool $val){
-		static::$isBuild = true;
+		static::$isBuild = $val;
 	}
 }
