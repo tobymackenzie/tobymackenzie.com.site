@@ -324,7 +324,7 @@ class Build{
 		if($dist === 'dev'){
 			return false;
 		}
-		TMSite::setBuild(true);
+		TMSite::setIsBuild(true);
 		$this->router->getContext()->setHost($this->canonicalHost);
 
 		//--need clean output in task, so use separate kernel, done here so we can get same Wiki for sharing cache
@@ -523,7 +523,7 @@ class Build{
 		}
 
 		$this->markStaticCacheLast($dist);
-		TMSite::setBuild(false);
+		TMSite::setIsBuild(false);
 		if(isset($origKernel)){
 			$app->setEnvironment($origEnv);
 			$app->setKernel($origKernel);
