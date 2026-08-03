@@ -130,6 +130,8 @@ a--snavsearcht{
 	&:before{
 		@extend %secondaryAreaIconColors;
 		content: '»';
+		display: inline-block;
+		height: 2rem;
 		margin-right: 0.8em;
 		vertical-align: middle;
 		@include mq('print'){
