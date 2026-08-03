@@ -80,6 +80,10 @@
 	@extend %single-icon;
 	@include oct-icon('email.svg');
 }
+%icon-light{
+	@extend %single-icon;
+	@include oct-icon('light.svg');
+}
 %icon-packagist{
 	@extend %single-icon;
 	@include oct-icon('packagist.svg');

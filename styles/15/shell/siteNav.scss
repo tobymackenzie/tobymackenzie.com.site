@@ -158,6 +158,11 @@ a--snavsearcht{
 			@extend %icon-home;
 		}
 	}
+	&[data-type='ideas']{
+		&:before{
+			@extend %icon-light;
+		}
+	}
 	&[data-type='info']{
 		&:before{
 			@extend %icon-info;

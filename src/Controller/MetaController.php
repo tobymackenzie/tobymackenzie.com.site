@@ -237,8 +237,13 @@ class MetaController extends Controller{
 					,'label'=> 'Blog'
 					,'type'=> 'blog'
 					,'url'=> '/blog'
-				]
-				,[
+				],
+				[
+					'label'=> 'Ideas'
+					,'type'=> 'ideas'
+					,'url'=> $this->router->generate($routeFormat ? 'public_page_formatted' : 'public_page', ['_format'=> $routeFormat, 'id'=> 'ideas'], $routeReferenceType)
+				],
+				[
 					'label'=> 'My Github'
 					,'type'=> 'github'
 					,'url'=> 'https://github.com/tobymackenzie'

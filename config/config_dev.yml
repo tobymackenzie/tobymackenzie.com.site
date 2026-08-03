@@ -85,6 +85,10 @@ services:
           dest: 'email.svg'
           src: 'mail-24.svg'
         -
+          set: oct
+          dest: 'light.svg'
+          src: 'light-bulb-16.svg'
+        -
           set: icm
           dest: 'file-text.svg'
           src: '035-file-text.svg'
