@@ -414,7 +414,8 @@ class Build{
 			'/sites',
 		];
 		//---get wiki page paths
-		$findOpts = '-not -path "*/mentions/*"';
+		//-! drafts should probably be blocked upstream
+		$findOpts = '-not -path "*/mentions/*" -not -path "*/drafts/*"';
 		$paths = $this->wikiSite->getPagePaths(null, $findOpts);
 		//-! add blog tags, years, months, days, blog home, feed, media (maybe symlink?)
 		//---add multi-format other paths
