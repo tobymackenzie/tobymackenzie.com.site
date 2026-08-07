@@ -404,7 +404,7 @@ class Build{
 								$otherPath = pathinfo($otherPath, PATHINFO_DIRNAME);
 							}
 							//--must build rss feed
-							$buildPage('/blog/feed');
+							$buildPage('/blog/feed.xml');
 						}
 					}
 				}
