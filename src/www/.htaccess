@@ -85,11 +85,11 @@ Header setifempty X-Xss-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ /htm
 	RewriteRule ^/?feed/?$ /blog/feed [L,QSA,R=302]
 	##===blog slug changes
 	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^/?blog/category/webd/?$ /blog/category/www [L,QSA,R=302]
+	RewriteRule ^/?blog/category/webd/?$ /blog/category/www [L,QSA,R=301]
 	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^/?blog/tag/idea/?$ /blog/tag/ideas [L,QSA,R=302]
+	RewriteRule ^/?blog/tag/idea/?$ /blog/tag/ideas [L,QSA,R=301]
 	RewriteCond %{ENV:TMWEB_SITE} public
-	RewriteRule ^/?blog/2020/12/06/ive-got-home-internet-again /blog/2020/12/06/home-internet-again  [L,QSA,R=302]
+	RewriteRule ^/?blog/2020/12/06/ive-got-home-internet-again /blog/2020/12/06/home-internet-again  [L,QSA,R=301]
 	##==fix urls
 	##--wrong case
 	RewriteCond %{ENV:TMWEB_SITE} public
@@ -97,7 +97,7 @@ Header setifempty X-Xss-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ /htm
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteRule ^/?(examples/css)/innerborderwrappedgrid(.*)$ /$1/innerBorderWrappedGrid$2  [L,NC,QSA,R=302]
 	##--misread src / href
-	RewriteRule ^/*(cdnjs\.cloudflare\.com/ajax/libs/html5shiv/3\.7\.3/html5shiv-printshiv\.min\.js)$ http://$1 [END,R=302]
+	RewriteRule ^/*(cdnjs\.cloudflare\.com/ajax/libs/html5shiv/3\.7\.3/html5shiv-printshiv\.min\.js)$ http://$1 [END,R=301]
 
 	##==canonical
 	##--send unknown hosts and direct ip access to canonical domains
