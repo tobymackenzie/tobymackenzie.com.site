@@ -318,7 +318,7 @@ class Build{
 	/*=====
 	==pages
 	=====*/
-	public function buildStaticPages($dist = 'public', $force = false, OutputInterface $output = null){
+	public function buildStaticPages($dist = 'public', ?array $newPaths = null, $force = false, OutputInterface $output = null){
 		global $app;
 		//--no static for dev site
 		if($dist === 'dev'){
@@ -340,61 +340,73 @@ class Build{
 
 		//--check for changed files since last build via cache, unless forcing
 		$buildMethod = 'full';
-		if(!$force && file_exists($this->getStaticCacheLastPath($dist))){
+		if(
+			$newPaths
+			|| (!$force && file_exists($this->getStaticCacheLastPath($dist)))
+		){
 			$paths = [];
 			$wikiPath = $this->wikiSite->getWiki()->getPath();
-			$newPaths = shell_exec('find ' . escapeshellarg($wikiPath) . ' -not -path "*/blog/drafts/*" -type f -not -name ".*" -newer ' . escapeshellarg($this->getStaticCacheLastPath($dist)));
-			if($newPaths && trim($newPaths)){
-				$newPaths = explode("\n", trim($newPaths));
-				//--we want to do something with the paths
-				if(count($newPaths) < 11){
-					$buildMethod = 'single';
-					$crawler = $this->getStaticPageCrawler();
-					foreach($newPaths as $path){
-						$path = substr($path, strlen($wikiPath));
-						$ext = pathinfo($path, PATHINFO_EXTENSION);
-						if($ext && $ext === 'md'){
-							if(strpos($path, '/') === false || strrpos($path, '/') !== 0){
-								$path = pathinfo($path, PATHINFO_DIRNAME) . '/' . pathinfo($path, PATHINFO_FILENAME);
-							}else{
-								$path = '/' . pathinfo($path, PATHINFO_FILENAME);
-							}
-						}
-						$buildPath = function($path) use($crawler, $dist, &$paths){
-							$paths[] = $path;
-							$task = new SinglePathTask($crawler, $this->getDistPath($dist), $path);
-							echo "building path $path\n";
-							$task->do();
-						};
-						$buildPage = function($path) use($buildPath, $ext){
-							$buildPath($path);
-							if($ext === 'md'){
-								foreach($this->staticFormats as $format){
-									$buildPath($path . '.' . $format);
-								}
-							}
-						};
-						$buildPage($path);
-						if($ext === 'md' && substr($path, 0, 5) === '/blog'){
-							$fn = pathinfo($path, PATHINFO_FILENAME);
-							if($fn === 'mentions'){
-								//--for mentions, only need to build connected post
-								$buildPage(pathinfo($path, PATHINFO_DIRNAME));
-							}else{
-								//--for posts, we must build all parent "dirs"
-								$otherPath = pathinfo($path, PATHINFO_DIRNAME);
-								while(strlen($otherPath) > 1){
-									$buildPage($otherPath);
-									$otherPath = pathinfo($otherPath, PATHINFO_DIRNAME);
-								}
-							}
-						}
+			if(empty($newPaths)){
+				$newPaths = shell_exec('find ' . escapeshellarg($wikiPath) . ' -not -path "*/blog/drafts/*" -type f -not -name ".*" -newer ' . escapeshellarg($this->getStaticCacheLastPath($dist)));
+				if($newPaths && trim($newPaths)){
+					$newPaths = explode("\n", trim($newPaths));
+					//--only build this if less than limit
+					if(count($newPaths) > 10){
+						$newPaths = null;
 					}
 				}
-			}elseif($newPaths === null){
-				$buildMethod = 'none';
-				if($output){
-					$output->writeln("Nothing to build");
+				if(empty($newPaths)){
+					$buildMethod = 'none';
+					$output && $output->writeln("Nothing to build");
+				}
+			}
+			if($newPaths){
+				//--we want to do something with the paths
+				$buildMethod = 'single';
+				$crawler = $this->getStaticPageCrawler();
+				foreach($newPaths as $path){
+					if(strpos($path, $wikiPath) !== false){
+						$path = substr($path, strlen($wikiPath));
+					}
+					$ext = pathinfo($path, PATHINFO_EXTENSION);
+					if($ext && $ext === 'md'){
+						if(strpos($path, '/') === false || strrpos($path, '/') !== 0){
+							$path = pathinfo($path, PATHINFO_DIRNAME) . '/' . pathinfo($path, PATHINFO_FILENAME);
+						}else{
+							$path = '/' . pathinfo($path, PATHINFO_FILENAME);
+						}
+					}
+					$buildPath = function($path) use($crawler, $dist, &$paths){
+						$paths[] = $path;
+						$task = new SinglePathTask($crawler, $this->getDistPath($dist), $path);
+						echo "building path $path\n";
+						$task->do();
+					};
+					$buildPage = function($path) use($buildPath, $ext){
+						$buildPath($path);
+						if($ext === 'md'){
+							foreach($this->staticFormats as $format){
+								$buildPath($path . '.' . $format);
+							}
+						}
+					};
+					$buildPage($path);
+					if($ext === 'md' && substr($path, 0, 5) === '/blog'){
+						$fn = pathinfo($path, PATHINFO_FILENAME);
+						if($fn === 'mentions'){
+							//--for mentions, only need to build connected post
+							$buildPage(pathinfo($path, PATHINFO_DIRNAME));
+						}else{
+							//--for posts, we must build all parent "dirs"
+							$otherPath = pathinfo($path, PATHINFO_DIRNAME);
+							while(strlen($otherPath) > 1){
+								$buildPage($otherPath);
+								$otherPath = pathinfo($otherPath, PATHINFO_DIRNAME);
+							}
+							//--must build rss feed
+							$buildPage('/blog/feed');
+						}
+					}
 				}
 			}
 		}
