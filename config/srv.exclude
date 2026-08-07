@@ -9,6 +9,7 @@ caches/
 /app/files/wp-uploads/*
 /data/_
 /data/content/blog/drafts/
+/data/content/ideas/drafts/
 /dist/dev/
 /dist/public/_assets/icons/
 /dist/short/_dev.php

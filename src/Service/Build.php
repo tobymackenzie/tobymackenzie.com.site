@@ -347,7 +347,7 @@ class Build{
 			$paths = [];
 			$wikiPath = $this->wikiSite->getWiki()->getPath();
 			if(empty($newPaths)){
-				$newPaths = shell_exec('find ' . escapeshellarg($wikiPath) . ' -not -path "*/blog/drafts/*" -type f -not -name ".*" -newer ' . escapeshellarg($this->getStaticCacheLastPath($dist)));
+				$newPaths = shell_exec('find ' . escapeshellarg($wikiPath) . ' -not -path "*/blog/drafts/*" -not -path "*/ideas/drafts/*" -type f -not -name ".*" -newer ' . escapeshellarg($this->getStaticCacheLastPath($dist)));
 				if($newPaths && trim($newPaths)){
 					$newPaths = explode("\n", trim($newPaths));
 					//--only build this if less than limit
