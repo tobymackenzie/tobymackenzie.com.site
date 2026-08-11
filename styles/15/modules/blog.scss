@@ -1,25 +1,3 @@
-//==comments
-.comment-respond{
-	@extend %block;
-}
-.commentContent{
-	//-# comments can have long code "words" that can overflow their container
-	overflow: auto;
-}
-.commentsList{
-	&, & .children{
-		@extend %block;
-		list-style: none;
-		margin-left: 0;
-		padding: 0;
-	}
-	li{
-		@extend %block;
-		border: 1px solid;
-		padding: 0.5em;
-	}
-}
-
 //==posts
 .blogPosts{
 	border-top: 3px solid var(--mainBorder);
