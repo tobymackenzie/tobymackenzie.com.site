@@ -1,12 +1,11 @@
 .a--0{
 	align-content: stretch;
 	display: flex;
-	flex: 0 0 auto;
 	flex-direction: column;
 	justify-content: center;
 	margin: auto;
 	max-width: 100%;
-	padding: 0; //--undo ancient styles
+	padding: 0 0 3.2em; //--undo ancient styles, make room for end logo
 	width: $shellMainWidth;
 	@include supports('appWidth'){
 		border-style: solid;
@@ -39,10 +38,6 @@
 	}
 }
 body{
-	align-items: center;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	margin: 0;
 	max-width: none; //--undo ancient styles
 	min-height: 100vh; //--ensure full grunge coverage, centered short content

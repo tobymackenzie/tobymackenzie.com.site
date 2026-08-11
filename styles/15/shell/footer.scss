@@ -13,9 +13,9 @@ a--foot{
 }
 a--end{
 	@extend %appLogoBase;
-	align-self: start;
-	flex: 0 0 auto;
-	display: inline-block;
+	bottom: 0.5em;
+	left: 1em;
+	position: absolute;
 	//--subdued, emphasise on hover
 	@extend %wiggleHoverAnimation;
 	opacity: 0.5;
@@ -24,15 +24,6 @@ a--end{
 		opacity: 1;
 	}
 	//--rest
-	margin: 0.5em;
-	padding: 0 0.5em;
-	@include supports('app-grid'){
-		margin-left: 2em;
-	}
-	@include supports('medium'){
-		align-self: center;
-		margin-left: -30em;
-	}
 }
 .a--sec{
 	@include mq('print'){

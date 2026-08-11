@@ -13,8 +13,10 @@ a--main{
 	}
 
 	//==colors
-	@extend %appContainerColors;
-	@extend %secondaryAreaColors;
+	@extend %mainItemColors;
+
+	//==add height for short content pages
+	min-height: 50vh;
 }
 .a--mfoot, .a--mhead{
 	@extend %appContainerLayout;
