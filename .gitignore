@@ -11,10 +11,7 @@ yarn.lock
 !/app/files/wp-uploads/.gitkeep
 /app/pages/
 /bin/*
-!bin/app-install
 !bin/console
-!bin/blog-install
-!bin/protected
 !bin/public
 !bin/short
 /composer.lock
