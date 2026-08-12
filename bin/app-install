@@ -35,15 +35,3 @@ if(!file_exists($autoloadPath)){
 	}
 }
 
-//--pull in vendors
-require_once($autoloadPath);
-
-//--install webroot files
-foreach([
-	'short'=> $projectPath . '/src/ShortApp/www'
-] as $name=> $srcPath){
-	foreach(glob($srcPath . '/{.??*,.[!.],*}', GLOB_BRACE) as $from){
-		$to = $projectPath . '/dist/' . $name . '/' . basename($from);
-		Files::symlinkRelativelySafely($to, $from, $projectPath);
-	}
-}
