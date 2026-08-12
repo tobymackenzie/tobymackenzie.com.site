@@ -32,7 +32,6 @@ button{
 	font-size: 1em;
 }
 del{
-	text-decoration-color: map-get($colors, proofreadersMark);
 	text-decoration-color: var(--proofreadersMarkFG);
 }
 em, i{

@@ -7,7 +7,6 @@
 	a{
 		color: map-get($colors, tertiaryLinkFG);
 		color: var(--tertiaryLinkFG);
-		text-decoration-color: rgba(map-get($colors, tertiaryLinkFG), 0.4);
 		text-decoration-color: var(--tertiaryLinkDecorationFG);
 	}
 }
@@ -19,14 +18,12 @@
 	a{
 		color: map-get($colors, secondaryLinkFG);
 		color: var(--secondaryLinkFG);
-		text-decoration-color: rgba(map-get($colors, secondaryLinkFG), 0.4);
 		text-decoration-color: var(--secondaryLinkDecorationFG);
 		&:focus, &:hover{
 			background: rgba(map-get($colors, secondaryLinkFocusBG), 0.3);
 			background: var(--secondaryLinkFocusBG);
 			color: map-get($colors, secondaryLinkFocusFG);
 			color: var(--secondaryLinkFocusFG);
-			text-decoration-color: map-get($colors, secondaryLinkFocusFG);
 			text-decoration-color: var(--secondaryLinkFocusFG);
 		}
 	}
@@ -46,7 +43,6 @@
 	a{
 		color: map-get($colors, primaryLinkFG);
 		color: var(--primaryLinkFG);
-		text-decoration-color: rgba(map-get($colors, primaryLinkFG), 0.4);
 		text-decoration-color: var(--primaryLinkDecorationFG);
 	}
 }
@@ -74,7 +70,6 @@
 		&:active, &:focus, &:hover{
 			color: map-get($colors, linkFGFocus);
 			color: var(--linkFocusFG);
-			text-decoration-color: map-get($colors, linkFGFocus);
 			text-decoration-color: var(--linkFocusFG);
 		}
 		&:active{

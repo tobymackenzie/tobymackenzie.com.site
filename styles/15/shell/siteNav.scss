@@ -73,9 +73,7 @@ $siteNavSearchWidth: 13em;
 			@extend %icon-search;
 			@include icon-size($size);
 			@include siteNavIconColors();
-			@include remFallback('height', $size);
 			vertical-align: middle;
-			@include remFallback('width', $size);
 		}
 		&:focus, &:hover{
 			background-color: map-get($namedColors, subduedKermitGreen);
@@ -91,7 +89,6 @@ $siteNavSearchWidth: 13em;
 	}
 	input{
 		appearance: none;
-		background: none;
 		border: 1px solid;
 		color: map-get($colors, secondaryFG);
 		padding: 0.25em 1.75em 0.25em 0.25em;

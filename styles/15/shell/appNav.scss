@@ -82,7 +82,6 @@ a--navi{
 	&.a--nava{ //--beat specificity of links in secondary area
 		@include appContainerColors;
 		@include primaryAreaColors;
-		text-decoration-color: rgba(map-get($colors, primaryLinkFG), 0.4);
 		text-decoration-color: var(--primaryLinkDecorationFG);
 	}
 }
