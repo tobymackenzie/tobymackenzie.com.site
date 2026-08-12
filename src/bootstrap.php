@@ -1,5 +1,6 @@
 <?php
-namespace TJM\SyWeb;
+namespace PublicApp;
+use TJM\SyWeb\App;
 
 //--configure paths
 const APP_DIR = __DIR__ . '/..';

@@ -3,7 +3,7 @@ parameters:
   build.path: '%kernel.project_dir%/dist'
   data.path: '%kernel.project_dir%/data'
   data_content.path: '%data.path%/content'
-  kernel.root_dir: !php/const TJM\SyWeb\APP_DIR
+  kernel.root_dir: !php/const PublicApp\APP_DIR
   scripts.path: '%kernel.project_dir%/scripts'
 
 imports:
