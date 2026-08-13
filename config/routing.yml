@@ -15,12 +15,6 @@ public_home_formatted:
   path: /index.{_format}
   defaults:
     id: index
-public_blog:
-  controller: PublicApp\Controller\DefaultController::blogAction
-  path: /tblog{rest}
-  defaults: {_format: html, rest: '/'}
-  requirements:
-    rest: .*
 
 ##==meta
 public_app_manifest:
