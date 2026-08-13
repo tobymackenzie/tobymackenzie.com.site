@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Error\LoaderError;
 use PublicApp\Service\Build;
+use PublicApp\Listener\ViewDataListener;
 
 class MetaController extends Controller{
 	public function appManifestAction(Request $request){
@@ -175,7 +176,7 @@ class MetaController extends Controller{
 		Request $request
 		, $_format = null
 	){
-		if(!in_array($_format, DefaultController::SUPPORTED_FORMATS)){
+		if(!in_array($_format, ViewDataListener::SUPPORTED_FORMATS)){
 			throw $this->createNotFoundException("Format {$_format} not currently supported");
 		}
 		//--strip 'html' format, since that is the default

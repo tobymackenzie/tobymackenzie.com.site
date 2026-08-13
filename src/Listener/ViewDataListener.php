@@ -7,6 +7,7 @@ use Symfony\Component\Routing\RouterInterface;
 use TJM\WikiSite\Event\ViewDataEvent;
 
 class ViewDataListener{
+	const SUPPORTED_FORMATS = [null, 'html', 'md', 'txt', 'xhtml'];
 	static protected array $formats = [
 		[
 			'name'=> 'html',
@@ -78,7 +79,7 @@ class ViewDataListener{
 			foreach(static::$formats as $aFormat){
 				if($aFormat['name'] !== $format){
 					$routeParams = [];
-					if($data['pagePath'] !== 'index'){
+					if($data['pagePath'] !== 'index' || $format !== 'html'){
 						$routeParams['id'] = $data['pagePath'];
 					}
 					if($aFormat['name'] !== 'html'){

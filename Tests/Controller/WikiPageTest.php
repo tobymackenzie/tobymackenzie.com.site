@@ -3,7 +3,7 @@ namespace PublicApp\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DefaultControllerTest extends WebTestCase{
+class WikiPageTest extends WebTestCase{
 	/**
 	* @dataProvider getSimplePageActions
 	*/

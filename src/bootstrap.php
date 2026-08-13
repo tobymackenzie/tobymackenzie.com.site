@@ -2,6 +2,8 @@
 namespace PublicApp;
 use TJM\SyWeb\App;
 
+//--set our timezone for this request only, unsure if ini would cause problems elsewhere
+date_default_timezone_set('America/New_York');
 //--configure paths
 const APP_DIR = __DIR__ . '/..';
 require(APP_DIR . '/vendor/autoload.php');

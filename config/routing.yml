@@ -1,5 +1,5 @@
 public_home:
-  controller: PublicApp\Controller\DefaultController::pageAction
+  controller: TJM\WikiSite\WikiSite::viewAction
   path: /
   defaults: {id: ''}
 public_home_default_redirect:
@@ -10,11 +10,6 @@ public_home_default_redirect:
     permanent: true
   requirements:
     dotformat: (\.html|\.php)?
-public_home_formatted:
-  controller: PublicApp\Controller\DefaultController::pageAction
-  path: /index.{_format}
-  defaults:
-    id: index
 
 ##==meta
 public_app_manifest:
@@ -66,21 +61,25 @@ _demo:
   path: /_demo
 
 ##==pages
-public_page_formatted:
-  controller: PublicApp\Controller\DefaultController::pageAction
-  path: /{id}.{_format}
-  requirements:
-    id: .*
 public_page:
-  controller: PublicApp\Controller\DefaultController::pageAction
+  controller: TJM\WikiSite\WikiSite::viewAction
   path: /{id}
   requirements:
     id: .*
-public_wiki_page:
-  controller: TJM\WikiSite\WikiSite::viewAction
-  path: '{path}'
+  defaults:
+    id: ''
+public_page_formatted:
+  path: /{id}.{_format}
   requirements:
-    path: '.*'
+    id: .*
+public_wiki_page:
+  path: '{id}'
+  requirements:
+    id: '.*'
+public_home_formatted:
+  path: /index.{_format}
+  defaults:
+    id: index
 #--base for outputting generic URLs
 public_base:
  defaults:
