@@ -347,7 +347,7 @@ class Build{
 			$paths = [];
 			$wikiPath = $this->wikiSite->getWiki()->getPath();
 			if(empty($newPaths)){
-				$newPaths = shell_exec('find ' . escapeshellarg($wikiPath) . ' -not -path "*/blog/drafts/*" -not -path "*/ideas/drafts/*" -type f -not -name ".*" -newer ' . escapeshellarg($this->getStaticCacheLastPath($dist)));
+				$newPaths = shell_exec('find ' . escapeshellarg($wikiPath) . ' -not -path "*/blog/drafts/*" -not -path "*/examples/*"  -not -path "*/ideas/drafts/*" -type f -not -name ".*" -newer ' . escapeshellarg($this->getStaticCacheLastPath($dist)));
 				if($newPaths && trim($newPaths)){
 					$newPaths = explode("\n", trim($newPaths));
 					//--only build this if less than limit
@@ -427,7 +427,7 @@ class Build{
 		];
 		//---get wiki page paths
 		//-! drafts should probably be blocked upstream
-		$findOpts = '-not -path "*/mentions/*" -not -path "*/drafts/*"';
+		$findOpts = '-not -path "*/mentions/*" -not -path "*/drafts/*" -not -path "*/examples/*"';
 		$paths = $this->wikiSite->getPagePaths(null, $findOpts);
 		//-! add blog tags, years, months, days, blog home, feed, media (maybe symlink?)
 		//---add multi-format other paths
