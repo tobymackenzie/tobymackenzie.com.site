@@ -43,9 +43,10 @@
 .postHeaderMedia{
 	margin-bottom: 1em;
 	text-align: center;
-	@include supports('prettySmall'){
+	@include supports('small'){
 		float: right;
 		margin-left: 1em;
+		max-width: 50%;
 	}
 	img{
 		object-fit: contain;
