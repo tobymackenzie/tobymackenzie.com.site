@@ -51,10 +51,10 @@ $data = Yaml::parse(file_get_contents(DATA_PATH . '/card.yml'));
 				<div class="cardItem"><a href="<?=$data['blogUrl']?>"><?=$data['blogUrlLabel']?></a></div>
 				<div class="cardItem"><a href="<?=$data['githubUrl']?>"><?=$data['githubUrlLabel']?></a></div>
 <?php if(!empty($qr) && !empty($vCard)){ ?>
-				<img class="qr qr-v" src="<?=$qr->render($vCard)?>" alt="QR code: vCard" />
+				<a href="data:text/vcard;base64,<?=base64_encode($vCard)?>" download="<?=strtolower($data['givenName'] . '-' . $data['familyName'])?>.vcf"><img class="qr qr-v" src="<?=$qr->render($vCard)?>" alt="vCard" title="vCard" /></a>
 <?php } ?>
 <?php if(!empty($qr)){ ?>
-					<img class="qr qr-url" src="<?=$qr->render($data['url'])?>" alt="QR code: <?=$data['urlLabel']?>" />
+					<a href="<?=$data['url']?>"><img class="qr qr-url" src="<?=$qr->render($data['url'])?>" alt="<?=$data['urlLabel']?>" title="site" /></a>
 <?php } ?>
 				<div class="a--message"><a href="<?=$data['messageUrl']?>"><?=$data['message']?></a></div>
 			</div>
