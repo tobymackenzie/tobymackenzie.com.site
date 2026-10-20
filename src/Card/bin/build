@@ -5,7 +5,7 @@ require_once(__DIR__ . '/../inc.php');
 require_once(AUTOLOAD_PATH);
 
 //--install webroot files
-$srcPath = SHORT_PATH . '/www';
+$srcPath = CARD_PATH . '/www';
 foreach(glob($srcPath . '/{.??*,.[!.],*}', GLOB_BRACE) as $from){
 	Files::symlinkRelativelySafely(DIST_PATH . '/' . basename($from), $from, PROJECT_PATH);
 }
@@ -17,7 +17,7 @@ if(`which sassc`){
 	$sassBin = 'sass';
 }
 if(isset($sassBin)){
-	chdir(SHORT_PATH);
+	chdir(CARD_PATH);
 	$cssContent = shell_exec("{$sassBin} --style compressed " . STYLES_PATH);
 	if(!file_exists(STYLES_DIST_PATH) || $cssContent !== file_get_contents(STYLES_DIST_PATH)){
 		echo "writing css\n";
@@ -27,7 +27,7 @@ if(isset($sassBin)){
 
 //--build js
 if(`which rollup`){
-	chdir(SHORT_PATH);
+	chdir(CARD_PATH);
 	$command = "rollup " . JS_PATH . " --output.format iife ";
 	if(`which uglifyjs`){
 		$command .= " | uglifyjs --compress --mangle";

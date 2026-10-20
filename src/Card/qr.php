@@ -6,6 +6,7 @@ require_once(AUTOLOAD_PATH);
 if(class_exists('chillerlan\QRCode\QRCode', true)){
 	$qr = (new QRCode(new QROptions([
 		'addQuietzone'=> false,
+		// 'drawCircularModules'=> true,
 		//'outputType'=> QRCode::OUTPUT_MARKUP_SVG,
 		//'imageBase64'=> false,
 		'scale'=> 2,

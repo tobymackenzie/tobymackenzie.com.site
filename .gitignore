@@ -13,6 +13,7 @@ yarn.lock
 /bin/*
 !bin/console
 !bin/public
+!bin/card
 !bin/short
 /composer.lock
 /composer.phar
