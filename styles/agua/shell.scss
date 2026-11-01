@@ -3,12 +3,14 @@ html{
 	font-family: 'Marker Felt', Papyrus, Luminari, Chalkduster, 'Ubuntu Sans', fantasy, sans-serif;
 	font-size: 1.1em;
 	line-height: 1.5;
+	min-height: 100vh;
 	text-shadow: 0 0 4px;
 	@media only screen and (prefers-color-scheme: dark){
 		text-shadow: 0 0 7px;
 	}
 }
 body{
+	background: none;
 	margin: 0;
 	padding: 0;
 }
