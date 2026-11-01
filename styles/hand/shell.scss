@@ -154,9 +154,10 @@ nav a{
 	border: 0;
 }
 .a--snavl{
-	list-style: '› ';
+	list-style: '— ';
 	ul{
-		padding-left: 1.3em;
+		list-style: '- ';
+		padding-left: 0.7em;
 	}
 }
 .a--snavi:has(> form) {
